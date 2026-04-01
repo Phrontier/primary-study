@@ -1,0 +1,3100 @@
+{
+  "eventDecks": [
+    {
+      "eventCode": "FAM2101",
+      "decks": [
+        {
+          "id": "fam2101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-challenge-action-response-format-72bb1fd3c9",
+            "flashcard-dual-concurrence-response-crm-53ffc2136c",
+            "flashcard-memorized-checklists-48d0aa1bee"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM2102",
+      "decks": [
+        {
+          "id": "fam2102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-no-start-a7fbdf8cb7",
+            "flashcard-itt-appears-likely-to-remain-between-871-1000-c-for-5-second-0ba403887f",
+            "flashcard-loss-of-start-ready-light-during-start-sequence-3a3912616e",
+            "flashcard-battery-bus-light-during-start-63eb326dc8",
+            "flashcard-primary-indications-are-fire-annunciators-9d85a8c196",
+            "flashcard-emergency-engine-shutdown-on-the-ground-d8436d8902",
+            "flashcard-cfs-handle-rotate-90-ccw-and-pull-both-e8bc8c9fba",
+            "flashcard-cfs-and-ejection-crm-d827879eb6",
+            "flashcard-minimum-altitude-for-controlled-ejection-2000-agl-0d97295043",
+            "flashcard-up-to-35000-at-370-kias-10b6d91376",
+            "flashcard-loss-of-start-ready-light-during-start-sequence-df741eab35"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM2201",
+      "decks": [
+        {
+          "id": "fam2201-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-abort-takeoff-a5227531f3",
+            "flashcard-warning-ad24e7ffcb",
+            "flashcard-aircraft-departs-prepared-surface-d35db2ffb0",
+            "flashcard-engine-failure-immediately-after-takeoff-0b20c1f550",
+            "flashcard-an-early-decision-to-eject-may-be-the-best-option-b514aaa30a",
+            "flashcard-warning-9dd5f7fa0f",
+            "flashcard-note-2779c4c464",
+            "flashcard-note-31c90661ab",
+            "flashcard-a-decision-to-eject-land-or-airstart-must-be-made-1523ca8ad9",
+            "flashcard-note-2e51f83a62",
+            "flashcard-warning-9826c6ac7e",
+            "flashcard-warning-14507d5bcb",
+            "flashcard-note-7e0120710c",
+            "flashcard-immediate-airstart-0d1c7db163",
+            "flashcard-warning-fc449702b0",
+            "flashcard-warning-23031b5463",
+            "flashcard-warning-81485b55f2",
+            "flashcard-caution-ae120dcabd",
+            "flashcard-caution-a419df1ff5",
+            "flashcard-warning-5157d115dd",
+            "flashcard-caution-3a1c768edf",
+            "flashcard-if-airstart-is-successful-608029fceb",
+            "flashcard-pmu-norm-airstart-2c93ea837c",
+            "flashcard-warning-23031b5463",
+            "flashcard-warning-81485b55f2",
+            "flashcard-caution-a1060e787a",
+            "flashcard-confirm-the-position-of-the-following-83cb3966a4",
+            "flashcard-caution-5ee292f676",
+            "flashcard-caution-a419df1ff5",
+            "flashcard-warning-ea72bac11b",
+            "flashcard-if-airstart-is-successful-6cc05a1d96",
+            "flashcard-note-7950905ccf",
+            "flashcard-igniters-will-not-ignite-automatically-must-be-selected-manu-da8ebd5d76",
+            "flashcard-warning-23031b5463",
+            "flashcard-warning-fac6c4e457",
+            "flashcard-caution-a1060e787a"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM2202",
+      "decks": [
+        {
+          "id": "fam2202-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-chip-detector-warning-17a31f159f",
+            "flashcard-procedure-06da9c121d",
+            "flashcard-visibly-confirmed-leaking-oil-from-aircraft-d7f49976b9",
+            "flashcard-note-73fee5d33a",
+            "flashcard-terminate-maneuver-db974d2cd6",
+            "flashcard-if-red-oil-px-warning-illuminates-and-or-amber-oil-px-cautio-2f44453f5a",
+            "flashcard-symptoms-4ae3150b45",
+            "flashcard-note-042f03d799",
+            "flashcard-caution-21bd345503",
+            "flashcard-warning-051a1bb461",
+            "flashcard-symptoms-6c970b2232",
+            "flashcard-n-w-cs-6513a8abd9",
+            "flashcard-landing-gear-emergency-extension-78eb443e4e",
+            "flashcard-n-w-cs-075da2f55a",
+            "flashcard-obogs-fail-light-indicates-system-malfunction-3df9b6ea1d",
+            "flashcard-n-w-cs-e3ad56bf80",
+            "flashcard-obogs-failure-overtemp-physiological-symptoms-checklist-c7099b5b45",
+            "flashcard-caution-348f928eb8",
+            "flashcard-warning-0317a70661",
+            "flashcard-caution-c2a75fce3b",
+            "flashcard-note-bc3197fe33",
+            "flashcard-note-05c44793e9",
+            "flashcard-warning-d53ac7c9ef",
+            "flashcard-warning-0291bb37b7",
+            "flashcard-runaway-trim-a7ef7de79c",
+            "flashcard-n-w-cs-6e6738640e",
+            "flashcard-n-w-cs-46bf8b40d2",
+            "flashcard-execute-if-engine-failure-is-suspected-or-per-checklist-237271cac7",
+            "flashcard-caution-e32025604c",
+            "flashcard-high-temp-altitude-delayed-power-response-994c5d88a9",
+            "flashcard-gear-flaps-speed-brake-up-fbb5d6e36f",
+            "flashcard-note-55fa98feea",
+            "flashcard-ignition-switch-as-required-720ea57103",
+            "flashcard-note-cd3e757a28",
+            "flashcard-n-w-cs-5315d1d9fd",
+            "flashcard-pel-fti-750b154be6"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM3101",
+      "decks": [
+        {
+          "id": "fam3101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-normal-takeoff-67e05b778a",
+            "flashcard-200-prior-to-hold-short-switch-to-tower-freq-0172df6b94",
+            "flashcard-lineup-checklist-from-memory-377cff0c74",
+            "flashcard-attitude-check-maintain-7-10-nh-trim-as-req-cf55e7a74a",
+            "flashcard-best-rate-of-climb-140-kias-15-nh-5e5dbaf92c",
+            "flashcard-call-tower-only-when-1-for-departure-bf910be737",
+            "flashcard-departure-option-allows-to-or-practice-abort-must-advice-atc-fdafc4f581",
+            "flashcard-climb-to-2500-msl-then-ch-8-12-uhf-contact-corpus-departure-7a66ba313a",
+            "flashcard-shamrock-re-entry-turn-north-at-1-wtd-descend-to-1000-msl-7a9b13a6dc",
+            "flashcard-22-13l-r-18-right-turnout-2bcb9a6ff4",
+            "flashcard-contact-towers-05c82455f5",
+            "flashcard-integrated-vmc-scan-489850cb04",
+            "flashcard-eyes-should-be-outside-80-90-of-the-time-in-vmc-f350373286",
+            "flashcard-inside-attitude-pfd-performance-airspeed-power-005fe5d5de",
+            "flashcard-other-scan-patterns-3b1782fc81",
+            "flashcard-scan-rate-sequence-adjusts-to-workload-and-traffic-cb9a8b79e2",
+            "flashcard-turn-pattern-3201ccffab",
+            "flashcard-procedure-26c7541eec",
+            "flashcard-30-aob-90-l-r-minimal-back-stick-power-change-28aebd78cc",
+            "flashcard-scan-horizon-and-instruments-don-t-fixate-26a55ea64f",
+            "flashcard-level-speed-change-e914948502",
+            "flashcard-procedure-bddf311cdc",
+            "flashcard-improper-rudder-trim-poor-heading-control-4d416c6ae7",
+            "flashcard-power-on-stalls-1231f5542d",
+            "flashcard-incomplete-scan-of-aoa-and-coordination-during-recovery-5e24ae451d",
+            "flashcard-n-w-cs-d838afa595",
+            "flashcard-power-off-stall-elp-stall-76748367f9",
+            "flashcard-if-150-kias-retard-pcl-tp-4-6-zoom-glide-to-125-kias-f1c0216b20",
+            "flashcard-failing-to-recognize-approach-to-stall-indications-68deef7038",
+            "flashcard-n-w-cs-b26e64b4dc",
+            "flashcard-landing-pattern-approach-turn-stall-c595949938",
+            "flashcard-ball-ccf25e6c0a",
+            "flashcard-n-w-cs-5a0a403788",
+            "flashcard-note-c6c8f24815",
+            "flashcard-avoid-lowering-nose-below-5-risk-of-prop-strike-or-porpoisin-8ec857d037",
+            "flashcard-avoid-abrupt-rudder-inputs-during-recovery-ebffef4964"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM3102",
+      "decks": [
+        {
+          "id": "fam3102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-normal-takeoff-67e05b778a",
+            "flashcard-200-prior-to-hold-short-switch-to-tower-freq-0172df6b94",
+            "flashcard-lineup-checklist-from-memory-377cff0c74",
+            "flashcard-attitude-check-maintain-7-10-nh-trim-as-req-cf55e7a74a",
+            "flashcard-best-rate-of-climb-140-kias-15-nh-5e5dbaf92c",
+            "flashcard-call-tower-only-when-1-for-departure-bf910be737",
+            "flashcard-departure-option-allows-to-or-practice-abort-must-advice-atc-fdafc4f581",
+            "flashcard-climb-to-2500-msl-then-ch-8-uhf-contact-corpus-departure-53ac385373",
+            "flashcard-shamrock-re-entry-turn-north-at-1-wtd-descend-to-1000-msl-7a9b13a6dc",
+            "flashcard-22-13l-r-18-right-turnout-2bcb9a6ff4",
+            "flashcard-contact-towers-05c82455f5",
+            "flashcard-possible-causes-34a28f946c",
+            "flashcard-results-d7b76d1566",
+            "flashcard-rudder-trim-lateral-imbalance-unnecessary-yaw-increased-drag-54c6f8d20b",
+            "flashcard-110-150-kias-to-reduce-forces-except-full-nose-down-d363608a7c",
+            "flashcard-landing-pattern-d158567024",
+            "flashcard-below-150-gear-clear-40e89faf96",
+            "flashcard-downwind-pattern-altitude-1-wtd-120-kias-flaps-as-req-6bf1d8fc7a",
+            "flashcard-turn-to-90-position-960fa32922",
+            "flashcard-refer-to-above-nf-settings-throughout-maneuver-0dbb98d0f0",
+            "flashcard-contact-unusual-attitudes-539d6b8aa4",
+            "flashcard-power-as-req-0345fb2294",
+            "flashcard-ensure-stick-is-physically-neutral-197358c00f",
+            "flashcard-aoa-gauge-may-lag-in-accelerated-stalls-a300d9472b"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM3103",
+      "decks": [
+        {
+          "id": "fam3103-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-crosswind-takeoff-751b2b3589",
+            "flashcard-procedure-70e98af5b9",
+            "flashcard-reduce-aileron-input-as-speed-increases-keep-wings-level-cc3f630049",
+            "flashcard-rotation-e5a24ba605",
+            "flashcard-pattern-adjustments-for-crosswinds-1f727405a0",
+            "flashcard-maintain-corrections-through-flare-and-rollout-6a07f4fe86",
+            "flashcard-crosswind-landings-t-gs-full-stops-f22cce8e35",
+            "flashcard-description-executed-for-any-abnormal-or-unsafe-condition-pr-0bc8eabd83",
+            "flashcard-maintain-directional-control-with-rudder-nws-97e7857deb",
+            "flashcard-do-not-exceed-1500-ft-or-60-kias-before-initiating-abort-8cfced365c",
+            "flashcard-description-ac-is-no-longer-on-or-will-imminently-depart-the-1cfa2fd450",
+            "flashcard-emergency-ground-egress-as-required-dac1add99c",
+            "flashcard-avoid-braking-over-a-lowered-bak-15-resume-after-passing-it-406e1411db",
+            "flashcard-overview-829ca2246f",
+            "flashcard-flight-symbology-f788c993ad",
+            "flashcard-bank-angle-indicator-inverted-triangle-limited-at-47-max-74d9d823df"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM3201",
+      "decks": [
+        {
+          "id": "fam3201-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-11dd48608b",
+            "flashcard-pilot-actions-069d30130d",
+            "flashcard-indications-73413e37e4",
+            "flashcard-fire-5f586ca283",
+            "flashcard-execute-if-engine-failure-is-suspected-or-per-checklist-237271cac7",
+            "flashcard-caution-e32025604c",
+            "flashcard-high-temp-altitude-delayed-power-response-994c5d88a9",
+            "flashcard-gear-flaps-speed-brake-up-fbb5d6e36f",
+            "flashcard-note-55fa98feea",
+            "flashcard-ignition-switch-as-required-720ea57103",
+            "flashcard-note-cd3e757a28",
+            "flashcard-n-w-cs-5315d1d9fd",
+            "flashcard-pel-fti-750b154be6",
+            "flashcard-any-natops-listed-critical-condition-b060376498",
+            "flashcard-turn-toward-nearest-suitable-field-visual-navaid-fms-nrst-7198933cdb",
+            "flashcard-ignition-as-required-8c7bfee90e",
+            "flashcard-description-9648bfab40",
+            "flashcard-procedure-88193f9d72",
+            "flashcard-check-aircraft-and-engine-instruments-for-secondary-indicati-932f6fbdae",
+            "flashcard-lower-gear-when-on-elp-819185b498",
+            "flashcard-elp-e8d5f164a5"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM3202",
+      "decks": [
+        {
+          "id": "fam3202-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-itt-8007f03e38",
+            "flashcard-check-f7bd179664",
+            "flashcard-a-decision-to-eject-land-or-airstart-must-be-made-ccde3e3ab1",
+            "flashcard-3-intercept-elp-0cce2a5e79",
+            "flashcard-4-airstart-attempt-if-warranted-dba4df8522",
+            "flashcard-procedure-2c61ab8a80",
+            "flashcard-1-pcl-off-7973a89428",
+            "flashcard-2-starter-switch-auto-reset-6c62e4a4df",
+            "flashcard-3-pcl-idle-above-13-n1-48dc8c52bd",
+            "flashcard-if-airstart-is-successful-608029fceb",
+            "flashcard-boost-pump-switch-on-d7fdfcc587",
+            "flashcard-expect-high-amperage-readings-above-30-amps-after-the-start-e1470e187c",
+            "flashcard-forced-landing-vs-pel-98da94c496",
+            "flashcard-both-look-similar-if-flown-correctly-but-7668ead658",
+            "flashcard-emer-ldg-gr-handle-pull-as-required-34ee88d1ab",
+            "flashcard-n-w-cs-23aa17520b",
+            "flashcard-overview-349cb5395e",
+            "flashcard-no-delay-pull-handle-immediately-d9667dc556",
+            "flashcard-allows-time-for-proper-body-position-and-safe-airspeed-altit-90e2675e54",
+            "flashcard-controlled-planned-ejection-f656a508c7",
+            "flashcard-altitude-2000-feet-agl-minimum-recommended-12c4f1d728",
+            "flashcard-visor-down-both-016b2210a6",
+            "flashcard-ejection-handle-pull-both-23f0618df6",
+            "flashcard-i-inflate-lpu-locate-toggles-and-pull-to-waist-d277fd15e5",
+            "flashcard-over-land-a0f6a6e9ff",
+            "flashcard-steer-into-wind-toward-clear-landing-area-c8a0e7daca",
+            "flashcard-if-not-meeting-criteria-or-airspeed-minimums-eject-8d5eb68dfd",
+            "flashcard-ejection-mindset-and-culture-9510b9defb"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM3301",
+      "decks": [
+        {
+          "id": "fam3301-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-crosswind-takeoff-751b2b3589",
+            "flashcard-procedure-70e98af5b9",
+            "flashcard-reduce-aileron-input-as-speed-increases-keep-wings-level-cc3f630049",
+            "flashcard-rotation-e5a24ba605",
+            "flashcard-pattern-adjustments-for-crosswinds-1f727405a0",
+            "flashcard-maintain-corrections-through-flare-and-rollout-6a07f4fe86",
+            "flashcard-crosswind-landings-t-gs-full-stops-f22cce8e35",
+            "flashcard-description-executed-for-any-abnormal-or-unsafe-condition-pr-0bc8eabd83",
+            "flashcard-maintain-directional-control-with-rudder-nws-97e7857deb",
+            "flashcard-do-not-exceed-1500-ft-or-60-kias-before-initiating-abort-8cfced365c",
+            "flashcard-overview-3d77becce8",
+            "flashcard-above-80-kias-use-great-caution-when-braking-af483e4161",
+            "flashcard-maximum-braking-speed-must-be-known-to-calculate-max-abort-s-ec6c4cca85",
+            "flashcard-do-not-brake-until-full-weight-is-on-wheels-d704033e57",
+            "flashcard-most-tire-blowouts-happen-before-spin-up-or-below-40-kias-885f83ab5f",
+            "flashcard-max-braking-is-hard-to-achieve-d64da16822",
+            "flashcard-description-ac-is-no-longer-on-or-will-imminently-depart-the-1cfa2fd450",
+            "flashcard-emergency-ground-egress-df6023a777",
+            "flashcard-iss-mode-selector-solo-32d4ce0fbf",
+            "flashcard-seat-safety-pin-install-both-3dfa5aaaaa",
+            "flashcard-cfs-handle-rotate-90-counterclockwise-and-pull-both-fdb31651ed",
+            "flashcard-evacuate-aircraft-dafe88b3bd",
+            "flashcard-avoid-braking-over-a-lowered-bak-15-resume-after-passing-it-406e1411db",
+            "flashcard-wind-shear-recovery-30a351d1b8",
+            "flashcard-prevention-detection-08ee128165",
+            "flashcard-windshear-recovery-a1f192506b",
+            "flashcard-with-a-decreasing-headwind-add-power-to-avoid-landing-short-5d7d7163f2",
+            "flashcard-rotating-too-early-or-climbing-too-shallow-in-takeoff-windsh-fb886df4f4",
+            "flashcard-letting-decreasing-headwinds-reduce-airspeed-below-safe-marg-d774a12082",
+            "flashcard-overview-ca104e2b23",
+            "flashcard-procedure-natops-9527bed6ed",
+            "flashcard-lsk-l5-alt-baro-change-pfd-barometric-altimeter-setting-6cec214898"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM3401",
+      "decks": [
+        {
+          "id": "fam3401-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-aoa-approach-44e33e7044",
+            "flashcard-cross-runway-threshold-on-speed-begin-flare-728945d202",
+            "flashcard-n-w-cs-ce3c38773d",
+            "flashcard-c-f765a17b76",
+            "flashcard-vo-operating-maneuvering-speed-227-kias-9d7db689da",
+            "flashcard-rudder-limitation-7ce4f5fde9",
+            "flashcard-contact-unusual-attitudes-539d6b8aa4",
+            "flashcard-power-as-req-0345fb2294",
+            "flashcard-ensure-stick-is-physically-neutral-197358c00f",
+            "flashcard-aoa-gauge-may-lag-in-accelerated-stalls-a300d9472b",
+            "flashcard-description-f71c757f16",
+            "flashcard-altitude-6-000-agl-recommended-44234118fc",
+            "flashcard-description-2499d9f00c",
+            "flashcard-just-past-vertical-tilt-head-back-and-locate-opposite-horizo-013121f9c8",
+            "flashcard-wings-not-held-parallel-to-horizon-especially-during-pull-up-429d94175d",
+            "flashcard-n-w-cs-5d99c98d6b",
+            "flashcard-allow-nose-to-fall-to-recover-from-stall-6c143e8837",
+            "flashcard-description-b95d3d0468",
+            "flashcard-maintain-constant-pitch-rate-with-aft-stick-c9fcc29e24",
+            "flashcard-roll-to-upright-e587419f78",
+            "flashcard-execute-a-coordinated-roll-either-direction-9e3d02a272",
+            "flashcard-n-w-cs-dc8b4f9017",
+            "flashcard-description-32dae554cf",
+            "flashcard-keep-nose-tracking-along-section-line-a9f1bc99cd",
+            "flashcard-reduce-back-stick-gradually-as-airspeed-builds-344ad6d275",
+            "flashcard-description-100f06bc69",
+            "flashcard-n-w-cs-c03c3f14f6",
+            "flashcard-description-fe3c8bcdef",
+            "flashcard-reach-45-aob-and-35-nose-low-at-135-of-turn-68efa2fdaf",
+            "flashcard-n-w-cs-033a1163dd",
+            "flashcard-common-errors-6087874745",
+            "flashcard-loss-of-visual-orientation-failure-to-use-reference-points-435ce9693f",
+            "flashcard-w-exceeding-2-5-gs-during-maneuver-may-cause-overstress-f7d55858ca",
+            "flashcard-aircraft-is-unresponsive-to-normal-control-inputs-0342ee13b3",
+            "flashcard-pcl-idle-9c610e1c45",
+            "flashcard-if-aircraft-not-recovering-107c67b20c"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM6101",
+      "decks": [
+        {
+          "id": "fam6101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-enter-via-4-nm-initial-point-on-extended-runway-centerline-1eec5872c0",
+            "flashcard-report-goliad-rdo-call-sign-initial-bceaf12fb1",
+            "flashcard-directed-by-rdo-or-if-initial-call-isn-t-acknowledged-by-2-n-d70c391662",
+            "flashcard-priority-57eb7c68c0",
+            "flashcard-successive-touch-go-643becbf5a",
+            "flashcard-pattern-saturation-39bb38979f",
+            "flashcard-crosswind-interval-af1e3bb6f8",
+            "flashcard-instructors-announce-intentions-3-5-nm-from-high-key-ea9b9e2bcc",
+            "flashcard-departure-procedures-53ef77fb1a",
+            "flashcard-maintain-800-msl-d766de61a7",
+            "flashcard-once-clear-of-traffic-climb-to-2-500-msl-d6ca3da915",
+            "flashcard-arrival-routes-b89d42022c",
+            "flashcard-contact-corpus-approach-ch-8-uhf-a56e3f7764",
+            "flashcard-fly-to-camel-humps-then-contact-waldron-tower-ch-30-uhf-f566802172",
+            "flashcard-aircraft-corpus-approach-call-sign-camel-humps-terminate-e3cbf4dbdf",
+            "flashcard-runways-13-18-abd9905575",
+            "flashcard-pattern-entry-d691a8be70",
+            "flashcard-oso-transition-from-nas-corpus-christi-to-nolf-waldron-4673db2d08",
+            "flashcard-runways-31-36-163c8fd392",
+            "flashcard-turn-eastbound-to-avoid-waldron-power-plant-08b730d34c",
+            "flashcard-post-departure-9d8071e0bc",
+            "flashcard-climb-descend-to-500-msl-f35a6741b8",
+            "flashcard-ifr-departures-e23715aca9",
+            "flashcard-aircraft-waldron-tower-call-sign-request-oso-transition-3f1882a1a5",
+            "flashcard-switch-to-ch-21-vhf-self-announce-on-krkp-ctaf-6d63bb9d2d",
+            "flashcard-proceed-to-a-2-nm-initial-for-the-runway-in-use-3f9b56582e",
+            "flashcard-uhf-call-sign-is-inbound-for-the-initial-e2a4a2fa04",
+            "flashcard-fly-145-to-bayside-self-announce-on-krkp-ctaf-70f4b03eae",
+            "flashcard-radio-calls-26c01e3084",
+            "flashcard-ppel-entry-on-the-same-side-as-the-normal-traffic-pattern-c37a08ba16",
+            "flashcard-follow-departure-route-e3558bf013",
+            "flashcard-runways-14-18-7fc8367e0b",
+            "flashcard-runways-32-36-83168677d2",
+            "flashcard-radio-calls-cd6bd85fde",
+            "flashcard-general-a8de4bcc86",
+            "flashcard-proceed-down-the-intracoastal-at-1500-msl-3c53e1b0c7"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM6102",
+      "decks": [
+        {
+          "id": "fam6102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-illness-medication-stress-alcohol-fatigue-eating-83277b7dd7",
+            "flashcard-snas-not-siq-may-be-assigned-other-duties-at-odo-s-discretio-ca00ea651f",
+            "flashcard-imsafe-can-be-used-for-any-syllabus-event-not-just-flights-480cca8467",
+            "flashcard-optimize-risk-management-6cde0f8d45",
+            "flashcard-assertiveness-9ab02ac631",
+            "flashcard-visual-limitations-of-the-human-eye-8e1bb47bc8",
+            "flashcard-narrow-focus-zone-only-10-15-field-where-you-can-actually-fo-bdea7c3c75",
+            "flashcard-student-executes-a-homefield-visual-straight-in-89836ccbe5",
+            "flashcard-climb-to-2500-msl-then-ch-8-uhf-contact-corpus-departure-53ac385373",
+            "flashcard-south-mustang-turn-s-climb-to-5500-msl-wtd-240-kias-c038e204f9",
+            "flashcard-terminate-with-corpus-approach-d1d4671446",
+            "flashcard-switch-to-ch-21-vhf-self-announce-on-krkp-ctaf-6d63bb9d2d",
+            "flashcard-ppel-entry-on-the-same-side-as-the-normal-traffic-pattern-ec5b7a951b",
+            "flashcard-runways-14-18-7fc8367e0b",
+            "flashcard-runways-32-36-9fca5427b1",
+            "flashcard-radio-calls-1582fb334b",
+            "flashcard-contact-corpus-approach-nlt-9-mile-point-5d8dc55125",
+            "flashcard-contact-corpus-approach-with-intentions-edeebcfb3c",
+            "flashcard-terminate-with-corpus-approach-07398ed652",
+            "flashcard-contact-waldron-tower-ch-30-uhf-75513da0ae",
+            "flashcard-twr-call-sign-waldron-tower-report-the-initial-rwy-a5eb834970",
+            "flashcard-runways-13-18-abd9905575",
+            "flashcard-reset-repeat-71e132e197",
+            "flashcard-runways-31-36-163c8fd392",
+            "flashcard-turn-eastbound-to-avoid-waldron-power-plant-08b730d34c",
+            "flashcard-post-departure-5793936f28",
+            "flashcard-prior-to-initial-41795a3bdc"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM6201",
+      "decks": [
+        {
+          "id": "fam6201-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-3-c-s-0a44b47bc8",
+            "flashcard-configuration-34ab819d6b",
+            "flashcard-slow-flight-01e271689a",
+            "flashcard-scatsafe-maneuver-e648c65e77",
+            "flashcard-a-adverse-yaw-5e8575c5ad",
+            "flashcard-t-torque-and-turns-944a9fe89a",
+            "flashcard-purpose-4cf0933375",
+            "flashcard-purpose-d0c9852d22",
+            "flashcard-full-rudder-not-required-if-used-keep-150-kias-75159ecd43"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM6202",
+      "decks": [
+        {
+          "id": "fam6202-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-enter-via-4-nm-initial-point-on-extended-runway-centerline-1eec5872c0",
+            "flashcard-report-goliad-rdo-call-sign-initial-1-6411b2b04c",
+            "flashcard-directed-by-rdo-or-if-initial-call-isn-t-acknowledged-by-2-n-d70c391662",
+            "flashcard-priority-57eb7c68c0",
+            "flashcard-successive-touch-go-643becbf5a",
+            "flashcard-pattern-saturation-39bb38979f",
+            "flashcard-crosswind-interval-af1e3bb6f8",
+            "flashcard-instructors-announce-intentions-3-5-nm-from-high-key-ea9b9e2bcc",
+            "flashcard-arrival-routes-b89d42022c",
+            "flashcard-contact-corpus-approach-ch-8-uhf-a56e3f7764",
+            "flashcard-fly-to-camel-humps-then-contact-waldron-tower-ch-30-uhf-f566802172",
+            "flashcard-aircraft-corpus-approach-call-sign-camel-humps-terminate-e3cbf4dbdf",
+            "flashcard-runways-13-18-abd9905575",
+            "flashcard-pattern-entry-d691a8be70",
+            "flashcard-oso-transition-from-nas-corpus-christi-to-nolf-waldron-007ceec708",
+            "flashcard-proceed-to-a-2-nm-initial-for-the-runway-in-use-19e5a16926",
+            "flashcard-fly-145-to-bayside-self-announce-on-krkp-ctaf-70f4b03eae",
+            "flashcard-radio-calls-aa58082f2a",
+            "flashcard-ppel-entry-on-the-same-side-as-the-normal-traffic-pattern-c37a08ba16",
+            "flashcard-general-a8de4bcc86",
+            "flashcard-proceed-down-the-intracoastal-at-1500-msl-3c53e1b0c7",
+            "flashcard-contact-corpus-approach-state-intentions-24b8bd4382",
+            "flashcard-from-goliad-c6b6d813e5",
+            "flashcard-initial-call-inbound-2f575a40ad",
+            "flashcard-position-e-g-5-miles-to-the-north-8c82a7f798",
+            "flashcard-wind-info-altimeter-86c82d4ed7",
+            "flashcard-reporting-at-key-positions-456acb85e4",
+            "flashcard-lost-comm-c777aa6645",
+            "flashcard-to-c55db08805",
+            "flashcard-procedure-70e98af5b9",
+            "flashcard-reduce-aileron-input-as-speed-increases-keep-wings-level-0fc5cbfb84",
+            "flashcard-rotation-9cdc34ef10",
+            "flashcard-landings-42b99a72c0"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM6301",
+      "decks": [
+        {
+          "id": "fam6301-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-enter-via-4-nm-initial-point-on-extended-runway-centerline-1eec5872c0",
+            "flashcard-report-goliad-rdo-call-sign-initial-11-a04024366c",
+            "flashcard-directed-by-rdo-or-if-initial-call-isn-t-acknowledged-by-2-n-d70c391662",
+            "flashcard-priority-57eb7c68c0",
+            "flashcard-successive-touch-go-643becbf5a",
+            "flashcard-pattern-saturation-39bb38979f",
+            "flashcard-crosswind-interval-af1e3bb6f8",
+            "flashcard-instructors-announce-intentions-3-5-nm-from-high-key-ea9b9e2bcc",
+            "flashcard-departure-procedures-53ef77fb1a",
+            "flashcard-maintain-800-msl-d766de61a7",
+            "flashcard-once-clear-of-traffic-climb-to-2-500-msl-d6ca3da915"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM6302",
+      "decks": [
+        {
+          "id": "fam6302-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-climb-to-2500-msl-then-ch-8-uhf-contact-corpus-departure-53ac385373",
+            "flashcard-shamrock-re-entry-turn-north-at-1-wtd-descend-to-1000-msl-7a9b13a6dc",
+            "flashcard-proceed-to-a-2-nm-initial-for-the-runway-in-use-19e5a16926",
+            "flashcard-fly-145-to-bayside-self-announce-on-krkp-ctaf-70f4b03eae",
+            "flashcard-radio-calls-aa58082f2a",
+            "flashcard-ppel-entry-on-the-same-side-as-the-normal-traffic-pattern-c37a08ba16",
+            "flashcard-follow-departure-route-e3558bf013",
+            "flashcard-runways-14-18-7fc8367e0b",
+            "flashcard-runways-32-36-83168677d2",
+            "flashcard-radio-calls-4083fbaf25",
+            "flashcard-contact-navy-corpus-tower-ch-4-uhf-7b26256c40",
+            "flashcard-prior-to-initial-41795a3bdc"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM6401",
+      "decks": [
+        {
+          "id": "fam6401-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-pel-profile-and-procedures-1970e69f42",
+            "flashcard-procedure-6b385b7432",
+            "flashcard-turn-toward-nearest-suitable-field-618033b73e",
+            "flashcard-check-aircraft-for-further-indications-dea8f65940",
+            "flashcard-elp-profile-f580a4a3e0",
+            "flashcard-5-cfs-handle-safety-pin-remove-both-54fbbaf30e",
+            "flashcard-2-brakes-as-required-7b5ad0e569",
+            "flashcard-if-airstart-is-successful-608029fceb",
+            "flashcard-9-pel-execute-a1fae1f140",
+            "flashcard-2-pmu-switch-off-a61a326754",
+            "flashcard-chip-detector-warning-4e14fd6ee6",
+            "flashcard-1-terminate-maneuver-e187088f5c",
+            "flashcard-if-red-oil-px-warning-illuminates-and-or-amber-oil-px-cautio-3d22010dba",
+            "flashcard-2-emer-ldg-gr-handle-pull-as-required-b90987e84b"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM6402",
+      "decks": [
+        {
+          "id": "fam6402-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-5-cfs-handle-safety-pin-remove-both-54fbbaf30e",
+            "flashcard-2-brakes-as-required-7b5ad0e569",
+            "flashcard-if-airstart-is-successful-608029fceb",
+            "flashcard-9-pel-execute-a1fae1f140",
+            "flashcard-2-pmu-switch-off-a61a326754",
+            "flashcard-chip-detector-warning-4e14fd6ee6",
+            "flashcard-1-terminate-maneuver-e187088f5c",
+            "flashcard-if-red-oil-px-warning-illuminates-and-or-amber-oil-px-cautio-3d22010dba",
+            "flashcard-2-emer-ldg-gr-handle-pull-as-required-b90987e84b"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4101",
+      "decks": [
+        {
+          "id": "fam4101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-before-leaving-wing-84ccc9e077",
+            "flashcard-martin-baker-mk-16-ejection-seat-with-gq5000-nylon-parachute-303c321b00",
+            "flashcard-envelope-d2b7bdedb4",
+            "flashcard-break-out-pcl-and-execute-as-many-steps-as-time-permits-8048bb0c3c",
+            "flashcard-uncontrolled-ejection-2000-agl-min-38468ba85f",
+            "flashcard-operation-2f127b3d73",
+            "flashcard-ejection-sequence-separation-41b30163b5",
+            "flashcard-eject-ep-nwc-4aca5873cf",
+            "flashcard-w-the-emergency-escape-system-includes-explosive-cfs-e9b44a6777",
+            "flashcard-post-ejection-procedures-irok-276f9dafb4",
+            "flashcard-o-options-as-required-c07f37460b",
+            "flashcard-visor-if-over-water-visor-up-for-increased-visibility-279a3c068b",
+            "flashcard-feet-and-knees-together-knees-slightly-bent-fc92637da0",
+            "flashcard-if-over-water-1bdbfe2516",
+            "flashcard-r-release-ssk-and-retrieve-survival-items-ab9f56e08a",
+            "flashcard-eject-ep-05c407cd82",
+            "flashcard-emergency-ground-egress-ep-33967b9721",
+            "flashcard-smoke-and-fume-elimination-ep-323fe85bb4",
+            "flashcard-if-activated-only-the-seat-that-pulled-it-will-eject-8ce8940b79",
+            "flashcard-with-the-rear-cockpit-occupied-in-flight-must-fly-in-both-5bf370b088",
+            "flashcard-cmd-fwd-b890a3fd9c",
+            "flashcard-low-oil-pressure-fa8aacfc0d",
+            "flashcard-motoring-run-65201ae6e7",
+            "flashcard-confirms-pmu-is-ready-and-monitoring-engine-parameters-907ce3d203",
+            "flashcard-use-external-power-for-motoring-cae7274369",
+            "flashcard-flight-mode-idle-67-n1-30be482217",
+            "flashcard-brake-pressure-fade-or-no-brake-response-f86d4fdd41",
+            "flashcard-fully-release-brakes-then-re-apply-b195f9d308",
+            "flashcard-one-brake-failure-known-or-unexpected-4b84582a8a",
+            "flashcard-both-brake-failure-b43b601dd2",
+            "flashcard-control-use-rudder-and-ailerons-to-maintain-directional-cont-1649bf2f85",
+            "flashcard-definition-8f49f19aaa",
+            "flashcard-always-log-the-strike-in-maintenance-records-maf-9ed2c772b6",
+            "flashcard-takeoff-5216e49ec1",
+            "flashcard-200-prior-to-hold-short-switch-to-tower-freq-0172df6b94",
+            "flashcard-lineup-checklist-from-memory-377cff0c74"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4102",
+      "decks": [
+        {
+          "id": "fam4102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-fly-a-straight-in-approach-ba37181406",
+            "flashcard-do-not-apply-wheel-brakes-until-weight-is-firmly-on-wheels-d58947d0af",
+            "flashcard-most-blown-tires-occur-before-tire-spin-up-or-below-40-knots-f3c8058364",
+            "flashcard-description-executed-for-any-abnormal-or-unsafe-condition-pr-0bc8eabd83",
+            "flashcard-maintain-directional-control-with-rudder-nws-97e7857deb",
+            "flashcard-do-not-exceed-1500-ft-or-60-kias-before-initiating-abort-8cfced365c",
+            "flashcard-power-on-stalls-1231f5542d",
+            "flashcard-incomplete-scan-of-aoa-and-coordination-during-recovery-5e24ae451d",
+            "flashcard-n-w-cs-d838afa595",
+            "flashcard-landing-pattern-approach-turn-stall-c595949938",
+            "flashcard-ball-ccf25e6c0a",
+            "flashcard-n-w-cs-5a0a403788",
+            "flashcard-note-c6c8f24815",
+            "flashcard-avoid-lowering-nose-below-5-risk-of-prop-strike-or-porpoisin-8ec857d037",
+            "flashcard-avoid-abrupt-rudder-inputs-during-recovery-ebffef4964",
+            "flashcard-landing-attitude-stall-3e628adffd",
+            "flashcard-establish-64cc846782",
+            "flashcard-pcl-idle-22b0a50806",
+            "flashcard-ball-ccf25e6c0a",
+            "flashcard-power-off-stalls-6b732d8fc2",
+            "flashcard-if-150-kias-retard-pcl-tp-4-6-zoom-glide-to-125-kias-f1c0216b20",
+            "flashcard-failing-to-recognize-approach-to-stall-indications-68deef7038",
+            "flashcard-n-w-cs-b26e64b4dc",
+            "flashcard-landing-pattern-d158567024",
+            "flashcard-below-150-gear-clear-40e89faf96",
+            "flashcard-downwind-pattern-altitude-1-wtd-120-kias-flaps-as-req-6bf1d8fc7a",
+            "flashcard-turn-to-90-position-960fa32922",
+            "flashcard-refer-to-above-nf-settings-throughout-maneuver-0dbb98d0f0"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4103",
+      "decks": [
+        {
+          "id": "fam4103-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-enter-via-4-nm-initial-point-on-extended-runway-centerline-1eec5872c0",
+            "flashcard-report-goliad-rdo-call-sign-initial-bceaf12fb1",
+            "flashcard-directed-by-rdo-or-if-initial-call-isn-t-acknowledged-by-2-n-d70c391662",
+            "flashcard-priority-57eb7c68c0",
+            "flashcard-successive-touch-go-643becbf5a",
+            "flashcard-pattern-saturation-39bb38979f",
+            "flashcard-crosswind-interval-af1e3bb6f8",
+            "flashcard-instructors-announce-intentions-3-5-nm-from-high-key-ea9b9e2bcc",
+            "flashcard-departure-procedures-53ef77fb1a",
+            "flashcard-maintain-800-msl-d766de61a7",
+            "flashcard-once-clear-of-traffic-climb-to-2-500-msl-d6ca3da915",
+            "flashcard-arrival-routes-b89d42022c",
+            "flashcard-contact-corpus-approach-ch-8-uhf-a56e3f7764",
+            "flashcard-fly-to-camel-humps-then-contact-waldron-tower-ch-30-uhf-f566802172",
+            "flashcard-aircraft-corpus-approach-call-sign-camel-humps-terminate-e3cbf4dbdf",
+            "flashcard-runways-13-18-abd9905575",
+            "flashcard-pattern-entry-d691a8be70",
+            "flashcard-oso-transition-from-nas-corpus-christi-to-nolf-waldron-4673db2d08",
+            "flashcard-runways-31-36-163c8fd392",
+            "flashcard-turn-eastbound-to-avoid-waldron-power-plant-08b730d34c",
+            "flashcard-post-departure-9d8071e0bc",
+            "flashcard-climb-descend-to-500-msl-f35a6741b8",
+            "flashcard-ifr-departures-e23715aca9",
+            "flashcard-aircraft-waldron-tower-call-sign-request-oso-transition-3f1882a1a5",
+            "flashcard-switch-to-ch-21-vhf-self-announce-on-krkp-ctaf-6d63bb9d2d",
+            "flashcard-proceed-to-a-2-nm-initial-for-the-runway-in-use-3f9b56582e",
+            "flashcard-uhf-call-sign-is-inbound-for-the-initial-e2a4a2fa04",
+            "flashcard-fly-145-to-bayside-self-announce-on-krkp-ctaf-70f4b03eae",
+            "flashcard-radio-calls-26c01e3084",
+            "flashcard-ppel-entry-on-the-same-side-as-the-normal-traffic-pattern-c37a08ba16",
+            "flashcard-follow-departure-route-e3558bf013",
+            "flashcard-runways-14-18-7fc8367e0b",
+            "flashcard-runways-32-36-83168677d2",
+            "flashcard-radio-calls-cd6bd85fde",
+            "flashcard-general-a8de4bcc86",
+            "flashcard-proceed-down-the-intracoastal-at-1500-msl-3c53e1b0c7"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4104",
+      "decks": [
+        {
+          "id": "fam4104-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-crosswind-takeoff-751b2b3589",
+            "flashcard-procedure-70e98af5b9",
+            "flashcard-reduce-aileron-input-as-speed-increases-keep-wings-level-cc3f630049",
+            "flashcard-rotation-e5a24ba605",
+            "flashcard-pattern-adjustments-for-crosswinds-1f727405a0",
+            "flashcard-maintain-corrections-through-flare-and-rollout-6a07f4fe86",
+            "flashcard-crosswind-landings-t-gs-full-stops-f22cce8e35",
+            "flashcard-ocf-4b4d556abb",
+            "flashcard-description-16326b6a5b",
+            "flashcard-ocf-phases-3a01caf358",
+            "flashcard-level-wings-by-horizon-reference-d8b9a86887",
+            "flashcard-erect-spin-1461aa9fb1",
+            "flashcard-progressive-spin-1b4e86f2e0",
+            "flashcard-aggravated-spin-06a86886f3",
+            "flashcard-inverted-spin-394727ec75",
+            "flashcard-contact-unusual-attitudes-539d6b8aa4",
+            "flashcard-power-as-req-0345fb2294",
+            "flashcard-ensure-stick-is-physically-neutral-197358c00f",
+            "flashcard-aoa-gauge-may-lag-in-accelerated-stalls-a300d9472b"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4201",
+      "decks": [
+        {
+          "id": "fam4201-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-landing-limits-4d2e33abfd",
+            "flashcard-misc-limits-bc9317f794",
+            "flashcard-two-sections-6b5261eb46",
+            "flashcard-airflow-and-operation-c1cef1b32a",
+            "flashcard-oil-system-c1d6368bf7",
+            "flashcard-no-mechanical-connection-to-the-gas-generator-dc64f9e3a9",
+            "flashcard-propeller-63d9049db9",
+            "flashcard-n-w-cs-ad31423ea9",
+            "flashcard-prevents-inadvertent-shutdown-fc186959f7",
+            "flashcard-n-w-cs-6f26d9ab1a",
+            "flashcard-n-w-cs-0f96cd82d1",
+            "flashcard-caution-lights-9a60216167",
+            "flashcard-idle-remains-67-n1-longer-landing-rollout-0e6f149b82",
+            "flashcard-n-w-cs-dde8e41f1e",
+            "flashcard-oil-px-26b3b6986c",
+            "flashcard-torque-131-45215a7c94",
+            "flashcard-fuel-bal-010f086530",
+            "flashcard-oil-px-5-0f81ce16cb",
+            "flashcard-oil-temperature-between-106-and-111-c-ab9011e767",
+            "flashcard-boost-pump-e4e5c1902d",
+            "flashcard-6-mx-g-14ed08f4dc",
+            "flashcard-errant-signal-to-prop-dump-solenoid-reduces-oil-pressure-16a4de524f",
+            "flashcard-cause-a8a024f617",
+            "flashcard-zoom-glide-33d2cbc39f",
+            "flashcard-zoom-to-eject-a9f25f4225",
+            "flashcard-uncommanded-power-changes-loss-of-power-uncommanded-prop-fea-400f3f319b",
+            "flashcard-pcl-mid-range-689a4070eb",
+            "flashcard-pmu-switch-off-de4b43686f",
+            "flashcard-pcl-as-required-cb4485a413",
+            "flashcard-if-power-is-insufficient-to-complete-pel-389f062b0d",
+            "flashcard-prop-sys-circuit-breaker-reset-as-required-f1d368e58b",
+            "flashcard-defog-switch-on-1bfbb7563e",
+            "flashcard-pcl-off-a623065a72",
+            "flashcard-elp-e8d5f164a5",
+            "flashcard-execute-if-engine-failure-is-suspected-or-per-checklist-237271cac7",
+            "flashcard-caution-e32025604c"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4202",
+      "decks": [
+        {
+          "id": "fam4202-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-hydraulic-system-overview-cc510a6fb5",
+            "flashcard-used-to-measure-hyde-fluid-in-the-system-2669f76793",
+            "flashcard-function-1bad40fcaa",
+            "flashcard-1800-psi-sufficient-pressure-for-operation-e4bdfcb8c6",
+            "flashcard-filter-prevents-contaminants-8dc358cf92",
+            "flashcard-directs-excess-pressure-to-reservoir-reduction-piston-72e9b897d8",
+            "flashcard-no-light-gear-up-a49a55fb5c",
+            "flashcard-flap-selector-moves-either-to-or-ldg-flap-selector-valve-8724ddefdd",
+            "flashcard-n-w-cs-a72f4c6da1",
+            "flashcard-selector-manifold-a530446d95",
+            "flashcard-automatically-retracted-when-power-max-or-flaps-extended-6466bb068a",
+            "flashcard-emergency-system-100ca5948e",
+            "flashcard-emergency-accumulator-pressurized-fluid-storage-b269bb14bb",
+            "flashcard-will-illuminate-ehyd-px-lo-7d96627ac4",
+            "flashcard-gear-position-light-indications-ade2e371d4",
+            "flashcard-control-flap-selector-same-switch-461326741f",
+            "flashcard-operation-3283dcfd3c",
+            "flashcard-spin-5b64700cd1",
+            "flashcard-stick-shaker-slight-rudder-in-desired-spin-direction-a803937e1e",
+            "flashcard-ailerons-must-remain-neutral-c8ebcb4df6",
+            "flashcard-avoid-secondary-stalls-and-excess-gs-during-pullout-b11e2f9a5d",
+            "flashcard-incipient-spin-recovery-9a768abdc1",
+            "flashcard-steady-state-spin-recovery-after-3-turns-de15a91745",
+            "flashcard-erect-spin-1461aa9fb1",
+            "flashcard-progressive-spin-1b4e86f2e0",
+            "flashcard-aggravated-spin-06a86886f3",
+            "flashcard-inverted-spin-394727ec75",
+            "flashcard-n-w-cs-07afeca731",
+            "flashcard-n-intentional-inverted-departures-spins-are-prohibited-865af84275",
+            "flashcard-crosswind-takeoff-751b2b3589",
+            "flashcard-procedure-70e98af5b9",
+            "flashcard-reduce-aileron-input-as-speed-increases-keep-wings-level-cc3f630049",
+            "flashcard-rotation-e5a24ba605",
+            "flashcard-pattern-adjustments-for-crosswinds-1f727405a0",
+            "flashcard-maintain-corrections-through-flare-and-rollout-6a07f4fe86",
+            "flashcard-crosswind-landings-t-gs-full-stops-f22cce8e35"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4203",
+      "decks": [
+        {
+          "id": "fam4203-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-overview-22c6714f3f",
+            "flashcard-pressure-system-a69ca771a2",
+            "flashcard-bypass-valve-if-clogged-b125147f47",
+            "flashcard-propeller-interface-unit-piu-6691b8a134",
+            "flashcard-advisories-28880ee26f",
+            "flashcard-purpose-collects-used-oil-and-returns-it-to-the-tank-for-reu-028d79d481",
+            "flashcard-external-scavenge-pump-outside-tank-865f346f6c",
+            "flashcard-cooling-system-c98876e8d2",
+            "flashcard-oil-cooler-8cf68e1681",
+            "flashcard-breather-system-53f2a2ee30",
+            "flashcard-max-30-sec-9dceaac12e",
+            "flashcard-n-w-cs-afce2153c9",
+            "flashcard-1-terminate-maneuver-fd5de93008",
+            "flashcard-if-red-oil-px-warning-illuminates-and-or-amber-oil-px-cautio-34ff8d3d1d",
+            "flashcard-4-pel-execute-52ca679250",
+            "flashcard-chip-detector-warning-3e9f06832a",
+            "flashcard-overview-f243e456ce",
+            "flashcard-reduction-gearbox-rgb-bfcfbae981",
+            "flashcard-location-front-of-engine-51cd2b6d05",
+            "flashcard-propeller-interface-unit-5a5b30bb8e",
+            "flashcard-adjusts-blade-angle-to-maintain-2000-rpm-40a62340f6",
+            "flashcard-phase-shift-torque-probe-855c1467b2",
+            "flashcard-transmits-torque-from-rgb-to-the-propeller-via-hollow-shaft-8ed97371f9",
+            "flashcard-parts-piston-fixed-cylinder-counterweights-feathering-spring-4df83299b5",
+            "flashcard-function-magnetic-sensor-that-detects-metal-particles-in-oil-1d88982b39",
+            "flashcard-only-feather-dump-solenoid-will-work-if-circuit-breaker-inta-19c1247d0c",
+            "flashcard-how-it-all-works-25b3b03be6",
+            "flashcard-overview-639cd34421",
+            "flashcard-use-pmu-norm-airstart-unless-pmu-fail-warning-is-present-d86a56fa53",
+            "flashcard-only-demonstrated-up-to-20-000-ft-msl-42be3dcb4f",
+            "flashcard-monitor-fuel-flow-itt-and-n1-carefully-during-start-cae6971027",
+            "flashcard-pcl-off-d718823e4a",
+            "flashcard-confirm-the-position-of-the-following-83cb3966a4",
+            "flashcard-boost-pump-switch-on-d7fdfcc587",
+            "flashcard-starter-switch-auto-reset-e3daa2970c",
+            "flashcard-pcl-idle-above-13-n1-987b50067a"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4204",
+      "decks": [
+        {
+          "id": "fam4204-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-overview-648f39a18b",
+            "flashcard-the-system-is-based-on-direct-current-dc-power-distribution-625693dc34",
+            "flashcard-type-28-vdc-300-amp-starter-generator-dual-function-unit-3fa47a9f9a",
+            "flashcard-if-red-gen-warning-lights-air-conditioning-only-is-auto-shed-2f059a3f22",
+            "flashcard-functions-0ff62adba2",
+            "flashcard-used-for-engine-start-or-maintenance-without-depleting-batte-b8b198d88d",
+            "flashcard-powered-directly-from-main-battery-1dd4b2ee0b",
+            "flashcard-bus-tie-system-4d6fefb341",
+            "flashcard-indications-99adb20fb7",
+            "flashcard-circuit-protection-8f8bd05300",
+            "flashcard-smoke-and-fume-elimination-electrical-fire-7d58377892",
+            "flashcard-obogs-pressure-lever-emergency-d2b1412fd1",
+            "flashcard-avionics-include-3f4fa0e672",
+            "flashcard-ics-audio-panel-provides-intercom-uhf-vhf-control-87b07782ac",
+            "flashcard-general-recovery-8a16d39deb",
+            "flashcard-land-as-soon-as-practical-0770b84bc8",
+            "flashcard-mismatched-bugs-between-cockpits-47c54d5745",
+            "flashcard-norm-repeat-switch-norm-both-cockpits-08561779e1",
+            "flashcard-if-iac-mfd-failures-or-erratic-displays-persists-349f7bf989",
+            "flashcard-iac-xtalk-failure-453404e0ee",
+            "flashcard-mfd-ufp-repeat-norm-switch-norm-60da77c21b",
+            "flashcard-irs-failure-4165555059",
+            "flashcard-backup-flight-instrument-reference-as-required-5fb79311ea",
+            "flashcard-mfd-failure-or-avionics-bus-failure-9157c38663",
+            "flashcard-for-mfd-failure-with-no-other-indications-7ed501b309",
+            "flashcard-norm-repeat-switch-in-failed-cockpit-repeat-8794fea7d9",
+            "flashcard-for-mfd-failure-with-other-avionics-failures-but-without-gen-26884de0b0",
+            "flashcard-ufcp-failure-94d9bd36c1",
+            "flashcard-loss-of-fms-execute-mag-true-toggle-radio-tuning-473337a5d7",
+            "flashcard-procedure-d2ec6a7896",
+            "flashcard-backup-flight-instrument-bfi-failure-cdcd2b84cd",
+            "flashcard-place-aircraft-in-straight-and-level-unaccelerated-flight-be60ad9a16",
+            "flashcard-engine-data-manager-edm-failure-fdb0c0bbd7",
+            "flashcard-loss-of-fuel-bal-hyd-fl-lo-etc-f607eda050",
+            "flashcard-procedure-0fb4cc028c",
+            "flashcard-land-as-soon-as-practical-fb7caaddd2"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4301",
+      "decks": [
+        {
+          "id": "fam4301-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-52b457379a",
+            "flashcard-bleed-air-supply-2dbc5d235c",
+            "flashcard-obogs-concentrator-f40f931b19",
+            "flashcard-plenum-ae2a0b5934",
+            "flashcard-oxygen-delivery-system-16b0ff6c14",
+            "flashcard-supply-lever-on-off-5fcc07e16c",
+            "flashcard-test-mask-verifies-face-mask-seal-with-high-pressure-a93b7817ea",
+            "flashcard-initiated-by-bit-button-or-automatically-during-power-up-32da199f72",
+            "flashcard-bit-warm-up-e76f0ef217",
+            "flashcard-flow-indicator-blinks-with-each-breath-to-confirm-oxygen-flo-084080a174",
+            "flashcard-connects-regulator-hose-to-mask-and-emergency-oxygen-supply-2e0bb7e93a",
+            "flashcard-failure-indications-7a29c913fb",
+            "flashcard-n-w-cs-52bd431c6c",
+            "flashcard-pressure-system-0fb3c47fae",
+            "flashcard-system-components-and-functions-44b9d722e7",
+            "flashcard-norm-automatic-system-operation-d6523863c9",
+            "flashcard-ground-operations-55c936822e",
+            "flashcard-flight-operations-95ef2e1a1f",
+            "flashcard-fresh-air-ventilation-27d8724b3d",
+            "flashcard-at-18-069-ft-pa-this-max-delta-p-is-reached-c39dc047f1",
+            "flashcard-n-w-cs-75320e4100",
+            "flashcard-left-p3-port-obogs-15dee07a44",
+            "flashcard-canopy-seal-and-anti-g-system-d46df96f00",
+            "flashcard-right-side-bleed-air-routed-through-inflow-and-or-defog-valv-31f745397c",
+            "flashcard-cockpit-and-avionics-cooling-system-5ec7a4be40",
+            "flashcard-cooling-air-exits-via-glareshield-and-console-vents-b7d8ee24da",
+            "flashcard-description-executed-for-any-abnormal-or-unsafe-condition-pr-0bc8eabd83",
+            "flashcard-maintain-directional-control-with-rudder-nws-97e7857deb",
+            "flashcard-do-not-exceed-1500-ft-or-60-kias-before-initiating-abort-8cfced365c",
+            "flashcard-overview-3d77becce8",
+            "flashcard-above-80-kias-use-great-caution-when-braking-af483e4161",
+            "flashcard-maximum-braking-speed-must-be-known-to-calculate-max-abort-s-ec6c4cca85",
+            "flashcard-do-not-brake-until-full-weight-is-on-wheels-d704033e57",
+            "flashcard-most-tire-blowouts-happen-before-spin-up-or-below-40-kias-885f83ab5f",
+            "flashcard-max-braking-is-hard-to-achieve-d64da16822",
+            "flashcard-description-0570cb15b5"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4302",
+      "decks": [
+        {
+          "id": "fam4302-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-refueling-methods-969e1bcb6a",
+            "flashcard-fuel-types-0db5c29e58",
+            "flashcard-l-r-fuel-lo-110-lbs-optical-sensors-independent-of-probes-3c4fcabf24",
+            "flashcard-flow-path-05f60ce3de",
+            "flashcard-boost-pump-backup-startup-low-pressure-activation-then-bc8d15cb6a",
+            "flashcard-n-w-cs-1da99bf371",
+            "flashcard-description-b9804b9db2",
+            "flashcard-clear-final-and-landing-area-3065f23afe",
+            "flashcard-landing-transition-to-touchdown-f29fcb761d",
+            "flashcard-roll-out-2cf544de8c",
+            "flashcard-approach-speeds-42a42c1f2e",
+            "flashcard-heavier-aircraft-are-less-responsive-to-pitch-and-power-inpu-fe9eb06ed6",
+            "flashcard-flare-touchdown-9d049fd953",
+            "flashcard-braking-considerations-c15ed8d76c",
+            "flashcard-ensure-runway-length-is-sufficient-for-increased-landing-rol-b6c05f3072",
+            "flashcard-crosswind-effects-are-more-pronounced-d2e9cc076e"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4303",
+      "decks": [
+        {
+          "id": "fam4303-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-flare-started-too-early-or-with-excessive-pitch-up-5ae9b4b8e0",
+            "flashcard-low-airspeed-on-final-c85ac0c94a",
+            "flashcard-high-sink-rate-low-power-on-final-0655c44700",
+            "flashcard-delayed-engine-response-4376891e4f",
+            "flashcard-procedural-recommendations-e3b7c27195",
+            "flashcard-overview-2a3a8e0cbe",
+            "flashcard-landing-gear-malfunction-e867457a1c",
+            "flashcard-procedure-8c58629d21",
+            "flashcard-airspeed-remain-below-150-kias-d23b2462bd",
+            "flashcard-lamp-test-switch-check-ad181cb1cf",
+            "flashcard-gear-handle-cycle-c07e8a8c19",
+            "flashcard-quick-side-to-side-gear-handle-movements-in-the-front-cockpi-0db53171c8",
+            "flashcard-both-inboard-main-gear-doors-are-partially-open-29c68be077",
+            "flashcard-only-the-nose-gear-is-down-and-locked-0713c51c64",
+            "flashcard-landing-with-unsafe-gear-indications-4d1adbfea2",
+            "flashcard-procedure-f158857dc9",
+            "flashcard-landing-technique-for-gear-configuration-execute-9fe31c8a2c",
+            "flashcard-pcl-off-9d81a65ff4",
+            "flashcard-after-aircraft-comes-to-a-stop-c549f4bf3c",
+            "flashcard-landing-gear-emergency-extension-3e20e77dc0",
+            "flashcard-procedure-5d67c1d550",
+            "flashcard-gear-handle-down-0f76688e63",
+            "flashcard-emer-ldg-gr-handle-pull-8d9de1fa99",
+            "flashcard-1-red-gear-handle-light-7374e4f93b",
+            "flashcard-flaps-as-required-bb8efba81d",
+            "flashcard-landing-with-blown-main-tire-031f489eed",
+            "flashcard-procedure-f8ebb837bc",
+            "flashcard-flaps-leave-at-existing-setting-db0a403991",
+            "flashcard-straight-in-approach-execute-73684084b3",
+            "flashcard-flap-failures-58f2f6cbe9",
+            "flashcard-procedure-fff2b0cd98",
+            "flashcard-flap-control-handle-move-to-minimize-eliminate-asymmetry-491f3b64c4",
+            "flashcard-overview-9762cf2898",
+            "flashcard-altitude-2000-msl-b2a2fe43fc",
+            "flashcard-climbs-descents-require-tower-approval-34807a13df",
+            "flashcard-note-ef93a1240e"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4304",
+      "decks": [
+        {
+          "id": "fam4304-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-read-checklists-out-loud-to-reduce-omissions-ec3d1780d5",
+            "flashcard-ejection-seat-inspect-66b465a2d0",
+            "flashcard-iss-mode-selector-solo-locked-a9ed1843bc",
+            "flashcard-pressure-lever-normal-0307efc786",
+            "flashcard-rear-cockpit-tie-down-solo-flight-complete-as-follows-658044f6e3",
+            "flashcard-upper-fittings-lower-and-rotate-180-degrees-outboard-0b90dc93bf",
+            "flashcard-shoulder-harness-control-lever-lock-41310ddbb1",
+            "flashcard-lap-straps-tighten-97e0f55a8a",
+            "flashcard-unauthorized-solo-maneuvers-88dddc3122",
+            "flashcard-full-stop-landings-at-olfs-7a17999f54",
+            "flashcard-7-500-5-e0f62e7fd9",
+            "flashcard-max-10-landings-per-sortie-d3bc407d4c",
+            "flashcard-no-landings-or-touch-and-go-without-rdo-unless-emergency-70143fdb98",
+            "flashcard-minimum-runway-lengths-vary-by-altitude-condition-and-day-ni-31523b2752",
+            "flashcard-bash-conditions-36ff4503a0",
+            "flashcard-goliad-is-primary-solo-field-for-t-6b-student-solos-e7bb7c6f73",
+            "flashcard-b-establish-instrument-scan-and-check-altitude-f92e6d774f"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4401",
+      "decks": [
+        {
+          "id": "fam4401-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-unauthorized-solo-maneuvers-88dddc3122",
+            "flashcard-full-stop-landings-at-olfs-6e979f5c78",
+            "flashcard-max-10-knots-crosswind-no-tailwind-cec7aa7a02",
+            "flashcard-max-10-landings-per-sortie-minimum-4-touch-and-go-s-bb50e7e6e7",
+            "flashcard-no-landings-or-touch-and-go-without-rdo-unless-emergency-70143fdb98",
+            "flashcard-minimum-runway-lengths-vary-by-altitude-condition-and-day-ni-31523b2752",
+            "flashcard-bash-conditions-36ff4503a0",
+            "flashcard-goliad-is-primary-solo-field-for-t-6b-student-solos-e7bb7c6f73",
+            "flashcard-description-0570cb15b5",
+            "flashcard-climb-4cbfb6c9ab",
+            "flashcard-conserve-5c79df1006",
+            "flashcard-follow-directions-from-atc-instructors-or-base-70390d34b4",
+            "flashcard-always-maintain-vfr-f8545fa124",
+            "flashcard-never-attempt-to-descend-below-mef-1000-oroca-to-regain-vmc-7f83bb9485",
+            "flashcard-loss-comms-vfr-nordo-ba770b2432",
+            "flashcard-if-not-seen-wave-off-reattempt-2de2c1ab45",
+            "flashcard-depart-the-pattern-if-unable-to-execute-full-stop-safely-0cb0773679",
+            "flashcard-do-not-attempt-touch-and-go-landings-while-nordo-06ef1a8d43",
+            "flashcard-establish-instrument-scan-and-check-altitude-936f36b305"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4601",
+      "decks": [
+        {
+          "id": "fam4601-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-spatial-disorientation-vertigo-6db94a928c",
+            "flashcard-checks-before-to-378971439f",
+            "flashcard-runway-edge-lights-ec62121e00",
+            "flashcard-runway-end-identifier-lights-reil-4c5e9c569d",
+            "flashcard-runway-centerline-lights-precision-instrument-runways-a8f43667f9",
+            "flashcard-touchdown-zone-lights-tdzl-77543ff77d",
+            "flashcard-centerline-lights-green-4b62b0a45d",
+            "flashcard-malsr-alsf-1-alsf-2-etc-5884819d9a",
+            "flashcard-visual-glide-slope-indicators-a1bb524080",
+            "flashcard-nav-lights-c1ac3c07c3",
+            "flashcard-switches-on-trim-control-panel-front-cockpit-b54471dc16",
+            "flashcard-key-notes-2b2b59ebc2",
+            "flashcard-attempt-airstart-731d0af8ba",
+            "flashcard-if-no-lighted-rwy-set-up-to-eject-76330a88c7",
+            "flashcard-forced-landing-immediate-landing-e673a195bf",
+            "flashcard-eps-same-day-vs-night-7f6e909163",
+            "flashcard-sigmet-operations-30a01e01ad",
+            "flashcard-lighting-551b24f36d",
+            "flashcard-vt-27-sop-ae0ec72282",
+            "flashcard-starter-switch-not-in-norm-prevents-generator-function-e4e01c7eab",
+            "flashcard-generator-still-charges-battery-if-bus-tie-norm-010ea33b30",
+            "flashcard-bat-bus-warning-with-multiple-system-losses-d61face307",
+            "flashcard-cockpit-depressurizes-when-bat-bus-is-lost-08f05fc106",
+            "flashcard-bus-tie-inoperative-9b9725c4f9",
+            "flashcard-if-no-other-failures-gen-bus-and-bat-bus-operate-independent-0268e06f5f",
+            "flashcard-consider-load-shedding-lights-avionics-6f0f9b3b62",
+            "flashcard-radio-relays-7ee3c209eb"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4701",
+      "decks": [
+        {
+          "id": "fam4701-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-aircraft-is-unresponsive-to-normal-control-inputs-0342ee13b3",
+            "flashcard-pcl-idle-9c610e1c45",
+            "flashcard-if-aircraft-not-recovering-107c67b20c",
+            "flashcard-anti-spin-ineffective-8b1a4e0e38",
+            "flashcard-n-w-cs-0475fe378c",
+            "flashcard-w-premature-anti-spin-input-cycling-controls-delays-recovery-ae9b2dc716",
+            "flashcard-contact-unusual-attitudes-539d6b8aa4",
+            "flashcard-power-as-req-0345fb2294",
+            "flashcard-ensure-stick-is-physically-neutral-197358c00f",
+            "flashcard-aoa-gauge-may-lag-in-accelerated-stalls-a300d9472b",
+            "flashcard-description-f71c757f16",
+            "flashcard-altitude-6-000-agl-recommended-44234118fc",
+            "flashcard-description-2499d9f00c",
+            "flashcard-just-past-vertical-tilt-head-back-and-locate-opposite-horizo-013121f9c8",
+            "flashcard-wings-not-held-parallel-to-horizon-especially-during-pull-up-429d94175d",
+            "flashcard-n-w-cs-5d99c98d6b",
+            "flashcard-allow-nose-to-fall-to-recover-from-stall-6c143e8837",
+            "flashcard-description-b95d3d0468",
+            "flashcard-maintain-constant-pitch-rate-with-aft-stick-c9fcc29e24",
+            "flashcard-roll-to-upright-e587419f78",
+            "flashcard-execute-a-coordinated-roll-either-direction-9e3d02a272",
+            "flashcard-n-w-cs-dc8b4f9017",
+            "flashcard-description-32dae554cf",
+            "flashcard-keep-nose-tracking-along-section-line-a9f1bc99cd",
+            "flashcard-reduce-back-stick-gradually-as-airspeed-builds-344ad6d275",
+            "flashcard-description-100f06bc69",
+            "flashcard-n-w-cs-c03c3f14f6",
+            "flashcard-description-fe3c8bcdef",
+            "flashcard-reach-45-aob-and-35-nose-low-at-135-of-turn-68efa2fdaf",
+            "flashcard-n-w-cs-033a1163dd",
+            "flashcard-common-errors-6087874745",
+            "flashcard-loss-of-visual-orientation-failure-to-use-reference-points-435ce9693f",
+            "flashcard-w-exceeding-2-5-gs-during-maneuver-may-cause-overstress-f7d55858ca",
+            "flashcard-description-d7c2c68258",
+            "flashcard-procedure-3c1685d319",
+            "flashcard-begin-with-the-first-maneuver-82923d779a"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4702",
+      "decks": [
+        {
+          "id": "fam4702-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-spin-5b64700cd1",
+            "flashcard-stick-shaker-slight-rudder-in-desired-spin-direction-a803937e1e",
+            "flashcard-ailerons-must-remain-neutral-c8ebcb4df6",
+            "flashcard-avoid-secondary-stalls-and-excess-gs-during-pullout-b11e2f9a5d",
+            "flashcard-intentional-inverted-departures-spins-prohibited-a28796d6a7",
+            "flashcard-general-characteristics-0db7a31a83",
+            "flashcard-with-pcl-max-spin-sustains-bd20eb149b",
+            "flashcard-at-max-nose-rises-above-horizon-after-1st-turn-f38470cce0",
+            "flashcard-intentional-inverted-departures-spins-prohibited-10f113b7bd",
+            "flashcard-attempting-intentional-inverted-spin-entries-prohibited-ef329df9d1",
+            "flashcard-result-from-misapplication-of-recovery-controls-21d0ddf4f7",
+            "flashcard-nose-drops-to-more-nose-low-attitude-after-rudder-reversal-ae88b302d9",
+            "flashcard-airspeed-increases-during-reversal-up-to-175-kias-d6dc10a2ef",
+            "flashcard-recovery-353e375e72",
+            "flashcard-notes-95dda81fa0",
+            "flashcard-description-3c7b97fe1c",
+            "flashcard-stall-speed-varies-slightly-between-left-right-turns-6e29428b36",
+            "flashcard-at-90-aob-infinite-lift-required-aircraft-falls-f7228f458d",
+            "flashcard-aoa-approach-44e33e7044",
+            "flashcard-cross-runway-threshold-on-speed-begin-flare-728945d202",
+            "flashcard-n-w-cs-ce3c38773d",
+            "flashcard-c-f765a17b76"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FAM4703",
+      "decks": [
+        {
+          "id": "fam4703-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-mechanics-7b3c79960c",
+            "flashcard-lift-must-equal-weight-load-factor-b45919c562",
+            "flashcard-definition-ae6ae7c914",
+            "flashcard-vo-227-kias-7b3bcccbaa",
+            "flashcard-key-point-bf621849b5"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "IN1290",
+      "decks": [
+        {
+          "id": "in1290-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-vor-dme-both-azimuth-and-distance-info-5b1f89e044",
+            "flashcard-define-heading-d0288857df",
+            "flashcard-define-radial-88b7ccfc2c",
+            "flashcard-ac-is-located-on-the-tail-of-the-vor-bearing-pointer-7e2e9fcee4",
+            "flashcard-tune-identify-and-monitor-tim-bedd70f0d5",
+            "flashcard-can-be-monitored-by-keeping-vor-volume-low-b4ad5e2f2b",
+            "flashcard-determine-directions-of-turn-to-proceed-direct-to-a-vor-8d0bd12f8f",
+            "flashcard-define-tracking-891227fb8b",
+            "flashcard-define-homing-3b6ca80588",
+            "flashcard-tail-radial-wind-c36b8636e4",
+            "flashcard-also-reference-cdi-deviation-bar-4b865b3104",
+            "flashcard-define-chasing-the-needles-when-tracking-close-to-a-navaid-ecfb4cdb33",
+            "flashcard-identify-station-passage-for-a-vor-fcea7035ec",
+            "flashcard-determine-a-double-the-angle-intercept-3617616c4c",
+            "flashcard-inbound-intercept-new-course-reciprocal-of-new-radial-9d0ee5df5e",
+            "flashcard-turn-in-direction-of-cdi-deflection-b042fdc234",
+            "flashcard-1-2srt-1-0-of-the-gs-77eb240356",
+            "flashcard-60-1-rule-60b982d8bb",
+            "flashcard-determine-initial-heading-for-point-to-point-ca6ff3d36e",
+            "flashcard-determine-specific-heading-for-point-to-point-using-pencil-m-eb81003f57",
+            "flashcard-identify-items-contained-in-a-holding-pattern-3cd293c64d",
+            "flashcard-published-intersection-98de7eca98",
+            "flashcard-parallel-left-6ff604c4cc",
+            "flashcard-direct-reciprocal-of-holding-course-54c105ad1c",
+            "flashcard-magnetic-variation-416fe03b68",
+            "flashcard-determine-appropriate-intercept-during-an-inbound-turn-in-ho-f139d84a64",
+            "flashcard-commenced-immediately-when-wings-are-level-7f71a385df",
+            "flashcard-3-5-in-known-direction-of-the-wind-is-good-starting-point-cbff3579ad",
+            "flashcard-define-objective-for-the-corrections-orbit-in-holding-badeeb5c4c",
+            "flashcard-determine-outbound-timing-for-a-corrections-orbit-9fa0e4900b"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "IN1390",
+      "decks": [
+        {
+          "id": "in1390-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-military-operating-areas-moas-f1dd131065",
+            "flashcard-restricted-area-r-9fe8a50115",
+            "flashcard-warning-area-w-b30a880e82",
+            "flashcard-alert-area-a-f700b86ce9",
+            "flashcard-actual-directories-us-canada-and-mexico-c92ec7ff85",
+            "flashcard-minimum-enroute-altitude-mea-8286b219ba",
+            "flashcard-minimum-obstruction-clearance-altitude-moca-ab040aaf21",
+            "flashcard-indicated-by-filled-in-navaid-symbols-edbb95f964",
+            "flashcard-changeover-1b310a2e33",
+            "flashcard-standard-terminal-arrivals-star-9e263fcb78",
+            "flashcard-pub-volume-number-graphic-of-the-state-effective-dates-dcb9184f45",
+            "flashcard-legends-tables-0f069c6d0b",
+            "flashcard-surface-reference-features-e7f4fd4523",
+            "flashcard-dps-specifically-for-obstacles-9b04dd7a5f",
+            "flashcard-600-2-precision-approaches-9d59c4711d",
+            "flashcard-hot-spots-a68b4f7051",
+            "flashcard-based-on-the-navaids-required-for-the-final-approach-38705c514a",
+            "flashcard-radar-required-1a29d09aa0",
+            "flashcard-iaps-planview-f0261224f5",
+            "flashcard-iaps-profile-view-5fe6f16ad2",
+            "flashcard-maximum-altitude-maintain-at-or-below-the-depicted-value-fd7b875dfb",
+            "flashcard-approach-types-939dd14483",
+            "flashcard-s-denotes-straight-in-approach-532de98348",
+            "flashcard-weather-minimums-0a60866745",
+            "flashcard-cnaf-approach-criteria-for-single-piloted-aircraft-be4fbb5480",
+            "flashcard-statute-mile-2400-ft-rvr-visibility-c227b749c6",
+            "flashcard-runway-visibility-value-rvv-b593365552",
+            "flashcard-runway-visual-range-rvr-607d63ae2e",
+            "flashcard-missed-approach-timing-table-75a8aca0d9",
+            "flashcard-standard-instrument-departures-sid-1b17ebb5a5",
+            "flashcard-use-same-legend-as-airport-sketch-18cddeea2e",
+            "flashcard-flip-terminal-28c1c494bf",
+            "flashcard-penetration-approach-d7e2c9600a",
+            "flashcard-alternate-minimums-0d7197fcf6",
+            "flashcard-notams-f9c30e1d53",
+            "flashcard-weather-briefing-requirements-6d7eb175b9"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I2101",
+      "decks": [
+        {
+          "id": "i2101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-crosscheck-performance-instruments-used-for-error-detection-0214db7cc1",
+            "flashcard-gyro-adjust-roll-c833228019",
+            "flashcard-trim-as-needed-11622ab7d5",
+            "flashcard-notes-f61ce6c0b9",
+            "flashcard-steep-turns-6533ff0a69",
+            "flashcard-procedure-9a45f10a9d",
+            "flashcard-if-losing-1000-fpm-at-60-aob-momentarily-reduce-aob-to-corre-058be4c03b",
+            "flashcard-timed-turns-49495a15d3",
+            "flashcard-srt-15-30-3fcaab784c",
+            "flashcard-constant-airspeed-climbs-and-descents-1a02988a1b",
+            "flashcard-enroute-descents-9c6ac5c3e3"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I2102",
+      "decks": [
+        {
+          "id": "i2102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-natops-guidance-0756bc9bef",
+            "flashcard-crew-coordination-crm-455f1ecd98",
+            "flashcard-gca-pattern-9ffb32c06e",
+            "flashcard-slow-to-150-kias-acd4b2f294",
+            "flashcard-200-prior-transition-to-200-kias-cruise-5956d800b4",
+            "flashcard-s-1-pattern-7e93f43468"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I2103",
+      "decks": [
+        {
+          "id": "i2103-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-approach-maneuver-6dbb4bb083",
+            "flashcard-200-prior-transition-to-200-kias-cruise-3b1006af4a",
+            "flashcard-ifr-unusual-attitudes-4cb6049abe",
+            "flashcard-natops-guidance-0756bc9bef",
+            "flashcard-crew-coordination-crm-455f1ecd98",
+            "flashcard-if-detected-on-ground-do-not-take-off-35e55cfd5d",
+            "flashcard-norm-repeat-switch-norm-both-cockpits-39f1f4f104",
+            "flashcard-if-iac-mfd-failures-or-erratic-displays-persists-4f3ca0297d",
+            "flashcard-push-button-m-enters-exits-menu-0c46e741c1",
+            "flashcard-recognize-note-pfd-loss-or-failure-a816be7e49"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I2201",
+      "decks": [
+        {
+          "id": "i2201-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-provides-primary-heading-and-navigation-display-5122f04468",
+            "flashcard-rotates-with-aircraft-heading-current-heading-always-at-the--4f24539bad",
+            "flashcard-off-no-navigation-data-displayed-2b0f331d99",
+            "flashcard-slaved-source-displayed-at-lsk-l6-r6-800633237d",
+            "flashcard-purpose-52b6645b7d",
+            "flashcard-select-bearing-pointer-1-bp1-to-vor-074a016711",
+            "flashcard-shows-a-to-indication-d9b7539859",
+            "flashcard-purpose-fe2a36e656",
+            "flashcard-use-tail-radial-turn-method-33f7a774ff",
+            "flashcard-use-cdi-as-a-reference-c2982c8c59",
+            "flashcard-heads-will-fall-tails-will-rise-unless-on-heading-index-1d1eb148ce",
+            "flashcard-definition-118b6c3c5a",
+            "flashcard-primarily-recognized-by-the-cdi-to-from-indicator-c3e7780cf2",
+            "flashcard-definition-db96fbe6f3",
+            "flashcard-complete-in-background-while-continuing-to-next-steps-b57cd5e1f4",
+            "flashcard-once-bearing-pointer-is-stabilized-25af94597b",
+            "flashcard-double-that-number-up-to-45-for-intercept-heading-7aade6e5db",
+            "flashcard-talk-90c948b4f2",
+            "flashcard-key-notes-782a79c706",
+            "flashcard-definition-purpose-16d9dd485a",
+            "flashcard-inbound-course-is-the-reciprocal-of-the-radial-inbound-turn--7da2c552b4",
+            "flashcard-turn-to-an-intercept-heading-7e7186351c",
+            "flashcard-start-with-a-45-intercept-f907026bd3",
+            "flashcard-after-the-turn-9d444c0495",
+            "flashcard-track-on-the-desired-radial-course-b03625cf16"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I2202",
+      "decks": [
+        {
+          "id": "i2202-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-definition-1a99d5f5b1",
+            "flashcard-used-in-approaches-departures-and-atc-procedures-311c351ecf",
+            "flashcard-begin-turn-at-calculated-lead-dme-in-the-appropriate-directi-e2b8e8d7ec",
+            "flashcard-maintain-the-arc-24e6f0da2d",
+            "flashcard-definition-5078216448",
+            "flashcard-calculate-turn-radius-260d659441",
+            "flashcard-add-subtract-the-turn-radius-from-the-arc-dme-9bfc5f380a",
+            "flashcard-adjust-lead-point-for-known-winds-if-applicable-6a48b74679",
+            "flashcard-definition-db7e0dafb1",
+            "flashcard-key-concept-lead-radial-lr-2705fbb069",
+            "flashcard-start-turn-at-the-lead-radial-8e5322b1a7",
+            "flashcard-symptoms-may-include-reduced-oxygen-pressure-flow-and-hypoxi-7811faabbf",
+            "flashcard-obogs-fail-initial-response-6b0305d5fa",
+            "flashcard-oxygen-mask-check-for-leaks-both-dd27a469a9",
+            "flashcard-otherwise-c80906eb60",
+            "flashcard-obogs-failure-overtemp-physiological-symptoms-b5a5819646",
+            "flashcard-green-ring-pull-as-required-both-ce1b388896",
+            "flashcard-at-or-below-10-000-pulling-green-ring-is-optional-1c10a0e171",
+            "flashcard-rate-depth-of-breathing-normalize-both-cad712a081",
+            "flashcard-pressurization-switch-ram-dump-fc7ddedf20",
+            "flashcard-oxygen-mask-remove-as-required-both-c85400e6df",
+            "flashcard-land-as-soon-as-practical-612dd0876e",
+            "flashcard-definition-2ef4fba4eb",
+            "flashcard-caused-by-b0ce92c56e",
+            "flashcard-most-common-in-aviation-due-to-decreased-pressure-with-altit-a769fd509e",
+            "flashcard-stagnant-inadequate-blood-flow-e-g-g-forces-or-shock-af03b6ab96",
+            "flashcard-early-signs-e8c75f8ef4",
+            "flashcard-advanced-signs-3bf1f1d782",
+            "flashcard-definition-0a47c4770c",
+            "flashcard-breath-into-a-paper-bag-if-oxygen-not-in-use-ff10070b01",
+            "flashcard-definition-2fae7b1eb2",
+            "flashcard-station-is-always-at-the-center-of-the-hsi-compass-card-8b6f4b0c50",
+            "flashcard-set-the-desired-radial-in-the-cdi-fb9639e3b3",
+            "flashcard-split-the-heads-9559a144ee",
+            "flashcard-plot-current-pos-on-bp-tail-desired-fix-on-cdi-head-a8c615bd82",
+            "flashcard-if-bp-head-below-90-dme-increasing-d7efcc65e7"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I2203",
+      "decks": [
+        {
+          "id": "i2203-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-1-direct-entry-9431146d0e",
+            "flashcard-turn-turn-to-outbound-leg-heading-standard-or-non-standard-42acedcbe2",
+            "flashcard-transition-twist-talk-as-needed-74e37c0fb7",
+            "flashcard-2-parallel-entry-da0d58e190",
+            "flashcard-transition-twist-talk-as-needed-736d5d3b84",
+            "flashcard-3-teardrop-entry-7f1b0bbc46",
+            "flashcard-time-reset-at-fix-station-passage-7a69a404f2",
+            "flashcard-turn-inbound-to-intercept-and-track-the-holding-course-b158cb0acb",
+            "flashcard-boundary-rule-ec1f028b04",
+            "flashcard-reset-clock-f2e6457a8a",
+            "flashcard-abeam-the-fix-whichever-occurs-later-358e949ffa",
+            "flashcard-tools-tips-537794a0c5",
+            "flashcard-start-with-3-5-crab-in-known-wind-direction-69a3114e34",
+            "flashcard-5-right-crab-angle-maintained-the-course-b6d26d50e8",
+            "flashcard-definition-acb711c1cb",
+            "flashcard-apply-a-drift-corrected-heading-outbound-and-inbound-0c60840d48",
+            "flashcard-triple-the-inbound-drift-correction-for-the-outbound-leg-97d53e2861",
+            "flashcard-time-reset-clock-12c20626a3",
+            "flashcard-notes-38798b494b",
+            "flashcard-correct-with-minor-adjustments-in-subsequent-orbits-b84b6eb200",
+            "flashcard-triple-drift-counters-crosswind-turning-radius-effects-98d0c86d92",
+            "flashcard-uhf-radio-and-gps-are-completely-inoperative-3180e6c7f9",
+            "flashcard-vertical-separation-between-aircraft-may-be-as-little-as-100-e1d53172dd",
+            "flashcard-time-note-gmt-time-crossing-fix-e6e4088b2a",
+            "flashcard-estimate-wind-using-tail-radial-wind-9ee9ff83b2"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3101",
+      "decks": [
+        {
+          "id": "i3101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-trim-stabilize-5fb2b8ce52",
+            "flashcard-odp-d264dd0a31",
+            "flashcard-diverse-57fafb78ea",
+            "flashcard-general-0baf3a367a",
+            "flashcard-station-is-always-at-center-of-compass-card-d4e5d79f2c",
+            "flashcard-split-the-heads-939d8babc2",
+            "flashcard-pencil-method-2ecdbd61e9",
+            "flashcard-place-smaller-dme-10-nm-proportionally-along-its-radial-90-8b22329e38",
+            "flashcard-determine-if-radial-or-dme-will-be-reached-first-0dca2d3c2d",
+            "flashcard-radial-first-track-inbound-outbound-to-the-fix-16086fbe35",
+            "flashcard-navaid-changeover-3ebadf9895",
+            "flashcard-purpose-1af427ec62",
+            "flashcard-if-90-use-a-45-intercept-to-outbound-59e2a3a9f5",
+            "flashcard-at-5-nm-from-faf-configure-to-bac-gear-flaps-to-120-kias-078cf4566d",
+            "flashcard-notes-a6d8cf2d9c",
+            "flashcard-purpose-3f5a4e7224",
+            "flashcard-key-notes-05fb15e412",
+            "flashcard-remain-within-typically-10-nm-still-applies-784f5c93bf",
+            "flashcard-when-cleared-for-an-approach-with-a-barbed-procedure-turn-5b7d77fdcf",
+            "flashcard-turn-shortest-direction-to-parallel-outbound-course-f71f5a6cc5",
+            "flashcard-turn-in-depicted-direction-dcff06e12c",
+            "flashcard-purpose-81b2ec3e4f",
+            "flashcard-indicated-by-vor-dme-or-tacan-in-plate-margin-43403cf38d",
+            "flashcard-before-faf-attempt-re-intercept-do-not-descend-notify-atc-02ae895809",
+            "flashcard-intercept-missed-approach-course-if-required-61e846f2cd",
+            "flashcard-t-6b-normal-climb-650-ft-nm-180-kias-2000-fpm-88b9fd502a"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3102",
+      "decks": [
+        {
+          "id": "i3102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-purpose-5121ec4450",
+            "flashcard-key-notes-770b597cf1",
+            "flashcard-treated-like-a-procedure-turn-877b2a42ac",
+            "flashcard-two-descent-cases-387f7abce0",
+            "flashcard-turn-use-normal-holding-entry-procedures-1b49fcb2a9",
+            "flashcard-inbound-intercept-18b884a7b6",
+            "flashcard-crossing-faf-case-i-cb1dfc6fea",
+            "flashcard-fly-outbound-parallel-to-inbound-course-46ecbcf061",
+            "flashcard-turn-30-toward-holding-side-from-reciprocal-f6b5b542e0",
+            "flashcard-purpose-4e00eabda1",
+            "flashcard-purpose-5405c5f3b3",
+            "flashcard-3-min-prior-eta-tune-secondary-navaid-5aacda12ed",
+            "flashcard-additional-notes-6eb0a52b59",
+            "flashcard-terminate-maneuver-c745df822b",
+            "flashcard-if-red-oil-px-warning-and-or-amber-oil-px-caution-5-sec-oil--bb6f7ee19c",
+            "flashcard-normal-steady-state-90-to-120-c4d3127b20"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3103",
+      "decks": [
+        {
+          "id": "i3103-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-38d934b6ff",
+            "flashcard-transition-to-final-1cf0a6cb6b",
+            "flashcard-turns-srt-30-aob-start-immediately-when-instructed-0586af812c",
+            "flashcard-contact-final-controller-include-gear-status-58e9ea8848",
+            "flashcard-small-prompt-corrections-avoid-large-pcl-movements-203fa72dfa",
+            "flashcard-proceed-vfr-if-possible-9f8c9af78b",
+            "flashcard-da-dh-reached-runway-env-not-in-sight-3aba6a126f",
+            "flashcard-must-include-heading-altitude-unless-remaining-vfr-to-tower-6222fca152",
+            "flashcard-asr-airport-surveillance-radar-for-entire-approach-ba5bc3bfc9",
+            "flashcard-similar-to-par-vectors-to-establish-on-final-course-f292740641",
+            "flashcard-heading-corrections-given-as-in-par-761d7a1e71",
+            "flashcard-will-direct-descent-to-mda-and-any-step-down-fixes-088cc2354f",
+            "flashcard-procedure-97539a4a5e",
+            "flashcard-descent-to-mda-a153443d94",
+            "flashcard-radar-contact-lost-413becba1d",
+            "flashcard-natops-best-practices-not-a-substitute-for-sound-judgement-a01ec06dab",
+            "flashcard-crew-coordination-crm-30265ccfd4",
+            "flashcard-apply-time-critical-orm-to-manage-what-if-scenarios-e9c71569c9",
+            "flashcard-use-crm-inside-outside-the-cockpit-ee4e6bfcb5",
+            "flashcard-causes-3b7e612f09",
+            "flashcard-propeller-dump-solenoid-failure-695baa2835",
+            "flashcard-c-pmu-off-with-itt-820-c-may-exceed-itt-limits-4690fb3351",
+            "flashcard-pcl-as-required-8448f26f46",
+            "flashcard-if-power-is-insufficient-to-complete-pel-70cf6f0d22",
+            "flashcard-prop-sys-circuit-breaker-reset-as-required-e8c08c1383"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3104",
+      "decks": [
+        {
+          "id": "i3104-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-atc-procedures-in-graphic-form-dod-flip-approach-plates-d77eea7710",
+            "flashcard-if-using-fms-retrieve-sid-from-database-578122a150",
+            "flashcard-purpose-8553aa8b29",
+            "flashcard-key-cautions-b0fda0b1bb",
+            "flashcard-transition-to-bac-d8a3e4da31",
+            "flashcard-final-approach-aaca05bf80",
+            "flashcard-lead-turn-onto-course-to-roll-out-on-fac-bb8eccc973",
+            "flashcard-late-or-no-transition-to-bac-990984ce08",
+            "flashcard-purpose-2414cac0e5",
+            "flashcard-range-marker-beacons-dme-0e4f6db6d5",
+            "flashcard-minimums-all-components-operative-d3be3ca277",
+            "flashcard-cdi-is-4-more-sensitive-than-vor-1-25-per-dot-5ece7ab07c",
+            "flashcard-transition-to-bac-6c93b6d732",
+            "flashcard-at-glideslope-intercept-fec3c30be7",
+            "flashcard-power-controls-descent-rate-gs-pitch-controls-airspeed-89f629a229",
+            "flashcard-purpose-9e69dc2228",
+            "flashcard-glideslope-not-used-or-unavailable-983d1f80a6",
+            "flashcard-talk-report-if-required-eb04816b0c",
+            "flashcard-notes-be9eae7113",
+            "flashcard-definition-2fae7b1eb2",
+            "flashcard-station-is-always-at-the-center-of-the-hsi-compass-card-8b6f4b0c50",
+            "flashcard-set-the-desired-radial-in-the-cdi-fb9639e3b3",
+            "flashcard-split-the-heads-9559a144ee",
+            "flashcard-plot-current-pos-on-bp-tail-desired-fix-on-cdi-head-a8c615bd82",
+            "flashcard-if-bp-head-below-90-dme-increasing-d7efcc65e7",
+            "flashcard-an-approach-plate-may-help-visualize-relative-positions-of-f-e951e319c2"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3201",
+      "decks": [
+        {
+          "id": "i3201-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-next-gps-waypoint-loaded-in-flight-plan-legs-page-8c651527b6",
+            "flashcard-d-direct-to-iawp-faror-8a8c4f946a",
+            "flashcard-at-2-nm-fawp-verify-apr-mode-active-30a79a36ff",
+            "flashcard-using-incorrect-minimums-967077004e",
+            "flashcard-general-rules-07b086b97c",
+            "flashcard-cannot-be-manually-built-waypoint-by-waypoint-59155333d9",
+            "flashcard-dme-fix-b3b6f90f5a",
+            "flashcard-not-authorized-e9fcdf7581",
+            "flashcard-na-procedures-by-notam-gps-cannot-substitute-1a2519cb6b",
+            "flashcard-special-allowances-778ded26c3",
+            "flashcard-alternate-airport-requirement-ed28ca81df",
+            "flashcard-cannot-plan-alternates-solely-with-gps-substitution-6f45e13570",
+            "flashcard-key-notes-2d0e1d7db8",
+            "flashcard-approach-procedures-with-gps-in-title-e-g-ils-y-or-rnav-gps--0f71f38f39",
+            "flashcard-transition-from-enroute-to-terminal-with-minimal-atc-interac-dd45003d36",
+            "flashcard-guarantees-1-000-ft-obstacle-clearance-a06281e115",
+            "flashcard-course-reversal-requirements-based-on-taa-feeder-fix-d9be509737",
+            "flashcard-transition-to-backup-if-overlay-fd86d20221",
+            "flashcard-enr-enroute-mode-68789b9193",
+            "flashcard-term-terminal-mode-f904b24500",
+            "flashcard-3-nm-inbound-faf-hsi-scale-to-change-advisory-88c2dba4b4",
+            "flashcard-dtg-starts-to-increase-d7cad05a83"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3202",
+      "decks": [
+        {
+          "id": "i3202-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-purpose-b954b978af",
+            "flashcard-may-include-mandatory-crossing-speeds-and-or-altitudes-98c582896a",
+            "flashcard-follow-published-airspeed-restrictions-1f9ed665cb",
+            "flashcard-additional-notes-2500f867b9",
+            "flashcard-definition-968bac9c01",
+            "flashcard-location-of-info-b48c16299f",
+            "flashcard-purpose-7d3bab21a4",
+            "flashcard-key-notes-c05d25636a",
+            "flashcard-definition-purpose-b60e4f6efb",
+            "flashcard-design-use-cc9b583a96",
+            "flashcard-only-one-odp-per-runway-d86574bcdc",
+            "flashcard-publication-access-d8e142077c",
+            "flashcard-if-flying-part-91-compliance-is-optional-unless-cleared-713e69c640",
+            "flashcard-consider-engine-out-performance-can-the-aircraft-still-meet--0b026c1273",
+            "flashcard-converts-required-gradient-ft-nm-into-usable-climb-rate-e1cd7a7f5b",
+            "flashcard-clearance-void-times-0991910586",
+            "flashcard-atc-sets-a-notification-time-30-min-after-void-time-ba35afcfd5",
+            "flashcard-telephone-call-fss-before-departure-fss-coordinates-with-atc-04d23833fa",
+            "flashcard-unicom-operator-may-relay-clearance-from-atc-b363fd5530",
+            "flashcard-intended-for-ground-use-only-3d82bc2191",
+            "flashcard-when-departing-ifr-from-an-uncontrolled-airport-2a29799cc6"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3203",
+      "decks": [
+        {
+          "id": "i3203-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-used-when-directional-gyro-compass-is-inoperative-or-unrelia-313274353e",
+            "flashcard-controller-will-say-turn-right-stop-turn-6fb9207075",
+            "flashcard-notes-cb27c33fbb",
+            "flashcard-description-d2bce0429a",
+            "flashcard-overcorrecting-aircraft-control-on-bfi-ef0009490a"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3204",
+      "decks": [
+        {
+          "id": "i3204-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-f52ee5386d",
+            "flashcard-time-as-required-2dd490ff68",
+            "flashcard-talk-make-required-call-7081cf775c",
+            "flashcard-during-last-half-of-turn-1349412407",
+            "flashcard-notes-0f6ce647a5",
+            "flashcard-t-6b-uses-category-c-minimums-no-cat-b-mins-published-df81483777",
+            "flashcard-climb-set-29-92-at-18-000-ft-msl-f887bfcc4b",
+            "flashcard-max-range-profile-appendix-a-84f26c1769",
+            "flashcard-mandatory-reports-radar-non-radar-48ee7bcb25",
+            "flashcard-leaving-a-holding-fix-point-d879a231f3",
+            "flashcard-report-callsign-equipment-affected-impact-to-ifr-capability-37f5d7d62e",
+            "flashcard-any-information-relating-to-safety-of-flight-63464e2e15",
+            "flashcard-additional-mandatory-reports-non-radar-only-a982d1e2e1",
+            "flashcard-compulsory-reporting-points-solid-triangle-must-report-867b70a84b",
+            "flashcard-along-airways-routes-5612581f26",
+            "flashcard-position-report-format-ptaptp-mnemonic-69fa624041",
+            "flashcard-faf-outer-marker-inbound-on-approach-650353ea9b"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3205",
+      "decks": [
+        {
+          "id": "i3205-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-avionics-include-3f4fa0e672",
+            "flashcard-ics-audio-panel-provides-intercom-uhf-vhf-control-87b07782ac",
+            "flashcard-general-recovery-8a16d39deb",
+            "flashcard-land-as-soon-as-practical-0770b84bc8",
+            "flashcard-mismatched-bugs-between-cockpits-47c54d5745",
+            "flashcard-norm-repeat-switch-norm-both-cockpits-08561779e1",
+            "flashcard-if-iac-mfd-failures-or-erratic-displays-persists-349f7bf989",
+            "flashcard-iac-xtalk-failure-453404e0ee",
+            "flashcard-mfd-ufcp-repeat-norm-switch-norm-deb11d8ed8",
+            "flashcard-irs-failure-4165555059",
+            "flashcard-backup-flight-instrument-reference-as-required-5fb79311ea",
+            "flashcard-mfd-failure-or-avionics-bus-failure-9157c38663",
+            "flashcard-for-mfd-failure-with-no-other-indications-7ed501b309",
+            "flashcard-norm-repeat-switch-in-failed-cockpit-repeat-8794fea7d9",
+            "flashcard-for-mfd-failure-with-other-avionics-failures-but-without-gen-26884de0b0",
+            "flashcard-ufcp-failure-94d9bd36c1",
+            "flashcard-loss-of-fms-execute-mag-true-toggle-radio-tuning-473337a5d7",
+            "flashcard-procedure-d2ec6a7896",
+            "flashcard-backup-flight-instrument-bfi-failure-cdcd2b84cd",
+            "flashcard-place-aircraft-in-straight-and-level-unaccelerated-flight-be60ad9a16",
+            "flashcard-engine-data-manager-edm-failure-fdb0c0bbd7",
+            "flashcard-loss-of-fuel-bal-hyd-fl-lo-etc-f607eda050",
+            "flashcard-procedure-0fb4cc028c",
+            "flashcard-land-as-soon-as-practical-fb7caaddd2",
+            "flashcard-air-data-computer-adc-failure-6efb6cfa2f",
+            "flashcard-adc-circuit-breaker-right-front-console-check-reset-if-open-a3a595ae08",
+            "flashcard-loss-of-ics-audio-557511b857",
+            "flashcard-procedure-afbcb7e049",
+            "flashcard-emr-nrm-switch-select-emr-both-e061c3731f",
+            "flashcard-ads-b-out-failure-b0b5f846d0",
+            "flashcard-procedure-7e39865921",
+            "flashcard-xpdr-failure-377c88aa3d",
+            "flashcard-if-normal-operation-does-not-resume-33936cc251",
+            "flashcard-aoa-computer-failure-6cb37a8029",
+            "flashcard-definition-purpose-b60e4f6efb",
+            "flashcard-design-use-cc9b583a96"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I3206",
+      "decks": [
+        {
+          "id": "i3206-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-tracking-fuel-usage-ensures-mission-success-8822b8308d",
+            "flashcard-incorporate-fuel-check-into-ops-check-f71d848783",
+            "flashcard-fix-that-begins-the-feeder-route-into-an-iaf-a30e46911b",
+            "flashcard-if-cleared-for-an-approach-while-inbound-from-a-feeder-fix-13572d815c",
+            "flashcard-not-designated-no-pt-or-iaf-b02a6d181a",
+            "flashcard-overview-a715ad36af",
+            "flashcard-if-on-radar-vectors-or-cleared-direct-to-with-approach-clear-fdbadc727f",
+            "flashcard-feeder-routes-part-of-approach-clearance-d60fceff8f",
+            "flashcard-overview-085caa0cf1",
+            "flashcard-front-course-published-fac-on-ils-loc-approach-plate-9dd0494379"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I6101",
+      "decks": [
+        {
+          "id": "i6101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-level-off-procedure-794d008166",
+            "flashcard-trim-and-stabilize-f30bc7f2ed",
+            "flashcard-standard-instrument-departure-sid-58a353f06d",
+            "flashcard-radar-departure-cf6dc0fe0d",
+            "flashcard-diverse-departure-055157b649",
+            "flashcard-purpose-1af427ec62",
+            "flashcard-if-90-use-a-45-intercept-to-outbound-59e2a3a9f5",
+            "flashcard-at-5-nm-from-faf-configure-to-bac-gear-flaps-to-120-kias-078cf4566d",
+            "flashcard-notes-a6d8cf2d9c",
+            "flashcard-purpose-3f5a4e7224",
+            "flashcard-key-notes-05fb15e412",
+            "flashcard-remain-within-typically-10-nm-still-applies-784f5c93bf",
+            "flashcard-when-cleared-for-an-approach-with-a-barbed-procedure-turn-5b7d77fdcf",
+            "flashcard-turn-shortest-direction-to-parallel-outbound-course-f71f5a6cc5",
+            "flashcard-turn-in-depicted-direction-dcff06e12c",
+            "flashcard-purpose-5121ec4450",
+            "flashcard-key-notes-770b597cf1",
+            "flashcard-treated-like-a-procedure-turn-877b2a42ac",
+            "flashcard-two-descent-cases-387f7abce0",
+            "flashcard-turn-use-normal-holding-entry-procedures-1b49fcb2a9",
+            "flashcard-inbound-intercept-18b884a7b6",
+            "flashcard-crossing-faf-case-i-cb1dfc6fea",
+            "flashcard-purpose-d21c0b0ce4",
+            "flashcard-purpose-13279d387b",
+            "flashcard-warning-a23386b928",
+            "flashcard-before-faf-attempt-re-intercept-do-not-descend-notify-atc-02ae895809",
+            "flashcard-intercept-missed-approach-course-if-required-61e846f2cd",
+            "flashcard-t-6b-normal-climb-650-ft-nm-180-kias-2000-fpm-88b9fd502a"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I6102",
+      "decks": [
+        {
+          "id": "i6102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-purpose-81b2ec3e4f",
+            "flashcard-indicated-by-vor-dme-or-tacan-in-plate-margin-43403cf38d",
+            "flashcard-purpose-8553aa8b29",
+            "flashcard-key-cautions-6894fab14c",
+            "flashcard-transition-to-bac-d8a3e4da31",
+            "flashcard-final-approach-aaca05bf80",
+            "flashcard-lead-turn-onto-course-to-roll-out-on-fac-bb8eccc973",
+            "flashcard-late-or-no-transition-to-bac-af6db72917",
+            "flashcard-purpose-2414cac0e5",
+            "flashcard-range-marker-beacons-dme-0e4f6db6d5",
+            "flashcard-minimums-all-components-operative-d3be3ca277",
+            "flashcard-cdi-is-4-more-sensitive-than-vor-1-25-per-dot-5ece7ab07c",
+            "flashcard-transition-to-bac-6c93b6d732",
+            "flashcard-at-glideslope-intercept-fec3c30be7",
+            "flashcard-power-controls-descent-rate-gs-pitch-controls-airspeed-89f629a229",
+            "flashcard-purpose-9e69dc2228",
+            "flashcard-glideslope-not-used-or-unavailable-983d1f80a6",
+            "flashcard-talk-report-if-required-eb04816b0c",
+            "flashcard-notes-be9eae7113",
+            "flashcard-holding-4b0d8bc147",
+            "flashcard-fix-types-intersection-gps-waypoint-radial-dme-fix-navaid-f09890e4bd",
+            "flashcard-holding-orbits-f89c7d1089",
+            "flashcard-no-wind-orbit-second-orbit-determine-wind-direction-and-drif-035ecdb582",
+            "flashcard-correction-orbit-6d31e26967",
+            "flashcard-shuttle-descent-59e448b794",
+            "flashcard-purpose-4e00eabda1"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I6201",
+      "decks": [
+        {
+          "id": "i6201-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-minimum-fuel-1b917c116a",
+            "flashcard-not-an-emergency-but-delay-could-cause-one-14bb546d6e",
+            "flashcard-same-definitions-and-reporting-rules-apply-to-uac-avp-554bb715b1",
+            "flashcard-turbine-fixed-wing-max-endurance-10-000-ft-f46e4a622d",
+            "flashcard-regulatory-in-nature-53e866115e",
+            "flashcard-special-notices-7a744fc604",
+            "flashcard-pilots-must-ask-for-these-if-not-already-reviewed-in-fns-b6505f13d1",
+            "flashcard-cnaf-3710-7-1505abe217",
+            "flashcard-includes-notams-not-tied-to-a-specific-airport-facility-eaf76c185b",
+            "flashcard-general-rnav-gps-overview-9305f3d6c3",
+            "flashcard-authorized-gps-operations-e4f70d6a46",
+            "flashcard-guarantees-1-000-obstacle-clearance-within-boundaries-c36e64870e",
+            "flashcard-gps-stand-alone-approaches-d6b4a836fc",
+            "flashcard-not-authorized-for-loc-lda-or-sdf-6b959b24aa",
+            "flashcard-rnav-gps-approaches-key-points-34ed40ce6d",
+            "flashcard-warnings-4cf1e67d0b",
+            "flashcard-transition-to-bac-within-5-nm-of-fawp-cc416ec0ed",
+            "flashcard-transition-to-backup-approach-if-available-5bdf9448c6"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I6202",
+      "decks": [
+        {
+          "id": "i6202-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-cwa-alert-8a6d4fe9f9",
+            "flashcard-fss-flight-service-station-63850bd56a",
+            "flashcard-common-frequencies-122-2-vhf-255-4-uhf-f01f5b67b6",
+            "flashcard-supports-via-navmetoccom-sub-regional-forecast-center-srfc-b9df332d71",
+            "flashcard-airport-name-phonetic-letter-code-time-utc-bbf7be850a",
+            "flashcard-ceiling-visibility-omitted-if-5000-ft-and-5-sm-286a8f36ac",
+            "flashcard-range-25-nm-up-to-10-000-ft-agl-e319483d76",
+            "flashcard-3t-3-thunderstorm-lightning-a171f86ee0",
+            "flashcard-nongovernment-comm-station-at-public-use-airports-w-o-tower--ef19fa597e",
+            "flashcard-can-provide-weather-wind-runway-info-38075ec477",
+            "flashcard-radar-can-display-precipitation-areas-2ea768d4eb",
+            "flashcard-atc-issues-weather-chaff-info-assists-on-request-033ae24349",
+            "flashcard-pireps-pilot-weather-reports-989b83b946",
+            "flashcard-cnaf-guidance-30a48ed69b",
+            "flashcard-preflight-ee317514c4",
+            "flashcard-sustained-operation-in-icing-conditions-prohibited-526655546c",
+            "flashcard-location-along-stagnation-line-of-airfoil-a59c27a69c",
+            "flashcard-reporting-eca0129a94",
+            "flashcard-avoidance-0b1c1c89a6",
+            "flashcard-stow-loose-items-87daa06af1",
+            "flashcard-plan-course-for-minimum-storm-time-ba01dcc811",
+            "flashcard-autopilot-disengage-altitude-hold-and-speed-hold-d33a3af53d",
+            "flashcard-last-assigned-route-by-atc-28a43850fa",
+            "flashcard-if-expect-further-clearance-altitude-time-is-given-e7ecaa5e66",
+            "flashcard-proceed-vfr-if-possible-a15a0f21f2",
+            "flashcard-plot-climb-winds-true-on-the-wind-grid-9751b96d6e",
+            "flashcard-record-the-climb-gs-on-the-flight-log-8d49771508",
+            "flashcard-plot-cruise-winds-true-on-the-wind-grid-d9e5666520",
+            "flashcard-variation-setup-tips-97e8fee393",
+            "flashcard-level-off-location-three-cases-161f9c2b18",
+            "flashcard-at-a-fix-next-leg-is-entirely-cruise-e1bb04eed2",
+            "flashcard-quick-checklist-for-each-leg-8e7554e653"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4101",
+      "decks": [
+        {
+          "id": "i4101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-optimizing-risk-management-360d46e57c",
+            "flashcard-behavioral-skills-sadclam-damclas-ea6afcce29",
+            "flashcard-communication-accurate-clear-transfer-acknowledgment-of-info-d993bc34b8",
+            "flashcard-natops-27439a3c47",
+            "flashcard-errors-crew-actions-inactions-ce958caa24",
+            "flashcard-threats-managed-via-crm-tools-002db4a108",
+            "flashcard-key-training-notes-fdaff07f03",
+            "flashcard-fly-outbound-parallel-to-inbound-course-46ecbcf061",
+            "flashcard-turn-30-toward-holding-side-from-reciprocal-f6b5b542e0",
+            "flashcard-description-2f425971c3",
+            "flashcard-transition-20-torque-trim-120-kias-descent-to-mda-700-32393aafbe",
+            "flashcard-level-off-mda-9b53a2452e",
+            "flashcard-get-alerted-if-unintentionally-descending-below-mda-1cf540806b",
+            "flashcard-formula-hat-300-vdp-nm-from-runway-end-57205da7d9"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4102",
+      "decks": [
+        {
+          "id": "i4102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-purpose-2414cac0e5",
+            "flashcard-range-marker-beacons-dme-0e4f6db6d5",
+            "flashcard-minimums-all-components-operative-d3be3ca277",
+            "flashcard-cdi-is-4-more-sensitive-than-vor-1-25-per-dot-5ece7ab07c",
+            "flashcard-transition-to-bac-6c93b6d732",
+            "flashcard-at-glideslope-intercept-fec3c30be7",
+            "flashcard-power-controls-descent-rate-gs-pitch-controls-airspeed-89f629a229",
+            "flashcard-purpose-9e69dc2228",
+            "flashcard-glideslope-not-used-or-unavailable-983d1f80a6",
+            "flashcard-talk-report-if-required-eb04816b0c",
+            "flashcard-notes-be9eae7113",
+            "flashcard-purpose-8553aa8b29",
+            "flashcard-key-cautions-b0fda0b1bb",
+            "flashcard-transition-to-bac-d8a3e4da31",
+            "flashcard-final-approach-aaca05bf80",
+            "flashcard-lead-turn-onto-course-to-roll-out-on-fac-bb8eccc973",
+            "flashcard-late-or-no-transition-to-bac-990984ce08",
+            "flashcard-cnaf-guidance-30a48ed69b",
+            "flashcard-preflight-ee317514c4",
+            "flashcard-sustained-operation-in-icing-conditions-prohibited-526655546c",
+            "flashcard-location-along-stagnation-line-of-airfoil-e0c6342bb3",
+            "flashcard-reporting-eca0129a94"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4103",
+      "decks": [
+        {
+          "id": "i4103-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-38d934b6ff",
+            "flashcard-transition-to-final-1cf0a6cb6b",
+            "flashcard-turns-srt-30-aob-start-immediately-when-instructed-0586af812c",
+            "flashcard-contact-final-controller-include-gear-status-58e9ea8848",
+            "flashcard-small-prompt-corrections-avoid-large-pcl-movements-203fa72dfa",
+            "flashcard-proceed-vfr-if-possible-9f8c9af78b",
+            "flashcard-da-dh-reached-runway-env-not-in-sight-3aba6a126f",
+            "flashcard-must-include-heading-altitude-unless-remaining-vfr-to-tower-6222fca152",
+            "flashcard-asr-airport-surveillance-radar-for-entire-approach-ba5bc3bfc9",
+            "flashcard-similar-to-par-vectors-to-establish-on-final-course-f292740641",
+            "flashcard-heading-corrections-given-as-in-par-761d7a1e71",
+            "flashcard-will-direct-descent-to-mda-and-any-step-down-fixes-088cc2354f",
+            "flashcard-procedure-97539a4a5e",
+            "flashcard-descent-to-mda-a153443d94",
+            "flashcard-general-13d43900a5",
+            "flashcard-request-from-atc-request-no-gyro-par-asr-par-w-o-gs-dca7b2f3b5",
+            "flashcard-stop-turn-roll-out-immediately-c89d64515b",
+            "flashcard-srt-on-final-unless-directed-otherwise-5faca890e9",
+            "flashcard-incorrect-turn-rate-srt-vs-srt-on-final-8281a64101",
+            "flashcard-definition-2ef4fba4eb",
+            "flashcard-caused-by-b0ce92c56e",
+            "flashcard-most-common-in-aviation-due-to-decreased-pressure-with-altit-a769fd509e",
+            "flashcard-stagnant-inadequate-blood-flow-e-g-g-forces-or-shock-af03b6ab96",
+            "flashcard-early-signs-e8c75f8ef4",
+            "flashcard-advanced-signs-3bf1f1d782",
+            "flashcard-definition-0a47c4770c",
+            "flashcard-breath-into-a-paper-bag-if-oxygen-not-in-use-ff10070b01",
+            "flashcard-symptoms-may-include-reduced-oxygen-pressure-flow-and-hypoxi-7811faabbf",
+            "flashcard-obogs-fail-initial-response-6b0305d5fa",
+            "flashcard-oxygen-mask-check-for-leaks-both-dd27a469a9",
+            "flashcard-otherwise-c80906eb60",
+            "flashcard-obogs-failure-overtemp-physiological-symptoms-b5a5819646",
+            "flashcard-green-ring-pull-as-required-both-ce1b388896",
+            "flashcard-at-or-below-10-000-pulling-green-ring-is-optional-1c10a0e171",
+            "flashcard-rate-depth-of-breathing-normalize-both-cad712a081",
+            "flashcard-pressurization-switch-ram-dump-fc7ddedf20"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4104",
+      "decks": [
+        {
+          "id": "i4104-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-syllabus-notes-a12b7d27e8",
+            "flashcard-1-inadvertent-thunderstorm-penetration-0b4cba816d",
+            "flashcard-procedure-6df8c059da",
+            "flashcard-altitude-allow-to-vary-focus-on-attitude-d89fdb69ba"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4201",
+      "decks": [
+        {
+          "id": "i4201-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-trim-stabilize-e76e15e3f2",
+            "flashcard-radar-atc-vectors-used-if-no-dp-published-or-on-request-748f2816be",
+            "flashcard-filing-6cda222efa",
+            "flashcard-radar-vs-non-radar-departure-environments-f3071fc998",
+            "flashcard-pre-coordinated-ifr-routes-published-in-local-ifg-sop-612298638b",
+            "flashcard-call-base-ops-to-file-a-stereo-route-e8b3c94629",
+            "flashcard-found-in-the-in-flight-guide-ifg-or-local-sops-323c0c98c0",
+            "flashcard-overview-89aa4b8e19",
+            "flashcard-enroute-altitudes-fa70d7f3e1",
+            "flashcard-reporting-requirements-1e419c3de7",
+            "flashcard-general-c25d2860f3",
+            "flashcard-proceed-vfr-if-possible-bc5305510d",
+            "flashcard-maintain-1-600-msl-38c10fbb9d",
+            "flashcard-squawk-7600-eca7969bf0",
+            "flashcard-intercept-instrument-approach-for-rwy-in-use-8e60dd6f9b",
+            "flashcard-both-inop-691914d3f6",
+            "flashcard-no-single-rule-covers-all-situations-pilot-judgment-required-2499541c5e",
+            "flashcard-continue-flight-under-vfr-1c7365f7ff",
+            "flashcard-last-assigned-route-in-atc-clearance-ee65c4322c",
+            "flashcard-altitude-atc-said-to-expect-43027616ce",
+            "flashcard-if-clearance-limit-is-an-iaf-95d6153389",
+            "flashcard-at-efc-time-if-given-or-upon-arrival-if-no-efc-5c868ce72f",
+            "flashcard-121-5-mhz-if-available-2e6d46fc82",
+            "flashcard-altitude-changes-adjust-per-mea-mca-mra-requirements-8a37c942bb"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4202",
+      "decks": [
+        {
+          "id": "i4202-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-natops-1-130-7e8cdfbca6",
+            "flashcard-use-rte1-for-your-primary-route-rte2-for-your-filed-alternat-052e3bedca",
+            "flashcard-only-one-cockpit-can-make-changes-at-a-time-4f2e842cd8",
+            "flashcard-legs-should-be-reviewed-for-accuracy-prior-to-execution-b07972e513",
+            "flashcard-approach-7b0d9d79f2",
+            "flashcard-altered-from-the-holding-page-of-the-menu-c4a33036a2",
+            "flashcard-d-direct-to-iawp-00e87a42fc",
+            "flashcard-a-approach-mode-verify-apr-within-2nm-of-the-fawp-da8deb2bad"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4203",
+      "decks": [
+        {
+          "id": "i4203-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-1-no-gyro-approach-eaa8383913",
+            "flashcard-comply-with-normal-par-asr-par-w-o-gs-procedure-e70ed79420",
+            "flashcard-natops-323fc0f645",
+            "flashcard-field-selection-depends-on-the-emergency-and-energy-state-ea8a7b4815",
+            "flashcard-cnaf-3710-4-8-5-a0b3eda4e4",
+            "flashcard-alternate-is-required-if-weather-is-worse-than-3000-3-5b2dd39846",
+            "flashcard-in-no-case-shall-the-planned-fuel-reserve-after-final-landin-ee914e5837",
+            "flashcard-333-pph-on-a-standard-day-for-t6b-a078e21d2f",
+            "flashcard-max-endurance-aoa-8-8-units-max-endurance-cruise-125-kias-d79d8a00cf"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4204",
+      "decks": [
+        {
+          "id": "i4204-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-based-on-pic-judgment-flight-urgency-f0fe586290",
+            "flashcard-standard-instrument-rating-9b8465e2a2",
+            "flashcard-shall-not-commence-if-wx-published-mins-d605b85775",
+            "flashcard-once-commenced-may-continue-to-published-landing-mins-7022c68ca4",
+            "flashcard-safe-landing-can-be-executed-8edabe75f0",
+            "flashcard-non-precision-missed-approach-at-map-if-no-visual-b6b0c8f3cd",
+            "flashcard-radar-contact-lost-or-malfunction-suspected-6c7a505844",
+            "flashcard-ifr-flight-plans-4-8-4-2-561c28ae68",
+            "flashcard-single-pilot-absolute-minimums-200-sm-fixed-wing-a226dafd6a",
+            "flashcard-alternate-wx-forecast-3000-3-eta-1-hr-a825d6bcbe",
+            "flashcard-gps-restrictions-fti-15dffecd51",
+            "flashcard-rnav-lpv-minimums-count-as-precision-for-planning-c49f0351b6"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4301",
+      "decks": [
+        {
+          "id": "i4301-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-1-flight-planning-6b67600987",
+            "flashcard-gp-8013385723",
+            "flashcard-both-ends-of-a-direct-leg-f161b027c1",
+            "flashcard-3-dd-1801-46f7168833",
+            "flashcard-valid-for-3-hours-past-the-brief-time-or-etd-plus-30-minutes-829ad7d2ee",
+            "flashcard-should-be-requested-1-hour-from-brief-time-e6a9e1c84b",
+            "flashcard-instrument-approach-5ec810d408",
+            "flashcard-to-continue-an-approach-to-landing-the-runway-environment-mu-20ce095121",
+            "flashcard-6-alternate-filing-minimums-a43c376b2c",
+            "flashcard-alternate-with-pa-needs-published-mins-plus-200-50669d076a",
+            "flashcard-7-fss-9ecb5d5889",
+            "flashcard-8-strange-field-operations-2e432b4721",
+            "flashcard-natops-has-postflight-and-preflight-procedures-listed-7cbe909feb"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4302",
+      "decks": [
+        {
+          "id": "i4302-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-cwa-alert-8a6d4fe9f9",
+            "flashcard-fss-flight-service-station-63850bd56a",
+            "flashcard-common-frequencies-122-2-vhf-255-4-uhf-f01f5b67b6",
+            "flashcard-supports-via-navmetoccom-sub-regional-forecast-center-srfc-b9df332d71",
+            "flashcard-airport-name-phonetic-letter-code-time-utc-bbf7be850a",
+            "flashcard-ceiling-visibility-omitted-if-5000-ft-and-5-sm-286a8f36ac",
+            "flashcard-range-25-nm-up-to-10-000-ft-agl-e319483d76",
+            "flashcard-3t-3-thunderstorm-lightning-a171f86ee0",
+            "flashcard-nongovernment-comm-station-at-public-use-airports-w-o-tower--ef19fa597e",
+            "flashcard-can-provide-weather-wind-runway-info-38075ec477",
+            "flashcard-radar-can-display-precipitation-areas-2ea768d4eb",
+            "flashcard-atc-issues-weather-chaff-info-assists-on-request-033ae24349",
+            "flashcard-pireps-pilot-weather-reports-989b83b946",
+            "flashcard-a-altitude-assign-per-rules-of-hemisphere-neodd-sweven-88b14674e9",
+            "flashcard-supplemented-by-notams-ap-1-for-updates-fff458587d",
+            "flashcard-section-b-airport-facility-directory-8b7185b6a3",
+            "flashcard-key-takeaway-a9883bc564",
+            "flashcard-break-out-locate-intended-runway-b1c74ea8c0",
+            "flashcard-use-standard-left-turns-unless-directed-otherwise-c7f1fd3e13",
+            "flashcard-circling-minimums-eba0a0d7cf",
+            "flashcard-may-be-na-in-busy-terminal-areas-not-published-5865d3edff",
+            "flashcard-missed-approach-from-circling-6d6df98cde",
+            "flashcard-description-7e6b4604ce",
+            "flashcard-often-published-if-not-can-be-computed-545135f299"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4303",
+      "decks": [
+        {
+          "id": "i4303-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-starting-at-1200-agl-faded-blue-fd50c2fcaa",
+            "flashcard-airfield-reachability-rule-of-thumb-b07dea1daa",
+            "flashcard-bingo-minimum-fuel-required-to-divert-to-nearest-suitable-fi-abab89cef4",
+            "flashcard-navaids-259c5cf359",
+            "flashcard-avoid-low-altitude-wx-until-close-to-field-81aefdf128",
+            "flashcard-notes-3230a70f77",
+            "flashcard-minimum-fuel-1b917c116a",
+            "flashcard-not-an-emergency-but-delay-could-cause-one-14bb546d6e",
+            "flashcard-turbine-fixed-wing-max-endurance-10-000-ft-f46e4a622d",
+            "flashcard-tracking-fuel-usage-ensures-mission-success-8822b8308d",
+            "flashcard-incorporate-fuel-check-into-ops-check-f71d848783"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4304",
+      "decks": [
+        {
+          "id": "i4304-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-no-single-rule-covers-all-situations-pilot-judgment-required-2499541c5e",
+            "flashcard-continue-flight-under-vfr-1c7365f7ff",
+            "flashcard-last-assigned-route-in-atc-clearance-ee65c4322c",
+            "flashcard-altitude-atc-said-to-expect-43027616ce",
+            "flashcard-if-clearance-limit-is-an-iaf-95d6153389",
+            "flashcard-at-efc-time-if-given-or-upon-arrival-if-no-efc-5c868ce72f",
+            "flashcard-121-5-mhz-if-available-2e6d46fc82",
+            "flashcard-altitude-changes-adjust-per-mea-mca-mra-requirements-8a37c942bb",
+            "flashcard-atc-procedures-in-graphic-form-dod-flip-approach-plates-d77eea7710",
+            "flashcard-if-using-fms-retrieve-sid-from-database-578122a150",
+            "flashcard-purpose-b954b978af",
+            "flashcard-may-include-mandatory-crossing-speeds-and-or-altitudes-98c582896a",
+            "flashcard-follow-published-airspeed-restrictions-1f9ed665cb",
+            "flashcard-additional-notes-2500f867b9",
+            "flashcard-definition-purpose-b60e4f6efb",
+            "flashcard-design-use-cc9b583a96",
+            "flashcard-only-one-odp-per-runway-d86574bcdc",
+            "flashcard-publication-access-d8e142077c",
+            "flashcard-if-flying-part-91-compliance-is-optional-unless-cleared-713e69c640",
+            "flashcard-consider-engine-out-performance-can-the-aircraft-still-meet--0b026c1273",
+            "flashcard-definition-968bac9c01",
+            "flashcard-location-of-info-b48c16299f",
+            "flashcard-purpose-7d3bab21a4",
+            "flashcard-key-notes-ac809c6995"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "I4490",
+      "decks": [
+        {
+          "id": "i4490-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-2-squawk-7600-8d81da0053",
+            "flashcard-route-ave-f-70899d9604",
+            "flashcard-altitude-ame-at-the-highest-of-the-following-e3fea4ceeb",
+            "flashcard-mea-the-minimum-altitude-for-ifr-operations-475e4be8f8",
+            "flashcard-proceed-iaw-vfr-if-possible-56439d7fd6",
+            "flashcard-instrument-approach-5ec810d408",
+            "flashcard-to-continue-an-approach-to-landing-the-runway-environment-mu-50a1f4eb94",
+            "flashcard-4-notams-ff2e85b3aa",
+            "flashcard-required-to-be-checked-before-flight-5da36a7d07",
+            "flashcard-the-fih-has-a-code-interpretation-section-for-most-common-co-d18c456c2b",
+            "flashcard-pointer-notams-highlight-another-notam-such-as-fdc-or-d-41cf70b322",
+            "flashcard-military-notams-pertains-to-military-navaids-airports-b9f0066f5c",
+            "flashcard-5-enroute-weather-57aee361d0"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "NA1190",
+      "decks": [
+        {
+          "id": "na1190-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-notam-d-fdc-notams-pointer-saa-military-notams-bc83a39eec",
+            "flashcard-chart-selection-5c77bb7b2e",
+            "flashcard-mountainous-terrain-1d9cdc955c",
+            "flashcard-coastal-areas-01e120cb48",
+            "flashcard-populated-areas-b5bde0ac63",
+            "flashcard-open-terrain-fc0cd4c738",
+            "flashcard-class-b-c-d-airspace-930783f77a",
+            "flashcard-tools-cc27e36eb2",
+            "flashcard-place-center-grommet-over-nearest-meridian-midpoint-9165e4c4c6",
+            "flashcard-when-to-use-a-parallel-0c64cb1fe3",
+            "flashcard-altitude-selection-f41f7e7159",
+            "flashcard-based-on-local-sop-minimums-e4a0d7d555",
+            "flashcard-route-study-e67c0d2f24",
+            "flashcard-departure-locations-d700821047",
+            "flashcard-may-receive-a-squawk-code-otherwise-squawk-1200-fd92fccc0a",
+            "flashcard-controller-will-assign-a-squawk-code-ed5be638cf",
+            "flashcard-gps-may-fail-dr-is-the-backup-7bd165240b",
+            "flashcard-funneling-61c935a81e",
+            "flashcard-notify-fss-if-arrival-time-changes-by-more-than-30-minutes-98873579d2",
+            "flashcard-lost-procedures-bd0ab0dc9a",
+            "flashcard-five-cs-for-lost-procedures-25a528ff11",
+            "flashcard-conserve-fly-max-endurance-approx-125-kias-to-save-fuel-84be192454",
+            "flashcard-sof-fdo-can-give-technical-operational-guidance-99b8d3d5b0",
+            "flashcard-use-vor-dme-to-triangulate-your-location-with-radials-df4a3e47ca",
+            "flashcard-final-step-a034836d08",
+            "flashcard-reasons-for-vfr-operations-at-unfamiliar-fields-9827c600ce",
+            "flashcard-ifr-controlled-and-monitored-by-atc-with-guaranteed-separati-8c045ddfbc",
+            "flashcard-must-be-in-vmc-and-below-class-a-under-18-000-ft-msl-9c387981c9",
+            "flashcard-vfr-arrival-phase-d8ee606876",
+            "flashcard-class-b-70999b129a",
+            "flashcard-class-e-ae55179511",
+            "flashcard-radar-service-levels-e0817cd4b1",
+            "flashcard-trsa-service-includes-separation-between-vfr-ifr-aircraft-f359925daa",
+            "flashcard-atis-automatic-terminal-information-service-6eca8a9568",
+            "flashcard-monitor-atis-before-contacting-approach-tower-9b506ea0c7",
+            "flashcard-two-way-communication-is-required-to-enter-class-c-482d86bf8b"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "VNAV1190",
+      "decks": [
+        {
+          "id": "vnav1190-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-vnav-purpose-1-1-100-436408ff59",
+            "flashcard-3-purposes-5420e8b78b",
+            "flashcard-prepare-for-fleet-missions-requiring-accurate-timely-navigat-f693288901",
+            "flashcard-preflight-requirement-2fe5a96c2d",
+            "flashcard-chart-type-used-2ca876711a",
+            "flashcard-chart-scale-concepts-2d4cf8bc29",
+            "flashcard-charts-are-schematic-not-realistic-images-9555769245",
+            "flashcard-relief-depiction-3e20ecbe82",
+            "flashcard-spot-elevations-marked-terrain-heights-above-msl-4fa9e8d764",
+            "flashcard-chart-continuity-c5a7624e1c",
+            "flashcard-definition-8573478867",
+            "flashcard-clearance-margin-41e742549e",
+            "flashcard-location-specificity-051b53a5ef",
+            "flashcard-purpose-e8917d46be",
+            "flashcard-small-towns-single-circle-symbol-cc15df1072",
+            "flashcard-tracks-trails-broken-line-usually-dirt-roads-201dabab18",
+            "flashcard-aeronautical-symbols-f185a755b4",
+            "flashcard-key-use-9519e0b5ff",
+            "flashcard-entry-explicit-atc-clearance-required-debcf119d9",
+            "flashcard-class-c-b11be9c64d",
+            "flashcard-marked-solid-magenta-lines-e982ac47b4",
+            "flashcard-controlled-airspace-not-a-d-26c17f00fd",
+            "flashcard-within-4-nm-of-class-c-d-airport-at-2500-agl-200-kias-9931341144",
+            "flashcard-prohibited-area-aa6aaa615a",
+            "flashcard-anywhere-1d4e86524d",
+            "flashcard-over-open-water-sparsely-populated-areas-60305301e0",
+            "flashcard-general-minimum-altitude-955a789f13",
+            "flashcard-pilots-must-fly-to-minimize-annoyance-to-people-on-the-groun-6bede554ec",
+            "flashcard-avoid-flying-near-wildlife-haunts-during-hunting-season-6d42354fc5",
+            "flashcard-regardless-of-ifr-vfr-see-and-avoid-is-always-required-60346ada0b",
+            "flashcard-converging-88c90d6534",
+            "flashcard-overtaking-b158412399",
+            "flashcard-landing-074de26e33",
+            "flashcard-landing-conflict-115986ebf0",
+            "flashcard-do-not-overfly-uncontrolled-airports-below-1500-ft-agl-042a4ddd5c",
+            "flashcard-noise-sensitive-wildlife-areas-19e0b3e367"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "N3101",
+      "decks": [
+        {
+          "id": "n3101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-minimize-clutter-to-preserve-readability-ee1330c960",
+            "flashcard-identify-final-checkpoint-target-and-time-on-target-tot-9d8f53dc5d",
+            "flashcard-use-positive-landmarks-distinct-identifiable-and-plottable-46a5b79839",
+            "flashcard-two-methods-e1b05aef3b",
+            "flashcard-measure-distances-7deef37dc5",
+            "flashcard-use-210-ktas-3-5-nm-min-b8ffbd18e7",
+            "flashcard-work-backwards-from-destination-e2d49acbe4",
+            "flashcard-violation-attrition-offense-da5d3bb13f",
+            "flashcard-airfield-reachability-rule-of-thumb-b07dea1daa",
+            "flashcard-bingo-minimum-fuel-required-to-divert-to-nearest-suitable-fi-abab89cef4",
+            "flashcard-navaids-259c5cf359",
+            "flashcard-starting-at-1200-agl-faded-blue-fd50c2fcaa",
+            "flashcard-aim-fa9916b340",
+            "flashcard-departure-locations-d700821047",
+            "flashcard-may-receive-a-squawk-code-otherwise-squawk-1200-fd92fccc0a",
+            "flashcard-reasons-for-vfr-operations-at-unfamiliar-fields-9827c600ce",
+            "flashcard-ifr-controlled-and-monitored-by-atc-with-guaranteed-separati-8c045ddfbc",
+            "flashcard-must-be-in-vmc-and-below-class-a-under-18-000-ft-msl-9c387981c9",
+            "flashcard-vfr-arrival-phase-d8ee606876",
+            "flashcard-class-b-70999b129a",
+            "flashcard-class-e-ae55179511",
+            "flashcard-radar-service-levels-e0817cd4b1",
+            "flashcard-trsa-service-includes-separation-between-vfr-ifr-aircraft-f359925daa",
+            "flashcard-atis-automatic-terminal-information-service-6eca8a9568",
+            "flashcard-monitor-atis-before-contacting-approach-tower-9b506ea0c7",
+            "flashcard-two-way-communication-is-required-to-enter-class-c-482d86bf8b",
+            "flashcard-arrival-procedures-71215b0e81",
+            "flashcard-check-a-fd-for-any-airfield-specific-pattern-restrictions-0c3db4e17d",
+            "flashcard-visual-flap-setting-references-help-maintain-proper-spacing-bf5e76a558",
+            "flashcard-overview-829ca2246f",
+            "flashcard-flight-symbology-f788c993ad",
+            "flashcard-bank-angle-indicator-inverted-triangle-limited-at-47-max-74d9d823df",
+            "flashcard-navigation-methods-25e31792ad",
+            "flashcard-look-left-right-and-far-ahead-not-just-nose-forward-0d0024a220",
+            "flashcard-time-note-ata-and-compare-to-jet-log-planned-time-5f101f0db7",
+            "flashcard-time-start-new-leg-timing-if-required-6dff675748"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "N6101",
+      "decks": [
+        {
+          "id": "n6101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-standard-time-corrections-3747d4d9e3",
+            "flashcard-best-for-circular-angled-routes-d43ae6749d",
+            "flashcard-note-8b1c67285d",
+            "flashcard-standard-course-corrections-a5fde08446",
+            "flashcard-identify-a-distant-feature-directly-on-course-e7803bc63d",
+            "flashcard-use-funneling-features-aee5143c26",
+            "flashcard-correction-984bc343c0",
+            "flashcard-post-correction-2d63a48984",
+            "flashcard-runway-edge-lights-ec62121e00",
+            "flashcard-runway-end-identifier-lights-reil-4c5e9c569d",
+            "flashcard-runway-centerline-lights-precision-instrument-runways-a8f43667f9",
+            "flashcard-touchdown-zone-lights-tdzl-77543ff77d",
+            "flashcard-centerline-lights-green-4b62b0a45d",
+            "flashcard-malsr-alsf-1-alsf-2-etc-5884819d9a",
+            "flashcard-visual-glide-slope-indicators-a1bb524080",
+            "flashcard-sigmet-operations-30a01e01ad",
+            "flashcard-lighting-551b24f36d"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "N4101",
+      "decks": [
+        {
+          "id": "n4101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-minimize-clutter-to-preserve-readability-ee1330c960",
+            "flashcard-identify-final-checkpoint-target-and-time-on-target-tot-9d8f53dc5d",
+            "flashcard-use-positive-landmarks-distinct-identifiable-and-plottable-46a5b79839",
+            "flashcard-two-methods-e1b05aef3b",
+            "flashcard-measure-distances-7deef37dc5",
+            "flashcard-use-210-ktas-3-5-nm-min-b8ffbd18e7",
+            "flashcard-work-backwards-from-destination-e2d49acbe4",
+            "flashcard-violation-attrition-offense-da5d3bb13f",
+            "flashcard-navigation-methods-25e31792ad",
+            "flashcard-look-left-right-and-far-ahead-not-just-nose-forward-0d0024a220",
+            "flashcard-time-note-ata-and-compare-to-jet-log-planned-time-5f101f0db7",
+            "flashcard-time-start-new-leg-timing-if-required-6dff675748",
+            "flashcard-talk-ops-check-over-ics-as-required-or-desired-bd621da7f8",
+            "flashcard-best-for-circular-angled-routes-d43ae6749d",
+            "flashcard-note-8b1c67285d",
+            "flashcard-standard-course-corrections-d56b6e57a5",
+            "flashcard-identify-a-distant-feature-directly-on-course-e7803bc63d",
+            "flashcard-use-funneling-features-aee5143c26",
+            "flashcard-correction-c0597205ac",
+            "flashcard-post-correction-2d63a48984",
+            "flashcard-starting-at-1200-agl-faded-blue-fd50c2fcaa",
+            "flashcard-pilot-responsibilities-7841376bca",
+            "flashcard-departure-locations-a60757ef1a",
+            "flashcard-may-receive-a-squawk-code-otherwise-use-1200-4b5d369595",
+            "flashcard-ground-bomrxxx-taxi-vfr-to-destination-with-information-7194e57112",
+            "flashcard-in-the-air-85905426b3",
+            "flashcard-class-b-atc-clearance-transponder-required-c3f477716c",
+            "flashcard-local-cross-country-sop-890464070a",
+            "flashcard-airfield-reachability-rule-of-thumb-b07dea1daa",
+            "flashcard-bingo-minimum-fuel-required-to-divert-to-nearest-suitable-fi-abab89cef4",
+            "flashcard-navaids-259c5cf359",
+            "flashcard-tot-0f17b54c3d"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "FORMATION-GS",
+      "decks": [
+        {
+          "id": "formation-gs-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-1aa8637aa8",
+            "flashcard-follow-local-sop-cf14ba1f69",
+            "flashcard-current-atis-70d1424611",
+            "flashcard-75-ft-2-aircraft-lengths-if-staggered-trail-f3a380a984",
+            "flashcard-description-6818c209f6",
+            "flashcard-lead-lineup-depends-on-runway-width-ip-provides-references-0ec980a620",
+            "flashcard-crosswinds-5-kts-wing-on-upwind-side-187061d611",
+            "flashcard-both-set-30-torque-check-engine-instruments-6a772b1957",
+            "flashcard-lead-rotates-at-85-kias-4c3710fcdd",
+            "flashcard-if-lead-aborts-after-brake-release-wing-continues-takeoff-a9a412855e",
+            "flashcard-if-overrunning-delay-retraction-but-never-raise-before-lead-e2def0f9ed",
+            "flashcard-description-c3f32acdc5",
+            "flashcard-when-used-d6c60d12d3",
+            "flashcard-wing-procedures-e5af75bafa",
+            "flashcard-rendezvous-c79d415595",
+            "flashcard-description-d9f1a0cd97",
+            "flashcard-clearing-planning-monitoring-wing-736fa711fe",
+            "flashcard-exhaust-stack-tangent-to-wing-leading-edge-at-midpoint-21c997e97b",
+            "flashcard-maintaining-stepdown-1ca1d2d718",
+            "flashcard-spacing-control-311fe1e3b5",
+            "flashcard-adjust-as-necessary-ffcc6c9940",
+            "flashcard-turn-away-from-wing-814bca0fcb",
+            "flashcard-turn-toward-wing-2a2447cbeb",
+            "flashcard-used-to-help-control-airspeed-or-increase-descent-rate-3de5e345e7",
+            "flashcard-description-b31b4fb4ce",
+            "flashcard-descend-a-few-feet-below-parade-position-062aa59153",
+            "flashcard-add-slight-power-to-hold-position-3adb527688",
+            "flashcard-description-c41245695c",
+            "flashcard-clear-in-direction-of-turn-622c390dad",
+            "flashcard-wing-matches-lead-s-roll-rate-1b62ad7c52",
+            "flashcard-description-a1b2b1f13e",
+            "flashcard-maintain-cruise-position-until-cleared-back-to-parade-by-lea-902b56b346",
+            "flashcard-forward-tip-of-vertical-fin-over-opposite-inboard-aileron-cu-dc51a28f6c",
+            "flashcard-turns-in-cruise-a8fecb4dbf",
+            "flashcard-lead-signals-via-radio-or-porpoise-maneuver-d02e0aff91",
+            "flashcard-description-78afcd666b"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "F2101",
+      "decks": [
+        {
+          "id": "f2101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-353bd0c34c",
+            "flashcard-lead-positions-on-downwind-side-of-runway-080616c870",
+            "flashcard-wing-confirms-lead-s-side-then-aligns-on-their-side-cd1445890c",
+            "flashcard-n-w-cs-6875ecc4ce",
+            "flashcard-description-15a13ee21b",
+            "flashcard-both-set-30-torque-check-instruments-safety-of-flight-items-d87ba80432",
+            "flashcard-lead-responds-thumbs-up-or-down-if-issue-6fed8dd123",
+            "flashcard-description-ef6142965c",
+            "flashcard-wing-executes-abort-on-their-side-ca94cbbe1b",
+            "flashcard-n-w-cs-f805bdf0de",
+            "flashcard-description-630f025d36",
+            "flashcard-level-off-to-clear-pattern-comply-with-departure-procedures-ac8368d3b3",
+            "flashcard-n-w-cs-51a3f8c67c",
+            "flashcard-description-7d2134c22b",
+            "flashcard-place-lead-slightly-above-horizon-for-initial-step-down-c5f4dfb564",
+            "flashcard-monitor-closure-rate-40-kias-over-lead-s-speed-1ed76032e8",
+            "flashcard-track-parallel-to-lead-stabilize-on-bearing-line-c460d025eb",
+            "flashcard-misjudging-relative-motion-stagnation-or-underrun-f3179d6d79",
+            "flashcard-n-w-cs-9a0d93c5c0",
+            "flashcard-description-ba06389966",
+            "flashcard-retard-pcl-to-idle-speed-brake-as-required-6811793cfa",
+            "flashcard-keep-lead-on-or-above-horizon-f4f300e603",
+            "flashcard-common-errors-22279e2c01",
+            "flashcard-description-2007b8a643",
+            "flashcard-max-crosswind-10-kts-dry-5-kts-wet-6f6dd359a6",
+            "flashcard-no-standing-water-on-runway-28af1599e9",
+            "flashcard-lead-arm-chop-pcl-advance-rate-ca8d1c31dc",
+            "flashcard-wing-thumbs-up-once-both-aircraft-confirmed-clean-c18432212e",
+            "flashcard-n-w-cs-96aed084c7",
+            "flashcard-description-d6f71bf630",
+            "flashcard-maintain-lateral-control-do-not-cross-runway-centerline-74a11f4adf",
+            "flashcard-description-28811d9666",
+            "flashcard-fly-to-point-one-fix-500-below-briefed-rendezvous-altitude-e099529619",
+            "flashcard-respond-to-lead-s-calls-with-position-e-g-dme-2eaf17779f",
+            "flashcard-lead-pursuit-place-lead-at-2-o-clock-closing-distance-84490cb8e6",
+            "flashcard-description-0cd25c2472"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "F3101",
+      "decks": [
+        {
+          "id": "f3101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-353bd0c34c",
+            "flashcard-lead-positions-on-downwind-side-of-runway-080616c870",
+            "flashcard-wing-confirms-lead-s-side-then-aligns-on-their-side-cd1445890c",
+            "flashcard-n-w-cs-6875ecc4ce",
+            "flashcard-description-15a13ee21b",
+            "flashcard-both-set-30-torque-check-instruments-safety-of-flight-items-d87ba80432",
+            "flashcard-lead-responds-thumbs-up-or-down-if-issue-6fed8dd123",
+            "flashcard-description-ef6142965c",
+            "flashcard-wing-executes-abort-on-their-side-ca94cbbe1b",
+            "flashcard-n-w-cs-f805bdf0de",
+            "flashcard-description-630f025d36",
+            "flashcard-level-off-to-clear-pattern-comply-with-departure-procedures-ac8368d3b3",
+            "flashcard-n-w-cs-51a3f8c67c",
+            "flashcard-description-7d2134c22b",
+            "flashcard-place-lead-slightly-above-horizon-for-initial-step-down-c5f4dfb564",
+            "flashcard-monitor-closure-rate-40-kias-over-lead-s-speed-1ed76032e8",
+            "flashcard-track-parallel-to-lead-stabilize-on-bearing-line-c460d025eb",
+            "flashcard-misjudging-relative-motion-stagnation-or-underrun-f3179d6d79",
+            "flashcard-n-w-cs-9a0d93c5c0",
+            "flashcard-description-ba06389966",
+            "flashcard-retard-pcl-to-idle-speed-brake-as-required-6811793cfa",
+            "flashcard-keep-lead-on-or-above-horizon-057662896b",
+            "flashcard-common-errors-22279e2c01",
+            "flashcard-description-2007b8a643",
+            "flashcard-max-crosswind-10-kts-dry-5-kts-wet-6f6dd359a6",
+            "flashcard-no-standing-water-on-runway-28af1599e9",
+            "flashcard-lead-arm-chop-pcl-advance-rate-ca8d1c31dc",
+            "flashcard-wing-thumbs-up-once-both-aircraft-confirmed-clean-c18432212e",
+            "flashcard-n-w-cs-96aed084c7",
+            "flashcard-description-d6f71bf630",
+            "flashcard-maintain-lateral-control-do-not-cross-runway-centerline-74a11f4adf",
+            "flashcard-description-7ed7b43f98",
+            "flashcard-altitude-step-down-a508cc9f47",
+            "flashcard-bearing-line-2fac39cc85",
+            "flashcard-description-b9488f45f1",
+            "flashcard-general-8c6a4fac9e"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "F4101",
+      "decks": [
+        {
+          "id": "f4101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-ip-designated-on-flight-schedule-by-co-9206f48307",
+            "flashcard-responsibilities-416259cf42",
+            "flashcard-always-know-wing-s-location-8c1672d4c7",
+            "flashcard-must-think-ahead-plan-proactively-b3c2d1abcf",
+            "flashcard-description-ef6142965c",
+            "flashcard-wing-executes-abort-on-their-side-ca94cbbe1b",
+            "flashcard-n-w-cs-f805bdf0de",
+            "flashcard-description-d6f71bf630",
+            "flashcard-maintain-lateral-control-do-not-cross-runway-centerline-74a11f4adf",
+            "flashcard-description-ea5c249342",
+            "flashcard-straight-level-a77158890a",
+            "flashcard-outside-aircraft-roll-wings-level-transmit-heading-altitude-715d21e30b",
+            "flashcard-climbs-039ebd1196",
+            "flashcard-descents-5d1308343d",
+            "flashcard-inside-faf-4382da88f6",
+            "flashcard-reduce-power-cautiously-at-bac-3d62fcd092",
+            "flashcard-n-w-cs-41d34a768c",
+            "flashcard-description-318a6c1a01",
+            "flashcard-call-tac-call-sign-blind-altitude-e40a5c8a7b",
+            "flashcard-call-tac-call-sign-blind-altitude-379b811159",
+            "flashcard-transmit-altitude-42320c9ad6",
+            "flashcard-direct-rejoin-at-pre-briefed-or-alternate-location-4efc1c1d4e",
+            "flashcard-call-continue-if-deconfliction-can-be-maintained-cc572df03c",
+            "flashcard-n-w-cs-f30684a58c",
+            "flashcard-description-40f3392666",
+            "flashcard-precede-signal-with-a-weeping-signal-appendix-b-81077cb085"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "F4102",
+      "decks": [
+        {
+          "id": "f4102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-bb27032fd8",
+            "flashcard-follow-natops-procedures-86280e0d2a",
+            "flashcard-natops-brief-75c8c2d2ec",
+            "flashcard-description-240a1fc674",
+            "flashcard-wing-may-use-pcl-to-idle-and-speed-brake-to-maintain-positio-3d8a9d2982",
+            "flashcard-speed-brake-effectiveness-decreases-at-lower-airspeeds-aa49459283",
+            "flashcard-cruise-position-d385403106",
+            "flashcard-fan-break-c15a8dbde1",
+            "flashcard-lead-is-in-a-turn-86a961bee8",
+            "flashcard-description-766f3e2f88",
+            "flashcard-sun-management-f687269738",
+            "flashcard-area-management-10c04e6481",
+            "flashcard-think-ahead-of-the-aircraft-f4cb3d4025",
+            "flashcard-description-67504a0cca",
+            "flashcard-gain-attention-of-other-aircraft-dcb8f6dfbe",
+            "flashcard-lead-assignment-4022cb09e3",
+            "flashcard-wing-requests-aldis-lamps-for-lead-s-landing-clearance-e7dde2cc99",
+            "flashcard-natops-brief-09de4bec53"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "F4103",
+      "decks": [
+        {
+          "id": "f4103-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-7175010c37",
+            "flashcard-wing-emergency-wing-requests-lead-left-right-90f5a9826c",
+            "flashcard-description-2007b8a643",
+            "flashcard-max-crosswind-10-kts-dry-5-kts-wet-6f6dd359a6",
+            "flashcard-no-standing-water-on-runway-28af1599e9",
+            "flashcard-lead-arm-chop-pcl-advance-rate-ca8d1c31dc",
+            "flashcard-wing-thumbs-up-once-both-aircraft-confirmed-clean-c18432212e",
+            "flashcard-n-w-cs-96aed084c7",
+            "flashcard-description-c494d6e541",
+            "flashcard-medical-assistance-4ac8a76499",
+            "flashcard-dme-method-dme-key-field-elevation-0432b40ee9",
+            "flashcard-altitude-method-21aaf96221",
+            "flashcard-at-low-altitude-recovery-unlikely-unless-field-within-3-nm-b8066c3cd7",
+            "flashcard-ejection-recommended-if-no-suitable-landing-area-exists-071e8530a5",
+            "flashcard-preferred-landing-areas-smooth-cultivated-fields-e2c6d15e20",
+            "flashcard-description-4d44f1518e",
+            "flashcard-natops-brief-c3efbfe028"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "F4104",
+      "decks": [
+        {
+          "id": "f4104-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-527aafd089",
+            "flashcard-notify-wing-and-atc-45228942db",
+            "flashcard-natops-brief-21b896e249",
+            "flashcard-description-e0e4f41d32",
+            "flashcard-lead-gives-directive-intentions-b217f4a492",
+            "flashcard-n-w-cs-ef1d0684fb",
+            "flashcard-a-radio-call-to-stop-maneuvering-exercise-e05d7a89f5",
+            "flashcard-post-terminate-actions-74f4835c08",
+            "flashcard-description-363b1c1954",
+            "flashcard-smoothly-set-power-80-torque-10k-70-torque-10k-2721ffd19b",
+            "flashcard-lead-120-aob-1g-25e5c37fda",
+            "flashcard-wing-uses-lead-pursuit-to-regain-bearing-f9a638685c",
+            "flashcard-vertical-turns-reversals-ed29f23901",
+            "flashcard-lead-calls-or-wing-requests-terminate-7b61cd9b41",
+            "flashcard-wing-maintains-cruise-anticipates-accel-decel-rejoins-parade-3da8b1413d",
+            "flashcard-n-avoid-lingering-at-6-o-clock-closure-is-difficult-to-judge-ac246e5346",
+            "flashcard-description-2d365b8e98",
+            "flashcard-after-wing-calls-ready-set-45-60-aob-64fb9023d2",
+            "flashcard-wing-a119e6ba48",
+            "flashcard-maintain-pure-pursuit-inside-the-turn-use-lag-sparingly-be113c7605",
+            "flashcard-chasing-lead-instead-of-holding-60-bearing-line-f94439275a",
+            "flashcard-n-shallow-aob-by-lead-causes-wing-to-go-acute-702aed3dc9",
+            "flashcard-description-df8eacb15e",
+            "flashcard-dfl-responsible-for-overall-mission-objectives-and-safety-ff1513f7b0",
+            "flashcard-formation-lead-tactical-lead-lead-c24681ba53",
+            "flashcard-always-know-wing-s-position-504b796857",
+            "flashcard-description-abe108be6b",
+            "flashcard-inside-a-turn-aim-for-pure-pursuit-in-cruise-position-a2ed8e81f3"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "CS2101",
+      "decks": [
+        {
+          "id": "cs2101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-363b1c1954",
+            "flashcard-smoothly-set-power-80-torque-10k-70-torque-10k-2721ffd19b",
+            "flashcard-lead-120-aob-1g-25e5c37fda",
+            "flashcard-wing-uses-lead-pursuit-to-regain-bearing-f9a638685c",
+            "flashcard-vertical-turns-reversals-ed29f23901",
+            "flashcard-lead-calls-or-wing-requests-terminate-7b61cd9b41",
+            "flashcard-wing-maintains-cruise-anticipates-accel-decel-rejoins-parade-3da8b1413d",
+            "flashcard-n-avoid-lingering-at-6-o-clock-closure-is-difficult-to-judge-ac246e5346",
+            "flashcard-description-2d365b8e98",
+            "flashcard-after-wing-calls-ready-set-45-60-aob-64fb9023d2",
+            "flashcard-wing-a119e6ba48",
+            "flashcard-maintain-pure-pursuit-inside-the-turn-use-lag-sparingly-be113c7605",
+            "flashcard-chasing-lead-instead-of-holding-60-bearing-line-f94439275a",
+            "flashcard-n-shallow-aob-by-lead-causes-wing-to-go-acute-702aed3dc9",
+            "flashcard-description-abe108be6b",
+            "flashcard-inside-a-turn-aim-for-pure-pursuit-in-cruise-position-a2ed8e81f3",
+            "flashcard-description-e0e4f41d32",
+            "flashcard-lead-gives-directive-intentions-b217f4a492",
+            "flashcard-n-w-cs-ef1d0684fb",
+            "flashcard-a-radio-call-to-stop-maneuvering-exercise-e05d7a89f5",
+            "flashcard-post-terminate-actions-74f4835c08",
+            "flashcard-description-ef6142965c",
+            "flashcard-wing-executes-abort-on-their-side-ca94cbbe1b",
+            "flashcard-n-w-cs-f805bdf0de",
+            "flashcard-description-d6f71bf630",
+            "flashcard-maintain-lateral-control-do-not-cross-runway-centerline-74a11f4adf",
+            "flashcard-description-7175010c37",
+            "flashcard-wing-emergency-wing-requests-lead-left-right-90f5a9826c",
+            "flashcard-description-overview-0555785af3",
+            "flashcard-configure-the-flight-fb44b090a5",
+            "flashcard-configure-no-later-than-faf-or-earlier-if-in-imc-or-vfr-on-t-e1f2fb0412",
+            "flashcard-lead-positions-formation-on-final-approach-course-fac-1742440e60",
+            "flashcard-important-numbers-rules-23cef72a5e",
+            "flashcard-common-errors-82349105e7",
+            "flashcard-n-w-cs-b0e4aa763a",
+            "flashcard-natops-brief-40c0d68817"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "CS2102",
+      "decks": [
+        {
+          "id": "cs2102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-description-ef6142965c",
+            "flashcard-wing-executes-abort-on-their-side-ca94cbbe1b",
+            "flashcard-n-w-cs-f805bdf0de",
+            "flashcard-description-d6f71bf630",
+            "flashcard-maintain-lateral-control-do-not-cross-runway-centerline-74a11f4adf",
+            "flashcard-description-overview-3aa01b326b",
+            "flashcard-lead-change-if-required-569c3b7eb8",
+            "flashcard-communicate-clearly-2c6a49e026",
+            "flashcard-departure-join-procedures-b4378ec9d4",
+            "flashcard-rejoin-conducted-iaw-fti-8844120a53",
+            "flashcard-altitude-separation-500-ft-wing-typically-below-lead-d1e047bce8",
+            "flashcard-description-overview-52f798f778",
+            "flashcard-fix-can-be-a-vfr-ground-reference-fms-point-or-radial-dme-fi-37ed0331d2",
+            "flashcard-at-fix-call-tac-call-sign-point-one-over-tac-983d6ae9d8",
+            "flashcard-wing-actions-d0b83e524a",
+            "flashcard-post-center-of-circle-3529248514",
+            "flashcard-lead-lag-procedure-this-assumes-left-hand-turns-cb1bee4f14",
+            "flashcard-use-aob-lead-pursuit-to-place-lead-at-2-o-clock-53664c02a6",
+            "flashcard-maintain-constant-airspeed-throughout-2356bc5b64",
+            "flashcard-initiated-with-interval-by-lead-giving-the-follow-me-signal-61e0eae488",
+            "flashcard-match-lead-s-roll-rate-92340b0d4a",
+            "flashcard-lead-makes-required-landing-pattern-calls-for-the-flight-073322619c"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "CS3101",
+      "decks": [
+        {
+          "id": "cs3101-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-tas-in-knots-2a9a346496",
+            "flashcard-alternate-airport-0d9c7dd620",
+            "flashcard-gca-pattern-9ffb32c06e",
+            "flashcard-slow-to-150-kias-acd4b2f294",
+            "flashcard-200-prior-transition-to-200-kias-cruise-5956d800b4"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "CS3102",
+      "decks": [
+        {
+          "id": "cs3102-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-natops-provides-best-practices-not-substitutes-for-judgment-e6435335ed",
+            "flashcard-maintain-aircraft-control-analyze-act-land-asap-2e7c0a6c68",
+            "flashcard-use-crm-both-inside-and-outside-the-cockpit-957491bbe8",
+            "flashcard-if-on-ifr-flight-plan-cannot-deviate-without-atc-coordinatio-71a1cb3e8f",
+            "flashcard-no-single-rule-covers-all-situations-pilot-judgment-required-2499541c5e",
+            "flashcard-continue-flight-under-vfr-1c7365f7ff",
+            "flashcard-last-assigned-route-in-atc-clearance-ee65c4322c",
+            "flashcard-altitude-atc-said-to-expect-43027616ce",
+            "flashcard-if-clearance-limit-is-an-iaf-95d6153389",
+            "flashcard-at-efc-time-if-given-or-upon-arrival-if-no-efc-5c868ce72f",
+            "flashcard-121-5-mhz-if-available-2e6d46fc82",
+            "flashcard-altitude-changes-adjust-per-mea-mca-mra-requirements-8a37c942bb"
+          ]
+        }
+      ]
+    },
+    {
+      "eventCode": "CS4290",
+      "decks": [
+        {
+          "id": "cs4290-flashcards",
+          "title": "Discussion Items",
+          "summary": "Official discussion items and repeated memory references for focused recall practice.",
+          "cardIDs": [
+            "flashcard-ip-s-should-select-one-of-the-following-to-perform-as-a-simu-3a63970b29",
+            "flashcard-fly-a-published-missed-approach-procedure-e8c8a8f05d",
+            "flashcard-simulated-in-flight-section-emergency-51d94b6ce7"
+          ]
+        }
+      ]
+    }
+  ]
+}

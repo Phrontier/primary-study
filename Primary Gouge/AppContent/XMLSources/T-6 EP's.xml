@@ -1,0 +1,119 @@
+<deck name="T-6 EP's" tags='Primary'><fields><rich-text name='Front' sides='11'></rich-text><rich-text name='Back' sides='01'></rich-text></fields><cards><card><rich-text name='Back'><p style="text-align: left;">1. PCL - OFF</p>
+<p style="text-align: left;">2. STARTER SWITCH - AUTO/RESET</p>
+<p style="text-align: left;">3. PCL - IDLE, ABOVE 13% N1</p>
+<p style="text-align: left;">4. ENGINE INSTRUMENTS - MONITOR ITT, N1, AND OIL PRESSURE</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If airstart is unsuccessful</p>
+<p style="text-align: left;">5. PCL - OFF</p>
+<p style="text-align: left;">6. FIREWALL SHUTOFF HANDLE - PULL</p>
+<p style="text-align: left;">7. EXECUTE FORCED LANDING OR EJECT</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If airstart is successful</p>
+<p style="text-align: left;">8. PCL - AS REQUIRED AFTER N1 REACHES IDLE RPM (APPROX 67% N1)</p>
+<p style="text-align: left;">9. PEL - EXECUTE</p></rich-text><rich-text name='Front'><p>Immediate Airstart (PMU Norm)</p></rich-text></card><card><rich-text name='Back'><p style="text-align: left;">1. ISS MODE SELECTOR - SOLO</p>
+<p style="text-align: left;">2. SEAT SAFETY PIN - INSTALL (BOTH)</p>
+<p style="text-align: left;">3.<br/>PARKING BRAKE - AS REQUIRED</p>
+<p style="text-align: left;">4. CANOPY - OPEN</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If canopy cannot be opened or situation requires right side egress</p>
+<p style="text-align: left;">5. CFS HANDLE SAFETY PIN - REMOVE (BOTH)</p>
+<p style="text-align: left;">6. CFS HANDLE - ROTATE 90 DEGREES COUNTERCLOCKWISE AND PULL (BOTH)</p>
+<p style="text-align: left;">7. UPPER FITTINGS, LOWER FITTINGS, AND LEG RESTRAINT GARTERS - RELEASE (BOTH)</p>
+<p style="text-align: left;">8. BAT, GEN, AND AUX BAT SWITCHES - OFF</p>
+<p style="text-align: left;">9. EVACUATE AIRCRAFT</p></rich-text><rich-text name='Front'><p>Emergency Ground Egress</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>OBOGS - CHECK (BOTH)<br/>
+<ul>
+<li>OBOGS supply lever - ON</li>
+<li>OBOGS concentration lever - MAX</li>
+<li>OBOGS pressure lever - EMERGENCY</li>
+</ul>
+</li>
+</ol>
+<p><br/></p></rich-text><rich-text name='Front'><p>Smoke And Fume Elimination / Electrical Fire</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>PCL - MINIMUM NECESSARY TO INTERCEPT ELP; AVOID UNNECESSARY PCL MOVEMENTS</li>
+<li>PEL - EXECUTE</li>
+</ol></rich-text><rich-text name='Front'><p>Chip Detector Warning</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>PCL - IDLE</li>
+<li>BRAKES - AS REQUIRED</li>
+</ol></rich-text><rich-text name='Front'><p>Abort</p></rich-text></card><card><rich-text name='Back'><p style="text-align: left;">1. PCL - MID RANGE</p>
+<p style="text-align: left;">2. PMU SWITCH - OFF</p>
+<p style="text-align: left;">3. PROP SYS CIRCUIT BREAKER (Left Front Console) - PULL, IF Np STABLE BELOW 40%</p>
+<p style="text-align: left;">4. PCL - AS REQUIRED</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If power is sufficient for continued flight</p>
+<p style="text-align: left;">5. PEL - EXECUTE</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If power is insufficient to complete PEL</p>
+<p style="text-align: left;">6. PROP SYS CIRCUIT BREAKER - RESET, AS REQUIRED</p>
+<p style="text-align: left;">7. PCL - OFF</p>
+<p style="text-align: left;">8. FIREWALL SHUTOFF HANDLE - PULL</p>
+<p style="text-align: left;">9. EXECUTE FORCED LANDING OR EJECT</p>
+<p style="text-align: left;"><br/></p></rich-text><rich-text name='Front'><p>Uncommanded Power Changes / Loss of Power / Uncommanded Propeller Feather</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>AIRSPEED - 125 KIAS PRIOR TO EXTENDING LANDING GEAR</li>
+<li>EMER LDG GR HANDLE - PULL (AS REQUIRED)</li>
+<li>AIRSPEED - 120 KIAS MINIMUM UNTIL INTERCEPTING FINAL; 110 KIAS MINIMUM ON FINAL</li>
+<li>FLAPS - AS REQUIRED</li>
+</ol></rich-text><rich-text name='Front'><p>Forced Landing</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>GREEN RING - PULL (AS REQUIRED) (BOTH)</li>
+<li>DESCENT BELOW 10,000 FT MSL - INITIATE</li>
+<li>OBOGS SUPPLY LEVER - OFF (BOTH)</li>
+</ol></rich-text><rich-text name='Front'><p>OBOGS Failure / Overtemp / Physiological Symptoms</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>PCL - OFF</li>
+<li>FIREWALL SHUTOFF HANDLE - PULL</li>
+<li>EMERGENCY GROUND EGRESS - AS REQUIRED</li>
+</ol></rich-text><rich-text name='Front'><p>Emergency Engine Shutdown on the Ground</p></rich-text></card><card><rich-text name='Back'><p style="text-align: left;">If fire is confirmed</p>
+<p style="text-align: left;">1. PCL - OFF</p>
+<p style="text-align: left;">2. FIREWALL SHUTOFF HANDLE - PULL</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If fire is extinguished</p>
+<p style="text-align: left;">3. FORCED LANDING - EXECUTE</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If fire does not extinguish or forced landing is impractical</p>
+<p style="text-align: left;">4. EJECT (BOTH)</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If fire is not confirmed</p>
+<p style="text-align: left;">5. PEL - EXECUTE</p></rich-text><rich-text name='Front'><p>Fire In Flight</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>PEL - EXECUTE</li>
+</ol></rich-text><rich-text name='Front'><p>High Fuel Flow</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>PEL - EXECUTE</li>
+<li>BOOST PUMP SWITCH - ON</li>
+</ol></rich-text><rich-text name='Front'><p>Low Fuel Pressure</p></rich-text></card><card><rich-text name='Back'><p>1. PCL - OFF or STARTER switch - AUTO/RESET</p></rich-text><rich-text name='Front'><p>Abort Start Procedure</p></rich-text></card><card><rich-text name='Back'><p style="text-align: left;">1. PCL - SLOWLY RETARD BELOW STALL THRESHOLD</p>
+<p style="text-align: left;">2. DEFOG SWITCH - ON</p>
+<p style="text-align: left;">3. PCL - SLOWLY ADVANCE (AS REQUIRED)</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If power is sufficient for continued flight</p>
+<p style="text-align: left;">4. PEL - EXECUTE</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If power is insufficient to complete PEL</p>
+<p style="text-align: left;">5. PCL - OFF</p>
+<p style="text-align: left;">6. FIREWALL SHUTOFF HANDLE - PULL</p>
+<p style="text-align: left;">7. EXECUTE FORCED LANDING OR EJECT</p></rich-text><rich-text name='Front'><p>Compressor Stalls</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>PCL - IDLE</li>
+<li>CONTROLS - NEUTRAL</li>
+<li>ALTITUDE - CHECK</li>
+<li>RECOVER FROM UNUSUAL ATTITUDE</li>
+</ol></rich-text><rich-text name='Front'><p>Inadvertent Departure From Controlled Flight</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>TURN TO NEAREST SUITABLE FIELD</li>
+<li>CLIMB OR ACCELERATE TO INTERCEPT ELP</li>
+<li>GEAR, FLAPS, SPEED BRAKE - UP</li>
+</ol></rich-text><rich-text name='Front'><p>Precautionary Emergency Landing (PEL)</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>EJECTION HANDLE - PULL (BOTH)</li>
+</ol></rich-text><rich-text name='Front'><p>Eject</p></rich-text></card><card><rich-text name='Back'><p style="text-align: left;">If only amber oil PX caution illuminates</p>
+<p style="text-align: left;">1. TERMINATE MANEUVER</p>
+<p style="text-align: left;">2. CHECK OIL PRESSURE; IF OIL PRESSURE IS NORMAL, CONTINUE OPERATIONS</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If red oil PX warning illuminates and/or amber oil PX caution remains illuminated for 5 seconds</p>
+<p style="text-align: left;">3. PCL - MINIMUM NECESSARY TO INTERCEPT ELP; AVOID UNNECESSARY PCL MOVEMENTS</p>
+<p style="text-align: left;">4. PEL - EXECUTE</p></rich-text><rich-text name='Front'><p>Oil System Malfunction or Low Oil Pressure</p></rich-text></card><card><rich-text name='Back'><p style="text-align: left;">1. ZOOM/GLIDE - 125 KNOTS (MINIMUM)</p>
+<p style="text-align: left;">2. PCL - OFF</p>
+<p style="text-align: left;">3. INTERCEPT ELP</p>
+<p style="text-align: left;">4. AIRSTART - ATTEMPT IF WARRANTED</p>
+<p style="text-align: left;"><br/></p>
+<p style="text-align: left;">If conditions do not warrant an airstart</p>
+<p style="text-align: left;">5. FIREWALL SHUTOFF HANDLE - PULL</p>
+<p style="text-align: left;">6. EXECUTE FORCED LANDING OR EJECT</p></rich-text><rich-text name='Front'><p>Engine Failure During Flight</p></rich-text></card><card><rich-text name='Back'><ol>
+<li>AIRSPEED - 110 KIAS (MINIMUM)</li>
+<li>PCL - AS REQUIRED</li>
+<li>EMER LDG GR HANDLE - PULL (AS REQUIRED)</li>
+<li>FLAPS - AS REQUIRED</li>
+</ol></rich-text><rich-text name='Front'><p>Engine Failure Immediately After Takeoff (Sufficient Runway Remaining Straight Ahead)</p></rich-text></card></cards></deck>

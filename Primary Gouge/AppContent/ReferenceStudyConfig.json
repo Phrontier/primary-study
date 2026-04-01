@@ -1,0 +1,20 @@
+{
+  "libraryStudyHubs": [
+    {
+      "id": "emergency-reference-hub",
+      "title": "Emergency references",
+      "summary": "Canonical EPs, Limits, and N/W/C flashcards plus the two reference documents students keep coming back to.",
+      "resourceIDs": [
+        "ep-limits-key",
+        "ep-nwcs-admin"
+      ],
+      "deckTitle": "EPs, Limits, N/W/C Flashcards",
+      "deckSummary": "Study the canonical EPs, limits, and N/W/C memory references in one filtered deck.",
+      "availableFilters": [
+        "ep",
+        "limits",
+        "nwc"
+      ]
+    }
+  ]
+}

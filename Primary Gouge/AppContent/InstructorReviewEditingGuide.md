@@ -1,0 +1,319 @@
+# Instructor Review JSON Editing Guide
+
+This guide explains how to safely edit the instructor review seed content in Xcode.
+
+The app uses two files:
+
+- `InstructorReviewSeedBase.json`
+- `InstructorReviewSeedOverrides.json`
+
+## Which file should I edit?
+
+Use `InstructorReviewSeedOverrides.json` for almost all manual fixes.
+
+Treat `InstructorReviewSeedBase.json` as generated content:
+
+- it is created from the workbook import pipeline
+- it may be regenerated later
+- manual edits there can be overwritten
+
+If you want a change to survive future reimports, put it in `InstructorReviewSeedOverrides.json`.
+
+## Important rules
+
+Do:
+
+- keep both files as valid JSON
+- use the existing review `id` from the base file
+- only include the fields you want to override
+- use overrides for score fixes, text cleanup, naming cleanup, squadron fixes, and status changes
+
+Do not:
+
+- add `//` comments
+- add `/* ... */` comments
+- leave trailing commas in JSON
+- hand-edit the base file for long-term fixes if the importer may run again
+
+## Stable ID workflow
+
+1. Open `InstructorReviewSeedBase.json`.
+2. Find the review you want to correct.
+3. Copy its `id`.
+4. Open `InstructorReviewSeedOverrides.json`.
+5. Add a new object inside the `overrides` array with that same `id`.
+6. Only include the fields you want to change.
+
+## Override file shape
+
+`InstructorReviewSeedOverrides.json` should always look like this at the top level:
+
+```json
+{
+  "overrides": []
+}
+```
+
+Each override object must include:
+
+- `id`
+
+Everything else is optional.
+
+## Supported override fields
+
+These are the fields the app currently supports in an override:
+
+- `id`
+- `instructorName`
+- `squadronID`
+- `eventName`
+- `eventKind`
+- `chillScore`
+- `gradingScore`
+- `reviewText`
+- `status`
+
+## Allowed values
+
+### `eventKind`
+
+Allowed values:
+
+- `"sim"`
+- `"flight"`
+
+### `status`
+
+Allowed values:
+
+- `"pending"`
+- `"approved"`
+- `"rejected"`
+
+### `squadronID`
+
+Allowed values:
+
+- `"tw-4"`
+- `"tw-5"`
+- `"vt-27"`
+- `"vt-28"`
+- `"vt-2"`
+- `"vt-3"`
+- `"vt-6"`
+
+### `chillScore` and `gradingScore`
+
+Rules:
+
+- must be integers
+- valid range is `1` through `7`
+
+## Copy-paste examples
+
+### Fix a bad chill score
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "chillScore": 6
+    }
+  ]
+}
+```
+
+### Fix grading only
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "gradingScore": 5
+    }
+  ]
+}
+```
+
+### Fix both ratings at once
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "chillScore": 6,
+      "gradingScore": 5
+    }
+  ]
+}
+```
+
+### Rename an instructor
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "instructorName": "Abordo, Carlos"
+    }
+  ]
+}
+```
+
+### Set or fix an event name
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-angle-sarai-003",
+      "eventName": "I4104"
+    }
+  ]
+}
+```
+
+### Replace review text
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-002",
+      "reviewText": "Strong brief, very relaxed cockpit, and clear expectations before takeoff. Helpful event-specific prep note: contact him ahead of instrument flights to align on the plan."
+    }
+  ]
+}
+```
+
+### Move a review to a different squadron
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "squadronID": "vt-28"
+    }
+  ]
+}
+```
+
+### Correct sim vs flight classification
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "eventKind": "sim"
+    }
+  ]
+}
+```
+
+### Force a review to rejected
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "status": "rejected"
+    }
+  ]
+}
+```
+
+## Multiple overrides in one file
+
+You can include as many override objects as you want:
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "chillScore": 6,
+      "gradingScore": 5
+    },
+    {
+      "id": "seed-flight-angle-sarai-003",
+      "eventName": "I4104"
+    },
+    {
+      "id": "seed-pending-bazemore-001",
+      "status": "approved"
+    }
+  ]
+}
+```
+
+## Common edit recipes
+
+### I want to polish a review before App Store release
+
+Use an override with:
+
+- `reviewText`
+- `chillScore`
+- `gradingScore`
+
+### I want to remove a wrong event and leave no event name
+
+Use:
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-angle-sarai-003",
+      "eventName": null
+    }
+  ]
+}
+```
+
+### I want to fix a wrong instructor name but keep everything else
+
+Use only:
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "instructorName": "Abordo, Carlos"
+    }
+  ]
+}
+```
+
+### I want to fix a wrong squadron and event type together
+
+Use:
+
+```json
+{
+  "overrides": [
+    {
+      "id": "seed-flight-abordo-001",
+      "squadronID": "tw-4",
+      "eventKind": "sim"
+    }
+  ]
+}
+```
+
+## Reimport note
+
+`InstructorReviewSeedBase.json` is regenerated by:
+
+- `Tools/ImportInstructorGougeWorkbook.py`
+
+`InstructorReviewSeedOverrides.json` is intended to survive reimports, so put your long-term manual cleanup there.

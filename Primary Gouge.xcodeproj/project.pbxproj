@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1C3A4F012F7AB10000C64094 /* Contents in Resources */ = {isa = PBXBuildFile; fileRef = 1C3A4F022F7AB10000C64094 /* Contents */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		95D9250F2F77308900C64094 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C3A4F022F7AB10000C64094 /* Contents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Contents; sourceTree = "<group>"; };
 		95D925012F77308900C64094 /* Primary Gouge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Primary Gouge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D9250E2F77308900C64094 /* Primary GougeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Primary GougeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D925182F77308900C64094 /* Primary GougeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Primary GougeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +80,7 @@
 		95D924F82F77308900C64094 = {
 			isa = PBXGroup;
 			children = (
+				1C3A4F022F7AB10000C64094 /* Contents */,
 				95D925032F77308900C64094 /* Primary Gouge */,
 				95D925112F77308900C64094 /* Primary GougeTests */,
 				95D9251B2F77308900C64094 /* Primary GougeUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C3A4F012F7AB10000C64094 /* Contents in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,5039 @@
+{
+  "categories": [
+    {
+      "id": "systems-and-procedures",
+      "title": "Systems & Procedures",
+      "summary": "Engine, fuel, hydraulics, electrics, cockpit systems, and normal operating procedures.",
+      "iconName": "gearshape.2.fill",
+      "tags": [
+        "systems",
+        "procedures",
+        "natops"
+      ]
+    },
+    {
+      "id": "performance-limits-weather",
+      "title": "Performance, Limits & Weather",
+      "summary": "Takeoff and landing performance, limitations, winds, icing, and operational weather knowledge.",
+      "iconName": "gauge.with.needle.fill",
+      "tags": [
+        "performance",
+        "limits",
+        "weather",
+        "natops"
+      ]
+    },
+    {
+      "id": "emergency-procedures",
+      "title": "Emergency Procedures",
+      "summary": "Ejection, airstarts, abnormal indications, oxygen, and other immediate-action knowledge.",
+      "iconName": "exclamationmark.shield.fill",
+      "tags": [
+        "ep",
+        "emergency",
+        "natops"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling",
+      "title": "Aerodynamics & Handling",
+      "summary": "Stalls, flight characteristics, configuration effects, and practical aircraft handling knowledge.",
+      "iconName": "airplane",
+      "tags": [
+        "aerodynamics",
+        "handling",
+        "natops"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "performance-limits-weather-001",
+      "categoryID": "performance-limits-weather",
+      "prompt": "____altitude is the altitude at which 100% torque is no longer available.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Maximum"
+        },
+        {
+          "id": "b",
+          "text": "Minimum"
+        },
+        {
+          "id": "c",
+          "text": "Critical"
+        },
+        {
+          "id": "d",
+          "text": "Flight"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference A2-1 for the full procedure or limitation context.",
+      "reference": "A2-1",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-a2-1"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-002",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Although there is no limit for operation at maximum continuous power, sustained operation at maximum power may significantly reduce engine service life.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference A2-2 for the full procedure or limitation context.",
+      "reference": "A2-2",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-a2-2",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-003",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Maximum _______ speed is the maximum speed at which an abort may be started and the aircraft stopped within the remaining runway length.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Braking"
+        },
+        {
+          "id": "b",
+          "text": "Abort"
+        },
+        {
+          "id": "c",
+          "text": "Engine failure"
+        },
+        {
+          "id": "d",
+          "text": "Rotation"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference A3-2 for the full procedure or limitation context.",
+      "reference": "A3-2",
+      "tags": [
+        "eps",
+        "landing-pattern",
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-a3-2",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-004",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Increase takeoff speeds by ____% of the gust increment up to a maximum of 10 knots.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "25"
+        },
+        {
+          "id": "b",
+          "text": "50"
+        },
+        {
+          "id": "c",
+          "text": "75"
+        },
+        {
+          "id": "d",
+          "text": "100"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference A3-3 for the full procedure or limitation context.",
+      "reference": "A3-3",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-a3-3"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-001",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The engine has been flat rated to produce _______ shaft horsepower.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "900"
+        },
+        {
+          "id": "b",
+          "text": "1100"
+        },
+        {
+          "id": "c",
+          "text": "1300"
+        },
+        {
+          "id": "d",
+          "text": "1500"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-4 for the full procedure or limitation context.",
+      "reference": "1-4",
+      "tags": [
+        "natops",
+        "ref-1-4",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-002",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The sight glass is ___ to be used for checking oil level; only the ___ is to be used for correct indication of oil level in the tank.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "required, sight glass"
+        },
+        {
+          "id": "b",
+          "text": "authorized, low oil px light"
+        },
+        {
+          "id": "c",
+          "text": "not, dipstick"
+        },
+        {
+          "id": "d",
+          "text": "not, low oil px light"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-4 for the full procedure or limitation context.",
+      "reference": "1-4",
+      "tags": [
+        "natops",
+        "ref-1-4",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-003",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The SCU activates the red OIL PX warning if oil pressure drops to ____ psi or below when above ____ power.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "15, IDLE"
+        },
+        {
+          "id": "b",
+          "text": "15, 60%"
+        },
+        {
+          "id": "c",
+          "text": "40, 60%"
+        },
+        {
+          "id": "d",
+          "text": "40, IDLE"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-6 for the full procedure or limitation context.",
+      "reference": "1-6",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "ref-1-6",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-004",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The SCU activates the red OIL PX warning if oil pressure drops ___ psi or below at idle power.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "15"
+        },
+        {
+          "id": "b",
+          "text": "29"
+        },
+        {
+          "id": "c",
+          "text": "40"
+        },
+        {
+          "id": "d",
+          "text": "65"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-6 for the full procedure or limitation context.",
+      "reference": "1-6",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "ref-1-6",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-005",
+      "categoryID": "systems-and-procedures",
+      "prompt": "During an auto start or normal operation with the ignition switch set to ____, the PMU will energize and de-energize the igniters as required.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "ON"
+        },
+        {
+          "id": "b",
+          "text": "NORM"
+        },
+        {
+          "id": "c",
+          "text": "AUTO"
+        },
+        {
+          "id": "d",
+          "text": "AUTO/RESET"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-14 for the full procedure or limitation context.",
+      "reference": "1-14",
+      "tags": [
+        "natops",
+        "ref-1-14",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-006",
+      "categoryID": "systems-and-procedures",
+      "prompt": "When the IGNITION switch is set to ON or when the igniters are activated for an auto start, a green IGN SEL annunciator is illuminated.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-14 for the full procedure or limitation context.",
+      "reference": "1-14",
+      "tags": [
+        "natops",
+        "ref-1-14",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-007",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Power for the start control is provided through a circuit breaker, placarded START, located on the ____ bus circuit breaker panel in the front cockpit.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "battery"
+        },
+        {
+          "id": "b",
+          "text": "generator"
+        },
+        {
+          "id": "c",
+          "text": "aux battery"
+        },
+        {
+          "id": "d",
+          "text": "AC"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-14 for the full procedure or limitation context.",
+      "reference": "1-14",
+      "tags": [
+        "natops",
+        "ref-1-14",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-008",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Power for the ignition system is provided through a circuit breaker, placarded IGN, located on the ____ bus circuit breaker panel in the front cockpit.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "battery"
+        },
+        {
+          "id": "b",
+          "text": "generator"
+        },
+        {
+          "id": "c",
+          "text": "aux batter"
+        },
+        {
+          "id": "d",
+          "text": "AC"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-14 for the full procedure or limitation context.",
+      "reference": "1-14",
+      "tags": [
+        "natops",
+        "ref-1-14",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-009",
+      "categoryID": "systems-and-procedures",
+      "prompt": "A chip detector is mounted in the ____ to detect ferrous material in the oil.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "RGB"
+        },
+        {
+          "id": "b",
+          "text": "PCL"
+        },
+        {
+          "id": "c",
+          "text": "PMU"
+        },
+        {
+          "id": "d",
+          "text": "PIU"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-12 for the full procedure or limitation context.",
+      "reference": "1-12",
+      "tags": [
+        "eps",
+        "natops",
+        "ref-1-12",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-010",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The ____ and the ____ automatically control the propeller blade angle (pitch) and propeller speed (NP).",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "RGB, PMU"
+        },
+        {
+          "id": "b",
+          "text": "PMU, PCL"
+        },
+        {
+          "id": "c",
+          "text": "PMU, PIU"
+        },
+        {
+          "id": "d",
+          "text": "PCL, PIU"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-12 for the full procedure or limitation context.",
+      "reference": "1-12",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-1-12",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-011",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The propeller system is designed to maintain a constant speed of _____ rpm (100% NP) during most flight conditions.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "30,000"
+        },
+        {
+          "id": "b",
+          "text": "3000-5000"
+        },
+        {
+          "id": "c",
+          "text": "2000"
+        },
+        {
+          "id": "d",
+          "text": "None of the above"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-12 for the full procedure or limitation context.",
+      "reference": "1-12",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-1-12",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-012",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If PMU function is lost or deactivated, NP may peak above 100% during power changes and then return to the governed range.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-14 for the full procedure or limitation context.",
+      "reference": "1-14",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-1-14",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-013",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If the PCL is inadvertently moved to cutoff and the engine is shutting down, do not attempt to relight the engine by moving the PCL to idle or severe damage could occur to the engine",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-17 for the full procedure or limitation context.",
+      "reference": "1-17",
+      "tags": [
+        "natops",
+        "nwc",
+        "ref-1-17",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-014",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The PMU operates in either flight or ground mode. The aircraft _____ control these modes.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "radar altimeter"
+        },
+        {
+          "id": "b",
+          "text": "PCL position"
+        },
+        {
+          "id": "c",
+          "text": "Landing gear position"
+        },
+        {
+          "id": "d",
+          "text": "weight-on-wheels switches on the main gear struts."
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-17 for the full procedure or limitation context.",
+      "reference": "1-17",
+      "tags": [
+        "landing-pattern",
+        "natops",
+        "ref-1-17",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-015",
+      "categoryID": "systems-and-procedures",
+      "prompt": "In ground mode, idle is ____% N1 and in flight mode, idle is ____% N1 (min).",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "60, 67"
+        },
+        {
+          "id": "b",
+          "text": "60-61, 67"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 40-41, 60 for the full procedure or limitation context.",
+      "reference": "40-41, 60",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-40-41-60",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-016",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Above _____ feet PA, the PMU raises N1 to maintain NP above __ % to avoid the stress on the propeller during spins.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "18,000, 40-50"
+        },
+        {
+          "id": "b",
+          "text": "18,069, 67"
+        },
+        {
+          "id": "c",
+          "text": "10,000, 80"
+        },
+        {
+          "id": "d",
+          "text": "None of the above"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-17 for the full procedure or limitation context.",
+      "reference": "1-17",
+      "tags": [
+        "limits",
+        "maneuvers",
+        "natops",
+        "nwc",
+        "ref-1-17",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-017",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Illumination of both the ____ warning and ____ caution on the EICAS indicates the system is in manual mode.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "PMU OFF, PMU FAIL"
+        },
+        {
+          "id": "b",
+          "text": "PMU FAIL, PMU STATUS"
+        },
+        {
+          "id": "c",
+          "text": "PMU OFF, PMU STATUS"
+        },
+        {
+          "id": "d",
+          "text": "None of the above"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-20 for the full procedure or limitation context.",
+      "reference": "1-20",
+      "tags": [
+        "eps",
+        "natops",
+        "nwc",
+        "ref-1-20",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-018",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Engine starts are not recommended with the PMU in the manual mode.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-20 for the full procedure or limitation context.",
+      "reference": "1-20",
+      "tags": [
+        "natops",
+        "nwc",
+        "ref-1-20",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-019",
+      "categoryID": "systems-and-procedures",
+      "prompt": "A PMU STATUS caution in flight indicates:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Imminent engine failure"
+        },
+        {
+          "id": "b",
+          "text": "Weight-on-wheels switches fault and/or mismatch"
+        },
+        {
+          "id": "c",
+          "text": "PMU has experienced a fault not serious enough to revert to manual mode."
+        },
+        {
+          "id": "d",
+          "text": "PCL retard is required"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-20 for the full procedure or limitation context.",
+      "reference": "1-20",
+      "tags": [
+        "natops",
+        "nwc",
+        "ref-1-20",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-020",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The ______ powers the PMU when propeller RPM is above 40-50 % NP.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "generator bus"
+        },
+        {
+          "id": "b",
+          "text": "permanent magnet alternator (PMA)"
+        },
+        {
+          "id": "c",
+          "text": "aux battery"
+        },
+        {
+          "id": "d",
+          "text": "battery bus"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-17 for the full procedure or limitation context.",
+      "reference": "1-17",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-1-17",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-021",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If the auto balance system shuts off without reducing the fuel imbalance to ___ pounds or less, the auto balance system may be reset to provide an additional ___ minutes to balance the fuel load.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "20, 2"
+        },
+        {
+          "id": "b",
+          "text": "50, 3"
+        },
+        {
+          "id": "c",
+          "text": "110, 5"
+        },
+        {
+          "id": "d",
+          "text": "30, 2"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-21 for the full procedure or limitation context.",
+      "reference": "1-21",
+      "tags": [
+        "eps",
+        "natops",
+        "ref-1-21",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-022",
+      "categoryID": "systems-and-procedures",
+      "prompt": "During inverted flight, a weighted rod in the pickup valve closes off the normal fuel pickup, and opens the inverted flight fuel pickup. This provides ____ of fuel regardless of orientation, and prevents air ingestion into the fuel system.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "a minimum of 15 seconds"
+        },
+        {
+          "id": "b",
+          "text": "a minimum of 60 seconds"
+        },
+        {
+          "id": "c",
+          "text": "a maximum of 30 seconds"
+        },
+        {
+          "id": "d",
+          "text": "an unlimited"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-24 for the full procedure or limitation context.",
+      "reference": "1-24",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-1-24",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "emergency-procedures-001",
+      "categoryID": "emergency-procedures",
+      "prompt": "When correcting a fuel imbalance, set the MANUAL FUEL BAL switch to the low tank.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-31 for the full procedure or limitation context.",
+      "reference": "3-31",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-31",
+        "systems"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-023",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If a fuel probe fails, ____ will continue to provide an accurate indication of minimum fuel level.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "the fuel gage"
+        },
+        {
+          "id": "b",
+          "text": "the auto balance"
+        },
+        {
+          "id": "c",
+          "text": "backup fuel indication system"
+        },
+        {
+          "id": "d",
+          "text": "the low fuel warning lights"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-24 for the full procedure or limitation context.",
+      "reference": "1-24",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "ref-1-24",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-024",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The pilot applying the most pedal force determines the amount of braking being used.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-28 for the full procedure or limitation context.",
+      "reference": "1-28",
+      "tags": [
+        "natops",
+        "ref-1-28",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-025",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If the hydraulic pressure in the emergency accumulator drops below ____ psi, an amber EHYD PX LO caution will illuminate.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "3000 (+/- 150)"
+        },
+        {
+          "id": "b",
+          "text": "1790 (+/- 150)"
+        },
+        {
+          "id": "c",
+          "text": "3250 (+/- 150)"
+        },
+        {
+          "id": "d",
+          "text": "2400 (+/- 150)"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-29 for the full procedure or limitation context.",
+      "reference": "1-29",
+      "tags": [
+        "eps",
+        "limits",
+        "natops",
+        "nwc",
+        "ref-1-29",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-026",
+      "categoryID": "systems-and-procedures",
+      "prompt": "A normal gear extension/retraction sequence takes approximately ____ seconds.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "6"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 10-15 for the full procedure or limitation context.",
+      "reference": "10-15",
+      "tags": [
+        "landing-pattern",
+        "natops",
+        "ref-10-15",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-027",
+      "categoryID": "systems-and-procedures",
+      "prompt": "30",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1-32"
+        },
+        {
+          "id": "b",
+          "text": "Pulling the emergency landing gear extension handle will extend the gear and flaps."
+        },
+        {
+          "id": "c",
+          "text": "True"
+        },
+        {
+          "id": "d",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-32, 34 for the full procedure or limitation context.",
+      "reference": "1-32, 34",
+      "tags": [
+        "eps",
+        "landing-pattern",
+        "natops",
+        "ref-1-32-34",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-028",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Normal cockpit indications when the emergency extension system is used are:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "three green gear lights"
+        },
+        {
+          "id": "b",
+          "text": "three red gear lights, red light in the gear handle"
+        },
+        {
+          "id": "c",
+          "text": "two red main gear lights, red light in the gear handle"
+        },
+        {
+          "id": "d",
+          "text": "A and C"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-32 for the full procedure or limitation context.",
+      "reference": "1-32",
+      "tags": [
+        "eps",
+        "natops",
+        "ref-1-32",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-029",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The brake system ____ affected by a failure of the aircraft hydraulic system.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "is"
+        },
+        {
+          "id": "b",
+          "text": "is not"
+        },
+        {
+          "id": "c",
+          "text": "could be"
+        },
+        {
+          "id": "d",
+          "text": "should be"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-28 for the full procedure or limitation context.",
+      "reference": "1-28",
+      "tags": [
+        "natops",
+        "ref-1-28",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-030",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Normal flap operation and position indication is unavailable anytime:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "the battery bus has failed"
+        },
+        {
+          "id": "b",
+          "text": "when the aux battery is the only source of electrical power"
+        },
+        {
+          "id": "c",
+          "text": "the generator bus has failed"
+        },
+        {
+          "id": "d",
+          "text": "either A or B"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-34 for the full procedure or limitation context.",
+      "reference": "1-34",
+      "tags": [
+        "natops",
+        "ref-1-34",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-031",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The trim system control circuits give ____ priority if trim selection conflicts between cockpits.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "the rear cockpit"
+        },
+        {
+          "id": "b",
+          "text": "the forward cockpit"
+        },
+        {
+          "id": "c",
+          "text": "the first actuation"
+        },
+        {
+          "id": "d",
+          "text": "whoever is in norm"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-35 for the full procedure or limitation context.",
+      "reference": "1-35",
+      "tags": [
+        "natops",
+        "ref-1-35",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-032",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The ____ senses engine torque, altitude, airspeed, and pitch rate, and computes a desired rudder trim tab position.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "trim computer"
+        },
+        {
+          "id": "b",
+          "text": "PMU"
+        },
+        {
+          "id": "c",
+          "text": "TAT"
+        },
+        {
+          "id": "d",
+          "text": "Trim Aid Device (TAD)"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-38 for the full procedure or limitation context.",
+      "reference": "1-38",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-1-38",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-033",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If the hydraulic reservoir fluid level indicator shows in the area labeled FULL AC or FULL AD:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "have maintenance personnel service the system"
+        },
+        {
+          "id": "b",
+          "text": "the system requires servicing after the flight"
+        },
+        {
+          "id": "c",
+          "text": "the system is fully serviced"
+        },
+        {
+          "id": "d",
+          "text": "get another aircraft"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-10 for the full procedure or limitation context.",
+      "reference": "2-10",
+      "tags": [
+        "natops",
+        "ref-2-10",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-034",
+      "categoryID": "systems-and-procedures",
+      "prompt": "When flying solo, failure to secure the rear seat oxygen regulator will result in the loss of ability to:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "deactivate OBOGS from the front seat"
+        },
+        {
+          "id": "b",
+          "text": "activate OBOGS from the front seat"
+        },
+        {
+          "id": "c",
+          "text": "eject from the front seat"
+        },
+        {
+          "id": "d",
+          "text": "select EMER oxygen from the front seat"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-11 for the full procedure or limitation context.",
+      "reference": "2-11",
+      "tags": [
+        "eps",
+        "natops",
+        "ref-2-11",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-035",
+      "categoryID": "systems-and-procedures",
+      "prompt": "To preclude unnecessary wear to nose wheel steering and tire, ____ nose wheel steering prior to executing sharp turns with differential braking.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "disengage"
+        },
+        {
+          "id": "b",
+          "text": "engage"
+        },
+        {
+          "id": "c",
+          "text": "fully deflect"
+        },
+        {
+          "id": "d",
+          "text": "none of the above"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-33 for the full procedure or limitation context.",
+      "reference": "1-33",
+      "tags": [
+        "natops",
+        "ref-1-33",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "emergency-procedures-002",
+      "categoryID": "emergency-procedures",
+      "prompt": "Do not delay ejection while attempting air-start at low altitude if below ____ feet AGL.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "500"
+        },
+        {
+          "id": "b",
+          "text": "2000"
+        },
+        {
+          "id": "c",
+          "text": "6000"
+        },
+        {
+          "id": "d",
+          "text": "10,000"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-15 for the full procedure or limitation context.",
+      "reference": "3-15",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "nwc",
+        "ref-3-15"
+      ]
+    },
+    {
+      "id": "emergency-procedures-003",
+      "categoryID": "emergency-procedures",
+      "prompt": "If the airstart is successful, useful power will be available after ____ seconds from starter engagement.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "10"
+        },
+        {
+          "id": "b",
+          "text": "30"
+        },
+        {
+          "id": "c",
+          "text": "40"
+        },
+        {
+          "id": "d",
+          "text": "60"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-14 for the full procedure or limitation context.",
+      "reference": "3-14",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-14"
+      ]
+    },
+    {
+      "id": "emergency-procedures-004",
+      "categoryID": "emergency-procedures",
+      "prompt": "The emergency oxygen bottle provides approximately ____ minutes of oxygen.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "10"
+        },
+        {
+          "id": "c",
+          "text": "15"
+        },
+        {
+          "id": "d",
+          "text": "20"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-35 for the full procedure or limitation context.",
+      "reference": "3-35",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-35",
+        "systems"
+      ]
+    },
+    {
+      "id": "emergency-procedures-005",
+      "categoryID": "emergency-procedures",
+      "prompt": "Illumination of the L or R FUEL LO caution indicates that approximately ____ pounds of usable fuel remains in the affected wing tank.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "150"
+        },
+        {
+          "id": "b",
+          "text": "370"
+        },
+        {
+          "id": "c",
+          "text": "110"
+        },
+        {
+          "id": "d",
+          "text": "16"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-31 for the full procedure or limitation context.",
+      "reference": "3-31",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "nwc",
+        "ref-3-31",
+        "systems"
+      ]
+    },
+    {
+      "id": "emergency-procedures-006",
+      "categoryID": "emergency-procedures",
+      "prompt": "Recommend minimum altitudes for ejection are ____ feet AGL for controlled ejection and ____ feet AGL for uncontrolled ejection.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "2,000, 10,000"
+        },
+        {
+          "id": "b",
+          "text": "2,000, 6,000"
+        },
+        {
+          "id": "c",
+          "text": "6,000, 10,000"
+        },
+        {
+          "id": "d",
+          "text": "None of the above"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-43 for the full procedure or limitation context.",
+      "reference": "3-43",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "limits",
+        "natops",
+        "nwc",
+        "ref-3-43"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-005",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Maximum oil pressure during start is ____ psi.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "3"
+        },
+        {
+          "id": "b",
+          "text": "45-65"
+        },
+        {
+          "id": "c",
+          "text": "105"
+        },
+        {
+          "id": "d",
+          "text": "200"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-7 for the full procedure or limitation context.",
+      "reference": "5-7",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-7",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-006",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Do not connect external power if battery voltage is below ____ volts.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "20"
+        },
+        {
+          "id": "b",
+          "text": "23.5"
+        },
+        {
+          "id": "c",
+          "text": "28"
+        },
+        {
+          "id": "d",
+          "text": "22"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-2 for the full procedure or limitation context.",
+      "reference": "5-2",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "performance-limits-weather",
+        "ref-5-2",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-007",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Maximum airspeed for flying through turbulence is ____ KIAS.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "150"
+        },
+        {
+          "id": "b",
+          "text": "207"
+        },
+        {
+          "id": "c",
+          "text": "227"
+        },
+        {
+          "id": "d",
+          "text": "316"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-8 for the full procedure or limitation context.",
+      "reference": "5-8",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-8"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-008",
+      "categoryID": "performance-limits-weather",
+      "prompt": "The maximum permissible crosswind for a wet runway is ____ knots.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "10"
+        },
+        {
+          "id": "b",
+          "text": "15"
+        },
+        {
+          "id": "c",
+          "text": "20"
+        },
+        {
+          "id": "d",
+          "text": "25"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-10 for the full procedure or limitation context.",
+      "reference": "5-10",
+      "tags": [
+        "landing-pattern",
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-10"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-009",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Taxi over arresting cables at ____. Steer to avoid nose and main gear contact with cable support donuts.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5 knots"
+        },
+        {
+          "id": "b",
+          "text": "Less than 20"
+        },
+        {
+          "id": "c",
+          "text": "as slow a speed as possible"
+        },
+        {
+          "id": "d",
+          "text": "40 knots"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-12 for the full procedure or limitation context.",
+      "reference": "5-12",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "performance-limits-weather",
+        "ref-5-12",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-010",
+      "categoryID": "performance-limits-weather",
+      "prompt": "The canopy shall not be opened on the ground when the surface winds exceed ____ knots.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "17"
+        },
+        {
+          "id": "b",
+          "text": "25"
+        },
+        {
+          "id": "c",
+          "text": "40"
+        },
+        {
+          "id": "d",
+          "text": "50"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-13 for the full procedure or limitation context.",
+      "reference": "5-13",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-13"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-001",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "If the flaps are set to any position other than UP, the speed brake will:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "remain extended if already extended"
+        },
+        {
+          "id": "b",
+          "text": "retract if already extended"
+        },
+        {
+          "id": "c",
+          "text": "remain retracted if the pilot attempts to extend it after the flaps are extended"
+        },
+        {
+          "id": "d",
+          "text": "B and C above"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-3 for the full procedure or limitation context.",
+      "reference": "6-3",
+      "tags": [
+        "aerodynamics-and-handling",
+        "natops",
+        "ref-6-3",
+        "systems"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-002",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "Best glide speed in clean configuration is approximately ____ KIAS with a sink rate of ____ feet per minute and a glide ratio of 2.0 NM/1000 feet.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "125, 1350"
+        },
+        {
+          "id": "b",
+          "text": "105, 1350"
+        },
+        {
+          "id": "c",
+          "text": "125, 2000"
+        },
+        {
+          "id": "d",
+          "text": "227, 600-800"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-5 for the full procedure or limitation context.",
+      "reference": "6-5",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-5"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-003",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "A stick shaker, activated by the angle-of-attack system, provides artificial stall warning in each cockpit a minimum of ____ knots before the stall is reached.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "10"
+        },
+        {
+          "id": "c",
+          "text": "15"
+        },
+        {
+          "id": "d",
+          "text": "20"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-5 for the full procedure or limitation context.",
+      "reference": "6-5",
+      "tags": [
+        "aerodynamics-and-handling",
+        "limits",
+        "maneuvers",
+        "natops",
+        "nwc",
+        "ref-6-5"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-004",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "While landing gear position has little effect on the stall characteristics, extending the ____ aggravates the roll-off tendency at the stall.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "speed brake"
+        },
+        {
+          "id": "b",
+          "text": "flaps"
+        },
+        {
+          "id": "c",
+          "text": "slats"
+        },
+        {
+          "id": "d",
+          "text": "student"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-7 for the full procedure or limitation context.",
+      "reference": "6-7",
+      "tags": [
+        "aerodynamics-and-handling",
+        "landing-pattern",
+        "maneuvers",
+        "natops",
+        "ref-6-7",
+        "systems"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-005",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "Above ____ % torque, full right rudder and full right aileron may not prevent a left roll-off at stall.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "60"
+        },
+        {
+          "id": "b",
+          "text": "6-8"
+        },
+        {
+          "id": "c",
+          "text": "50"
+        },
+        {
+          "id": "d",
+          "text": "33"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-5 for the full procedure or limitation context.",
+      "reference": "6-5",
+      "tags": [
+        "aerodynamics-and-handling",
+        "limits",
+        "maneuvers",
+        "natops",
+        "ref-6-5"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-006",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "____ are the motions of the aircraft about one or more axes immediately following a stall and prior to the incipient spin.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "steady-state spin"
+        },
+        {
+          "id": "b",
+          "text": "accelerated spin"
+        },
+        {
+          "id": "c",
+          "text": "post-stall gyrations"
+        },
+        {
+          "id": "d",
+          "text": "out of control flight"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-7 for the full procedure or limitation context.",
+      "reference": "6-7",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-7"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-007",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "A(n) ____ is characterized by oscillations in pitch, roll, and yaw attitudes and rates.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "spiral"
+        },
+        {
+          "id": "b",
+          "text": "incipient spin"
+        },
+        {
+          "id": "c",
+          "text": "steady-state spin"
+        },
+        {
+          "id": "d",
+          "text": "post-stall gyrations"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-8 for the full procedure or limitation context.",
+      "reference": "6-8",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-8"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-008",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "The incipient spin phase of the aircraft lasts approximately ____ turns.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1"
+        },
+        {
+          "id": "b",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "text": "3"
+        },
+        {
+          "id": "d",
+          "text": "4"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-8 for the full procedure or limitation context.",
+      "reference": "6-8",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-8"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-009",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "Spins below 10,000 feet MSL are prohibited due to high stresses on the ____ which occur during the spin maneuver with the ____.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "PMU, PCL above idle"
+        },
+        {
+          "id": "b",
+          "text": "propeller, propeller RPM below 80%"
+        },
+        {
+          "id": "c",
+          "text": "rudder, propeller RPM below 80%"
+        },
+        {
+          "id": "d",
+          "text": "propeller, propeller RPM above 80%"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-9 for the full procedure or limitation context.",
+      "reference": "6-9",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-9",
+        "systems"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-010",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "Ailerons have a pronounced effect on spin characteristics.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-9 for the full procedure or limitation context.",
+      "reference": "6-9",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-9"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-011",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "With ailerons held in the direction of spin rotation, roll and yaw become noticeably oscillatory.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-9 for the full procedure or limitation context.",
+      "reference": "6-9",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-9"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-012",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "With aileron held full opposite to direction of spin rotation, roll and yaw oscillations are damped out and the spin appears to reach steady state in all axes.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-9 for the full procedure or limitation context.",
+      "reference": "6-9",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-9"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-013",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "Intentional inverted departures and spins are permitted.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "false",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-10 for the full procedure or limitation context.",
+      "reference": "6-10",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-10"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-014",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "During spin recovery, pitch control inputs well forward of neutral may result in ____.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "a loss of oil pressure and engine damage"
+        },
+        {
+          "id": "b",
+          "text": "a spiral"
+        },
+        {
+          "id": "c",
+          "text": "faster recovery"
+        },
+        {
+          "id": "d",
+          "text": "A loss of your lunch"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-10 for the full procedure or limitation context.",
+      "reference": "6-10",
+      "tags": [
+        "aerodynamics-and-handling",
+        "limits",
+        "maneuvers",
+        "natops",
+        "ref-6-10",
+        "systems"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-015",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "Controls neutral spin recoveries have been demonstrated and, generally, spin rotation will cease within ____ additional turns after neutralizing controls in each axis.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1"
+        },
+        {
+          "id": "b",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "text": "3"
+        },
+        {
+          "id": "d",
+          "text": "4"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-11 for the full procedure or limitation context.",
+      "reference": "6-11",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-11"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-016",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "During an erect spin recovery, spin rotation will abruptly cease with the aircraft in a steep nose-down attitude within ____ turns after applying controls.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1"
+        },
+        {
+          "id": "b",
+          "text": "1.5"
+        },
+        {
+          "id": "c",
+          "text": "2"
+        },
+        {
+          "id": "d",
+          "text": "4"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-10 for the full procedure or limitation context.",
+      "reference": "6-10",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-10"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-017",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "If rolling pullouts at greater than +2 G are uncoordinated, limit roll input to ____ lateral stick.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "\u00bd"
+        },
+        {
+          "id": "b",
+          "text": "full"
+        },
+        {
+          "id": "c",
+          "text": "aft and full"
+        },
+        {
+          "id": "d",
+          "text": "centered"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-3 for the full procedure or limitation context.",
+      "reference": "6-3",
+      "tags": [
+        "aerodynamics-and-handling",
+        "limits",
+        "natops",
+        "ref-6-3"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-011",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Full rudder deflection above ____ KIAS will exceed the limits for the rudder control system.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "120"
+        },
+        {
+          "id": "b",
+          "text": "110"
+        },
+        {
+          "id": "c",
+          "text": "150"
+        },
+        {
+          "id": "d",
+          "text": "105"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-8 for the full procedure or limitation context.",
+      "reference": "5-8",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-8"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-012",
+      "categoryID": "performance-limits-weather",
+      "prompt": "The potential for lightning strikes increases near ____.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "the ground"
+        },
+        {
+          "id": "b",
+          "text": "mountains"
+        },
+        {
+          "id": "c",
+          "text": "1R8"
+        },
+        {
+          "id": "d",
+          "text": "the freezing level"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 7-3 for the full procedure or limitation context.",
+      "reference": "7-3",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-7-3"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-013",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Flights through thunderstorms or other areas of extreme turbulence should be avoided due to the possibility of engine flameout, structural failure, or damage due to hail, lightning, and violent up/down drafts.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 7-2 for the full procedure or limitation context.",
+      "reference": "7-2",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "performance-limits-weather",
+        "ref-7-2",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-014",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Hydroplaning can occur above ____ knots for the nose tire.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "80"
+        },
+        {
+          "id": "b",
+          "text": "85"
+        },
+        {
+          "id": "c",
+          "text": "90"
+        },
+        {
+          "id": "d",
+          "text": "95"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 7-5 for the full procedure or limitation context.",
+      "reference": "7-5",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-7-5"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-015",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Hydroplaning can occur above ____ knots for the main tires.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "100"
+        },
+        {
+          "id": "b",
+          "text": "105"
+        },
+        {
+          "id": "c",
+          "text": "110"
+        },
+        {
+          "id": "d",
+          "text": "115"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 7-5 for the full procedure or limitation context.",
+      "reference": "7-5",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-7-5"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-036",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Mishaps have occurred due to inadvertent lifting of PCL idle cut-off gate during flight.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-17 for the full procedure or limitation context.",
+      "reference": "1-17",
+      "tags": [
+        "natops",
+        "ref-1-17",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-037",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The firewall shutoff handle mechanically operates cables that:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "cut off fuel to the engine"
+        },
+        {
+          "id": "b",
+          "text": "cut off hydraulic fluid to the engine"
+        },
+        {
+          "id": "c",
+          "text": "cut off bleed air from the engine"
+        },
+        {
+          "id": "d",
+          "text": "all of the above"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-21 for the full procedure or limitation context.",
+      "reference": "1-21",
+      "tags": [
+        "natops",
+        "ref-1-21",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-038",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Auxiliary power is supplied by a ____ auxiliary battery, located in the left avionics compartment.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "24 VDC, 42 AMP"
+        },
+        {
+          "id": "b",
+          "text": "28 VDC, 5 AMP"
+        },
+        {
+          "id": "c",
+          "text": "24 VDC, 5 AMP"
+        },
+        {
+          "id": "d",
+          "text": "28 VDC, 42 AMP"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-28 for the full procedure or limitation context.",
+      "reference": "1-28",
+      "tags": [
+        "natops",
+        "ref-1-28",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-039",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Once extended, the speed brake remains extended until:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "either speed brake switch is moved forward to retract"
+        },
+        {
+          "id": "b",
+          "text": "the flaps are extended"
+        },
+        {
+          "id": "c",
+          "text": "the PCL is moved to MAX"
+        },
+        {
+          "id": "d",
+          "text": "any of the above"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-35 for the full procedure or limitation context.",
+      "reference": "1-35",
+      "tags": [
+        "natops",
+        "ref-1-35",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-040",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The internal front and rear cockpit CFS handles operate the CFS explosives for only the respective transparency.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-44 for the full procedure or limitation context.",
+      "reference": "1-44",
+      "tags": [
+        "natops",
+        "ref-1-44",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-041",
+      "categoryID": "systems-and-procedures",
+      "prompt": "To avoid accidental activation of the canopy fracturing system, ensure CFS safety pin is installed and area around the CFS handle is clear prior to exiting the cockpit.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-44 for the full procedure or limitation context.",
+      "reference": "1-44",
+      "tags": [
+        "maneuvers",
+        "natops",
+        "nwc",
+        "ref-1-44",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-042",
+      "categoryID": "systems-and-procedures",
+      "prompt": "When the ISS mode selector is set to the BOTH position, gas signals transfer between seats, both seats eject, and the ____ seat(s) eject first regardless of which seat initiates the ejection.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "both"
+        },
+        {
+          "id": "b",
+          "text": "front"
+        },
+        {
+          "id": "c",
+          "text": "rear"
+        },
+        {
+          "id": "d",
+          "text": "the activating"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-54 for the full procedure or limitation context.",
+      "reference": "1-54",
+      "tags": [
+        "eps",
+        "natops",
+        "ref-1-54",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-043",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The first indication of icing may be the start of ice accumulation on the ___.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "leading edge of the wing and vertical stabilizer"
+        },
+        {
+          "id": "b",
+          "text": "propeller blades"
+        },
+        {
+          "id": "c",
+          "text": "spinner and propeller blades"
+        },
+        {
+          "id": "d",
+          "text": "forward canopy bow and at the base of the windshield"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-62 for the full procedure or limitation context.",
+      "reference": "1-62",
+      "tags": [
+        "landing-pattern",
+        "maneuvers",
+        "natops",
+        "ref-1-62",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-044",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The radar altimeter readout is only displayed when the radar altitude is < 2500 feet and the aircraft bank angle is < 30 degrees and the pitch angle is < 15 degrees up or down.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-115 for the full procedure or limitation context.",
+      "reference": "1-115",
+      "tags": [
+        "natops",
+        "ref-1-115",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-045",
+      "categoryID": "systems-and-procedures",
+      "prompt": "OBOGS operation with mask down or loose fitting may induce OBOGS fail warning.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-173 for the full procedure or limitation context.",
+      "reference": "1-173",
+      "tags": [
+        "natops",
+        "nwc",
+        "ref-1-173",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-046",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The following fuel is not approved for NAVY T-6B aircraft.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "JP-4"
+        },
+        {
+          "id": "b",
+          "text": "JP-8"
+        },
+        {
+          "id": "c",
+          "text": "Jet A-1"
+        },
+        {
+          "id": "d",
+          "text": "JP-8+100"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-176 for the full procedure or limitation context.",
+      "reference": "1-176",
+      "tags": [
+        "natops",
+        "ref-1-176",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-047",
+      "categoryID": "systems-and-procedures",
+      "prompt": "With the ISS selector set to BOTH, both seats will eject if an unpinned ejection handle is pulled:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "unless the other seat is pinned"
+        },
+        {
+          "id": "b",
+          "text": "even if the other seat is pinned"
+        },
+        {
+          "id": "c",
+          "text": "unless the canopy is open"
+        },
+        {
+          "id": "d",
+          "text": "none of the above"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-4 for the full procedure or limitation context.",
+      "reference": "2-4",
+      "tags": [
+        "eps",
+        "limits",
+        "natops",
+        "ref-2-4",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-048",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Landing gear retraction with the nose gear jack pad not properly stowed ____.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "will not effect landing gear system operation"
+        },
+        {
+          "id": "b",
+          "text": "will disable the down-lock override and prevent gear retraction"
+        },
+        {
+          "id": "c",
+          "text": "may result in structural damage or landing gear malfunction"
+        },
+        {
+          "id": "d",
+          "text": "none of the above"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-9 for the full procedure or limitation context.",
+      "reference": "2-9",
+      "tags": [
+        "landing-pattern",
+        "natops",
+        "ref-2-9",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-049",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Do not rotate the propeller by hand to reduce IOAT. Rotating the propeller without oil pressure can damage the ____. Slow and limited hand rotation of the propeller for inspection purposes is ____.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "propeller, authorized"
+        },
+        {
+          "id": "b",
+          "text": "engine, not authorized"
+        },
+        {
+          "id": "c",
+          "text": "engine, acceptable"
+        },
+        {
+          "id": "d",
+          "text": "propeller, not authorized"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-9 for the full procedure or limitation context.",
+      "reference": "2-9",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "ref-2-9",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-050",
+      "categoryID": "systems-and-procedures",
+      "prompt": "After turning the GENERATOR switch ON during the Before Taxi checklist, allow approximately ___ seconds before turning ON the AVIONICS MASTER switch to allow battery amperage to ___.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5, decrease"
+        },
+        {
+          "id": "b",
+          "text": "10, stabilize"
+        },
+        {
+          "id": "c",
+          "text": "10, peak"
+        },
+        {
+          "id": "d",
+          "text": "5, stabilize"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-17 for the full procedure or limitation context.",
+      "reference": "2-17",
+      "tags": [
+        "natops",
+        "ref-2-17",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-051",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If nose wheel shimmy occurs after nose wheel contacts the runway:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "execute full stop landing and do not engage nose wheel steering"
+        },
+        {
+          "id": "b",
+          "text": "apply forward pressure to increase weight on the nose wheel"
+        },
+        {
+          "id": "c",
+          "text": "apply back stick pressure to relieve the weight on the nose wheel"
+        },
+        {
+          "id": "d",
+          "text": "engage nose wheel steering to center nose wheel"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-26 for the full procedure or limitation context.",
+      "reference": "2-26",
+      "tags": [
+        "landing-pattern",
+        "natops",
+        "nwc",
+        "ref-2-26",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "emergency-procedures-007",
+      "categoryID": "emergency-procedures",
+      "prompt": "When an airborne emergency occurs, which basic rule doesn\u2019t apply?",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Maintain aircraft control"
+        },
+        {
+          "id": "b",
+          "text": "Analyze the situation and take proper action"
+        },
+        {
+          "id": "c",
+          "text": "Expeditious execution of critical action items"
+        },
+        {
+          "id": "d",
+          "text": "Land as soon as conditions permit"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-3 for the full procedure or limitation context.",
+      "reference": "3-3",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-3"
+      ]
+    },
+    {
+      "id": "emergency-procedures-008",
+      "categoryID": "emergency-procedures",
+      "prompt": "The cockpit ____ depressurize when power to the battery bus is lost.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "will"
+        },
+        {
+          "id": "b",
+          "text": "will not"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-25 for the full procedure or limitation context.",
+      "reference": "3-25",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-25",
+        "systems"
+      ]
+    },
+    {
+      "id": "emergency-procedures-009",
+      "categoryID": "emergency-procedures",
+      "prompt": "While stabilized at 125 KIAS in a clean configuration, if engine power is insufficient to produce a rate of decent less than 1500 ft/m:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "add 500 ft to high, low, and base key altitudes"
+        },
+        {
+          "id": "b",
+          "text": "hold gear at high key until on profile"
+        },
+        {
+          "id": "c",
+          "text": "set PCL to OFF"
+        },
+        {
+          "id": "d",
+          "text": "execute immediate ejection"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-50 for the full procedure or limitation context.",
+      "reference": "3-50",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "landing-pattern",
+        "natops",
+        "ref-3-50",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-016",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Maximum takeoff weight is:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "6550 lbs"
+        },
+        {
+          "id": "b",
+          "text": "6900 lbs"
+        },
+        {
+          "id": "c",
+          "text": "6500 lbs"
+        },
+        {
+          "id": "d",
+          "text": "4900 lbs"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-10 for the full procedure or limitation context.",
+      "reference": "5-10",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-10"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-017",
+      "categoryID": "performance-limits-weather",
+      "prompt": "When ejecting over mountainous terrain exceeding ____ feet MSL, the manual override (MOR) handle should be used to manually separate from the seat and deploy the parachute.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "2000"
+        },
+        {
+          "id": "b",
+          "text": "6000"
+        },
+        {
+          "id": "c",
+          "text": "8000"
+        },
+        {
+          "id": "d",
+          "text": "9000"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-13 for the full procedure or limitation context.",
+      "reference": "5-13",
+      "tags": [
+        "eps",
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-13"
+      ]
+    },
+    {
+      "id": "emergency-procedures-010",
+      "categoryID": "emergency-procedures",
+      "prompt": "Engine start should be aborted manually if:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "No rise of ITT is evident within 10 seconds after fuel flow indications (no start)"
+        },
+        {
+          "id": "b",
+          "text": "Red BATT BUS warning message illuminates during the start sequence"
+        },
+        {
+          "id": "c",
+          "text": "ITT appears likely to remain between 871-1000 degrees Celsius for >5 seconds"
+        },
+        {
+          "id": "d",
+          "text": "All of the above"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-4 for the full procedure or limitation context.",
+      "reference": "3-4",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "nwc",
+        "ref-3-4",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-018",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Do not attempt a battery powered ground start if the battery voltage is below ____ volts.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "20"
+        },
+        {
+          "id": "b",
+          "text": "23.5"
+        },
+        {
+          "id": "c",
+          "text": "28"
+        },
+        {
+          "id": "d",
+          "text": "22"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-2 for the full procedure or limitation context.",
+      "reference": "5-2",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "performance-limits-weather",
+        "ref-5-2",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-019",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Clean symmetric acceleration limits are:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "+2.5 to -3.5"
+        },
+        {
+          "id": "b",
+          "text": "+4.7 to -1.0"
+        },
+        {
+          "id": "c",
+          "text": "+7.0 to -3.5"
+        },
+        {
+          "id": "d",
+          "text": "+8.5 to -3.5"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-9 for the full procedure or limitation context.",
+      "reference": "5-9",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-9"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-020",
+      "categoryID": "performance-limits-weather",
+      "prompt": "With gear and flaps extended, symmetric acceleration limits are:",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "+2.5 to 0.0"
+        },
+        {
+          "id": "b",
+          "text": "+2.0 to 0.0"
+        },
+        {
+          "id": "c",
+          "text": "+4.7 to -1.0"
+        },
+        {
+          "id": "d",
+          "text": "1.0 to -1.0"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-9 for the full procedure or limitation context.",
+      "reference": "5-9",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-9",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-021",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Ground operation is limited to ambient temperatures of __ to __.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "-23 deg C, +43 deg C"
+        },
+        {
+          "id": "b",
+          "text": "-23 deg C, +34 deg C"
+        },
+        {
+          "id": "c",
+          "text": "0 deg C, +25 deg C"
+        },
+        {
+          "id": "d",
+          "text": "No limit"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-13 for the full procedure or limitation context.",
+      "reference": "5-13",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-13"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-022",
+      "categoryID": "performance-limits-weather",
+      "prompt": "The potential for an icing encounter exists anytime the aircraft is operated in visible moisture at outside air temperatures of ____ degrees C or below.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "10-12"
+        },
+        {
+          "id": "c",
+          "text": "0"
+        },
+        {
+          "id": "d",
+          "text": "32"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 7-4 for the full procedure or limitation context.",
+      "reference": "7-4",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-7-4"
+      ]
+    },
+    {
+      "id": "emergency-procedures-011",
+      "categoryID": "emergency-procedures",
+      "prompt": "After an engine failure in flight and the PMU FAIL warning is illuminated, a ____ airstart is required.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "PMU OFF"
+        },
+        {
+          "id": "b",
+          "text": "immediate"
+        },
+        {
+          "id": "c",
+          "text": "PMU NORM"
+        },
+        {
+          "id": "d",
+          "text": "none of the above"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-14 for the full procedure or limitation context.",
+      "reference": "3-14",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "nwc",
+        "ref-3-14",
+        "systems"
+      ]
+    },
+    {
+      "id": "emergency-procedures-012",
+      "categoryID": "emergency-procedures",
+      "prompt": "With the PMU off, the igniters will not automatically activate and must be selected manually.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-16 for the full procedure or limitation context.",
+      "reference": "3-16",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-16",
+        "systems"
+      ]
+    },
+    {
+      "id": "emergency-procedures-013",
+      "categoryID": "emergency-procedures",
+      "prompt": "Following a successful airstart the PCL should be advanced as required after N1 reaches ____.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "13 %"
+        },
+        {
+          "id": "b",
+          "text": "4-6%"
+        },
+        {
+          "id": "c",
+          "text": "IDLE RPM (approximately 67%)"
+        },
+        {
+          "id": "d",
+          "text": "54%"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-17, 18 for the full procedure or limitation context.",
+      "reference": "3-17, 18",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "limits",
+        "natops",
+        "ref-3-17-18"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-018",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "During a spin, oil pressure may decrease below ____ psi with idle power.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "10"
+        },
+        {
+          "id": "c",
+          "text": "20"
+        },
+        {
+          "id": "d",
+          "text": "40"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-9 for the full procedure or limitation context.",
+      "reference": "6-9",
+      "tags": [
+        "aerodynamics-and-handling",
+        "limits",
+        "maneuvers",
+        "natops",
+        "ref-6-9",
+        "systems"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-052",
+      "categoryID": "systems-and-procedures",
+      "prompt": "After initial power-up, the OBOGS FAIL annunciator will be inhibited for ____ during OBOGS monitor warmup.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "10 minutes"
+        },
+        {
+          "id": "b",
+          "text": "30 seconds"
+        },
+        {
+          "id": "c",
+          "text": "4 minutes"
+        },
+        {
+          "id": "d",
+          "text": "5 seconds"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-18 for the full procedure or limitation context.",
+      "reference": "2-18",
+      "tags": [
+        "natops",
+        "ref-2-18",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-053",
+      "categoryID": "systems-and-procedures",
+      "prompt": "On engine starts, ensure the ST READY advisory remains illuminated for more than ___ seconds prior to selecting AUTO/RESET with STARTER switch.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "2"
+        },
+        {
+          "id": "b",
+          "text": "3"
+        },
+        {
+          "id": "c",
+          "text": "4"
+        },
+        {
+          "id": "d",
+          "text": "5"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-19 for the full procedure or limitation context.",
+      "reference": "1-19",
+      "tags": [
+        "natops",
+        "ref-1-19",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-054",
+      "categoryID": "systems-and-procedures",
+      "prompt": "During the Overspeed Governor Check, after placing the PMU switch OFF, verify idle N1 stabilizes ______.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "at 60% or above"
+        },
+        {
+          "id": "b",
+          "text": "between 60% and 70%"
+        },
+        {
+          "id": "c",
+          "text": "between 46% and 50%"
+        },
+        {
+          "id": "d",
+          "text": "at 67%"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-19 for the full procedure or limitation context.",
+      "reference": "2-19",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-2-19",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-055",
+      "categoryID": "systems-and-procedures",
+      "prompt": "During a Circling Approach, minimum recommended speed prior to final approach is ___ KIAS with gear down and flaps set to TO.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "105"
+        },
+        {
+          "id": "b",
+          "text": "110"
+        },
+        {
+          "id": "c",
+          "text": "115"
+        },
+        {
+          "id": "d",
+          "text": "120"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-25 for the full procedure or limitation context.",
+      "reference": "2-25",
+      "tags": [
+        "instrument-comms",
+        "landing-pattern",
+        "limits",
+        "natops",
+        "nwc",
+        "ref-2-25",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-023",
+      "categoryID": "performance-limits-weather",
+      "prompt": "The recommended airspeed for penetration through areas of known turbulence is ___ KIAS.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "150"
+        },
+        {
+          "id": "b",
+          "text": "160"
+        },
+        {
+          "id": "c",
+          "text": "180"
+        },
+        {
+          "id": "d",
+          "text": "207"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 7-2 for the full procedure or limitation context.",
+      "reference": "7-2",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "performance-limits-weather",
+        "ref-7-2"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-056",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Final Turn airspeed for a no-flap landing is ___.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "115 KIAS"
+        },
+        {
+          "id": "b",
+          "text": "120 KIAS"
+        },
+        {
+          "id": "c",
+          "text": "No slower than \u201con speed\u201d AOA indication"
+        },
+        {
+          "id": "d",
+          "text": "Both B and C"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-26, 28 for the full procedure or limitation context.",
+      "reference": "2-26, 28",
+      "tags": [
+        "landing-pattern",
+        "limits",
+        "natops",
+        "ref-2-26-28",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-057",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If mission requirements dictate an overnight stay and ground support equipment or personnel are not available, the pilot-in-command will be responsible for postflight and preflight inspections of the aircraft.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-31 for the full procedure or limitation context.",
+      "reference": "2-31",
+      "tags": [
+        "natops",
+        "ref-2-31",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-058",
+      "categoryID": "systems-and-procedures",
+      "prompt": "LDG flaps are not recommended during gusty wind conditions.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-26 for the full procedure or limitation context.",
+      "reference": "2-26",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "ref-2-26",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-059",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Oil level must be serviced within ___ minutes of engine shutdown.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "10"
+        },
+        {
+          "id": "b",
+          "text": "15"
+        },
+        {
+          "id": "c",
+          "text": "20"
+        },
+        {
+          "id": "d",
+          "text": "30"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-32 for the full procedure or limitation context.",
+      "reference": "2-32",
+      "tags": [
+        "natops",
+        "ref-2-32",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-060",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If the ST READY advisory extinguishes for any reason during the start sequence, the PMU will continue to provide automatic shutdown protection.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "false",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-19 for the full procedure or limitation context.",
+      "reference": "1-19",
+      "tags": [
+        "natops",
+        "ref-1-19",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-061",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Failure to stow the _______ completely may prevent the flight controls from operating properly.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ejection seat pin"
+        },
+        {
+          "id": "b",
+          "text": "Gust lock"
+        },
+        {
+          "id": "c",
+          "text": "HUD combiner cover"
+        },
+        {
+          "id": "d",
+          "text": "CFS pin"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-40 for the full procedure or limitation context.",
+      "reference": "1-40",
+      "tags": [
+        "eps",
+        "limits",
+        "natops",
+        "ref-1-40",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-062",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If the ___________ fails, the TCAS will be inoperative",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "OBOGS"
+        },
+        {
+          "id": "b",
+          "text": "Radar Altimeter"
+        },
+        {
+          "id": "c",
+          "text": "UFCP"
+        },
+        {
+          "id": "d",
+          "text": "Transponder"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-125 for the full procedure or limitation context.",
+      "reference": "1-125",
+      "tags": [
+        "natops",
+        "ref-1-125",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-063",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Failure to ensure the ST READY light remains illuminated may result in engine damage due to loss of the automatic shutdown feature.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-16 for the full procedure or limitation context.",
+      "reference": "2-16",
+      "tags": [
+        "natops",
+        "ref-2-16",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-064",
+      "categoryID": "systems-and-procedures",
+      "prompt": "It is acceptable for N1 to make little or no change when turning off the PMU, as long as it is in limits.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-19 for the full procedure or limitation context.",
+      "reference": "2-19",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-2-19",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "emergency-procedures-014",
+      "categoryID": "emergency-procedures",
+      "prompt": "With the Battery Bus inoperative, the most noticeable failures will be the ____ and the _____ and _____ MFD\u2019s.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "UFCP, center, left"
+        },
+        {
+          "id": "b",
+          "text": "HUD, left, center"
+        },
+        {
+          "id": "c",
+          "text": "UFCP, center, right"
+        },
+        {
+          "id": "d",
+          "text": "HUD, center, right"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-25 for the full procedure or limitation context.",
+      "reference": "3-25",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-25",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-024",
+      "categoryID": "performance-limits-weather",
+      "prompt": "On the ground, IDLE torque is ___ to ___%",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "60, 61"
+        },
+        {
+          "id": "b",
+          "text": "46, 50"
+        },
+        {
+          "id": "c",
+          "text": "1, 10"
+        },
+        {
+          "id": "d",
+          "text": "0, 4"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-7 for the full procedure or limitation context.",
+      "reference": "5-7",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-7"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-065",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The auxiliary battery power level may be tested by turning the ___ switch ON and then holding the AUX BAT test switch for a minimum of ___ seconds and ensuring the test light remains illuminated only while the switch is held on.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "AUX BAT, 5"
+        },
+        {
+          "id": "b",
+          "text": "BAT, 3"
+        },
+        {
+          "id": "c",
+          "text": "BAT, 5"
+        },
+        {
+          "id": "d",
+          "text": "AUX BAT, 3"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-28 for the full procedure or limitation context.",
+      "reference": "1-28",
+      "tags": [
+        "instrument-comms",
+        "limits",
+        "natops",
+        "ref-1-28",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-066",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Do not touch the parking brake ___ when actuating or releasing the parking brake. Injury may result from the ___ along the handle shaft.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "handle shaft, sharp edges"
+        },
+        {
+          "id": "b",
+          "text": "pads, hot brakes"
+        },
+        {
+          "id": "c",
+          "text": "handle shaft, brake indicator"
+        },
+        {
+          "id": "d",
+          "text": "indicator, hot brakes"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-29 for the full procedure or limitation context.",
+      "reference": "1-29",
+      "tags": [
+        "natops",
+        "nwc",
+        "ref-1-29",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-067",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If the emergency accumulator is discharged, the EHYD PX LO caution will remain illuminated until the system pressurizes. Ensure light has extinguished prior to ___.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "taxiing"
+        },
+        {
+          "id": "b",
+          "text": "starting the engine"
+        },
+        {
+          "id": "c",
+          "text": "raising the gear"
+        },
+        {
+          "id": "d",
+          "text": "flight"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-29 for the full procedure or limitation context.",
+      "reference": "1-29",
+      "tags": [
+        "eps",
+        "natops",
+        "nwc",
+        "ref-1-29",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-068",
+      "categoryID": "systems-and-procedures",
+      "prompt": "During normal operation of the landing gear, when ___ fully down and locked, the inboard doors close.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "the main gear are"
+        },
+        {
+          "id": "b",
+          "text": "the nose gear is"
+        },
+        {
+          "id": "c",
+          "text": "the weight-on wheel"
+        },
+        {
+          "id": "d",
+          "text": "all 3 landing gear are"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-32 for the full procedure or limitation context.",
+      "reference": "1-32",
+      "tags": [
+        "landing-pattern",
+        "natops",
+        "ref-1-32",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-069",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If CFS handle actuation is known or suspected, do not close the canopy without inspection of the CFS ___ assemblies on the canopy sill for ___.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "donor, optical detonators"
+        },
+        {
+          "id": "b",
+          "text": "receptor, optical detonators"
+        },
+        {
+          "id": "c",
+          "text": "receptor, firing plungers"
+        },
+        {
+          "id": "d",
+          "text": "donor, firing plungers"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-44 for the full procedure or limitation context.",
+      "reference": "1-44",
+      "tags": [
+        "natops",
+        "nwc",
+        "ref-1-44",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-070",
+      "categoryID": "systems-and-procedures",
+      "prompt": "When the bleed air is turned on, an increase in airflow and cockpit pressure may occur as the environmental control system attempts to regulate the cockpit temperature.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-58 for the full procedure or limitation context.",
+      "reference": "1-58",
+      "tags": [
+        "natops",
+        "ref-1-58",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-071",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Holding the AOA test switch to LOW and HIGH, sets the AOA indicators to ___ and ___, respectively.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "10.5, 18.0"
+        },
+        {
+          "id": "b",
+          "text": "10-11, 17.5-18.5"
+        },
+        {
+          "id": "c",
+          "text": "10.5+/-0.4, 18.0+/-0.4"
+        },
+        {
+          "id": "d",
+          "text": "10, 18"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-115 for the full procedure or limitation context.",
+      "reference": "1-115",
+      "tags": [
+        "instrument-comms",
+        "natops",
+        "ref-1-115",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-072",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Which MFD mode receives the list of intruders from the TCAS and initially filters the top three intruders reported by the TCAS and then adds another filter within the selected altitude envelope?",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "FMS"
+        },
+        {
+          "id": "b",
+          "text": "TSD"
+        },
+        {
+          "id": "c",
+          "text": "NAV"
+        },
+        {
+          "id": "d",
+          "text": "PFD"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-125 for the full procedure or limitation context.",
+      "reference": "1-125",
+      "tags": [
+        "natops",
+        "ref-1-125",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-073",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If the LOW BATTERY POWER system alert message is displayed during the FMS initial startup, POS/DATE/TIME will need to be manually entered at each startup, resulting in a partially capable FMS with degraded IAC performance.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "false",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-131 for the full procedure or limitation context.",
+      "reference": "1-131",
+      "tags": [
+        "natops",
+        "ref-1-131",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-074",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Ensure both parachute riser/inertial reel straps are pulled out ____ and simultaneously to full extension. Attempting to test the locking ability of the straps ____ the harness reel velocity lock mechanism.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "quickly, verifies"
+        },
+        {
+          "id": "b",
+          "text": "slowly, may damage"
+        },
+        {
+          "id": "c",
+          "text": "quickly, may damage"
+        },
+        {
+          "id": "d",
+          "text": "slowly, verifies"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-5 for the full procedure or limitation context.",
+      "reference": "2-5",
+      "tags": [
+        "natops",
+        "ref-2-5",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-075",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Using external power during engine starts provides for lower ___ during engine starts and preserves ____.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "start times, starter life"
+        },
+        {
+          "id": "b",
+          "text": "ITT, battery life"
+        },
+        {
+          "id": "c",
+          "text": "start times, battery life"
+        },
+        {
+          "id": "d",
+          "text": "ITT, starter life"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-13 for the full procedure or limitation context.",
+      "reference": "2-13",
+      "tags": [
+        "natops",
+        "ref-2-13",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-076",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Proper checks of the OBOGS system during the Before Taxi checks requires placing the concentration lever to MAX, checking the light on, and returning the lever to NORMAL.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-17 for the full procedure or limitation context.",
+      "reference": "2-17",
+      "tags": [
+        "natops",
+        "ref-2-17",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-077",
+      "categoryID": "systems-and-procedures",
+      "prompt": "When checking the brake wear indicators, if an indicator reads low, ___ and re-check.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "release parking brake"
+        },
+        {
+          "id": "b",
+          "text": "reset the parking brake"
+        },
+        {
+          "id": "c",
+          "text": "have maintenance service the brake hydraulic system"
+        },
+        {
+          "id": "d",
+          "text": "pump the brakes"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-8 for the full procedure or limitation context.",
+      "reference": "2-8",
+      "tags": [
+        "natops",
+        "ref-2-8",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-078",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The descent check is intended to be executed prior to entering the terminal environment after aerobatics have been performed or after transiting greater than 100 nm.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-23 for the full procedure or limitation context.",
+      "reference": "2-23",
+      "tags": [
+        "maneuvers",
+        "natops",
+        "ref-2-23",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-079",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Engaging the nose wheel steering during landing rollout may dampen nose wheel shimmy.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "false",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-26 for the full procedure or limitation context.",
+      "reference": "2-26",
+      "tags": [
+        "landing-pattern",
+        "natops",
+        "ref-2-26",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "emergency-procedures-015",
+      "categoryID": "emergency-procedures",
+      "prompt": "If engine power is insufficient to produce a rate of descent less than ___ ft/min, set PCL to OFF.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1350"
+        },
+        {
+          "id": "b",
+          "text": "1500"
+        },
+        {
+          "id": "c",
+          "text": "1800"
+        },
+        {
+          "id": "d",
+          "text": "2000"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-20 for the full procedure or limitation context.",
+      "reference": "3-20",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-20",
+        "systems"
+      ]
+    },
+    {
+      "id": "emergency-procedures-016",
+      "categoryID": "emergency-procedures",
+      "prompt": "BOOST PUMP switch \u2013 ON is a critical action memory item step for the Low Fuel Pressure emergency procedure.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-30 for the full procedure or limitation context.",
+      "reference": "3-30",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-30",
+        "systems"
+      ]
+    },
+    {
+      "id": "emergency-procedures-017",
+      "categoryID": "emergency-procedures",
+      "prompt": "Which of the following will cause the CHK ENG caution message to illuminate?",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Oil pressure greater than 201 PSI"
+        },
+        {
+          "id": "b",
+          "text": "N1 is greater than 105%"
+        },
+        {
+          "id": "c",
+          "text": "RPM is greater than 106%"
+        },
+        {
+          "id": "d",
+          "text": "Hyd pressure is less than or equal to 1790 PSI"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-57 for the full procedure or limitation context.",
+      "reference": "3-57",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "limits",
+        "natops",
+        "nwc",
+        "ref-3-57",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-025",
+      "categoryID": "performance-limits-weather",
+      "prompt": "If generator amperage or voltage is continuously outside 28.0 to 28.5 volts with the PCL at ___ while on the ground or in-flight, notify maintenance after the mission.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "IDLE"
+        },
+        {
+          "id": "b",
+          "text": "100% NP"
+        },
+        {
+          "id": "c",
+          "text": "80% N1 or greater"
+        },
+        {
+          "id": "d",
+          "text": "30% torque"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-7 for the full procedure or limitation context.",
+      "reference": "5-7",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-7",
+        "systems"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-026",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Maximum rate of descent at touchdown with tires serviced to normal landing conditions pressure (185+/-5 psi).",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "600 ft/min (3.7 Gs)"
+        },
+        {
+          "id": "b",
+          "text": "780 ft/min (5.1 Gs)"
+        },
+        {
+          "id": "c",
+          "text": "1350 ft/min (6.9 Gs)"
+        },
+        {
+          "id": "d",
+          "text": "1500 ft/min (7.3 Gs)"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-10 for the full procedure or limitation context.",
+      "reference": "5-10",
+      "tags": [
+        "landing-pattern",
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-10"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-027",
+      "categoryID": "performance-limits-weather",
+      "prompt": "For the landing configuration and during the landing phase, with ice accumulation, approach speed must be increased by ___ KIAS.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "10"
+        },
+        {
+          "id": "c",
+          "text": "15"
+        },
+        {
+          "id": "d",
+          "text": "20"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 5-12 for the full procedure or limitation context.",
+      "reference": "5-12",
+      "tags": [
+        "instrument-comms",
+        "landing-pattern",
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-5-12"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-019",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "A spiral is often mistaken for a spin. Anti-spin controls may ___ effective in arresting a spiral and may actually ___ the situation.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "not be, aggravate"
+        },
+        {
+          "id": "b",
+          "text": "be, alleviate"
+        },
+        {
+          "id": "c",
+          "text": "not be, alleviate"
+        },
+        {
+          "id": "d",
+          "text": "be, aggravate"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-8 for the full procedure or limitation context.",
+      "reference": "6-8",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-8"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-020",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "Spin entry attitudes greater than ___ degrees nose high may result in low oil pressure and engine ___.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "30, flameout"
+        },
+        {
+          "id": "b",
+          "text": "40, fluctuations"
+        },
+        {
+          "id": "c",
+          "text": "50, damage"
+        },
+        {
+          "id": "d",
+          "text": "60, damage"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-9 for the full procedure or limitation context.",
+      "reference": "6-9",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "ref-6-9",
+        "systems"
+      ]
+    },
+    {
+      "id": "aerodynamics-and-handling-021",
+      "categoryID": "aerodynamics-and-handling",
+      "prompt": "Intentional spins in other than cruise configuration at idle power are ___.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "prohibited"
+        },
+        {
+          "id": "b",
+          "text": "not recommend"
+        },
+        {
+          "id": "c",
+          "text": "authorized"
+        },
+        {
+          "id": "d",
+          "text": "recommended"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 6-10 for the full procedure or limitation context.",
+      "reference": "6-10",
+      "tags": [
+        "aerodynamics-and-handling",
+        "maneuvers",
+        "natops",
+        "nwc",
+        "ref-6-10"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-028",
+      "categoryID": "performance-limits-weather",
+      "prompt": "Sustained operation in icing conditions is ___.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "prohibited"
+        },
+        {
+          "id": "b",
+          "text": "not recommended"
+        },
+        {
+          "id": "c",
+          "text": "authorized"
+        },
+        {
+          "id": "d",
+          "text": "recommended"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 7-3 for the full procedure or limitation context.",
+      "reference": "7-3",
+      "tags": [
+        "limits",
+        "natops",
+        "nwc",
+        "performance-limits-weather",
+        "ref-7-3"
+      ]
+    },
+    {
+      "id": "performance-limits-weather-029",
+      "categoryID": "performance-limits-weather",
+      "prompt": "When ITT is less than ___, the ITT gauge will display 0 deg C and ___ in black letters on a white background.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5 deg C, ITT"
+        },
+        {
+          "id": "b",
+          "text": "3 deg C, RITT"
+        },
+        {
+          "id": "c",
+          "text": "0 deg C, RITT"
+        },
+        {
+          "id": "d",
+          "text": "-1 deg C, ITT"
+        }
+      ],
+      "correctChoiceID": "c",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 7-6 for the full procedure or limitation context.",
+      "reference": "7-6",
+      "tags": [
+        "limits",
+        "natops",
+        "performance-limits-weather",
+        "ref-7-6"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-080",
+      "categoryID": "systems-and-procedures",
+      "prompt": "An amber ADS-B FAIL message on the EICAS display indicates _______.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "The transponder is not operational"
+        },
+        {
+          "id": "b",
+          "text": "The ADS-B Out function of the transponder has failed"
+        },
+        {
+          "id": "c",
+          "text": "A requirement to land as soon as practical"
+        },
+        {
+          "id": "d",
+          "text": "TCAS has lost functionality"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-77 for the full procedure or limitation context.",
+      "reference": "1-77",
+      "tags": [
+        "natops",
+        "ref-1-77",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "emergency-procedures-018",
+      "categoryID": "emergency-procedures",
+      "prompt": "During an immediate airstart, if N1 does not rise within ____ seconds, discontinue the airstart attempt.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "10"
+        },
+        {
+          "id": "b",
+          "text": "5"
+        },
+        {
+          "id": "c",
+          "text": "20"
+        },
+        {
+          "id": "d",
+          "text": "40"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-18 for the full procedure or limitation context.",
+      "reference": "3-18",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "limits",
+        "natops",
+        "ref-3-18"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-081",
+      "categoryID": "systems-and-procedures",
+      "prompt": "When using the Emergency Oxygen System, it is normal for pressure to gradually decrease to the point it feels like the oxygen is depleted before reaching 10 minutes of use.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-53 for the full procedure or limitation context.",
+      "reference": "1-53",
+      "tags": [
+        "eps",
+        "natops",
+        "ref-1-53",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "emergency-procedures-019",
+      "categoryID": "emergency-procedures",
+      "prompt": "The MX-G advisory message illuminates in flight when one (or more) Over G event is captured in Over G log.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "false",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 3-58 for the full procedure or limitation context.",
+      "reference": "3-58",
+      "tags": [
+        "emergency-procedures",
+        "eps",
+        "natops",
+        "ref-3-58"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-082",
+      "categoryID": "systems-and-procedures",
+      "prompt": "During the Overspeed Govenor Check, 100+2% Np should be reached between ___ and ___ % Torque.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "28, 35"
+        },
+        {
+          "id": "b",
+          "text": "28, 32"
+        },
+        {
+          "id": "c",
+          "text": "26, 34"
+        },
+        {
+          "id": "d",
+          "text": "25, 35"
+        }
+      ],
+      "correctChoiceID": "d",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-19 for the full procedure or limitation context.",
+      "reference": "2-19",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-2-19",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-083",
+      "categoryID": "systems-and-procedures",
+      "prompt": "The top latch mechanism on the ejection seat shall be checked on preflight.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-5 for the full procedure or limitation context.",
+      "reference": "2-5",
+      "tags": [
+        "eps",
+        "natops",
+        "ref-2-5",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-084",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Use of emergency oxygen is required when OBOGS is lost and cabin pressure exceeds ______ feet pressure altitude.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "22,000"
+        },
+        {
+          "id": "b",
+          "text": "10,000"
+        },
+        {
+          "id": "c",
+          "text": "6,000"
+        },
+        {
+          "id": "d",
+          "text": "18,000"
+        }
+      ],
+      "correctChoiceID": "b",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-53 for the full procedure or limitation context.",
+      "reference": "1-53",
+      "tags": [
+        "eps",
+        "natops",
+        "ref-1-53",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-085",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Most blown tires occur prior to tire spin-up or below ____ knots. Holding excessive brake pressure as the aircraft slows below ____ knots may result in locking the brakes and blown tires.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "40, 20"
+        },
+        {
+          "id": "b",
+          "text": "40, 30"
+        },
+        {
+          "id": "c",
+          "text": "60, 20"
+        },
+        {
+          "id": "d",
+          "text": "60, 30"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-26 for the full procedure or limitation context.",
+      "reference": "2-26",
+      "tags": [
+        "instrument-comms",
+        "limits",
+        "maneuvers",
+        "natops",
+        "ref-2-26",
+        "systems",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-086",
+      "categoryID": "systems-and-procedures",
+      "prompt": "If OBOGS fails with mask down or loose, secure mask. If extended mask down operation is desired, ____________.",
+      "format": "multipleChoice",
+      "choices": [
+        {
+          "id": "a",
+          "text": "place the respective OBOGS supply lever to OFF"
+        },
+        {
+          "id": "b",
+          "text": "reset the OBOGS system (both supply levers to OFF then ON)"
+        },
+        {
+          "id": "c",
+          "text": "place the respective OBOGS concentration lever to MAX"
+        },
+        {
+          "id": "d",
+          "text": "perform I-BIT check"
+        }
+      ],
+      "correctChoiceID": "a",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 1-173 for the full procedure or limitation context.",
+      "reference": "1-173",
+      "tags": [
+        "natops",
+        "ref-1-173",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-087",
+      "categoryID": "systems-and-procedures",
+      "prompt": "To approximate acceptable bottle pressure, add or subtract 3.5 psi for each degree the temperature is above or below 70\u00b0 F.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-8 for the full procedure or limitation context.",
+      "reference": "2-8",
+      "tags": [
+        "limits",
+        "natops",
+        "ref-2-8",
+        "systems-and-procedures"
+      ]
+    },
+    {
+      "id": "systems-and-procedures-088",
+      "categoryID": "systems-and-procedures",
+      "prompt": "Upon runway lineup, come to a complete stop prior to disengaging nose wheel steering.",
+      "format": "trueFalse",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "correctChoiceID": "true",
+      "explanation": "Correct answer sourced from NATOPS Closed Bank 2025. Review reference 2-22 for the full procedure or limitation context.",
+      "reference": "2-22",
+      "tags": [
+        "landing-pattern",
+        "natops",
+        "ref-2-22",
+        "systems-and-procedures"
+      ]
+    }
+  ]
+}

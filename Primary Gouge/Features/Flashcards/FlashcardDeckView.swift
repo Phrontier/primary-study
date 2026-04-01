@@ -284,61 +284,20 @@ struct FlashcardStudyView: View {
     }
 
     private var header: some View {
-        HeroCard(
-            eyebrow: contextLabel,
-            title: deck.title,
-            subtitle: "Card \(currentIndex + 1) of \(cards.count)"
-        ) {
-            ProgressStrip(value: Double(currentIndex + 1), total: Double(cards.count), tint: AppTheme.accent)
-        }
+        FlashcardStudyHeader(
+            contextLabel: contextLabel,
+            deckTitle: deck.title,
+            currentIndex: currentIndex,
+            totalCount: cards.count
+        )
     }
 
     private var flashcardBody: some View {
-        let card = cards[currentIndex]
-
-        return SectionContainer(highlighted: true) {
-            Button {
-                guard !showingAnswer else { return }
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    showingAnswer = true
-                }
-            } label: {
-                VStack(alignment: .leading, spacing: 18) {
-                    HStack(spacing: 8) {
-                        Text(showingAnswer ? "Answer" : "Prompt")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(showingAnswer ? AppTheme.success : AppTheme.accent)
-
-                        ForEach(referenceBadges(for: card), id: \.text) { badge in
-                            Badge(text: badge.text, color: badge.color)
-                        }
-                    }
-
-                    Text(showingAnswer ? card.answer : card.prompt)
-                        .font(showingAnswer ? .body : .system(size: 30, weight: .bold, design: .rounded))
-                        .foregroundStyle(showingAnswer ? AppTheme.textSecondary : AppTheme.textPrimary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    Text(showingAnswer ? "Tap Hide Answer below if you want another read before rating it." : "Tap anywhere on the card to reveal the answer.")
-                        .font(.footnote)
-                        .foregroundStyle(AppTheme.textSecondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .buttonStyle(.plain)
-
-            if showingAnswer {
-                Button {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        showingAnswer = false
-                    }
-                } label: {
-                    StudyActionButton(title: "Hide answer", tint: AppTheme.accent, isProminent: false)
-                }
-                .buttonStyle(.plain)
-            }
-        }
+        FlashcardStudyCard(
+            card: cards[currentIndex],
+            showingAnswer: showingAnswer,
+            onTap: toggleAnswerVisibility
+        )
     }
 
     private var ratingBar: some View {
@@ -417,6 +376,12 @@ struct FlashcardStudyView: View {
         }
     }
 
+    private func toggleAnswerVisibility() {
+        withAnimation(.easeInOut(duration: 0.18)) {
+            showingAnswer.toggle()
+        }
+    }
+
     private var sessionDestination: StudyActivityDestination {
         if let event, let phase = appModel.phase(containingEventID: event.id) {
             return .eventDeck(phaseID: phase.id, eventID: event.id, deckID: deck.id)
@@ -479,6 +444,194 @@ private struct CompactReviewAction: View {
 
     var body: some View {
         StudyActionButton(title: title, icon: icon, tint: accent, isProminent: false)
+    }
+}
+
+private struct FlashcardStudyHeader: View {
+    let contextLabel: String
+    let deckTitle: String
+    let currentIndex: Int
+    let totalCount: Int
+
+    private var progressText: String {
+        "Card \(currentIndex + 1) of \(totalCount)"
+    }
+
+    var body: some View {
+        SectionContainer(style: .metric, accent: AppTheme.domainColor(.flashcards), contentPadding: 18) {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(contextLabel.uppercased())
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(AppTheme.domainColor(.flashcards))
+                            .tracking(0.6)
+
+                        Text(deckTitle)
+                            .font(.title3.weight(.bold))
+                            .foregroundStyle(AppTheme.textPrimary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+
+                    Spacer(minLength: 0)
+
+                    Text(progressText)
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(AppTheme.prominentText(AppTheme.domainColor(.flashcards)))
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(AppTheme.badgeFill(AppTheme.domainColor(.flashcards)), in: Capsule())
+                        .overlay(
+                            Capsule()
+                                .stroke(AppTheme.badgeStroke(AppTheme.domainColor(.flashcards)), lineWidth: 1)
+                        )
+                }
+
+                ProgressStrip(
+                    value: Double(currentIndex + 1),
+                    total: Double(totalCount),
+                    tint: AppTheme.domainColor(.flashcards)
+                )
+            }
+        }
+    }
+}
+
+private struct FlashcardStudyCard: View {
+    let card: FlashcardDefinition
+    let showingAnswer: Bool
+    let onTap: () -> Void
+
+    private var stateAccent: Color {
+        showingAnswer ? AppTheme.success : AppTheme.domainColor(.flashcards)
+    }
+
+    private var instructionText: String {
+        showingAnswer ? "Tap the card again to hide the answer." : "Tap anywhere on the card to reveal the answer."
+    }
+
+    var body: some View {
+        ZStack {
+            FlashcardDeckStackBackground(accent: stateAccent, showingAnswer: showingAnswer)
+
+            Button(action: onTap) {
+                VStack(alignment: .leading, spacing: 20) {
+                    HStack(alignment: .center, spacing: 8) {
+                        Text(showingAnswer ? "Answer" : "Prompt")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(stateAccent)
+
+                        ForEach(referenceBadges(for: card), id: \.text) { badge in
+                            Badge(text: badge.text, color: badge.color)
+                        }
+
+                        Spacer(minLength: 0)
+
+                        Image(systemName: showingAnswer ? "arrow.uturn.backward.circle.fill" : "hand.tap.fill")
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundStyle(stateAccent.opacity(0.92))
+                    }
+
+                    Spacer(minLength: 0)
+
+                    Text(showingAnswer ? card.answer : card.prompt)
+                        .font(showingAnswer ? .body : .system(size: 32, weight: .bold, design: .rounded))
+                        .foregroundStyle(showingAnswer ? AppTheme.textSecondary : AppTheme.textPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    Spacer(minLength: 0)
+
+                    HStack(alignment: .bottom, spacing: 12) {
+                        Text(instructionText)
+                            .font(.footnote)
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                        Spacer(minLength: 0)
+
+                        Text(showingAnswer ? "Back" : "Front")
+                            .font(.caption2.weight(.bold))
+                            .foregroundStyle(AppTheme.prominentText(stateAccent))
+                            .tracking(0.5)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(AppTheme.badgeFill(stateAccent), in: Capsule())
+                            .overlay(
+                                Capsule()
+                                    .stroke(AppTheme.badgeStroke(stateAccent), lineWidth: 1)
+                            )
+                    }
+                }
+                .padding(24)
+                .frame(maxWidth: .infinity, minHeight: 340, alignment: .leading)
+                .background(
+                    AppTheme.cardBackground(
+                        style: showingAnswer ? .hero : .primary,
+                        accent: stateAccent
+                    )
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppTheme.Radius.largeCard, style: .continuous)
+                        .strokeBorder(stateAccent.opacity(showingAnswer ? 0.28 : 0.18), lineWidth: 1)
+                )
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.horizontal, 4)
+        .padding(.vertical, 8)
+        .animation(.easeInOut(duration: 0.18), value: showingAnswer)
+    }
+}
+
+private struct FlashcardDeckStackBackground: View {
+    let accent: Color
+    let showingAnswer: Bool
+
+    var body: some View {
+        ZStack {
+            stackLayer(
+                opacity: 0.28,
+                scale: 0.97,
+                yOffset: 24,
+                extraAccentOpacity: 0.03
+            )
+
+            stackLayer(
+                opacity: 0.42,
+                scale: 0.985,
+                yOffset: 12,
+                extraAccentOpacity: 0.05
+            )
+        }
+        .padding(.horizontal, 10)
+    }
+
+    private func stackLayer(opacity: Double, scale: CGFloat, yOffset: CGFloat, extraAccentOpacity: Double) -> some View {
+        RoundedRectangle(cornerRadius: AppTheme.Radius.largeCard, style: .continuous)
+            .fill(
+                LinearGradient(
+                    colors: [
+                        AppTheme.groupedBackground.opacity(0.98),
+                        accent.opacity(extraAccentOpacity),
+                        AppTheme.sunkenSurface.opacity(0.98)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: AppTheme.Radius.largeCard, style: .continuous)
+                    .stroke(AppTheme.cardStroke.opacity(opacity), lineWidth: 1)
+            )
+            .scaleEffect(scale)
+            .offset(y: yOffset)
+            .shadow(
+                color: Color.black.opacity(showingAnswer ? 0.2 : 0.14),
+                radius: 18,
+                x: 0,
+                y: 12
+            )
     }
 }
 

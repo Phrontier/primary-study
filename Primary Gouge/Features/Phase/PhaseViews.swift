@@ -37,8 +37,7 @@ struct PhaseDetailView: View {
                         PhaseDestinationCard(
                             title: "General Knowledge",
                             subtitle: nil,
-                            iconName: "books.vertical.fill",
-                            detail: "\(generalKnowledgeResources.count) references"
+                            iconName: "books.vertical.fill"
                         )
                     }
                     .buttonStyle(.plain)
@@ -56,7 +55,11 @@ struct PhaseDetailView: View {
                     NavigationLink {
                         EventListView(phase: phase, category: category)
                     } label: {
-                        CategoryCard(category: category)
+                        PhaseDestinationCard(
+                            title: category.displayName,
+                            subtitle: nil,
+                            iconName: category.iconName
+                        )
                     }
                     .buttonStyle(.plain)
                 }

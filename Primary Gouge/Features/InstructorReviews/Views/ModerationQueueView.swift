@@ -90,14 +90,16 @@ struct ModerationQueueView: View {
                     InstructorRatingBadge(
                         title: "Chill Factor",
                         label: InstructorRatingScale.label(for: review.chillScore, category: .chillFactor),
-                        subtitle: "Score \(review.chillScore) / 7",
-                        score: review.chillScore
+                        subtitle: InstructorRatingScale.formatSpacedOutOfSeven(score: review.chillScore, includeAverageSuffix: true),
+                        score: review.chillScore,
+                        style: .individual
                     )
                     InstructorRatingBadge(
                         title: "Grading Style",
                         label: InstructorRatingScale.label(for: review.gradingScore, category: .gradingStyle),
-                        subtitle: "Score \(review.gradingScore) / 7",
-                        score: review.gradingScore
+                        subtitle: InstructorRatingScale.formatSpacedOutOfSeven(score: review.gradingScore, includeAverageSuffix: true),
+                        score: review.gradingScore,
+                        style: .individual
                     )
                 }
 

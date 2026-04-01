@@ -106,31 +106,21 @@ private struct ContinueStudyingCard: View {
     var body: some View {
         SectionContainer(style: .primary, accent: AppTheme.accent, contentPadding: 18) {
             VStack(alignment: .leading, spacing: 14) {
-                HStack(alignment: .top, spacing: 12) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("CONTINUE STUDYING")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(AppTheme.accent)
-                            .tracking(0.7)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("CONTINUE STUDYING")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(AppTheme.accent)
+                        .tracking(0.7)
 
-                        Text(snapshot.title)
-                            .font(.title3.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                            .fixedSize(horizontal: false, vertical: true)
+                    Text(snapshot.title)
+                        .font(.title3.weight(.semibold))
+                        .foregroundStyle(AppTheme.textPrimary)
+                        .fixedSize(horizontal: false, vertical: true)
 
-                        Text(snapshot.subtitle)
-                            .font(.subheadline)
-                            .foregroundStyle(AppTheme.textSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-
-                    Spacer()
-
-                    StatusBadge(
-                        title: snapshot.isFallback ? "Suggested" : "Resume",
-                        iconName: snapshot.isFallback ? "sparkles" : "arrow.clockwise",
-                        color: AppTheme.accent
-                    )
+                    Text(snapshot.subtitle)
+                        .font(.subheadline)
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
 
                 Text(snapshot.detail)
@@ -159,6 +149,11 @@ private struct CurrentFocusSection: View {
     let onSelect: (SearchDestination?) -> Void
 
     private let columns = [GridItem(.adaptive(minimum: 150), spacing: 10)]
+    private let reservedPinnedSlots = 4
+
+    private var placeholderCount: Int {
+        max(0, reservedPinnedSlots - snapshot.pinnedTopics.count)
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -179,13 +174,31 @@ private struct CurrentFocusSection: View {
             }
 
             LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
-                ForEach(snapshot.pinnedTopics.isEmpty ? snapshot.suggestedTopics : snapshot.pinnedTopics) { topic in
-                    Button {
-                        onSelect(topic.destination)
-                    } label: {
-                        FocusChip(topic: topic, isSuggested: snapshot.pinnedTopics.isEmpty)
+                if snapshot.pinnedTopics.isEmpty {
+                    ForEach(snapshot.suggestedTopics) { topic in
+                        Button {
+                            onSelect(topic.destination)
+                        } label: {
+                            FocusChip(topic: topic, isSuggested: true)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
+                } else {
+                    ForEach(snapshot.pinnedTopics) { topic in
+                        Button {
+                            onSelect(topic.destination)
+                        } label: {
+                            FocusChip(topic: topic, isSuggested: false)
+                        }
+                        .buttonStyle(.plain)
+                    }
+
+                    ForEach(0..<placeholderCount, id: \.self) { index in
+                        Button(action: onManage) {
+                            FocusAddCard(index: index)
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
             }
         }
@@ -197,41 +210,69 @@ private struct FocusChip: View {
     let isSuggested: Bool
 
     var body: some View {
-        HStack(alignment: .center, spacing: 12) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill((isSuggested ? AppTheme.textMuted : AppTheme.accent).opacity(0.12))
-                    .frame(width: 34, height: 34)
+        ZStack(alignment: .topTrailing) {
+            HStack(alignment: .center, spacing: 12) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill((isSuggested ? AppTheme.textMuted : AppTheme.accent).opacity(0.12))
+                        .frame(width: 38, height: 38)
 
-                Image(systemName: topic.iconName)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(isSuggested ? AppTheme.textSecondary : AppTheme.accent)
-            }
+                    Image(systemName: topic.iconName)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(isSuggested ? AppTheme.textSecondary : AppTheme.accent)
+                }
 
-            VStack(alignment: .leading, spacing: 4) {
                 Text(topic.title)
-                    .font(.subheadline.weight(.semibold))
+                    .font(.title3.weight(.semibold))
                     .foregroundStyle(AppTheme.textPrimary)
                     .lineLimit(2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text(isSuggested ? "Suggested" : "Pinned")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(isSuggested ? AppTheme.textMuted : AppTheme.accent)
+                Spacer(minLength: 0)
             }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+            .frame(maxWidth: .infinity, minHeight: 88, alignment: .leading)
+            .background(background)
 
-            Spacer(minLength: 0)
+            if !isSuggested {
+                Image(systemName: "pin.fill")
+                    .font(.caption2.weight(.bold))
+                    .foregroundStyle(AppTheme.accent)
+                    .rotationEffect(.degrees(18))
+                    .padding(8)
+            }
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 12)
-        .frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
-        .background(
+    }
+
+    private var background: some View {
+        RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous)
+            .fill(isSuggested ? AppTheme.groupedBackground : AppTheme.raisedSurface)
+            .overlay(
+                RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous)
+                    .stroke((isSuggested ? AppTheme.cardStroke : AppTheme.accent.opacity(0.18)), lineWidth: 1)
+            )
+    }
+}
+
+private struct FocusAddCard: View {
+    let index: Int
+
+    var body: some View {
+        ZStack {
             RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous)
-                .fill(isSuggested ? AppTheme.groupedBackground : AppTheme.raisedSurface)
+                .fill(AppTheme.groupedBackground.opacity(0.36))
                 .overlay(
                     RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous)
-                        .stroke((isSuggested ? AppTheme.cardStroke : AppTheme.accent.opacity(0.18)), lineWidth: 1)
+                        .stroke(AppTheme.cardStroke.opacity(0.75), style: StrokeStyle(lineWidth: 1, dash: [7, 5]))
                 )
-        )
+
+            Image(systemName: "plus")
+                .font(.title3.weight(.semibold))
+                .foregroundStyle(AppTheme.textMuted)
+        }
+        .frame(maxWidth: .infinity, minHeight: 88)
+        .accessibilityLabel("Add pinned focus topic \(index + 1)")
     }
 }
 
@@ -251,7 +292,7 @@ private struct ReviewDueSection: View {
                     CompactEmptyState(message: emptyMessage)
                 } else {
                     ForEach(items) { item in
-                        TopicActionRow(item: item) {
+                        TopicActionRow(item: item, showsDetail: true) {
                             onSelect(item.destination)
                         }
                     }
@@ -269,22 +310,31 @@ private struct WeakAreasSection: View {
     let onSelect: (SearchDestination?) -> Void
 
     var body: some View {
-        ReviewDueSection(
-            title: title,
-            subtitle: subtitle,
-            items: items,
-            emptyMessage: emptyMessage,
-            onSelect: onSelect
-        )
+        VStack(alignment: .leading, spacing: 12) {
+            HomeSectionHeader(eyebrow: "Study next", title: title, subtitle: subtitle)
+
+            VStack(alignment: .leading, spacing: 10) {
+                if items.isEmpty {
+                    CompactEmptyState(message: emptyMessage)
+                } else {
+                    ForEach(items) { item in
+                        TopicActionRow(item: item, showsDetail: false) {
+                            onSelect(item.destination)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 private struct TopicActionRow: View {
     let item: HomeTopicActionSnapshot
+    let showsDetail: Bool
     let action: () -> Void
 
     var body: some View {
-        InsetListRow(title: item.title, subtitle: item.detail) {
+        InsetListRow(title: item.title, subtitle: showsDetail ? item.detail : nil) {
             ZStack {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .fill(accentColor.opacity(0.12))
@@ -315,6 +365,19 @@ private struct TopicActionRow: View {
     }
 
     private var accentColor: Color {
+        if let ratingColor = item.ratingColor {
+            switch ratingColor {
+            case .missed:
+                return AppTheme.danger
+            case .hard:
+                return AppTheme.warning
+            case .good:
+                return AppTheme.accent
+            case .easy:
+                return AppTheme.success
+            }
+        }
+
         switch item.urgency {
         case .neutral:
             return AppTheme.accent

@@ -101,6 +101,7 @@ private struct HomeTopicWeakness {
     let detail: String
     let destination: SearchDestination?
     let urgency: HomeTopicUrgency
+    let ratingColor: HomeTopicRatingColor?
 }
 
 extension StudyAppModel {
@@ -280,7 +281,8 @@ extension StudyAppModel {
                     actionTitle: "Review",
                     iconName: topic.iconName,
                     destination: destination(for: topic),
-                    urgency: urgency
+                    urgency: urgency,
+                    ratingColor: nil
                 )
             }
             .sorted {
@@ -307,7 +309,8 @@ extension StudyAppModel {
                     actionTitle: weakness.topic.id == "maneuvers" ? "Practice" : "Review",
                     iconName: weakness.topic.iconName,
                     destination: weakness.destination,
-                    urgency: weakness.urgency
+                    urgency: weakness.urgency,
+                    ratingColor: weakness.ratingColor
                 )
             }
     }
@@ -352,6 +355,7 @@ extension StudyAppModel {
         let topicLookup = Dictionary(uniqueKeysWithValues: studyTopics.filter(\.isWeakAreaTopic).map { ($0.id, $0) })
         var scores: [String: Double] = [:]
         var details: [String: [String]] = [:]
+        var ratingSignals: [String: (rating: HomeTopicRatingColor, reviewedAt: Date)] = [:]
 
         let flashcardsByID = Dictionary(uniqueKeysWithValues: studyManifest.flashcards.map { ($0.id, $0) })
 
@@ -365,6 +369,19 @@ extension StudyAppModel {
 
             for topicID in matchedTopicIDs {
                 scores[topicID, default: 0] += cardScore
+            }
+
+            guard
+                let lastRating = record.lastRating,
+                let lastReviewedAt = record.lastReviewedAt
+            else { continue }
+
+            let ratingColor = colorSignal(for: lastRating)
+            for topicID in matchedTopicIDs {
+                if let existing = ratingSignals[topicID], existing.reviewedAt >= lastReviewedAt {
+                    continue
+                }
+                ratingSignals[topicID] = (ratingColor, lastReviewedAt)
             }
         }
 
@@ -408,8 +425,22 @@ extension StudyAppModel {
                 score: score,
                 detail: detail,
                 destination: destination(for: topic),
-                urgency: urgency
+                urgency: urgency,
+                ratingColor: ratingSignals[topicID]?.rating
             )
+        }
+    }
+
+    private func colorSignal(for rating: FlashcardRating) -> HomeTopicRatingColor {
+        switch rating {
+        case .missed:
+            return .missed
+        case .hard:
+            return .hard
+        case .good:
+            return .good
+        case .easy:
+            return .easy
         }
     }
 

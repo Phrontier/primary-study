@@ -402,7 +402,7 @@ private struct MoreSectionHeader: View {
     var body: some View {
         Text(title.uppercased())
             .font(.caption.weight(.semibold))
-            .foregroundStyle(AppTheme.accent)
+            .foregroundStyle(color)
             .tracking(0.6)
             .padding(.horizontal, 4)
     }
@@ -429,28 +429,28 @@ private struct MoreSectionContainer<Content: View>: View {
 private struct MoreUtilityRow: View {
     let item: MoreHubItem
 
+    private let accessoryColumnWidth: CGFloat = 96
+
     var body: some View {
         HStack(spacing: 14) {
             ZStack {
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(AppTheme.accent.opacity(0.10))
+                    .fill(AppTheme.semanticTint(item.accent, opacity: 0.16))
                     .frame(width: 36, height: 36)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(item.accent.opacity(0.16), lineWidth: 1)
+                    )
 
                 Image(systemName: item.iconName)
                     .font(.system(size: 15, weight: .semibold))
-                    .foregroundStyle(AppTheme.accent)
+                    .foregroundStyle(item.accent)
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                HStack(spacing: 8) {
-                    Text(item.title)
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(AppTheme.textPrimary)
-
-                    if let badge = item.badge {
-                        MoreRowBadge(style: badge)
-                    }
-                }
+                Text(item.title)
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(AppTheme.textPrimary)
 
                 if let subtitle = item.subtitle, !subtitle.isEmpty {
                     Text(subtitle)
@@ -462,9 +462,16 @@ private struct MoreUtilityRow: View {
 
             Spacer(minLength: 8)
 
-            Image(systemName: "chevron.right")
-                .font(.system(size: 12, weight: .bold))
-                .foregroundStyle(AppTheme.textMuted)
+            HStack(spacing: 10) {
+                if let badge = item.badge {
+                    MoreRowBadge(style: badge)
+                }
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundStyle(item.accent.opacity(0.78))
+            }
+            .frame(width: accessoryColumnWidth, alignment: .trailing)
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)

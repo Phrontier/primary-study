@@ -172,6 +172,18 @@ struct Instructor: Identifiable, Hashable {
             .lowercased()
         return "\(normalizedName)|\(squadronID)"
     }
+
+    var reviewCountLabel: String {
+        publishedReviewCount == 1 ? "review" : "reviews"
+    }
+
+    var reviewCountText: String {
+        "\(publishedReviewCount) \(reviewCountLabel)"
+    }
+
+    var publishedReviewCountText: String {
+        "\(publishedReviewCount) published \(reviewCountLabel)"
+    }
 }
 
 struct InstructorReview: Identifiable, Hashable {

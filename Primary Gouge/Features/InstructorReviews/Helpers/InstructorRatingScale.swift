@@ -27,19 +27,19 @@ enum InstructorRatingColorToken: String, CaseIterable, Hashable {
     var color: Color {
         switch self {
         case .critical:
-            return AppTheme.color(0xFF4D5E)
+            return AppTheme.color(0xD93A2F)
         case .danger:
-            return AppTheme.color(0xFF6A74)
+            return AppTheme.color(0xE46B2E)
         case .warning:
-            return AppTheme.color(0xFFB652)
+            return AppTheme.color(0xD59A2A)
         case .balanced:
-            return AppTheme.color(0x60A7FF)
+            return AppTheme.color(0xA69C3D)
         case .encouraging:
-            return AppTheme.color(0x57D4B2)
+            return AppTheme.color(0x78BF58)
         case .success:
-            return AppTheme.color(0x43D47F)
+            return AppTheme.color(0x3FAE4C)
         case .elite:
-            return AppTheme.color(0x67E5A0)
+            return AppTheme.color(0x1D8F3E)
         }
     }
 }
@@ -109,6 +109,20 @@ enum InstructorRatingScale {
         String(format: "%.1f", average)
     }
 
+    static func formatOutOfSeven(average: Double, includeAverageSuffix: Bool = false) -> String {
+        let base = "\(format(average: average))/7"
+        return includeAverageSuffix ? "\(base) avg" : base
+    }
+
+    static func formatOutOfSeven(score: Int) -> String {
+        "\(clamped(score))/7"
+    }
+
+    static func formatSpacedOutOfSeven(score: Int, includeAverageSuffix: Bool = false) -> String {
+        let base = "\(clamped(score)) / 7"
+        return includeAverageSuffix ? "\(base) avg" : base
+    }
+
     static func clamped(_ score: Int) -> Int {
         min(max(score, validScores.lowerBound), validScores.upperBound)
     }
@@ -137,5 +151,13 @@ extension Instructor {
 
     var gradingAverageText: String {
         InstructorRatingScale.format(average: averageGradingScore)
+    }
+
+    var chillAverageOutOfSevenText: String {
+        InstructorRatingScale.formatOutOfSeven(average: averageChillScore, includeAverageSuffix: true)
+    }
+
+    var gradingAverageOutOfSevenText: String {
+        InstructorRatingScale.formatOutOfSeven(average: averageGradingScore, includeAverageSuffix: true)
     }
 }

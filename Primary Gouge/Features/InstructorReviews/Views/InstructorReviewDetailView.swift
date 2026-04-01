@@ -15,7 +15,7 @@ struct InstructorReviewDetailView: View {
             HeroCard(
                 eyebrow: viewModel.instructor.squadron.displayName,
                 title: viewModel.instructor.name,
-                subtitle: "\(viewModel.instructor.publishedReviewCount) published reviews"
+                subtitle: viewModel.instructor.publishedReviewCountText
             ) {
                 HStack(spacing: 10) {
                     ForEach(viewModel.instructor.capabilityBadges, id: \.self) { capability in

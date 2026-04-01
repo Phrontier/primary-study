@@ -1,52 +1,71 @@
 import SwiftUI
 
+enum InstructorRatingBadgeStyle {
+    case roster
+    case individual
+}
+
 struct InstructorRatingBadge: View {
     let title: String
     let label: String
     let subtitle: String
     let score: Int
+    let style: InstructorRatingBadgeStyle
 
     private var accent: Color {
         InstructorRatingScale.color(for: score)
     }
 
+    private var subtitleFont: Font {
+        switch style {
+        case .roster:
+            return .system(.caption, design: .rounded, weight: .bold)
+        case .individual:
+            return .system(.caption, design: .rounded, weight: .medium)
+        }
+    }
+
+    private var subtitleColor: Color {
+        switch style {
+        case .roster:
+            return AppTheme.prominentText(accent)
+        case .individual:
+            return AppTheme.textSecondary
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text(title.uppercased())
-                    .font(.system(.caption2, design: .rounded, weight: .bold))
-                    .foregroundStyle(AppTheme.prominentText(accent))
-                    .tracking(0.6)
+            Text(title.uppercased())
+                .font(.system(.caption2, design: .rounded, weight: .bold))
+                .foregroundStyle(AppTheme.prominentText(accent))
+                .tracking(0.6)
 
-                Spacer(minLength: 8)
+            Text(label)
+                .font(.system(.subheadline, design: .rounded, weight: .bold))
+                .foregroundStyle(AppTheme.textPrimary)
+                .lineLimit(2)
+                .frame(maxWidth: .infinity, minHeight: 44, alignment: .topLeading)
 
-                Text("\(score)/7")
-                    .font(.system(.caption, design: .rounded, weight: .bold))
-                    .foregroundStyle(AppTheme.prominentText(accent))
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 5)
-                    .background(
+            Text(subtitle)
+                .font(subtitleFont)
+                .foregroundStyle(subtitleColor)
+                .padding(.horizontal, style == .roster ? 8 : 0)
+                .padding(.vertical, style == .roster ? 5 : 0)
+                .background {
+                    if style == .roster {
                         Capsule()
                             .fill(AppTheme.badgeFill(accent))
                             .overlay(
                                 Capsule()
                                     .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
                             )
-                    )
-            }
-
-            Text(label)
-                .font(.system(.subheadline, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.textPrimary)
-                .lineLimit(2)
-
-            Text(subtitle)
-                .font(.system(.caption, design: .rounded, weight: .medium))
-                .foregroundStyle(AppTheme.textSecondary)
+                    }
+                }
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 14)
-        .frame(maxWidth: .infinity, minHeight: 92, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: 108, maxHeight: 108, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(AppTheme.elevatedSurface)
@@ -81,33 +100,15 @@ struct InstructorAggregateCard: View {
     var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    HStack(spacing: 8) {
-                        Circle()
-                            .fill(AppTheme.prominentText(accent))
-                            .frame(width: 8, height: 8)
+                HStack(spacing: 8) {
+                    Circle()
+                        .fill(AppTheme.prominentText(accent))
+                        .frame(width: 8, height: 8)
 
-                        Text(title.uppercased())
-                            .font(.system(.caption2, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.prominentText(accent))
-                            .tracking(0.6)
-                    }
-
-                    Spacer(minLength: 8)
-
-                    Text("\(roundedScore)/7")
-                        .font(.system(.caption, design: .rounded, weight: .bold))
+                    Text(title.uppercased())
+                        .font(.system(.caption2, design: .rounded, weight: .bold))
                         .foregroundStyle(AppTheme.prominentText(accent))
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 5)
-                        .background(
-                            Capsule()
-                                .fill(AppTheme.badgeFill(accent))
-                                .overlay(
-                                    Capsule()
-                                        .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
-                                )
-                        )
+                        .tracking(0.6)
                 }
 
                 Spacer(minLength: 0)
@@ -117,15 +118,9 @@ struct InstructorAggregateCard: View {
                     .foregroundStyle(AppTheme.textPrimary)
                     .lineLimit(2)
 
-                HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    Text(InstructorRatingScale.format(average: average))
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .foregroundStyle(AppTheme.prominentText(accent))
-
-                    Text("avg")
-                        .font(.system(.caption, design: .rounded, weight: .bold))
-                        .foregroundStyle(AppTheme.textMuted)
-                }
+                Text(InstructorRatingScale.formatOutOfSeven(average: average))
+                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                    .foregroundStyle(AppTheme.prominentText(accent))
 
                 Capsule()
                     .fill(accent)
@@ -181,14 +176,16 @@ struct InstructorReviewCard: View {
                     InstructorRatingBadge(
                         title: "Chill Factor",
                         label: InstructorRatingScale.label(for: review.chillScore, category: .chillFactor),
-                        subtitle: "Score \(review.chillScore) / 7",
-                        score: review.chillScore
+                        subtitle: InstructorRatingScale.formatSpacedOutOfSeven(score: review.chillScore, includeAverageSuffix: true),
+                        score: review.chillScore,
+                        style: .individual
                     )
                     InstructorRatingBadge(
                         title: "Grading Style",
                         label: InstructorRatingScale.label(for: review.gradingScore, category: .gradingStyle),
-                        subtitle: "Score \(review.gradingScore) / 7",
-                        score: review.gradingScore
+                        subtitle: InstructorRatingScale.formatSpacedOutOfSeven(score: review.gradingScore, includeAverageSuffix: true),
+                        score: review.gradingScore,
+                        style: .individual
                     )
                 }
 
@@ -231,9 +228,15 @@ struct InstructorSummaryCard: View {
                             .font(.system(.title3, design: .rounded, weight: .bold))
                             .foregroundStyle(AppTheme.textPrimary)
 
-                        Text(instructor.squadron.displayName)
-                            .font(.system(.subheadline, design: .rounded, weight: .medium))
-                            .foregroundStyle(AppTheme.textSecondary)
+                        HStack(spacing: 8) {
+                            Text(instructor.squadron.displayName)
+                                .font(.system(.subheadline, design: .rounded, weight: .medium))
+                                .foregroundStyle(AppTheme.textSecondary)
+
+                            ForEach(instructor.capabilityBadges, id: \.self) { capability in
+                                InstructorCapabilityBadge(capability: capability)
+                            }
+                        }
                     }
 
                     Spacer(minLength: 12)
@@ -243,7 +246,7 @@ struct InstructorSummaryCard: View {
                             .font(.system(.title2, design: .rounded, weight: .bold))
                             .foregroundStyle(AppTheme.prominentText(AppTheme.domainColor(.instructors)))
 
-                        Text("reviews")
+                        Text(instructor.reviewCountLabel)
                             .font(.system(.caption, design: .rounded, weight: .bold))
                             .foregroundStyle(AppTheme.textMuted)
                             .tracking(0.5)
@@ -254,27 +257,17 @@ struct InstructorSummaryCard: View {
                     InstructorRatingBadge(
                         title: "Chill Factor",
                         label: instructor.chillLabel,
-                        subtitle: "\(instructor.chillAverageText) avg",
-                        score: instructor.chillRoundedScore
+                        subtitle: instructor.chillAverageOutOfSevenText,
+                        score: instructor.chillRoundedScore,
+                        style: .roster
                     )
                     InstructorRatingBadge(
                         title: "Grading Style",
                         label: instructor.gradingLabel,
-                        subtitle: "\(instructor.gradingAverageText) avg",
-                        score: instructor.gradingRoundedScore
+                        subtitle: instructor.gradingAverageOutOfSevenText,
+                        score: instructor.gradingRoundedScore,
+                        style: .roster
                     )
-                }
-
-                HStack(spacing: 10) {
-                    Text("\(instructor.publishedReviewCount) published")
-                        .font(.system(.footnote, design: .rounded, weight: .semibold))
-                        .foregroundStyle(AppTheme.textSecondary)
-
-                    Spacer(minLength: 8)
-
-                    ForEach(instructor.capabilityBadges, id: \.self) { capability in
-                        InstructorCapabilityBadge(capability: capability)
-                    }
                 }
             }
         }

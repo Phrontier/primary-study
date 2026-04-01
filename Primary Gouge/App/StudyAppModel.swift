@@ -1123,12 +1123,20 @@ struct HomeTopicActionSnapshot: Identifiable, Equatable {
     let iconName: String
     let destination: SearchDestination?
     let urgency: HomeTopicUrgency
+    let ratingColor: HomeTopicRatingColor?
 }
 
 enum HomeTopicUrgency: Equatable {
     case neutral
     case warning
     case alert
+}
+
+enum HomeTopicRatingColor: Equatable {
+    case missed
+    case hard
+    case good
+    case easy
 }
 
 struct HomeQuestionOfDaySnapshot: Equatable {

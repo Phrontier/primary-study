@@ -300,8 +300,8 @@ enum AppTheme {
 
         let navAppearance = UINavigationBarAppearance()
         navAppearance.configureWithTransparentBackground()
-        navAppearance.backgroundColor = palette.chromeBackground.withAlphaComponent(0.82)
-        navAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        navAppearance.backgroundColor = UIColor(rgb: 0x08101A).withAlphaComponent(0.08)
+        navAppearance.backgroundEffect = UIBlurEffect(style: .systemThinMaterialDark)
         navAppearance.shadowColor = palette.chromeLine
         navAppearance.titleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
         navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
@@ -311,8 +311,8 @@ enum AppTheme {
         scrollEdgeAppearance.backgroundColor = .clear
         scrollEdgeAppearance.backgroundEffect = nil
         scrollEdgeAppearance.shadowColor = .clear
-        scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor.clear]
-        scrollEdgeAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.clear]
+        scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
+        scrollEdgeAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
 
         UINavigationBar.appearance().tintColor = selectedColor
         UINavigationBar.appearance().standardAppearance = navAppearance

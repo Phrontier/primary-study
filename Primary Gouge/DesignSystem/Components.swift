@@ -190,7 +190,6 @@ struct ScrollActivatedNavigationChrome: ViewModifier {
         content
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.hidden, for: .navigationBar)
     }
 }
 
@@ -376,39 +375,35 @@ struct HeroInlineMetricRow: View {
     let metrics: [HeroInlineMetric]
 
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 8) {
             ForEach(metrics) { metric in
-                HStack(spacing: 8) {
-                    Circle()
-                        .fill(metric.color)
-                        .frame(width: 10, height: 10)
-
+                HStack(spacing: 6) {
                     Text(metric.value)
-                        .font(.headline.weight(.bold))
+                        .font(.subheadline.weight(.bold))
                         .foregroundStyle(AppTheme.textPrimary)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.8)
+                        .minimumScaleFactor(0.9)
 
-                    Text(metric.label.uppercased())
-                        .font(.caption2.weight(.semibold))
-                        .foregroundStyle(metric.color)
-                        .tracking(0.35)
+                    Text(metric.label)
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(AppTheme.prominentText(metric.color).opacity(0.88))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.75)
+                        .minimumScaleFactor(0.9)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 12)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 7)
                 .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(AppTheme.elevatedSurface)
+                    Capsule(style: .continuous)
+                        .fill(AppTheme.badgeFill(metric.color).opacity(0.72))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(AppTheme.cardStroke, lineWidth: 1)
+                            Capsule(style: .continuous)
+                                .stroke(AppTheme.badgeStroke(metric.color).opacity(0.65), lineWidth: 1)
                         )
                 )
+                .fixedSize(horizontal: true, vertical: true)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
@@ -680,7 +675,9 @@ struct InsetListRow<Leading: View, Trailing: View>: View {
                     Text(title)
                         .font((subtitle == nil ? Font.headline : .body).weight(.semibold))
                         .foregroundStyle(AppTheme.textPrimary)
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .layoutPriority(1)
 
                     if let subtitle, !subtitle.isEmpty {
                         Text(subtitle)
@@ -694,22 +691,24 @@ struct InsetListRow<Leading: View, Trailing: View>: View {
 
                 if let detail, !detail.isEmpty {
                     Text(detail)
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(detailColor)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 9)
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(AppTheme.prominentText(detailColor).opacity(0.92))
+                        .padding(.horizontal, 11)
+                        .padding(.vertical, 7)
                         .background(
                             Capsule(style: .continuous)
-                                .fill(AppTheme.badgeFill(detailColor))
+                                .fill(AppTheme.badgeFill(detailColor).opacity(0.52))
                                 .overlay(
                                     Capsule(style: .continuous)
-                                        .stroke(AppTheme.badgeStroke(detailColor), lineWidth: 1)
+                                        .stroke(AppTheme.badgeStroke(detailColor).opacity(0.72), lineWidth: 1)
                                 )
                         )
                         .lineLimit(1)
+                        .fixedSize(horizontal: true, vertical: false)
                 }
 
                 trailing
+                    .fixedSize()
             }
         }
         .padding(.horizontal, 16)
@@ -747,44 +746,52 @@ struct ModuleTile<Accessory: View>: View {
 
     var body: some View {
         SectionContainer(style: .standard, accent: accent) {
-            HStack(alignment: subtitle == nil ? .center : .top, spacing: 16) {
-                moduleIcon
+            VStack(alignment: .leading, spacing: detail == nil ? 0 : 12) {
+                HStack(alignment: subtitle == nil ? .center : .top, spacing: 14) {
+                    moduleIcon
 
-                VStack(alignment: .leading, spacing: subtitle == nil ? 2 : 6) {
-                    Text(title)
-                        .font((subtitle == nil ? Font.title2 : .headline).weight(.semibold))
-                        .foregroundStyle(AppTheme.textPrimary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                    if let subtitle, !subtitle.isEmpty {
-                        Text(subtitle)
-                            .font(.footnote)
-                            .foregroundStyle(AppTheme.textSecondary)
+                    VStack(alignment: .leading, spacing: subtitle == nil ? 2 : 6) {
+                        Text(title)
+                            .font((subtitle == nil ? Font.title3 : .headline).weight(.semibold))
+                            .foregroundStyle(AppTheme.textPrimary)
                             .fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .layoutPriority(1)
+
+                        if let subtitle, !subtitle.isEmpty {
+                            Text(subtitle)
+                                .font(.footnote)
+                                .foregroundStyle(AppTheme.textSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
                     }
+
+                    Spacer(minLength: 0)
+
+                    accessory
+                        .fixedSize()
                 }
 
-                Spacer(minLength: 10)
+                if let detail, !detail.isEmpty {
+                    HStack(spacing: 0) {
+                        Spacer(minLength: 0)
 
-                HStack(spacing: 10) {
-                    if let detail, !detail.isEmpty {
                         Text(detail)
-                            .font(.footnote.weight(.semibold))
-                            .foregroundStyle(accent)
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 9)
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(AppTheme.prominentText(accent).opacity(0.8))
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
                             .background(
                                 Capsule(style: .continuous)
-                                    .fill(AppTheme.badgeFill(accent))
+                                    .fill(AppTheme.badgeFill(accent).opacity(0.32))
                                     .overlay(
                                         Capsule(style: .continuous)
-                                            .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
+                                            .stroke(AppTheme.badgeStroke(accent).opacity(0.5), lineWidth: 1)
                                     )
                             )
                             .lineLimit(1)
+                            .fixedSize(horizontal: true, vertical: false)
                     }
-
-                    accessory
                 }
             }
         }
@@ -794,10 +801,10 @@ struct ModuleTile<Accessory: View>: View {
         ZStack {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(AppTheme.badgeFill(accent))
-                .frame(width: subtitle == nil ? 60 : 54, height: subtitle == nil ? 60 : 54)
+                .frame(width: subtitle == nil ? 52 : 48, height: subtitle == nil ? 52 : 48)
 
             Image(systemName: iconName)
-                .font((subtitle == nil ? Font.title : .title2).weight(.semibold))
+                .font((subtitle == nil ? Font.title2 : .title3).weight(.semibold))
                 .foregroundStyle(AppTheme.iconTint(accent))
         }
     }

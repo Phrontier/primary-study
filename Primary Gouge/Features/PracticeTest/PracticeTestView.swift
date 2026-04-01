@@ -122,8 +122,7 @@ struct PracticeTestView: View {
                 }
             }
         }
-        .navigationTitle(bank.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: bank.title)
         .alert("Practice test complete", isPresented: $showingCompletionSheet) {
             Button("Done") {
                 dismiss()

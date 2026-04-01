@@ -69,24 +69,26 @@ struct AppScrollScreen<Content: View>: View {
 struct SectionHeader: View {
     let eyebrow: String
     let title: String
-    let subtitle: String
+    let subtitle: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 8) {
             Text(eyebrow.uppercased())
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(AppTheme.accent)
                 .tracking(0.6)
 
             Text(title)
-                .font(.title3.weight(.semibold))
+                .font((subtitle == nil ? Font.title2 : .title3).weight(.semibold))
                 .foregroundStyle(AppTheme.textPrimary)
 
-            Text(subtitle)
-                .font(.subheadline)
-                .foregroundStyle(AppTheme.textSecondary)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: 520, alignment: .leading)
+            if let subtitle, !subtitle.isEmpty {
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: 520, alignment: .leading)
+            }
         }
     }
 }
@@ -143,8 +145,8 @@ struct HeroCard<Content: View>: View {
 
     var body: some View {
         SectionContainer(style: .hero, accent: accent, contentPadding: 24) {
-            VStack(alignment: .leading, spacing: 18) {
-                VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: subtitle == nil ? 14 : 18) {
+                VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 8) {
                     if let eyebrow, !eyebrow.isEmpty {
                         Text(eyebrow.uppercased())
                             .font(.caption.weight(.semibold))
@@ -153,7 +155,7 @@ struct HeroCard<Content: View>: View {
                     }
 
                     Text(title)
-                        .font(.system(size: 30, weight: .bold))
+                        .font(.system(size: subtitle == nil ? 34 : 30, weight: .bold))
                         .foregroundStyle(AppTheme.textPrimary)
                         .fixedSize(horizontal: false, vertical: true)
 
@@ -172,6 +174,244 @@ struct HeroCard<Content: View>: View {
     }
 }
 
+struct TabHeaderIdentity {
+    let navigationTitle: String
+    let eyebrow: String
+    let title: String
+    let subtitle: String?
+    let iconName: String
+    let accent: Color
+}
+
+struct ScrollActivatedNavigationChrome: ViewModifier {
+    let title: String
+
+    func body(content: Content) -> some View {
+        content
+            .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.hidden, for: .navigationBar)
+    }
+}
+
+extension View {
+    func scrollActivatedNavigationChrome(title: String) -> some View {
+        modifier(ScrollActivatedNavigationChrome(title: title))
+    }
+}
+
+struct TabHeaderMetric: Identifiable, Hashable {
+    let id: String
+    let label: String
+    let value: String
+    let color: Color
+    let iconName: String?
+
+    init(label: String, value: String, color: Color, iconName: String? = nil) {
+        self.id = "\(label)-\(value)-\(iconName ?? "")"
+        self.label = label
+        self.value = value
+        self.color = color
+        self.iconName = iconName
+    }
+}
+
+enum TabHeaderMetricLayout {
+    case adaptive
+    case compactRow
+}
+
+struct HeroInlineMetric: Identifiable, Hashable {
+    let id: String
+    let label: String
+    let value: String
+    let color: Color
+
+    init(label: String, value: String, color: Color) {
+        self.id = "\(label)-\(value)"
+        self.label = label
+        self.value = value
+        self.color = color
+    }
+}
+
+struct HeaderCapsuleButton: View {
+    let title: String
+    let iconName: String
+    let tint: Color
+
+    init(title: String, iconName: String, tint: Color = AppTheme.accent) {
+        self.title = title
+        self.iconName = iconName
+        self.tint = tint
+    }
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: iconName)
+                .font(.system(size: 13, weight: .semibold))
+
+            Text(title)
+                .font(.footnote.weight(.semibold))
+        }
+        .foregroundStyle(tint)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background(
+            Capsule()
+                .fill(AppTheme.badgeFill(tint))
+                .overlay(
+                    Capsule()
+                        .stroke(AppTheme.badgeStroke(tint), lineWidth: 1)
+                )
+        )
+    }
+}
+
+struct TabHeaderCard<Content: View>: View {
+    let identity: TabHeaderIdentity
+    let metrics: [TabHeaderMetric]
+    let metricLayout: TabHeaderMetricLayout
+    @ViewBuilder let content: Content
+
+    init(
+        identity: TabHeaderIdentity,
+        metrics: [TabHeaderMetric] = [],
+        metricLayout: TabHeaderMetricLayout = .adaptive,
+        @ViewBuilder content: () -> Content = { EmptyView() }
+    ) {
+        self.identity = identity
+        self.metrics = metrics
+        self.metricLayout = metricLayout
+        self.content = content()
+    }
+
+    var body: some View {
+        SectionContainer(style: .hero, accent: identity.accent, contentPadding: 24) {
+            VStack(alignment: .leading, spacing: identity.subtitle == nil ? 14 : 18) {
+                HStack(alignment: .top, spacing: 16) {
+                    VStack(alignment: .leading, spacing: identity.subtitle == nil ? 4 : 8) {
+                        Text(identity.eyebrow.uppercased())
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(identity.accent)
+                            .tracking(0.7)
+
+                        Text(identity.title)
+                            .font(.system(size: identity.subtitle == nil ? 34 : 30, weight: .bold))
+                            .foregroundStyle(AppTheme.textPrimary)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                        if let subtitle = identity.subtitle, !subtitle.isEmpty {
+                            Text(subtitle)
+                                .font(.subheadline)
+                                .foregroundStyle(AppTheme.textSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
+
+                    Spacer(minLength: 8)
+
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(AppTheme.badgeFill(identity.accent))
+                        .frame(width: identity.subtitle == nil ? 58 : 54, height: identity.subtitle == nil ? 58 : 54)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .stroke(AppTheme.badgeStroke(identity.accent), lineWidth: 1)
+                        )
+                        .overlay {
+                            Image(systemName: identity.iconName)
+                                .font((identity.subtitle == nil ? Font.title2 : .title3).weight(.semibold))
+                                .foregroundStyle(AppTheme.iconTint(identity.accent))
+                        }
+                }
+
+                if !metrics.isEmpty {
+                    metricsView
+                }
+
+                content
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var metricsView: some View {
+        switch metricLayout {
+        case .adaptive:
+            if identity.subtitle == nil {
+                HeroInlineMetricRow(
+                    metrics: metrics.map { HeroInlineMetric(label: $0.label, value: $0.value, color: $0.color) }
+                )
+            } else {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: 12) {
+                        ForEach(metrics) { metric in
+                            MetricChip(label: metric.label, value: metric.value, color: metric.color, iconName: metric.iconName)
+                        }
+                    }
+
+                    VStack(spacing: 12) {
+                        ForEach(metrics) { metric in
+                            MetricChip(label: metric.label, value: metric.value, color: metric.color, iconName: metric.iconName)
+                        }
+                    }
+                }
+            }
+        case .compactRow:
+            HStack(spacing: 10) {
+                ForEach(metrics) { metric in
+                    CompactMetricChip(
+                        label: metric.label,
+                        value: metric.value,
+                        color: metric.color,
+                        iconName: metric.iconName
+                    )
+                }
+            }
+        }
+    }
+}
+
+struct HeroInlineMetricRow: View {
+    let metrics: [HeroInlineMetric]
+
+    var body: some View {
+        HStack(spacing: 10) {
+            ForEach(metrics) { metric in
+                HStack(spacing: 8) {
+                    Circle()
+                        .fill(metric.color)
+                        .frame(width: 10, height: 10)
+
+                    Text(metric.value)
+                        .font(.headline.weight(.bold))
+                        .foregroundStyle(AppTheme.textPrimary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+
+                    Text(metric.label.uppercased())
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(metric.color)
+                        .tracking(0.35)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.75)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 12)
+                .background(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(AppTheme.elevatedSurface)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .stroke(AppTheme.cardStroke, lineWidth: 1)
+                        )
+                )
+            }
+        }
+    }
+}
+
 struct StatusBadge: View {
     let title: String
     let iconName: String
@@ -180,15 +420,15 @@ struct StatusBadge: View {
     var body: some View {
         Label(title, systemImage: iconName)
             .font(.caption.weight(.semibold))
-            .foregroundStyle(color)
+            .foregroundStyle(AppTheme.prominentText(color))
             .padding(.horizontal, 10)
             .padding(.vertical, 6)
             .background(
                 Capsule(style: .continuous)
-                    .fill(AppTheme.elevatedSurface)
+                    .fill(AppTheme.badgeFill(color))
                     .overlay(
                         Capsule(style: .continuous)
-                            .stroke(color.opacity(0.18), lineWidth: 1)
+                            .stroke(AppTheme.badgeStroke(color), lineWidth: 1)
                     )
             )
     }
@@ -213,16 +453,16 @@ struct MetricChip: View {
                 if let iconName {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(color.opacity(0.10))
+                            .fill(AppTheme.badgeFill(color))
                             .frame(width: 28, height: 28)
 
                         Image(systemName: iconName)
                             .font(.caption.weight(.bold))
-                            .foregroundStyle(color)
+                            .foregroundStyle(AppTheme.iconTint(color))
                     }
                 } else {
                     RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(color.opacity(0.85))
+                        .fill(AppTheme.prominentText(color))
                         .frame(width: 12, height: 12)
                 }
 
@@ -236,13 +476,53 @@ struct MetricChip: View {
 
                 Text(label.uppercased())
                     .font(.caption2.weight(.semibold))
-                    .foregroundStyle(color)
+                    .foregroundStyle(AppTheme.prominentText(color))
                     .tracking(0.5)
             }
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 14)
         .frame(maxWidth: .infinity, minHeight: 94, alignment: .leading)
+        .background(
+            AppTheme.cardBackground(style: .metric, accent: color)
+        )
+    }
+}
+
+struct CompactMetricChip: View {
+    let label: String
+    let value: String
+    let color: Color
+    let iconName: String?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 6) {
+                if let iconName {
+                    Image(systemName: iconName)
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppTheme.iconTint(color))
+                }
+
+                Spacer(minLength: 0)
+            }
+
+            Text(value)
+                .font(.headline.weight(.semibold))
+                .foregroundStyle(AppTheme.textPrimary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+
+            Text(label.uppercased())
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(color)
+                .tracking(0.4)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 12)
+        .frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
         .background(
             AppTheme.cardBackground(style: .metric, accent: color)
         )
@@ -343,7 +623,7 @@ struct StudyActionButton: View {
             Text(title)
                 .font(.headline.weight(.semibold))
         }
-        .foregroundStyle(isProminent ? Color.white : tint)
+        .foregroundStyle(isProminent ? Color.white : AppTheme.prominentText(tint))
         .frame(maxWidth: .infinity)
         .padding(.vertical, 14)
         .padding(.horizontal, 16)
@@ -360,7 +640,7 @@ struct StudyActionButton: View {
                     .stroke(
                         isProminent
                             ? LinearGradient(colors: [Color.white.opacity(0.14), Color.white.opacity(0.02)], startPoint: .top, endPoint: .bottom)
-                            : LinearGradient(colors: [tint.opacity(0.18), AppTheme.cardStroke.opacity(0.92)], startPoint: .topLeading, endPoint: .bottomTrailing),
+                            : LinearGradient(colors: [AppTheme.badgeStroke(tint), AppTheme.cardStroke.opacity(0.92)], startPoint: .topLeading, endPoint: .bottomTrailing),
                         lineWidth: 1
                     )
             )
@@ -369,40 +649,68 @@ struct StudyActionButton: View {
 
 struct InsetListRow<Leading: View, Trailing: View>: View {
     let title: String
-    let subtitle: String
+    let subtitle: String?
+    let detail: String?
+    let detailColor: Color
     @ViewBuilder let leading: Leading
     @ViewBuilder let trailing: Trailing
 
     init(
         title: String,
-        subtitle: String,
+        subtitle: String? = nil,
+        detail: String? = nil,
+        detailColor: Color = AppTheme.accent,
         @ViewBuilder leading: () -> Leading,
         @ViewBuilder trailing: () -> Trailing = { EmptyView() }
     ) {
         self.title = title
         self.subtitle = subtitle
+        self.detail = detail
+        self.detailColor = detailColor
         self.leading = leading()
         self.trailing = trailing()
     }
 
     var body: some View {
-        HStack(alignment: .top, spacing: 14) {
+        HStack(alignment: subtitle == nil ? .center : .top, spacing: 14) {
             leading
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text(title)
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(AppTheme.textPrimary)
+            HStack(alignment: .center, spacing: 12) {
+                VStack(alignment: .leading, spacing: subtitle == nil ? 2 : 6) {
+                    Text(title)
+                        .font((subtitle == nil ? Font.headline : .body).weight(.semibold))
+                        .foregroundStyle(AppTheme.textPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text(subtitle)
-                    .font(.footnote)
-                    .foregroundStyle(AppTheme.textSecondary)
-                    .lineLimit(3)
+                    if let subtitle, !subtitle.isEmpty {
+                        Text(subtitle)
+                            .font(.footnote)
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .lineLimit(3)
+                    }
+                }
+
+                Spacer(minLength: 10)
+
+                if let detail, !detail.isEmpty {
+                    Text(detail)
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(detailColor)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 9)
+                        .background(
+                            Capsule(style: .continuous)
+                                .fill(AppTheme.badgeFill(detailColor))
+                                .overlay(
+                                    Capsule(style: .continuous)
+                                        .stroke(AppTheme.badgeStroke(detailColor), lineWidth: 1)
+                                )
+                        )
+                        .lineLimit(1)
+                }
+
+                trailing
             }
-
-            Spacer(minLength: 10)
-
-            trailing
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
@@ -415,7 +723,7 @@ struct InsetListRow<Leading: View, Trailing: View>: View {
 
 struct ModuleTile<Accessory: View>: View {
     let title: String
-    let subtitle: String
+    let subtitle: String?
     let iconName: String
     let accent: Color
     let detail: String?
@@ -423,7 +731,7 @@ struct ModuleTile<Accessory: View>: View {
 
     init(
         title: String,
-        subtitle: String,
+        subtitle: String? = nil,
         iconName: String,
         accent: Color = AppTheme.accent,
         detail: String? = nil,
@@ -438,37 +746,43 @@ struct ModuleTile<Accessory: View>: View {
     }
 
     var body: some View {
-        SectionContainer(style: .standard, accent: AppTheme.accent) {
-            VStack(alignment: .leading, spacing: 14) {
-                HStack(alignment: .top, spacing: 14) {
-                    moduleIcon
+        SectionContainer(style: .standard, accent: accent) {
+            HStack(alignment: subtitle == nil ? .center : .top, spacing: 16) {
+                moduleIcon
 
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack(alignment: .firstTextBaseline, spacing: 8) {
-                            Text(title)
-                                .font(.headline.weight(.semibold))
-                                .foregroundStyle(AppTheme.textPrimary)
+                VStack(alignment: .leading, spacing: subtitle == nil ? 2 : 6) {
+                    Text(title)
+                        .font((subtitle == nil ? Font.title2 : .headline).weight(.semibold))
+                        .foregroundStyle(AppTheme.textPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
-                            if let detail, !detail.isEmpty {
-                                Text(detail)
-                                    .font(.caption.weight(.semibold))
-                                    .foregroundStyle(AppTheme.accent)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(
-                                        Capsule(style: .continuous)
-                                            .fill(AppTheme.accent.opacity(0.10))
-                                    )
-                            }
-                        }
-
+                    if let subtitle, !subtitle.isEmpty {
                         Text(subtitle)
                             .font(.footnote)
                             .foregroundStyle(AppTheme.textSecondary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
+                }
 
-                    Spacer(minLength: 10)
+                Spacer(minLength: 10)
+
+                HStack(spacing: 10) {
+                    if let detail, !detail.isEmpty {
+                        Text(detail)
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(accent)
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 9)
+                            .background(
+                                Capsule(style: .continuous)
+                                    .fill(AppTheme.badgeFill(accent))
+                                    .overlay(
+                                        Capsule(style: .continuous)
+                                            .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
+                                    )
+                            )
+                            .lineLimit(1)
+                    }
 
                     accessory
                 }
@@ -479,12 +793,12 @@ struct ModuleTile<Accessory: View>: View {
     private var moduleIcon: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(AppTheme.accent.opacity(0.10))
-                .frame(width: 50, height: 50)
+                .fill(AppTheme.badgeFill(accent))
+                .frame(width: subtitle == nil ? 60 : 54, height: subtitle == nil ? 60 : 54)
 
             Image(systemName: iconName)
-                .font(.title3.weight(.semibold))
-                .foregroundStyle(AppTheme.accent)
+                .font((subtitle == nil ? Font.title : .title2).weight(.semibold))
+                .foregroundStyle(AppTheme.iconTint(accent))
         }
     }
 }
@@ -506,15 +820,15 @@ struct FilterChipGroup<Option: Hashable>: View {
                     } label: {
                         Text(title(option))
                             .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(isSelected ? AppTheme.accent : AppTheme.textSecondary)
+                            .foregroundStyle(isSelected ? tint(option) : AppTheme.textSecondary)
                             .padding(.horizontal, 14)
                             .padding(.vertical, 10)
                             .background(
                                 Capsule(style: .continuous)
-                                    .fill(isSelected ? AppTheme.accent.opacity(0.12) : AppTheme.elevatedSurface)
+                                    .fill(isSelected ? AppTheme.badgeFill(tint(option)) : AppTheme.elevatedSurface)
                                     .overlay(
                                         Capsule(style: .continuous)
-                                            .stroke(isSelected ? AppTheme.accent.opacity(0.20) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                            .stroke(isSelected ? AppTheme.badgeStroke(tint(option)) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
                                     )
                             )
                     }
@@ -534,17 +848,17 @@ struct ReviewRow: View {
     var body: some View {
         InsetListRow(title: title, subtitle: subtitle) {
             Circle()
-                .fill(color.opacity(0.16))
+                .fill(AppTheme.badgeFill(color))
                 .frame(width: 40, height: 40)
                 .overlay(
                     Circle()
-                        .fill(color)
+                        .fill(AppTheme.prominentText(color))
                         .frame(width: 10, height: 10)
                 )
         } trailing: {
             Text(detail)
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(color)
+                .foregroundStyle(AppTheme.prominentText(color))
         }
     }
 }
@@ -590,7 +904,6 @@ struct PhaseCard: View {
     var body: some View {
         ModuleTile(
             title: phase.title,
-            subtitle: phase.summary,
             iconName: phase.iconName,
             accent: AppTheme.accent
         ) {
@@ -608,7 +921,6 @@ struct CategoryCard: View {
     var body: some View {
         PhaseDestinationCard(
             title: category.displayName,
-            subtitle: category.summary,
             iconName: category.iconName,
             detail: "\(category.events.count) events"
         )
@@ -617,9 +929,16 @@ struct CategoryCard: View {
 
 struct PhaseDestinationCard: View {
     let title: String
-    let subtitle: String
+    let subtitle: String?
     let iconName: String
     let detail: String?
+
+    init(title: String, subtitle: String? = nil, iconName: String, detail: String? = nil) {
+        self.title = title
+        self.subtitle = subtitle
+        self.iconName = iconName
+        self.detail = detail
+    }
 
     var body: some View {
         ModuleTile(
@@ -679,7 +998,7 @@ struct EventCard: View {
 
 struct ToolCard: View {
     let title: String
-    let subtitle: String
+    let subtitle: String?
     let icon: String
     let accent: Color
 
@@ -687,12 +1006,12 @@ struct ToolCard: View {
         InsetListRow(title: title, subtitle: subtitle) {
             ZStack {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(AppTheme.accent.opacity(0.10))
+                    .fill(AppTheme.badgeFill(accent))
                     .frame(width: 42, height: 42)
 
                 Image(systemName: icon)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppTheme.accent)
+                    .foregroundStyle(AppTheme.iconTint(accent))
             }
         } trailing: {
             Image(systemName: "chevron.right")

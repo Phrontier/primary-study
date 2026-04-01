@@ -64,7 +64,10 @@ struct QuizAnswerButton: View {
     private let fontSizes: [CGFloat] = [17, 16, 15, 14, 13]
 
     var body: some View {
-        Button(action: action) {
+        Button {
+            guard isInteractive else { return }
+            action()
+        } label: {
             HStack(alignment: .center, spacing: 12) {
                 if let badge {
                     ZStack {
@@ -98,7 +101,6 @@ struct QuizAnswerButton: View {
             )
         }
         .buttonStyle(.plain)
-        .disabled(!isInteractive)
     }
 
     @ViewBuilder

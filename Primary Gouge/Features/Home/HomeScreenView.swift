@@ -7,8 +7,8 @@ struct HomeScreenView: View {
     @State private var showingManageFocus = false
 
     var body: some View {
-        AppScrollScreen(topPadding: 14, bottomPadding: 42) {
-            HomeHeaderView(snapshot: appModel.homeScreenSnapshot)
+        AppScrollScreen(topPadding: 18, bottomPadding: 28) {
+            HomeIntroBlock(snapshot: appModel.homeScreenSnapshot)
 
             ContinueStudyingCard(snapshot: appModel.homeScreenSnapshot.continueStudying) { destination in
                 route(to: destination)
@@ -21,16 +21,16 @@ struct HomeScreenView: View {
             )
 
             ReviewDueSection(
-                title: "Review Due",
-                subtitle: "Cards and topics that are old enough to deserve attention now.",
+                title: "Review due",
+                subtitle: nil,
                 items: appModel.homeScreenSnapshot.reviewDue,
                 emptyMessage: "Nothing is aging out right now.",
                 onSelect: route(to:)
             )
 
             WeakAreasSection(
-                title: "Weak Areas",
-                subtitle: "Performance-based signals that show where another pass will pay off fastest.",
+                title: "Weak areas",
+                subtitle: nil,
                 items: appModel.homeScreenSnapshot.weakAreas,
                 emptyMessage: "No weak areas are standing out yet.",
                 onSelect: route(to:)
@@ -53,8 +53,7 @@ struct HomeScreenView: View {
                 appModel.setPinnedTopicIDs(topicIDs)
             }
         }
-        .navigationTitle("Home")
-        .navigationBarTitleDisplayMode(.large)
+        .scrollActivatedNavigationChrome(title: "Home")
         .onAppear {
             searchChrome.updateScope(.home)
         }
@@ -66,42 +65,34 @@ struct HomeScreenView: View {
     }
 }
 
-private struct HomeHeaderView: View {
+private struct HomeIntroBlock: View {
     let snapshot: HomeScreenSnapshot
 
     var body: some View {
-        SectionContainer(style: .hero, accent: AppTheme.accent, contentPadding: 24) {
-            VStack(alignment: .leading, spacing: 20) {
-                HStack(alignment: .top, spacing: 12) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(snapshot.greeting.uppercased())
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(AppTheme.accent)
-                            .tracking(0.6)
+        VStack(alignment: .leading, spacing: 8) {
+            Text(snapshot.greeting)
+                .font(.system(size: 33, weight: .bold, design: .rounded))
+                .foregroundStyle(AppTheme.textPrimary)
+                .fixedSize(horizontal: false, vertical: true)
 
-                        Text("Your training dashboard")
-                            .font(.system(size: 30, weight: .bold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                            .fixedSize(horizontal: false, vertical: true)
+            Text(snapshot.statusLine)
+                .font(.subheadline)
+                .foregroundStyle(AppTheme.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
 
-                        Text(snapshot.statusLine)
-                            .font(.subheadline.weight(.medium))
-                            .foregroundStyle(AppTheme.textSecondary)
-                    }
+            HStack(spacing: 10) {
+                HomeSignalPill(
+                    title: snapshot.reviewDue.isEmpty ? "Clear" : "\(snapshot.reviewDue.count) due",
+                    iconName: snapshot.reviewDue.isEmpty ? "checkmark.circle.fill" : "clock.fill",
+                    color: snapshot.reviewDue.isEmpty ? AppTheme.statusColor(.approved) : AppTheme.statusColor(.warning)
+                )
 
-                    Spacer(minLength: 8)
-
-                    StatusBadge(
-                        title: snapshot.reviewDue.isEmpty ? "On schedule" : "\(snapshot.reviewDue.count) due now",
-                        iconName: snapshot.reviewDue.isEmpty ? "checkmark.circle.fill" : "clock.fill",
-                        color: snapshot.reviewDue.isEmpty ? AppTheme.success : AppTheme.warning
+                if snapshot.studyStreak > 0 {
+                    HomeSignalPill(
+                        title: "\(snapshot.studyStreak)-day streak",
+                        iconName: "flame.fill",
+                        color: AppTheme.accent
                     )
-                }
-
-                HStack(spacing: 12) {
-                    MetricChip(label: "Streak", value: "\(max(snapshot.studyStreak, 0)) days", color: AppTheme.accent, iconName: "flame.fill")
-                    MetricChip(label: "Review Due", value: "\(snapshot.reviewDue.count)", color: snapshot.reviewDue.isEmpty ? AppTheme.success : AppTheme.warning, iconName: "clock.fill")
-                    MetricChip(label: "Weak Areas", value: "\(snapshot.weakAreas.count)", color: snapshot.weakAreas.isEmpty ? AppTheme.success : AppTheme.danger, iconName: "scope")
                 }
             }
         }
@@ -113,32 +104,24 @@ private struct ContinueStudyingCard: View {
     let onSelect: (SearchDestination?) -> Void
 
     var body: some View {
-        SectionContainer(style: .primary, accent: AppTheme.accent, contentPadding: 22) {
-            VStack(alignment: .leading, spacing: 18) {
-                HStack(alignment: .top, spacing: 14) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(AppTheme.accent.opacity(0.10))
-                            .frame(width: 50, height: 50)
-
-                        Image(systemName: snapshot.isFallback ? "safari.fill" : "play.fill")
-                            .font(.headline.weight(.bold))
-                            .foregroundStyle(AppTheme.accent)
-                    }
-
-                    VStack(alignment: .leading, spacing: 7) {
-                        Text("Continue studying")
+        SectionContainer(style: .primary, accent: AppTheme.accent, contentPadding: 18) {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("CONTINUE STUDYING")
                             .font(.caption.weight(.semibold))
                             .foregroundStyle(AppTheme.accent)
-                            .tracking(0.6)
+                            .tracking(0.7)
 
                         Text(snapshot.title)
-                            .font(.title3.weight(.bold))
+                            .font(.title3.weight(.semibold))
                             .foregroundStyle(AppTheme.textPrimary)
+                            .fixedSize(horizontal: false, vertical: true)
 
                         Text(snapshot.subtitle)
-                            .font(.subheadline.weight(.medium))
+                            .font(.subheadline)
                             .foregroundStyle(AppTheme.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
 
                     Spacer()
@@ -153,6 +136,7 @@ private struct ContinueStudyingCard: View {
                 Text(snapshot.detail)
                     .font(.footnote)
                     .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
 
                 Button {
                     onSelect(snapshot.destination)
@@ -174,37 +158,34 @@ private struct CurrentFocusSection: View {
     let onManage: () -> Void
     let onSelect: (SearchDestination?) -> Void
 
-    private let columns = [GridItem(.adaptive(minimum: 140), spacing: 12)]
+    private let columns = [GridItem(.adaptive(minimum: 150), spacing: 10)]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(alignment: .top) {
-                SectionHeader(
-                    eyebrow: "Focus",
-                    title: "Current priorities",
-                    subtitle: snapshot.pinnedTopics.isEmpty
-                        ? "Pin the areas you want living on Home."
-                        : "Keep your current study priorities one tap away."
-                )
-
-                Spacer(minLength: 12)
-
+        VStack(alignment: .leading, spacing: 12) {
+            HomeSectionHeader(
+                eyebrow: "Focus",
+                title: "Current priorities",
+                subtitle: nil
+            ) {
                 Button("Manage", action: onManage)
-                    .font(.subheadline.weight(.semibold))
+                    .font(.footnote.weight(.semibold))
                     .foregroundStyle(AppTheme.accent)
-                    .padding(.top, 2)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        Capsule(style: .continuous)
+                            .fill(AppTheme.semanticTint(AppTheme.accent, opacity: 0.12))
+                    )
             }
 
-            SectionContainer {
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 12) {
-                    ForEach(snapshot.pinnedTopics.isEmpty ? snapshot.suggestedTopics : snapshot.pinnedTopics) { topic in
-                        Button {
-                            onSelect(topic.destination)
-                        } label: {
-                            FocusChip(topic: topic, isSuggested: snapshot.pinnedTopics.isEmpty)
-                        }
-                        .buttonStyle(.plain)
+            LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
+                ForEach(snapshot.pinnedTopics.isEmpty ? snapshot.suggestedTopics : snapshot.pinnedTopics) { topic in
+                    Button {
+                        onSelect(topic.destination)
+                    } label: {
+                        FocusChip(topic: topic, isSuggested: snapshot.pinnedTopics.isEmpty)
                     }
+                    .buttonStyle(.plain)
                 }
             }
         }
@@ -216,37 +197,39 @@ private struct FocusChip: View {
     let isSuggested: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Image(systemName: topic.iconName)
-                .font(.headline.weight(.semibold))
-                .foregroundStyle(isSuggested ? AppTheme.textSecondary : AppTheme.accent)
+        HStack(alignment: .center, spacing: 12) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill((isSuggested ? AppTheme.textMuted : AppTheme.accent).opacity(0.12))
+                    .frame(width: 34, height: 34)
 
-            Text(topic.title)
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(AppTheme.textPrimary)
-                .lineLimit(2)
+                Image(systemName: topic.iconName)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(isSuggested ? AppTheme.textSecondary : AppTheme.accent)
+            }
 
-            Text(isSuggested ? "Suggested" : "Pinned")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(isSuggested ? AppTheme.textMuted : AppTheme.accent)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(topic.title)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppTheme.textPrimary)
+                    .lineLimit(2)
+
+                Text(isSuggested ? "Suggested" : "Pinned")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(isSuggested ? AppTheme.textMuted : AppTheme.accent)
+            }
+
+            Spacer(minLength: 0)
         }
-        .padding(14)
-        .frame(maxWidth: .infinity, minHeight: 104, alignment: .leading)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous)
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            AppTheme.elevatedSurface,
-                            (isSuggested ? AppTheme.surface : AppTheme.accent.opacity(0.04))
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .fill(isSuggested ? AppTheme.groupedBackground : AppTheme.raisedSurface)
                 .overlay(
                     RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous)
-                        .stroke((isSuggested ? AppTheme.cardStroke : AppTheme.accent.opacity(0.14)), lineWidth: 1)
+                        .stroke((isSuggested ? AppTheme.cardStroke : AppTheme.accent.opacity(0.18)), lineWidth: 1)
                 )
         )
     }
@@ -254,32 +237,22 @@ private struct FocusChip: View {
 
 private struct ReviewDueSection: View {
     let title: String
-    let subtitle: String
+    let subtitle: String?
     let items: [HomeTopicActionSnapshot]
     let emptyMessage: String
     let onSelect: (SearchDestination?) -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            SectionHeader(eyebrow: "Study next", title: title, subtitle: subtitle)
+        VStack(alignment: .leading, spacing: 12) {
+            HomeSectionHeader(eyebrow: "Study next", title: title, subtitle: subtitle)
 
-            SectionContainer {
-                VStack(alignment: .leading, spacing: 12) {
-                    if items.isEmpty {
-                        Text(emptyMessage)
-                            .font(.footnote)
-                            .foregroundStyle(AppTheme.textSecondary)
-                    } else {
-                        ForEach(Array(items.enumerated()), id: \.element.id) { index, item in
-                            TopicActionRow(item: item) {
-                                onSelect(item.destination)
-                            }
-
-                            if index < items.count - 1 {
-                                Divider()
-                                    .overlay(AppTheme.cardStroke.opacity(0.9))
-                                    .padding(.leading, 54)
-                            }
+            VStack(alignment: .leading, spacing: 10) {
+                if items.isEmpty {
+                    CompactEmptyState(message: emptyMessage)
+                } else {
+                    ForEach(items) { item in
+                        TopicActionRow(item: item) {
+                            onSelect(item.destination)
                         }
                     }
                 }
@@ -290,7 +263,7 @@ private struct ReviewDueSection: View {
 
 private struct WeakAreasSection: View {
     let title: String
-    let subtitle: String
+    let subtitle: String?
     let items: [HomeTopicActionSnapshot]
     let emptyMessage: String
     let onSelect: (SearchDestination?) -> Void
@@ -338,6 +311,7 @@ private struct TopicActionRow: View {
                 )
             }
         }
+        .fixedSize(horizontal: false, vertical: true)
     }
 
     private var accentColor: Color {
@@ -357,14 +331,14 @@ private struct HomeQuestionOfDayCard: View {
     let onSelectChoice: (String) -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            SectionHeader(
+        VStack(alignment: .leading, spacing: 12) {
+            HomeSectionHeader(
                 eyebrow: "Daily rep",
                 title: "Question of the day",
-                subtitle: "One focused knowledge check to keep high-value material moving."
+                subtitle: nil
             )
 
-            SectionContainer {
+            SectionContainer(contentPadding: 16) {
                 VStack(alignment: .leading, spacing: 16) {
                     if let question = snapshot.question {
                         Text(question.prompt)
@@ -406,6 +380,94 @@ private struct HomeQuestionOfDayCard: View {
         }
 
         return .subdued
+    }
+}
+
+private struct HomeSignalPill: View {
+    let title: String
+    let iconName: String
+    let color: Color
+
+    var body: some View {
+        Label(title, systemImage: iconName)
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(color)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 7)
+            .background(
+                Capsule(style: .continuous)
+                    .fill(color.opacity(0.10))
+                    .overlay(
+                        Capsule(style: .continuous)
+                            .stroke(color.opacity(0.16), lineWidth: 1)
+                    )
+            )
+    }
+}
+
+private struct HomeSectionHeader<Trailing: View>: View {
+    let eyebrow: String
+    let title: String
+    let subtitle: String?
+    @ViewBuilder let trailing: Trailing
+
+    init(
+        eyebrow: String,
+        title: String,
+        subtitle: String? = nil,
+        @ViewBuilder trailing: () -> Trailing = { EmptyView() }
+    ) {
+        self.eyebrow = eyebrow
+        self.title = title
+        self.subtitle = subtitle
+        self.trailing = trailing()
+    }
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            VStack(alignment: .leading, spacing: subtitle == nil ? 3 : 6) {
+                Text(eyebrow.uppercased())
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppTheme.accent)
+                    .tracking(0.6)
+
+                Text(title)
+                    .font((subtitle == nil ? Font.title2 : .title3).weight(.semibold))
+                    .foregroundStyle(AppTheme.textPrimary)
+
+                if let subtitle, !subtitle.isEmpty {
+                    Text(subtitle)
+                        .font(.footnote)
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+
+            Spacer(minLength: 12)
+
+            trailing
+        }
+    }
+}
+
+private struct CompactEmptyState: View {
+    let message: String
+
+    var body: some View {
+        Text(message)
+            .font(.footnote)
+            .foregroundStyle(AppTheme.textSecondary)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous)
+                    .fill(AppTheme.groupedBackground)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous)
+                            .stroke(AppTheme.cardStroke, lineWidth: 1)
+                    )
+            )
     }
 }
 
@@ -461,7 +523,7 @@ private struct ManageFocusSheet: View {
             }
             .scrollContentBackground(.hidden)
             .background(AppTheme.screenBackground.ignoresSafeArea())
-            .navigationTitle("Current Focus")
+            .scrollActivatedNavigationChrome(title: "Current Focus")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {

@@ -127,12 +127,41 @@ private struct EventsTabView: View {
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
 
+    private var headerIdentity: TabHeaderIdentity {
+        TabHeaderIdentity(
+            navigationTitle: "Events",
+            eyebrow: "Event center",
+            title: "Open your next event",
+            subtitle: nil,
+            iconName: AppTab.events.iconName,
+            accent: AppTheme.domainColor(.flights)
+        )
+    }
+
     var body: some View {
         AppScrollScreen {
-            HeroCard(
-                eyebrow: "Event center",
-                title: "Open your next event",
-                subtitle: "General Library stays up front, and every phase still drills cleanly down into the event you are preparing for."
+            TabHeaderCard(
+                identity: headerIdentity,
+                metrics: [
+                    TabHeaderMetric(
+                        label: "Phases",
+                        value: "\(appModel.studyManifest.phases.count)",
+                        color: AppTheme.domainColor(.groundSchool),
+                        iconName: "square.grid.2x2.fill"
+                    ),
+                    TabHeaderMetric(
+                        label: "Library",
+                        value: "\(appModel.generalLibraryStudyHubs.count)",
+                        color: AppTheme.domainColor(.library),
+                        iconName: "books.vertical.fill"
+                    ),
+                    TabHeaderMetric(
+                        label: "Videos",
+                        value: "\(appModel.generalLibraryVideos.count)",
+                        color: AppTheme.domainColor(.videos),
+                        iconName: "play.rectangle.fill"
+                    )
+                ]
             )
 
             if !appModel.generalLibraryStudyHubs.isEmpty || !appModel.generalLibraryResources.isEmpty || !appModel.generalLibraryVideos.isEmpty {
@@ -145,9 +174,9 @@ private struct EventsTabView: View {
                 } label: {
                     ToolCard(
                         title: "General Library",
-                        subtitle: "Cross-phase flashcards, EPs, limits, notes, warnings, cautions, videos, and recurring references.",
+                        subtitle: nil,
                         icon: "books.vertical.fill",
-                        accent: AppTheme.accent
+                        accent: AppTheme.domainColor(.library)
                     )
                 }
                 .buttonStyle(.plain)
@@ -157,7 +186,7 @@ private struct EventsTabView: View {
                 SectionHeader(
                     eyebrow: "Training pipeline",
                     title: "Choose your phase",
-                    subtitle: "Open your phase, grab the recurring references you need, and drop into the exact event hub you want."
+                    subtitle: nil
                 )
 
                 ForEach(appModel.studyManifest.phases) { phase in
@@ -170,8 +199,7 @@ private struct EventsTabView: View {
                 }
             }
         }
-        .navigationTitle("Events")
-        .navigationBarTitleDisplayMode(.large)
+        .scrollActivatedNavigationChrome(title: headerIdentity.navigationTitle)
         .onAppear {
             searchChrome.updateScope(.events(title: "Events", phaseID: nil, categoryID: nil))
         }
@@ -198,7 +226,7 @@ private struct GeneralLibraryView: View {
                     SectionHeader(
                         eyebrow: "Decks",
                         title: "Focused memory work",
-                        subtitle: "Core decks and linked references that stay useful across phases."
+                        subtitle: nil
                     )
 
                     ForEach(hubs) { hub in
@@ -208,9 +236,9 @@ private struct GeneralLibraryView: View {
                             } label: {
                                 ToolCard(
                                     title: hub.deck.title,
-                                    subtitle: hub.deck.summary,
+                                    subtitle: nil,
                                     icon: "rectangle.stack.fill.badge.person.crop",
-                                    accent: AppTheme.warning
+                                    accent: AppTheme.domainColor(.flashcards)
                                 )
                             }
                             .buttonStyle(.plain)
@@ -221,9 +249,9 @@ private struct GeneralLibraryView: View {
                                 } label: {
                                     ToolCard(
                                         title: generalLibraryTitle(for: resource),
-                                        subtitle: resource.summary,
+                                        subtitle: nil,
                                         icon: "doc.richtext.fill",
-                                        accent: AppTheme.accent
+                                        accent: resource.librarySection.domainColor
                                     )
                                 }
                                 .buttonStyle(.plain)
@@ -237,13 +265,13 @@ private struct GeneralLibraryView: View {
                 librarySection(
                     eyebrow: "Videos",
                     title: "Watch and review",
-                    subtitle: "Shared video content that supports multiple phases and events."
+                    subtitle: nil
                 ) {
                     ForEach(videos) { video in
                         NavigationLink {
                             VideoDetailView(video: video)
                         } label: {
-                            ToolCard(title: video.title, subtitle: video.summary, icon: "play.rectangle.fill", accent: AppTheme.success)
+                            ToolCard(title: video.title, subtitle: nil, icon: "play.rectangle.fill", accent: AppTheme.domainColor(.videos))
                         }
                         .buttonStyle(.plain)
                     }
@@ -254,21 +282,20 @@ private struct GeneralLibraryView: View {
                 librarySection(
                     eyebrow: "References",
                     title: group.section.displayName,
-                    subtitle: librarySubtitle(for: group.section)
+                    subtitle: nil
                 ) {
                     ForEach(group.resources) { resource in
                         NavigationLink {
                             SharedResourceDetailView(resource: resource)
                         } label: {
-                            ToolCard(title: resource.title, subtitle: resource.summary, icon: iconName(for: group.section), accent: accent(for: group.section))
+                            ToolCard(title: resource.title, subtitle: nil, icon: iconName(for: group.section), accent: accent(for: group.section))
                         }
                         .buttonStyle(.plain)
                     }
                 }
             }
         }
-        .navigationTitle("General Library")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "General Library")
         .onAppear {
             searchChrome.updateScope(.home)
         }
@@ -278,7 +305,7 @@ private struct GeneralLibraryView: View {
     private func librarySection<Content: View>(
         eyebrow: String,
         title: String,
-        subtitle: String,
+        subtitle: String? = nil,
         @ViewBuilder content: () -> Content
     ) -> some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -303,18 +330,7 @@ private struct GeneralLibraryView: View {
     }
 
     private func accent(for section: SharedResourceSection) -> Color {
-        switch section {
-        case .videos:
-            return AppTheme.success
-        case .eps:
-            return AppTheme.danger
-        case .limits:
-            return AppTheme.warning
-        case .nwc:
-            return AppTheme.warning
-        case .supplements:
-            return AppTheme.accent
-        }
+        section.domainColor
     }
 
     private func generalLibraryTitle(for resource: SharedResource) -> String {
@@ -325,21 +341,6 @@ private struct GeneralLibraryView: View {
             return "EP N/W/C"
         default:
             return resource.title
-        }
-    }
-
-    private func librarySubtitle(for section: SharedResourceSection) -> String {
-        switch section {
-        case .videos:
-            return "Shared video study assets."
-        case .eps:
-            return "Emergency procedure references and memory refreshers."
-        case .limits:
-            return "Critical numbers and quick-limit study material."
-        case .nwc:
-            return "Notes, warnings, cautions, and recurring callouts."
-        case .supplements:
-            return "Other shared reference material that supports event prep."
         }
     }
 }

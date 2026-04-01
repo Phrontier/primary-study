@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 enum InstructorReviewEventKind: String, Codable, CaseIterable, Hashable {
     case sim
@@ -21,6 +22,15 @@ enum InstructorReviewEventKind: String, Codable, CaseIterable, Hashable {
             return "Flights"
         }
     }
+
+    var domainColor: Color {
+        switch self {
+        case .sim:
+            return AppTheme.domainColor(.sims)
+        case .flight:
+            return AppTheme.domainColor(.flights)
+        }
+    }
 }
 
 enum InstructorCapabilityFilter: String, CaseIterable, Hashable, Identifiable {
@@ -38,6 +48,17 @@ enum InstructorCapabilityFilter: String, CaseIterable, Hashable, Identifiable {
             return "Sims"
         case .flights:
             return "Flights"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .all:
+            return AppTheme.domainColor(.instructors)
+        case .sims:
+            return AppTheme.domainColor(.sims)
+        case .flights:
+            return AppTheme.domainColor(.flights)
         }
     }
 
@@ -109,6 +130,17 @@ enum ReviewStatus: String, Codable, CaseIterable, Hashable {
             return "Approved"
         case .rejected:
             return "Rejected"
+        }
+    }
+
+    var statusColor: Color {
+        switch self {
+        case .pending:
+            return AppTheme.statusColor(.pending)
+        case .approved:
+            return AppTheme.statusColor(.approved)
+        case .rejected:
+            return AppTheme.statusColor(.rejected)
         }
     }
 }

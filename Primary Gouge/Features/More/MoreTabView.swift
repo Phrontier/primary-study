@@ -47,14 +47,14 @@ struct MoreTabView: View {
         [
             MoreHubSection(
                 title: "Account",
-                color: AppTheme.accentSoft,
+                color: AppTheme.domainColor(.account),
                 items: [
                     profileItem,
                     MoreHubItem(
                         title: "Premium",
                         subtitle: "Upgrade path for future perks",
                         iconName: "star.circle.fill",
-                        accent: AppTheme.warning,
+                        accent: AppTheme.domainColor(.account),
                         badge: .premium,
                         destination: .placeholder(
                             message: "Premium state and entitlements will live here once paid features exist."
@@ -65,7 +65,7 @@ struct MoreTabView: View {
                         title: "Notifications",
                         subtitle: "Alerts and study reminders",
                         iconName: "bell.badge.fill",
-                        accent: AppTheme.warning,
+                        accent: AppTheme.domainColor(.support),
                         badge: .planned,
                         destination: .placeholder(
                             message: "Notification controls will cover reminders, releases, and useful study nudges."
@@ -75,20 +75,20 @@ struct MoreTabView: View {
             ),
             MoreHubSection(
                 title: "Study Tools",
-                color: AppTheme.success,
+                color: AppTheme.domainColor(.quizzes),
                 items: [
                     MoreHubItem(
                         title: "Quiz Mode",
                         subtitle: snapshot.quizSubtitle,
                         iconName: "checkmark.circle.fill",
-                        accent: AppTheme.accent,
+                        accent: AppTheme.domainColor(.quizzes),
                         destination: .quiz
                     ),
                     MoreHubItem(
                         title: "TOLD Calculator",
                         subtitle: "Field performance inputs and outputs",
                         iconName: "function",
-                        accent: AppTheme.accent,
+                        accent: AppTheme.domainColor(.documents),
                         badge: .planned,
                         destination: .placeholder(
                             message: "The TOLD calculator is reserved for a future utility pass."
@@ -98,7 +98,7 @@ struct MoreTabView: View {
                         title: "Fuel Planning",
                         subtitle: "Bingo, burn, and reserve helpers",
                         iconName: "fuelpump.fill",
-                        accent: AppTheme.warning,
+                        accent: AppTheme.domainColor(.documents),
                         badge: .planned,
                         destination: .placeholder(
                             message: "Fuel planning tools will consolidate reserve math, route planning, and quick checks."
@@ -108,7 +108,7 @@ struct MoreTabView: View {
                         title: "Jet Log Helpers",
                         subtitle: "Timing, legs, and planning aids",
                         iconName: "list.clipboard.fill",
-                        accent: AppTheme.success,
+                        accent: AppTheme.domainColor(.documents),
                         badge: .planned,
                         destination: .placeholder(
                             message: "Jet log helpers will gather reusable planning shortcuts and reference calculators."
@@ -118,7 +118,7 @@ struct MoreTabView: View {
                         title: "Flashcard Performance Stats",
                         subtitle: snapshot.flashcardStatsSubtitle,
                         iconName: "chart.bar.fill",
-                        accent: AppTheme.success,
+                        accent: AppTheme.domainColor(.flashcards),
                         badge: .planned,
                         destination: .placeholder(
                             message: "A fuller stats view is planned, but the row already reflects your real flashcard and quiz activity."
@@ -128,13 +128,13 @@ struct MoreTabView: View {
             ),
             MoreHubSection(
                 title: "Saved",
-                color: AppTheme.warning,
+                color: AppTheme.domainColor(.library),
                 items: [
                     MoreHubItem(
                         title: "Saved Briefs",
                         subtitle: snapshot.savedBriefsSubtitle,
                         iconName: "bookmark.fill",
-                        accent: AppTheme.warning,
+                        accent: AppTheme.domainColor(.documents),
                         badge: .planned,
                         destination: .placeholder(
                             message: "Saved briefs will eventually collect the references you return to most often."
@@ -144,7 +144,7 @@ struct MoreTabView: View {
                         title: "Saved Flashcard Sets",
                         subtitle: snapshot.savedFlashcardSetsSubtitle,
                         iconName: "rectangle.stack.fill.badge.plus",
-                        accent: AppTheme.accent,
+                        accent: AppTheme.domainColor(.flashcards),
                         badge: .planned,
                         destination: .placeholder(
                             message: "Saved flashcard sets will eventually pin your highest-use decks for faster access."
@@ -154,20 +154,20 @@ struct MoreTabView: View {
                         title: "Saved Instructor Reviews",
                         subtitle: savedInstructorReviewSubtitle,
                         iconName: "person.2.crop.square.stack.fill",
-                        accent: AppTheme.success,
+                        accent: AppTheme.domainColor(.instructors),
                         destination: .instructorReviews
                     )
                 ]
             ),
             MoreHubSection(
                 title: "Community & Support",
-                color: AppTheme.accent,
+                color: AppTheme.domainColor(.support),
                 items: [
                     MoreHubItem(
                         title: "Feedback",
                         subtitle: "Share what is working",
                         iconName: "bubble.left.and.text.bubble.right.fill",
-                        accent: AppTheme.accent,
+                        accent: AppTheme.domainColor(.support),
                         destination: .placeholder(
                             message: "Feedback intake will live here once the support workflow is wired up."
                         )
@@ -176,7 +176,7 @@ struct MoreTabView: View {
                         title: "Request a Feature",
                         subtitle: "Tell us what you need next",
                         iconName: "lightbulb.fill",
-                        accent: AppTheme.warning,
+                        accent: AppTheme.domainColor(.support),
                         destination: .placeholder(
                             message: "Feature requests will eventually route into a dedicated product feedback flow."
                         )
@@ -194,7 +194,7 @@ struct MoreTabView: View {
                         title: "FAQ",
                         subtitle: "Common answers and guidance",
                         iconName: "questionmark.circle.fill",
-                        accent: AppTheme.accent,
+                        accent: AppTheme.domainColor(.support),
                         destination: .placeholder(
                             message: "An FAQ surface is reserved for common app and study workflow questions."
                         )
@@ -203,7 +203,7 @@ struct MoreTabView: View {
                         title: "Support",
                         subtitle: "Get help with the app",
                         iconName: "lifepreserver.fill",
-                        accent: AppTheme.success,
+                        accent: AppTheme.domainColor(.support),
                         destination: .placeholder(
                             message: "Support options will land here once a real help channel is connected."
                         )
@@ -212,13 +212,13 @@ struct MoreTabView: View {
             ),
             MoreHubSection(
                 title: "About",
-                color: AppTheme.textMuted,
+                color: AppTheme.domainColor(.documents),
                 items: [
                     MoreHubItem(
                         title: "Version",
                         subtitle: snapshot.versionSubtitle,
                         iconName: "number.circle.fill",
-                        accent: AppTheme.accent,
+                        accent: AppTheme.domainColor(.documents),
                         destination: .placeholder(
                             message: "Build metadata is available now, and a fuller release details view can grow here later."
                         )
@@ -227,7 +227,7 @@ struct MoreTabView: View {
                         title: "Changelog",
                         subtitle: "What changed recently",
                         iconName: "clock.arrow.circlepath",
-                        accent: AppTheme.accent,
+                        accent: AppTheme.domainColor(.documents),
                         badge: .planned,
                         destination: .placeholder(
                             message: "A release log is planned for future app updates."
@@ -237,7 +237,7 @@ struct MoreTabView: View {
                         title: "Privacy",
                         subtitle: "How data is handled",
                         iconName: "lock.shield.fill",
-                        accent: AppTheme.success,
+                        accent: AppTheme.domainColor(.documents),
                         destination: .placeholder(
                             message: "Privacy details will live here once the app publishes its policy surface."
                         )
@@ -246,7 +246,7 @@ struct MoreTabView: View {
                         title: "Terms",
                         subtitle: "Usage and access terms",
                         iconName: "doc.text.fill",
-                        accent: AppTheme.warning,
+                        accent: AppTheme.domainColor(.documents),
                         destination: .placeholder(
                             message: "Terms and access details will live here once they are ready to ship."
                         )
@@ -300,8 +300,7 @@ struct MoreTabView: View {
                 }
             }
         }
-        .navigationTitle("More")
-        .navigationBarTitleDisplayMode(.large)
+        .scrollActivatedNavigationChrome(title: "More")
         .onAppear {
             searchChrome.updateScope(.home)
         }
@@ -326,24 +325,34 @@ private struct MoreHeroCard: View {
     let settingsDestination: MoreHubItem
 
     var body: some View {
-        HeroCard(
-            eyebrow: "Account",
-            title: snapshot.identityTitle,
-            subtitle: snapshot.currentFocusLine
+        TabHeaderCard(
+            identity: TabHeaderIdentity(
+                navigationTitle: "More",
+                eyebrow: "Account",
+                title: snapshot.identityTitle,
+                subtitle: snapshot.currentFocusLine,
+                iconName: AppTab.more.iconName,
+                accent: AppTheme.domainColor(.account)
+            ),
+            metrics: [
+                TabHeaderMetric(label: "Decks", value: "\(snapshot.recentDeckCount)", color: AppTheme.domainColor(.flashcards), iconName: "rectangle.stack.fill"),
+                TabHeaderMetric(label: "Briefs", value: "\(snapshot.recentBriefCount)", color: AppTheme.domainColor(.documents), iconName: "doc.text.fill"),
+                TabHeaderMetric(label: "Quizzes", value: "\(snapshot.recentQuizCount)", color: AppTheme.domainColor(.quizzes), iconName: "checkmark.circle.fill")
+            ]
         ) {
             HStack(spacing: 14) {
                 ZStack {
                     Circle()
-                        .fill(AppTheme.accent.opacity(0.14))
+                        .fill(AppTheme.semanticTint(AppTheme.domainColor(.account), opacity: 0.18))
                         .frame(width: 52, height: 52)
                         .overlay(
                             Circle()
-                                .stroke(AppTheme.accent.opacity(0.12), lineWidth: 1)
+                                .stroke(AppTheme.domainColor(.account).opacity(0.16), lineWidth: 1)
                         )
 
                     Text(snapshot.avatarInitials)
                         .font(.headline.weight(.bold))
-                        .foregroundStyle(AppTheme.accent)
+                        .foregroundStyle(AppTheme.domainColor(.account))
                 }
 
                 VStack(alignment: .leading, spacing: 4) {
@@ -359,12 +368,6 @@ private struct MoreHeroCard: View {
                 Spacer(minLength: 0)
             }
 
-            HStack(spacing: 12) {
-                MetricChip(label: "Decks", value: "\(snapshot.recentDeckCount)", color: AppTheme.accent)
-                MetricChip(label: "Briefs", value: "\(snapshot.recentBriefCount)", color: AppTheme.accent)
-                MetricChip(label: "Quizzes", value: "\(snapshot.recentQuizCount)", color: AppTheme.accent)
-            }
-
             HStack(spacing: 10) {
                 NavigationLink {
                     MorePlaceholderDetailView(
@@ -373,7 +376,7 @@ private struct MoreHeroCard: View {
                         snapshot: snapshot
                     )
                 } label: {
-                    MoreHeroActionButton(title: "Profile", iconName: "person.crop.circle")
+                    HeaderCapsuleButton(title: "Profile", iconName: "person.crop.circle", tint: AppTheme.domainColor(.account))
                 }
                 .buttonStyle(.plain)
 
@@ -384,37 +387,11 @@ private struct MoreHeroCard: View {
                         snapshot: snapshot
                     )
                 } label: {
-                    MoreHeroActionButton(title: "Settings", iconName: "gearshape")
+                    HeaderCapsuleButton(title: "Settings", iconName: "gearshape", tint: AppTheme.domainColor(.account))
                 }
                 .buttonStyle(.plain)
             }
         }
-    }
-}
-
-private struct MoreHeroActionButton: View {
-    let title: String
-    let iconName: String
-
-    var body: some View {
-        HStack(spacing: 8) {
-            Image(systemName: iconName)
-                .font(.system(size: 13, weight: .semibold))
-
-            Text(title)
-                .font(.footnote.weight(.semibold))
-        }
-        .foregroundStyle(AppTheme.accent)
-        .padding(.horizontal, 14)
-        .padding(.vertical, 10)
-        .background(
-            Capsule()
-                .fill(AppTheme.accent.opacity(0.12))
-                .overlay(
-                    Capsule()
-                        .stroke(AppTheme.accent.opacity(0.18), lineWidth: 1)
-                )
-        )
     }
 }
 
@@ -578,8 +555,7 @@ private struct MorePlaceholderDetailView: View {
                 }
             }
         }
-        .navigationTitle(item.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: item.title)
     }
 }
 

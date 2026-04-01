@@ -9,8 +9,7 @@ struct DocumentPreviewScreen: View {
         Group {
             if let url = repository.fileURL(for: document.relativePath) {
                 DocumentQuickLookView(url: url)
-                    .navigationTitle(document.title)
-                    .navigationBarTitleDisplayMode(.inline)
+                    .scrollActivatedNavigationChrome(title: document.title)
             } else {
                 AppScrollScreen {
                     EmptyStateCard(
@@ -34,8 +33,7 @@ struct SharedResourceDetailView: View {
             if let relativePath = resource.relativePath,
                let url = repository.fileURL(for: relativePath) {
                 DocumentQuickLookView(url: url)
-                    .navigationTitle(resource.title)
-                    .navigationBarTitleDisplayMode(.inline)
+                    .scrollActivatedNavigationChrome(title: resource.title)
                     .task {
                         appModel.recordSharedResourceOpened(resource)
                     }
@@ -51,8 +49,7 @@ struct SharedResourceDetailView: View {
                             .foregroundStyle(AppTheme.textSecondary)
                     }
                 }
-                .navigationTitle(resource.title)
-                .navigationBarTitleDisplayMode(.inline)
+                .scrollActivatedNavigationChrome(title: resource.title)
                 .task {
                     appModel.recordSharedResourceOpened(resource)
                 }

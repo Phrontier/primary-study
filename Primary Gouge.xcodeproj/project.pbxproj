@@ -91,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		950E69262F7CADD40010D03B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				1C3A4F022F7AB10000C64094 /* Contents */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		95D924F82F77308900C64094 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +106,7 @@
 				95D925112F77308900C64094 /* Primary GougeTests */,
 				95D9251B2F77308900C64094 /* Primary GougeUITests */,
 				95D925022F77308900C64094 /* Products */,
+				950E69262F7CADD40010D03B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};

@@ -136,12 +136,18 @@ enum SearchSectionKind: String, CaseIterable, Hashable {
 
     var accentColor: Color {
         switch self {
-        case .events: AppTheme.accent
-        case .instructors: AppTheme.success
-        case .generalLibrary: AppTheme.warning
-        case .videos: AppTheme.success
-        case .phasesAndCategories: AppTheme.accent
-        case .flashcardDecks: AppTheme.warning
+        case .events:
+            return AppTheme.domainColor(.flights)
+        case .instructors:
+            return AppTheme.domainColor(.instructors)
+        case .generalLibrary:
+            return AppTheme.domainColor(.library)
+        case .videos:
+            return AppTheme.domainColor(.videos)
+        case .phasesAndCategories:
+            return AppTheme.domainColor(.groundSchool)
+        case .flashcardDecks:
+            return AppTheme.domainColor(.flashcards)
         }
     }
 }

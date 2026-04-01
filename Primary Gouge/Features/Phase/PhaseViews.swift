@@ -14,13 +14,13 @@ struct PhaseDetailView: View {
             HeroCard(
                 eyebrow: "Training phase",
                 title: phase.title,
-                subtitle: phase.summary
+                subtitle: nil
             ) {
-                HStack(spacing: 12) {
-                    MetricChip(label: "Categories", value: "\(phase.categories.count)", color: AppTheme.accent)
-                    MetricChip(label: "Events", value: "\(phase.categories.flatMap(\.events).count)", color: AppTheme.accent)
-                    MetricChip(label: "References", value: "\(generalKnowledgeResources.count)", color: AppTheme.accent)
-                }
+                HeroInlineMetricRow(metrics: [
+                    HeroInlineMetric(label: "Categories", value: "\(phase.categories.count)", color: AppTheme.domainColor(.groundSchool)),
+                    HeroInlineMetric(label: "Events", value: "\(phase.categories.flatMap(\.events).count)", color: AppTheme.domainColor(.flights)),
+                    HeroInlineMetric(label: "References", value: "\(generalKnowledgeResources.count)", color: AppTheme.domainColor(.resources))
+                ])
             }
 
             if !generalKnowledgeResources.isEmpty {
@@ -28,7 +28,7 @@ struct PhaseDetailView: View {
                     SectionHeader(
                         eyebrow: "Knowledge base",
                         title: "General knowledge",
-                        subtitle: "Recurring references and phase-wide material that stays useful throughout \(phase.title)."
+                        subtitle: nil
                     )
 
                     NavigationLink {
@@ -36,7 +36,7 @@ struct PhaseDetailView: View {
                     } label: {
                         PhaseDestinationCard(
                             title: "General Knowledge",
-                            subtitle: "Phase-wide references, key documents, and recurring study material.",
+                            subtitle: nil,
                             iconName: "books.vertical.fill",
                             detail: "\(generalKnowledgeResources.count) references"
                         )
@@ -48,8 +48,8 @@ struct PhaseDetailView: View {
             VStack(alignment: .leading, spacing: 14) {
                 SectionHeader(
                     eyebrow: "Categories",
-                    title: "Open the right training lane",
-                    subtitle: "Each category keeps event prep grouped and easier to scan."
+                    title: "Categories",
+                    subtitle: nil
                 )
 
                 ForEach(phase.categories) { category in
@@ -62,8 +62,7 @@ struct PhaseDetailView: View {
                 }
             }
         }
-        .navigationTitle(phase.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: phase.title)
         .onAppear {
             searchChrome.updateScope(.events(title: phase.title, phaseID: phase.id, categoryID: nil))
         }
@@ -80,7 +79,7 @@ struct PhaseKnowledgeView: View {
             SectionHeader(
                 eyebrow: phase.title,
                 title: "General knowledge",
-                subtitle: "Phase-level references that stay useful across events."
+                subtitle: nil
             )
 
             ForEach(resources) { resource in
@@ -89,7 +88,7 @@ struct PhaseKnowledgeView: View {
                 } label: {
                     ToolCard(
                         title: resource.title,
-                        subtitle: resource.summary,
+                        subtitle: nil,
                         icon: resourceIconName(for: resource),
                         accent: resourceAccent(for: resource)
                     )
@@ -97,8 +96,7 @@ struct PhaseKnowledgeView: View {
                 .buttonStyle(.plain)
             }
         }
-        .navigationTitle("General Knowledge")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "General Knowledge")
         .onAppear {
             searchChrome.updateScope(.home)
         }
@@ -120,18 +118,7 @@ struct PhaseKnowledgeView: View {
     }
 
     private func resourceAccent(for resource: SharedResource) -> Color {
-        switch resource.librarySection {
-        case .videos:
-            return AppTheme.success
-        case .eps:
-            return AppTheme.danger
-        case .limits:
-            return AppTheme.warning
-        case .nwc:
-            return AppTheme.warning
-        case .supplements:
-            return AppTheme.accent
-        }
+        resource.librarySection.domainColor
     }
 }
 
@@ -147,12 +134,12 @@ struct EventListView: View {
             HeroCard(
                 eyebrow: phase.title,
                 title: category.displayName,
-                subtitle: "Every event hub keeps the prep tools, references, and review load for this category in one place."
+                subtitle: nil
             ) {
-                HStack(spacing: 12) {
-                    MetricChip(label: "Events", value: "\(category.events.count)", color: AppTheme.accent)
-                    MetricChip(label: "Studied", value: "\(category.events.filter { appModel.eventProgress(for: $0.id).completedAt != nil }.count)", color: AppTheme.accent)
-                }
+                HeroInlineMetricRow(metrics: [
+                    HeroInlineMetric(label: "Events", value: "\(category.events.count)", color: category.kind.domainColor),
+                    HeroInlineMetric(label: "Studied", value: "\(category.events.filter { appModel.eventProgress(for: $0.id).completedAt != nil }.count)", color: AppTheme.statusColor(.success))
+                ])
             }
 
             ForEach(category.events) { event in
@@ -168,8 +155,7 @@ struct EventListView: View {
                 .buttonStyle(.plain)
             }
         }
-        .navigationTitle(category.displayName)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: category.displayName)
         .onAppear {
             searchChrome.updateScope(.events(title: category.displayName, phaseID: phase.id, categoryID: category.id))
         }

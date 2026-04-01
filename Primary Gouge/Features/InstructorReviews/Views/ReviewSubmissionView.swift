@@ -194,8 +194,7 @@ struct ReviewSubmissionView: View {
                 viewModel.submit(using: reviewStore)
             }
         }
-        .navigationTitle("Submit Review")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "Submit Review")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Close") {

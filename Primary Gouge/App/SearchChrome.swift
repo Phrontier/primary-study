@@ -119,13 +119,20 @@ struct SearchTabView: View {
         }
     }
 
+    private var headerIdentity: TabHeaderIdentity {
+        TabHeaderIdentity(
+            navigationTitle: "Search",
+            eyebrow: chrome.searchScope.emptyStateTitle,
+            title: "Find what you need",
+            subtitle: nil,
+            iconName: AppTab.search.iconName,
+            accent: AppTheme.domainColor(.resources)
+        )
+    }
+
     var body: some View {
         AppScrollScreen(topPadding: 12, bottomPadding: 36) {
-            HeroCard(
-                eyebrow: chrome.searchScope.emptyStateTitle,
-                title: "Find what you need",
-                subtitle: chrome.searchScope.emptyStateMessage
-            ) {
+            TabHeaderCard(identity: headerIdentity) {
                 searchField
             }
 
@@ -137,8 +144,7 @@ struct SearchTabView: View {
                 isQueryFocused = true
             }
         }
-        .navigationTitle("Search")
-        .navigationBarTitleDisplayMode(.large)
+        .scrollActivatedNavigationChrome(title: headerIdentity.navigationTitle)
     }
 
     private var searchField: some View {
@@ -217,7 +223,7 @@ struct SearchTabView: View {
     }
 
     private var searchFieldBackground: some View {
-        AppTheme.cardBackground(style: .grouped, accent: AppTheme.accent)
+        AppTheme.cardBackground(style: .grouped, accent: AppTheme.domainColor(.resources))
     }
 }
 
@@ -228,12 +234,12 @@ struct SearchResultRow: View {
         HStack(alignment: .top, spacing: 14) {
             ZStack {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(AppTheme.accent.opacity(0.10))
+                    .fill(AppTheme.semanticTint(item.section.accentColor, opacity: 0.14))
                     .frame(width: 42, height: 42)
 
                 Image(systemName: item.section.iconName)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppTheme.accent)
+                    .foregroundStyle(item.section.accentColor)
             }
 
             VStack(alignment: .leading, spacing: 6) {
@@ -310,7 +316,7 @@ struct SearchDestinationView: View {
                 FlashcardDeckView(event: context.0, deck: context.1)
                     .environmentObject(appModel)
                     .environmentObject(reviewStore)
-                    .navigationTitle(phase.title)
+                    .scrollActivatedNavigationChrome(title: phase.title)
             } else {
                 missingDestination
             }

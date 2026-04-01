@@ -37,8 +37,7 @@ struct ModerationQueueView: View {
                 }
             }
         }
-        .navigationTitle("Moderation")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "Moderation")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Close") {

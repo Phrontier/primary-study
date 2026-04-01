@@ -2,9 +2,43 @@ import SwiftUI
 import UIKit
 
 enum AppTheme {
+    enum ThemeVariant {
+        case baselineDark
+    }
+
+    struct ThemePalette {
+        let accent: Color
+        let accentSoft: Color
+        let accentMuted: Color
+        let success: Color
+        let warning: Color
+        let danger: Color
+
+        let textPrimary: Color
+        let textSecondary: Color
+        let textMuted: Color
+
+        let pageTop: Color
+        let pageBottom: Color
+        let pageGlow: Color
+
+        let surface: Color
+        let elevatedSurface: Color
+        let raisedSurface: Color
+        let sunkenSurface: Color
+        let groupedBackground: Color
+        let secondaryGroupedBackground: Color
+        let separator: Color
+        let cardStroke: Color
+        let strongStroke: Color
+
+        let chromeBackground: UIColor
+        let chromeLine: UIColor
+    }
+
     enum Radius {
-        static let card: CGFloat = 22
-        static let largeCard: CGFloat = 26
+        static let card: CGFloat = 20
+        static let largeCard: CGFloat = 24
         static let control: CGFloat = 16
         static let pill: CGFloat = 999
     }
@@ -25,59 +59,229 @@ enum AppTheme {
         case metric
     }
 
-    static let accent = Color(red: 0.13, green: 0.43, blue: 0.88)
-    static let accentSoft = Color(red: 0.43, green: 0.64, blue: 0.95)
-    static let accentMuted = Color(red: 0.86, green: 0.91, blue: 0.97)
-    static let success = Color(red: 0.14, green: 0.63, blue: 0.42)
-    static let warning = Color(red: 0.87, green: 0.56, blue: 0.09)
-    static let danger = Color(red: 0.80, green: 0.28, blue: 0.23)
+    enum StatusColorRole {
+        case critical
+        case danger
+        case warning
+        case neutral
+        case success
+        case approved
+        case rejected
+        case pending
+    }
 
-    static let textPrimary = Color.primary
-    static let textSecondary = Color.secondary
-    static let textMuted = Color(uiColor: .tertiaryLabel)
+    enum DomainColorRole {
+        case primary
+        case flashcards
+        case quizzes
+        case instructors
+        case videos
+        case resources
+        case library
+        case documents
+        case groundSchool
+        case sims
+        case flights
+        case account
+        case support
+    }
 
-    static let surface = dynamicColor(light: 0xF4F7FB, dark: 0x10151D)
-    static let elevatedSurface = dynamicColor(light: 0xFFFFFF, dark: 0x18202B)
-    static let raisedSurface = dynamicColor(light: 0xEEF3F8, dark: 0x202A36)
-    static let sunkenSurface = dynamicColor(light: 0xE8EEF5, dark: 0x0D1219)
-    static let groupedBackground = dynamicColor(light: 0xEFF3F8, dark: 0x111823)
-    static let secondaryGroupedBackground = dynamicColor(light: 0xE8EEF5, dark: 0x18212C)
-    static let separator = dynamicColor(light: 0xD8E0E9, dark: 0x2A3542)
-    static let cardStroke = dynamicColor(light: 0xD9E1EA, dark: 0x313C49)
-    static let strongStroke = dynamicColor(light: 0xCDD9E7, dark: 0x415063)
+    static let activeVariant: ThemeVariant = .baselineDark
 
-    static let accentGradient = LinearGradient(
-        colors: [accent.opacity(0.94), accent],
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
+    static var preferredColorScheme: ColorScheme? {
+        switch activeVariant {
+        case .baselineDark:
+            return .dark
+        }
+    }
 
-    static let heroGradient = LinearGradient(
-        colors: [
-            accent.opacity(0.22),
-            accentSoft.opacity(0.14),
-            Color.white.opacity(0.08)
-        ],
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
+    static var palette: ThemePalette {
+        switch activeVariant {
+        case .baselineDark:
+            return ThemePalette(
+                accent: color(0x4A88FF),
+                accentSoft: color(0x7DA8FF),
+                accentMuted: color(0x1A2433),
+                success: color(0x36C276),
+                warning: color(0xFFB454),
+                danger: color(0xFF6B6B),
+                textPrimary: color(0xF4F7FB),
+                textSecondary: color(0xA8B3C7),
+                textMuted: color(0x7E8A9E),
+                pageTop: color(0x07101B),
+                pageBottom: color(0x0B1420),
+                pageGlow: color(0x12243E),
+                surface: color(0x101A27),
+                elevatedSurface: color(0x142131),
+                raisedSurface: color(0x182638),
+                sunkenSurface: color(0x0C131D),
+                groupedBackground: color(0x122030),
+                secondaryGroupedBackground: color(0x1A293B),
+                separator: color(0x273548),
+                cardStroke: color(0x2A3A4D),
+                strongStroke: color(0x39516C),
+                chromeBackground: UIColor(rgb: 0x0A131E).withAlphaComponent(0.90),
+                chromeLine: UIColor(rgb: 0x263447).withAlphaComponent(0.72)
+            )
+        }
+    }
+
+    static var accent: Color { palette.accent }
+    static var accentSoft: Color { palette.accentSoft }
+    static var accentMuted: Color { palette.accentMuted }
+    static var success: Color { palette.success }
+    static var warning: Color { palette.warning }
+    static var danger: Color { palette.danger }
+
+    static var textPrimary: Color { palette.textPrimary }
+    static var textSecondary: Color { palette.textSecondary }
+    static var textMuted: Color { palette.textMuted }
+
+    static var surface: Color { palette.surface }
+    static var elevatedSurface: Color { palette.elevatedSurface }
+    static var raisedSurface: Color { palette.raisedSurface }
+    static var sunkenSurface: Color { palette.sunkenSurface }
+    static var groupedBackground: Color { palette.groupedBackground }
+    static var secondaryGroupedBackground: Color { palette.secondaryGroupedBackground }
+    static var separator: Color { palette.separator }
+    static var cardStroke: Color { palette.cardStroke }
+    static var strongStroke: Color { palette.strongStroke }
+
+    static func statusColor(_ role: StatusColorRole) -> Color {
+        switch role {
+        case .critical:
+            return color(0xFF4D5E)
+        case .danger, .rejected:
+            return danger
+        case .warning, .pending:
+            return warning
+        case .neutral:
+            return accent
+        case .success, .approved:
+            return success
+        }
+    }
+
+    static func domainColor(_ role: DomainColorRole) -> Color {
+        switch role {
+        case .primary, .resources, .documents:
+            return accent
+        case .flashcards:
+            return color(0x6F7CFF)
+        case .quizzes:
+            return color(0x49B6FF)
+        case .instructors:
+            return color(0x9A86FF)
+        case .videos:
+            return color(0x4FC4D8)
+        case .library:
+            return color(0x5E8DFF)
+        case .groundSchool:
+            return color(0x5D9CFF)
+        case .sims:
+            return color(0x7C82FF)
+        case .flights:
+            return color(0x45B8A6)
+        case .account:
+            return color(0x7E9BFF)
+        case .support:
+            return color(0x8C96B4)
+        }
+    }
+
+    static func semanticTint(_ color: Color, opacity: Double = 0.16) -> Color {
+        liftedColor(color, amount: 0.06).opacity(opacity)
+    }
+
+    static func subtleBackground(_ color: Color) -> Color {
+        liftedColor(color, amount: 0.06).opacity(0.14)
+    }
+
+    static func subtleBackground(_ role: StatusColorRole) -> Color {
+        subtleBackground(statusColor(role))
+    }
+
+    static func subtleBackground(_ role: DomainColorRole) -> Color {
+        subtleBackground(domainColor(role))
+    }
+
+    static func badgeFill(_ color: Color) -> Color {
+        liftedColor(color, amount: 0.10).opacity(0.20)
+    }
+
+    static func badgeFill(_ role: StatusColorRole) -> Color {
+        badgeFill(statusColor(role))
+    }
+
+    static func badgeFill(_ role: DomainColorRole) -> Color {
+        badgeFill(domainColor(role))
+    }
+
+    static func badgeStroke(_ color: Color) -> Color {
+        liftedColor(color, amount: 0.14).opacity(0.44)
+    }
+
+    static func badgeStroke(_ role: StatusColorRole) -> Color {
+        badgeStroke(statusColor(role))
+    }
+
+    static func badgeStroke(_ role: DomainColorRole) -> Color {
+        badgeStroke(domainColor(role))
+    }
+
+    static func iconTint(_ color: Color) -> Color {
+        liftedColor(color, amount: 0.10)
+    }
+
+    static func iconTint(_ role: StatusColorRole) -> Color {
+        iconTint(statusColor(role))
+    }
+
+    static func iconTint(_ role: DomainColorRole) -> Color {
+        iconTint(domainColor(role))
+    }
+
+    static func prominentText(_ color: Color) -> Color {
+        liftedColor(color, amount: 0.18)
+    }
+
+    static func prominentText(_ role: StatusColorRole) -> Color {
+        prominentText(statusColor(role))
+    }
+
+    static func prominentText(_ role: DomainColorRole) -> Color {
+        prominentText(domainColor(role))
+    }
+
+    static var accentGradient: LinearGradient {
+        LinearGradient(
+            colors: [accentSoft.opacity(0.96), accent.opacity(0.94)],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    static var heroGradient: LinearGradient {
+        LinearGradient(
+            colors: [
+                accent.opacity(0.18),
+                accentSoft.opacity(0.10),
+                Color.white.opacity(0.03)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
 
     static func configureSystemChrome() {
-        let backgroundColor = UIColor { traits in
-            UIColor(rgb: traits.userInterfaceStyle == .dark ? 0x131A23 : 0xF7FAFD).withAlphaComponent(0.86)
-        }
-        let lineColor = UIColor { traits in
-            UIColor(rgb: traits.userInterfaceStyle == .dark ? 0x334050 : 0xD7E0EA).withAlphaComponent(0.65)
-        }
-
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithTransparentBackground()
-        tabBarAppearance.backgroundColor = backgroundColor
-        tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemThinMaterial)
-        tabBarAppearance.shadowColor = lineColor
+        tabBarAppearance.backgroundColor = palette.chromeBackground
+        tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        tabBarAppearance.shadowColor = palette.chromeLine
 
         let selectedColor = UIColor(accent)
-        let normalColor = UIColor.secondaryLabel
+        let normalColor = UIColor(rgb: 0x7F8CA2)
 
         let itemAppearances = [
             tabBarAppearance.stackedLayoutAppearance,
@@ -96,12 +300,23 @@ enum AppTheme {
 
         let navAppearance = UINavigationBarAppearance()
         navAppearance.configureWithTransparentBackground()
-        navAppearance.backgroundColor = backgroundColor.withAlphaComponent(0.70)
-        navAppearance.backgroundEffect = UIBlurEffect(style: .systemThinMaterial)
-        navAppearance.shadowColor = lineColor.withAlphaComponent(0.18)
+        navAppearance.backgroundColor = palette.chromeBackground.withAlphaComponent(0.82)
+        navAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        navAppearance.shadowColor = palette.chromeLine
+        navAppearance.titleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
+        navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
 
+        let scrollEdgeAppearance = UINavigationBarAppearance()
+        scrollEdgeAppearance.configureWithTransparentBackground()
+        scrollEdgeAppearance.backgroundColor = .clear
+        scrollEdgeAppearance.backgroundEffect = nil
+        scrollEdgeAppearance.shadowColor = .clear
+        scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        scrollEdgeAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.clear]
+
+        UINavigationBar.appearance().tintColor = selectedColor
         UINavigationBar.appearance().standardAppearance = navAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = scrollEdgeAppearance
         UINavigationBar.appearance().compactAppearance = navAppearance
     }
 
@@ -109,26 +324,18 @@ enum AppTheme {
     static var screenBackground: some View {
         ZStack {
             LinearGradient(
-                colors: [
-                    dynamicColor(light: 0xF5F8FC, dark: 0x0C1118),
-                    dynamicColor(light: 0xF2F6FB, dark: 0x0F151E),
-                    dynamicColor(light: 0xF7F9FC, dark: 0x111823)
-                ],
+                colors: [palette.pageTop, palette.pageBottom],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
 
-            LinearGradient(
-                colors: [
-                    accent.opacity(0.08),
-                    accent.opacity(0.03),
-                    .clear
-                ],
-                startPoint: .top,
-                endPoint: .bottom
+            RadialGradient(
+                colors: [palette.pageGlow.opacity(0.72), .clear],
+                center: .top,
+                startRadius: 20,
+                endRadius: 340
             )
-            .frame(maxHeight: 240)
-            .offset(y: -120)
+            .offset(y: -170)
         }
     }
 
@@ -146,7 +353,7 @@ enum AppTheme {
                 shape
                     .stroke(
                         LinearGradient(
-                            colors: [Color.white.opacity(style == .hero ? 0.26 : 0.16), Color.white.opacity(0.02)],
+                            colors: [Color.white.opacity(style == .hero ? 0.18 : 0.10), Color.white.opacity(0.02)],
                             startPoint: .top,
                             endPoint: .bottom
                         ),
@@ -154,13 +361,10 @@ enum AppTheme {
                     )
                     .mask(
                         Rectangle()
-                            .fill(
-                                LinearGradient(colors: [.white, .clear], startPoint: .top, endPoint: .bottom)
-                            )
+                            .fill(LinearGradient(colors: [.white, .clear], startPoint: .top, endPoint: .bottom))
                     )
             }
-            .shadow(color: shadowColor(style: style).opacity(shadowOpacity(style: style)), radius: shadowRadius(style: style), x: 0, y: shadowYOffset(style: style))
-            .shadow(color: Color.black.opacity(style == .hero ? 0.025 : 0.014), radius: style == .hero ? 18 : 12, x: 0, y: style == .hero ? 10 : 6)
+            .shadow(color: Color.black.opacity(shadowOpacity(style: style)), radius: shadowRadius(style: style), x: 0, y: shadowYOffset(style: style))
     }
 
     static func cardBackground(highlighted: Bool = false) -> some View {
@@ -168,7 +372,7 @@ enum AppTheme {
     }
 
     static func subtleFill(_ color: Color) -> some ShapeStyle {
-        color.opacity(0.12)
+        color.opacity(0.14)
     }
 
     private static func surfaceFill(style: SurfaceStyle, accent: Color) -> LinearGradient {
@@ -176,9 +380,9 @@ enum AppTheme {
         case .hero:
             return LinearGradient(
                 colors: [
-                    elevatedSurface.opacity(0.98),
-                    accentMuted.opacity(0.52),
-                    surface.opacity(0.98)
+                    elevatedSurface.opacity(0.96),
+                    accent.opacity(0.12),
+                    surface.opacity(0.96)
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -186,32 +390,32 @@ enum AppTheme {
         case .primary:
             return LinearGradient(
                 colors: [
-                    elevatedSurface.opacity(0.995),
-                    accent.opacity(0.05),
-                    surface.opacity(0.99)
+                    raisedSurface.opacity(0.96),
+                    accent.opacity(0.08),
+                    surface.opacity(0.96)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case .metric:
+            return LinearGradient(
+                colors: [
+                    groupedBackground.opacity(0.98),
+                    accent.opacity(0.06),
+                    surface.opacity(0.98)
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         case .grouped:
             return LinearGradient(
-                colors: [raisedSurface.opacity(0.88), elevatedSurface.opacity(0.94)],
+                colors: [groupedBackground.opacity(0.98), surface.opacity(0.98)],
                 startPoint: .top,
                 endPoint: .bottom
             )
-        case .metric:
-            return LinearGradient(
-                colors: [
-                    elevatedSurface.opacity(0.99),
-                    accent.opacity(0.045),
-                    surface.opacity(0.96)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
         case .standard:
             return LinearGradient(
-                colors: [surface.opacity(0.98), elevatedSurface.opacity(0.97)],
+                colors: [surface.opacity(0.98), elevatedSurface.opacity(0.96)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -222,86 +426,82 @@ enum AppTheme {
         switch style {
         case .hero:
             return LinearGradient(
-                colors: [strongStroke.opacity(0.78), accent.opacity(0.12)],
+                colors: [strongStroke.opacity(0.92), accent.opacity(0.22)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         case .primary:
             return LinearGradient(
-                colors: [cardStroke.opacity(0.95), accent.opacity(0.14)],
+                colors: [cardStroke.opacity(0.95), accent.opacity(0.18)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         case .metric:
             return LinearGradient(
-                colors: [cardStroke.opacity(0.95), accent.opacity(0.12)],
+                colors: [cardStroke.opacity(0.94), accent.opacity(0.16)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         case .grouped, .standard:
             return LinearGradient(
-                colors: [cardStroke.opacity(0.94), Color.white.opacity(0.05)],
+                colors: [cardStroke.opacity(0.96), Color.white.opacity(0.03)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         }
     }
 
-    private static func shadowColor(style: SurfaceStyle) -> Color {
-        Color.black
-    }
-
     private static func shadowOpacity(style: SurfaceStyle) -> Double {
         switch style {
         case .hero:
-            return 0.07
+            return 0.28
         case .primary:
-            return 0.055
+            return 0.22
         case .metric:
-            return 0.045
+            return 0.18
         case .grouped:
-            return 0.032
+            return 0.16
         case .standard:
-            return 0.026
+            return 0.18
         }
     }
 
     private static func shadowRadius(style: SurfaceStyle) -> CGFloat {
         switch style {
         case .hero:
-            return 24
+            return 28
         case .primary:
-            return 18
+            return 22
         case .metric:
-            return 14
+            return 18
         case .grouped:
-            return 10
+            return 14
         case .standard:
-            return 12
+            return 16
         }
     }
 
     private static func shadowYOffset(style: SurfaceStyle) -> CGFloat {
         switch style {
         case .hero:
-            return 12
+            return 16
         case .primary:
-            return 8
+            return 12
         case .metric:
-            return 6
+            return 10
         case .grouped:
-            return 4
+            return 8
         case .standard:
-            return 6
+            return 10
         }
     }
 
-    private static func dynamicColor(light: UInt32, dark: UInt32) -> Color {
-        Color(
-            uiColor: UIColor { traits in
-                UIColor(rgb: traits.userInterfaceStyle == .dark ? dark : light)
-            }
-        )
+    static func color(_ rgb: UInt32) -> Color {
+        Color(uiColor: UIColor(rgb: rgb))
+    }
+
+    private static func liftedColor(_ color: Color, amount: CGFloat) -> Color {
+        Color(uiColor: UIColor(color).mixed(with: .white, amount: amount))
     }
 }
 
@@ -328,5 +528,32 @@ private extension UIColor {
         let green = CGFloat((rgb >> 8) & 0xFF) / 255
         let blue = CGFloat(rgb & 0xFF) / 255
         self.init(red: red, green: green, blue: blue, alpha: 1)
+    }
+
+    func mixed(with color: UIColor, amount: CGFloat) -> UIColor {
+        var baseRed: CGFloat = 0
+        var baseGreen: CGFloat = 0
+        var baseBlue: CGFloat = 0
+        var baseAlpha: CGFloat = 0
+        var targetRed: CGFloat = 0
+        var targetGreen: CGFloat = 0
+        var targetBlue: CGFloat = 0
+        var targetAlpha: CGFloat = 0
+
+        guard
+            getRed(&baseRed, green: &baseGreen, blue: &baseBlue, alpha: &baseAlpha),
+            color.getRed(&targetRed, green: &targetGreen, blue: &targetBlue, alpha: &targetAlpha)
+        else {
+            return self
+        }
+
+        let ratio = max(0, min(amount, 1))
+
+        return UIColor(
+            red: baseRed + (targetRed - baseRed) * ratio,
+            green: baseGreen + (targetGreen - baseGreen) * ratio,
+            blue: baseBlue + (targetBlue - baseBlue) * ratio,
+            alpha: baseAlpha + (targetAlpha - baseAlpha) * ratio
+        )
     }
 }

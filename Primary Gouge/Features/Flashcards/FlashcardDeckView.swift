@@ -37,13 +37,9 @@ struct FlashcardDeckView: View {
             HeroCard(
                 eyebrow: contextLabel,
                 title: deck.title,
-                subtitle: deck.summary
+                subtitle: nil
             ) {
                 FlashcardPerformanceBar(snapshot: performance)
-
-                Text(performance.detail)
-                    .font(.footnote)
-                    .foregroundStyle(AppTheme.textSecondary)
 
                 reviewActionRow
             }
@@ -53,7 +49,7 @@ struct FlashcardDeckView: View {
                     SectionHeader(
                         eyebrow: "Filter",
                         title: "Study focus",
-                        subtitle: "Narrow the deck to the material you want to review right now."
+                        subtitle: nil
                     )
 
                     SectionContainer {
@@ -73,7 +69,7 @@ struct FlashcardDeckView: View {
                     SectionHeader(
                         eyebrow: "Deck",
                         title: "All cards",
-                        subtitle: "Preview prompts, spot priorities, and jump directly into the right card."
+                        subtitle: nil
                     )
 
                     LazyVStack(spacing: 12) {
@@ -95,8 +91,7 @@ struct FlashcardDeckView: View {
                 }
             }
         }
-        .navigationTitle(deck.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: deck.title)
         .task {
             appModel.recordDeckOpened(event: event, deck: deck, contextLabel: contextLabel)
         }
@@ -128,7 +123,7 @@ struct FlashcardDeckView: View {
             CompactReviewAction(
                 title: "Smart review",
                 icon: "bolt.fill",
-                accent: AppTheme.warning
+                accent: AppTheme.statusColor(.warning)
             )
         }
         .buttonStyle(.plain)
@@ -146,7 +141,7 @@ struct FlashcardDeckView: View {
             CompactReviewAction(
                 title: "Study full deck",
                 icon: "rectangle.stack.fill",
-                accent: AppTheme.accent
+                accent: AppTheme.domainColor(.flashcards)
             )
         }
         .buttonStyle(.plain)
@@ -221,8 +216,7 @@ struct FlashcardDetailView: View {
             }
             .buttonStyle(.plain)
         }
-        .navigationTitle("Card detail")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "Card detail")
     }
 }
 
@@ -261,8 +255,7 @@ struct FlashcardStudyView: View {
                 }
             }
         }
-        .navigationTitle(deck.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: deck.title)
         .onAppear {
             startedAt = .now
         }
@@ -353,7 +346,7 @@ struct FlashcardStudyView: View {
             SectionHeader(
                 eyebrow: "Rate it",
                 title: "How well did you know it?",
-                subtitle: "Your rating updates priority and future review scheduling."
+                subtitle: nil
             )
 
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 140), spacing: 10)], spacing: 10) {
@@ -363,15 +356,15 @@ struct FlashcardStudyView: View {
                     } label: {
                         Text(rating.label)
                             .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(buttonColor(for: rating))
+                            .foregroundStyle(AppTheme.prominentText(buttonColor(for: rating)))
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
                             .background(
                                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .fill(buttonColor(for: rating).opacity(0.12))
+                                    .fill(AppTheme.badgeFill(buttonColor(for: rating)))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                            .stroke(buttonColor(for: rating).opacity(0.20), lineWidth: 1)
+                                            .stroke(AppTheme.badgeStroke(buttonColor(for: rating)), lineWidth: 1)
                                     )
                             )
                     }
@@ -417,10 +410,10 @@ struct FlashcardStudyView: View {
 
     private func buttonColor(for rating: FlashcardRating) -> Color {
         switch rating {
-        case .missed: AppTheme.danger
-        case .hard: AppTheme.warning
+        case .missed: AppTheme.statusColor(.rejected)
+        case .hard: AppTheme.statusColor(.warning)
         case .good: AppTheme.accent
-        case .easy: AppTheme.success
+        case .easy: AppTheme.statusColor(.approved)
         }
     }
 
@@ -536,13 +529,13 @@ private extension FlashcardPerformanceBand {
         case .notStudied:
             return AppTheme.textMuted
         case .gradeD:
-            return AppTheme.danger
+            return AppTheme.statusColor(.rejected)
         case .gradeC:
-            return AppTheme.warning
+            return AppTheme.statusColor(.warning)
         case .gradeB:
             return AppTheme.accent
         case .gradeA:
-            return AppTheme.success
+            return AppTheme.statusColor(.approved)
         }
     }
 }
@@ -556,8 +549,12 @@ private struct Badge: View {
             .font(.caption2.weight(.semibold))
             .padding(.horizontal, 8)
             .padding(.vertical, 5)
-            .background(color.opacity(0.12), in: Capsule())
-            .foregroundStyle(color)
+            .background(AppTheme.badgeFill(color), in: Capsule())
+            .overlay(
+                Capsule()
+                    .stroke(AppTheme.badgeStroke(color), lineWidth: 1)
+            )
+            .foregroundStyle(AppTheme.prominentText(color))
     }
 }
 
@@ -570,15 +567,15 @@ private func referenceBadges(for card: FlashcardDefinition) -> [FlashcardSemanti
     var badges: [FlashcardSemanticBadge] = []
 
     if card.tags.contains(FlashcardFilterToken.ep.tagValue) {
-        badges.append(FlashcardSemanticBadge(text: "EP", color: AppTheme.danger))
+        badges.append(FlashcardSemanticBadge(text: "EP", color: FlashcardFilterToken.ep.domainColor))
     }
 
     if card.tags.contains(FlashcardFilterToken.limits.tagValue) {
-        badges.append(FlashcardSemanticBadge(text: "Limits", color: AppTheme.accent))
+        badges.append(FlashcardSemanticBadge(text: "Limits", color: FlashcardFilterToken.limits.domainColor))
     }
 
     if card.tags.contains(FlashcardFilterToken.nwc.tagValue) {
-        badges.append(FlashcardSemanticBadge(text: "N/W/C", color: AppTheme.warning))
+        badges.append(FlashcardSemanticBadge(text: "N/W/C", color: FlashcardFilterToken.nwc.domainColor))
     }
 
     return badges

@@ -18,16 +18,7 @@ struct InstructorReviewsRootView: View {
                         options: InstructorCapabilityFilter.allCases,
                         selected: viewModel.selectedFilter,
                         title: { $0.title },
-                        accent: { filter in
-                            switch filter {
-                            case .all:
-                                return AppTheme.accent
-                            case .sims:
-                                return AppTheme.warning
-                            case .flights:
-                                return AppTheme.success
-                            }
-                        }
+                        accent: { $0.color }
                     ) { filter in
                         viewModel.selectedFilter = filter
                     }
@@ -70,18 +61,7 @@ struct InstructorReviewsRootView: View {
                 }
             }
         }
-        .navigationTitle("Instructor Reviews")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    showingModeration = true
-                } label: {
-                    Image(systemName: "checkmark.shield.fill")
-                        .foregroundStyle(AppTheme.accent)
-                }
-            }
-        }
+        .scrollActivatedNavigationChrome(title: "Instructor Reviews")
         .sheet(isPresented: $showingSubmission) {
             NavigationStack {
                 ReviewSubmissionView()
@@ -106,20 +86,49 @@ struct InstructorReviewsRootView: View {
     }
 
     private var heroCard: some View {
-        HeroCard(
-            eyebrow: "Instructor gouge",
-            title: "Quick context on who you're flying with.",
-            subtitle: "Approved reviews drive every average. Filter the roster, then open an instructor when you need the full story."
+        TabHeaderCard(
+            identity: TabHeaderIdentity(
+                navigationTitle: "Instructor Reviews",
+                eyebrow: "Instructor gouge",
+                title: "Quick context on who you're flying with.",
+                subtitle: nil,
+                iconName: AppTab.instructors.iconName,
+                accent: AppTheme.domainColor(.instructors)
+            ),
+            metrics: [
+                TabHeaderMetric(label: "Reviews", value: "\(viewModel.totalPublishedReviews)", color: AppTheme.domainColor(.instructors), iconName: "text.bubble.fill"),
+                TabHeaderMetric(label: "Instructors", value: "\(viewModel.instructors.count)", color: AppTheme.accent, iconName: "person.2.fill"),
+                TabHeaderMetric(label: "Moderated", value: "Screened", color: AppTheme.statusColor(.pending), iconName: "checkmark.shield.fill")
+            ],
+            metricLayout: .compactRow
         ) {
-            HStack(spacing: 10) {
-                MetricChip(label: "Published", value: "\(viewModel.totalPublishedReviews)", color: AppTheme.accent)
-                MetricChip(label: "Filters", value: "3", color: AppTheme.accent)
-                MetricChip(label: "Workflow", value: "Moderated", color: AppTheme.accent)
-            }
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 10) {
+                    InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
+                        showingSubmission = true
+                    }
 
-            InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
-                showingSubmission = true
+                    moderationBubble
+                }
+
+                VStack(spacing: 10) {
+                    InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
+                        showingSubmission = true
+                    }
+
+                    moderationBubble
+                }
             }
         }
+    }
+
+    private var moderationBubble: some View {
+        Button {
+            showingModeration = true
+        } label: {
+            HeaderCapsuleButton(title: "Moderation", iconName: "checkmark.shield.fill", tint: AppTheme.statusColor(.pending))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Open moderation queue")
     }
 }

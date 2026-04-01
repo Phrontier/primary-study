@@ -27,8 +27,7 @@ struct EventDetailView: View {
                 additionalDocumentsSection(supplementalDocuments)
             }
         }
-        .navigationTitle(event.code)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: event.code)
         .task {
             appModel.markEventViewed(event)
         }
@@ -45,9 +44,9 @@ struct EventDetailView: View {
             subtitle: event.summary
         ) {
             HStack(spacing: 12) {
-                MetricChip(label: "Decks", value: "\(event.flashcardDecks.count)", color: AppTheme.accent)
-                MetricChip(label: "Questions", value: "\(event.questionBanks.reduce(0) { $0 + $1.questions.count })", color: AppTheme.accent)
-                MetricChip(label: "Docs", value: "\(appModel.sharedResources(for: event, placement: nil).count + appModel.supplementalDocuments(for: event).count)", color: AppTheme.accent)
+                MetricChip(label: "Decks", value: "\(event.flashcardDecks.count)", color: AppTheme.domainColor(.flashcards))
+                MetricChip(label: "Questions", value: "\(event.questionBanks.reduce(0) { $0 + $1.questions.count })", color: AppTheme.domainColor(.quizzes))
+                MetricChip(label: "Docs", value: "\(appModel.sharedResources(for: event, placement: nil).count + appModel.supplementalDocuments(for: event).count)", color: AppTheme.domainColor(.documents))
             }
         }
     }
@@ -59,7 +58,7 @@ struct EventDetailView: View {
                 SectionHeader(
                     eyebrow: "Start here",
                     title: "Briefing guide",
-                    subtitle: "Open the source material you want in hand before stepping through the rest of the event prep."
+                    subtitle: nil
                 )
 
                 NavigationLink {
@@ -67,9 +66,9 @@ struct EventDetailView: View {
                 } label: {
                     ToolCard(
                         title: "\(event.code) Briefing Guide",
-                        subtitle: document.summary,
+                        subtitle: nil,
                         icon: "doc.richtext.fill",
-                        accent: AppTheme.accent
+                        accent: AppTheme.domainColor(.documents)
                     )
                 }
                 .buttonStyle(.plain)
@@ -82,7 +81,7 @@ struct EventDetailView: View {
             SectionHeader(
                 eyebrow: "Prep tools",
                 title: "Study and rehearse",
-                subtitle: "Everything you need to brief, review, quiz, and rehearse this event without digging."
+                subtitle: nil
             )
 
             VStack(spacing: 12) {
@@ -90,7 +89,7 @@ struct EventDetailView: View {
                     NavigationLink {
                         NotesDetailView(notes: notes, eventTitle: event.displayTitle)
                     } label: {
-                        ToolCard(title: "Study notes", subtitle: notes.summary, icon: "text.alignleft", accent: AppTheme.accent)
+                        ToolCard(title: "Study notes", subtitle: notes.summary, icon: "text.alignleft", accent: AppTheme.domainColor(.documents))
                     }
                     .buttonStyle(.plain)
                 }
@@ -101,9 +100,9 @@ struct EventDetailView: View {
                     } label: {
                         ToolCard(
                             title: deck.title,
-                            subtitle: deck.summary,
+                            subtitle: nil,
                             icon: "rectangle.stack.fill",
-                            accent: AppTheme.warning
+                            accent: AppTheme.domainColor(.flashcards)
                         )
                     }
                     .buttonStyle(.plain)
@@ -113,7 +112,7 @@ struct EventDetailView: View {
                     NavigationLink {
                         PracticeTestView(event: event, bank: bank)
                     } label: {
-                        ToolCard(title: bank.title, subtitle: bank.summary, icon: "checklist.checked", accent: AppTheme.success)
+                        ToolCard(title: bank.title, subtitle: nil, icon: "checklist.checked", accent: AppTheme.domainColor(.quizzes))
                     }
                     .buttonStyle(.plain)
                 }
@@ -122,7 +121,7 @@ struct EventDetailView: View {
                     NavigationLink {
                         ScriptDetailView(script: script)
                     } label: {
-                        ToolCard(title: "Event script", subtitle: "Reusable calls and procedures assembled for this event.", icon: "waveform.path.ecg.rectangle", accent: AppTheme.accent)
+                        ToolCard(title: "Event script", subtitle: nil, icon: "waveform.path.ecg.rectangle", accent: AppTheme.domainColor(.documents))
                     }
                     .buttonStyle(.plain)
                 }
@@ -131,7 +130,7 @@ struct EventDetailView: View {
                     NavigationLink {
                         VideoDetailView(video: video)
                     } label: {
-                        ToolCard(title: video.title, subtitle: video.summary, icon: "play.rectangle.fill", accent: AppTheme.success)
+                        ToolCard(title: video.title, subtitle: nil, icon: "play.rectangle.fill", accent: AppTheme.domainColor(.videos))
                     }
                     .buttonStyle(.plain)
                 }
@@ -152,7 +151,7 @@ struct EventDetailView: View {
             SectionHeader(
                 eyebrow: "Shared references",
                 title: "Always-relevant material",
-                subtitle: "Cross-event tools and references that support the same knowledge without duplication."
+                subtitle: nil
             )
 
             ForEach(resources) { resource in
@@ -161,9 +160,9 @@ struct EventDetailView: View {
                 } label: {
                     ToolCard(
                         title: resource.title,
-                        subtitle: resource.summary,
+                        subtitle: nil,
                         icon: "square.grid.2x2.fill",
-                        accent: AppTheme.warning
+                        accent: resource.librarySection.domainColor
                     )
                 }
                 .buttonStyle(.plain)
@@ -175,9 +174,9 @@ struct EventDetailView: View {
                 } label: {
                     ToolCard(
                         title: video.title,
-                        subtitle: video.summary,
+                        subtitle: nil,
                         icon: "play.rectangle.fill",
-                        accent: AppTheme.success
+                        accent: AppTheme.domainColor(.videos)
                     )
                 }
                 .buttonStyle(.plain)
@@ -190,7 +189,7 @@ struct EventDetailView: View {
             SectionHeader(
                 eyebrow: "Documents",
                 title: "Additional source material",
-                subtitle: "Open supporting briefs, documents, and references linked to this event."
+                subtitle: nil
             )
 
             ForEach(documents) { document in
@@ -199,9 +198,9 @@ struct EventDetailView: View {
                 } label: {
                     ToolCard(
                         title: document.title,
-                        subtitle: document.kind.displayName + " • " + document.summary,
+                        subtitle: nil,
                         icon: "doc.text.fill",
-                        accent: AppTheme.accent
+                        accent: AppTheme.domainColor(.documents)
                     )
                 }
                 .buttonStyle(.plain)
@@ -218,7 +217,7 @@ private struct EventOverviewCard: View {
             SectionHeader(
                 eyebrow: "Overview",
                 title: "What this event is about",
-                subtitle: "A quick framing pass before you dive into the detailed prep material."
+                subtitle: nil
             )
 
             SectionContainer {
@@ -246,7 +245,7 @@ private struct NotesDetailView: View {
             SectionContainer {
                 VStack(alignment: .leading, spacing: 12) {
                     ForEach(notes.focusAreas, id: \.self) { area in
-                        InsetListRow(title: area, subtitle: "Key point to revisit before you brief or step.") {
+                        InsetListRow(title: area) {
                             Image(systemName: "checkmark.circle.fill")
                                 .foregroundStyle(AppTheme.accent)
                                 .frame(width: 20, height: 20)
@@ -255,8 +254,7 @@ private struct NotesDetailView: View {
                 }
             }
         }
-        .navigationTitle(eventTitle)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: eventTitle)
     }
 }
 
@@ -268,7 +266,7 @@ private struct ScriptDetailView: View {
             HeroCard(
                 eyebrow: "Event script",
                 title: script.title,
-                subtitle: "Deterministically assembled from shared comm-call and maneuver blocks."
+                subtitle: nil
             )
 
             ForEach(script.sections) { section in
@@ -294,7 +292,7 @@ private struct ScriptDetailView: View {
                             .foregroundStyle(AppTheme.textPrimary)
 
                         ForEach(script.notes, id: \.self) { note in
-                            InsetListRow(title: note, subtitle: "Supporting guidance for this script section.") {
+                            InsetListRow(title: note) {
                                 Image(systemName: "waveform.path.ecg")
                                     .foregroundStyle(AppTheme.accent)
                                     .frame(width: 20, height: 20)
@@ -304,7 +302,6 @@ private struct ScriptDetailView: View {
                 }
             }
         }
-        .navigationTitle("Script")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "Script")
     }
 }

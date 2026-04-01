@@ -72,8 +72,7 @@ struct InstructorReviewDetailView: View {
                 }
             }
         }
-        .navigationTitle("Instructor")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "Instructor")
         .task {
             viewModel.load(using: reviewStore)
         }

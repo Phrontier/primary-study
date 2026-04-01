@@ -6,12 +6,34 @@ struct InstructorRatingBadge: View {
     let subtitle: String
     let score: Int
 
+    private var accent: Color {
+        InstructorRatingScale.color(for: score)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(title.uppercased())
-                .font(.system(.caption2, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.textMuted)
-                .tracking(0.6)
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(title.uppercased())
+                    .font(.system(.caption2, design: .rounded, weight: .bold))
+                    .foregroundStyle(AppTheme.prominentText(accent))
+                    .tracking(0.6)
+
+                Spacer(minLength: 8)
+
+                Text("\(score)/7")
+                    .font(.system(.caption, design: .rounded, weight: .bold))
+                    .foregroundStyle(AppTheme.prominentText(accent))
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 5)
+                    .background(
+                        Capsule()
+                            .fill(AppTheme.badgeFill(accent))
+                            .overlay(
+                                Capsule()
+                                    .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
+                            )
+                    )
+            }
 
             Text(label)
                 .font(.system(.subheadline, design: .rounded, weight: .bold))
@@ -27,12 +49,19 @@ struct InstructorRatingBadge: View {
         .frame(maxWidth: .infinity, minHeight: 92, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(InstructorRatingScale.color(for: score).opacity(0.14))
+                .fill(AppTheme.elevatedSurface)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .stroke(InstructorRatingScale.color(for: score).opacity(0.40), lineWidth: 1)
+                        .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
                 )
         )
+        .overlay(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 2, style: .continuous)
+                .fill(accent)
+                .frame(width: 4)
+                .padding(.vertical, 16)
+                .padding(.leading, 1)
+        }
     }
 }
 
@@ -45,13 +74,41 @@ struct InstructorAggregateCard: View {
         InstructorRatingScale.roundedScore(for: average)
     }
 
+    private var accent: Color {
+        InstructorRatingScale.color(for: roundedScore)
+    }
+
     var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                Text(title.uppercased())
-                    .font(.system(.caption2, design: .rounded, weight: .bold))
-                    .foregroundStyle(AppTheme.textMuted)
-                    .tracking(0.6)
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    HStack(spacing: 8) {
+                        Circle()
+                            .fill(AppTheme.prominentText(accent))
+                            .frame(width: 8, height: 8)
+
+                        Text(title.uppercased())
+                            .font(.system(.caption2, design: .rounded, weight: .bold))
+                            .foregroundStyle(AppTheme.prominentText(accent))
+                            .tracking(0.6)
+                    }
+
+                    Spacer(minLength: 8)
+
+                    Text("\(roundedScore)/7")
+                        .font(.system(.caption, design: .rounded, weight: .bold))
+                        .foregroundStyle(AppTheme.prominentText(accent))
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 5)
+                        .background(
+                            Capsule()
+                                .fill(AppTheme.badgeFill(accent))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
+                                )
+                        )
+                }
 
                 Spacer(minLength: 0)
 
@@ -60,9 +117,20 @@ struct InstructorAggregateCard: View {
                     .foregroundStyle(AppTheme.textPrimary)
                     .lineLimit(2)
 
-                Text(InstructorRatingScale.format(average: average))
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
-                    .foregroundStyle(InstructorRatingScale.color(for: roundedScore))
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text(InstructorRatingScale.format(average: average))
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .foregroundStyle(AppTheme.prominentText(accent))
+
+                    Text("avg")
+                        .font(.system(.caption, design: .rounded, weight: .bold))
+                        .foregroundStyle(AppTheme.textMuted)
+                }
+
+                Capsule()
+                    .fill(accent)
+                    .frame(width: 56, height: 4)
+                    .opacity(0.95)
             }
             .frame(maxWidth: .infinity, minHeight: 136, alignment: .leading)
         }
@@ -84,9 +152,19 @@ struct InstructorReviewCard: View {
                         }
 
                         HStack(spacing: 8) {
-                            Text(review.eventKind.displayName)
-                                .font(.system(.caption, design: .rounded, weight: .bold))
-                                .foregroundStyle(AppTheme.accentSoft)
+                            Text(review.eventKind.displayName.uppercased())
+                                .font(.system(.caption2, design: .rounded, weight: .bold))
+                                .foregroundStyle(AppTheme.prominentText(review.eventKind.domainColor))
+                                .padding(.horizontal, 9)
+                                .padding(.vertical, 6)
+                                .background(
+                                    Capsule()
+                                        .fill(AppTheme.badgeFill(review.eventKind.domainColor))
+                                        .overlay(
+                                            Capsule()
+                                                .stroke(AppTheme.badgeStroke(review.eventKind.domainColor), lineWidth: 1)
+                                        )
+                                )
 
                             Text(review.submittedAt.formatted(date: .abbreviated, time: .omitted))
                                 .font(.system(.footnote, design: .rounded, weight: .medium))
@@ -127,14 +205,14 @@ struct InstructorReviewCard: View {
         if review.status != .approved {
             Text(review.status.displayName)
                 .font(.system(.caption, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.textPrimary)
+                .foregroundStyle(AppTheme.prominentText(review.status.statusColor))
                 .padding(.horizontal, 10)
                 .padding(.vertical, 6)
                 .background(
                     Capsule()
-                        .fill(AppTheme.elevatedSurface)
+                        .fill(AppTheme.badgeFill(review.status.statusColor))
                         .overlay(
-                            Capsule().stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                            Capsule().stroke(AppTheme.badgeStroke(review.status.statusColor), lineWidth: 1)
                         )
                 )
         }
@@ -163,7 +241,7 @@ struct InstructorSummaryCard: View {
                     VStack(alignment: .trailing, spacing: 4) {
                         Text("\(instructor.publishedReviewCount)")
                             .font(.system(.title2, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.accent)
+                            .foregroundStyle(AppTheme.prominentText(AppTheme.domainColor(.instructors)))
 
                         Text("reviews")
                             .font(.system(.caption, design: .rounded, weight: .bold))
@@ -209,15 +287,15 @@ struct InstructorCapabilityBadge: View {
     var body: some View {
         Text(capability.pluralDisplayName.uppercased())
             .font(.system(.caption2, design: .rounded, weight: .bold))
-            .foregroundStyle(capability == .sim ? AppTheme.warning : AppTheme.success)
+            .foregroundStyle(AppTheme.prominentText(capability.domainColor))
             .padding(.horizontal, 10)
             .padding(.vertical, 7)
             .background(
                 Capsule()
-                    .fill((capability == .sim ? AppTheme.warning : AppTheme.success).opacity(0.12))
+                    .fill(AppTheme.badgeFill(capability.domainColor))
                     .overlay(
                         Capsule()
-                            .stroke((capability == .sim ? AppTheme.warning : AppTheme.success).opacity(0.28), lineWidth: 1)
+                            .stroke(AppTheme.badgeStroke(capability.domainColor), lineWidth: 1)
                     )
             )
     }
@@ -239,15 +317,15 @@ struct InstructorPillSelector<Option: Identifiable & Hashable>: View {
                     } label: {
                         Text(title(option))
                             .font(.system(.subheadline, design: .rounded, weight: .bold))
-                            .foregroundStyle(selected == option ? AppTheme.textPrimary : AppTheme.textSecondary)
+                            .foregroundStyle(selected == option ? AppTheme.prominentText(accent(option)) : AppTheme.textSecondary)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 11)
                             .background(
                                 Capsule()
-                                    .fill(selected == option ? accent(option).opacity(0.18) : AppTheme.elevatedSurface)
+                                    .fill(selected == option ? AppTheme.badgeFill(accent(option)) : AppTheme.elevatedSurface)
                                     .overlay(
                                         Capsule()
-                                            .stroke(selected == option ? accent(option).opacity(0.40) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                            .stroke(selected == option ? AppTheme.badgeStroke(accent(option)) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
                                     )
                             )
                     }
@@ -284,15 +362,15 @@ struct InstructorAdaptiveSelector<Option: Identifiable & Hashable>: View {
                     Text(title(option))
                         .font(.system(.subheadline, design: .rounded, weight: .bold))
                         .lineLimit(1)
-                        .foregroundStyle(selected == option ? AppTheme.textPrimary : AppTheme.textSecondary)
+                        .foregroundStyle(selected == option ? AppTheme.prominentText(accent(option)) : AppTheme.textSecondary)
                         .padding(.horizontal, 14)
                         .padding(.vertical, 11)
                         .background(
                             Capsule()
-                                .fill(selected == option ? accent(option).opacity(0.18) : AppTheme.elevatedSurface)
+                                .fill(selected == option ? AppTheme.badgeFill(accent(option)) : AppTheme.elevatedSurface)
                                 .overlay(
                                     Capsule()
-                                        .stroke(selected == option ? accent(option).opacity(0.40) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                        .stroke(selected == option ? AppTheme.badgeStroke(accent(option)) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
                                 )
                         )
                 }
@@ -329,7 +407,7 @@ struct InstructorAdaptiveSelector<Option: Identifiable & Hashable>: View {
 
                 Image(systemName: "chevron.down")
                     .font(.system(size: 12, weight: .bold))
-                    .foregroundStyle(accent(selected))
+                    .foregroundStyle(AppTheme.iconTint(accent(selected)))
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
@@ -338,7 +416,7 @@ struct InstructorAdaptiveSelector<Option: Identifiable & Hashable>: View {
                     .fill(AppTheme.elevatedSurface)
                     .overlay(
                         RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .stroke(accent(selected).opacity(0.20), lineWidth: 1)
+                            .stroke(AppTheme.badgeStroke(accent(selected)), lineWidth: 1)
                     )
             )
         }
@@ -545,8 +623,7 @@ struct InstructorSelectionSheet<Option: Identifiable, RowContent: View>: View wh
                     .padding(.bottom, 32)
                 }
             }
-            .navigationTitle(title)
-            .navigationBarTitleDisplayMode(.inline)
+            .scrollActivatedNavigationChrome(title: title)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Close") {

@@ -14,12 +14,17 @@ struct Primary_GougeApp: App {
     @StateObject private var reviewStore = InstructorReviewStore()
     @State private var didBootstrap = false
 
+    init() {
+        AppTheme.configureSystemChrome()
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environmentObject(appModel)
                 .environmentObject(quizStore)
                 .environmentObject(reviewStore)
+                .preferredColorScheme(AppTheme.preferredColorScheme)
                 .task {
                     bootstrapIfNeeded()
                 }

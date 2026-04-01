@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 struct StudyManifest: Codable {
     var phases: [Phase]
@@ -56,6 +57,17 @@ enum StudyCategoryKind: String, Codable, CaseIterable, Hashable {
         case .groundSchool: "text.book.closed.fill"
         case .sims: "hifispeaker.and.appletv.fill"
         case .flights: "airplane"
+        }
+    }
+
+    var domainColor: Color {
+        switch self {
+        case .groundSchool:
+            return AppTheme.domainColor(.groundSchool)
+        case .sims:
+            return AppTheme.domainColor(.sims)
+        case .flights:
+            return AppTheme.domainColor(.flights)
         }
     }
 }
@@ -207,6 +219,15 @@ enum SharedResourceSection: String, Codable, Hashable, CaseIterable {
         case .supplements: "Other supplements"
         }
     }
+
+    var domainColor: Color {
+        switch self {
+        case .videos:
+            return AppTheme.domainColor(.videos)
+        case .eps, .limits, .nwc, .supplements:
+            return AppTheme.domainColor(.resources)
+        }
+    }
 }
 
 struct FlashcardDeck: Codable, Identifiable, Hashable {
@@ -230,6 +251,17 @@ enum FlashcardFilterToken: String, Codable, Hashable, CaseIterable {
     }
 
     var tagValue: String { rawValue }
+
+    var domainColor: Color {
+        switch self {
+        case .ep:
+            return AppTheme.domainColor(.resources)
+        case .limits:
+            return AppTheme.domainColor(.flashcards)
+        case .nwc:
+            return AppTheme.domainColor(.documents)
+        }
+    }
 }
 
 enum FlashcardKind: String, Codable, Hashable, CaseIterable {

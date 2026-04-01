@@ -21,8 +21,7 @@ struct VideoDetailView: View {
                 subtitle: video.summary
             )
         }
-        .navigationTitle("Video")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "Video")
         .task {
             appModel.recordVideoOpened(video)
         }

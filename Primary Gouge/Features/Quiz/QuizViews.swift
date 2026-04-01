@@ -71,8 +71,7 @@ struct QuizHubView: View {
                 )
             }
         }
-        .navigationTitle("Quiz")
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollActivatedNavigationChrome(title: "Quiz")
         .onAppear {
             normalizeSelection()
         }
@@ -155,7 +154,7 @@ private struct QuizSetupView: View {
             HeroCard(
                 eyebrow: "Quiz setup",
                 title: "Objective testing, one clean question at a time",
-                subtitle: "Choose a category, pick a length, and launch a focused quiz that tracks misses, keeps history, and stays separate from flashcards."
+                subtitle: nil
             )
 
             if options.isEmpty {
@@ -169,7 +168,7 @@ private struct QuizSetupView: View {
                     SectionHeader(
                         eyebrow: "Category",
                         title: "Choose your question set",
-                        subtitle: "Each category keeps scoring and review history separate so weak areas stay easier to read."
+                        subtitle: nil
                     )
 
                     SectionContainer {
@@ -258,7 +257,7 @@ private struct QuizSetupView: View {
                         SectionHeader(
                             eyebrow: "History",
                             title: "Recent attempts",
-                            subtitle: "Quick read on recent scores before you start another run."
+                            subtitle: nil
                         )
 
                         SectionContainer {
@@ -574,7 +573,7 @@ private struct QuizResultsView: View {
                     SectionHeader(
                         eyebrow: "Misses",
                         title: "Missed categories",
-                        subtitle: "Use the misses first if you want the highest-value follow-up."
+                        subtitle: nil
                     )
 
                     SectionContainer {
@@ -597,7 +596,7 @@ private struct QuizResultsView: View {
                     SectionHeader(
                         eyebrow: "Signals",
                         title: "Weak topics detected",
-                        subtitle: "These are the concepts most worth revisiting before your next attempt."
+                        subtitle: nil
                     )
 
                     SectionContainer {
@@ -620,7 +619,7 @@ private struct QuizResultsView: View {
                     SectionHeader(
                         eyebrow: "Trend",
                         title: "Recent history",
-                        subtitle: "Compare this run against your recent quiz results."
+                        subtitle: nil
                     )
 
                     SectionContainer {

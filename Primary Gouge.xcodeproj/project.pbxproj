@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C3A4F012F7AB10000C64094 /* Contents in Resources */ = {isa = PBXBuildFile; fileRef = 1C3A4F022F7AB10000C64094 /* Contents */; };
+		1C3A4F012F7AB10000C64094 /* Contents in Bundle Study Assets */ = {isa = PBXBuildFile; fileRef = 1C3A4F022F7AB10000C64094 /* Contents */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +26,20 @@
 			remoteInfo = "Primary Gouge";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C3A4F032F7AB10000C64094 /* Bundle Study Assets */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = StudyAssets;
+			dstSubfolderSpec = 7;
+			files = (
+				1C3A4F012F7AB10000C64094 /* Contents in Bundle Study Assets */,
+			);
+			name = "Bundle Study Assets";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1C3A4F022F7AB10000C64094 /* Contents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Contents; sourceTree = "<group>"; };
@@ -80,7 +94,6 @@
 		95D924F82F77308900C64094 = {
 			isa = PBXGroup;
 			children = (
-				1C3A4F022F7AB10000C64094 /* Contents */,
 				95D925032F77308900C64094 /* Primary Gouge */,
 				95D925112F77308900C64094 /* Primary GougeTests */,
 				95D9251B2F77308900C64094 /* Primary GougeUITests */,
@@ -108,6 +121,7 @@
 				95D924FD2F77308900C64094 /* Sources */,
 				95D924FE2F77308900C64094 /* Frameworks */,
 				95D924FF2F77308900C64094 /* Resources */,
+				1C3A4F032F7AB10000C64094 /* Bundle Study Assets */,
 			);
 			buildRules = (
 			);
@@ -218,7 +232,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C3A4F012F7AB10000C64094 /* Contents in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

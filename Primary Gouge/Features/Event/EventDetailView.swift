@@ -27,7 +27,7 @@ struct EventDetailView: View {
                 additionalDocumentsSection(supplementalDocuments)
             }
         }
-        .scrollActivatedNavigationChrome(title: event.code)
+        .detailNavigationChrome(title: event.code)
         .task {
             appModel.markEventViewed(event)
         }
@@ -254,7 +254,7 @@ private struct NotesDetailView: View {
                 }
             }
         }
-        .scrollActivatedNavigationChrome(title: eventTitle)
+        .detailNavigationChrome(title: eventTitle)
     }
 }
 
@@ -302,6 +302,6 @@ private struct ScriptDetailView: View {
                 }
             }
         }
-        .scrollActivatedNavigationChrome(title: "Script")
+        .detailNavigationChrome(title: "Script")
     }
 }

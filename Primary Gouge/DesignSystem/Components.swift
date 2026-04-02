@@ -183,7 +183,23 @@ struct TabHeaderIdentity {
     let accent: Color
 }
 
-struct ScrollActivatedNavigationChrome: ViewModifier {
+struct RootNavigationChrome: ViewModifier {
+    let title: String
+
+    func body(content: Content) -> some View {
+        content
+            .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+extension View {
+    func rootNavigationChrome(title: String) -> some View {
+        modifier(RootNavigationChrome(title: title))
+    }
+}
+
+struct DetailNavigationChrome: ViewModifier {
     let title: String
 
     func body(content: Content) -> some View {
@@ -194,8 +210,8 @@ struct ScrollActivatedNavigationChrome: ViewModifier {
 }
 
 extension View {
-    func scrollActivatedNavigationChrome(title: String) -> some View {
-        modifier(ScrollActivatedNavigationChrome(title: title))
+    func detailNavigationChrome(title: String) -> some View {
+        modifier(DetailNavigationChrome(title: title))
     }
 }
 
@@ -353,6 +369,104 @@ struct TabHeaderCard<Content: View>: View {
                         ForEach(metrics) { metric in
                             MetricChip(label: metric.label, value: metric.value, color: metric.color, iconName: metric.iconName)
                         }
+                    }
+                }
+            }
+        case .compactRow:
+            HStack(spacing: 10) {
+                ForEach(metrics) { metric in
+                    CompactMetricChip(
+                        label: metric.label,
+                        value: metric.value,
+                        color: metric.color,
+                        iconName: metric.iconName
+                    )
+                }
+            }
+        }
+    }
+}
+
+struct RootSummaryCard<Content: View>: View {
+    let identity: TabHeaderIdentity
+    let metrics: [TabHeaderMetric]
+    let metricLayout: TabHeaderMetricLayout
+    @ViewBuilder let content: Content
+
+    init(
+        identity: TabHeaderIdentity,
+        metrics: [TabHeaderMetric] = [],
+        metricLayout: TabHeaderMetricLayout = .adaptive,
+        @ViewBuilder content: () -> Content = { EmptyView() }
+    ) {
+        self.identity = identity
+        self.metrics = metrics
+        self.metricLayout = metricLayout
+        self.content = content()
+    }
+
+    var body: some View {
+        SectionContainer(style: .standard, accent: identity.accent, contentPadding: 20) {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(alignment: .top, spacing: 14) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(identity.eyebrow.uppercased())
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(identity.accent)
+                            .tracking(0.7)
+
+                        Text(identity.title)
+                            .font(.title2.weight(.bold))
+                            .foregroundStyle(AppTheme.textPrimary)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                        if let subtitle = identity.subtitle, !subtitle.isEmpty {
+                            Text(subtitle)
+                                .font(.footnote)
+                                .foregroundStyle(AppTheme.textSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
+
+                    Spacer(minLength: 10)
+
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .fill(AppTheme.badgeFill(identity.accent))
+                        .frame(width: 46, height: 46)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .stroke(AppTheme.badgeStroke(identity.accent), lineWidth: 1)
+                        )
+                        .overlay {
+                            Image(systemName: identity.iconName)
+                                .font(.headline.weight(.semibold))
+                                .foregroundStyle(AppTheme.iconTint(identity.accent))
+                        }
+                }
+
+                if !metrics.isEmpty {
+                    metricsView
+                }
+
+                content
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var metricsView: some View {
+        switch metricLayout {
+        case .adaptive:
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 12) {
+                    ForEach(metrics) { metric in
+                        MetricChip(label: metric.label, value: metric.value, color: metric.color, iconName: metric.iconName)
+                    }
+                }
+
+                VStack(spacing: 12) {
+                    ForEach(metrics) { metric in
+                        MetricChip(label: metric.label, value: metric.value, color: metric.color, iconName: metric.iconName)
                     }
                 }
             }
@@ -752,7 +866,7 @@ struct ModuleTile<Accessory: View>: View {
 
                     VStack(alignment: .leading, spacing: subtitle == nil ? 2 : 6) {
                         Text(title)
-                            .font((subtitle == nil ? Font.title3 : .headline).weight(.semibold))
+                            .font(.title3.weight(.semibold))
                             .foregroundStyle(AppTheme.textPrimary)
                             .fixedSize(horizontal: false, vertical: true)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -929,7 +1043,8 @@ struct CategoryCard: View {
         PhaseDestinationCard(
             title: category.displayName,
             iconName: category.iconName,
-            detail: "\(category.events.count) events"
+            detail: "\(category.events.count) events",
+            accent: category.kind.domainColor
         )
     }
 }
@@ -939,12 +1054,14 @@ struct PhaseDestinationCard: View {
     let subtitle: String?
     let iconName: String
     let detail: String?
+    let accent: Color?
 
-    init(title: String, subtitle: String? = nil, iconName: String, detail: String? = nil) {
+    init(title: String, subtitle: String? = nil, iconName: String, detail: String? = nil, accent: Color? = nil) {
         self.title = title
         self.subtitle = subtitle
         self.iconName = iconName
         self.detail = detail
+        self.accent = accent
     }
 
     var body: some View {
@@ -952,14 +1069,19 @@ struct PhaseDestinationCard: View {
             title: title,
             subtitle: subtitle,
             iconName: iconName,
-            accent: AppTheme.accent,
+            accent: accent ?? AppTheme.accent,
             detail: detail
         ) {
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.bold))
-                .foregroundStyle(AppTheme.textMuted)
+                .foregroundStyle(accessoryColor)
                 .padding(.top, 4)
         }
+    }
+
+    private var accessoryColor: Color {
+        guard let accent else { return AppTheme.textMuted }
+        return AppTheme.accessoryTint(accent)
     }
 }
 
@@ -1023,7 +1145,7 @@ struct ToolCard: View {
         } trailing: {
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.bold))
-                .foregroundStyle(AppTheme.textMuted)
+                .foregroundStyle(AppTheme.accessoryTint(accent))
                 .padding(.top, 3)
         }
     }

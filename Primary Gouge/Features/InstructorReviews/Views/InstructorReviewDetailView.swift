@@ -72,7 +72,7 @@ struct InstructorReviewDetailView: View {
                 }
             }
         }
-        .scrollActivatedNavigationChrome(title: "Instructor")
+        .detailNavigationChrome(title: "Instructor")
         .task {
             viewModel.load(using: reviewStore)
         }

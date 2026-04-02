@@ -7,15 +7,17 @@ struct HomeScreenView: View {
     @State private var showingManageFocus = false
 
     var body: some View {
-        AppScrollScreen(topPadding: 18, bottomPadding: 28) {
-            HomeIntroBlock(snapshot: appModel.homeScreenSnapshot)
+        let snapshot = appModel.homeScreenSnapshot
 
-            ContinueStudyingCard(snapshot: appModel.homeScreenSnapshot.continueStudying) { destination in
+        AppScrollScreen(topPadding: AppTheme.Spacing.rootTabIntroTop, bottomPadding: 28) {
+            HomeIntroBlock(snapshot: snapshot)
+
+            ContinueStudyingCard(snapshot: snapshot.continueStudying) { destination in
                 route(to: destination)
             }
 
             CurrentFocusSection(
-                snapshot: appModel.homeScreenSnapshot.currentFocus,
+                snapshot: snapshot.currentFocus,
                 onManage: { showingManageFocus = true },
                 onSelect: route(to:)
             )
@@ -23,7 +25,7 @@ struct HomeScreenView: View {
             ReviewDueSection(
                 title: "Review due",
                 subtitle: nil,
-                items: appModel.homeScreenSnapshot.reviewDue,
+                items: snapshot.reviewDue,
                 emptyMessage: "Nothing is aging out right now.",
                 onSelect: route(to:)
             )
@@ -31,14 +33,14 @@ struct HomeScreenView: View {
             WeakAreasSection(
                 title: "Weak areas",
                 subtitle: nil,
-                items: appModel.homeScreenSnapshot.weakAreas,
+                items: snapshot.weakAreas,
                 emptyMessage: "No weak areas are standing out yet.",
                 onSelect: route(to:)
             )
 
-            if let question = appModel.homeScreenSnapshot.questionOfDay.question {
+            if let question = snapshot.questionOfDay.question {
                 HomeQuestionOfDayCard(
-                    snapshot: appModel.homeScreenSnapshot.questionOfDay,
+                    snapshot: snapshot.questionOfDay,
                     onSelectChoice: { choiceID in
                         appModel.answerQuestionOfDay(question, choiceID: choiceID)
                     }
@@ -47,13 +49,13 @@ struct HomeScreenView: View {
         }
         .sheet(isPresented: $showingManageFocus) {
             ManageFocusSheet(
-                selectedTopicIDs: appModel.homeScreenSnapshot.currentFocus.pinnedTopics.map(\.id),
+                selectedTopicIDs: snapshot.currentFocus.pinnedTopics.map(\.id),
                 topics: appModel.studyTopics.filter(\.isUserFocusable)
             ) { topicIDs in
                 appModel.setPinnedTopicIDs(topicIDs)
             }
         }
-        .scrollActivatedNavigationChrome(title: "Home")
+        .rootNavigationChrome(title: "Home")
         .onAppear {
             searchChrome.updateScope(.home)
         }
@@ -69,11 +71,10 @@ private struct HomeIntroBlock: View {
     let snapshot: HomeScreenSnapshot
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
             Text(snapshot.greeting)
-                .font(.system(size: 33, weight: .bold, design: .rounded))
+                .font(.title2.weight(.bold))
                 .foregroundStyle(AppTheme.textPrimary)
-                .fixedSize(horizontal: false, vertical: true)
 
             Text(snapshot.statusLine)
                 .font(.subheadline)
@@ -82,7 +83,7 @@ private struct HomeIntroBlock: View {
 
             HStack(spacing: 10) {
                 HomeSignalPill(
-                    title: snapshot.reviewDue.isEmpty ? "Clear" : "\(snapshot.reviewDue.count) due",
+                    title: snapshot.reviewDue.isEmpty ? "Reviews clear" : "\(snapshot.reviewDue.count) reviews due",
                     iconName: snapshot.reviewDue.isEmpty ? "checkmark.circle.fill" : "clock.fill",
                     color: snapshot.reviewDue.isEmpty ? AppTheme.statusColor(.approved) : AppTheme.statusColor(.warning)
                 )
@@ -91,10 +92,11 @@ private struct HomeIntroBlock: View {
                     HomeSignalPill(
                         title: "\(snapshot.studyStreak)-day streak",
                         iconName: "flame.fill",
-                        color: AppTheme.accent
+                        color: AppTheme.warning
                     )
                 }
             }
+            .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
@@ -452,19 +454,42 @@ private struct HomeSignalPill: View {
     let color: Color
 
     var body: some View {
-        Label(title, systemImage: iconName)
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(color)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 7)
-            .background(
-                Capsule(style: .continuous)
-                    .fill(color.opacity(0.10))
-                    .overlay(
-                        Capsule(style: .continuous)
-                            .stroke(color.opacity(0.16), lineWidth: 1)
+        HStack(spacing: 8) {
+            ZStack {
+                Circle()
+                    .fill(color.opacity(0.16))
+                    .frame(width: 22, height: 22)
+
+                Image(systemName: iconName)
+                    .font(.caption.weight(.bold))
+            }
+
+            Text(title)
+                .lineLimit(1)
+                .minimumScaleFactor(0.9)
+        }
+        .font(.caption.weight(.semibold))
+        .foregroundStyle(color)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(
+            Capsule(style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            color.opacity(0.16),
+                            color.opacity(0.08)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
                     )
-            )
+                )
+                .overlay(
+                    Capsule(style: .continuous)
+                        .stroke(color.opacity(0.18), lineWidth: 1)
+                )
+        )
+        .shadow(color: color.opacity(0.10), radius: 10, x: 0, y: 6)
     }
 }
 
@@ -586,7 +611,7 @@ private struct ManageFocusSheet: View {
             }
             .scrollContentBackground(.hidden)
             .background(AppTheme.screenBackground.ignoresSafeArea())
-            .scrollActivatedNavigationChrome(title: "Current Focus")
+            .detailNavigationChrome(title: "Current Focus")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {

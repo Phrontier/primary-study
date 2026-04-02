@@ -37,7 +37,8 @@ struct PhaseDetailView: View {
                         PhaseDestinationCard(
                             title: "General Knowledge",
                             subtitle: nil,
-                            iconName: "books.vertical.fill"
+                            iconName: "books.vertical.fill",
+                            accent: AppTheme.domainColor(.resources)
                         )
                     }
                     .buttonStyle(.plain)
@@ -58,14 +59,15 @@ struct PhaseDetailView: View {
                         PhaseDestinationCard(
                             title: category.displayName,
                             subtitle: nil,
-                            iconName: category.iconName
+                            iconName: category.iconName,
+                            accent: category.kind.domainColor
                         )
                     }
                     .buttonStyle(.plain)
                 }
             }
         }
-        .scrollActivatedNavigationChrome(title: phase.title)
+        .detailNavigationChrome(title: phase.title)
         .onAppear {
             searchChrome.updateScope(.events(title: phase.title, phaseID: phase.id, categoryID: nil))
         }
@@ -99,7 +101,7 @@ struct PhaseKnowledgeView: View {
                 .buttonStyle(.plain)
             }
         }
-        .scrollActivatedNavigationChrome(title: "General Knowledge")
+        .detailNavigationChrome(title: "General Knowledge")
         .onAppear {
             searchChrome.updateScope(.home)
         }
@@ -158,7 +160,7 @@ struct EventListView: View {
                 .buttonStyle(.plain)
             }
         }
-        .scrollActivatedNavigationChrome(title: category.displayName)
+        .detailNavigationChrome(title: category.displayName)
         .onAppear {
             searchChrome.updateScope(.events(title: category.displayName, phaseID: phase.id, categoryID: category.id))
         }

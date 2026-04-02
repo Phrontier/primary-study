@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import SwiftUI
 
 @MainActor
 final class InstructorReviewsRootViewModel: ObservableObject {
@@ -69,6 +70,9 @@ final class InstructorReviewDetailViewModel: ObservableObject {
 @MainActor
 final class ReviewSubmissionViewModel: ObservableObject {
     @Published var instructorName = ""
+    @Published var submissionMode: InstructorSubmissionMode = .both {
+        didSet { handleSubmissionModeChange() }
+    }
     @Published var selectedSquadron: Squadron?
     @Published var selectedEvent: InstructorReviewEvent?
     @Published var chillScore: Int?
@@ -80,6 +84,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
     @Published private(set) var errorMessage: String?
     @Published private(set) var didSubmit = false
     @Published private(set) var hasAttemptedSubmit = false
+    private weak var repository: (any InstructorReviewRepository)?
 
     let minimumCharacterCount = 50
 
@@ -95,6 +100,14 @@ final class ReviewSubmissionViewModel: ObservableObject {
         validationMessage == nil
     }
 
+    var visibleSquadrons: [Squadron] {
+        squadrons.filter(submissionMode.includes)
+    }
+
+    var visibleEvents: [InstructorReviewEvent] {
+        events.filter(submissionMode.includes)
+    }
+
     var validationMessage: String? {
         if instructorName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             return "Instructor name is required."
@@ -102,8 +115,14 @@ final class ReviewSubmissionViewModel: ObservableObject {
         if selectedSquadron == nil {
             return "Choose a squadron."
         }
+        if let selectedSquadron, !visibleSquadrons.contains(selectedSquadron) {
+            return "Choose a squadron that matches the selected review type."
+        }
         if selectedEvent == nil {
             return "Choose an event."
+        }
+        if let selectedEvent, !visibleEvents.contains(selectedEvent) {
+            return "Choose an event that matches the selected review type."
         }
         if chillScore == nil {
             return "Select a chill factor rating."
@@ -118,6 +137,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
     }
 
     func load(using repository: InstructorReviewRepository) {
+        self.repository = repository
         squadrons = repository.fetchSquadrons()
         events = repository.fetchEvents()
         refreshSuggestions(using: repository)
@@ -145,11 +165,15 @@ final class ReviewSubmissionViewModel: ObservableObject {
 
     func refreshSuggestions(using repository: InstructorReviewRepository) {
         suggestions = repository.fetchInstructorSuggestions(matching: instructorName)
+            .filter { submissionMode.includes($0.squadron) }
     }
 
     func applySuggestion(_ suggestion: InstructorNameSuggestion) {
         instructorName = suggestion.name
         selectedSquadron = suggestion.squadron
+        if let preferredMode = suggestion.squadron.preferredSubmissionMode {
+            submissionMode = preferredMode
+        }
     }
 
     func submit(using repository: InstructorReviewRepository) {
@@ -186,6 +210,20 @@ final class ReviewSubmissionViewModel: ObservableObject {
     func acknowledgeSubmission() {
         didSubmit = false
     }
+
+    private func handleSubmissionModeChange() {
+        if let selectedSquadron, !submissionMode.includes(selectedSquadron) {
+            self.selectedSquadron = nil
+        }
+        if let selectedEvent, !submissionMode.includes(selectedEvent) {
+            self.selectedEvent = nil
+        }
+        if let repository {
+            refreshSuggestions(using: repository)
+        } else {
+            suggestions = []
+        }
+    }
 }
 
 struct InstructorReviewRatingOption: Identifiable, Hashable {
@@ -199,6 +237,10 @@ struct InstructorReviewRatingOption: Identifiable, Hashable {
 
     var subtitle: String {
         "Score \(score) / 7"
+    }
+
+    var accent: Color {
+        InstructorRatingScale.color(for: score)
     }
 }
 

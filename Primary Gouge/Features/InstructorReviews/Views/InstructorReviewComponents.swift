@@ -21,7 +21,7 @@ struct InstructorRatingBadge: View {
         case .roster:
             return .system(.caption, design: .rounded, weight: .bold)
         case .individual:
-            return .system(.caption, design: .rounded, weight: .medium)
+            return .system(.caption, design: .rounded, weight: .bold)
         }
     }
 
@@ -30,42 +30,139 @@ struct InstructorRatingBadge: View {
         case .roster:
             return AppTheme.prominentText(accent)
         case .individual:
-            return AppTheme.textSecondary
+            return AppTheme.prominentText(accent)
+        }
+    }
+
+    private var scorePillHorizontalPadding: CGFloat {
+        switch style {
+        case .roster:
+            return 10
+        case .individual:
+            return 8
+        }
+    }
+
+    private var scorePillVerticalPadding: CGFloat {
+        switch style {
+        case .roster:
+            return 6
+        case .individual:
+            return 5
+        }
+    }
+
+    private var contentVerticalPadding: CGFloat {
+        switch style {
+        case .roster:
+            return 12
+        case .individual:
+            return 14
+        }
+    }
+
+    private var titleView: some View {
+        Text(title.uppercased())
+            .font(.system(.caption2, design: .rounded, weight: .bold))
+            .foregroundStyle(AppTheme.prominentText(accent))
+            .tracking(style == .roster ? 0.5 : 0.6)
+    }
+
+    private var subtitlePill: some View {
+        Text(subtitle)
+            .font(subtitleFont)
+            .foregroundStyle(subtitleColor)
+            .padding(.horizontal, scorePillHorizontalPadding)
+            .padding(.vertical, scorePillVerticalPadding)
+            .background {
+                Capsule()
+                    .fill(AppTheme.badgeFill(accent).opacity(style == .roster ? 0.8 : 1))
+                    .overlay(
+                        Capsule()
+                            .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
+                    )
+            }
+    }
+
+    private var labelView: some View {
+        Text(label)
+            .font(.system(.subheadline, design: .rounded, weight: .bold))
+            .foregroundStyle(AppTheme.textPrimary)
+            .lineLimit(2)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+    }
+
+    private var verticalAccent: some View {
+        RoundedRectangle(cornerRadius: 3, style: .continuous)
+            .fill(accent)
+            .frame(width: style == .roster ? 4 : 4)
+            .opacity(style == .roster ? 0.82 : 1)
+            .padding(.vertical, style == .roster ? 20 : 16)
+            .padding(.leading, 1)
+    }
+
+    private var rosterBody: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            titleView
+                .padding(.top, 3)
+
+            Spacer()
+                .frame(height: 6)
+
+            labelView
+                .frame(height: 38, alignment: .center)
+
+            Spacer()
+                .frame(height: 7)
+
+            subtitlePill
+
+            Spacer(minLength: 4)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var individualBody: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            titleView
+
+            Spacer()
+                .frame(height: 6)
+
+            labelView
+                .frame(height: 38, alignment: .center)
+
+            Spacer()
+                .frame(height: 7)
+
+            subtitlePill
+
+            Spacer(minLength: 4)
+        }
+    }
+
+    private var cardHeight: CGFloat {
+        switch style {
+        case .roster:
+            return 104
+        case .individual:
+            return 108
         }
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(title.uppercased())
-                .font(.system(.caption2, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.prominentText(accent))
-                .tracking(0.6)
-
-            Text(label)
-                .font(.system(.subheadline, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.textPrimary)
-                .lineLimit(2)
-                .frame(maxWidth: .infinity, minHeight: 44, alignment: .topLeading)
-
-            Text(subtitle)
-                .font(subtitleFont)
-                .foregroundStyle(subtitleColor)
-                .padding(.horizontal, style == .roster ? 8 : 0)
-                .padding(.vertical, style == .roster ? 5 : 0)
-                .background {
-                    if style == .roster {
-                        Capsule()
-                            .fill(AppTheme.badgeFill(accent))
-                            .overlay(
-                                Capsule()
-                                    .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
-                            )
-                    }
-                }
+        Group {
+            switch style {
+            case .roster:
+                rosterBody
+            case .individual:
+                individualBody
+            }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 14)
-        .padding(.vertical, 14)
-        .frame(maxWidth: .infinity, minHeight: 108, maxHeight: 108, alignment: .leading)
+        .padding(.vertical, contentVerticalPadding)
+        .frame(maxWidth: .infinity, minHeight: cardHeight, maxHeight: cardHeight, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(AppTheme.elevatedSurface)
@@ -75,11 +172,7 @@ struct InstructorRatingBadge: View {
                 )
         )
         .overlay(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 2, style: .continuous)
-                .fill(accent)
-                .frame(width: 4)
-                .padding(.vertical, 16)
-                .padding(.leading, 1)
+            verticalAccent
         }
     }
 }
@@ -118,9 +211,15 @@ struct InstructorAggregateCard: View {
                     .foregroundStyle(AppTheme.textPrimary)
                     .lineLimit(2)
 
-                Text(InstructorRatingScale.formatOutOfSeven(average: average))
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
-                    .foregroundStyle(AppTheme.prominentText(accent))
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text("\(InstructorRatingScale.format(average: average)) / 7")
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .foregroundStyle(AppTheme.prominentText(accent))
+
+                    Text("avg")
+                        .font(.system(.caption, design: .rounded, weight: .bold))
+                        .foregroundStyle(AppTheme.textMuted)
+                }
 
                 Capsule()
                     .fill(accent)
@@ -176,14 +275,14 @@ struct InstructorReviewCard: View {
                     InstructorRatingBadge(
                         title: "Chill Factor",
                         label: InstructorRatingScale.label(for: review.chillScore, category: .chillFactor),
-                        subtitle: InstructorRatingScale.formatSpacedOutOfSeven(score: review.chillScore, includeAverageSuffix: true),
+                        subtitle: InstructorRatingScale.formatOutOfSeven(score: review.chillScore),
                         score: review.chillScore,
                         style: .individual
                     )
                     InstructorRatingBadge(
                         title: "Grading Style",
                         label: InstructorRatingScale.label(for: review.gradingScore, category: .gradingStyle),
-                        subtitle: InstructorRatingScale.formatSpacedOutOfSeven(score: review.gradingScore, includeAverageSuffix: true),
+                        subtitle: InstructorRatingScale.formatOutOfSeven(score: review.gradingScore),
                         score: review.gradingScore,
                         style: .individual
                     )
@@ -223,34 +322,16 @@ struct InstructorSummaryCard: View {
         GlassCard {
             VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .top, spacing: 14) {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(instructor.name)
-                            .font(.system(.title3, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.textPrimary)
-
-                        HStack(spacing: 8) {
-                            Text(instructor.squadron.displayName)
-                                .font(.system(.subheadline, design: .rounded, weight: .medium))
-                                .foregroundStyle(AppTheme.textSecondary)
-
-                            ForEach(instructor.capabilityBadges, id: \.self) { capability in
-                                InstructorCapabilityBadge(capability: capability)
-                            }
-                        }
-                    }
+                    Text(instructor.name)
+                        .font(.system(.title3, design: .rounded, weight: .bold))
+                        .foregroundStyle(AppTheme.textPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
                     Spacer(minLength: 12)
 
-                    VStack(alignment: .trailing, spacing: 4) {
-                        Text("\(instructor.publishedReviewCount)")
-                            .font(.system(.title2, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.prominentText(AppTheme.domainColor(.instructors)))
-
-                        Text(instructor.reviewCountLabel)
-                            .font(.system(.caption, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.textMuted)
-                            .tracking(0.5)
-                    }
+                    Text(instructor.squadron.displayName)
+                        .font(.system(.subheadline, design: .rounded, weight: .semibold))
+                        .foregroundStyle(AppTheme.textSecondary.opacity(0.96))
                 }
 
                 HStack(spacing: 12) {
@@ -268,6 +349,18 @@ struct InstructorSummaryCard: View {
                         score: instructor.gradingRoundedScore,
                         style: .roster
                     )
+                }
+
+                HStack(spacing: 10) {
+                    Text(instructor.reviewCountText)
+                        .font(.system(.footnote, design: .rounded, weight: .semibold))
+                        .foregroundStyle(AppTheme.textSecondary)
+
+                    Spacer(minLength: 8)
+
+                    ForEach(instructor.capabilityBadges, id: \.self) { capability in
+                        InstructorCapabilityBadge(capability: capability)
+                    }
                 }
             }
         }
@@ -464,6 +557,7 @@ struct InstructorMenuPicker: View {
     let selection: String?
     let detail: String?
     let accent: Color
+    let enabled: Bool
     let action: () -> Void
 
     init(
@@ -472,6 +566,7 @@ struct InstructorMenuPicker: View {
         selection: String?,
         detail: String? = nil,
         accent: Color,
+        enabled: Bool = true,
         action: @escaping () -> Void
     ) {
         self.title = title
@@ -479,6 +574,7 @@ struct InstructorMenuPicker: View {
         self.selection = selection
         self.detail = detail
         self.accent = accent
+        self.enabled = enabled
         self.action = action
     }
 
@@ -501,6 +597,10 @@ struct InstructorMenuPicker: View {
                             Text(detail)
                                 .font(.system(.caption, design: .rounded, weight: .medium))
                                 .foregroundStyle(AppTheme.textSecondary)
+                        } else if !enabled {
+                            Text(placeholder)
+                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .foregroundStyle(AppTheme.textMuted)
                         }
                     }
 
@@ -508,7 +608,7 @@ struct InstructorMenuPicker: View {
 
                     Image(systemName: "chevron.down")
                         .font(.system(size: 12, weight: .bold))
-                        .foregroundStyle(accent)
+                        .foregroundStyle(enabled ? accent : AppTheme.textMuted)
                         .padding(.top, 2)
                 }
             }
@@ -519,11 +619,13 @@ struct InstructorMenuPicker: View {
                     .fill(AppTheme.elevatedSurface)
                     .overlay(
                         RoundedRectangle(cornerRadius: 22, style: .continuous)
-                            .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                            .stroke((enabled ? AppTheme.cardStroke : AppTheme.cardStroke.opacity(0.7)), lineWidth: 1)
                     )
             )
         }
         .buttonStyle(.plain)
+        .disabled(!enabled)
+        .opacity(enabled ? 1 : 0.72)
     }
 }
 
@@ -564,6 +666,7 @@ struct InstructorSelectionSheet<Option: Identifiable, RowContent: View>: View wh
     let subtitle: String
     let options: [Option]
     let selectedID: Option.ID?
+    let accent: (Option) -> Color
     let onSelect: (Option) -> Void
     @ViewBuilder let rowContent: (Option) -> RowContent
 
@@ -594,7 +697,7 @@ struct InstructorSelectionSheet<Option: Identifiable, RowContent: View>: View wh
                                     if selectedID == option.id {
                                         Image(systemName: "checkmark.circle.fill")
                                             .font(.system(size: 20, weight: .bold))
-                                            .foregroundStyle(AppTheme.accent)
+                                            .foregroundStyle(accent(option))
                                     }
                                 }
                                 .padding(.horizontal, 18)
@@ -605,7 +708,7 @@ struct InstructorSelectionSheet<Option: Identifiable, RowContent: View>: View wh
                                         .fill(AppTheme.elevatedSurface)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                                                .stroke(selectedID == option.id ? AppTheme.accent.opacity(0.32) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                                .stroke(selectedID == option.id ? AppTheme.badgeStroke(accent(option)) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
                                         )
                                 )
                             }
@@ -616,7 +719,7 @@ struct InstructorSelectionSheet<Option: Identifiable, RowContent: View>: View wh
                     .padding(.bottom, 32)
                 }
             }
-            .scrollActivatedNavigationChrome(title: title)
+            .detailNavigationChrome(title: title)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Close") {
@@ -624,11 +727,122 @@ struct InstructorSelectionSheet<Option: Identifiable, RowContent: View>: View wh
                     }
                 }
             }
-            .safeAreaInset(edge: .top) {
-                EmptyView()
+        }
+        .presentationDetents([.large])
+        .presentationDragIndicator(.visible)
+    }
+}
+
+struct InstructorSearchableSelectionSheet<Option: Identifiable, RowContent: View>: View where Option.ID: Hashable {
+    let title: String
+    let subtitle: String
+    let searchPlaceholder: String
+    let emptyMessage: String
+    let options: [Option]
+    let selectedID: Option.ID?
+    let searchableText: (Option) -> String
+    let accent: (Option) -> Color
+    let onSelect: (Option) -> Void
+    @ViewBuilder let rowContent: (Option) -> RowContent
+
+    @Environment(\.dismiss) private var dismiss
+    @State private var searchText = ""
+
+    private var filteredOptions: [Option] {
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return options }
+
+        return options.filter {
+            searchableText($0)
+                .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+                .localizedStandardContains(query.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current))
+        }
+    }
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                AppTheme.screenBackground
+                    .ignoresSafeArea()
+
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(subtitle)
+                        .font(.system(.subheadline, design: .rounded))
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 16)
+
+                    InstructorSearchField(
+                        placeholder: searchPlaceholder,
+                        text: $searchText
+                    )
+                    .padding(.horizontal, 20)
+
+                    if filteredOptions.isEmpty {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("No matches")
+                                .font(.system(.headline, design: .rounded, weight: .bold))
+                                .foregroundStyle(AppTheme.textPrimary)
+
+                            Text(emptyMessage)
+                                .font(.system(.footnote, design: .rounded))
+                                .foregroundStyle(AppTheme.textSecondary)
+                        }
+                        .padding(20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                        Spacer(minLength: 0)
+                    } else {
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 16) {
+                                ForEach(filteredOptions) { option in
+                                    Button {
+                                        onSelect(option)
+                                        dismiss()
+                                    } label: {
+                                        HStack(spacing: 14) {
+                                            rowContent(option)
+
+                                            Spacer(minLength: 8)
+
+                                            if selectedID == option.id {
+                                                Image(systemName: "checkmark.circle.fill")
+                                                    .font(.system(size: 20, weight: .bold))
+                                                    .foregroundStyle(accent(option))
+                                            }
+                                        }
+                                        .padding(.horizontal, 18)
+                                        .padding(.vertical, 16)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                                                .fill(AppTheme.elevatedSurface)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 22, style: .continuous)
+                                                        .stroke(selectedID == option.id ? AppTheme.badgeStroke(accent(option)) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                                )
+                                        )
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.top, 4)
+                            .padding(.bottom, 32)
+                        }
+                    }
+                }
+            }
+            .detailNavigationChrome(title: title)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Close") {
+                        dismiss()
+                    }
+                }
             }
         }
-        .presentationDetents([.medium, .large])
+        .presentationDetents([.large])
         .presentationDragIndicator(.visible)
     }
 }

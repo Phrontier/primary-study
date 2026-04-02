@@ -9,11 +9,49 @@ struct MoreHubSnapshot {
     let flashcardStudiedCount: Int
     let flashcardDueCount: Int
     let recentQuizCount: Int
-    let savedBriefsSubtitle: String
+    let recentBriefsSubtitle: String
     let recentBriefCount: Int
-    let savedFlashcardSetsSubtitle: String
+    let recentFlashcardSetsSubtitle: String
     let recentDeckCount: Int
     let versionSubtitle: String
+    let stats: MoreStatsSnapshot
+    let recentBriefs: [MoreRecentBriefItem]
+    let recentDecks: [MoreRecentDeckItem]
+}
+
+struct MoreStatsSnapshot {
+    let studiedCardCount: Int
+    let dueCardCount: Int
+    let quizSessionCount: Int
+    let averageQuizScore: Int?
+    let weakAreaSignals: [QuizWeakAreaSignal]
+
+    var hasContent: Bool {
+        studiedCardCount > 0 || dueCardCount > 0 || quizSessionCount > 0
+    }
+}
+
+struct MoreRecentBriefItem: Identifiable, Hashable {
+    let id: String
+    let resourceID: String
+    let title: String
+    let context: String
+    let summary: String
+    let lastOpenedAt: Date
+}
+
+enum MoreRecentDeckDestination: Hashable {
+    case eventDeck(phaseID: String, eventID: String, deckID: String)
+    case libraryDeck(id: String)
+}
+
+struct MoreRecentDeckItem: Identifiable, Hashable {
+    let id: String
+    let deckTitle: String
+    let context: String
+    let summary: String
+    let lastOpenedAt: Date
+    let destination: MoreRecentDeckDestination
 }
 
 extension StudyAppModel {
@@ -22,27 +60,13 @@ extension StudyAppModel {
         let recentActivities = progressStore?.recentActivities() ?? []
         let preferences = progressStore?.homePreferences() ?? HomePreferencesRecord()
         let cardRecords = progressStore?.allCardProgressRecords() ?? []
-        let recentQuizCount = quizStore?.history().count ?? 0
+        let quizHistory = quizStore?.history() ?? []
         let studiedCardCount = cardRecords.filter { $0.lastReviewedAt != nil }.count
         let dueCardCount = cardRecords.filter { progress(for: $0.cardID).isDue }.count
-
-        let recentBriefCount = Set(recentActivities.compactMap { activity -> String? in
-            guard case let .sharedResource(id) = activity.destination else { return nil }
-            return id
-        }).count
-
-        let recentDeckCount = Set(recentActivities.compactMap { activity -> String? in
-            switch activity.destination {
-            case let .eventDeck(_, _, deckID):
-                return deckID
-            case let .libraryDeck(id):
-                return id
-            default:
-                return nil
-            }
-        }).count
-
+        let recentBriefs = moreRecentBriefItems(from: recentActivities)
+        let recentDecks = moreRecentDeckItems(from: recentActivities)
         let currentFocusLine = moreCurrentFocusLine(recentActivities: recentActivities, preferences: preferences)
+        let recentQuizCount = quizHistory.count
 
         let quizSubtitle: String
         if recentQuizCount > 0 {
@@ -60,18 +84,27 @@ extension StudyAppModel {
             flashcardStatsSubtitle = "Track card mastery and quiz trends"
         }
 
-        let savedBriefsSubtitle: String
-        if recentBriefCount > 0 {
-            savedBriefsSubtitle = "\(recentBriefCount) recent \(recentBriefCount == 1 ? "reference" : "references")"
+        let recentBriefsSubtitle: String
+        if !recentBriefs.isEmpty {
+            recentBriefsSubtitle = "\(recentBriefs.count) recent \(recentBriefs.count == 1 ? "brief" : "briefs")"
         } else {
-            savedBriefsSubtitle = "Keep high-use references close"
+            recentBriefsSubtitle = "Your recently opened references"
         }
 
-        let savedFlashcardSetsSubtitle: String
-        if recentDeckCount > 0 {
-            savedFlashcardSetsSubtitle = "\(recentDeckCount) recent \(recentDeckCount == 1 ? "deck" : "decks")"
+        let recentFlashcardSetsSubtitle: String
+        if !recentDecks.isEmpty {
+            recentFlashcardSetsSubtitle = "\(recentDecks.count) recent \(recentDecks.count == 1 ? "deck" : "decks")"
         } else {
-            savedFlashcardSetsSubtitle = "Keep high-use decks close"
+            recentFlashcardSetsSubtitle = "Your recently opened decks"
+        }
+
+        let recentAverageQuizScore: Int?
+        if !quizHistory.isEmpty {
+            let samples = quizHistory.prefix(5)
+            let total = samples.reduce(0) { $0 + $1.percentageScore }
+            recentAverageQuizScore = Int((Double(total) / Double(samples.count)).rounded())
+        } else {
+            recentAverageQuizScore = nil
         }
 
         return MoreHubSnapshot(
@@ -83,11 +116,20 @@ extension StudyAppModel {
             flashcardStudiedCount: studiedCardCount,
             flashcardDueCount: dueCardCount,
             recentQuizCount: recentQuizCount,
-            savedBriefsSubtitle: savedBriefsSubtitle,
-            recentBriefCount: recentBriefCount,
-            savedFlashcardSetsSubtitle: savedFlashcardSetsSubtitle,
-            recentDeckCount: recentDeckCount,
-            versionSubtitle: MoreHubSnapshot.versionString()
+            recentBriefsSubtitle: recentBriefsSubtitle,
+            recentBriefCount: recentBriefs.count,
+            recentFlashcardSetsSubtitle: recentFlashcardSetsSubtitle,
+            recentDeckCount: recentDecks.count,
+            versionSubtitle: MoreHubSnapshot.versionString(),
+            stats: MoreStatsSnapshot(
+                studiedCardCount: studiedCardCount,
+                dueCardCount: dueCardCount,
+                quizSessionCount: recentQuizCount,
+                averageQuizScore: recentAverageQuizScore,
+                weakAreaSignals: quizStore?.weakAreaSignals(limit: 3) ?? []
+            ),
+            recentBriefs: recentBriefs,
+            recentDecks: recentDecks
         )
     }
 
@@ -132,6 +174,106 @@ extension StudyAppModel {
         }
 
         return nil
+    }
+
+    private func moreRecentBriefItems(from activities: [StudyActivityRecord], limit: Int = 10) -> [MoreRecentBriefItem] {
+        var seenResourceIDs = Set<String>()
+        var items: [MoreRecentBriefItem] = []
+
+        for activity in activities {
+            guard case let .sharedResource(id) = activity.destination else { continue }
+            guard seenResourceIDs.insert(id).inserted else { continue }
+            guard let resource = sharedResource(id: id) else { continue }
+
+            items.append(
+                MoreRecentBriefItem(
+                    id: id,
+                    resourceID: id,
+                    title: moreResourceDisplayTitle(resource),
+                    context: moreResourceContextLabel(resource),
+                    summary: resource.summary,
+                    lastOpenedAt: activity.lastInteractedAt
+                )
+            )
+
+            if items.count == limit {
+                break
+            }
+        }
+
+        return items
+    }
+
+    private func moreRecentDeckItems(from activities: [StudyActivityRecord], limit: Int = 10) -> [MoreRecentDeckItem] {
+        var seenDestinations = Set<String>()
+        var items: [MoreRecentDeckItem] = []
+
+        for activity in activities {
+            switch activity.destination {
+            case let .eventDeck(phaseID, eventID, deckID):
+                let key = "event-\(phaseID)-\(eventID)-\(deckID)"
+                guard seenDestinations.insert(key).inserted else { continue }
+                guard let context = eventDeckContext(phaseID: phaseID, eventID: eventID, deckID: deckID) else { continue }
+
+                items.append(
+                    MoreRecentDeckItem(
+                        id: key,
+                        deckTitle: context.1.title,
+                        context: context.0.code,
+                        summary: context.1.summary,
+                        lastOpenedAt: activity.lastInteractedAt,
+                        destination: .eventDeck(phaseID: phaseID, eventID: eventID, deckID: deckID)
+                    )
+                )
+            case let .libraryDeck(id):
+                let key = "library-\(id)"
+                guard seenDestinations.insert(key).inserted else { continue }
+                guard let hub = libraryHub(id: id) else { continue }
+
+                items.append(
+                    MoreRecentDeckItem(
+                        id: key,
+                        deckTitle: hub.deck.title,
+                        context: "General Library",
+                        summary: hub.summary,
+                        lastOpenedAt: activity.lastInteractedAt,
+                        destination: .libraryDeck(id: id)
+                    )
+                )
+            default:
+                continue
+            }
+
+            if items.count == limit {
+                break
+            }
+        }
+
+        return items
+    }
+
+    private func moreResourceContextLabel(_ resource: SharedResource) -> String {
+        if resource.placement == .generalLibrary {
+            return "General Library"
+        }
+
+        if let phaseID = resource.phaseIDs.first,
+           let phase = phase(id: phaseID) {
+            return phase.title
+        }
+
+        return resource.librarySection.displayName
+    }
+
+    private func moreResourceDisplayTitle(_ resource: SharedResource) -> String {
+        switch resource.id {
+        case "ep-limits-key":
+            return "EP / Limits Key"
+        case "ep-nwcs-admin":
+            return "EP N/W/C"
+        default:
+            return resource.title
+        }
     }
 }
 

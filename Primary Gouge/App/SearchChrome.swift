@@ -123,7 +123,7 @@ struct SearchTabView: View {
         TabHeaderIdentity(
             navigationTitle: "Search",
             eyebrow: chrome.searchScope.emptyStateTitle,
-            title: "Find what you need",
+            title: "Search the study stack",
             subtitle: nil,
             iconName: AppTab.search.iconName,
             accent: AppTheme.domainColor(.resources)
@@ -131,8 +131,8 @@ struct SearchTabView: View {
     }
 
     var body: some View {
-        AppScrollScreen(topPadding: 12, bottomPadding: 36) {
-            TabHeaderCard(identity: headerIdentity) {
+        AppScrollScreen(topPadding: AppTheme.Spacing.rootTabIntroTop, bottomPadding: 36) {
+            RootSummaryCard(identity: headerIdentity) {
                 searchField
             }
 
@@ -144,7 +144,7 @@ struct SearchTabView: View {
                 isQueryFocused = true
             }
         }
-        .scrollActivatedNavigationChrome(title: headerIdentity.navigationTitle)
+        .rootNavigationChrome(title: headerIdentity.navigationTitle)
     }
 
     private var searchField: some View {
@@ -257,7 +257,7 @@ struct SearchResultRow: View {
 
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.bold))
-                .foregroundStyle(AppTheme.textMuted)
+                .foregroundStyle(AppTheme.accessoryTint(item.section.accentColor))
                 .padding(.top, 4)
         }
         .padding(.horizontal, 18)
@@ -316,7 +316,7 @@ struct SearchDestinationView: View {
                 FlashcardDeckView(event: context.0, deck: context.1)
                     .environmentObject(appModel)
                     .environmentObject(reviewStore)
-                    .scrollActivatedNavigationChrome(title: phase.title)
+                    .detailNavigationChrome(title: phase.title)
             } else {
                 missingDestination
             }

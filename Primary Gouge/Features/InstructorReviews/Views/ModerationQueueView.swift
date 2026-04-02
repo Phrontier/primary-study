@@ -37,7 +37,7 @@ struct ModerationQueueView: View {
                 }
             }
         }
-        .scrollActivatedNavigationChrome(title: "Moderation")
+        .detailNavigationChrome(title: "Moderation")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Close") {
@@ -90,14 +90,14 @@ struct ModerationQueueView: View {
                     InstructorRatingBadge(
                         title: "Chill Factor",
                         label: InstructorRatingScale.label(for: review.chillScore, category: .chillFactor),
-                        subtitle: InstructorRatingScale.formatSpacedOutOfSeven(score: review.chillScore, includeAverageSuffix: true),
+                        subtitle: InstructorRatingScale.formatOutOfSeven(score: review.chillScore),
                         score: review.chillScore,
                         style: .individual
                     )
                     InstructorRatingBadge(
                         title: "Grading Style",
                         label: InstructorRatingScale.label(for: review.gradingScore, category: .gradingStyle),
-                        subtitle: InstructorRatingScale.formatSpacedOutOfSeven(score: review.gradingScore, includeAverageSuffix: true),
+                        subtitle: InstructorRatingScale.formatOutOfSeven(score: review.gradingScore),
                         score: review.gradingScore,
                         style: .individual
                     )

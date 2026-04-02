@@ -71,7 +71,7 @@ struct QuizHubView: View {
                 )
             }
         }
-        .scrollActivatedNavigationChrome(title: "Quiz")
+        .detailNavigationChrome(title: "Quiz")
         .onAppear {
             normalizeSelection()
         }

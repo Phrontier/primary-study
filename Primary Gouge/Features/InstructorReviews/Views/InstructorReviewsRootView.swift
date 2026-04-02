@@ -9,7 +9,7 @@ struct InstructorReviewsRootView: View {
     @State private var showingModeration = false
 
     var body: some View {
-        AppScrollScreen(bottomPadding: 36) {
+        AppScrollScreen(topPadding: AppTheme.Spacing.rootTabIntroTop, bottomPadding: 36) {
             heroCard
 
             SectionContainer {
@@ -61,7 +61,7 @@ struct InstructorReviewsRootView: View {
                 }
             }
         }
-        .scrollActivatedNavigationChrome(title: "Instructor Reviews")
+        .rootNavigationChrome(title: "Instructor Reviews")
         .sheet(isPresented: $showingSubmission) {
             NavigationStack {
                 ReviewSubmissionView()
@@ -86,11 +86,11 @@ struct InstructorReviewsRootView: View {
     }
 
     private var heroCard: some View {
-        TabHeaderCard(
+        RootSummaryCard(
             identity: TabHeaderIdentity(
                 navigationTitle: "Instructor Reviews",
                 eyebrow: "Instructor gouge",
-                title: "Quick context on who you're flying with.",
+                title: "Know who you're flying with",
                 subtitle: nil,
                 iconName: AppTab.instructors.iconName,
                 accent: AppTheme.domainColor(.instructors)

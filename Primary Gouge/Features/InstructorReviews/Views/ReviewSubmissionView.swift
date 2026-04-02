@@ -22,20 +22,18 @@ struct ReviewSubmissionView: View {
 
     var body: some View {
         AppScrollScreen(bottomPadding: 36) {
-            GlassCard(highlighted: true) {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Submit instructor gouge")
-                        .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundStyle(AppTheme.textPrimary)
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Submit instructor gouge")
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundStyle(AppTheme.textPrimary)
 
-                    Text("Every submission starts as pending. Moderation checks the write-up before it becomes public and before it changes any averages.")
-                        .font(.system(.body, design: .rounded))
-                        .foregroundStyle(AppTheme.textSecondary)
-                }
+                Text("Start with the instructor, lock in whether this was a sim or flight review, then the form narrows the squadron and event choices for you.")
+                    .font(.system(.body, design: .rounded))
+                    .foregroundStyle(AppTheme.textSecondary)
             }
 
             GlassCard {
-                VStack(alignment: .leading, spacing: 14) {
+                VStack(alignment: .leading, spacing: 18) {
                     InstructorTextFieldCard(
                         title: "Instructor Name",
                         placeholder: "Start typing an instructor",
@@ -86,41 +84,61 @@ struct ReviewSubmissionView: View {
                         }
                     }
 
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Review Type")
+                            .font(.system(.caption, design: .rounded, weight: .bold))
+                            .foregroundStyle(AppTheme.textMuted)
+                            .tracking(0.6)
+
+                        InstructorPillSelector(
+                            options: InstructorSubmissionMode.allCases,
+                            selected: viewModel.submissionMode,
+                            title: \.title,
+                            accent: \.color
+                        ) { mode in
+                            viewModel.submissionMode = mode
+                        }
+                    }
+
                     InstructorMenuPicker(
                         title: "Squadron",
                         placeholder: "Select squadron",
                         selection: viewModel.selectedSquadron?.displayName,
-                        accent: AppTheme.accent
+                        detail: viewModel.selectedSquadron?.reviewEventKind?.displayName,
+                        accent: viewModel.selectedSquadron?.reviewEventKind?.domainColor ?? viewModel.submissionMode.color
                     ) {
                         activeSheet = .squadron
                     }
 
                     InstructorMenuPicker(
                         title: "Event",
-                        placeholder: "Select event",
+                        placeholder: viewModel.selectedSquadron == nil ? "Choose a squadron first" : "Select event",
                         selection: viewModel.selectedEvent?.displayName,
                         detail: viewModel.selectedEvent?.kind.displayName,
-                        accent: AppTheme.success
+                        accent: viewModel.selectedEvent?.kind.domainColor ?? viewModel.submissionMode.color,
+                        enabled: viewModel.selectedSquadron != nil
                     ) {
                         activeSheet = .event
                     }
 
                     InstructorMenuPicker(
                         title: "Chill Factor",
-                        placeholder: "Select chill factor",
+                        placeholder: viewModel.selectedEvent == nil ? "Choose an event first" : "Select chill factor",
                         selection: viewModel.chillScore.map { InstructorRatingScale.label(for: $0, category: .chillFactor) },
                         detail: viewModel.chillScore.map { "Score \($0) / 7" },
-                        accent: AppTheme.success
+                        accent: AppTheme.success,
+                        enabled: viewModel.selectedEvent != nil
                     ) {
                         activeSheet = .chill
                     }
 
                     InstructorMenuPicker(
                         title: "Grading Style",
-                        placeholder: "Select grading style",
+                        placeholder: viewModel.selectedEvent == nil ? "Choose an event first" : "Select grading style",
                         selection: viewModel.gradingScore.map { InstructorRatingScale.label(for: $0, category: .gradingStyle) },
                         detail: viewModel.gradingScore.map { "Score \($0) / 7" },
-                        accent: AppTheme.warning
+                        accent: AppTheme.warning,
+                        enabled: viewModel.selectedEvent != nil
                     ) {
                         activeSheet = .grading
                     }
@@ -175,6 +193,19 @@ struct ReviewSubmissionView: View {
                             .font(.system(.footnote, design: .rounded, weight: .medium))
                             .foregroundStyle(AppTheme.textSecondary)
                     }
+
+                    HStack(alignment: .top, spacing: 10) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.system(size: 13, weight: .bold))
+                            .foregroundStyle(AppTheme.danger)
+                            .padding(.top, 1)
+
+                        Text("Profanity, slurs, threats, and abusive content will not be posted. Submissions that cross the line stay blocked in moderation.")
+                            .font(.system(.footnote, design: .rounded, weight: .semibold))
+                            .foregroundStyle(AppTheme.danger)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(.top, 2)
                 }
             }
 
@@ -194,7 +225,7 @@ struct ReviewSubmissionView: View {
                 viewModel.submit(using: reviewStore)
             }
         }
-        .scrollActivatedNavigationChrome(title: "Submit Review")
+        .detailNavigationChrome(title: "Submit Review")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Close") {
@@ -211,39 +242,69 @@ struct ReviewSubmissionView: View {
         .sheet(item: $activeSheet) { selection in
             switch selection {
             case .squadron:
-                InstructorSelectionSheet(
+                InstructorSearchableSelectionSheet(
                     title: "Select Squadron",
-                    subtitle: "Choose the instructor's squadron.",
-                    options: viewModel.squadrons,
-                    selectedID: viewModel.selectedSquadron?.id
+                    subtitle: "Choose the instructor's squadron for this review type.",
+                    searchPlaceholder: "Search squadrons",
+                    emptyMessage: "Try a different squadron search or widen the review type.",
+                    options: viewModel.visibleSquadrons,
+                    selectedID: viewModel.selectedSquadron?.id,
+                    searchableText: { squadron in
+                        squadron.displayName
+                    },
+                    accent: { squadron in
+                        squadron.reviewEventKind?.domainColor ?? viewModel.submissionMode.color
+                    },
+                    onSelect: { squadron in
+                        viewModel.selectedSquadron = squadron
+                    }
                 ) { squadron in
-                    viewModel.selectedSquadron = squadron
-                } rowContent: { squadron in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(squadron.displayName)
-                            .font(.system(.body, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                        Text("Squadron")
-                            .font(.system(.caption, design: .rounded, weight: .medium))
-                            .foregroundStyle(AppTheme.textSecondary)
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(squadron.reviewEventKind?.domainColor ?? viewModel.submissionMode.color)
+                            .frame(width: 10, height: 10)
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(squadron.displayName)
+                                .font(.system(.body, design: .rounded, weight: .bold))
+                                .foregroundStyle(AppTheme.textPrimary)
+                            Text(squadron.reviewEventKind?.displayName ?? "Squadron")
+                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .foregroundStyle(AppTheme.textSecondary)
+                        }
                     }
                 }
             case .event:
-                InstructorSelectionSheet(
+                InstructorSearchableSelectionSheet(
                     title: "Select Event",
-                    subtitle: "Choose the event tied to this review.",
-                    options: viewModel.events,
-                    selectedID: viewModel.selectedEvent?.id
+                    subtitle: "Search and choose the event tied to this review.",
+                    searchPlaceholder: "Search events",
+                    emptyMessage: "No events match that search for the selected review type.",
+                    options: viewModel.visibleEvents,
+                    selectedID: viewModel.selectedEvent?.id,
+                    searchableText: { event in
+                        event.displayName
+                    },
+                    accent: { event in
+                        event.kind.domainColor
+                    },
+                    onSelect: { event in
+                        viewModel.selectedEvent = event
+                    }
                 ) { event in
-                    viewModel.selectedEvent = event
-                } rowContent: { event in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(event.displayName)
-                            .font(.system(.body, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                        Text(event.kind.displayName)
-                            .font(.system(.caption, design: .rounded, weight: .medium))
-                            .foregroundStyle(event.kind == .sim ? AppTheme.warning : AppTheme.success)
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(event.kind.domainColor)
+                            .frame(width: 10, height: 10)
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(event.displayName)
+                                .font(.system(.body, design: .rounded, weight: .bold))
+                                .foregroundStyle(AppTheme.textPrimary)
+                            Text(event.kind.displayName)
+                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .foregroundStyle(AppTheme.prominentText(event.kind.domainColor))
+                        }
                     }
                 }
             case .chill:
@@ -251,17 +312,27 @@ struct ReviewSubmissionView: View {
                     title: "Select Chill Factor",
                     subtitle: "Choose the score that matches the event.",
                     options: viewModel.chillOptions,
-                    selectedID: viewModel.chillScore.map { "chill-\($0)" }
+                    selectedID: viewModel.chillScore.map { "chill-\($0)" },
+                    accent: { option in
+                        option.accent
+                    },
+                    onSelect: { option in
+                        viewModel.chillScore = option.score
+                    }
                 ) { option in
-                    viewModel.chillScore = option.score
-                } rowContent: { option in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(option.title)
-                            .font(.system(.body, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                        Text(option.subtitle)
-                            .font(.system(.caption, design: .rounded, weight: .medium))
-                            .foregroundStyle(AppTheme.textSecondary)
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(option.accent)
+                            .frame(width: 10, height: 10)
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(option.title)
+                                .font(.system(.body, design: .rounded, weight: .bold))
+                                .foregroundStyle(AppTheme.textPrimary)
+                            Text(option.subtitle)
+                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .foregroundStyle(AppTheme.prominentText(option.accent))
+                        }
                     }
                 }
             case .grading:
@@ -269,17 +340,27 @@ struct ReviewSubmissionView: View {
                     title: "Select Grading Style",
                     subtitle: "Choose the score that matches the event.",
                     options: viewModel.gradingOptions,
-                    selectedID: viewModel.gradingScore.map { "grading-\($0)" }
+                    selectedID: viewModel.gradingScore.map { "grading-\($0)" },
+                    accent: { option in
+                        option.accent
+                    },
+                    onSelect: { option in
+                        viewModel.gradingScore = option.score
+                    }
                 ) { option in
-                    viewModel.gradingScore = option.score
-                } rowContent: { option in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(option.title)
-                            .font(.system(.body, design: .rounded, weight: .bold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                        Text(option.subtitle)
-                            .font(.system(.caption, design: .rounded, weight: .medium))
-                            .foregroundStyle(AppTheme.textSecondary)
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(option.accent)
+                            .frame(width: 10, height: 10)
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(option.title)
+                                .font(.system(.body, design: .rounded, weight: .bold))
+                                .foregroundStyle(AppTheme.textPrimary)
+                            Text(option.subtitle)
+                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .foregroundStyle(AppTheme.prominentText(option.accent))
+                        }
                     }
                 }
             }

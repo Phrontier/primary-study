@@ -46,6 +46,7 @@ enum AppTheme {
     enum Spacing {
         static let screenHorizontal: CGFloat = 20
         static let screenTop: CGFloat = 18
+        static let rootTabIntroTop: CGFloat = 8
         static let section: CGFloat = 28
         static let group: CGFloat = 16
         static let compact: CGFloat = 10
@@ -164,24 +165,26 @@ enum AppTheme {
 
     static func domainColor(_ role: DomainColorRole) -> Color {
         switch role {
-        case .primary, .resources, .documents:
+        case .primary:
             return accent
         case .flashcards:
-            return color(0x6F7CFF)
+            return color(0x8B74FF)
         case .quizzes:
-            return color(0x49B6FF)
+            return color(0x45C7FF)
         case .instructors:
             return color(0x9A86FF)
         case .videos:
-            return color(0x4FC4D8)
+            return color(0x42C6D8)
         case .library:
             return color(0x5E8DFF)
+        case .resources, .documents:
+            return color(0x7F91FF)
         case .groundSchool:
-            return color(0x5D9CFF)
+            return color(0x6C7CFF)
         case .sims:
-            return color(0x7C82FF)
+            return color(0xE3A93B)
         case .flights:
-            return color(0x45B8A6)
+            return color(0x58AFFF)
         case .account:
             return color(0x7E9BFF)
         case .support:
@@ -253,6 +256,14 @@ enum AppTheme {
         prominentText(domainColor(role))
     }
 
+    static func accessoryTint(_ color: Color) -> Color {
+        liftedColor(color, amount: 0.12).opacity(0.82)
+    }
+
+    static func accessoryTint(_ role: DomainColorRole) -> Color {
+        accessoryTint(domainColor(role))
+    }
+
     static var accentGradient: LinearGradient {
         LinearGradient(
             colors: [accentSoft.opacity(0.96), accent.opacity(0.94)],
@@ -298,26 +309,8 @@ enum AppTheme {
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
 
-        let navAppearance = UINavigationBarAppearance()
-        navAppearance.configureWithTransparentBackground()
-        navAppearance.backgroundColor = UIColor(rgb: 0x08101A).withAlphaComponent(0.08)
-        navAppearance.backgroundEffect = UIBlurEffect(style: .systemThinMaterialDark)
-        navAppearance.shadowColor = palette.chromeLine
-        navAppearance.titleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
-        navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
-
-        let scrollEdgeAppearance = UINavigationBarAppearance()
-        scrollEdgeAppearance.configureWithTransparentBackground()
-        scrollEdgeAppearance.backgroundColor = .clear
-        scrollEdgeAppearance.backgroundEffect = nil
-        scrollEdgeAppearance.shadowColor = .clear
-        scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
-        scrollEdgeAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
-
         UINavigationBar.appearance().tintColor = selectedColor
-        UINavigationBar.appearance().standardAppearance = navAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = scrollEdgeAppearance
-        UINavigationBar.appearance().compactAppearance = navAppearance
+        UINavigationBar.appearance().prefersLargeTitles = true
     }
 
     @ViewBuilder

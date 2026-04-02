@@ -33,6 +33,58 @@ enum InstructorReviewEventKind: String, Codable, CaseIterable, Hashable {
     }
 }
 
+enum InstructorSubmissionMode: String, CaseIterable, Hashable, Identifiable {
+    case sims
+    case flights
+    case both
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .sims:
+            return "Sims"
+        case .flights:
+            return "Flights"
+        case .both:
+            return "Both"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .sims:
+            return AppTheme.domainColor(.sims)
+        case .flights:
+            return AppTheme.domainColor(.flights)
+        case .both:
+            return AppTheme.domainColor(.instructors)
+        }
+    }
+
+    func includes(_ squadron: Squadron) -> Bool {
+        switch self {
+        case .both:
+            return true
+        case .sims:
+            return squadron.reviewEventKind == .sim
+        case .flights:
+            return squadron.reviewEventKind == .flight
+        }
+    }
+
+    func includes(_ event: InstructorReviewEvent) -> Bool {
+        switch self {
+        case .both:
+            return true
+        case .sims:
+            return event.kind == .sim
+        case .flights:
+            return event.kind == .flight
+        }
+    }
+}
+
 enum InstructorCapabilityFilter: String, CaseIterable, Hashable, Identifiable {
     case all
     case sims
@@ -148,6 +200,27 @@ enum ReviewStatus: String, Codable, CaseIterable, Hashable {
 struct Squadron: Identifiable, Hashable, Codable {
     let id: String
     let displayName: String
+
+    var reviewEventKind: InstructorReviewEventKind? {
+        if id.hasPrefix("tw-") {
+            return .sim
+        }
+        if id.hasPrefix("vt-") {
+            return .flight
+        }
+        return nil
+    }
+
+    var preferredSubmissionMode: InstructorSubmissionMode? {
+        switch reviewEventKind {
+        case .sim:
+            return .sims
+        case .flight:
+            return .flights
+        case nil:
+            return nil
+        }
+    }
 }
 
 struct InstructorReviewEvent: Identifiable, Hashable, Codable {

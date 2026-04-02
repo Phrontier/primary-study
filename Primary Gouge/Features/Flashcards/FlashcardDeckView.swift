@@ -91,7 +91,7 @@ struct FlashcardDeckView: View {
                 }
             }
         }
-        .scrollActivatedNavigationChrome(title: deck.title)
+        .detailNavigationChrome(title: deck.title)
         .task {
             appModel.recordDeckOpened(event: event, deck: deck, contextLabel: contextLabel)
         }
@@ -216,7 +216,7 @@ struct FlashcardDetailView: View {
             }
             .buttonStyle(.plain)
         }
-        .scrollActivatedNavigationChrome(title: "Card detail")
+        .detailNavigationChrome(title: "Card detail")
     }
 }
 
@@ -255,7 +255,7 @@ struct FlashcardStudyView: View {
                 }
             }
         }
-        .scrollActivatedNavigationChrome(title: deck.title)
+        .detailNavigationChrome(title: deck.title)
         .onAppear {
             startedAt = .now
         }

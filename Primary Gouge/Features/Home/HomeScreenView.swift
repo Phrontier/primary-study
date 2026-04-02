@@ -72,32 +72,27 @@ private struct HomeIntroBlock: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(snapshot.greeting)
+            Text("\(snapshot.greeting), \(snapshot.personalizedLine.lowercasedFirstLetter)")
                 .font(.title2.weight(.bold))
-                .foregroundStyle(AppTheme.textPrimary)
-
-            Text(snapshot.statusLine)
-                .font(.subheadline)
-                .foregroundStyle(AppTheme.textSecondary)
-                .fixedSize(horizontal: false, vertical: true)
-
-            HStack(spacing: 10) {
-                HomeSignalPill(
-                    title: snapshot.reviewDue.isEmpty ? "Reviews clear" : "\(snapshot.reviewDue.count) reviews due",
-                    iconName: snapshot.reviewDue.isEmpty ? "checkmark.circle.fill" : "clock.fill",
-                    color: snapshot.reviewDue.isEmpty ? AppTheme.statusColor(.approved) : AppTheme.statusColor(.warning)
-                )
-
-                if snapshot.studyStreak > 0 {
-                    HomeSignalPill(
-                        title: "\(snapshot.studyStreak)-day streak",
-                        iconName: "flame.fill",
-                        color: AppTheme.warning
-                    )
-                }
-            }
+            .foregroundStyle(AppTheme.textPrimary)
             .fixedSize(horizontal: false, vertical: true)
+
+            if snapshot.studyStreak > 0 {
+                HomeSignalPill(
+                    title: "\(snapshot.studyStreak)-day streak",
+                    iconName: "flame.fill",
+                    color: AppTheme.warning
+                )
+                .fixedSize(horizontal: false, vertical: true)
+            }
         }
+    }
+}
+
+private extension String {
+    var lowercasedFirstLetter: String {
+        guard let first else { return self }
+        return first.lowercased() + dropFirst()
     }
 }
 

@@ -172,10 +172,10 @@ private struct EventsTabView: View {
                         videos: appModel.generalLibraryVideos
                     )
                 } label: {
-                    ToolCard(
+                    PhaseDestinationCard(
                         title: "General Library",
                         subtitle: nil,
-                        icon: "books.vertical.fill",
+                        iconName: "books.vertical.fill",
                         accent: AppTheme.domainColor(.library)
                     )
                 }

@@ -126,9 +126,17 @@ extension StudyAppModel {
             statusLine = "Ready to study"
         }
 
+        let personalizedLine = personalizedIntroLine(
+            reviewDue: reviewDue,
+            weakAreas: weakAreas,
+            currentFocus: focusTopics,
+            continueStudying: continueStudying
+        )
+
         return HomeScreenSnapshot(
             greeting: greeting(for: now),
             statusLine: statusLine,
+            personalizedLine: personalizedLine,
             continueStudying: continueStudying,
             currentFocus: HomeCurrentFocusSnapshot(pinnedTopics: focusTopics, suggestedTopics: suggestedTopics),
             reviewDue: reviewDue,
@@ -136,6 +144,36 @@ extension StudyAppModel {
             questionOfDay: questionOfDay,
             studyStreak: streak
         )
+    }
+
+    private func personalizedIntroLine(
+        reviewDue: [HomeTopicActionSnapshot],
+        weakAreas: [HomeTopicActionSnapshot],
+        currentFocus: [HomeFocusTopicSnapshot],
+        continueStudying: HomeContinueStudyingSnapshot
+    ) -> String {
+        if let review = reviewDue.first {
+            return "You may want to review \(review.title) today."
+        }
+
+        if let weakArea = weakAreas.first {
+            return "You may want to revisit \(weakArea.title) today."
+        }
+
+        if let focus = currentFocus.first {
+            return "Keep focusing on \(focus.title) today."
+        }
+
+        if !continueStudying.isFallback {
+            let title = continueStudying.title
+                .replacingOccurrences(of: "Last studied: ", with: "")
+                .replacingOccurrences(of: "Last reviewed: ", with: "")
+                .replacingOccurrences(of: "Last opened: ", with: "")
+                .replacingOccurrences(of: "Last watched: ", with: "")
+            return "Pick up where you left off in \(title)."
+        }
+
+        return "You're in a good place to keep building today."
     }
 
     func topicIDs(for event: Event) -> [String] {

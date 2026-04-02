@@ -27154,7 +27154,7 @@
           "summary" : "Student-planned flight events with gradesheets, procedures, shared references, and execution aids."
         }
       ],
-      "iconName" : "figure.run",
+      "iconName" : "airplane",
       "id" : "contacts",
       "summary" : "Contact phase prep with aircraft systems, procedures, patterns, and foundational flying workflows.",
       "title" : "Contacts"
@@ -32133,7 +32133,7 @@
           "summary" : "Student-planned flight events with gradesheets, procedures, shared references, and execution aids."
         }
       ],
-      "iconName" : "dial.medium",
+      "iconName" : "location.north.circle.fill",
       "id" : "instruments",
       "summary" : "Instrument academics, sims, and flights centered on approaches, holding, planning, and IFR execution.",
       "title" : "Instruments"
@@ -33656,7 +33656,7 @@
           "summary" : "Student-planned flight events with gradesheets, procedures, shared references, and execution aids."
         }
       ],
-      "iconName" : "square.3.layers.3d.down.right",
+      "iconName" : "airplane.formation",
       "id" : "formation",
       "summary" : "Formation academics and sorties with reusable procedures, cues, and debrief-ready study tools.",
       "title" : "Formation"

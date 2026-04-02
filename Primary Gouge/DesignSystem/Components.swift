@@ -70,12 +70,20 @@ struct SectionHeader: View {
     let eyebrow: String
     let title: String
     let subtitle: String?
+    let accent: Color
+
+    init(eyebrow: String, title: String, subtitle: String? = nil, accent: Color = AppTheme.accent) {
+        self.eyebrow = eyebrow
+        self.title = title
+        self.subtitle = subtitle
+        self.accent = accent
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 8) {
             Text(eyebrow.uppercased())
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(AppTheme.accent)
+                .foregroundStyle(accent)
                 .tracking(0.6)
 
             Text(title)
@@ -406,7 +414,7 @@ struct RootSummaryCard<Content: View>: View {
     }
 
     var body: some View {
-        SectionContainer(style: .standard, accent: identity.accent, contentPadding: 20) {
+        SectionContainer(style: .rootSummary, accent: identity.accent, contentPadding: 20) {
             VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .top, spacing: 14) {
                     VStack(alignment: .leading, spacing: 6) {
@@ -632,6 +640,48 @@ struct CompactMetricChip: View {
         .padding(.horizontal, 12)
         .padding(.vertical, 12)
         .frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
+        .background(
+            AppTheme.cardBackground(style: .metric, accent: color)
+        )
+    }
+}
+
+struct HorizontalMetricChip: View {
+    let label: String
+    let value: String
+    let color: Color
+    let iconName: String?
+
+    init(label: String, value: String, color: Color, iconName: String? = nil) {
+        self.label = label
+        self.value = value
+        self.color = color
+        self.iconName = iconName
+    }
+
+    var body: some View {
+        HStack(spacing: 8) {
+            if let iconName {
+                Image(systemName: iconName)
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(AppTheme.iconTint(color))
+            }
+
+            Text(value)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppTheme.textPrimary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.9)
+
+            Text(label)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(AppTheme.prominentText(color).opacity(0.9))
+                .lineLimit(1)
+                .minimumScaleFactor(0.9)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 9)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             AppTheme.cardBackground(style: .metric, accent: color)
         )
@@ -917,9 +967,38 @@ struct ModuleTile<Accessory: View>: View {
                 .fill(AppTheme.badgeFill(accent))
                 .frame(width: subtitle == nil ? 52 : 48, height: subtitle == nil ? 52 : 48)
 
+            ModuleTileSymbol(
+                iconName: iconName,
+                font: (subtitle == nil ? Font.title2 : .title3).weight(.semibold),
+                color: AppTheme.iconTint(accent)
+            )
+        }
+    }
+}
+
+private struct ModuleTileSymbol: View {
+    let iconName: String
+    let font: Font
+    let color: Color
+
+    var body: some View {
+        if iconName == "airplane.formation" {
+            ZStack {
+                Image(systemName: "airplane")
+                    .font(font)
+                    .offset(x: -8, y: 8)
+                    .scaleEffect(0.64)
+
+                Image(systemName: "airplane")
+                    .font(font)
+                    .offset(x: 8, y: -8)
+                    .scaleEffect(0.64)
+            }
+            .foregroundStyle(color)
+        } else {
             Image(systemName: iconName)
-                .font((subtitle == nil ? Font.title2 : .title3).weight(.semibold))
-                .foregroundStyle(AppTheme.iconTint(accent))
+                .font(font)
+                .foregroundStyle(color)
         }
     }
 }
@@ -1026,11 +1105,11 @@ struct PhaseCard: View {
         ModuleTile(
             title: phase.title,
             iconName: phase.iconName,
-            accent: AppTheme.accent
+            accent: phase.accentColor
         ) {
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.bold))
-                .foregroundStyle(AppTheme.textMuted)
+                .foregroundStyle(AppTheme.accessoryTint(phase.accentColor))
                 .padding(.top, 4)
         }
     }
@@ -1117,8 +1196,8 @@ struct EventCard: View {
                     .lineLimit(3)
 
                 HStack(spacing: 12) {
-                    MetricChip(label: "Tools", value: "\(event.availableToolCount)", color: AppTheme.accent)
-                    MetricChip(label: "Due", value: "\(dueCards)", color: dueCards > 0 ? AppTheme.warning : AppTheme.success)
+                    HorizontalMetricChip(label: "Tools", value: "\(event.availableToolCount)", color: AppTheme.accent)
+                    HorizontalMetricChip(label: "Due", value: "\(dueCards)", color: dueCards > 0 ? AppTheme.warning : AppTheme.success)
                 }
             }
         }

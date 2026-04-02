@@ -262,10 +262,10 @@ struct ManifestBuilder {
     let referenceStudyConfig: ReferenceStudyConfigFile
 
     private let phaseSeeds: [PhaseSeed] = [
-        PhaseSeed(folderName: "1. FAM (Contacts)", id: "contacts", title: "Contacts", summary: "Contact phase prep with aircraft systems, procedures, patterns, and foundational flying workflows.", iconName: "figure.run"),
-        PhaseSeed(folderName: "2. INSTRUMENTS", id: "instruments", title: "Instruments", summary: "Instrument academics, sims, and flights centered on approaches, holding, planning, and IFR execution.", iconName: "dial.medium"),
+        PhaseSeed(folderName: "1. FAM (Contacts)", id: "contacts", title: "Contacts", summary: "Contact phase prep with aircraft systems, procedures, patterns, and foundational flying workflows.", iconName: "airplane"),
+        PhaseSeed(folderName: "2. INSTRUMENTS", id: "instruments", title: "Instruments", summary: "Instrument academics, sims, and flights centered on approaches, holding, planning, and IFR execution.", iconName: "location.north.circle.fill"),
         PhaseSeed(folderName: "3. VNAV", id: "vnav", title: "VNAV", summary: "Visual navigation events and route-building study material that bridge planning with execution.", iconName: "map.fill"),
-        PhaseSeed(folderName: "4. FORMS", id: "formation", title: "Formation", summary: "Formation academics and sorties with reusable procedures, cues, and debrief-ready study tools.", iconName: "square.3.layers.3d.down.right"),
+        PhaseSeed(folderName: "4. FORMS", id: "formation", title: "Formation", summary: "Formation academics and sorties with reusable procedures, cues, and debrief-ready study tools.", iconName: "airplane.formation"),
         PhaseSeed(folderName: "5. CAPSTONE", id: "capstone", title: "Capstone", summary: "Capstone check-event prep with integrated planning, procedures, and performance review material.", iconName: "flag.checkered.2.crossed")
     ]
 

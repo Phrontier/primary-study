@@ -332,7 +332,7 @@ private struct MoreHeroCard: View {
     let settingsDestination: MoreHubItem
 
     var body: some View {
-        SectionContainer(style: .standard, accent: MoreSectionColor.account, contentPadding: 20) {
+        SectionContainer(style: .rootSummary, accent: MoreSectionColor.account, contentPadding: 20) {
             VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .top, spacing: 14) {
                     VStack(alignment: .leading, spacing: 8) {

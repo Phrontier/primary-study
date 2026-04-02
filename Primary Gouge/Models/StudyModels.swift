@@ -29,6 +29,25 @@ struct Phase: Codable, Identifiable, Hashable {
     let categories: [StudyCategory]
 }
 
+extension Phase {
+    var accentColor: Color {
+        switch id {
+        case "contacts":
+            return AppTheme.domainColor(.flights)
+        case "instruments":
+            return AppTheme.color(0x7B7CFF)
+        case "vnav":
+            return AppTheme.color(0x34C4C6)
+        case "formation":
+            return AppTheme.domainColor(.sims)
+        case "capstone":
+            return AppTheme.color(0xE35E73)
+        default:
+            return AppTheme.accent
+        }
+    }
+}
+
 struct StudyCategory: Codable, Identifiable, Hashable {
     let id: String
     let kind: StudyCategoryKind
@@ -55,7 +74,7 @@ enum StudyCategoryKind: String, Codable, CaseIterable, Hashable {
     var iconName: String {
         switch self {
         case .groundSchool: "text.book.closed.fill"
-        case .sims: "hifispeaker.and.appletv.fill"
+        case .sims: "display.2"
         case .flights: "airplane"
         }
     }

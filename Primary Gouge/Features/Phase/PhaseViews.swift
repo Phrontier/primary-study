@@ -5,7 +5,7 @@ struct PhaseDetailView: View {
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
 
-    private var generalKnowledgeResources: [SharedResource] {
+    private var generalLibraryResources: [SharedResource] {
         appModel.phaseKnowledgeResources(for: phase)
     }
 
@@ -14,40 +14,33 @@ struct PhaseDetailView: View {
             HeroCard(
                 eyebrow: "Training phase",
                 title: phase.title,
-                subtitle: nil
+                subtitle: nil,
+                accent: phase.accentColor
             ) {
                 HeroInlineMetricRow(metrics: [
-                    HeroInlineMetric(label: "Categories", value: "\(phase.categories.count)", color: AppTheme.domainColor(.groundSchool)),
-                    HeroInlineMetric(label: "Events", value: "\(phase.categories.flatMap(\.events).count)", color: AppTheme.domainColor(.flights)),
-                    HeroInlineMetric(label: "References", value: "\(generalKnowledgeResources.count)", color: AppTheme.domainColor(.resources))
+                    HeroInlineMetric(label: "Categories", value: "\(phase.categories.count)", color: phase.accentColor),
+                    HeroInlineMetric(label: "Events", value: "\(phase.categories.flatMap(\.events).count)", color: phase.accentColor),
+                    HeroInlineMetric(label: "References", value: "\(generalLibraryResources.count)", color: phase.accentColor)
                 ])
             }
 
-            if !generalKnowledgeResources.isEmpty {
-                VStack(alignment: .leading, spacing: 14) {
-                    SectionHeader(
-                        eyebrow: "Knowledge base",
-                        title: "General knowledge",
-                        subtitle: nil
+            if !generalLibraryResources.isEmpty {
+                NavigationLink {
+                    PhaseKnowledgeView(phase: phase, resources: generalLibraryResources)
+                } label: {
+                    PhaseDestinationCard(
+                        title: "General Library",
+                        subtitle: nil,
+                        iconName: "books.vertical.fill",
+                        accent: AppTheme.domainColor(.library)
                     )
-
-                    NavigationLink {
-                        PhaseKnowledgeView(phase: phase, resources: generalKnowledgeResources)
-                    } label: {
-                        PhaseDestinationCard(
-                            title: "General Knowledge",
-                            subtitle: nil,
-                            iconName: "books.vertical.fill",
-                            accent: AppTheme.domainColor(.resources)
-                        )
-                    }
-                    .buttonStyle(.plain)
                 }
+                .buttonStyle(.plain)
             }
 
             VStack(alignment: .leading, spacing: 14) {
                 SectionHeader(
-                    eyebrow: "Categories",
+                    eyebrow: "Training blocks",
                     title: "Categories",
                     subtitle: nil
                 )
@@ -83,8 +76,9 @@ struct PhaseKnowledgeView: View {
         AppScrollScreen {
             SectionHeader(
                 eyebrow: phase.title,
-                title: "General knowledge",
-                subtitle: nil
+                title: "General Library",
+                subtitle: nil,
+                accent: AppTheme.domainColor(.library)
             )
 
             ForEach(resources) { resource in
@@ -101,7 +95,7 @@ struct PhaseKnowledgeView: View {
                 .buttonStyle(.plain)
             }
         }
-        .detailNavigationChrome(title: "General Knowledge")
+        .detailNavigationChrome(title: "General Library")
         .onAppear {
             searchChrome.updateScope(.home)
         }

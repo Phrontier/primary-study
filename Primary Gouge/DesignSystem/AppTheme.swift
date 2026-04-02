@@ -55,6 +55,7 @@ enum AppTheme {
     enum SurfaceStyle {
         case hero
         case primary
+        case rootSummary
         case standard
         case grouped
         case metric
@@ -176,11 +177,11 @@ enum AppTheme {
         case .videos:
             return color(0x42C6D8)
         case .library:
-            return color(0x5E8DFF)
+            return color(0xBE8B52)
         case .resources, .documents:
-            return color(0x7F91FF)
+            return color(0x42CFC2)
         case .groundSchool:
-            return color(0x6C7CFF)
+            return color(0x4CC56F)
         case .sims:
             return color(0xE3A93B)
         case .flights:
@@ -342,6 +343,24 @@ enum AppTheme {
             .overlay {
                 shape.stroke(surfaceStroke(style: style, accent: accent), lineWidth: 1)
             }
+            .overlay(alignment: .topLeading) {
+                if style == .rootSummary {
+                    shape
+                        .fill(
+                            RadialGradient(
+                                colors: [
+                                    liftedColor(accent, amount: 0.10).opacity(0.18),
+                                    accent.opacity(0.08),
+                                    .clear
+                                ],
+                                center: .topLeading,
+                                startRadius: 8,
+                                endRadius: 220
+                            )
+                        )
+                        .blendMode(.screen)
+                }
+            }
             .overlay(alignment: .top) {
                 shape
                     .stroke(
@@ -390,6 +409,16 @@ enum AppTheme {
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
+        case .rootSummary:
+            return LinearGradient(
+                colors: [
+                    elevatedSurface.opacity(0.98),
+                    accent.opacity(0.07),
+                    surface.opacity(0.97)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         case .metric:
             return LinearGradient(
                 colors: [
@@ -429,6 +458,12 @@ enum AppTheme {
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
+        case .rootSummary:
+            return LinearGradient(
+                colors: [strongStroke.opacity(0.88), accent.opacity(0.16)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         case .metric:
             return LinearGradient(
                 colors: [cardStroke.opacity(0.94), accent.opacity(0.16)],
@@ -450,6 +485,8 @@ enum AppTheme {
             return 0.28
         case .primary:
             return 0.22
+        case .rootSummary:
+            return 0.20
         case .metric:
             return 0.18
         case .grouped:
@@ -465,6 +502,8 @@ enum AppTheme {
             return 28
         case .primary:
             return 22
+        case .rootSummary:
+            return 18
         case .metric:
             return 18
         case .grouped:
@@ -480,6 +519,8 @@ enum AppTheme {
             return 16
         case .primary:
             return 12
+        case .rootSummary:
+            return 11
         case .metric:
             return 10
         case .grouped:

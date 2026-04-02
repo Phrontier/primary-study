@@ -1064,6 +1064,7 @@ final class StudyAppModel: ObservableObject {
 struct HomeScreenSnapshot: Equatable {
     let greeting: String
     let statusLine: String
+    let personalizedLine: String
     let continueStudying: HomeContinueStudyingSnapshot
     let currentFocus: HomeCurrentFocusSnapshot
     let reviewDue: [HomeTopicActionSnapshot]
@@ -1074,6 +1075,7 @@ struct HomeScreenSnapshot: Equatable {
     static let empty = HomeScreenSnapshot(
         greeting: "Welcome back",
         statusLine: "Ready to study",
+        personalizedLine: "You're in a good place to keep building today.",
         continueStudying: .empty,
         currentFocus: .empty,
         reviewDue: [],

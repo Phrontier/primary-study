@@ -130,8 +130,72 @@ struct Event: Codable, Identifiable, Hashable {
 
 struct EventStudyNotes: Codable, Hashable {
     let headline: String
-    let summary: String
-    let focusAreas: [String]
+    let summary: String?
+    let sections: [EventStudyNotesSection]
+
+    init(headline: String, summary: String? = nil, sections: [EventStudyNotesSection]) {
+        self.headline = headline
+        self.summary = summary
+        self.sections = sections
+    }
+
+    init(headline: String, summary: String? = nil, focusAreas: [String]) {
+        self.headline = headline
+        self.summary = summary
+        self.sections = [
+            EventStudyNotesSection(
+                title: nil,
+                items: focusAreas.map { EventStudyNotesItem(text: $0) }
+            )
+        ]
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case headline
+        case summary
+        case sections
+        case focusAreas
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        headline = try container.decode(String.self, forKey: .headline)
+        summary = try container.decodeIfPresent(String.self, forKey: .summary)
+
+        if let sections = try container.decodeIfPresent([EventStudyNotesSection].self, forKey: .sections) {
+            self.sections = sections
+        } else {
+            let focusAreas = try container.decodeIfPresent([String].self, forKey: .focusAreas) ?? []
+            self.sections = [
+                EventStudyNotesSection(
+                    title: nil,
+                    items: focusAreas.map { EventStudyNotesItem(text: $0) }
+                )
+            ]
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(headline, forKey: .headline)
+        try container.encodeIfPresent(summary, forKey: .summary)
+        try container.encode(sections, forKey: .sections)
+    }
+}
+
+struct EventStudyNotesSection: Codable, Hashable {
+    let title: String?
+    let items: [EventStudyNotesItem]
+}
+
+struct EventStudyNotesItem: Codable, Hashable {
+    let text: String
+    let children: [EventStudyNotesItem]?
+
+    init(text: String, children: [EventStudyNotesItem]? = nil) {
+        self.text = text
+        self.children = children
+    }
 }
 
 enum AssetPlacement: String, Codable, Hashable, CaseIterable {

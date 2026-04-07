@@ -69,8 +69,72 @@ struct Event: Codable {
 
 struct EventStudyNotes: Codable {
     let headline: String
-    let summary: String
-    let focusAreas: [String]
+    let summary: String?
+    let sections: [EventStudyNotesSection]
+
+    init(headline: String, summary: String? = nil, sections: [EventStudyNotesSection]) {
+        self.headline = headline
+        self.summary = summary
+        self.sections = sections
+    }
+
+    init(headline: String, summary: String? = nil, focusAreas: [String]) {
+        self.headline = headline
+        self.summary = summary
+        self.sections = [
+            EventStudyNotesSection(
+                title: nil,
+                items: focusAreas.map { EventStudyNotesItem(text: $0) }
+            )
+        ]
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case headline
+        case summary
+        case sections
+        case focusAreas
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        headline = try container.decode(String.self, forKey: .headline)
+        summary = try container.decodeIfPresent(String.self, forKey: .summary)
+
+        if let sections = try container.decodeIfPresent([EventStudyNotesSection].self, forKey: .sections) {
+            self.sections = sections
+        } else {
+            let focusAreas = try container.decodeIfPresent([String].self, forKey: .focusAreas) ?? []
+            self.sections = [
+                EventStudyNotesSection(
+                    title: nil,
+                    items: focusAreas.map { EventStudyNotesItem(text: $0) }
+                )
+            ]
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(headline, forKey: .headline)
+        try container.encodeIfPresent(summary, forKey: .summary)
+        try container.encode(sections, forKey: .sections)
+    }
+}
+
+struct EventStudyNotesSection: Codable {
+    let title: String?
+    let items: [EventStudyNotesItem]
+}
+
+struct EventStudyNotesItem: Codable {
+    let text: String
+    let children: [EventStudyNotesItem]?
+
+    init(text: String, children: [EventStudyNotesItem]? = nil) {
+        self.text = text
+        self.children = children
+    }
 }
 
 enum AssetPlacement: String, Codable {
@@ -235,6 +299,9 @@ struct EventOverride: Codable {
     let primaryDocumentTitles: [String]?
     let sharedResources: [EventResourceLink]?
     let videos: [EventVideoLink]?
+    let flashcardDeckTitle: String?
+    let flashcardDeckSummary: String?
+    let flashcards: [AuthoredFlashcard]?
 }
 
 struct VideoLibraryFile: Codable {
@@ -243,6 +310,18 @@ struct VideoLibraryFile: Codable {
 
 struct FlashcardLibraryFile: Codable {
     let flashcards: [FlashcardDefinition]
+}
+
+struct AuthoredFlashcard: Codable {
+    let id: String?
+    let prompt: String
+    let answer: String
+    let tags: [String]?
+    let studyCategories: [StudyCategoryKind]?
+    let eventCodes: [String]?
+    let kind: FlashcardKind?
+    let requiresVerbatim: Bool?
+    let companionGroupID: String?
 }
 
 struct PhaseSeed {
@@ -280,16 +359,21 @@ struct ManifestBuilder {
 
         let currentDirectory = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
         let overridesURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventOverrides.json")
+        let eventOverrideDirectoryURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventContentOverrides", isDirectory: true)
         let videosURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/VideoLibrary.json")
         let flashcardsURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/FlashcardLibrary.json")
         let referenceConfigURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/ReferenceStudyConfig.json")
 
+        let legacyOverrides: [String: EventOverride]
         if let data = try? Data(contentsOf: overridesURL),
            let file = try? JSONDecoder().decode(EventOverrideFile.self, from: data) {
-            self.eventOverrides = Dictionary(uniqueKeysWithValues: file.events.map { ($0.code.replacingOccurrences(of: " ", with: ""), $0) })
+            legacyOverrides = Dictionary(uniqueKeysWithValues: file.events.map { ($0.code.replacingOccurrences(of: " ", with: ""), $0) })
         } else {
-            self.eventOverrides = [:]
+            legacyOverrides = [:]
         }
+
+        let authoredOverrides = Self.loadEventOverrideDirectory(at: eventOverrideDirectoryURL)
+        self.eventOverrides = Self.mergeEventOverrides(legacy: legacyOverrides, authored: authoredOverrides)
 
         if let data = try? Data(contentsOf: videosURL),
            let file = try? JSONDecoder().decode(VideoLibraryFile.self, from: data) {
@@ -298,12 +382,16 @@ struct ManifestBuilder {
             self.videoLibrary = []
         }
 
+        let baseFlashcards: [FlashcardDefinition]
         if let data = try? Data(contentsOf: flashcardsURL),
            let file = try? JSONDecoder().decode(FlashcardLibraryFile.self, from: data) {
-            self.flashcardLibrary = file.flashcards
+            baseFlashcards = file.flashcards
         } else {
-            self.flashcardLibrary = []
+            baseFlashcards = []
         }
+
+        let authoredFlashcards = self.eventOverrides.values.flatMap(Self.materializeFlashcards(from:))
+        self.flashcardLibrary = Self.dedupeFlashcards(baseFlashcards + authoredFlashcards)
 
         if let data = try? Data(contentsOf: referenceConfigURL),
            let file = try? JSONDecoder().decode(ReferenceStudyConfigFile.self, from: data) {
@@ -311,6 +399,46 @@ struct ManifestBuilder {
         } else {
             self.referenceStudyConfig = ReferenceStudyConfigFile(libraryStudyHubs: [])
         }
+    }
+
+    private static func loadEventOverrideDirectory(at url: URL) -> [String: EventOverride] {
+        guard let files = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil) else {
+            return [:]
+        }
+
+        let decoder = JSONDecoder()
+        let overrides = files
+            .filter { $0.pathExtension.lowercased() == "json" }
+            .compactMap { fileURL -> EventOverride? in
+                guard let data = try? Data(contentsOf: fileURL),
+                      let override = try? decoder.decode(EventOverride.self, from: data) else {
+                    return nil
+                }
+                return override
+            }
+
+        return Dictionary(uniqueKeysWithValues: overrides.map { ($0.code.replacingOccurrences(of: " ", with: ""), $0) })
+    }
+
+    private static func mergeEventOverrides(legacy: [String: EventOverride], authored: [String: EventOverride]) -> [String: EventOverride] {
+        var merged = legacy
+        for (code, override) in authored {
+            merged[code] = override
+        }
+        return merged
+    }
+
+    private static func dedupeFlashcards(_ cards: [FlashcardDefinition]) -> [FlashcardDefinition] {
+        var seen = Set<String>()
+        var result: [FlashcardDefinition] = []
+
+        for card in cards.reversed() {
+            guard !seen.contains(card.id) else { continue }
+            seen.insert(card.id)
+            result.append(card)
+        }
+
+        return result.reversed()
     }
 
     func build() throws -> StudyManifest {
@@ -385,7 +513,7 @@ struct ManifestBuilder {
         let overview = override?.overview ?? buildOverview(for: code, phaseID: phaseID, categoryKind: categoryKind, text: noteText)
         let studyNotes = override?.studyNotes ?? noteText.flatMap { buildStudyNotes(from: $0, code: code, categoryKind: categoryKind) }
         let primaryDocumentIDs = resolvePrimaryDocumentIDs(from: sourceDocuments, override: override)
-        let flashcardDecks = resolvedFlashcardDecks(for: code)
+        let flashcardDecks = resolvedFlashcardDecks(for: code, override: override)
 
         let scriptTemplate = buildScriptTemplate(for: code, phaseID: phaseID, categoryKind: categoryKind)
         let resourceLinks = override?.sharedResources ?? defaultResourceLinks(for: phaseID, categoryKind: categoryKind, files: sortedFiles)
@@ -470,9 +598,14 @@ struct ManifestBuilder {
         }
 
         return EventStudyNotes(
-            headline: "What to focus on",
+            headline: "Discussion items",
             summary: summary,
-            focusAreas: Array(focusAreas)
+            sections: [
+                EventStudyNotesSection(
+                    title: nil,
+                    items: Array(focusAreas).map { EventStudyNotesItem(text: $0) }
+                )
+            ]
         )
     }
 
@@ -564,7 +697,7 @@ struct ManifestBuilder {
         }
     }
 
-    private func resolvedFlashcardDecks(for code: String) -> [FlashcardDeck] {
+    private func resolvedFlashcardDecks(for code: String, override: EventOverride?) -> [FlashcardDeck] {
         let normalizedCode = normalizeCode(code)
         let cardIDs = flashcardLibrary
             .filter { card in
@@ -577,11 +710,43 @@ struct ManifestBuilder {
         return [
             FlashcardDeck(
                 id: sanitizeID("\(normalizedCode)-flashcards"),
-                title: "Discussion Items",
-                summary: "Official discussion items and repeated memory references for focused recall practice.",
+                title: override?.flashcardDeckTitle ?? "Discussion Item Flashcards",
+                summary: override?.flashcardDeckSummary ?? "Official discussion items and repeated memory references for focused recall practice.",
                 cardIDs: cardIDs
             )
         ]
+    }
+
+    private static func materializeFlashcards(from override: EventOverride) -> [FlashcardDefinition] {
+        let normalizedCode = override.code.replacingOccurrences(of: " ", with: "")
+        return (override.flashcards ?? []).enumerated().map { index, card in
+            let fallbackID = sanitizedIdentifier(
+                "flashcard-\(normalizedCode)-\(String(sanitizedIdentifier(card.prompt).prefix(48)))-\(index + 1)"
+            )
+
+            return FlashcardDefinition(
+                id: card.id ?? fallbackID,
+                prompt: card.prompt,
+                answer: card.answer,
+                tags: card.tags ?? [],
+                studyCategories: card.studyCategories ?? [],
+                eventCodes: card.eventCodes ?? [override.code],
+                kind: card.kind ?? .standard,
+                requiresVerbatim: card.requiresVerbatim ?? false,
+                companionGroupID: card.companionGroupID
+            )
+        }
+    }
+
+    private static func sanitizedIdentifier(_ value: String) -> String {
+        let allowed = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-"))
+        return value.lowercased()
+            .map { char in
+                String(char).rangeOfCharacter(from: allowed) != nil ? String(char) : "-"
+            }
+            .joined()
+            .replacingOccurrences(of: "--", with: "-")
+            .trimmingCharacters(in: CharacterSet(charactersIn: "-"))
     }
 
     private func defaultResourceLinks(for phaseID: String, categoryKind: StudyCategoryKind, files: [URL]) -> [EventResourceLink] {

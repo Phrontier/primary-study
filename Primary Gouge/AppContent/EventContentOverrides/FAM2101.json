@@ -1,0 +1,327 @@
+{
+  "code": "FAM 2101",
+  "flashcardDeckSummary": "Cockpit setup, checklist discipline, and blind-cockpit discussion items for the first FAM sim.",
+  "flashcardDeckTitle": "FAM2101 Discussion Item Flashcards",
+  "flashcards": [],
+  "overview": "FAM 2101 is your introduction to operating in the T-6B cockpit. You will practice checklist discipline, challenge-action-response procedures, crew coordination, ground handling signals, and safety checks before entering and leaving the aircraft. You will also begin building cockpit familiarity through blind cockpit checks and repeated strap-in practice.",
+  "primaryDocumentTitles": [
+    "FAM 2101 Briefing Guide"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "sections": [
+      {
+        "title": "Checklist Challenge-Action-Response Format",
+        "items": [
+          {
+            "text": "All checklists are run using challenge-action-response."
+          },
+          {
+            "text": "State the checklist item first."
+          },
+          {
+            "text": "Perform the required action."
+          },
+          {
+            "text": "State the correct response or position."
+          },
+          {
+            "text": "For switches or controls that require a check, physically touch or visually verify the item."
+          },
+          {
+            "text": "If the switch or control is not in the correct position, move it to the proper setting before responding."
+          },
+          {
+            "text": "Checklist flow should always be smooth, deliberate, and standardized."
+          },
+          {
+            "text": "Example flow:",
+            "children": [
+              {
+                "text": "Challenge: BAT switch"
+              },
+              {
+                "text": "Action: Verify or move switch"
+              },
+              {
+                "text": "Response: On"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Dual Concurrence and CRM",
+        "items": [
+          {
+            "text": "Both pilots are responsible for ensuring every checklist item is completed correctly."
+          },
+          {
+            "text": "The IP has overall responsibility, but the student is still expected to catch mistakes or missed items."
+          },
+          {
+            "text": "Some checklist items require responses from both cockpits."
+          },
+          {
+            "text": "When dual concurrence is required, do not continue until the other crewmember has responded."
+          },
+          {
+            "text": "Good CRM means staying engaged, listening carefully, and speaking up if something is skipped or incorrect."
+          },
+          {
+            "text": "Checklist discipline is a shared responsibility."
+          }
+        ]
+      },
+      {
+        "title": "Memorized Checklists",
+        "items": [
+          {
+            "text": "Most checklists are not memorized and should be run with the quadfold or checklist guide."
+          },
+          {
+            "text": "Four checklists are expected to be memorized because they happen during critical phases of flight:",
+            "children": [
+              {
+                "text": "Lineup Check"
+              },
+              {
+                "text": "After Takeoff Check"
+              },
+              {
+                "text": "Operations Check"
+              },
+              {
+                "text": "Before Landing Check"
+              }
+            ]
+          },
+          {
+            "text": "Even after memorizing these checklists, the quadfold should still remain available as backup."
+          }
+        ]
+      },
+      {
+        "title": "Ground Handling Signals",
+        "items": [
+          {
+            "text": "Ground handling signals are used to communicate with ground personnel when verbal communication is limited or impossible."
+          },
+          {
+            "text": "Students should know the standard hand signals used for:",
+            "children": [
+              {
+                "text": "Chock installation and removal"
+              },
+              {
+                "text": "Engine start approval"
+              },
+              {
+                "text": "Brakes set or released"
+              },
+              {
+                "text": "Taxi direction guidance"
+              },
+              {
+                "text": "Stop signals"
+              },
+              {
+                "text": "Emergency shutdown signals"
+              }
+            ]
+          },
+          {
+            "text": "Ground signals must be clear, deliberate, and acknowledged."
+          }
+        ]
+      },
+      {
+        "title": "Safety Check Prior to Cockpit Entry",
+        "items": [
+          {
+            "text": "Before leaning into the cockpit, verify:",
+            "children": [
+              {
+                "text": "Seat safety pin installed"
+              },
+              {
+                "text": "Canopy Fracturing System pin installed"
+              },
+              {
+                "text": "ISS set to SOLO"
+              }
+            ]
+          },
+          {
+            "text": "Standard call:",
+            "children": [
+              {
+                "text": "Front cockpit: Two pins in"
+              },
+              {
+                "text": "Rear cockpit: Two pins in, SOLO"
+              }
+              {
+                "text": "Front cockpit: Roger, SOLO"
+              }
+            ]
+          },
+          {
+            "text": "These checks ensure the ejection seat and canopy system are safe before entering the aircraft."
+          }
+        ]
+      },
+      {
+        "title": "Safety Check Prior to Leaving the Aircraft",
+        "items": [
+          {
+            "text": "Before stepping off the wing, verify:",
+            "children": [
+              {
+                "text": "Seat safety pin installed"
+              },
+              {
+                "text": "Canopy Fracturing System pin installed"
+              },
+              {
+                "text": "PCL is OFF"
+              },
+              {
+                "text": "Starter switch is NORMAL"
+              },
+              {
+                "text": "Ignition switch is NORMAL"
+              },
+              {
+                "text": "ISS is set to SOLO"
+              }
+            ]
+          },
+          {
+            "text": "Standard calls:",
+            "children": [
+              {
+                "text": "Front cockpit: Two pins in, Off, Normal, Normal"
+              },
+              {
+                "text": "Rear cockpit: Two pins in, Off, Normal, Normal, Solo"
+              },
+              {
+                "text": "Front cockpit response: Roger, Solo"
+              }
+            ]
+          },
+          {
+            "text": "These checks ensure the aircraft is left in a safe configuration."
+          }
+        ]
+      },
+      {
+        "title": "Blind Cockpit Check",
+        "items": [
+          {
+            "text": "Students must be able to locate the following items without looking:",
+            "children": [
+              {
+                "text": "Emergency firewall shutoff handle"
+              },
+              {
+                "text": "Canopy Fracturing System handle"
+              },
+              {
+                "text": "PCL cutoff"
+              },
+              {
+                "text": "Flap selector"
+              },
+              {
+                "text": "Landing gear handle"
+              },
+              {
+                "text": "Emergency gear handle"
+              },
+              {
+                "text": "Backup VHF radio"
+              },
+              {
+                "text": "Bus tie switch"
+              },
+              {
+                "text": "PMU switch"
+              },
+              {
+                "text": "PROP SYS circuit breaker"
+              },
+              {
+                "text": "Pressurization control switch"
+              }
+            ]
+          },
+          {
+            "text": "The goal is to build cockpit familiarity so these items can be located immediately during high workload or emergency situations."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Before Exterior Inspection"
+          },
+          {
+            "text": "Full strap-in with all flight equipment"
+          },
+          {
+            "text": "Cockpit Checklist"
+          },
+          {
+            "text": "Engine Start (Auto)"
+          },
+          {
+            "text": "Before Taxi Checklist"
+          },
+          {
+            "text": "Taxi Checklist"
+          },
+          {
+            "text": "Overspeed Governor Check"
+          },
+          {
+            "text": "Before Takeoff Checklist"
+          },
+          {
+            "text": "Lineup Check"
+          },
+          {
+            "text": "After Takeoff Checklist"
+          },
+          {
+            "text": "Operations Check"
+          },
+          {
+            "text": "Before Landing Checklist"
+          },
+          {
+            "text": "After Landing Checklist"
+          },
+          {
+            "text": "Engine Shutdown"
+          }
+        ]
+      },
+      {
+        "title": "Optional Procedures",
+        "items": [
+          {
+            "text": "Climb Checklist (Passing 10,000 Feet)"
+          },
+          {
+            "text": "Descent Checklist"
+          }
+        ]
+      }
+    ]
+  },
+  "summary": "Cockpit familiarity, checklist discipline, and blind cockpit check fundamentals.",
+  "title": "Cockpit Familiarization"
+}

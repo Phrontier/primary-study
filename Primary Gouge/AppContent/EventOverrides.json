@@ -1,24 +1,4 @@
 {
   "events" : [
-    {
-      "code" : "FAM2101",
-      "overview" : "SNA practices cockpit entry, strap-in flow, challenge-action-response checklist procedures, safety calls, and a blind cockpit check to build switch and handle familiarity before later contact events.",
-      "primaryDocumentTitles" : [
-        "FAM 2101 Briefing guide 1542.166D"
-      ],
-      "studyNotes" : {
-        "focusAreas" : [
-          "Know how challenge-action-response should sound and what good checklist discipline looks like in the sim.",
-          "Be able to explain the required safety calls before cockpit entry and before stepping off the wing.",
-          "Understand why the memorized checklists matter and which ones must already be crisp from memory.",
-          "Use the blind cockpit check to build physical switch-and-handle familiarity, not just word-for-word memorization.",
-          "Expect the instructor to care about cockpit confidence, flows, and procedural precision more than long verbatim speeches."
-        ],
-        "headline" : "What to focus on",
-        "summary" : "This first sim is about getting comfortable in the cockpit and building clean checklist habits. Learn what each item is for, where it lives, and how to talk through it confidently."
-      },
-      "summary" : "Cockpit familiarity, checklist discipline, and blind cockpit check fundamentals.",
-      "title" : "Cockpit Familiarization"
-    }
   ]
 }

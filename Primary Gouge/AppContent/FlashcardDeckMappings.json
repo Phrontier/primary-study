@@ -5,7 +5,7 @@
       "decks": [
         {
           "id": "fam2101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-challenge-action-response-format-72bb1fd3c9",
@@ -20,7 +20,7 @@
       "decks": [
         {
           "id": "fam2102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-no-start-a7fbdf8cb7",
@@ -43,7 +43,7 @@
       "decks": [
         {
           "id": "fam2201-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-abort-takeoff-a5227531f3",
@@ -91,7 +91,7 @@
       "decks": [
         {
           "id": "fam2202-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-chip-detector-warning-17a31f159f",
@@ -139,7 +139,7 @@
       "decks": [
         {
           "id": "fam3101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-normal-takeoff-67e05b778a",
@@ -187,7 +187,7 @@
       "decks": [
         {
           "id": "fam3102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-normal-takeoff-67e05b778a",
@@ -223,7 +223,7 @@
       "decks": [
         {
           "id": "fam3103-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-crosswind-takeoff-751b2b3589",
@@ -251,7 +251,7 @@
       "decks": [
         {
           "id": "fam3201-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-11dd48608b",
@@ -284,7 +284,7 @@
       "decks": [
         {
           "id": "fam3202-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-itt-8007f03e38",
@@ -324,7 +324,7 @@
       "decks": [
         {
           "id": "fam3301-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-crosswind-takeoff-751b2b3589",
@@ -368,7 +368,7 @@
       "decks": [
         {
           "id": "fam3401-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-aoa-approach-44e33e7044",
@@ -416,7 +416,7 @@
       "decks": [
         {
           "id": "fam6101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-enter-via-4-nm-initial-point-on-extended-runway-centerline-1eec5872c0",
@@ -464,7 +464,7 @@
       "decks": [
         {
           "id": "fam6102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-illness-medication-stress-alcohol-fatigue-eating-83277b7dd7",
@@ -503,7 +503,7 @@
       "decks": [
         {
           "id": "fam6201-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-3-c-s-0a44b47bc8",
@@ -524,7 +524,7 @@
       "decks": [
         {
           "id": "fam6202-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-enter-via-4-nm-initial-point-on-extended-runway-centerline-1eec5872c0",
@@ -569,7 +569,7 @@
       "decks": [
         {
           "id": "fam6301-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-enter-via-4-nm-initial-point-on-extended-runway-centerline-1eec5872c0",
@@ -592,7 +592,7 @@
       "decks": [
         {
           "id": "fam6302-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-climb-to-2500-msl-then-ch-8-uhf-contact-corpus-departure-53ac385373",
@@ -616,7 +616,7 @@
       "decks": [
         {
           "id": "fam6401-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-pel-profile-and-procedures-1970e69f42",
@@ -642,7 +642,7 @@
       "decks": [
         {
           "id": "fam6402-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-5-cfs-handle-safety-pin-remove-both-54fbbaf30e",
@@ -663,7 +663,7 @@
       "decks": [
         {
           "id": "fam4101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-before-leaving-wing-84ccc9e077",
@@ -711,7 +711,7 @@
       "decks": [
         {
           "id": "fam4102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-fly-a-straight-in-approach-ba37181406",
@@ -751,7 +751,7 @@
       "decks": [
         {
           "id": "fam4103-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-enter-via-4-nm-initial-point-on-extended-runway-centerline-1eec5872c0",
@@ -799,7 +799,7 @@
       "decks": [
         {
           "id": "fam4104-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-crosswind-takeoff-751b2b3589",
@@ -830,7 +830,7 @@
       "decks": [
         {
           "id": "fam4201-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-landing-limits-4d2e33abfd",
@@ -878,7 +878,7 @@
       "decks": [
         {
           "id": "fam4202-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-hydraulic-system-overview-cc510a6fb5",
@@ -926,7 +926,7 @@
       "decks": [
         {
           "id": "fam4203-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-overview-22c6714f3f",
@@ -974,7 +974,7 @@
       "decks": [
         {
           "id": "fam4204-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-overview-648f39a18b",
@@ -1022,7 +1022,7 @@
       "decks": [
         {
           "id": "fam4301-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-52b457379a",
@@ -1070,7 +1070,7 @@
       "decks": [
         {
           "id": "fam4302-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-refueling-methods-969e1bcb6a",
@@ -1098,7 +1098,7 @@
       "decks": [
         {
           "id": "fam4303-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-flare-started-too-early-or-with-excessive-pitch-up-5ae9b4b8e0",
@@ -1146,7 +1146,7 @@
       "decks": [
         {
           "id": "fam4304-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-read-checklists-out-loud-to-reduce-omissions-ec3d1780d5",
@@ -1175,7 +1175,7 @@
       "decks": [
         {
           "id": "fam4401-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-unauthorized-solo-maneuvers-88dddc3122",
@@ -1206,7 +1206,7 @@
       "decks": [
         {
           "id": "fam4601-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-spatial-disorientation-vertigo-6db94a928c",
@@ -1245,7 +1245,7 @@
       "decks": [
         {
           "id": "fam4701-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-aircraft-is-unresponsive-to-normal-control-inputs-0342ee13b3",
@@ -1293,7 +1293,7 @@
       "decks": [
         {
           "id": "fam4702-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-spin-5b64700cd1",
@@ -1327,7 +1327,7 @@
       "decks": [
         {
           "id": "fam4703-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-mechanics-7b3c79960c",
@@ -1344,7 +1344,7 @@
       "decks": [
         {
           "id": "in1290-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-vor-dme-both-azimuth-and-distance-info-5b1f89e044",
@@ -1386,7 +1386,7 @@
       "decks": [
         {
           "id": "in1390-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-military-operating-areas-moas-f1dd131065",
@@ -1434,7 +1434,7 @@
       "decks": [
         {
           "id": "i2101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-crosscheck-performance-instruments-used-for-error-detection-0214db7cc1",
@@ -1457,7 +1457,7 @@
       "decks": [
         {
           "id": "i2102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-natops-guidance-0756bc9bef",
@@ -1475,7 +1475,7 @@
       "decks": [
         {
           "id": "i2103-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-approach-maneuver-6dbb4bb083",
@@ -1497,7 +1497,7 @@
       "decks": [
         {
           "id": "i2201-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-provides-primary-heading-and-navigation-display-5122f04468",
@@ -1534,7 +1534,7 @@
       "decks": [
         {
           "id": "i2202-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-definition-1a99d5f5b1",
@@ -1582,7 +1582,7 @@
       "decks": [
         {
           "id": "i2203-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-1-direct-entry-9431146d0e",
@@ -1619,7 +1619,7 @@
       "decks": [
         {
           "id": "i3101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-trim-stabilize-5fb2b8ce52",
@@ -1657,7 +1657,7 @@
       "decks": [
         {
           "id": "i3102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-purpose-5121ec4450",
@@ -1685,7 +1685,7 @@
       "decks": [
         {
           "id": "i3103-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-38d934b6ff",
@@ -1722,7 +1722,7 @@
       "decks": [
         {
           "id": "i3104-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-atc-procedures-in-graphic-form-dod-flip-approach-plates-d77eea7710",
@@ -1760,7 +1760,7 @@
       "decks": [
         {
           "id": "i3201-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-next-gps-waypoint-loaded-in-flight-plan-legs-page-8c651527b6",
@@ -1794,7 +1794,7 @@
       "decks": [
         {
           "id": "i3202-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-purpose-b954b978af",
@@ -1827,7 +1827,7 @@
       "decks": [
         {
           "id": "i3203-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-used-when-directional-gyro-compass-is-inoperative-or-unrelia-313274353e",
@@ -1844,7 +1844,7 @@
       "decks": [
         {
           "id": "i3204-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-f52ee5386d",
@@ -1873,7 +1873,7 @@
       "decks": [
         {
           "id": "i3205-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-avionics-include-3f4fa0e672",
@@ -1921,7 +1921,7 @@
       "decks": [
         {
           "id": "i3206-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-tracking-fuel-usage-ensures-mission-success-8822b8308d",
@@ -1943,7 +1943,7 @@
       "decks": [
         {
           "id": "i6101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-level-off-procedure-794d008166",
@@ -1983,7 +1983,7 @@
       "decks": [
         {
           "id": "i6102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-purpose-81b2ec3e4f",
@@ -2021,7 +2021,7 @@
       "decks": [
         {
           "id": "i6201-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-minimum-fuel-1b917c116a",
@@ -2051,7 +2051,7 @@
       "decks": [
         {
           "id": "i6202-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-cwa-alert-8a6d4fe9f9",
@@ -2095,7 +2095,7 @@
       "decks": [
         {
           "id": "i4101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-optimizing-risk-management-360d46e57c",
@@ -2121,7 +2121,7 @@
       "decks": [
         {
           "id": "i4102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-purpose-2414cac0e5",
@@ -2155,7 +2155,7 @@
       "decks": [
         {
           "id": "i4103-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-38d934b6ff",
@@ -2203,7 +2203,7 @@
       "decks": [
         {
           "id": "i4104-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-syllabus-notes-a12b7d27e8",
@@ -2219,7 +2219,7 @@
       "decks": [
         {
           "id": "i4201-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-trim-stabilize-e76e15e3f2",
@@ -2255,7 +2255,7 @@
       "decks": [
         {
           "id": "i4202-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-natops-1-130-7e8cdfbca6",
@@ -2275,7 +2275,7 @@
       "decks": [
         {
           "id": "i4203-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-1-no-gyro-approach-eaa8383913",
@@ -2296,7 +2296,7 @@
       "decks": [
         {
           "id": "i4204-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-based-on-pic-judgment-flight-urgency-f0fe586290",
@@ -2320,7 +2320,7 @@
       "decks": [
         {
           "id": "i4301-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-1-flight-planning-6b67600987",
@@ -2345,7 +2345,7 @@
       "decks": [
         {
           "id": "i4302-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-cwa-alert-8a6d4fe9f9",
@@ -2381,7 +2381,7 @@
       "decks": [
         {
           "id": "i4303-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-starting-at-1200-agl-faded-blue-fd50c2fcaa",
@@ -2404,7 +2404,7 @@
       "decks": [
         {
           "id": "i4304-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-no-single-rule-covers-all-situations-pilot-judgment-required-2499541c5e",
@@ -2440,7 +2440,7 @@
       "decks": [
         {
           "id": "i4490-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-2-squawk-7600-8d81da0053",
@@ -2465,7 +2465,7 @@
       "decks": [
         {
           "id": "na1190-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-notam-d-fdc-notams-pointer-saa-military-notams-bc83a39eec",
@@ -2513,7 +2513,7 @@
       "decks": [
         {
           "id": "vnav1190-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-vnav-purpose-1-1-100-436408ff59",
@@ -2561,7 +2561,7 @@
       "decks": [
         {
           "id": "n3101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-minimize-clutter-to-preserve-readability-ee1330c960",
@@ -2609,7 +2609,7 @@
       "decks": [
         {
           "id": "n6101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-standard-time-corrections-3747d4d9e3",
@@ -2638,7 +2638,7 @@
       "decks": [
         {
           "id": "n4101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-minimize-clutter-to-preserve-readability-ee1330c960",
@@ -2682,7 +2682,7 @@
       "decks": [
         {
           "id": "formation-gs-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-1aa8637aa8",
@@ -2730,7 +2730,7 @@
       "decks": [
         {
           "id": "f2101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-353bd0c34c",
@@ -2778,7 +2778,7 @@
       "decks": [
         {
           "id": "f3101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-353bd0c34c",
@@ -2826,7 +2826,7 @@
       "decks": [
         {
           "id": "f4101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-ip-designated-on-flight-schedule-by-co-9206f48307",
@@ -2864,7 +2864,7 @@
       "decks": [
         {
           "id": "f4102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-bb27032fd8",
@@ -2894,7 +2894,7 @@
       "decks": [
         {
           "id": "f4103-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-7175010c37",
@@ -2923,7 +2923,7 @@
       "decks": [
         {
           "id": "f4104-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-527aafd089",
@@ -2963,7 +2963,7 @@
       "decks": [
         {
           "id": "cs2101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-363b1c1954",
@@ -3011,7 +3011,7 @@
       "decks": [
         {
           "id": "cs2102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-description-ef6142965c",
@@ -3045,7 +3045,7 @@
       "decks": [
         {
           "id": "cs3101-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-tas-in-knots-2a9a346496",
@@ -3062,7 +3062,7 @@
       "decks": [
         {
           "id": "cs3102-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-natops-provides-best-practices-not-substitutes-for-judgment-e6435335ed",
@@ -3086,7 +3086,7 @@
       "decks": [
         {
           "id": "cs4290-flashcards",
-          "title": "Discussion Items",
+          "title": "Discussion Item Flashcards",
           "summary": "Official discussion items and repeated memory references for focused recall practice.",
           "cardIDs": [
             "flashcard-ip-s-should-select-one-of-the-following-to-perform-as-a-simu-3a63970b29",

@@ -42,13 +42,7 @@ struct EventDetailView: View {
             eyebrow: "\(phase.title) • \(event.categoryKind.displayName)",
             title: event.displayTitle,
             subtitle: event.summary
-        ) {
-            HStack(spacing: 12) {
-                MetricChip(label: "Decks", value: "\(event.flashcardDecks.count)", color: AppTheme.domainColor(.flashcards))
-                MetricChip(label: "Questions", value: "\(event.questionBanks.reduce(0) { $0 + $1.questions.count })", color: AppTheme.domainColor(.quizzes))
-                MetricChip(label: "Docs", value: "\(appModel.sharedResources(for: event, placement: nil).count + appModel.supplementalDocuments(for: event).count)", color: AppTheme.domainColor(.documents))
-            }
-        }
+        )
     }
 
     private var briefingGuideSection: some View {
@@ -89,7 +83,7 @@ struct EventDetailView: View {
                     NavigationLink {
                         NotesDetailView(notes: notes, eventTitle: event.displayTitle)
                     } label: {
-                        ToolCard(title: "Study notes", subtitle: notes.summary, icon: "text.alignleft", accent: AppTheme.domainColor(.documents))
+                        ToolCard(title: "Discussion items", subtitle: nil, icon: "text.alignleft", accent: AppTheme.domainColor(.discussionItems))
                     }
                     .buttonStyle(.plain)
                 }
@@ -118,12 +112,7 @@ struct EventDetailView: View {
                 }
 
                 if let script = appModel.assembledScript(for: event) {
-                    NavigationLink {
-                        ScriptDetailView(script: script)
-                    } label: {
-                        ToolCard(title: "Event script", subtitle: nil, icon: "waveform.path.ecg.rectangle", accent: AppTheme.domainColor(.documents))
-                    }
-                    .buttonStyle(.plain)
+                    PlannedScriptCard(script: script)
                 }
 
                 ForEach(appModel.videos(for: event, placement: .primary)) { video in
@@ -236,25 +225,113 @@ private struct NotesDetailView: View {
 
     var body: some View {
         AppScrollScreen(bottomPadding: 30) {
-            HeroCard(
+            SectionHeader(
                 eyebrow: eventTitle,
                 title: notes.headline,
-                subtitle: notes.summary
+                subtitle: nil,
+                accent: AppTheme.domainColor(.discussionItems)
             )
 
-            SectionContainer {
-                VStack(alignment: .leading, spacing: 12) {
-                    ForEach(notes.focusAreas, id: \.self) { area in
-                        InsetListRow(title: area) {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundStyle(AppTheme.accent)
-                                .frame(width: 20, height: 20)
-                        }
-                    }
+            VStack(alignment: .leading, spacing: 14) {
+                ForEach(Array(notes.sections.enumerated()), id: \.offset) { _, section in
+                    NotesDiscussionSectionView(section: section)
                 }
             }
         }
         .detailNavigationChrome(title: eventTitle)
+    }
+}
+
+private struct NotesDiscussionSectionView: View {
+    let section: EventStudyNotesSection
+
+    var body: some View {
+        SectionContainer(accent: AppTheme.domainColor(.discussionItems)) {
+            VStack(alignment: .leading, spacing: 16) {
+                if let title = section.title, !title.isEmpty {
+                    Text(title)
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(AppTheme.textPrimary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                VStack(alignment: .leading, spacing: 14) {
+                    ForEach(Array(section.items.enumerated()), id: \.offset) { _, item in
+                        NotesDiscussionItemView(item: item, level: 0)
+                    }
+                }
+            }
+        }
+    }
+}
+
+private struct NotesDiscussionItemView: View {
+    let item: EventStudyNotesItem
+    let level: Int
+
+    private var childItems: [EventStudyNotesItem] {
+        item.children ?? []
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top, spacing: 10) {
+                Circle()
+                    .fill(level == 0 ? AppTheme.domainColor(.discussionItems) : AppTheme.cardStroke)
+                    .frame(width: level == 0 ? 7 : 5, height: level == 0 ? 7 : 5)
+                    .padding(.top, 7)
+
+                Text(item.text)
+                    .font(level == 0 ? .body.weight(.medium) : .subheadline)
+                    .foregroundStyle(level == 0 ? AppTheme.textPrimary : AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+
+            if !childItems.isEmpty {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(Array(childItems.enumerated()), id: \.offset) { _, child in
+                        NotesDiscussionItemView(item: child, level: level + 1)
+                    }
+                }
+                .padding(.leading, 22)
+                .overlay(alignment: .leading) {
+                    Rectangle()
+                        .fill(AppTheme.cardStroke.opacity(0.85))
+                        .frame(width: 1)
+                        .padding(.leading, 9)
+                }
+            }
+        }
+    }
+}
+
+private struct PlannedScriptCard: View {
+    let script: EventScript
+
+    private let accent = AppTheme.domainColor(.scripts)
+
+    var body: some View {
+        InsetListRow(title: "Event script", subtitle: script.title) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(AppTheme.badgeFill(accent))
+                    .frame(width: 42, height: 42)
+
+                Image(systemName: "waveform.path.ecg.rectangle")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppTheme.iconTint(accent))
+            }
+        } trailing: {
+            VStack(alignment: .trailing, spacing: 10) {
+                StatusBadge(title: "Planned", iconName: "sparkles", color: AppTheme.accent)
+
+                Image(systemName: "lock.fill")
+                    .font(.footnote.weight(.bold))
+                    .foregroundStyle(AppTheme.textMuted)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
     }
 }
 

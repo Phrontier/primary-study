@@ -74,9 +74,11 @@ enum AppTheme {
 
     enum DomainColorRole {
         case primary
+        case discussionItems
         case flashcards
         case quizzes
         case instructors
+        case scripts
         case videos
         case resources
         case library
@@ -168,18 +170,24 @@ enum AppTheme {
         switch role {
         case .primary:
             return accent
+        case .discussionItems:
+            return color(0x5FD3B8)
         case .flashcards:
             return color(0x8B74FF)
         case .quizzes:
             return color(0x45C7FF)
         case .instructors:
             return color(0x9A86FF)
+        case .scripts:
+            return color(0xF3A84D)
         case .videos:
-            return color(0x42C6D8)
+            return color(0xFF6F91)
         case .library:
             return color(0xBE8B52)
-        case .resources, .documents:
-            return color(0x42CFC2)
+        case .resources:
+            return color(0x6E9CFF)
+        case .documents:
+            return color(0xBE8B52)
         case .groundSchool:
             return color(0x4CC56F)
         case .sims:

@@ -107,7 +107,7 @@ struct MoreTabView: View {
                     MoreHubItem(
                         title: "Jet Log Helpers",
                         subtitle: "Timing, legs, and planning aids",
-                        iconName: "list.clipboard.fill",
+                        iconName: "checklist.checked",
                         accent: MoreSectionColor.studyTools,
                         badge: .planned,
                         destination: .placeholder(

@@ -1,0 +1,91 @@
+{
+  "code": "FAM 6401",
+  "title": "PEL and Emergency Memory Review",
+  "summary": "PEL profile work and a consolidated review of critical emergency memory items.",
+  "overview": "This event serves as a transition from individual emergency procedures to integrated emergency response. You will review the full PEL profile, practice PELs from the pattern, and reinforce the critical action memory items that underpin start, ground, engine, system, forced-landing, and ejection emergencies when time no longer permits reference to a checklist.",
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The standard here is speed and structure. You should be able to build a PEL early, then move through the major memory items without hesitation when the emergency stops being theoretical.",
+    "sections": [
+      {
+        "title": "PEL Profile and PEL/P",
+        "items": [
+          {
+            "text": "The PEL flow remains Turn, Climb or Accelerate, Clean, Check, BIP, Determine, Deliver, Reduce, Lower, and Report."
+          },
+          {
+            "text": "Key profile gates include:",
+            "children": [
+              {
+                "text": "High Key around 3000 feet AGL with gear down and 120 KIAS."
+              },
+              {
+                "text": "Low Key around 1500 feet AGL with takeoff flaps and about 2/3 wingtip distance."
+              },
+              {
+                "text": "Final at or above 110 KIAS with landing flaps only when landing is assured."
+              }
+            ]
+          },
+          {
+            "text": "PEL/P rehearses the same logic from inside the pattern and tests whether you can recognize the problem, turn immediately, and intercept the ELP without getting behind the aircraft."
+          }
+        ]
+      },
+      {
+        "title": "Ground and Engine Emergency Memory Items",
+        "items": [
+          {
+            "text": "This review includes Abort Start, Emergency Engine Shutdown on the Ground, Emergency Ground Egress, Abort, Engine Failure Immediately After Takeoff, Engine Failure During Flight, and Immediate Airstart."
+          },
+          {
+            "text": "The purpose is not just recitation. You should understand when each memory item applies and what decision follows if the aircraft cannot be recovered."
+          }
+        ]
+      },
+      {
+        "title": "System and Forced-Landing Memory Items",
+        "items": [
+          {
+            "text": "The review also covers chip detector warning, oil-system malfunction, low fuel pressure, high fuel flow, OBOGS failure or physiological symptoms, forced landing, and uncommanded power changes."
+          },
+          {
+            "text": "Most of these drive back toward the same big priorities: minimize further damage, preserve energy, and get to a runway or make the ejection decision early."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Precautionary Emergency Landing."
+          },
+          {
+            "text": "PEL from the Pattern."
+          },
+          {
+            "text": "Abort Start Procedure."
+          },
+          {
+            "text": "Emergency Engine Shutdown on the Ground."
+          },
+          {
+            "text": "Emergency Ground Egress."
+          },
+          {
+            "text": "Engine Failure During Flight."
+          },
+          {
+            "text": "Immediate Airstart."
+          },
+          {
+            "text": "Forced Landing."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM6401 Discussion Item Flashcards",
+  "flashcardDeckSummary": "PEL profile and emergency-memory-item discussion items for the first FAM6400 sim.",
+  "flashcards": []
+}

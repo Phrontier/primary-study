@@ -1,0 +1,99 @@
+{
+  "code": "FAM 6302",
+  "title": "Beachline and Aransas County Course Rules",
+  "summary": "Beachline departure, Aransas County procedures, and SHAMROCK-based recovery options back to homefield.",
+  "overview": "This event emphasizes the route structure that connects a standard beachline departure to Aransas County operations and then back into NAS Corpus Christi recovery procedures. You will practice departure routing, Aransas County pattern and PPEL procedures, and the SHAMROCK flows that support overhead or straight-in recoveries depending on runway and tower instructions.",
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "Think of this event as recovery geometry management: depart cleanly, arrive predictably at Aransas County, and then set up SHAMROCK so the homefield recovery stays stable and ahead of the airplane.",
+    "sections": [
+      {
+        "title": "Beachline Departure",
+        "items": [
+          {
+            "text": "Beachline Departure uses runway-specific headings to High Bridge, then turns toward the beachline before the climb and departure handoff."
+          },
+          {
+            "text": "Key items include:",
+            "children": [
+              {
+                "text": "Climb to 2500 feet MSL before checking in with Corpus Departure."
+              },
+              {
+                "text": "Know the transition differences for Mustang routes, maintenance, SHAMROCK re-entry, and Waldron routing."
+              },
+              {
+                "text": "Stay ahead of the frequency change and route geometry instead of trying to catch up once airborne."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Aransas County Operations",
+        "items": [
+          {
+            "text": "Aransas County arrivals use CTAF self-announcing, 2 NM initial geometry, and careful deconfliction with both military and civilian traffic."
+          },
+          {
+            "text": "PPEL procedures at Aransas County require:",
+            "children": [
+              {
+                "text": "Using the same side as the normal traffic pattern."
+              },
+              {
+                "text": "Common-frequency reporting at High Key."
+              },
+              {
+                "text": "Re-climbing and resetting if there is any doubt about traffic understanding or spacing."
+              }
+            ]
+          },
+          {
+            "text": "Departures require the correct runway-specific turn, climb through the local landmarks, and advisory calls before rejoining Corpus Approach."
+          }
+        ]
+      },
+      {
+        "title": "SHAMROCK Recovery Options",
+        "items": [
+          {
+            "text": "At SHAMROCK, slow to 200 KIAS and request the intended recovery: overhead, touch-and-go, full stop, or visual straight-in."
+          },
+          {
+            "text": "Runway-specific reporting changes between north-flow and south-flow recoveries, so the correct initial and numbers call matter."
+          },
+          {
+            "text": "Visual straight-ins from SHAMROCK require getting below 150 KIAS, configuring on time, and reporting gear down on the proper base or final call."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Beachline Departure."
+          },
+          {
+            "text": "Aransas County Arrival."
+          },
+          {
+            "text": "Aransas County PPEL Entry."
+          },
+          {
+            "text": "Aransas County Departure."
+          },
+          {
+            "text": "Homefield Overhead Recovery from SHAMROCK."
+          },
+          {
+            "text": "Homefield Visual Straight-In from SHAMROCK."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM6302 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Beachline, Aransas County, and SHAMROCK recovery discussion items for the second FAM6300 sim.",
+  "flashcards": []
+}

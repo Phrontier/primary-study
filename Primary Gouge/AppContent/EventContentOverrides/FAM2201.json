@@ -1,0 +1,375 @@
+{
+  "code": "FAM 2201",
+  "title": "Takeoff Emergencies",
+  "summary": "Abort procedures, engine failures, forced landings, and airstart fundamentals.",
+  "overview": "This event introduces emergency situations that can happen during takeoff and flight. You will learn how to respond to aborts, engine failures, aircraft departures from the runway, forced landings, and airstarts while focusing on aircraft control, decision making, and when to stop troubleshooting and commit to landing or ejecting.",
+  "primaryDocumentTitles": [
+    "FAM 2201 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "Keep the priorities simple: aviate first, point the aircraft toward the best landing option early, and do not burn altitude troubleshooting below decision altitude.",
+    "sections": [
+      {
+        "title": "Abort Takeoff",
+        "items": [
+          {
+            "text": "If it becomes necessary to abort, aircraft control is the priority."
+          },
+          {
+            "text": "Focus on maintaining directional control while stopping on the remaining runway."
+          },
+          {
+            "text": "Immediate actions:",
+            "children": [
+              {
+                "text": "PCL to IDLE."
+              },
+              {
+                "text": "Brakes as required."
+              }
+            ]
+          },
+          {
+            "text": "Heavy braking can overheat the brakes."
+          },
+          {
+            "text": "If maximum braking was used, do not taxi into a congested area or set the parking brake until the brakes cool."
+          }
+        ]
+      },
+      {
+        "title": "Aircraft Departs Prepared Surface",
+        "items": [
+          {
+            "text": "If it appears likely the aircraft will depart the runway or taxiway, execute Emergency Engine Shutdown on the Ground."
+          },
+          {
+            "text": "The priority is to stop the aircraft and shut the engine down before further damage occurs."
+          }
+        ]
+      },
+      {
+        "title": "Engine Failure Immediately After Takeoff",
+        "items": [
+          {
+            "text": "Primary indications:",
+            "children": [
+              {
+                "text": "Total loss of power."
+              },
+              {
+                "text": "Rapid reduction in airspeed."
+              }
+            ]
+          },
+          {
+            "text": "Early ejection may be the safest option if there is not enough runway remaining."
+          },
+          {
+            "text": "Immediate actions:",
+            "children": [
+              {
+                "text": "Maintain at least 110 knots."
+              },
+              {
+                "text": "PCL as required."
+              },
+              {
+                "text": "Pull Emergency Landing Gear Handle if required."
+              },
+              {
+                "text": "Flaps as required."
+              }
+            ]
+          },
+          {
+            "text": "If hydraulic pressure is lost, gear and flaps cannot be lowered normally."
+          },
+          {
+            "text": "Below 2000 feet AGL, avoid wasting time troubleshooting."
+          },
+          {
+            "text": "If there is not enough runway to land straight ahead, immediate ejection may be the best option."
+          }
+        ]
+      },
+      {
+        "title": "Engine Failure During Flight",
+        "items": [
+          {
+            "text": "An engine failure in flight creates three possible paths:",
+            "children": [
+              {
+                "text": "Airstart."
+              },
+              {
+                "text": "Forced landing."
+              },
+              {
+                "text": "Ejection."
+              }
+            ]
+          },
+          {
+            "text": "Initial indications include:",
+            "children": [
+              {
+                "text": "Loss of power and airspeed."
+              },
+              {
+                "text": "Rapid drop in N1, torque, and ITT."
+              },
+              {
+                "text": "Propeller moving toward feather."
+              },
+              {
+                "text": "GEN, FUEL PX, OIL PX, and OBOGS warnings."
+              }
+            ]
+          },
+          {
+            "text": "Immediate actions:",
+            "children": [
+              {
+                "text": "Establish at least 125 knots."
+              },
+              {
+                "text": "PCL to OFF."
+              },
+              {
+                "text": "Intercept the nearest suitable ELP."
+              },
+              {
+                "text": "Attempt an airstart if warranted."
+              }
+            ]
+          },
+          {
+            "text": "Pulling the PCL fully to OFF feathers the propeller and improves glide performance."
+          },
+          {
+            "text": "If an airstart is not appropriate or unsuccessful:",
+            "children": [
+              {
+                "text": "Firewall Shutoff Handle PULL."
+              },
+              {
+                "text": "Execute forced landing or eject."
+              }
+            ]
+          },
+          {
+            "text": "Do not delay the ejection decision below 2000 feet AGL."
+          }
+        ]
+      },
+      {
+        "title": "Immediate Airstart",
+        "items": [
+          {
+            "text": "The Immediate Airstart is used at low altitude when thrust is urgently needed."
+          },
+          {
+            "text": "It is faster than the full PMU NORM procedure."
+          },
+          {
+            "text": "Immediate actions:",
+            "children": [
+              {
+                "text": "PCL OFF."
+              },
+              {
+                "text": "Starter switch AUTO/RESET."
+              },
+              {
+                "text": "PCL to IDLE above 13% N1."
+              },
+              {
+                "text": "Monitor ITT, N1, and oil pressure."
+              }
+            ]
+          },
+          {
+            "text": "If N1 does not rise within 5 seconds, discontinue the attempt."
+          },
+          {
+            "text": "If there is no ITT rise within 10 seconds after fuel flow, abort the start."
+          },
+          {
+            "text": "Useful power is not available until approximately 67% N1."
+          },
+          {
+            "text": "If the airstart fails:",
+            "children": [
+              {
+                "text": "PCL OFF."
+              },
+              {
+                "text": "Firewall Shutoff Handle PULL."
+              },
+              {
+                "text": "Forced landing or eject."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "PMU NORM Airstart",
+        "items": [
+          {
+            "text": "PMU NORM is the preferred and simplest airstart method."
+          },
+          {
+            "text": "Use it if the PMU FAIL warning is not illuminated."
+          },
+          {
+            "text": "Airstart envelope:",
+            "children": [
+              {
+                "text": "125 to 200 knots from sea level to 15,000 feet."
+              },
+              {
+                "text": "135 to 200 knots from 15,001 to 20,000 feet."
+              }
+            ]
+          },
+          {
+            "text": "Key setup items:",
+            "children": [
+              {
+                "text": "PCL OFF."
+              },
+              {
+                "text": "Firewall Shutoff Handle down."
+              },
+              {
+                "text": "Bleed Air Inflow OFF."
+              },
+              {
+                "text": "Boost Pump ON."
+              },
+              {
+                "text": "Ignition ON."
+              },
+              {
+                "text": "Starter switch AUTO/RESET."
+              }
+            ]
+          },
+          {
+            "text": "Move the PCL to IDLE above 13% N1."
+          },
+          {
+            "text": "Do not move the PCL above IDLE before N1 stabilizes around 67%."
+          },
+          {
+            "text": "Each airstart attempt can cost more than 1200 feet of altitude."
+          },
+          {
+            "text": "After a successful airstart:",
+            "children": [
+              {
+                "text": "PCL as required."
+              },
+              {
+                "text": "Starter switch NORM."
+              },
+              {
+                "text": "Verify GEN ON."
+              },
+              {
+                "text": "Bleed Air Inflow NORM."
+              },
+              {
+                "text": "Execute a PEL."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "PMU OFF Airstart",
+        "items": [
+          {
+            "text": "PMU OFF airstarts are used if the PMU FAIL warning is illuminated."
+          },
+          {
+            "text": "This method increases workload because the pilot manually controls fuel introduction."
+          },
+          {
+            "text": "Ignition must be manually selected."
+          },
+          {
+            "text": "The same airstart envelope and altitude considerations apply."
+          },
+          {
+            "text": "PMU OFF starts are more sensitive to PCL movement and can more easily lead to an overtemperature."
+          },
+          {
+            "text": "Use this procedure only when PMU NORM is unavailable."
+          }
+        ]
+      },
+      {
+        "title": "Decision Making Priorities",
+        "items": [
+          {
+            "text": "Aviate first."
+          },
+          {
+            "text": "Establish a safe airspeed and glide profile before troubleshooting."
+          },
+          {
+            "text": "If a suitable runway or landing surface is available, immediately turn toward it."
+          },
+          {
+            "text": "Every second spent troubleshooting reduces glide distance."
+          },
+          {
+            "text": "Below 2000 feet AGL, focus on landing or ejecting rather than trying to save the engine."
+          },
+          {
+            "text": "Airstarts should only be attempted when altitude, airspeed, and position allow."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Abort Takeoff."
+          },
+          {
+            "text": "Aircraft Departs Prepared Surface."
+          },
+          {
+            "text": "Engine Failure Immediately After Takeoff."
+          },
+          {
+            "text": "Engine Failure During Flight."
+          },
+          {
+            "text": "Immediate Airstart."
+          },
+          {
+            "text": "PMU NORM Airstart."
+          },
+          {
+            "text": "PMU OFF Airstart."
+          },
+          {
+            "text": "Forced Landing."
+          },
+          {
+            "text": "Ejection Decision Criteria."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM2201 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Abort logic, engine-failure priorities, and airstart fundamentals for the first FAM2200 emergency event.",
+  "flashcards": []
+}

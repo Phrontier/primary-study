@@ -1,0 +1,82 @@
+{
+  "code": "FAM 6301",
+  "title": "Rusty and Goliad Course Rules",
+  "summary": "Rusty departure procedures, Goliad pattern operations, and the route back toward homefield recovery.",
+  "overview": "This event focuses on linking a standard NAS Corpus Christi departure with outlying-field operations at Goliad. You will brief and practice Rusty Departure routing, Goliad arrivals and departures, pattern communications, and the return flow that reconnects the outlying field with homefield course rules and SHAMROCK recovery geometry.",
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The event is about stitching the system together cleanly: depart correctly, enter the outlying field correctly, and rejoin homefield recovery routes without losing altitude, radio, or pattern discipline.",
+    "sections": [
+      {
+        "title": "Rusty Departure",
+        "items": [
+          {
+            "text": "Rusty Departure begins with runway-specific headings off NAS Corpus Christi and then flows direct to Point Rusty."
+          },
+          {
+            "text": "Key priorities include:",
+            "children": [
+              {
+                "text": "Climb to 2500 feet MSL and 200 KIAS before accelerating further."
+              },
+              {
+                "text": "Switch to Corpus Departure on the correct UHF channel."
+              },
+              {
+                "text": "Know the transition differences for KINGS 4, GOLIAD, and VFR NORTH."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Goliad Pattern Operations",
+        "items": [
+          {
+            "text": "Goliad still requires disciplined RDO contact, initial reporting, break geometry, and crosswind interval awareness."
+          },
+          {
+            "text": "Priority in the break belongs to the aircraft that has already made the numbers call."
+          },
+          {
+            "text": "Departures require becoming number one, climbing cleanly out of the pattern, then rejoining course rules toward Woodsboro and SHAMROCK."
+          }
+        ]
+      },
+      {
+        "title": "Return Toward Homefield",
+        "items": [
+          {
+            "text": "The return leg from Goliad uses Woodsboro, Bayside, Port Bay Bridge, and the Aransas Causeway to rejoin Northern Arrival and SHAMROCK flow."
+          },
+          {
+            "text": "This is where route discipline matters most. Missing one altitude, frequency, or turn point can create spacing problems later in the recovery."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Rusty Departure."
+          },
+          {
+            "text": "Goliad Arrival."
+          },
+          {
+            "text": "Goliad Pattern Operations."
+          },
+          {
+            "text": "Goliad Departure."
+          },
+          {
+            "text": "Return to SHAMROCK via Northern Arrival."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM6301 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Rusty departure, Goliad pattern, and recovery-route discussion items for the first FAM6300 sim.",
+  "flashcards": []
+}

@@ -1,0 +1,97 @@
+{
+  "code": "FAM 6202",
+  "title": "OLF Entries and Crosswind Patterns",
+  "summary": "Outlying-field entry procedures, RDO communications, crosswind techniques, and waveoff criteria.",
+  "overview": "This event blends outlying-field operations with pattern-control fundamentals. You will practice entry procedures for Goliad, Waldron, Aransas County, and Ingleside while reinforcing RDO communication standards, crosswind takeoff and landing techniques, and the waveoff criteria that protect the pattern when geometry or energy no longer support a safe landing.",
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The event is less about memorizing random local facts and more about entering a busy pattern predictably, communicating clearly, and abandoning a bad approach before it turns into a bad landing.",
+    "sections": [
+      {
+        "title": "OLF Entry and RDO Communication",
+        "items": [
+          {
+            "text": "Goliad, Waldron, Aransas County, and Ingleside all require early communication, pattern-entry discipline, and awareness of who owns right-of-way."
+          },
+          {
+            "text": "RDO and local pattern calls should always include your call sign, position, and intentions."
+          },
+          {
+            "text": "If you lose contact, the entry is no longer routine. Execute the discontinued or lost-comm plan rather than pressing into an uncertain pattern."
+          }
+        ]
+      },
+      {
+        "title": "Crosswind Takeoff and Landing",
+        "items": [
+          {
+            "text": "Crosswind takeoff still means aileron into the wind, rudder to counter weathervaning, and reducing aileron as airspeed builds."
+          },
+          {
+            "text": "Crosswind landings use a wing-low method with the upwind wheel touching first and crosswind corrections held through rollout."
+          },
+          {
+            "text": "If side motion, drift, or crab remain at touchdown, the right answer is not to salvage it on the runway. The right answer is to wave off."
+          }
+        ]
+      },
+      {
+        "title": "Waveoff Criteria",
+        "items": [
+          {
+            "text": "A waveoff is mandatory when directed, when the stick shaker activates before flare, when ELP traffic has right-of-way, or when the geometry is no longer safe."
+          },
+          {
+            "text": "Important triggers include:",
+            "children": [
+              {
+                "text": "More than 45 degrees of bank on final."
+              },
+              {
+                "text": "Preceding aircraft not landed when you are on rollout."
+              },
+              {
+                "text": "Unstable energy, drift, or alignment that cannot be corrected without overcontrolling."
+              }
+            ]
+          },
+          {
+            "text": "Fly the waveoff with wings level, ball centered, the right climb attitude, and the correct flap retraction timeline."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Goliad Entry."
+          },
+          {
+            "text": "Waldron Entry."
+          },
+          {
+            "text": "Aransas County Entry."
+          },
+          {
+            "text": "Ingleside Entry."
+          },
+          {
+            "text": "RDO Communication."
+          },
+          {
+            "text": "Crosswind Takeoff."
+          },
+          {
+            "text": "Crosswind Landing."
+          },
+          {
+            "text": "Waveoff."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM6202 Discussion Item Flashcards",
+  "flashcardDeckSummary": "OLF entry, RDO comm, crosswind, and waveoff discussion items for the second FAM6200 sim.",
+  "flashcards": []
+}

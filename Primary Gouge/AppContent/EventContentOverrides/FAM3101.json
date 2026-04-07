@@ -1,0 +1,173 @@
+{
+  "code": "FAM 3101",
+  "title": "Normal Takeoff and Basic Airwork",
+  "summary": "Normal takeoff, area departure, scanning, turns, speed changes, and introductory stall work.",
+  "overview": "This event introduces the first full contact-phase maneuver set in the sim. You will practice normal takeoff procedures, local area departures, integrated visual scanning, turn patterns, level speed changes, and power-on stall recognition while continuing to build trim discipline, coordination, and basic energy management.",
+  "primaryDocumentTitles": [
+    "FAM 3101 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "Focus on smooth takeoff mechanics, disciplined scan habits, and staying ahead of the airplane as configurations and maneuver demands change.",
+    "sections": [
+      {
+        "title": "Normal Takeoff",
+        "items": [
+          {
+            "text": "The normal takeoff is flown in three phases: takeoff roll, rotation, and initial climb."
+          },
+          {
+            "text": "Lineup priorities include:",
+            "children": [
+              {
+                "text": "Switch to tower about 200 feet prior to hold short."
+              },
+              {
+                "text": "Request takeoff using local SOP, then taxi into position only after clearing final."
+              },
+              {
+                "text": "Run the Lineup Checklist from memory and hold at PROBES ANTI-ICE if told to wait."
+              },
+              {
+                "text": "Confirm crosswind direction before brake release."
+              }
+            ]
+          },
+          {
+            "text": "Key takeoff cues include:",
+            "children": [
+              {
+                "text": "At 60 KIAS, verify minimum torque and normal fuel flow."
+              },
+              {
+                "text": "At 90 KIAS, rotate smoothly to about 7 to 10 degrees nose high."
+              },
+              {
+                "text": "After liftoff, confirm two positive rates, raise gear below 150 KIAS, and raise flaps above 110 KIAS."
+              }
+            ]
+          },
+          {
+            "text": "Common errors include improper rudder use, incorrect rotation timing, over-control, and missed gear or flap calls."
+          }
+        ]
+      },
+      {
+        "title": "Local Area Departure",
+        "items": [
+          {
+            "text": "Departure procedures begin with being number one for takeoff and complying with runway-specific tower instructions."
+          },
+          {
+            "text": "General VFR departure rules include:",
+            "children": [
+              {
+                "text": "No turn prior to 300 feet AGL."
+              },
+              {
+                "text": "Climb at 180 KIAS and level at 200 KIAS until clear of Class D."
+              },
+              {
+                "text": "Accelerate to 240 KIAS once outside the local restrictions."
+              }
+            ]
+          },
+          {
+            "text": "Be prepared to brief and fly the standard departure options used in this event:",
+            "children": [
+              {
+                "text": "Beachline Departure."
+              },
+              {
+                "text": "Portland Low Departure."
+              },
+              {
+                "text": "Nueces Transition."
+              },
+              {
+                "text": "Rusty Departure."
+              },
+              {
+                "text": "OSO Transition."
+              }
+            ]
+          },
+          {
+            "text": "The goal is not just navigation accuracy, but also timely radio changes, altitude compliance, and clean energy management after takeoff."
+          }
+        ]
+      },
+      {
+        "title": "Integrated VMC Scan",
+        "items": [
+          {
+            "text": "The integrated scan combines outside visual checks with inside instrument cross-checks to prevent fixation and maintain aircraft control."
+          },
+          {
+            "text": "In VMC, your eyes should be outside roughly 80 to 90 percent of the time."
+          },
+          {
+            "text": "A complete scan should include:",
+            "children": [
+              {
+                "text": "Outside left, center, and right attitude and traffic checks."
+              },
+              {
+                "text": "Inside attitude and performance instrument checks."
+              },
+              {
+                "text": "Continuous area clearing before and during maneuvering."
+              }
+            ]
+          },
+          {
+            "text": "Do not fixate on one item. Scan rate and sequence should adjust to workload and traffic."
+          }
+        ]
+      },
+      {
+        "title": "Basic Airwork Maneuvers",
+        "items": [
+          {
+            "text": "Turn Pattern trains smooth, coordinated turns at increasing bank angles while maintaining altitude and airspeed."
+          },
+          {
+            "text": "Level Speed Change teaches how trim, power, and configuration changes interact as the aircraft transitions between cruise and landing configurations."
+          },
+          {
+            "text": "Power-On Stalls simulate departure-type stalls and emphasize recognition, relax-max-level-ball recovery, and coordinated control inputs."
+          },
+          {
+            "text": "Across all of these maneuvers, the common themes are proper clearing, trim usage, coordinated flight, and preventing fixation on one instrument."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Normal Takeoff."
+          },
+          {
+            "text": "Local Area Departure."
+          },
+          {
+            "text": "Integrated VMC Scan."
+          },
+          {
+            "text": "Turn Pattern."
+          },
+          {
+            "text": "Level Speed Change."
+          },
+          {
+            "text": "Power-On Stalls."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM3101 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Normal takeoff, departure, scanning, and basic contact maneuver discussion items for the first FAM3100 sim.",
+  "flashcards": []
+}

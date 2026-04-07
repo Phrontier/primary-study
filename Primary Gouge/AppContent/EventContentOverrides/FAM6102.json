@@ -1,0 +1,130 @@
+{
+  "code": "FAM 6102",
+  "title": "Risk Management and Homefield Recovery",
+  "summary": "IMSAFE, CRM, see-and-avoid principles, and visual straight-in recovery fundamentals.",
+  "overview": "This event shifts attention from pure aircraft handling to the human and procedural factors that shape safe contact-phase flying. You will review IMSAFE, CRM, and visual collision avoidance while also briefing a homefield visual straight-in and the flight profile that ties the local area back into a standardized recovery at NAS Corpus Christi.",
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The common thread is discipline before the maneuver ever starts: check the pilot, check the crew, check the environment, and then fly a recovery profile that stays predictable for everyone else in the system.",
+    "sections": [
+      {
+        "title": "IMSAFE Checklist",
+        "items": [
+          {
+            "text": "IMSAFE stands for illness, medication, stress, alcohol, fatigue, and eating, and it is the first risk-management check in every brief."
+          },
+          {
+            "text": "If an SNA is not fit to fly, the process includes notifying the IP, going to the ODO, and completing the appropriate IMSAFE paperwork and medical referral if required."
+          },
+          {
+            "text": "IMSAFE is not a loophole for poor planning. It is a safety tool that applies to any syllabus event, not just flights."
+          }
+        ]
+      },
+      {
+        "title": "CRM Principles",
+        "items": [
+          {
+            "text": "CRM is the use of behavioral skills to reduce preventable crew error and optimize risk management."
+          },
+          {
+            "text": "Core ideas emphasized in this event include:",
+            "children": [
+              {
+                "text": "Decision making."
+              },
+              {
+                "text": "Assertiveness."
+              },
+              {
+                "text": "Communication."
+              },
+              {
+                "text": "Leadership and adaptability."
+              },
+              {
+                "text": "Situational awareness."
+              }
+            ]
+          },
+          {
+            "text": "SNAs still need to perform as if single-piloted even when an IP is present. Good CRM does not replace aircraft control; it supports it."
+          }
+        ]
+      },
+      {
+        "title": "See and Avoid",
+        "items": [
+          {
+            "text": "See and avoid remains the primary defense against midair collisions, especially in VMC near airports."
+          },
+          {
+            "text": "Important visual limitations include:",
+            "children": [
+              {
+                "text": "Accommodation delay when shifting focus outside."
+              },
+              {
+                "text": "Empty-field myopia."
+              },
+              {
+                "text": "A narrow focus zone and blossom effect."
+              },
+              {
+                "text": "Reduced detection from haze, glare, or dirty windscreens."
+              }
+            ]
+          },
+          {
+            "text": "Use disciplined scan patterns and TCAS support, but do not substitute electronics for actually looking outside."
+          }
+        ]
+      },
+      {
+        "title": "Homefield Visual Straight-In",
+        "items": [
+          {
+            "text": "From SHAMROCK, the visual straight-in begins by slowing to 200 KIAS and requesting the straight-in with the tower."
+          },
+          {
+            "text": "Then:",
+            "children": [
+              {
+                "text": "Descend to 800 feet MSL for south flow or 500 feet MSL for north flow."
+              },
+              {
+                "text": "Configure below 150 KIAS with gear down and flaps as required."
+              },
+              {
+                "text": "Intercept the extended centerline and make the correct base or final gear-down report."
+              }
+            ]
+          },
+          {
+            "text": "This recovery only works well if you enter stabilized and stay ahead of the configuration timeline."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "IMSAFE Review."
+          },
+          {
+            "text": "CRM Review."
+          },
+          {
+            "text": "See and Avoid Review."
+          },
+          {
+            "text": "Homefield Visual Straight-In."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM6102 Discussion Item Flashcards",
+  "flashcardDeckSummary": "IMSAFE, CRM, see-and-avoid, and homefield-recovery discussion items for the second FAM6100 sim.",
+  "flashcards": []
+}

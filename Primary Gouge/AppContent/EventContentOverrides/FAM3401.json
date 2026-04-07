@@ -1,0 +1,119 @@
+{
+  "code": "FAM 3401",
+  "title": "AOA and Aerobatics",
+  "summary": "AOA approaches, unusual attitudes, and introductory aerobatic maneuvers.",
+  "overview": "This event introduces the more advanced maneuvering pieces of the contact syllabus. You will practice flying on-speed AOA in the pattern, recover from visual unusual attitudes, and discuss the setup, execution, and recovery considerations for aileron rolls, loops, and half Cuban eights while emphasizing airspeed, G-loading, and recovery margins.",
+  "primaryDocumentTitles": [
+    "FAM 3401 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The common thread is disciplined energy control. Whether you are flying an AOA pattern or an aerobatic figure, success depends on entering with the right setup and staying ahead of the attitude and airspeed picture.",
+    "sections": [
+      {
+        "title": "AOA Approach",
+        "items": [
+          {
+            "text": "The AOA approach teaches precise energy and attitude control using optimum AOA instead of raw airspeed as the primary approach reference."
+          },
+          {
+            "text": "Key cues include:",
+            "children": [
+              {
+                "text": "Transition to on-speed AOA on downwind after gear and flap configuration."
+              },
+              {
+                "text": "Maintain about 10.5 units AOA through the 180 and 90 positions."
+              },
+              {
+                "text": "Arrive near 450 feet AGL at the 90 and about 200 feet AGL on final."
+              }
+            ]
+          },
+          {
+            "text": "The intent is an AOA approach to a normal flared landing, not an AOA arrival flown all the way onto the runway."
+          }
+        ]
+      },
+      {
+        "title": "Contact Unusual Attitudes",
+        "items": [
+          {
+            "text": "Contact unusual attitudes are visual recoveries from nose-high, nose-low, or inverted attitudes and must be completed above 6000 feet AGL."
+          },
+          {
+            "text": "Core recovery concepts include:",
+            "children": [
+              {
+                "text": "Nose-high: use coordinated roll and positive G to recover, not forward stick."
+              },
+              {
+                "text": "Nose-low: roll to the nearest horizon, reduce power as required, and recover without overspeeding."
+              },
+              {
+                "text": "Inverted: roll the shortest way to the horizon and recover smoothly."
+              }
+            ]
+          },
+          {
+            "text": "If stalled or in OCF, unusual-attitude recovery is no longer the right answer. Transition to the appropriate departure recovery or eject if altitude is gone."
+          }
+        ]
+      },
+      {
+        "title": "Aerobatic Maneuvers",
+        "items": [
+          {
+            "text": "Aileron Roll emphasizes correct entry airspeed, a brief pitch-up, back-stick relaxation, and a clean roll about the longitudinal axis."
+          },
+          {
+            "text": "Loop emphasizes a constant-heading vertical maneuver using about 4 Gs on entry, coordinated rudder, and disciplined pull management over the top."
+          },
+          {
+            "text": "Half Cuban Eight combines loop mechanics with a 45-degree nose-low rolling segment and requires good pitch-rate control before the roll."
+          },
+          {
+            "text": "For all aerobatics, complete the proper checklist, clear the area, and respect entry altitude, airspeed, and G limits."
+          }
+        ]
+      },
+      {
+        "title": "Maneuvering Speeds and Limits",
+        "items": [
+          {
+            "text": "Operating maneuvering speed is 227 KIAS, and full or abrupt control inputs above that speed can damage the aircraft."
+          },
+          {
+            "text": "Full rudder above 150 KIAS exceeds rudder-system limits even below VO."
+          },
+          {
+            "text": "Other key limits in this event include VMO, turbulence penetration speeds, and 150 KIAS flap or gear extension limits."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "AOA Approach."
+          },
+          {
+            "text": "Contact Unusual Attitude Recovery."
+          },
+          {
+            "text": "Aileron Roll."
+          },
+          {
+            "text": "Loop."
+          },
+          {
+            "text": "Half Cuban Eight."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM3401 Discussion Item Flashcards",
+  "flashcardDeckSummary": "AOA, unusual-attitude, and introductory aerobatic discussion items for the FAM3400 sim.",
+  "flashcards": []
+}

@@ -1,0 +1,106 @@
+{
+  "code": "FAM 3301",
+  "title": "Crosswind and Ground Emergency Review",
+  "summary": "Crosswind operations, abort logic, runway departure emergencies, windshear, and UFCP failure procedures.",
+  "overview": "This event consolidates earlier pattern and emergency skills into a more complete ground-operations and crosswind review. You will practice crosswind takeoffs and landings, refine abort and maximum-braking decisions, review what to do when the aircraft departs the prepared surface, and discuss windshear and UFCP failures that can complicate landing or pattern recovery.",
+  "primaryDocumentTitles": [
+    "FAM 3301 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The emphasis is on pattern discipline under bad conditions: stay aligned, respect braking limits, and know when an abnormal runway or cockpit condition demands an immediate waveoff, shutdown, or egress.",
+    "sections": [
+      {
+        "title": "Crosswind Pattern Review",
+        "items": [
+          {
+            "text": "Crosswind takeoff and landing techniques are the same fundamentals from earlier events, but the expectation is now faster recognition and cleaner correction."
+          },
+          {
+            "text": "In the pattern, use crab on downwind and a wing-low final to stay aligned with the runway."
+          },
+          {
+            "text": "Wave off if more than 45 degrees of bank is required or if drift, crab, or side motion remain unresolved."
+          }
+        ]
+      },
+      {
+        "title": "Aborts, Braking, and Prepared-Surface Departure",
+        "items": [
+          {
+            "text": "An abort is mandatory for abnormal or unsafe conditions before max abort speed, but aircraft control remains the priority."
+          },
+          {
+            "text": "Maximum braking requires a smooth, increasing application as speed decreases, with immediate release if directional control is lost."
+          },
+          {
+            "text": "If the aircraft departs or is about to depart the prepared surface, execute Emergency Engine Shutdown on the Ground and Emergency Ground Egress as required."
+          },
+          {
+            "text": "Do not request the barrier. If a raised barrier or runway excursion removes recovery margin, preserving life takes priority over preserving the aircraft."
+          }
+        ]
+      },
+      {
+        "title": "Emergency Ground Egress Review",
+        "items": [
+          {
+            "text": "Emergency Ground Egress still hinges on ISS SOLO, seat pins installed, parking brake as required, and canopy open if possible."
+          },
+          {
+            "text": "If the canopy cannot be opened, both cockpit CFS actions and strap release steps must be executed correctly before evacuation."
+          },
+          {
+            "text": "Once clear of the aircraft, move away at a 45-degree angle off the tail and remain alert for emergency vehicles."
+          }
+        ]
+      },
+      {
+        "title": "Windshear and UFCP Failure",
+        "items": [
+          {
+            "text": "Windshear planning includes adding margin where authorized, using takeoff flaps, and avoiding severe windshear or microburst environments when possible."
+          },
+          {
+            "text": "If windshear is encountered on approach, execute an immediate go-around or waveoff."
+          },
+          {
+            "text": "A UFCP failure limits normal cockpit access to some comm and nav functions, but the MFD NAV page provides the backup path needed to continue and land as soon as practical."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Crosswind Takeoff."
+          },
+          {
+            "text": "Crosswind Landing."
+          },
+          {
+            "text": "Abort Takeoff."
+          },
+          {
+            "text": "Maximum Braking."
+          },
+          {
+            "text": "Aircraft Departs Prepared Surface."
+          },
+          {
+            "text": "Emergency Ground Egress."
+          },
+          {
+            "text": "Windshear Recovery."
+          },
+          {
+            "text": "UFCP Failure."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM3301 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Crosswind, abort, runway-emergency, and windshear discussion items for the FAM3300 sim.",
+  "flashcards": []
+}

@@ -1,0 +1,130 @@
+{
+  "code": "FAM 3201",
+  "title": "Impending Engine Failure and PEL",
+  "summary": "Recognizing engine trouble early and using the precautionary emergency landing profile before it becomes a forced landing.",
+  "overview": "This event teaches how to identify an engine that may be failing before total power loss occurs. You will practice spotting warning signs, deciding when a PEL is warranted, flying the emergency landing pattern early, and using DEGA and PEL(P) concepts to preserve enough energy and runway options before the situation becomes a forced landing or ejection scenario.",
+  "primaryDocumentTitles": [
+    "FAM 3201 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The event is about acting early. If engine reliability is in doubt, get the airplane pointed at a runway and fly the PEL profile before the problem takes that option away.",
+    "sections": [
+      {
+        "title": "Impending Engine Failure Indications",
+        "items": [
+          {
+            "text": "Engine failure may arrive with little warning, but several signs point to a degrading engine before total power loss."
+          },
+          {
+            "text": "Key indications include:",
+            "children": [
+              {
+                "text": "Excessive vibration, smoke, fumes, or unusual engine noise."
+              },
+              {
+                "text": "CHIP annunciation, oil-pressure problems, low fuel pressure, or high fuel flow."
+              },
+              {
+                "text": "Uncommanded power changes, loss of power, uncommanded propeller feather, or compressor stalls."
+              }
+            ]
+          },
+          {
+            "text": "If any condition makes engine reliability doubtful, plan for a PEL immediately instead of waiting for a confirmed failure."
+          }
+        ]
+      },
+      {
+        "title": "PEL Fundamentals",
+        "items": [
+          {
+            "text": "A PEL is used when engine failure is suspected or directed by checklist, but usable power still exists."
+          },
+          {
+            "text": "Key priorities are:",
+            "children": [
+              {
+                "text": "Turn toward the nearest suitable field."
+              },
+              {
+                "text": "Climb or accelerate to DEGA."
+              },
+              {
+                "text": "Keep the aircraft clean until configuration changes are actually needed."
+              },
+              {
+                "text": "Use available power early to stay on profile."
+              }
+            ]
+          },
+          {
+            "text": "Do not delay configuration changes to try to rescue a low-energy profile late. If power is available in a PEL, use it."
+          }
+        ]
+      },
+      {
+        "title": "PEL(P) and ELP Geometry",
+        "items": [
+          {
+            "text": "PEL(P) simulates the same problem from inside the landing pattern and trains you to intercept the ELP by or before Low Key."
+          },
+          {
+            "text": "The common flow is:",
+            "children": [
+              {
+                "text": "Turn, clean, check, and plan."
+              },
+              {
+                "text": "Use boost pump and ignition only when an airstart would be appropriate."
+              },
+              {
+                "text": "Reduce power on the ELP, lower gear when appropriate, and complete the pattern with minimum 120 KIAS discipline."
+              }
+            ]
+          },
+          {
+            "text": "High Key, Low Key, and DEGA calculations matter because they tell you whether a paved field remains reachable and whether you still have recovery options."
+          }
+        ]
+      },
+      {
+        "title": "Decision Making Priorities",
+        "items": [
+          {
+            "text": "This event rewards early judgment more than troubleshooting depth."
+          },
+          {
+            "text": "If the engine worsens during the PEL, transition immediately to Engine Failure During Flight and then Forced Landing or Eject as required."
+          },
+          {
+            "text": "Do not lower landing flaps until landing is assured. Preserve glide distance until the runway is actually made."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Impending Engine Failure Recognition."
+          },
+          {
+            "text": "Precautionary Emergency Landing."
+          },
+          {
+            "text": "PEL from the Pattern."
+          },
+          {
+            "text": "Emergency Landing Pattern."
+          },
+          {
+            "text": "DEGA Calculations."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM3201 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Impending-engine-failure cues, PEL setup, and emergency landing pattern discussion items for the first FAM3200 sim.",
+  "flashcards": []
+}

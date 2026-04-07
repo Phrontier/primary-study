@@ -1,0 +1,113 @@
+{
+  "code": "FAM 6101",
+  "title": "Local Course Rules and OLF Operations",
+  "summary": "Course rules, OLF arrivals and departures, and homefield recovery procedures across the local operating area.",
+  "overview": "This event introduces the local course rules that connect NAS Corpus Christi with the outlying fields used in contact training. You will practice how to enter and depart Goliad, Waldron, Aransas County, and Ingleside while managing radios, pattern entry calls, route geometry, and the transition back to homefield recovery points.",
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The goal is to move through the local system smoothly: know the routes, make the right calls at the right time, and arrive in the pattern with the correct altitude, spacing, and expectations.",
+    "sections": [
+      {
+        "title": "Goliad Operations",
+        "items": [
+          {
+            "text": "Goliad pattern entry begins with contacting the RDO or crash crew and executing a discontinued entry if no response is received by 2 NM."
+          },
+          {
+            "text": "Key Goliad procedures include:",
+            "children": [
+              {
+                "text": "Obtain ASOS and runway information before entry."
+              },
+              {
+                "text": "Enter from the 4 NM initial and intercept at no more than a 45-degree angle."
+              },
+              {
+                "text": "Make the initial, numbers, and crosswind break calls correctly."
+              },
+              {
+                "text": "Respect pattern saturation and PEL/P deconfliction rules."
+              }
+            ]
+          },
+          {
+            "text": "Goliad departures require being number one, climbing cleanly away from the pattern, then joining course rules back toward SHAMROCK."
+          }
+        ]
+      },
+      {
+        "title": "Waldron Operations",
+        "items": [
+          {
+            "text": "Waldron arrivals can come from South MUSTANG or the OSO Transition and require termination with Corpus Approach before tower entry."
+          },
+          {
+            "text": "Know the main arrival geometry for both runway groups:",
+            "children": [
+              {
+                "text": "Runways 13 and 18 use the cooling ponds, Oso River, and Yorktown Bridge references."
+              },
+              {
+                "text": "Runways 31 and 36 use Shrimp Ponds and power-plant avoidance geometry."
+              }
+            ]
+          },
+          {
+            "text": "Departure procedures differ by runway and include altitude restrictions, power-plant avoidance, and transition routing back toward NAS Corpus Christi."
+          }
+        ]
+      },
+      {
+        "title": "Aransas County and Ingleside",
+        "items": [
+          {
+            "text": "Aransas County operations emphasize CTAF self-announcing, 2 NM initial geometry, and careful deconfliction with civilian pattern traffic."
+          },
+          {
+            "text": "Practice PEL entries at Aransas County require right-of-way awareness, common-frequency reporting, and coordination if climbing above normal limits."
+          },
+          {
+            "text": "Ingleside entries may be flown from multiple directions, but all depend on early coordination with Corpus Approach and awareness of nearby VFR and IFR traffic."
+          }
+        ]
+      },
+      {
+        "title": "Homefield Arrival Priorities",
+        "items": [
+          {
+            "text": "Homefield arrivals generally remain at 240 KIAS until SHAMROCK unless directed otherwise."
+          },
+          {
+            "text": "Know the route and altitude expectations for Northern Arrival and the common SHAMROCK recovery setup."
+          },
+          {
+            "text": "If weather, gear, or flap issues prevent standard arrival compliance, tell Approach early and request a direct recovery instead of forcing the profile."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Goliad Arrival and Departure."
+          },
+          {
+            "text": "Waldron Arrival and Departure."
+          },
+          {
+            "text": "Aransas County Arrival and Departure."
+          },
+          {
+            "text": "Ingleside Entry and Departure."
+          },
+          {
+            "text": "Homefield Recovery from SHAMROCK."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM6101 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Local course-rules, OLF pattern, and homefield-recovery discussion items for the first FAM6100 sim.",
+  "flashcards": []
+}

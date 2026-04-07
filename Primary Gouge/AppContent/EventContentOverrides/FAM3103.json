@@ -1,0 +1,153 @@
+{
+  "code": "FAM 3103",
+  "title": "Crosswind Operations",
+  "summary": "Crosswind takeoffs, landings, aborts, braking, and selected ground or weather contingencies.",
+  "overview": "This event focuses on staying in control when wind, runway conditions, or system problems complicate normal pattern work. You will practice crosswind takeoffs and landings while learning abort criteria, maximum braking techniques, prepared-surface departure actions, emergency ground egress considerations, and how to respond to windshear or a UFCP failure.",
+  "primaryDocumentTitles": [
+    "FAM 3103 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "Most of the event comes back to one idea: keep the airplane aligned and under control first, then deal with the abnormal condition without overcontrolling or outrunning the runway.",
+    "sections": [
+      {
+        "title": "Crosswind Takeoff and Landing",
+        "items": [
+          {
+            "text": "Crosswind takeoffs require aileron into the wind, rudder for directional control, and a firm rotation that prevents skipping on the upwind wing."
+          },
+          {
+            "text": "Crosswind pattern work requires:",
+            "children": [
+              {
+                "text": "Crab corrections on downwind."
+              },
+              {
+                "text": "Bank and power adjustments in the approach turn."
+              },
+              {
+                "text": "A wing-low final with rudder aligning the nose to the runway."
+              }
+            ]
+          },
+          {
+            "text": "Touch down on the upwind main gear first, keep crosswind controls in through rollout, and wave off if side motion or crab remains."
+          }
+        ]
+      },
+      {
+        "title": "Abort Takeoff and Maximum Braking",
+        "items": [
+          {
+            "text": "An abort is used for abnormal or unsafe conditions before maximum abort speed."
+          },
+          {
+            "text": "Immediate actions are:",
+            "children": [
+              {
+                "text": "PCL to IDLE."
+              },
+              {
+                "text": "Brakes as required."
+              },
+              {
+                "text": "Maintain directional control and call the abort over ICS."
+              }
+            ]
+          },
+          {
+            "text": "Maximum braking is a smooth, single application that increases as airspeed decreases. Early or aggressive braking at high speed can lock the brakes, blow a tire, or cause loss of directional control."
+          },
+          {
+            "text": "Hot brakes are a real hazard after max-effort braking. Do not taxi into congested areas or set the parking brake until they cool."
+          }
+        ]
+      },
+      {
+        "title": "Aircraft Departs Prepared Surface and Emergency Ground Egress",
+        "items": [
+          {
+            "text": "If the aircraft is no longer on, or is about to depart, the prepared surface, execute Emergency Engine Shutdown on the Ground."
+          },
+          {
+            "text": "That means:",
+            "children": [
+              {
+                "text": "PCL OFF."
+              },
+              {
+                "text": "Firewall Shutoff Handle PULL."
+              },
+              {
+                "text": "Emergency Ground Egress as required."
+              }
+            ]
+          },
+          {
+            "text": "Emergency Ground Egress still requires ISS SOLO, both seat pins installed, canopy open if possible, and CFS use if the canopy cannot be opened."
+          },
+          {
+            "text": "Do not try to salvage the runway once the aircraft has departed it. Stop the airplane and get the engine shut down."
+          }
+        ]
+      },
+      {
+        "title": "Windshear and UFCP Failure",
+        "items": [
+          {
+            "text": "Windshear recovery starts with detection and avoidance. If severe windshear is reported or encountered on approach, wave off immediately."
+          },
+          {
+            "text": "Takeoff and approach adjustments include:",
+            "children": [
+              {
+                "text": "Using takeoff flaps."
+              },
+              {
+                "text": "Adding up to 10 knots where appropriate."
+              },
+              {
+                "text": "Flying pitch attitudes instead of chasing every airspeed change."
+              }
+            ]
+          },
+          {
+            "text": "A UFCP failure does not eliminate essential comm or nav functions, but it does force you to use the MFD NAV page shortcuts and land as soon as practical."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Crosswind Takeoff."
+          },
+          {
+            "text": "Crosswind Landing."
+          },
+          {
+            "text": "Abort Takeoff."
+          },
+          {
+            "text": "Maximum Braking."
+          },
+          {
+            "text": "Aircraft Departs Prepared Surface."
+          },
+          {
+            "text": "Emergency Ground Egress."
+          },
+          {
+            "text": "Windshear Recovery."
+          },
+          {
+            "text": "UFCP Failure."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM3103 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Crosswind, abort, braking, and runway-emergency discussion items for the third FAM3100 sim.",
+  "flashcards": []
+}

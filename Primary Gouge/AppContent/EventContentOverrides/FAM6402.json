@@ -1,0 +1,129 @@
+{
+  "code": "FAM 6402",
+  "title": "Emergency Procedures Review",
+  "summary": "Comprehensive review of critical action memory items and the major emergency procedures used throughout the FAM syllabus.",
+  "overview": "This event is a comprehensive emergency-procedure review that ties the major FAM memory items together into one decision framework. You will review start, ground, engine, system, forced-landing, PEL, and ejection procedures so that critical actions can be recalled quickly and applied in the correct sequence when time, altitude, or aircraft condition leave no margin for hesitation.",
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "This event is less about learning a new procedure and more about proving that the emergency logic from the earlier sims is still there when the aircraft, altitude, or time available are working against you.",
+    "sections": [
+      {
+        "title": "Start and Ground Emergencies",
+        "items": [
+          {
+            "text": "Review the memory items for Abort Start Procedure, Emergency Engine Shutdown on the Ground, Emergency Ground Egress, and Abort."
+          },
+          {
+            "text": "These procedures all start with stopping the unsafe event quickly, then protecting the crew before the situation escalates."
+          }
+        ]
+      },
+      {
+        "title": "Engine Failure and Airstarts",
+        "items": [
+          {
+            "text": "Review Engine Failure Immediately After Takeoff, Engine Failure During Flight, Immediate Airstart, Uncommanded Power Changes, and Compressor Stalls."
+          },
+          {
+            "text": "Across all of them, the same priorities apply:",
+            "children": [
+              {
+                "text": "Preserve airspeed and altitude."
+              },
+              {
+                "text": "Choose restart attempts only when warranted."
+              },
+              {
+                "text": "Transition early to forced landing or ejection if the aircraft cannot be recovered safely."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "System Emergencies",
+        "items": [
+          {
+            "text": "Review Inadvertent Departure from Controlled Flight, Smoke and Fume Elimination, Chip Detector Warning, Oil System Malfunction or Low Oil Pressure, Low Fuel Pressure, High Fuel Flow, and OBOGS failure or physiological symptoms."
+          },
+          {
+            "text": "These procedures are largely about recognizing when continued maneuvering or troubleshooting will make the situation worse, then preserving enough aircraft to land or eject safely."
+          }
+        ]
+      },
+      {
+        "title": "Forced Landing, PEL, and Ejection",
+        "items": [
+          {
+            "text": "Forced Landing, PEL, and Eject are the terminal procedures that everything else eventually feeds into when the malfunction is not recoverable."
+          },
+          {
+            "text": "Know the key airspeed gates, when gear and flaps can be extended, and the point where ejection becomes the safer choice than stretching a bad landing setup."
+          },
+          {
+            "text": "The review standard is being able to move from the triggering malfunction to the right terminal procedure without delay."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Abort Start Procedure."
+          },
+          {
+            "text": "Emergency Engine Shutdown on the Ground."
+          },
+          {
+            "text": "Emergency Ground Egress."
+          },
+          {
+            "text": "Abort."
+          },
+          {
+            "text": "Engine Failure Immediately After Takeoff."
+          },
+          {
+            "text": "Engine Failure During Flight."
+          },
+          {
+            "text": "Immediate Airstart."
+          },
+          {
+            "text": "Uncommanded Power Changes / Loss of Power / Uncommanded Propeller Feather."
+          },
+          {
+            "text": "Compressor Stalls."
+          },
+          {
+            "text": "Chip Detector Warning."
+          },
+          {
+            "text": "Oil System Malfunction / Low Oil Pressure."
+          },
+          {
+            "text": "Low Fuel Pressure."
+          },
+          {
+            "text": "High Fuel Flow."
+          },
+          {
+            "text": "OBOGS Failure / Overtemp / Physiological Symptoms."
+          },
+          {
+            "text": "Forced Landing."
+          },
+          {
+            "text": "Precautionary Emergency Landing."
+          },
+          {
+            "text": "Eject."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM6402 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Comprehensive emergency-memory-item discussion items for the final FAM6400 sim.",
+  "flashcards": []
+}

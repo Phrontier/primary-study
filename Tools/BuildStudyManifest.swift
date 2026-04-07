@@ -410,11 +410,13 @@ struct ManifestBuilder {
         let overrides = files
             .filter { $0.pathExtension.lowercased() == "json" }
             .compactMap { fileURL -> EventOverride? in
-                guard let data = try? Data(contentsOf: fileURL),
-                      let override = try? decoder.decode(EventOverride.self, from: data) else {
+                do {
+                    let data = try Data(contentsOf: fileURL)
+                    return try decoder.decode(EventOverride.self, from: data)
+                } catch {
+                    fputs("Warning: Failed to decode event override \(fileURL.lastPathComponent): \(error)\n", stderr)
                     return nil
                 }
-                return override
             }
 
         return Dictionary(uniqueKeysWithValues: overrides.map { ($0.code.replacingOccurrences(of: " ", with: ""), $0) })

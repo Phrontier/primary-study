@@ -479,9 +479,17 @@ private struct MoreRowBadge: View {
     let style: MoreRowBadgeStyle
 
     var body: some View {
-        Text(style.title)
+        Group {
+            if let iconName = style.iconName {
+                Label(style.title, systemImage: iconName)
+            } else {
+                Text(style.title)
+            }
+        }
             .font(.caption2.weight(.semibold))
             .foregroundStyle(style.color)
+            .lineLimit(1)
+            .fixedSize(horizontal: true, vertical: false)
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(
@@ -1017,10 +1025,19 @@ private enum MoreRowBadgeStyle {
         }
     }
 
+    var iconName: String? {
+        switch self {
+        case .planned:
+            return "sparkles"
+        case .premium, .beta, .new:
+            return nil
+        }
+    }
+
     var color: Color {
         switch self {
         case .planned:
-            return AppTheme.textMuted
+            return AppTheme.accent
         case .premium:
             return AppTheme.warning
         case .beta:

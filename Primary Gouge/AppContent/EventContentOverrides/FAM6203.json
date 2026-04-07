@@ -1,0 +1,37 @@
+{
+  "code": "FAM 6203",
+  "title": "Block Maneuver Review",
+  "summary": "A consolidated review of any maneuver performed in the FAM6200 block.",
+  "overview": "This event serves as a review and integration sim for the FAM6200 block. You are expected to draw from the earlier maneuver guides in the block, brief confidently, and execute the assigned profile with the same configuration discipline, clearing habits, and energy awareness built in the previous events.",
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The source material for this event is intentionally broad. The standard is being able to pull together the right prior-block procedures without waiting for the sim to tell you what to do next.",
+    "sections": [
+      {
+        "title": "Block Review Focus",
+        "items": [
+          {
+            "text": "Any maneuver performed in the FAM6200 block may be part of this event."
+          },
+          {
+            "text": "Use the previous sim guides in the block as the source of truth for setup, execution, common errors, and recovery considerations."
+          },
+          {
+            "text": "Expect the review to emphasize briefing quality, consistency, and the ability to transition smoothly between maneuver sets."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Any maneuver assigned from the FAM6200 block."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM6203 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Block-review discussion items for the final FAM6200 sim.",
+  "flashcards": []
+}

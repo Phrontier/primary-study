@@ -1,0 +1,142 @@
+{
+  "code": "FAM 3102",
+  "title": "Landing Pattern and Trim Awareness",
+  "summary": "Normal takeoff review, local departures, trim malfunctions, and landing pattern fundamentals.",
+  "overview": "This event builds on the first contact sim by adding trim-malfunction awareness and a full landing-pattern framework. You will continue practicing takeoff and departure procedures while learning how to recognize inadvertent trim inputs, manage pattern geometry, and fly no-flap, takeoff-flap, and landing-flap patterns with the right power and airspeed picture.",
+  "primaryDocumentTitles": [
+    "FAM 3102 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The big themes are recognizing bad trim early, keeping the pattern standardized, and making configuration changes at the right time instead of chasing the airplane late.",
+    "sections": [
+      {
+        "title": "Normal Takeoff and Departure Review",
+        "items": [
+          {
+            "text": "Normal takeoff expectations remain the same as FAM3101: disciplined lineup flow, correct rotation at 90 KIAS, and timely gear and flap retraction."
+          },
+          {
+            "text": "Area departure procedures still require early compliance with runway-specific routing, local altitude restrictions, and correct radio changes."
+          },
+          {
+            "text": "This event assumes you can carry the takeoff and departure workflow forward while adding pattern work on top of it."
+          }
+        ]
+      },
+      {
+        "title": "Inadvertent Trim Actuation",
+        "items": [
+          {
+            "text": "Inadvertent trim inputs are common because the HOTAS layout keeps your hands on the stick and PCL throughout dynamic phases of flight."
+          },
+          {
+            "text": "Possible effects include:",
+            "children": [
+              {
+                "text": "Unexpected nose-down trim during pull-up or rotation."
+              },
+              {
+                "text": "Unexpected nose-up trim during descent or pattern work."
+              },
+              {
+                "text": "Rudder-trim imbalance that increases drag and workload."
+              }
+            ]
+          },
+          {
+            "text": "Recovery priorities are:",
+            "children": [
+              {
+                "text": "Hold the trim interrupt button."
+              },
+              {
+                "text": "Adjust airspeed to reduce control forces."
+              },
+              {
+                "text": "Execute the Runaway Trim checklist if abnormal forces persist."
+              }
+            ]
+          },
+          {
+            "text": "The goal is to stop the bad trim before it creates an unsafe pitch picture or destabilizes the pattern."
+          }
+        ]
+      },
+      {
+        "title": "Landing Pattern Fundamentals",
+        "items": [
+          {
+            "text": "The landing pattern is a systematic sequence built around break, downwind, abeam, 180, 90, final, and landing."
+          },
+          {
+            "text": "Key geometry and flow points include:",
+            "children": [
+              {
+                "text": "Enter the overhead at 1000 feet MSL and 200 KIAS, offset to the pattern side."
+              },
+              {
+                "text": "Get below 150 KIAS before lowering gear."
+              },
+              {
+                "text": "Stabilize downwind at pattern altitude, 3/4 to 1 wingtip distance, and the correct configuration airspeed."
+              },
+              {
+                "text": "Transition no sooner than abeam the intended point of landing."
+              }
+            ]
+          },
+          {
+            "text": "Pattern success depends on managing power, pitch, roll, and timely calls instead of making large corrections late."
+          }
+        ]
+      },
+      {
+        "title": "Pattern Configurations",
+        "items": [
+          {
+            "text": "Takeoff-flap, landing-flap, and no-flap patterns all use the same geometry, but their power settings and airspeeds differ."
+          },
+          {
+            "text": "No-flap patterns require the most planning because the transition is delayed and the aircraft carries more energy."
+          },
+          {
+            "text": "Landing-flap patterns provide the most drag and lowest final approach speed, while takeoff-flap patterns sit between landing-flap and no-flap handling."
+          },
+          {
+            "text": "The key is to make deliberate configuration changes and trim early rather than trying to salvage the pattern with large bank or power corrections."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Normal Takeoff."
+          },
+          {
+            "text": "Local Area Departure."
+          },
+          {
+            "text": "Inadvertent Trim Actuation."
+          },
+          {
+            "text": "Landing Pattern."
+          },
+          {
+            "text": "Takeoff-Flap Landing."
+          },
+          {
+            "text": "Landing-Flap Landing."
+          },
+          {
+            "text": "No-Flap Landing."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM3102 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Landing pattern, configuration management, and trim-awareness discussion items for the second FAM3100 sim.",
+  "flashcards": []
+}

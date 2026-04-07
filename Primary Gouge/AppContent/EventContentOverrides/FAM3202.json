@@ -1,0 +1,147 @@
+{
+  "code": "FAM 3202",
+  "title": "Engine Failure, Forced Landing, and Ejection",
+  "summary": "Engine failure indications, airstarts, forced landings, and the decision to eject.",
+  "overview": "This event shifts from impending engine problems to actual engine failure and the decisions that follow. You will practice identifying a failed engine, zooming or gliding to preserve options, selecting the right airstart method, flying a forced landing profile, and deciding when ejection is safer than continuing a bad recovery.",
+  "primaryDocumentTitles": [
+    "FAM 3202 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion items",
+    "summary": "The decision chain is simple but unforgiving: recognize the failure, preserve energy, choose between restart, landing, or ejection, and do not waste the altitude you need for the next step.",
+    "sections": [
+      {
+        "title": "Engine Failure Recognition",
+        "items": [
+          {
+            "text": "Primary indications are loss of power and airspeed with rapid decay in N1, torque, and ITT."
+          },
+          {
+            "text": "Secondary indications often include:",
+            "children": [
+              {
+                "text": "Propeller movement toward feather."
+              },
+              {
+                "text": "GEN, FUEL PX, OIL PX, and OBOGS FAIL warnings."
+              },
+              {
+                "text": "Hydraulic degradation and frozen gear or flap position."
+              }
+            ]
+          },
+          {
+            "text": "At low altitude, converting excess airspeed into altitude buys time for an airstart, landing setup, or ejection decision."
+          }
+        ]
+      },
+      {
+        "title": "Engine Failure During Flight and Airstarts",
+        "items": [
+          {
+            "text": "The initial engine-failure flow is zoom or glide, PCL OFF, intercept the ELP, and attempt an airstart only if warranted."
+          },
+          {
+            "text": "Immediate Airstart is used when thrust is urgently needed and time does not permit the full restart setup."
+          },
+          {
+            "text": "Critical airstart points include:",
+            "children": [
+              {
+                "text": "PCL must be OFF first so the prop feathers and the restart is configured correctly."
+              },
+              {
+                "text": "If N1 does not rise within 5 seconds, stop the attempt."
+              },
+              {
+                "text": "If ITT does not rise within 10 seconds after fuel flow, abort the start."
+              },
+              {
+                "text": "Do not advance the PCL above IDLE before N1 stabilizes around 67 percent."
+              }
+            ]
+          },
+          {
+            "text": "Airstarts below 2000 feet AGL are usually a trap. Below that altitude, primary attention belongs on landing or ejecting."
+          }
+        ]
+      },
+      {
+        "title": "Forced Landing",
+        "items": [
+          {
+            "text": "Forced landing is used when the engine is inoperative or power is insufficient for continued flight."
+          },
+          {
+            "text": "The forced landing profile differs from a PEL because low energy is corrected by delaying drag, not by using power that no longer exists."
+          },
+          {
+            "text": "Key forced-landing considerations include:",
+            "children": [
+              {
+                "text": "125 KIAS before gear extension."
+              },
+              {
+                "text": "Minimum 120 KIAS until intercepting final and 110 KIAS on final."
+              },
+              {
+                "text": "Use emergency landing gear extension as required."
+              },
+              {
+                "text": "Transmit a distress call and configure the aircraft only as conditions permit."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Ejection Decision Criteria",
+        "items": [
+          {
+            "text": "Ejection is a life-saving action, not a failure, and it must be chosen before altitude and airspeed margins are gone."
+          },
+          {
+            "text": "The three ejection categories are immediate, time-critical, and controlled ejection."
+          },
+          {
+            "text": "Important thresholds include:",
+            "children": [
+              {
+                "text": "Controlled ejection recommended above 2000 feet AGL."
+              },
+              {
+                "text": "Uncontrolled ejection recommended above 6000 feet AGL."
+              },
+              {
+                "text": "If the aircraft is no longer controllable, eject regardless of speed, altitude, or attitude."
+              }
+            ]
+          },
+          {
+            "text": "The number one ejection failure is failure to pull the handle. Make the decision early."
+          }
+        ]
+      },
+      {
+        "title": "Required Procedures",
+        "items": [
+          {
+            "text": "Engine Failure During Flight."
+          },
+          {
+            "text": "Immediate Airstart."
+          },
+          {
+            "text": "Forced Landing."
+          },
+          {
+            "text": "Ejection Decision Criteria."
+          }
+        ]
+      }
+    ]
+  },
+  "flashcardDeckTitle": "FAM3202 Discussion Item Flashcards",
+  "flashcardDeckSummary": "Engine-failure, restart, forced-landing, and ejection discussion items for the second FAM3200 sim.",
+  "flashcards": []
+}

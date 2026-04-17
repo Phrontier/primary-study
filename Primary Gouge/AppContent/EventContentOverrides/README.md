@@ -2,6 +2,8 @@
 
 Use one JSON file per event to hand-author event content without editing generated files.
 
+Flashcards are no longer authored in these event override files. They now live in `Primary Gouge/AppContent/FlashcardsByEvent.json`.
+
 ## Workflow
 
 1. Create or update `Primary Gouge/AppContent/EventContentOverrides/<EVENTCODE>.json`
@@ -10,7 +12,6 @@ Use one JSON file per event to hand-author event content without editing generat
    - `summary`
    - `overview`
    - `studyNotes`
-   - `flashcards`
 3. Regenerate the manifest:
 
 ```bash
@@ -61,17 +62,7 @@ swift Tools/BuildStudyManifest.swift
     ]
   },
   "flashcardDeckTitle": "FAM2101 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Optional custom deck summary for this event.",
-  "flashcards": [
-    {
-      "prompt": "What is the point of the blind cockpit check in FAM2101?",
-      "answer": "It builds location memory and switch confidence so procedures are not just verbal.",
-      "studyCategories": ["sims"],
-      "tags": ["checklists"],
-      "kind": "standard",
-      "requiresVerbatim": false
-    }
-  ]
+  "flashcardDeckSummary": "Optional custom deck summary for this event."
 }
 ```
 
@@ -80,6 +71,4 @@ swift Tools/BuildStudyManifest.swift
 - `StudyManifest.json` is generated. Do not hand-edit it.
 - `EventOverrides.json` still exists for legacy compatibility, but new event authoring should go in this folder.
 - Legacy `focusAreas` notes are still supported while older events are being migrated.
-- Inline `flashcards` in an event file are merged into the main flashcard library automatically during manifest generation.
-- If `eventCodes` is omitted on an inline flashcard, it defaults to the parent event code.
-- If `id` is omitted on an inline flashcard, the builder generates one for you.
+- Flashcard authoring now lives in `FlashcardsByEvent.json`, where cards are grouped by event code and can optionally reference images from `Contents/FlashcardImages/`.

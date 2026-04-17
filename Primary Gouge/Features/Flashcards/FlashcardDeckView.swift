@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct FlashcardDeckView: View {
     let deck: FlashcardDeck
@@ -196,6 +197,10 @@ struct FlashcardDetailView: View {
                     Text("Answer")
                         .font(.headline.weight(.semibold))
                         .foregroundStyle(AppTheme.textPrimary)
+
+                    if let imageRelativePath = item.card.imageRelativePath {
+                        FlashcardAssetImage(relativePath: imageRelativePath)
+                    }
 
                     Text(item.card.answer)
                         .font(.body)
@@ -534,6 +539,10 @@ private struct FlashcardStudyCard: View {
 
                     Spacer(minLength: 0)
 
+                    if showingAnswer, let imageRelativePath = card.imageRelativePath {
+                        FlashcardAssetImage(relativePath: imageRelativePath)
+                    }
+
                     Text(showingAnswer ? card.answer : card.prompt)
                         .font(showingAnswer ? .body : .system(size: 32, weight: .bold, design: .rounded))
                         .foregroundStyle(showingAnswer ? AppTheme.textSecondary : AppTheme.textPrimary)
@@ -581,6 +590,29 @@ private struct FlashcardStudyCard: View {
         .padding(.horizontal, 4)
         .padding(.vertical, 8)
         .animation(.easeInOut(duration: 0.18), value: showingAnswer)
+    }
+}
+
+private struct FlashcardAssetImage: View {
+    let relativePath: String
+
+    private let repository = ContentRepository()
+
+    var body: some View {
+        Group {
+            if let url = repository.fileURL(for: relativePath),
+               let image = UIImage(contentsOfFile: url.path) {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .stroke(AppTheme.cardStroke.opacity(0.8), lineWidth: 1)
+                    )
+            }
+        }
     }
 }
 

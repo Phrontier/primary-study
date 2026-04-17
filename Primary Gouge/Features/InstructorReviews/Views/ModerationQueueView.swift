@@ -13,7 +13,10 @@ struct ModerationQueueView: View {
                 title: "Review queue",
                 subtitle: "Pending reviews stay out of the public list until they are approved."
             ) {
-                MetricChip(label: "Pending", value: "\(viewModel.pendingReviews.count)", color: AppTheme.warning)
+                HStack(spacing: 12) {
+                    MetricChip(label: "Pending", value: "\(viewModel.pendingReviews.count)", color: AppTheme.warning)
+                    MetricChip(label: "Reports", value: "\(viewModel.openReports.count)", color: AppTheme.danger)
+                }
             }
 
             if let message = viewModel.errorMessage {
@@ -23,16 +26,42 @@ struct ModerationQueueView: View {
                     .padding(.horizontal, 6)
             }
 
-            if viewModel.pendingReviews.isEmpty {
+            if viewModel.pendingReviews.isEmpty && viewModel.openReports.isEmpty {
                 EmptyStateCard(
                     icon: "checkmark.seal.fill",
                     title: "Queue is clear",
-                    message: "There are no pending instructor reviews waiting on moderation right now."
+                    message: "There are no pending reviews or gouge reports waiting on moderation right now."
                 )
             } else {
-                LazyVStack(spacing: 14) {
-                    ForEach(viewModel.pendingReviews) { review in
-                        pendingReviewCard(review)
+                VStack(alignment: .leading, spacing: 20) {
+                    if !viewModel.pendingReviews.isEmpty {
+                        VStack(alignment: .leading, spacing: 14) {
+                            SectionHeader(
+                                eyebrow: "Moderation",
+                                title: "Pending Reviews",
+                                subtitle: nil,
+                                accent: AppTheme.warning
+                            )
+
+                            ForEach(viewModel.pendingReviews) { review in
+                                pendingReviewCard(review)
+                            }
+                        }
+                    }
+
+                    if !viewModel.openReports.isEmpty {
+                        VStack(alignment: .leading, spacing: 14) {
+                            SectionHeader(
+                                eyebrow: "Moderation",
+                                title: "Reported Gouge",
+                                subtitle: nil,
+                                accent: AppTheme.danger
+                            )
+
+                            ForEach(viewModel.openReports) { report in
+                                reportCard(report)
+                            }
+                        }
                     }
                 }
             }
@@ -126,6 +155,114 @@ struct ModerationQueueView: View {
                     .disabled(viewModel.processingIDs.contains(review.id))
                 }
             }
+        }
+    }
+
+    private func reportCard(_ report: InstructorGougeReport) -> some View {
+        SectionContainer {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(report.instructorName)
+                            .font(.headline.weight(.semibold))
+                            .foregroundStyle(AppTheme.textPrimary)
+
+                        HStack(spacing: 8) {
+                            Text(report.squadron.displayName)
+                                .font(.subheadline)
+                                .foregroundStyle(AppTheme.textSecondary)
+
+                            Text(report.targetKind.displayName.uppercased())
+                                .font(.caption2.weight(.bold))
+                                .foregroundStyle(AppTheme.prominentText(AppTheme.danger))
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 5)
+                                .background(
+                                    Capsule()
+                                        .fill(AppTheme.badgeFill(AppTheme.danger))
+                                        .overlay(
+                                            Capsule()
+                                                .stroke(AppTheme.badgeStroke(AppTheme.danger), lineWidth: 1)
+                                        )
+                                )
+                        }
+                    }
+
+                    Spacer(minLength: 12)
+
+                    Text(report.submittedAt.formatted(date: .abbreviated, time: .shortened))
+                        .font(.caption)
+                        .foregroundStyle(AppTheme.textSecondary)
+                }
+
+                if let eventName = report.eventName, let eventKind = report.eventKind {
+                    HStack(spacing: 8) {
+                        Text(eventKind.displayName.uppercased())
+                            .font(.system(.caption2, design: .rounded, weight: .bold))
+                            .foregroundStyle(AppTheme.prominentText(eventKind.domainColor))
+                            .padding(.horizontal, 9)
+                            .padding(.vertical, 6)
+                            .background(
+                                Capsule()
+                                    .fill(AppTheme.badgeFill(eventKind.domainColor))
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(AppTheme.badgeStroke(eventKind.domainColor), lineWidth: 1)
+                                    )
+                            )
+
+                        Text(eventName)
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(AppTheme.textSecondary)
+                    }
+                }
+
+                VStack(alignment: .leading, spacing: 8) {
+                    reportRow(title: "Reason", value: report.reasonTitle)
+
+                    if let note = report.note, !note.isEmpty {
+                        reportRow(title: "Note", value: note)
+                    }
+
+                    if let reviewText = report.reviewText, !reviewText.isEmpty {
+                        reportRow(title: "Reported Review", value: reviewText)
+                    }
+                }
+
+                HStack(spacing: 12) {
+                    Button {
+                        viewModel.dismissReport(reportID: report.id, using: reviewStore)
+                    } label: {
+                        StudyActionButton(title: "Dismiss Report", icon: "checkmark", tint: AppTheme.warning, isProminent: false)
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(viewModel.processingIDs.contains(report.id))
+
+                    if let reviewID = report.reviewID {
+                        Button {
+                            viewModel.reject(reviewID: reviewID, using: reviewStore)
+                        } label: {
+                            StudyActionButton(title: "Reject Review", icon: "xmark", tint: AppTheme.danger, isProminent: false)
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(viewModel.processingIDs.contains(reviewID))
+                    }
+                }
+            }
+        }
+    }
+
+    private func reportRow(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title.uppercased())
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(AppTheme.textMuted)
+                .tracking(0.6)
+
+            Text(value)
+                .font(.body)
+                .foregroundStyle(AppTheme.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

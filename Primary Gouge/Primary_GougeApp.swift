@@ -12,6 +12,7 @@ struct Primary_GougeApp: App {
     @StateObject private var appModel = StudyAppModel()
     @StateObject private var quizStore = QuizStore()
     @StateObject private var reviewStore = InstructorReviewStore()
+    @StateObject private var notificationService = NotificationService()
     @State private var didBootstrap = false
 
     init() {
@@ -24,20 +25,22 @@ struct Primary_GougeApp: App {
                 .environmentObject(appModel)
                 .environmentObject(quizStore)
                 .environmentObject(reviewStore)
+                .environmentObject(notificationService)
                 .preferredColorScheme(AppTheme.preferredColorScheme)
                 .task {
-                    bootstrapIfNeeded()
+                    await bootstrapIfNeeded()
                 }
         }
     }
 
     @MainActor
-    private func bootstrapIfNeeded() {
+    private func bootstrapIfNeeded() async {
         guard !didBootstrap else { return }
         didBootstrap = true
 
         reviewStore.configure()
         quizStore.configure()
         appModel.configure(quizStore: quizStore)
+        await notificationService.syncDailyStudyReminder(with: appModel.homePreferences)
     }
 }

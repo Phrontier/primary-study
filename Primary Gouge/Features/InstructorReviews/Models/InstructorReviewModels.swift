@@ -62,6 +62,15 @@ enum InstructorSubmissionMode: String, CaseIterable, Hashable, Identifiable {
         }
     }
 
+    var defaultEventKind: InstructorReviewEventKind {
+        switch self {
+        case .sims:
+            return .sim
+        case .flights, .both:
+            return .flight
+        }
+    }
+
     func includes(_ squadron: Squadron) -> Bool {
         switch self {
         case .both:
@@ -197,6 +206,45 @@ enum ReviewStatus: String, Codable, CaseIterable, Hashable {
     }
 }
 
+enum InstructorGougeReportTargetKind: String, Codable, CaseIterable, Hashable {
+    case instructor
+    case review
+
+    var displayName: String {
+        switch self {
+        case .instructor:
+            return "Instructor Info"
+        case .review:
+            return "Review"
+        }
+    }
+}
+
+enum InstructorInfoReportReason: String, CaseIterable, Codable, Hashable, Identifiable {
+    case incorrectName
+    case incorrectSquadron
+    case duplicateInstructor
+    case mixedInstructorInfo
+    case other
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .incorrectName:
+            return "Incorrect Name"
+        case .incorrectSquadron:
+            return "Incorrect Squadron"
+        case .duplicateInstructor:
+            return "Duplicate Instructor"
+        case .mixedInstructorInfo:
+            return "Mixed Instructor Info"
+        case .other:
+            return "Other"
+        }
+    }
+}
+
 struct Squadron: Identifiable, Hashable, Codable {
     let id: String
     let displayName: String
@@ -219,6 +267,32 @@ struct Squadron: Identifiable, Hashable, Codable {
             return .flights
         case nil:
             return nil
+        }
+    }
+
+    private var numericPortion: Int {
+        Int(id.split(separator: "-").last ?? "") ?? .max
+    }
+
+    var submissionSortRank: (Int, Int, String) {
+        let laneRank: Int
+        switch reviewEventKind {
+        case .flight:
+            laneRank = 0
+        case .sim:
+            laneRank = 1
+        case nil:
+            laneRank = 2
+        }
+
+        return (laneRank, numericPortion, displayName)
+    }
+}
+
+extension Sequence where Element == Squadron {
+    func submissionSorted() -> [Squadron] {
+        sorted { lhs, rhs in
+            lhs.submissionSortRank < rhs.submissionSortRank
         }
     }
 }
@@ -294,6 +368,81 @@ struct InstructorReviewSubmission: Hashable {
     let chillScore: Int
     let gradingScore: Int
     let reviewText: String
+}
+
+struct InstructorGougeReportSubmission: Hashable {
+    let targetKind: InstructorGougeReportTargetKind
+    let instructorID: String
+    let reviewID: String?
+    let instructorName: String
+    let squadron: Squadron
+    let eventName: String?
+    let eventKind: InstructorReviewEventKind?
+    let reviewText: String?
+    let reasonTitle: String
+    let note: String?
+}
+
+struct InstructorGougeReport: Identifiable, Hashable {
+    let id: String
+    let targetKind: InstructorGougeReportTargetKind
+    let instructorID: String
+    let reviewID: String?
+    let instructorName: String
+    let squadron: Squadron
+    let eventName: String?
+    let eventKind: InstructorReviewEventKind?
+    let reviewText: String?
+    let reasonTitle: String
+    let note: String?
+    let submittedAt: Date
+
+    var isReviewTarget: Bool {
+        targetKind == .review
+    }
+}
+
+struct InstructorGougeReportRecord: Identifiable, Codable, Hashable {
+    let id: String
+    var targetKind: InstructorGougeReportTargetKind
+    var instructorID: String
+    var reviewID: String?
+    var instructorName: String
+    var squadronID: String
+    var eventName: String?
+    var eventKind: InstructorReviewEventKind?
+    var reviewText: String?
+    var reasonTitle: String
+    var note: String?
+    var submittedAt: Date
+
+    init(
+        id: String = UUID().uuidString,
+        targetKind: InstructorGougeReportTargetKind,
+        instructorID: String,
+        reviewID: String? = nil,
+        instructorName: String,
+        squadronID: String,
+        eventName: String? = nil,
+        eventKind: InstructorReviewEventKind? = nil,
+        reviewText: String? = nil,
+        reasonTitle: String,
+        note: String? = nil,
+        submittedAt: Date = .now
+    ) {
+        self.id = id
+        self.targetKind = targetKind
+        self.instructorID = instructorID
+        self.reviewID = reviewID
+        self.instructorName = instructorName
+        self.squadronID = squadronID
+        self.eventName = eventName
+        self.eventKind = eventKind
+        self.reviewText = reviewText
+        self.reasonTitle = reasonTitle
+        self.note = note
+        self.submittedAt = submittedAt
+    }
 }
 
 struct InstructorReviewRecord: Identifiable, Codable, Hashable {

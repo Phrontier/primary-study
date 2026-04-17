@@ -1,54 +1,113 @@
 {
   "code": "FAM 3101",
-  "title": "Normal Takeoff and Basic Airwork",
-  "summary": "Normal takeoff, area departure, scanning, turns, speed changes, and introductory stall work.",
-  "overview": "This event introduces the first full contact-phase maneuver set in the sim. You will practice normal takeoff procedures, local area departures, integrated visual scanning, turn patterns, level speed changes, and power-on stall recognition while continuing to build trim discipline, coordination, and basic energy management.",
+  "title": "Basic Contact Maneuvers",
+  "summary": "Normal takeoffs, local departures, scan technique, turns, speed changes, stalls, and spin fundamentals.",
+  "overview": "This event introduces the basic contact flying maneuvers you will use throughout primary. You will practice normal takeoffs, local area departures, scan technique, turns, level speed changes, stalls, and spins while focusing on aircraft control, coordination, trim, and maintaining situational awareness.",
   "primaryDocumentTitles": [
     "FAM 3101 Briefing guide 1542.166D"
   ],
   "studyNotes": {
     "headline": "Discussion items",
-    "summary": "Focus on smooth takeoff mechanics, disciplined scan habits, and staying ahead of the airplane as configurations and maneuver demands change.",
+    "summary": "Focus on aircraft control, coordination, trim, and staying ahead of the airplane as maneuver setup, configuration, and recovery demands change.",
     "sections": [
       {
         "title": "Normal Takeoff",
         "items": [
           {
-            "text": "The normal takeoff is flown in three phases: takeoff roll, rotation, and initial climb."
-          },
-          {
-            "text": "Lineup priorities include:",
+            "text": "Three phases:",
             "children": [
               {
-                "text": "Switch to tower about 200 feet prior to hold short."
+                "text": "Takeoff Roll."
               },
               {
-                "text": "Request takeoff using local SOP, then taxi into position only after clearing final."
+                "text": "Rotation."
               },
               {
-                "text": "Run the Lineup Checklist from memory and hold at PROBES ANTI-ICE if told to wait."
-              },
-              {
-                "text": "Confirm crosswind direction before brake release."
+                "text": "Initial Climb."
               }
             ]
           },
           {
-            "text": "Key takeoff cues include:",
+            "text": "Before takeoff:",
             "children": [
               {
-                "text": "At 60 KIAS, verify minimum torque and normal fuel flow."
+                "text": "Call tower when number one for departure."
               },
               {
-                "text": "At 90 KIAS, rotate smoothly to about 7 to 10 degrees nose high."
+                "text": "Complete lineup checklist from memory."
               },
               {
-                "text": "After liftoff, confirm two positive rates, raise gear below 150 KIAS, and raise flaps above 110 KIAS."
+                "text": "Confirm winds and crosswind direction."
+              },
+              {
+                "text": "Advance power smoothly to MAX over 2 to 3 seconds."
               }
             ]
           },
           {
-            "text": "Common errors include improper rudder use, incorrect rotation timing, over-control, and missed gear or flap calls."
+            "text": "At 60 KIAS:",
+            "children": [
+              {
+                "text": "Check torque is above minimum."
+              },
+              {
+                "text": "Fuel flow below 800 PPH."
+              },
+              {
+                "text": "Call \"60 knots, good flow\"."
+              }
+            ]
+          },
+          {
+            "text": "At 90 KIAS:",
+            "children": [
+              {
+                "text": "Smoothly rotate."
+              },
+              {
+                "text": "Set approximately 7 to 10 degrees nose high."
+              },
+              {
+                "text": "Allow the aircraft to fly off the runway."
+              }
+            ]
+          },
+          {
+            "text": "Initial climb:",
+            "children": [
+              {
+                "text": "Confirm two positive rates."
+              },
+              {
+                "text": "Raise gear below 150 KIAS."
+              },
+              {
+                "text": "Raise flaps above 110 KIAS."
+              },
+              {
+                "text": "Accelerate to 180 KIAS climb."
+              }
+            ]
+          },
+          {
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Poor rudder use causing directional drift."
+              },
+              {
+                "text": "Rotating too early or too late."
+              },
+              {
+                "text": "Over-rotating."
+              },
+              {
+                "text": "Forgetting gear or flaps calls."
+              },
+              {
+                "text": "Using aileron instead of rudder to correct yaw."
+              }
+            ]
           }
         ]
       },
@@ -56,44 +115,19 @@
         "title": "Local Area Departure",
         "items": [
           {
-            "text": "Departure procedures begin with being number one for takeoff and complying with runway-specific tower instructions."
+            "text": "No turn prior to 300 feet AGL."
           },
           {
-            "text": "General VFR departure rules include:",
-            "children": [
-              {
-                "text": "No turn prior to 300 feet AGL."
-              },
-              {
-                "text": "Climb at 180 KIAS and level at 200 KIAS until clear of Class D."
-              },
-              {
-                "text": "Accelerate to 240 KIAS once outside the local restrictions."
-              }
-            ]
+            "text": "Climb at 180 KIAS and level at 200 KIAS."
           },
           {
-            "text": "Be prepared to brief and fly the standard departure options used in this event:",
-            "children": [
-              {
-                "text": "Beachline Departure."
-              },
-              {
-                "text": "Portland Low Departure."
-              },
-              {
-                "text": "Nueces Transition."
-              },
-              {
-                "text": "Rusty Departure."
-              },
-              {
-                "text": "OSO Transition."
-              }
-            ]
+            "text": "After departing Class D, accelerate to 240 KIAS unless restricted."
           },
           {
-            "text": "The goal is not just navigation accuracy, but also timely radio changes, altitude compliance, and clean energy management after takeoff."
+            "text": "Be familiar with runway specific headings, climb altitudes, and transition points."
+          },
+          {
+            "text": "Always know who you are talking to next before switching frequencies."
           }
         ]
       },
@@ -101,44 +135,580 @@
         "title": "Integrated VMC Scan",
         "items": [
           {
-            "text": "The integrated scan combines outside visual checks with inside instrument cross-checks to prevent fixation and maintain aircraft control."
+            "text": "Eyes should remain outside 80 to 90 percent of the time in VMC."
           },
           {
-            "text": "In VMC, your eyes should be outside roughly 80 to 90 percent of the time."
+            "text": "The goal is to divide attention between aircraft attitude, traffic, and instruments."
           },
           {
-            "text": "A complete scan should include:",
+            "text": "Standard scan pattern:",
             "children": [
               {
-                "text": "Outside left, center, and right attitude and traffic checks."
+                "text": "Outside left."
               },
               {
-                "text": "Inside attitude and performance instrument checks."
+                "text": "Inside instruments."
               },
               {
-                "text": "Continuous area clearing before and during maneuvering."
+                "text": "Outside right."
               }
             ]
           },
           {
-            "text": "Do not fixate on one item. Scan rate and sequence should adjust to workload and traffic."
+            "text": "Inside checks should focus on:",
+            "children": [
+              {
+                "text": "Attitude."
+              },
+              {
+                "text": "Airspeed."
+              },
+              {
+                "text": "Power."
+              },
+              {
+                "text": "Altitude trends."
+              }
+            ]
+          },
+          {
+            "text": "Avoid fixating on any single instrument or outside reference."
+          },
+          {
+            "text": "Continue clearing throughout all maneuvers."
           }
         ]
       },
       {
-        "title": "Basic Airwork Maneuvers",
+        "title": "Turn Pattern",
         "items": [
           {
-            "text": "Turn Pattern trains smooth, coordinated turns at increasing bank angles while maintaining altitude and airspeed."
+            "text": "Used to practice coordinated turns while maintaining altitude and airspeed."
           },
           {
-            "text": "Level Speed Change teaches how trim, power, and configuration changes interact as the aircraft transitions between cruise and landing configurations."
+            "text": "Standard turn sequence:",
+            "children": [
+              {
+                "text": "30 degree AOB for 90 degree turns."
+              },
+              {
+                "text": "45 degree AOB for 180 degree turns."
+              },
+              {
+                "text": "60 degree AOB for 360 degree turns."
+              }
+            ]
           },
           {
-            "text": "Power-On Stalls simulate departure-type stalls and emphasize recognition, relax-max-level-ball recovery, and coordinated control inputs."
+            "text": "Use PAT before entering the maneuver."
           },
           {
-            "text": "Across all of these maneuvers, the common themes are proper clearing, trim usage, coordinated flight, and preventing fixation on one instrument."
+            "text": "Increase back pressure and power as bank angle increases."
+          },
+          {
+            "text": "Use the one third rule for rollouts."
+          },
+          {
+            "text": "Anticipate nose drop during rollout."
+          },
+          {
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Fixating inside the cockpit."
+              },
+              {
+                "text": "Poor trim."
+              },
+              {
+                "text": "Abrupt control inputs."
+              },
+              {
+                "text": "Failing to clear the area."
+              },
+              {
+                "text": "Uncoordinated flight."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Level Speed Change",
+        "items": [
+          {
+            "text": "Used to practice trim, configuration changes, and airspeed control."
+          },
+          {
+            "text": "Start in normal cruise at 200 KIAS."
+          },
+          {
+            "text": "To slow to no flap configuration:",
+            "children": [
+              {
+                "text": "PCL to idle."
+              },
+              {
+                "text": "Gear down below 150 KIAS."
+              },
+              {
+                "text": "Stabilize at 120 KIAS."
+              }
+            ]
+          },
+          {
+            "text": "To transition to landing flaps:",
+            "children": [
+              {
+                "text": "Lower flaps to landing."
+              },
+              {
+                "text": "Increase power immediately."
+              },
+              {
+                "text": "Maintain 120 KIAS."
+              }
+            ]
+          },
+          {
+            "text": "To accelerate back to cruise:",
+            "children": [
+              {
+                "text": "PCL to MAX."
+              },
+              {
+                "text": "Raise gear and flaps below 150 KIAS."
+              },
+              {
+                "text": "Stabilize at 200 KIAS."
+              }
+            ]
+          },
+          {
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Poor rudder trim."
+              },
+              {
+                "text": "Chasing altitude."
+              },
+              {
+                "text": "Incorrect nose attitudes."
+              },
+              {
+                "text": "Delaying configuration changes."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Power-On Stall",
+        "items": [
+          {
+            "text": "Simulates a departure stall."
+          },
+          {
+            "text": "Entry:",
+            "children": [
+              {
+                "text": "Clear the area."
+              },
+              {
+                "text": "Establish at or above 6000 feet AGL."
+              },
+              {
+                "text": "Configure clean at approximately 150 KIAS."
+              },
+              {
+                "text": "Complete PSSA and clearing turns."
+              },
+              {
+                "text": "Set power between 30 and 60 percent."
+              },
+              {
+                "text": "Raise the nose to approximately 15 to 40 degrees nose high."
+              },
+              {
+                "text": "Maintain wings level or desired bank angle."
+              },
+              {
+                "text": "Continue increasing AOA until stall indications or uncommanded nose drop."
+              }
+            ]
+          },
+          {
+            "text": "Turning power-on stall:",
+            "children": [
+              {
+                "text": "Same setup as straight ahead."
+              },
+              {
+                "text": "Maintain approximately 20 to 30 degrees AOB during entry."
+              }
+            ]
+          },
+          {
+            "text": "Recovery:",
+            "children": [
+              {
+                "text": "Relax back stick pressure."
+              },
+              {
+                "text": "Advance PCL to MAX."
+              },
+              {
+                "text": "Level the wings."
+              },
+              {
+                "text": "Center the ball."
+              },
+              {
+                "text": "Maintain approximately 14 to 17.9 units AOA."
+              },
+              {
+                "text": "Recover to wings level with two positive rates of climb."
+              }
+            ]
+          },
+          {
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Holding back stick too long after stall onset."
+              },
+              {
+                "text": "Delayed power application."
+              },
+              {
+                "text": "Failing to center the ball."
+              },
+              {
+                "text": "Secondary stall from excessive pull."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Power-Off Stall",
+        "items": [
+          {
+            "text": "Simulates an approach or ELP stall."
+          },
+          {
+            "text": "Entry:",
+            "children": [
+              {
+                "text": "Clear the area."
+              },
+              {
+                "text": "Establish above 6000 feet AGL."
+              },
+              {
+                "text": "Configure as directed for ELP or landing pattern."
+              },
+              {
+                "text": "Complete PSSA and clearing turns."
+              },
+              {
+                "text": "Set idle power."
+              },
+              {
+                "text": "Maintain desired landing attitude."
+              },
+              {
+                "text": "Continue increasing AOA until stall indications or nose drop occur."
+              }
+            ]
+          },
+          {
+            "text": "Recovery:",
+            "children": [
+              {
+                "text": "Relax back stick pressure."
+              },
+              {
+                "text": "Advance PCL to MAX."
+              },
+              {
+                "text": "Level the wings."
+              },
+              {
+                "text": "Center the ball."
+              },
+              {
+                "text": "Maintain max AOA without over-pulling."
+              },
+              {
+                "text": "Recover to a climb with two positive rates."
+              }
+            ]
+          },
+          {
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Fixating on airspeed."
+              },
+              {
+                "text": "Allowing excessive yaw."
+              },
+              {
+                "text": "Delayed recovery inputs."
+              },
+              {
+                "text": "Pulling too aggressively and causing a secondary stall."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Landing Pattern Stalls",
+        "items": [
+          {
+            "text": "Includes approach turn stalls and landing attitude stalls."
+          }
+        ]
+      },
+      {
+        "title": "Approach Turn Stall",
+        "items": [
+          {
+            "text": "Entry:",
+            "children": [
+              {
+                "text": "Clear the area."
+              },
+              {
+                "text": "Configure for landing pattern airspeeds and flap setting."
+              },
+              {
+                "text": "Complete PSSA and Before Landing Checklist."
+              },
+              {
+                "text": "Establish in approximately 20 to 30 degrees AOB."
+              },
+              {
+                "text": "Reduce power to idle."
+              },
+              {
+                "text": "Increase back pressure to maintain the approach turn."
+              },
+              {
+                "text": "Continue until first indication of stall."
+              }
+            ]
+          },
+          {
+            "text": "Recovery:",
+            "children": [
+              {
+                "text": "Relax back stick pressure."
+              },
+              {
+                "text": "Advance PCL to MAX."
+              },
+              {
+                "text": "Level the wings."
+              },
+              {
+                "text": "Center the ball."
+              },
+              {
+                "text": "Minimize altitude loss and recover to 120 KIAS in downwind configuration."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Landing Attitude Stall",
+        "items": [
+          {
+            "text": "Entry:",
+            "children": [
+              {
+                "text": "Configure for final approach speed."
+              },
+              {
+                "text": "Use approximately 110 KIAS no flap, 105 KIAS takeoff flap, or 100 KIAS landing flap."
+              },
+              {
+                "text": "Complete PSSA and Before Landing Checklist."
+              },
+              {
+                "text": "Set PCL to idle."
+              },
+              {
+                "text": "Transition to landing attitude as if entering the flare."
+              },
+              {
+                "text": "Hold the landing attitude until first indication of stall."
+              }
+            ]
+          },
+          {
+            "text": "Recovery:",
+            "children": [
+              {
+                "text": "Relax back stick pressure."
+              },
+              {
+                "text": "Advance PCL to MAX."
+              },
+              {
+                "text": "Level the wings."
+              },
+              {
+                "text": "Center the ball."
+              },
+              {
+                "text": "Recover to 120 KIAS in downwind configuration."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Spin Entry and Recovery",
+        "items": [
+          {
+            "text": "Intentional spin entries are performed to demonstrate aircraft departure from controlled flight."
+          }
+        ]
+      },
+      {
+        "title": "Intentional Spin Entry",
+        "items": [
+          {
+            "text": "Clear the area."
+          },
+          {
+            "text": "Minimum entry altitude is 13,500 feet AGL."
+          },
+          {
+            "text": "Establish at 150 KIAS in slow cruise."
+          },
+          {
+            "text": "Complete PSSA and clearing turns."
+          },
+          {
+            "text": "Set PCL to idle."
+          },
+          {
+            "text": "Raise the nose to approximately 30 degrees nose high."
+          },
+          {
+            "text": "At stick shaker, apply slight rudder in the desired spin direction."
+          },
+          {
+            "text": "At full stall and nose drop:",
+            "children": [
+              {
+                "text": "Apply full rudder in the direction of spin."
+              },
+              {
+                "text": "Apply full aft stick."
+              },
+              {
+                "text": "Maintain neutral ailerons."
+              },
+              {
+                "text": "Call out altitude, AOA, airspeed, and turn needle."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Incipient Spin Recovery",
+        "items": [
+          {
+            "text": "Recognize the spin before one full turn develops."
+          },
+          {
+            "text": "Immediately apply full opposite rudder."
+          },
+          {
+            "text": "Neutralize stick as rotation stops."
+          },
+          {
+            "text": "Advance PCL to MAX after rotation stops."
+          },
+          {
+            "text": "Recover smoothly to level flight."
+          }
+        ]
+      },
+      {
+        "title": "Steady-State Spin Recovery",
+        "items": [
+          {
+            "text": "Allow the spin to stabilize."
+          },
+          {
+            "text": "Confirm direction of rotation."
+          },
+          {
+            "text": "Apply full opposite rudder."
+          },
+          {
+            "text": "Neutralize stick as rotation stops."
+          },
+          {
+            "text": "Neutralize rudder after rotation stops."
+          },
+          {
+            "text": "Recover smoothly without excessive G."
+          },
+          {
+            "text": "Monitor oil pressure after recovery."
+          },
+          {
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Delayed recognition."
+              },
+              {
+                "text": "Using aileron during the spin."
+              },
+              {
+                "text": "Excessive forward stick."
+              },
+              {
+                "text": "Aggressive pullout."
+              },
+              {
+                "text": "Failing to neutralize controls as rotation stops."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Big Picture Priorities",
+        "items": [
+          {
+            "text": "Keep the aircraft coordinated."
+          },
+          {
+            "text": "Use trim early and often."
+          },
+          {
+            "text": "Clear the area before and during every maneuver."
+          },
+          {
+            "text": "Maintain an integrated scan."
+          },
+          {
+            "text": "Anticipate what configuration, power, and pitch changes are coming next."
+          },
+          {
+            "text": "Stay ahead of the aircraft instead of reacting late."
           }
         ]
       },
@@ -161,13 +731,28 @@
             "text": "Level Speed Change."
           },
           {
-            "text": "Power-On Stalls."
+            "text": "Power-On Stall."
+          },
+          {
+            "text": "Power-Off Stall."
+          },
+          {
+            "text": "Landing Pattern Stall."
+          },
+          {
+            "text": "Intentional Spin Entry."
+          },
+          {
+            "text": "Incipient Spin Recovery."
+          },
+          {
+            "text": "Steady-State Spin Recovery."
           }
         ]
       }
     ]
   },
   "flashcardDeckTitle": "FAM3101 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Normal takeoff, departure, scanning, and basic contact maneuver discussion items for the first FAM3100 sim.",
+  "flashcardDeckSummary": "Basic contact maneuver, stall, and spin discussion items for the first FAM3100 sim.",
   "flashcards": []
 }

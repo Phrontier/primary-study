@@ -21,10 +21,13 @@ protocol InstructorReviewRepository: AnyObject {
     func fetchInstructor(id: String) -> Instructor?
     func fetchPublishedReviews(for instructorID: String) -> [InstructorReview]
     func fetchPendingReviews() -> [InstructorReview]
+    func fetchOpenReports() -> [InstructorGougeReport]
     func fetchInstructorSuggestions(matching query: String) -> [InstructorNameSuggestion]
     func fetchSquadrons() -> [Squadron]
     func fetchEvents() -> [InstructorReviewEvent]
     func submitReview(_ submission: InstructorReviewSubmission) throws
+    func submitReport(_ submission: InstructorGougeReportSubmission) throws
+    func dismissReport(id: String) throws
     func approveReview(id: String) throws
     func rejectReview(id: String) throws
 }

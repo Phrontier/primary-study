@@ -474,6 +474,10 @@ final class StudyAppModel: ObservableObject {
         HomeTabSnapshot.build(from: dashboardSnapshot)
     }
 
+    var homePreferences: HomePreferencesRecord {
+        progressStore?.homePreferences() ?? HomePreferencesRecord()
+    }
+
     var studyTopics: [StudyTopicDefinition] {
         StudyTopicDefinition.homeTopics
     }
@@ -481,6 +485,15 @@ final class StudyAppModel: ObservableObject {
     func setPinnedTopicIDs(_ topicIDs: [String]) {
         progressStore?.updateHomePreferences { preferences in
             preferences.pinnedTopicIDs = topicIDs
+        }
+        refreshSnapshot()
+    }
+
+    func updateDailyReminder(enabled: Bool, hour: Int, minute: Int) {
+        progressStore?.updateHomePreferences { preferences in
+            preferences.dailyReminderEnabled = enabled
+            preferences.dailyReminderHour = hour
+            preferences.dailyReminderMinute = minute
         }
         refreshSnapshot()
     }

@@ -23,10 +23,7 @@ struct MoreTabView: View {
             subtitle: "Identity, stage, and study defaults",
             iconName: "person.crop.circle.fill",
             accent: MoreSectionColor.account,
-            badge: .planned,
-            destination: .placeholder(
-                message: "Profile controls will eventually centralize identity, stage preferences, and saved defaults."
-            )
+            destination: .profile
         )
     }
 
@@ -36,10 +33,7 @@ struct MoreTabView: View {
             subtitle: "Preferences and app behavior",
             iconName: "gearshape.fill",
             accent: MoreSectionColor.account,
-            badge: .planned,
-            destination: .placeholder(
-                message: "Settings will collect preferences, downloads, and app-level behavior in one place."
-            )
+            destination: .settings
         )
     }
 
@@ -56,9 +50,7 @@ struct MoreTabView: View {
                         iconName: "star.circle.fill",
                         accent: MoreSectionColor.account,
                         badge: .premium,
-                        destination: .placeholder(
-                            message: "Premium state and entitlements will live here once paid features exist."
-                        )
+                        destination: .premium
                     ),
                     settingsItem,
                     MoreHubItem(
@@ -66,10 +58,7 @@ struct MoreTabView: View {
                         subtitle: "Alerts and study reminders",
                         iconName: "bell.badge.fill",
                         accent: MoreSectionColor.account,
-                        badge: .planned,
-                        destination: .placeholder(
-                            message: "Notification controls will cover reminders, releases, and useful study nudges."
-                        )
+                        destination: .notifications
                     )
                 ]
             ),
@@ -261,11 +250,7 @@ struct MoreTabView: View {
     var body: some View {
         AppScrollScreen(topPadding: AppTheme.Spacing.screenTop, bottomPadding: 28) {
             VStack(alignment: .leading, spacing: 18) {
-                MoreHeroCard(
-                    snapshot: snapshot,
-                    profileDestination: profileItem,
-                    settingsDestination: settingsItem
-                )
+                MoreHeroCard(snapshot: snapshot)
 
                 ForEach(sections) { section in
                     VStack(alignment: .leading, spacing: 10) {
@@ -300,6 +285,14 @@ struct MoreTabView: View {
     @ViewBuilder
     private func destinationView(for item: MoreHubItem) -> some View {
         switch item.destination {
+        case .profile:
+            MoreProfileView(snapshot: snapshot)
+        case .settings:
+            MoreSettingsView(snapshot: snapshot)
+        case .notifications:
+            MoreNotificationsView()
+        case .premium:
+            MorePremiumView(snapshot: snapshot)
         case .quiz:
             QuizHubView()
         case .instructorReviews:
@@ -328,12 +321,10 @@ struct MoreTabView: View {
 
 private struct MoreHeroCard: View {
     let snapshot: MoreHubSnapshot
-    let profileDestination: MoreHubItem
-    let settingsDestination: MoreHubItem
 
     var body: some View {
         SectionContainer(style: .rootSummary, accent: MoreSectionColor.account, contentPadding: 20) {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 12) {
                 HStack(alignment: .top, spacing: 14) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("ACCOUNT")
@@ -367,30 +358,6 @@ private struct MoreHeroCard: View {
                             .font(.headline.weight(.bold))
                             .foregroundStyle(AppTheme.iconTint(MoreSectionColor.account))
                     }
-                }
-
-                HStack(spacing: 10) {
-                    NavigationLink {
-                        MorePlaceholderDetailView(
-                            item: profileDestination,
-                            message: "Profile controls will eventually centralize identity, stage preferences, and saved defaults.",
-                            snapshot: snapshot
-                        )
-                    } label: {
-                        HeaderCapsuleButton(title: "Profile", iconName: "person.crop.circle", tint: MoreSectionColor.account)
-                    }
-                    .buttonStyle(.plain)
-
-                    NavigationLink {
-                        MorePlaceholderDetailView(
-                            item: settingsDestination,
-                            message: "Settings will collect preferences, downloads, and app-level behavior in one place.",
-                            snapshot: snapshot
-                        )
-                    } label: {
-                        HeaderCapsuleButton(title: "Settings", iconName: "gearshape", tint: MoreSectionColor.account)
-                    }
-                    .buttonStyle(.plain)
                 }
             }
         }
@@ -961,7 +928,7 @@ private struct MoreHubSection: Identifiable {
     var id: String { title }
 }
 
-private enum MoreSectionColor {
+enum MoreSectionColor {
     static let account = AppTheme.color(0x93A3B8)
     static let studyTools = AppTheme.color(0x45CFFF)
     static let saved = AppTheme.color(0x8B74FF)
@@ -997,6 +964,10 @@ private struct MoreHubItem: Identifiable {
 }
 
 private enum MoreHubDestination {
+    case profile
+    case settings
+    case notifications
+    case premium
     case quiz
     case instructorReviews
     case statsDashboard

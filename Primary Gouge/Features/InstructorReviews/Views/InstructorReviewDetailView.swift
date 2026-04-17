@@ -5,6 +5,8 @@ struct InstructorReviewDetailView: View {
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @EnvironmentObject private var searchChrome: SearchChromeModel
     @StateObject private var viewModel: InstructorReviewDetailViewModel
+    @State private var activeReportTarget: InstructorGougeReportTarget?
+    @State private var showingReportConfirmation = false
 
     init(instructor: Instructor) {
         _viewModel = StateObject(wrappedValue: InstructorReviewDetailViewModel(instructor: instructor))
@@ -15,7 +17,12 @@ struct InstructorReviewDetailView: View {
             HeroCard(
                 eyebrow: viewModel.instructor.squadron.displayName,
                 title: viewModel.instructor.name,
-                subtitle: viewModel.instructor.publishedReviewCountText
+                subtitle: viewModel.instructor.publishedReviewCountText,
+                accessory: {
+                    ReportActionButton {
+                        activeReportTarget = .instructor(viewModel.instructor)
+                    }
+                }
             ) {
                 HStack(spacing: 10) {
                     ForEach(viewModel.instructor.capabilityBadges, id: \.self) { capability in
@@ -67,7 +74,9 @@ struct InstructorReviewDetailView: View {
             } else {
                 LazyVStack(spacing: 14) {
                     ForEach(viewModel.reviews) { review in
-                        InstructorReviewCard(review: review)
+                        InstructorReviewCard(review: review) {
+                            activeReportTarget = .review(review)
+                        }
                     }
                 }
             }
@@ -81,6 +90,16 @@ struct InstructorReviewDetailView: View {
         }
         .onAppear {
             searchChrome.updateScope(.instructors)
+        }
+        .sheet(item: $activeReportTarget) { target in
+            InstructorGougeReportSheet(target: target) {
+                showingReportConfirmation = true
+            }
+        }
+        .alert("Report sent", isPresented: $showingReportConfirmation) {
+            Button("Done", role: .cancel) {}
+        } message: {
+            Text("Thanks. The report has been sent to moderation for review.")
         }
     }
 }

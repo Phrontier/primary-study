@@ -1,26 +1,68 @@
 {
   "code": "FAM 3102",
-  "title": "Landing Pattern and Trim Awareness",
-  "summary": "Normal takeoff review, local departures, trim malfunctions, and landing pattern fundamentals.",
-  "overview": "This event builds on the first contact sim by adding trim-malfunction awareness and a full landing-pattern framework. You will continue practicing takeoff and departure procedures while learning how to recognize inadvertent trim inputs, manage pattern geometry, and fly no-flap, takeoff-flap, and landing-flap patterns with the right power and airspeed picture.",
+  "title": "Pattern and Landings",
+  "summary": "Landing pattern procedures, trim malfunctions, flap configurations, full-stop landings, and waveoffs.",
+  "overview": "This event builds on basic contact flying by introducing the landing pattern and the different landing configurations you will use throughout primary. You will practice the break, downwind, approach turn, final, waveoffs, and full-stop landings while focusing on spacing, trim, power management, and staying ahead of the aircraft.",
   "primaryDocumentTitles": [
     "FAM 3102 Briefing guide 1542.166D"
   ],
   "studyNotes": {
     "headline": "Discussion items",
-    "summary": "The big themes are recognizing bad trim early, keeping the pattern standardized, and making configuration changes at the right time instead of chasing the airplane late.",
+    "summary": "Focus on spacing, trim, power management, and staying ahead of the aircraft as pattern geometry, configuration, and go-around demands change.",
     "sections": [
       {
-        "title": "Normal Takeoff and Departure Review",
+        "title": "Normal Takeoff",
         "items": [
           {
-            "text": "Normal takeoff expectations remain the same as FAM3101: disciplined lineup flow, correct rotation at 90 KIAS, and timely gear and flap retraction."
+            "text": "Same procedures as FAM3101."
           },
           {
-            "text": "Area departure procedures still require early compliance with runway-specific routing, local altitude restrictions, and correct radio changes."
+            "text": "Focus on:",
+            "children": [
+              {
+                "text": "Proper rudder use during the takeoff roll."
+              },
+              {
+                "text": "Smooth rotation at 90 KIAS."
+              },
+              {
+                "text": "Gear and flap calls after liftoff."
+              },
+              {
+                "text": "Establishing the correct climb attitude and trim."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Local Area Departure",
+        "items": [
+          {
+            "text": "Same procedures as FAM3101."
           },
           {
-            "text": "This event assumes you can carry the takeoff and departure workflow forward while adding pattern work on top of it."
+            "text": "Be familiar with:",
+            "children": [
+              {
+                "text": "Beachline."
+              },
+              {
+                "text": "Rusty."
+              },
+              {
+                "text": "Portland Low."
+              },
+              {
+                "text": "Nueces."
+              },
+              {
+                "text": "OSO."
+              }
+            ]
+          },
+          {
+            "text": "Know runway specific headings, transition points, radio changes, and climb restrictions."
           }
         ]
       },
@@ -28,83 +70,641 @@
         "title": "Inadvertent Trim Actuation",
         "items": [
           {
-            "text": "Inadvertent trim inputs are common because the HOTAS layout keeps your hands on the stick and PCL throughout dynamic phases of flight."
+            "text": "Can occur from accidental stick trim or rudder trim inputs."
           },
           {
-            "text": "Possible effects include:",
+            "text": "Common causes:",
             "children": [
               {
-                "text": "Unexpected nose-down trim during pull-up or rotation."
+                "text": "Unintentional trim switch movement during takeoff, landing, or maneuvering."
               },
               {
-                "text": "Unexpected nose-up trim during descent or pattern work."
+                "text": "Accidental rudder trim input on the PCL."
               },
               {
-                "text": "Rudder-trim imbalance that increases drag and workload."
+                "text": "Holding trim too long."
               }
             ]
           },
           {
-            "text": "Recovery priorities are:",
+            "text": "Signs:",
             "children": [
               {
-                "text": "Hold the trim interrupt button."
+                "text": "Unexpected pitch changes."
+              },
+              {
+                "text": "Strong stick forces."
+              },
+              {
+                "text": "Aircraft pulling nose up or nose down."
+              },
+              {
+                "text": "Uncommanded yaw."
+              },
+              {
+                "text": "Difficulty maintaining pattern parameters."
+              }
+            ]
+          },
+          {
+            "text": "Recovery:",
+            "children": [
+              {
+                "text": "Depress and hold TRIM INTERRUPT."
               },
               {
                 "text": "Adjust airspeed to reduce control forces."
               },
               {
-                "text": "Execute the Runaway Trim checklist if abnormal forces persist."
+                "text": "If forces remain excessive, execute the Runaway Trim checklist."
               }
             ]
           },
           {
-            "text": "The goal is to stop the bad trim before it creates an unsafe pitch picture or destabilizes the pattern."
-          }
-        ]
-      },
-      {
-        "title": "Landing Pattern Fundamentals",
-        "items": [
-          {
-            "text": "The landing pattern is a systematic sequence built around break, downwind, abeam, 180, 90, final, and landing."
-          },
-          {
-            "text": "Key geometry and flow points include:",
+            "text": "Full nose down trim:",
             "children": [
               {
-                "text": "Enter the overhead at 1000 feet MSL and 200 KIAS, offset to the pattern side."
-              },
-              {
-                "text": "Get below 150 KIAS before lowering gear."
-              },
-              {
-                "text": "Stabilize downwind at pattern altitude, 3/4 to 1 wingtip distance, and the correct configuration airspeed."
-              },
-              {
-                "text": "Transition no sooner than abeam the intended point of landing."
+                "text": "Add power and increase airspeed to reduce stick force."
               }
             ]
           },
           {
-            "text": "Pattern success depends on managing power, pitch, roll, and timely calls instead of making large corrections late."
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Delayed recognition."
+              },
+              {
+                "text": "Fighting the trim instead of interrupting it."
+              },
+              {
+                "text": "Allowing trim issues to destabilize the pattern."
+              }
+            ]
           }
         ]
       },
       {
-        "title": "Pattern Configurations",
+        "title": "Landing Pattern",
         "items": [
           {
-            "text": "Takeoff-flap, landing-flap, and no-flap patterns all use the same geometry, but their power settings and airspeeds differ."
+            "text": "The landing pattern consists of:",
+            "children": [
+              {
+                "text": "Break."
+              },
+              {
+                "text": "Downwind."
+              },
+              {
+                "text": "Approach Turn."
+              },
+              {
+                "text": "Final."
+              },
+              {
+                "text": "Landing."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Break",
+        "items": [
+          {
+            "text": "Entry:",
+            "children": [
+              {
+                "text": "200 KIAS."
+              },
+              {
+                "text": "1000 feet MSL."
+              },
+              {
+                "text": "Approximately 1/4 WTD on the pattern side of the runway."
+              }
+            ]
           },
           {
-            "text": "No-flap patterns require the most planning because the transition is delayed and the aircraft carries more energy."
+            "text": "Sequence:",
+            "children": [
+              {
+                "text": "FLOP."
+              },
+              {
+                "text": "CHOP."
+              },
+              {
+                "text": "POP."
+              },
+              {
+                "text": "CHECK."
+              },
+              {
+                "text": "DROP."
+              }
+            ]
           },
           {
-            "text": "Landing-flap patterns provide the most drag and lowest final approach speed, while takeoff-flap patterns sit between landing-flap and no-flap handling."
+            "text": "FLOP:",
+            "children": [
+              {
+                "text": "30 to 60 degrees AOB break turn."
+              }
+            ]
           },
           {
-            "text": "The key is to make deliberate configuration changes and trim early rather than trying to salvage the pattern with large bank or power corrections."
+            "text": "CHOP:",
+            "children": [
+              {
+                "text": "Reduce power to 0 to 10%."
+              }
+            ]
+          },
+          {
+            "text": "POP:",
+            "children": [
+              {
+                "text": "Extend speed brake as required."
+              }
+            ]
+          },
+          {
+            "text": "CHECK:",
+            "children": [
+              {
+                "text": "Verify below 150 KIAS."
+              }
+            ]
+          },
+          {
+            "text": "DROP:",
+            "children": [
+              {
+                "text": "Lower gear."
+              },
+              {
+                "text": "Call \"Below 150, gear\"."
+              }
+            ]
+          },
+          {
+            "text": "Continue the turn to arrive on downwind at:",
+            "children": [
+              {
+                "text": "120 KIAS."
+              },
+              {
+                "text": "Pattern altitude."
+              },
+              {
+                "text": "3/4 to 1 WTD from the runway."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Downwind",
+        "items": [
+          {
+            "text": "Parameters:",
+            "children": [
+              {
+                "text": "120 KIAS."
+              },
+              {
+                "text": "Pattern altitude."
+              },
+              {
+                "text": "3/4 to 1 WTD."
+              }
+            ]
+          },
+          {
+            "text": "Power settings:",
+            "children": [
+              {
+                "text": "No flap: 31%."
+              },
+              {
+                "text": "Takeoff flap: 42%."
+              },
+              {
+                "text": "Landing flap: 52%."
+              }
+            ]
+          },
+          {
+            "text": "Complete Before Landing Checklist."
+          },
+          {
+            "text": "Maintain spacing and trim."
+          },
+          {
+            "text": "Start the approach turn at the 180 position."
+          }
+        ]
+      },
+      {
+        "title": "Approach Turn",
+        "items": [
+          {
+            "text": "Start at the 180."
+          },
+          {
+            "text": "Use approximately:",
+            "children": [
+              {
+                "text": "20% power initially."
+              },
+              {
+                "text": "Landing attitude trim."
+              },
+              {
+                "text": "Flaps as required."
+              }
+            ]
+          },
+          {
+            "text": "Goal is a smooth descending turn to final."
+          },
+          {
+            "text": "Key checkpoints:",
+            "children": [
+              {
+                "text": "90 position at approximately 450 feet AGL."
+              },
+              {
+                "text": "Final at approximately 200 feet AGL."
+              }
+            ]
+          },
+          {
+            "text": "Adjust bank angle, power, and pitch to control:",
+            "children": [
+              {
+                "text": "Overshooting or undershooting."
+              },
+              {
+                "text": "Altitude."
+              },
+              {
+                "text": "Airspeed."
+              },
+              {
+                "text": "Runway alignment."
+              }
+            ]
+          },
+          {
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Delaying the turn."
+              },
+              {
+                "text": "Overshooting final."
+              },
+              {
+                "text": "Getting slow in the turn."
+              },
+              {
+                "text": "Poor trim usage."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Final",
+        "items": [
+          {
+            "text": "Final should be stabilized by the groove."
+          },
+          {
+            "text": "Maintain:",
+            "children": [
+              {
+                "text": "Proper lineup."
+              },
+              {
+                "text": "Landing attitude."
+              },
+              {
+                "text": "Desired flap configuration speed."
+              }
+            ]
+          },
+          {
+            "text": "Target airspeeds:",
+            "children": [
+              {
+                "text": "No flap: 110 KIAS."
+              },
+              {
+                "text": "Takeoff flap: 105 KIAS."
+              },
+              {
+                "text": "Landing flap: 100 KIAS."
+              }
+            ]
+          },
+          {
+            "text": "Use power to control glideslope and pitch to control airspeed."
+          },
+          {
+            "text": "Aimpoint should remain fixed in the windshield."
+          }
+        ]
+      },
+      {
+        "title": "Takeoff Flap Landing",
+        "items": [
+          {
+            "text": "Configuration:",
+            "children": [
+              {
+                "text": "Gear down."
+              },
+              {
+                "text": "Takeoff flaps."
+              },
+              {
+                "text": "105 KIAS on final."
+              }
+            ]
+          },
+          {
+            "text": "Touchdown attitude is slightly nose high."
+          },
+          {
+            "text": "After touchdown:",
+            "children": [
+              {
+                "text": "Lower nose gently."
+              },
+              {
+                "text": "Maintain directional control with rudder."
+              },
+              {
+                "text": "Advance power for touch-and-go if required."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Landing Flap Landing",
+        "items": [
+          {
+            "text": "Configuration:",
+            "children": [
+              {
+                "text": "Gear down."
+              },
+              {
+                "text": "Landing flaps."
+              },
+              {
+                "text": "100 KIAS on final."
+              }
+            ]
+          },
+          {
+            "text": "Provides the slowest touchdown speed and shortest landing distance."
+          },
+          {
+            "text": "Requires more power and more nose-high attitude."
+          },
+          {
+            "text": "Avoid over-flaring or ballooning."
+          }
+        ]
+      },
+      {
+        "title": "No-Flap Landing",
+        "items": [
+          {
+            "text": "Configuration:",
+            "children": [
+              {
+                "text": "Gear down."
+              },
+              {
+                "text": "Flaps up."
+              },
+              {
+                "text": "110 KIAS on final."
+              }
+            ]
+          },
+          {
+            "text": "Requires flatter approach attitude and longer landing distance."
+          },
+          {
+            "text": "Expect:",
+            "children": [
+              {
+                "text": "Higher touchdown speed."
+              },
+              {
+                "text": "Less drag."
+              },
+              {
+                "text": "Longer float."
+              }
+            ]
+          },
+          {
+            "text": "Avoid excessive flare."
+          }
+        ]
+      },
+      {
+        "title": "Touch-and-Go Landing",
+        "items": [
+          {
+            "text": "After touchdown:",
+            "children": [
+              {
+                "text": "Maintain centerline with rudder."
+              },
+              {
+                "text": "Advance PCL smoothly to MAX."
+              },
+              {
+                "text": "Set takeoff attitude."
+              },
+              {
+                "text": "Raise flaps to takeoff if required."
+              },
+              {
+                "text": "Raise gear after two positive rates."
+              }
+            ]
+          },
+          {
+            "text": "Stay ahead of configuration changes and calls."
+          }
+        ]
+      },
+      {
+        "title": "Full-Stop Landing",
+        "items": [
+          {
+            "text": "After touchdown:",
+            "children": [
+              {
+                "text": "Maintain centerline with rudder."
+              },
+              {
+                "text": "Lower nosewheel smoothly."
+              },
+              {
+                "text": "Apply brakes as required."
+              },
+              {
+                "text": "Maintain directional control throughout rollout."
+              }
+            ]
+          },
+          {
+            "text": "Do not overbrake or ride the brakes."
+          },
+          {
+            "text": "Exit runway only when safe."
+          }
+        ]
+      },
+      {
+        "title": "Waveoff",
+        "items": [
+          {
+            "text": "Used when the landing is unsafe or unstable."
+          },
+          {
+            "text": "Common reasons:",
+            "children": [
+              {
+                "text": "Unsafe spacing."
+              },
+              {
+                "text": "Poor lineup."
+              },
+              {
+                "text": "Excessive sink rate."
+              },
+              {
+                "text": "Unstable airspeed."
+              },
+              {
+                "text": "Overshooting final."
+              }
+            ]
+          },
+          {
+            "text": "Procedure:",
+            "children": [
+              {
+                "text": "PCL to MAX."
+              },
+              {
+                "text": "Level wings if required."
+              },
+              {
+                "text": "Establish climb attitude."
+              },
+              {
+                "text": "Positive rate, gear up."
+              },
+              {
+                "text": "Flaps to takeoff when appropriate."
+              },
+              {
+                "text": "Re-enter the pattern as directed."
+              }
+            ]
+          },
+          {
+            "text": "Common errors:",
+            "children": [
+              {
+                "text": "Delaying the decision."
+              },
+              {
+                "text": "Failing to add enough power."
+              },
+              {
+                "text": "Leaving gear or flaps extended too long."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Contact Unusual Attitudes",
+        "items": [
+          {
+            "text": "Simulates loss of aircraft control or unusual attitude recovery."
+          },
+          {
+            "text": "Nose High Recovery:",
+            "children": [
+              {
+                "text": "Recognize low airspeed and high pitch attitude."
+              },
+              {
+                "text": "Reduce AOA."
+              },
+              {
+                "text": "Add power as required."
+              },
+              {
+                "text": "Roll toward the nearest horizon."
+              },
+              {
+                "text": "Recover to level flight."
+              }
+            ]
+          },
+          {
+            "text": "Nose Low Recovery:",
+            "children": [
+              {
+                "text": "Roll wings level."
+              },
+              {
+                "text": "Control airspeed."
+              },
+              {
+                "text": "Smoothly recover without over-G."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Big Picture Priorities",
+        "items": [
+          {
+            "text": "Fly a predictable pattern."
+          },
+          {
+            "text": "Stay trimmed throughout the landing sequence."
+          },
+          {
+            "text": "Use power to control glideslope and pitch to control airspeed."
+          },
+          {
+            "text": "Make corrections early."
+          },
+          {
+            "text": "If the approach becomes unstable, waveoff early instead of trying to salvage it."
+          },
+          {
+            "text": "Stay ahead of the aircraft during configuration changes."
           }
         ]
       },
@@ -124,19 +724,31 @@
             "text": "Landing Pattern."
           },
           {
-            "text": "Takeoff-Flap Landing."
+            "text": "Takeoff Flap Landing."
           },
           {
-            "text": "Landing-Flap Landing."
+            "text": "Landing Flap Landing."
           },
           {
             "text": "No-Flap Landing."
+          },
+          {
+            "text": "Touch-and-Go Landing."
+          },
+          {
+            "text": "Full-Stop Landing."
+          },
+          {
+            "text": "Waveoff."
+          },
+          {
+            "text": "Contact Unusual Attitudes."
           }
         ]
       }
     ]
   },
   "flashcardDeckTitle": "FAM3102 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Landing pattern, configuration management, and trim-awareness discussion items for the second FAM3100 sim.",
+  "flashcardDeckSummary": "Landing pattern, trim, landing-configuration, and waveoff discussion items for the second FAM3100 sim.",
   "flashcards": []
 }

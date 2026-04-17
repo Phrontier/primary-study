@@ -376,15 +376,53 @@ struct HomePreferencesRecord: Codable, Hashable {
     var pinnedTopicIDs: [String]
     var savedDailyQuestionIDs: [String]
     var lastQuestionOfDayDate: Date?
+    var dailyReminderEnabled: Bool
+    var dailyReminderHour: Int
+    var dailyReminderMinute: Int
+
+    private enum CodingKeys: String, CodingKey {
+        case pinnedTopicIDs
+        case savedDailyQuestionIDs
+        case lastQuestionOfDayDate
+        case dailyReminderEnabled
+        case dailyReminderHour
+        case dailyReminderMinute
+    }
 
     init(
         pinnedTopicIDs: [String] = ["eps", "limits", "landing-pattern"],
         savedDailyQuestionIDs: [String] = [],
-        lastQuestionOfDayDate: Date? = nil
+        lastQuestionOfDayDate: Date? = nil,
+        dailyReminderEnabled: Bool = false,
+        dailyReminderHour: Int = 19,
+        dailyReminderMinute: Int = 0
     ) {
         self.pinnedTopicIDs = pinnedTopicIDs
         self.savedDailyQuestionIDs = savedDailyQuestionIDs
         self.lastQuestionOfDayDate = lastQuestionOfDayDate
+        self.dailyReminderEnabled = dailyReminderEnabled
+        self.dailyReminderHour = dailyReminderHour
+        self.dailyReminderMinute = dailyReminderMinute
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        pinnedTopicIDs = try container.decodeIfPresent([String].self, forKey: .pinnedTopicIDs) ?? ["eps", "limits", "landing-pattern"]
+        savedDailyQuestionIDs = try container.decodeIfPresent([String].self, forKey: .savedDailyQuestionIDs) ?? []
+        lastQuestionOfDayDate = try container.decodeIfPresent(Date.self, forKey: .lastQuestionOfDayDate)
+        dailyReminderEnabled = try container.decodeIfPresent(Bool.self, forKey: .dailyReminderEnabled) ?? false
+        dailyReminderHour = try container.decodeIfPresent(Int.self, forKey: .dailyReminderHour) ?? 19
+        dailyReminderMinute = try container.decodeIfPresent(Int.self, forKey: .dailyReminderMinute) ?? 0
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(pinnedTopicIDs, forKey: .pinnedTopicIDs)
+        try container.encode(savedDailyQuestionIDs, forKey: .savedDailyQuestionIDs)
+        try container.encodeIfPresent(lastQuestionOfDayDate, forKey: .lastQuestionOfDayDate)
+        try container.encode(dailyReminderEnabled, forKey: .dailyReminderEnabled)
+        try container.encode(dailyReminderHour, forKey: .dailyReminderHour)
+        try container.encode(dailyReminderMinute, forKey: .dailyReminderMinute)
     }
 }
 

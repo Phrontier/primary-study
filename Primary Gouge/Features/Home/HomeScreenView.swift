@@ -48,7 +48,7 @@ struct HomeScreenView: View {
             }
         }
         .sheet(isPresented: $showingManageFocus) {
-            ManageFocusSheet(
+            FocusTopicManagerSheet(
                 selectedTopicIDs: snapshot.currentFocus.pinnedTopics.map(\.id),
                 topics: appModel.studyTopics.filter(\.isUserFocusable)
             ) { topicIDs in
@@ -554,7 +554,7 @@ private struct CompactEmptyState: View {
     }
 }
 
-private struct ManageFocusSheet: View {
+struct FocusTopicManagerSheet: View {
     let topics: [StudyTopicDefinition]
     let onSave: ([String]) -> Void
 

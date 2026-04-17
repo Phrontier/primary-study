@@ -58,7 +58,9 @@ enum InstructorReviewSeedData {
         Squadron(id: "vt-6", displayName: "VT-6")
     ]
 
-    static let events: [InstructorReviewEvent] = [
+    static let events: [InstructorReviewEvent] = loadManifestEvents()
+
+    private static let fallbackEvents: [InstructorReviewEvent] = [
         InstructorReviewEvent(id: "c3101", displayName: "C3101", kind: .sim),
         InstructorReviewEvent(id: "c3202", displayName: "C3202", kind: .sim),
         InstructorReviewEvent(id: "c3203", displayName: "C3203", kind: .sim),
@@ -72,7 +74,10 @@ enum InstructorReviewSeedData {
         InstructorReviewEvent(id: "c4600", displayName: "C4600", kind: .sim),
         InstructorReviewEvent(id: "contacts", displayName: "Contacts", kind: .flight),
         InstructorReviewEvent(id: "day-nav", displayName: "Day Nav", kind: .flight),
-        InstructorReviewEvent(id: "fam", displayName: "FAM", kind: .flight),
+        InstructorReviewEvent(id: "fam2101", displayName: "FAM2101", kind: .flight),
+        InstructorReviewEvent(id: "fam2102", displayName: "FAM2102", kind: .flight),
+        InstructorReviewEvent(id: "fam3101", displayName: "FAM3101", kind: .flight),
+        InstructorReviewEvent(id: "fam4203", displayName: "FAM4203", kind: .flight),
         InstructorReviewEvent(id: "form-checkride", displayName: "Form Checkride", kind: .flight),
         InstructorReviewEvent(id: "i2103", displayName: "I2103", kind: .sim),
         InstructorReviewEvent(id: "i3100", displayName: "I3100", kind: .sim),
@@ -189,6 +194,49 @@ enum InstructorReviewSeedData {
         resourceURL(fileName: overridesFileName)
     }
 
+    private static func loadManifestEvents() -> [InstructorReviewEvent] {
+        let decoder = JSONDecoder()
+        let manifest = loadManifest(decoder: decoder)
+        let mappedEvents = manifest.phases
+            .flatMap(\.categories)
+            .flatMap { category -> [InstructorReviewEvent] in
+                guard let kind = reviewEventKind(for: category.kind) else { return [] }
+                return category.events.map { event in
+                    InstructorReviewEvent(
+                        id: makeEventID(from: event.code, kind: kind),
+                        displayName: event.code,
+                        kind: kind
+                    )
+                }
+            }
+
+        guard !mappedEvents.isEmpty else { return fallbackEvents }
+
+        var seen = Set<String>()
+        return mappedEvents.filter { event in
+            let key = "\(event.kind.rawValue)|\(event.displayName.lowercased())"
+            return seen.insert(key).inserted
+        }
+    }
+
+    private static func loadManifest(decoder: JSONDecoder) -> StudyManifest {
+        let contentRepository = ContentRepository(bundle: .main)
+        let bundledManifest = contentRepository.loadManifest()
+        if !bundledManifest.phases.isEmpty {
+            return bundledManifest
+        }
+
+        guard
+            let url = studyManifestURL(),
+            let data = try? Data(contentsOf: url),
+            let manifest = try? decoder.decode(StudyManifest.self, from: data)
+        else {
+            return .placeholder
+        }
+
+        return manifest
+    }
+
     private static func resourceURL(fileName: String) -> URL? {
         let contentRepository = ContentRepository(bundle: .main)
         if let url = contentRepository.fileURL(for: "AppContent/\(fileName).json") {
@@ -208,6 +256,38 @@ enum InstructorReviewSeedData {
             .appending(path: "AppContent")
             .appending(path: "\(fileName).json")
         return FileManager.default.fileExists(atPath: fallback.path) ? fallback : nil
+    }
+
+    private static func studyManifestURL() -> URL? {
+        let contentRepository = ContentRepository(bundle: .main)
+        if let url = contentRepository.fileURL(for: "AppContent/StudyManifest.json") {
+            return url
+        }
+
+        if let url = Bundle.main.url(forResource: "StudyManifest", withExtension: "json") {
+            return url
+        }
+
+        let sourceRoot = URL(filePath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let fallback = sourceRoot
+            .appending(path: "AppContent")
+            .appending(path: "StudyManifest.json")
+        return FileManager.default.fileExists(atPath: fallback.path) ? fallback : nil
+    }
+
+    private static func reviewEventKind(for categoryKind: StudyCategoryKind) -> InstructorReviewEventKind? {
+        switch categoryKind {
+        case .sims:
+            return .sim
+        case .flights:
+            return .flight
+        case .groundSchool:
+            return nil
+        }
     }
 
     private static func makeEventID(from name: String, kind: InstructorReviewEventKind) -> String {

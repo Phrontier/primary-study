@@ -1,5 +1,109 @@
 import SwiftUI
 
+enum InstructorGougeReportTarget: Identifiable, Hashable {
+    case instructor(Instructor)
+    case review(InstructorReview)
+
+    var id: String {
+        switch self {
+        case .instructor(let instructor):
+            return "instructor-\(instructor.id)"
+        case .review(let review):
+            return "review-\(review.id)"
+        }
+    }
+
+    var title: String {
+        switch self {
+        case .instructor:
+            return "Report Instructor Info"
+        case .review:
+            return "Report Review"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .instructor(let instructor):
+            return "Flag incorrect name, squadron, or mixed instructor info for \(instructor.name)."
+        case .review:
+            return "Flag a review that is inaccurate, inappropriate, or should be looked at again."
+        }
+    }
+
+    var targetKind: InstructorGougeReportTargetKind {
+        switch self {
+        case .instructor:
+            return .instructor
+        case .review:
+            return .review
+        }
+    }
+
+    var instructorID: String {
+        switch self {
+        case .instructor(let instructor):
+            return instructor.id
+        case .review(let review):
+            return review.instructorID
+        }
+    }
+
+    var reviewID: String? {
+        switch self {
+        case .instructor:
+            return nil
+        case .review(let review):
+            return review.id
+        }
+    }
+
+    var instructorName: String {
+        switch self {
+        case .instructor(let instructor):
+            return instructor.name
+        case .review(let review):
+            return review.instructorName
+        }
+    }
+
+    var squadron: Squadron {
+        switch self {
+        case .instructor(let instructor):
+            return instructor.squadron
+        case .review(let review):
+            return review.squadron
+        }
+    }
+
+    var eventName: String? {
+        switch self {
+        case .instructor:
+            return nil
+        case .review(let review):
+            return review.eventName
+        }
+    }
+
+    var eventKind: InstructorReviewEventKind? {
+        switch self {
+        case .instructor:
+            return nil
+        case .review(let review):
+            return review.eventKind
+        }
+    }
+
+    var reviewText: String? {
+        switch self {
+        case .instructor:
+            return nil
+        case .review(let review):
+            return review.reviewText
+        }
+    }
+}
+
 enum InstructorRatingBadgeStyle {
     case roster
     case individual
@@ -231,8 +335,288 @@ struct InstructorAggregateCard: View {
     }
 }
 
+struct InstructorGougeReportSheet: View {
+    let target: InstructorGougeReportTarget
+    let onSubmitted: () -> Void
+
+    private let minimumCommentCount = 15
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var reviewStore: InstructorReviewStore
+    @State private var selectedInstructorReason: InstructorInfoReportReason?
+    @State private var note = ""
+    @State private var errorMessage: String?
+
+    private var selectedReasonTitle: String? {
+        switch target {
+        case .instructor:
+            return selectedInstructorReason?.title
+        case .review:
+            return "Review Report"
+        }
+    }
+
+    private var trimmedComment: String {
+        note.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private var remainingCommentCharacters: Int {
+        max(0, minimumCommentCount - trimmedComment.count)
+    }
+
+    private var canSubmit: Bool {
+        selectedReasonTitle != nil && remainingCommentCharacters == 0
+    }
+
+    var body: some View {
+        AppScrollScreen(bottomPadding: 36) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(target.title)
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundStyle(AppTheme.textPrimary)
+
+                Text(target.subtitle)
+                    .font(.system(.body, design: .rounded))
+                    .foregroundStyle(AppTheme.textSecondary)
+            }
+
+            GlassCard {
+                VStack(alignment: .leading, spacing: 18) {
+                    reportTargetSummary
+
+                    if case .instructor = target {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Reason")
+                                .font(.system(.caption, design: .rounded, weight: .bold))
+                                .foregroundStyle(AppTheme.textMuted)
+                                .tracking(0.6)
+
+                            ForEach(InstructorInfoReportReason.allCases) { reason in
+                                reasonRow(
+                                    title: reason.title,
+                                    selected: selectedInstructorReason == reason
+                                ) {
+                                    selectedInstructorReason = reason
+                                }
+                            }
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Comment")
+                            .font(.system(.caption, design: .rounded, weight: .bold))
+                            .foregroundStyle(AppTheme.textMuted)
+                            .tracking(0.6)
+
+                        ZStack(alignment: .topLeading) {
+                            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                                .fill(AppTheme.elevatedSurface)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 22, style: .continuous)
+                                        .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                )
+
+                            if note.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                                Text("Add any detail that would help moderation understand what looks wrong.")
+                                    .font(.system(.body, design: .rounded))
+                                    .foregroundStyle(AppTheme.textSecondary.opacity(0.75))
+                                    .padding(.horizontal, 18)
+                                    .padding(.vertical, 16)
+                            }
+
+                            TextEditor(text: $note)
+                                .scrollContentBackground(.hidden)
+                                .frame(minHeight: 120)
+                                .font(.system(.body, design: .rounded))
+                                .foregroundStyle(AppTheme.textPrimary)
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 12)
+                        }
+                        .frame(minHeight: 120)
+
+                        HStack {
+                            Text(
+                                remainingCommentCharacters == 0
+                                    ? "Minimum met"
+                                    : "\(remainingCommentCharacters) characters to go"
+                            )
+                            .font(.system(.footnote, design: .rounded, weight: .semibold))
+                            .foregroundStyle(remainingCommentCharacters == 0 ? AppTheme.success : AppTheme.warning)
+
+                            Spacer()
+
+                            Text("\(trimmedComment.count) chars")
+                                .font(.system(.footnote, design: .rounded, weight: .medium))
+                                .foregroundStyle(AppTheme.textSecondary)
+                        }
+                    }
+                }
+            }
+
+            if let errorMessage {
+                Text(errorMessage)
+                    .font(.system(.footnote, design: .rounded, weight: .semibold))
+                    .foregroundStyle(AppTheme.warning)
+                    .padding(.horizontal, 6)
+            }
+
+            InstructorPrimaryButton(
+                title: "Send Report",
+                icon: "exclamationmark.bubble.fill",
+                enabled: canSubmit
+            ) {
+                submitReport()
+            }
+        }
+        .detailNavigationChrome(title: "Report Gouge")
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Close") {
+                    dismiss()
+                }
+            }
+        }
+        .presentationDetents([.large])
+        .presentationDragIndicator(.visible)
+    }
+
+    private var reportTargetSummary: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(target.instructorName)
+                .font(.system(.headline, design: .rounded, weight: .bold))
+                .foregroundStyle(AppTheme.textPrimary)
+
+            HStack(spacing: 8) {
+                Text(target.squadron.displayName)
+                    .font(.system(.footnote, design: .rounded, weight: .semibold))
+                    .foregroundStyle(AppTheme.textSecondary)
+
+                if let eventName = target.eventName, let eventKind = target.eventKind {
+                    Text(eventKind.displayName.uppercased())
+                        .font(.system(.caption2, design: .rounded, weight: .bold))
+                        .foregroundStyle(AppTheme.prominentText(eventKind.domainColor))
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 5)
+                        .background(
+                            Capsule()
+                                .fill(AppTheme.badgeFill(eventKind.domainColor))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(AppTheme.badgeStroke(eventKind.domainColor), lineWidth: 1)
+                                )
+                        )
+
+                    Text(eventName)
+                        .font(.system(.footnote, design: .rounded, weight: .medium))
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .lineLimit(1)
+                }
+            }
+        }
+    }
+
+    private func reasonRow(title: String, selected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                Circle()
+                    .fill(reasonIndicatorColor(selected: selected))
+                    .frame(width: 10, height: 10)
+
+                Text(title)
+                    .font(.system(.body, design: .rounded, weight: .bold))
+                    .foregroundStyle(AppTheme.textPrimary)
+
+                Spacer(minLength: 8)
+
+                trailingSelectionIndicator(selected: selected)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 14)
+            .background(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(AppTheme.elevatedSurface)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .stroke(reasonStrokeColor(selected: selected), lineWidth: 1)
+                    )
+            )
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func reasonIndicatorColor(selected: Bool) -> Color {
+        switch target {
+        case .instructor:
+            return selected ? AppTheme.danger : AppTheme.textMuted.opacity(0.5)
+        case .review:
+            return AppTheme.textMuted.opacity(0.5)
+        }
+    }
+
+    private func reasonStrokeColor(selected: Bool) -> Color {
+        switch target {
+        case .instructor:
+            return selected ? AppTheme.badgeStroke(AppTheme.danger) : AppTheme.cardStroke.opacity(0.9)
+        case .review:
+            return AppTheme.cardStroke.opacity(0.9)
+        }
+    }
+
+    @ViewBuilder
+    private func trailingSelectionIndicator(selected: Bool) -> some View {
+        switch target {
+        case .instructor:
+            if selected {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundStyle(AppTheme.danger)
+            } else {
+                Color.clear
+                    .frame(width: 16, height: 16)
+            }
+        case .review:
+            Color.clear
+                .frame(width: 16, height: 16)
+        }
+    }
+
+    private func submitReport() {
+        guard let selectedReasonTitle else { return }
+        guard remainingCommentCharacters == 0 else {
+            errorMessage = "Comment must be at least \(minimumCommentCount) characters."
+            return
+        }
+
+        do {
+            try reviewStore.submitReport(
+                InstructorGougeReportSubmission(
+                    targetKind: target.targetKind,
+                    instructorID: target.instructorID,
+                    reviewID: target.reviewID,
+                    instructorName: target.instructorName,
+                    squadron: target.squadron,
+                    eventName: target.eventName,
+                    eventKind: target.eventKind,
+                    reviewText: target.reviewText,
+                    reasonTitle: selectedReasonTitle,
+                    note: trimmedComment
+                )
+            )
+            onSubmitted()
+            dismiss()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+}
+
 struct InstructorReviewCard: View {
     let review: InstructorReview
+    let onReport: (() -> Void)?
+
+    init(review: InstructorReview, onReport: (() -> Void)? = nil) {
+        self.review = review
+        self.onReport = onReport
+    }
 
     var body: some View {
         GlassCard {
@@ -268,7 +652,13 @@ struct InstructorReviewCard: View {
 
                     Spacer(minLength: 12)
 
-                    statusPill
+                    HStack(spacing: 8) {
+                        if let onReport {
+                            ReportActionButton(action: onReport)
+                        }
+
+                        statusPill
+                    }
                 }
 
                 HStack(spacing: 12) {
@@ -632,7 +1022,23 @@ struct InstructorMenuPicker: View {
 struct InstructorTextFieldCard: View {
     let title: String
     let placeholder: String
+    let detail: String?
+    let enabled: Bool
     @Binding var text: String
+
+    init(
+        title: String,
+        placeholder: String,
+        detail: String? = nil,
+        enabled: Bool = true,
+        text: Binding<String>
+    ) {
+        self.title = title
+        self.placeholder = placeholder
+        self.detail = detail
+        self.enabled = enabled
+        self._text = text
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -654,9 +1060,17 @@ struct InstructorTextFieldCard: View {
                         .fill(AppTheme.elevatedSurface)
                         .overlay(
                             RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                .stroke((enabled ? AppTheme.cardStroke.opacity(0.9) : AppTheme.cardStroke.opacity(0.65)), lineWidth: 1)
                         )
                 )
+                .disabled(!enabled)
+                .opacity(enabled ? 1 : 0.72)
+
+            if let detail, !detail.isEmpty {
+                Text(detail)
+                    .font(.system(.caption, design: .rounded, weight: .medium))
+                    .foregroundStyle(AppTheme.textSecondary)
+            }
         }
     }
 }

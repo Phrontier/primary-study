@@ -3,7 +3,6 @@ import SwiftUI
 struct ReviewSubmissionView: View {
     private enum ActiveSelectionSheet: String, Identifiable {
         case squadron
-        case event
         case chill
         case grading
 
@@ -110,35 +109,117 @@ struct ReviewSubmissionView: View {
                         activeSheet = .squadron
                     }
 
-                    InstructorMenuPicker(
+                    InstructorTextFieldCard(
                         title: "Event",
-                        placeholder: viewModel.selectedSquadron == nil ? "Choose a squadron first" : "Select event",
-                        selection: viewModel.selectedEvent?.displayName,
-                        detail: viewModel.selectedEvent?.kind.displayName,
-                        accent: viewModel.selectedEvent?.kind.domainColor ?? viewModel.submissionMode.color,
-                        enabled: viewModel.selectedSquadron != nil
-                    ) {
-                        activeSheet = .event
+                        placeholder: viewModel.selectedSquadron == nil ? "Choose a squadron first" : "Type an event",
+                        detail: viewModel.selectedSquadron == nil ? "Pick a squadron to narrow the event lane." : "Suggestions stay in the selected sim or flight lane.",
+                        enabled: viewModel.selectedSquadron != nil,
+                        text: $viewModel.eventName
+                    )
+
+                    if viewModel.selectedSquadron != nil, !viewModel.trimmedEventName.isEmpty {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Event Suggestions")
+                                .font(.system(.footnote, design: .rounded, weight: .semibold))
+                                .foregroundStyle(AppTheme.textSecondary)
+
+                            ForEach(viewModel.eventSuggestions) { event in
+                                Button {
+                                    viewModel.applyEventSuggestion(event)
+                                    focusedField = nil
+                                } label: {
+                                    HStack(spacing: 12) {
+                                        Circle()
+                                            .fill(event.kind.domainColor)
+                                            .frame(width: 10, height: 10)
+
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(event.displayName)
+                                                .font(.system(.subheadline, design: .rounded, weight: .bold))
+                                                .foregroundStyle(AppTheme.textPrimary)
+
+                                            Text(event.kind.displayName)
+                                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                                .foregroundStyle(AppTheme.prominentText(event.kind.domainColor))
+                                        }
+
+                                        Spacer(minLength: 8)
+
+                                        if viewModel.selectedEvent == event {
+                                            Image(systemName: "checkmark.circle.fill")
+                                                .font(.system(size: 16, weight: .bold))
+                                                .foregroundStyle(event.kind.domainColor)
+                                        }
+                                    }
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                            .fill(AppTheme.elevatedSurface)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                                    .stroke(viewModel.selectedEvent == event ? AppTheme.badgeStroke(event.kind.domainColor) : AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                            )
+                                    )
+                                }
+                                .buttonStyle(.plain)
+                            }
+
+                            if !viewModel.eventHasExactSuggestionMatch {
+                                Button {
+                                    viewModel.selectedEvent = nil
+                                } label: {
+                                    HStack(spacing: 12) {
+                                        Image(systemName: "keyboard")
+                                            .font(.system(size: 14, weight: .bold))
+                                            .foregroundStyle(viewModel.selectedSquadron?.reviewEventKind?.domainColor ?? viewModel.submissionMode.color)
+
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text("Use \"\(viewModel.trimmedEventName)\"")
+                                                .font(.system(.subheadline, design: .rounded, weight: .bold))
+                                                .foregroundStyle(AppTheme.textPrimary)
+
+                                            Text("Custom event")
+                                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                                .foregroundStyle(AppTheme.textSecondary)
+                                        }
+
+                                        Spacer(minLength: 8)
+                                    }
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                            .fill(AppTheme.elevatedSurface)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                                    .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                                            )
+                                    )
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
                     }
 
                     InstructorMenuPicker(
                         title: "Chill Factor",
-                        placeholder: viewModel.selectedEvent == nil ? "Choose an event first" : "Select chill factor",
+                        placeholder: viewModel.canChooseRatings ? "Select chill factor" : "Choose an event first",
                         selection: viewModel.chillScore.map { InstructorRatingScale.label(for: $0, category: .chillFactor) },
                         detail: viewModel.chillScore.map { "Score \($0) / 7" },
                         accent: AppTheme.success,
-                        enabled: viewModel.selectedEvent != nil
+                        enabled: viewModel.canChooseRatings
                     ) {
                         activeSheet = .chill
                     }
 
                     InstructorMenuPicker(
                         title: "Grading Style",
-                        placeholder: viewModel.selectedEvent == nil ? "Choose an event first" : "Select grading style",
+                        placeholder: viewModel.canChooseRatings ? "Select grading style" : "Choose an event first",
                         selection: viewModel.gradingScore.map { InstructorRatingScale.label(for: $0, category: .gradingStyle) },
                         detail: viewModel.gradingScore.map { "Score \($0) / 7" },
                         accent: AppTheme.warning,
-                        enabled: viewModel.selectedEvent != nil
+                        enabled: viewModel.canChooseRatings
                     ) {
                         activeSheet = .grading
                     }
@@ -271,39 +352,6 @@ struct ReviewSubmissionView: View {
                             Text(squadron.reviewEventKind?.displayName ?? "Squadron")
                                 .font(.system(.caption, design: .rounded, weight: .medium))
                                 .foregroundStyle(AppTheme.textSecondary)
-                        }
-                    }
-                }
-            case .event:
-                InstructorSearchableSelectionSheet(
-                    title: "Select Event",
-                    subtitle: "Search and choose the event tied to this review.",
-                    searchPlaceholder: "Search events",
-                    emptyMessage: "No events match that search for the selected review type.",
-                    options: viewModel.visibleEvents,
-                    selectedID: viewModel.selectedEvent?.id,
-                    searchableText: { event in
-                        event.displayName
-                    },
-                    accent: { event in
-                        event.kind.domainColor
-                    },
-                    onSelect: { event in
-                        viewModel.selectedEvent = event
-                    }
-                ) { event in
-                    HStack(spacing: 12) {
-                        Circle()
-                            .fill(event.kind.domainColor)
-                            .frame(width: 10, height: 10)
-
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(event.displayName)
-                                .font(.system(.body, design: .rounded, weight: .bold))
-                                .foregroundStyle(AppTheme.textPrimary)
-                            Text(event.kind.displayName)
-                                .font(.system(.caption, design: .rounded, weight: .medium))
-                                .foregroundStyle(AppTheme.prominentText(event.kind.domainColor))
                         }
                     }
                 }

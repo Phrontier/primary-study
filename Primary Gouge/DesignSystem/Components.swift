@@ -130,11 +130,12 @@ struct SectionContainer<Content: View>: View {
     }
 }
 
-struct HeroCard<Content: View>: View {
+struct HeroCard<Content: View, Accessory: View>: View {
     let eyebrow: String?
     let title: String
     let subtitle: String?
     let accent: Color
+    @ViewBuilder let accessory: Accessory
     @ViewBuilder let content: Content
 
     init(
@@ -142,43 +143,97 @@ struct HeroCard<Content: View>: View {
         title: String,
         subtitle: String? = nil,
         accent: Color = AppTheme.accent,
+        @ViewBuilder accessory: () -> Accessory,
         @ViewBuilder content: () -> Content = { EmptyView() }
     ) {
         self.eyebrow = eyebrow
         self.title = title
         self.subtitle = subtitle
         self.accent = accent
+        self.accessory = accessory()
         self.content = content()
     }
 
     var body: some View {
         SectionContainer(style: .hero, accent: accent, contentPadding: 24) {
             VStack(alignment: .leading, spacing: subtitle == nil ? 14 : 18) {
-                VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 8) {
-                    if let eyebrow, !eyebrow.isEmpty {
-                        Text(eyebrow.uppercased())
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(accent)
-                            .tracking(0.6)
-                    }
+                HStack(alignment: .top, spacing: 16) {
+                    VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 8) {
+                        if let eyebrow, !eyebrow.isEmpty {
+                            Text(eyebrow.uppercased())
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(accent)
+                                .tracking(0.6)
+                        }
 
-                    Text(title)
-                        .font(.system(size: subtitle == nil ? 34 : 30, weight: .bold))
-                        .foregroundStyle(AppTheme.textPrimary)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    if let subtitle, !subtitle.isEmpty {
-                        Text(subtitle)
-                            .font(.subheadline)
-                            .foregroundStyle(AppTheme.textSecondary)
+                        Text(title)
+                            .font(.system(size: subtitle == nil ? 34 : 30, weight: .bold))
+                            .foregroundStyle(AppTheme.textPrimary)
                             .fixedSize(horizontal: false, vertical: true)
-                            .frame(maxWidth: 540, alignment: .leading)
+
+                        if let subtitle, !subtitle.isEmpty {
+                            Text(subtitle)
+                                .font(.subheadline)
+                                .foregroundStyle(AppTheme.textSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .frame(maxWidth: 540, alignment: .leading)
+                        }
                     }
+
+                    Spacer(minLength: 0)
+
+                    accessory
                 }
 
                 content
             }
         }
+    }
+}
+
+extension HeroCard where Accessory == EmptyView {
+    init(
+        eyebrow: String? = nil,
+        title: String,
+        subtitle: String? = nil,
+        accent: Color = AppTheme.accent,
+        @ViewBuilder content: () -> Content = { EmptyView() }
+    ) {
+        self.init(
+            eyebrow: eyebrow,
+            title: title,
+            subtitle: subtitle,
+            accent: accent,
+            accessory: { EmptyView() },
+            content: content
+        )
+    }
+}
+
+struct ReportActionButton: View {
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                Image(systemName: "triangle.fill")
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundStyle(AppTheme.elevatedSurface.opacity(0.98))
+                    .overlay {
+                        Image(systemName: "triangle")
+                            .font(.system(size: 22, weight: .bold))
+                            .foregroundStyle(AppTheme.badgeStroke(AppTheme.danger.opacity(0.72)))
+                    }
+
+                Image(systemName: "exclamationmark")
+                    .font(.system(size: 10, weight: .black))
+                    .foregroundStyle(AppTheme.danger.opacity(0.72))
+                    .offset(y: 2)
+            }
+            .frame(width: 28, height: 28)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Report gouge")
     }
 }
 

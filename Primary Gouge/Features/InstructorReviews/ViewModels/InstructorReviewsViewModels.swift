@@ -73,7 +73,12 @@ final class ReviewSubmissionViewModel: ObservableObject {
     @Published var submissionMode: InstructorSubmissionMode = .both {
         didSet { handleSubmissionModeChange() }
     }
-    @Published var selectedSquadron: Squadron?
+    @Published var selectedSquadron: Squadron? {
+        didSet { handleSquadronChange() }
+    }
+    @Published var eventName = "" {
+        didSet { syncSelectedEventWithTypedEvent() }
+    }
     @Published var selectedEvent: InstructorReviewEvent?
     @Published var chillScore: Int?
     @Published var gradingScore: Int?
@@ -101,15 +106,55 @@ final class ReviewSubmissionViewModel: ObservableObject {
     }
 
     var visibleSquadrons: [Squadron] {
-        squadrons.filter(submissionMode.includes)
+        squadrons.filter(submissionMode.includes).submissionSorted()
     }
 
     var visibleEvents: [InstructorReviewEvent] {
-        events.filter(submissionMode.includes)
+        let lane = selectedSquadron?.reviewEventKind
+        let filtered = events.filter { event in
+            if let lane {
+                return event.kind == lane
+            }
+            return submissionMode.includes(event)
+        }
+        return filtered.sorted { $0.displayName < $1.displayName }
+    }
+
+    var trimmedInstructorName: String {
+        instructorName.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    var trimmedEventName: String {
+        eventName.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    var eventSuggestions: [InstructorReviewEvent] {
+        let query = trimmedEventName
+        guard !query.isEmpty else { return [] }
+
+        let normalizedQuery = normalizedEventText(query)
+        let prefixMatches = visibleEvents.filter {
+            normalizedEventText($0.displayName).hasPrefix(normalizedQuery)
+        }
+        let containsMatches = visibleEvents.filter {
+            !normalizedEventText($0.displayName).hasPrefix(normalizedQuery) &&
+            normalizedEventText($0.displayName).contains(normalizedQuery)
+        }
+        return prefixMatches + containsMatches
+    }
+
+    var eventHasExactSuggestionMatch: Bool {
+        !trimmedEventName.isEmpty && visibleEvents.contains {
+            $0.displayName.caseInsensitiveCompare(trimmedEventName) == .orderedSame
+        }
+    }
+
+    var canChooseRatings: Bool {
+        resolvedEvent() != nil
     }
 
     var validationMessage: String? {
-        if instructorName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if trimmedInstructorName.isEmpty {
             return "Instructor name is required."
         }
         if selectedSquadron == nil {
@@ -118,7 +163,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
         if let selectedSquadron, !visibleSquadrons.contains(selectedSquadron) {
             return "Choose a squadron that matches the selected review type."
         }
-        if selectedEvent == nil {
+        if trimmedEventName.isEmpty {
             return "Choose an event."
         }
         if let selectedEvent, !visibleEvents.contains(selectedEvent) {
@@ -170,16 +215,21 @@ final class ReviewSubmissionViewModel: ObservableObject {
 
     func applySuggestion(_ suggestion: InstructorNameSuggestion) {
         instructorName = suggestion.name
-        selectedSquadron = suggestion.squadron
         if let preferredMode = suggestion.squadron.preferredSubmissionMode {
             submissionMode = preferredMode
         }
+        selectedSquadron = suggestion.squadron
+    }
+
+    func applyEventSuggestion(_ event: InstructorReviewEvent) {
+        eventName = event.displayName
+        selectedEvent = event
     }
 
     func submit(using repository: InstructorReviewRepository) {
         hasAttemptedSubmit = true
 
-        guard let selectedSquadron, let selectedEvent, let chillScore, let gradingScore else {
+        guard let selectedSquadron, let chillScore, let gradingScore, let event = resolvedEvent() else {
             errorMessage = validationMessage
             return
         }
@@ -192,9 +242,9 @@ final class ReviewSubmissionViewModel: ObservableObject {
         do {
             try repository.submitReview(
                 InstructorReviewSubmission(
-                    instructorName: instructorName,
+                    instructorName: canonicalInstructorName(using: repository),
                     squadron: selectedSquadron,
-                    event: selectedEvent,
+                    event: event,
                     chillScore: chillScore,
                     gradingScore: gradingScore,
                     reviewText: trimmedReviewText
@@ -217,12 +267,95 @@ final class ReviewSubmissionViewModel: ObservableObject {
         }
         if let selectedEvent, !submissionMode.includes(selectedEvent) {
             self.selectedEvent = nil
+            if selectedEvent.displayName.caseInsensitiveCompare(trimmedEventName) == .orderedSame {
+                eventName = ""
+            }
         }
         if let repository {
             refreshSuggestions(using: repository)
         } else {
             suggestions = []
         }
+    }
+
+    private func handleSquadronChange() {
+        if let selectedEvent, !visibleEvents.contains(selectedEvent) {
+            self.selectedEvent = nil
+            if selectedEvent.displayName.caseInsensitiveCompare(trimmedEventName) == .orderedSame {
+                eventName = ""
+            }
+        }
+    }
+
+    private func syncSelectedEventWithTypedEvent() {
+        guard !trimmedEventName.isEmpty else {
+            if selectedEvent != nil {
+                selectedEvent = nil
+            }
+            return
+        }
+
+        if let exactEvent = visibleEvents.first(where: { $0.displayName.caseInsensitiveCompare(trimmedEventName) == .orderedSame }) {
+            if selectedEvent != exactEvent {
+                selectedEvent = exactEvent
+            }
+        } else if let selectedEvent, selectedEvent.displayName.caseInsensitiveCompare(trimmedEventName) != .orderedSame {
+            self.selectedEvent = nil
+        }
+    }
+
+    private func resolvedEvent() -> InstructorReviewEvent? {
+        guard !trimmedEventName.isEmpty else { return nil }
+
+        if let selectedEvent, visibleEvents.contains(selectedEvent) {
+            return selectedEvent
+        }
+
+        if let exactMatch = visibleEvents.first(where: { $0.displayName.caseInsensitiveCompare(trimmedEventName) == .orderedSame }) {
+            return exactMatch
+        }
+
+        let kind = selectedSquadron?.reviewEventKind ?? submissionMode.defaultEventKind
+        return InstructorReviewSeedData.event(for: trimmedEventName, kind: kind)
+    }
+
+    private func canonicalInstructorName(using repository: InstructorReviewRepository) -> String {
+        let typedName = trimmedInstructorName
+        guard !typedName.isEmpty else { return typedName }
+
+        let matchingSuggestions = repository.fetchInstructorSuggestions(matching: typedName)
+            .filter { suggestion in
+                if let selectedSquadron {
+                    return suggestion.squadron == selectedSquadron
+                }
+                return true
+            }
+
+        if let exactMatch = matchingSuggestions.first(where: { namesAreCanonicalMatch(typedName, $0.name) }) {
+            return exactMatch.name
+        }
+
+        return typedName
+    }
+
+    private func namesAreCanonicalMatch(_ lhs: String, _ rhs: String) -> Bool {
+        normalizedNameTokens(lhs) == normalizedNameTokens(rhs)
+    }
+
+    private func normalizedNameTokens(_ value: String) -> [String] {
+        value
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { !$0.isEmpty }
+            .map { $0.lowercased() }
+            .sorted()
+    }
+
+    private func normalizedEventText(_ value: String) -> String {
+        value
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+            .replacingOccurrences(of: " ", with: "")
+            .lowercased()
     }
 }
 
@@ -247,11 +380,13 @@ struct InstructorReviewRatingOption: Identifiable, Hashable {
 @MainActor
 final class ModerationQueueViewModel: ObservableObject {
     @Published private(set) var pendingReviews: [InstructorReview] = []
+    @Published private(set) var openReports: [InstructorGougeReport] = []
     @Published private(set) var processingIDs: Set<String> = []
     @Published private(set) var errorMessage: String?
 
     func load(using repository: InstructorReviewRepository) {
         pendingReviews = repository.fetchPendingReviews()
+        openReports = repository.fetchOpenReports()
     }
 
     func approve(reviewID: String, using repository: InstructorReviewRepository) {
@@ -266,6 +401,12 @@ final class ModerationQueueViewModel: ObservableObject {
         }
     }
 
+    func dismissReport(reportID: String, using repository: InstructorReviewRepository) {
+        process(reviewID: reportID, using: repository) {
+            try repository.dismissReport(id: reportID)
+        }
+    }
+
     private func process(
         reviewID: String,
         using repository: InstructorReviewRepository,
@@ -277,6 +418,7 @@ final class ModerationQueueViewModel: ObservableObject {
         do {
             try action()
             pendingReviews = repository.fetchPendingReviews()
+            openReports = repository.fetchOpenReports()
             errorMessage = nil
         } catch {
             errorMessage = error.localizedDescription

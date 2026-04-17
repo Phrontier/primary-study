@@ -356,6 +356,7 @@ struct FlashcardDefinition: Codable, Identifiable, Hashable {
     let id: String
     let prompt: String
     let answer: String
+    let imageRelativePath: String?
     let tags: [String]
     let studyCategories: [StudyCategoryKind]
     let eventCodes: [String]

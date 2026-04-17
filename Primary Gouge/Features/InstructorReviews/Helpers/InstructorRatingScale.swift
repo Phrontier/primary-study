@@ -65,7 +65,7 @@ enum InstructorRatingScale {
             switch score {
             case 7: return "Santa Claus"
             case 6: return "Easy Grader"
-            case 5: return "Generous but Fair"
+            case 5: return "Good but Fair"
             case 4: return "Fair"
             case 3: return "Tough but Fair"
             case 2: return "Harsh"

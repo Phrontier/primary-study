@@ -1,5 +1,11 @@
 import Foundation
 
+struct ManifestBuildError: LocalizedError {
+    let message: String
+
+    var errorDescription: String? { message }
+}
+
 enum StudyCategoryKind: String, Codable {
     case groundSchool
     case sims
@@ -220,6 +226,7 @@ struct FlashcardDefinition: Codable {
     let id: String
     let prompt: String
     let answer: String
+    let imageRelativePath: String?
     let tags: [String]
     let studyCategories: [StudyCategoryKind]
     let eventCodes: [String]
@@ -308,8 +315,26 @@ struct VideoLibraryFile: Codable {
     let videos: [VideoAsset]
 }
 
-struct FlashcardLibraryFile: Codable {
-    let flashcards: [FlashcardDefinition]
+struct GroupedFlashcardFile: Codable {
+    let events: [String: GroupedFlashcardEventSection]
+    let libraryCards: [GroupedFlashcardSourceCard]?
+}
+
+struct GroupedFlashcardEventSection: Codable {
+    let deckTitle: String?
+    let deckSummary: String?
+    let cards: [GroupedFlashcardSourceCard]
+}
+
+struct GroupedFlashcardSourceCard: Codable {
+    let id: String?
+    let prompt: String
+    let answer: String
+    let image: String?
+    let tags: [String]?
+    let studyCategories: [StudyCategoryKind]?
+    let alsoIncludeInEvents: [String]?
+    let kind: FlashcardKind?
 }
 
 struct AuthoredFlashcard: Codable {
@@ -337,7 +362,10 @@ struct ManifestBuilder {
     let fileManager = FileManager.default
     let eventOverrides: [String: EventOverride]
     let videoLibrary: [VideoAsset]
+    let groupedFlashcardSections: [String: GroupedFlashcardEventSection]
+    let groupedLibraryCards: [GroupedFlashcardSourceCard]
     let flashcardLibrary: [FlashcardDefinition]
+    let validEventCodes: Set<String>
     let referenceStudyConfig: ReferenceStudyConfigFile
 
     private let phaseSeeds: [PhaseSeed] = [
@@ -354,14 +382,15 @@ struct ManifestBuilder {
         ("3. Flights", .flights, "Student-planned flight events with gradesheets, procedures, shared references, and execution aids.")
     ]
 
-    init(rootURL: URL) {
+    init(rootURL: URL) throws {
         self.rootURL = rootURL
 
         let currentDirectory = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
         let overridesURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventOverrides.json")
         let eventOverrideDirectoryURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventContentOverrides", isDirectory: true)
         let videosURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/VideoLibrary.json")
-        let flashcardsURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/FlashcardLibrary.json")
+        let groupedFlashcardsURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/FlashcardsByEvent.json")
+        let flashcardImagesURL = currentDirectory.appendingPathComponent("Contents/FlashcardImages", isDirectory: true)
         let referenceConfigURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/ReferenceStudyConfig.json")
 
         let legacyOverrides: [String: EventOverride]
@@ -374,6 +403,7 @@ struct ManifestBuilder {
 
         let authoredOverrides = Self.loadEventOverrideDirectory(at: eventOverrideDirectoryURL)
         self.eventOverrides = Self.mergeEventOverrides(legacy: legacyOverrides, authored: authoredOverrides)
+        try Self.validateDeprecatedOverrideFlashcards(self.eventOverrides)
 
         if let data = try? Data(contentsOf: videosURL),
            let file = try? JSONDecoder().decode(VideoLibraryFile.self, from: data) {
@@ -382,16 +412,19 @@ struct ManifestBuilder {
             self.videoLibrary = []
         }
 
-        let baseFlashcards: [FlashcardDefinition]
-        if let data = try? Data(contentsOf: flashcardsURL),
-           let file = try? JSONDecoder().decode(FlashcardLibraryFile.self, from: data) {
-            baseFlashcards = file.flashcards
-        } else {
-            baseFlashcards = []
-        }
-
-        let authoredFlashcards = self.eventOverrides.values.flatMap(Self.materializeFlashcards(from:))
-        self.flashcardLibrary = Self.dedupeFlashcards(baseFlashcards + authoredFlashcards)
+        self.validEventCodes = Self.discoverEventCodes(under: rootURL).union(self.eventOverrides.keys)
+        let groupedFlashcardSource = try Self.loadGroupedFlashcardSource(
+            at: groupedFlashcardsURL,
+            validEventCodes: validEventCodes
+        )
+        self.groupedFlashcardSections = groupedFlashcardSource.sections
+        self.groupedLibraryCards = groupedFlashcardSource.libraryCards
+        self.flashcardLibrary = try Self.materializeGroupedFlashcards(
+            from: groupedFlashcardSections,
+            libraryCards: groupedLibraryCards,
+            validEventCodes: validEventCodes,
+            imageRootURL: flashcardImagesURL
+        )
 
         if let data = try? Data(contentsOf: referenceConfigURL),
            let file = try? JSONDecoder().decode(ReferenceStudyConfigFile.self, from: data) {
@@ -441,6 +474,198 @@ struct ManifestBuilder {
         }
 
         return result.reversed()
+    }
+
+    private static func loadGroupedFlashcardSource(
+        at url: URL,
+        validEventCodes: Set<String>
+    ) throws -> (sections: [String: GroupedFlashcardEventSection], libraryCards: [GroupedFlashcardSourceCard]) {
+        guard let data = try? Data(contentsOf: url) else {
+            throw ManifestBuildError(message: "Missing grouped flashcard source at \(url.path).")
+        }
+
+        let decoder = JSONDecoder()
+        let file: GroupedFlashcardFile
+        do {
+            file = try decoder.decode(GroupedFlashcardFile.self, from: data)
+        } catch {
+            throw ManifestBuildError(message: "Failed to decode grouped flashcard source \(url.lastPathComponent): \(error.localizedDescription)")
+        }
+
+        var normalizedSections: [String: GroupedFlashcardEventSection] = [:]
+        for (rawCode, section) in file.events {
+            let normalizedCode = normalizeCode(rawCode)
+            guard !normalizedCode.isEmpty else {
+                throw ManifestBuildError(message: "Flashcard source contains an empty event code section.")
+            }
+            guard validEventCodes.contains(normalizedCode) else {
+                throw ManifestBuildError(message: "Flashcard source references unknown event code '\(rawCode)'.")
+            }
+            if normalizedSections[normalizedCode] != nil {
+                throw ManifestBuildError(message: "Flashcard source contains duplicate event section '\(normalizedCode)'.")
+            }
+            normalizedSections[normalizedCode] = section
+        }
+
+        return (normalizedSections, file.libraryCards ?? [])
+    }
+
+    private static func materializeGroupedFlashcards(
+        from sections: [String: GroupedFlashcardEventSection],
+        libraryCards: [GroupedFlashcardSourceCard],
+        validEventCodes: Set<String>,
+        imageRootURL: URL
+    ) throws -> [FlashcardDefinition] {
+        var cards: [FlashcardDefinition] = []
+        var seenExplicitIDs = Set<String>()
+
+        for eventCode in sections.keys.sorted() {
+            guard let section = sections[eventCode] else { continue }
+
+            for (index, card) in section.cards.enumerated() {
+                let explicitSecondaryCodes = (card.alsoIncludeInEvents ?? []).map(normalizeCode)
+                let eventCodes = uniqueEventCodes([eventCode] + explicitSecondaryCodes)
+
+                for mappedCode in eventCodes {
+                    guard validEventCodes.contains(mappedCode) else {
+                        throw ManifestBuildError(message: "Flashcard '\(card.prompt)' references unknown event code '\(mappedCode)'.")
+                    }
+                }
+
+                if let explicitID = card.id {
+                    guard seenExplicitIDs.insert(explicitID).inserted else {
+                        throw ManifestBuildError(message: "Duplicate flashcard id '\(explicitID)' found in grouped flashcard source.")
+                    }
+                }
+
+                let fallbackID = sanitizedIdentifier(
+                    "flashcard-\(eventCode)-\(String(sanitizedIdentifier(card.prompt).prefix(48)))-\(index + 1)"
+                )
+
+                cards.append(
+                    FlashcardDefinition(
+                        id: card.id ?? fallbackID,
+                        prompt: card.prompt,
+                        answer: card.answer,
+                        imageRelativePath: try manifestImageRelativePath(for: card.image, imageRootURL: imageRootURL),
+                        tags: card.tags ?? [],
+                        studyCategories: card.studyCategories ?? [],
+                        eventCodes: eventCodes,
+                        kind: card.kind ?? .standard,
+                        requiresVerbatim: false,
+                        companionGroupID: nil
+                    )
+                )
+            }
+        }
+
+        for (index, card) in libraryCards.enumerated() {
+            if let explicitID = card.id {
+                guard seenExplicitIDs.insert(explicitID).inserted else {
+                    throw ManifestBuildError(message: "Duplicate flashcard id '\(explicitID)' found in grouped flashcard source.")
+                }
+            }
+
+            let fallbackID = sanitizedIdentifier(
+                "flashcard-library-\(String(sanitizedIdentifier(card.prompt).prefix(48)))-\(index + 1)"
+            )
+
+            cards.append(
+                FlashcardDefinition(
+                    id: card.id ?? fallbackID,
+                    prompt: card.prompt,
+                    answer: card.answer,
+                    imageRelativePath: try manifestImageRelativePath(for: card.image, imageRootURL: imageRootURL),
+                    tags: card.tags ?? [],
+                    studyCategories: card.studyCategories ?? [],
+                    eventCodes: [],
+                    kind: card.kind ?? .standard,
+                    requiresVerbatim: false,
+                    companionGroupID: nil
+                )
+            )
+        }
+
+        return dedupeFlashcards(cards)
+    }
+
+    private static func manifestImageRelativePath(for image: String?, imageRootURL: URL) throws -> String? {
+        guard let rawImage = image?.trimmingCharacters(in: .whitespacesAndNewlines), !rawImage.isEmpty else {
+            return nil
+        }
+
+        guard !rawImage.hasPrefix("/"), !rawImage.contains("..") else {
+            throw ManifestBuildError(message: "Flashcard image path '\(rawImage)' must be relative to FlashcardImages.")
+        }
+
+        let candidateURL = imageRootURL.appendingPathComponent(rawImage)
+        guard FileManager.default.fileExists(atPath: candidateURL.path) else {
+            throw ManifestBuildError(message: "Flashcard image '\(rawImage)' was not found at \(candidateURL.path).")
+        }
+
+        return "FlashcardImages/\(rawImage)"
+    }
+
+    private static func uniqueEventCodes(_ codes: [String]) -> [String] {
+        var seen = Set<String>()
+        var result: [String] = []
+
+        for code in codes {
+            guard !code.isEmpty, seen.insert(code).inserted else { continue }
+            result.append(code)
+        }
+
+        return result
+    }
+
+    private static func validateDeprecatedOverrideFlashcards(_ overrides: [String: EventOverride]) throws {
+        let deprecatedCodes = overrides.values
+            .filter { !($0.flashcards ?? []).isEmpty }
+            .map(\.code)
+            .sorted()
+
+        guard deprecatedCodes.isEmpty else {
+            throw ManifestBuildError(
+                message: "Inline event override flashcards are deprecated. Move flashcards for \(deprecatedCodes.joined(separator: ", ")) into FlashcardsByEvent.json."
+            )
+        }
+    }
+
+    private static func discoverEventCodes(under rootURL: URL) -> Set<String> {
+        let enumerator = FileManager.default.enumerator(at: rootURL, includingPropertiesForKeys: nil)
+        var results = Set<String>()
+
+        while let item = enumerator?.nextObject() as? URL {
+            var isDirectory: ObjCBool = false
+            guard FileManager.default.fileExists(atPath: item.path, isDirectory: &isDirectory), !isDirectory.boolValue else { continue }
+            guard let code = inferredEventCode(from: item.lastPathComponent) else { continue }
+            results.insert(code)
+        }
+
+        return results
+    }
+
+    private static func inferredEventCode(from filename: String) -> String? {
+        let patterns = [
+            #"[A-Z]{1,4}\s?\d{4}"#,
+            #"CS\s?\d{4}"#
+        ]
+
+        for pattern in patterns {
+            if let regex = try? NSRegularExpression(pattern: pattern) {
+                let range = NSRange(location: 0, length: filename.utf16.count)
+                if let match = regex.firstMatch(in: filename, range: range),
+                   let swiftRange = Range(match.range, in: filename) {
+                    return normalizeCode(String(filename[swiftRange]))
+                }
+            }
+        }
+
+        return nil
+    }
+
+    private static func normalizeCode(_ value: String) -> String {
+        value.replacingOccurrences(of: " ", with: "")
     }
 
     func build() throws -> StudyManifest {
@@ -712,32 +937,15 @@ struct ManifestBuilder {
         return [
             FlashcardDeck(
                 id: sanitizeID("\(normalizedCode)-flashcards"),
-                title: override?.flashcardDeckTitle ?? "Discussion Item Flashcards",
-                summary: override?.flashcardDeckSummary ?? "Official discussion items and repeated memory references for focused recall practice.",
+                title: groupedFlashcardSections[normalizedCode]?.deckTitle
+                    ?? override?.flashcardDeckTitle
+                    ?? "Discussion Item Flashcards",
+                summary: groupedFlashcardSections[normalizedCode]?.deckSummary
+                    ?? override?.flashcardDeckSummary
+                    ?? "Official discussion items and repeated memory references for focused recall practice.",
                 cardIDs: cardIDs
             )
         ]
-    }
-
-    private static func materializeFlashcards(from override: EventOverride) -> [FlashcardDefinition] {
-        let normalizedCode = override.code.replacingOccurrences(of: " ", with: "")
-        return (override.flashcards ?? []).enumerated().map { index, card in
-            let fallbackID = sanitizedIdentifier(
-                "flashcard-\(normalizedCode)-\(String(sanitizedIdentifier(card.prompt).prefix(48)))-\(index + 1)"
-            )
-
-            return FlashcardDefinition(
-                id: card.id ?? fallbackID,
-                prompt: card.prompt,
-                answer: card.answer,
-                tags: card.tags ?? [],
-                studyCategories: card.studyCategories ?? [],
-                eventCodes: card.eventCodes ?? [override.code],
-                kind: card.kind ?? .standard,
-                requiresVerbatim: card.requiresVerbatim ?? false,
-                companionGroupID: card.companionGroupID
-            )
-        }
     }
 
     private static func sanitizedIdentifier(_ value: String) -> String {
@@ -837,25 +1045,11 @@ struct ManifestBuilder {
     }
 
     private func eventCode(from filename: String) -> String? {
-        let patterns = [
-            #"[A-Z]{1,4}\s?\d{4}"#,
-            #"CS\s?\d{4}"#
-        ]
-
-        for pattern in patterns {
-            if let regex = try? NSRegularExpression(pattern: pattern) {
-                let range = NSRange(location: 0, length: filename.utf16.count)
-                if let match = regex.firstMatch(in: filename, range: range),
-                   let swiftRange = Range(match.range, in: filename) {
-                    return String(filename[swiftRange])
-                }
-            }
-        }
-        return nil
+        Self.inferredEventCode(from: filename)
     }
 
     private func normalizeCode(_ value: String) -> String {
-        value.replacingOccurrences(of: " ", with: "")
+        Self.normalizeCode(value)
     }
 
     private func sanitizeID(_ value: String) -> String {
@@ -1026,7 +1220,7 @@ let outputPath = arguments.dropFirst(2).first ?? "Primary Gouge/AppContent/Study
 let sourceURL = URL(fileURLWithPath: sourcePath, relativeTo: URL(fileURLWithPath: FileManager.default.currentDirectoryPath)).standardizedFileURL
 let outputURL = URL(fileURLWithPath: outputPath, relativeTo: URL(fileURLWithPath: FileManager.default.currentDirectoryPath)).standardizedFileURL
 
-let builder = ManifestBuilder(rootURL: sourceURL)
+let builder = try ManifestBuilder(rootURL: sourceURL)
 let manifest = try builder.build()
 let encoder = JSONEncoder()
 encoder.outputFormatting = [.prettyPrinted, .sortedKeys]

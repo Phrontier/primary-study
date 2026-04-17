@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import csv
 import json
 import re
 import sys
@@ -16,13 +17,17 @@ NS = {
     "a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",
     "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
 }
+WORD_NS = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 
 NAME_SHAPE = re.compile(r"^[A-Za-z][A-Za-z .,'?-]*(?:,\s*[A-Za-z][A-Za-z .'-]*)?$")
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_WORKBOOK = Path.home() / "Downloads" / "Instructor Gouge 3.1 (TW4).xlsx"
+DEFAULT_VT28_CSV = Path.home() / "Downloads" / "Ranger IP Gouge - Ranger IP Gouge.csv"
+DEFAULT_TW5_DOCX = Path.home() / "Downloads" / "North Whiting Sim Instructors.docx"
 DEFAULT_OUTPUT = ROOT / "Primary Gouge" / "AppContent" / "InstructorReviewSeedBase.json"
 DEFAULT_OVERRIDES_OUTPUT = ROOT / "Primary Gouge" / "AppContent" / "InstructorReviewSeedOverrides.json"
+STUDY_MANIFEST_PATH = ROOT / "Primary Gouge" / "AppContent" / "StudyManifest.json"
 
 RANK_PREFIXES = [
     r"^maj/\s*l?cdr\s+",
@@ -69,6 +74,8 @@ EVENT_PATTERNS = [
 
 FLIGHT_SQUADRON = "vt-27"
 SIM_SQUADRON = "tw-4"
+VT28_FLIGHT_SQUADRON = "vt-28"
+TW5_SIM_SQUADRON = "tw-5"
 SEED_DATE_START = datetime(2026, 3, 1, 15, 0, tzinfo=timezone.utc)
 MAX_REVIEWS_PER_INSTRUCTOR = 2
 
@@ -110,6 +117,89 @@ MANUAL_DEMO_REVIEWS = [
         "status": "rejected",
     },
 ]
+
+EVENT_CODE_PATTERN = re.compile(r"\b(FAM|CS|I|F|N|C)\s*-?\s*(\d{4})\b", re.IGNORECASE)
+EVENT_FAMILY_PATTERN = re.compile(r"\b(FAM|CS|I|F|N|C)\s*-?\s*(\d{2})(?:XX|X)?\b", re.IGNORECASE)
+SIM_EVENT_CODE_PATTERN = re.compile(r"\b(FAM|I|C)\s*-?\s*(\d{4})\b", re.IGNORECASE)
+SIM_EVENT_FAMILY_PATTERN = re.compile(r"\b(FAM|I|C)\s*-?\s*(\d{2})(?:XX|X)?\b", re.IGNORECASE)
+
+DOCX_STOP_MARKERS = {
+    "regardless of who your instructor is:",
+    "general",
+    "eps",
+    "basic instruments",
+    "instruments",
+}
+
+DOCX_NOISE_LINES = {
+    "north whiting sim instructors",
+    "**their pictures/info at the end",
+    "***general info after the instructor pictures",
+    "air force",
+    "g.o.a.t.",
+    "yes",
+    "chiller",
+}
+
+DOCX_NON_NAME_PHRASES = {
+    "grades fairly",
+    "he's the man",
+    "weird dude",
+}
+
+DOCX_NON_NAME_TOKENS = {
+    "grades",
+    "fairly",
+    "he's",
+    "weird",
+    "dude",
+    "awesome",
+    "great",
+    "nice",
+    "super",
+    "favorite",
+    "agree",
+}
+
+
+def load_manifest_event_codes(kind: str) -> list[str]:
+    try:
+        manifest = json.loads(STUDY_MANIFEST_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return []
+
+    events: list[str] = []
+    for phase in manifest.get("phases", []):
+        for category in phase.get("categories", []):
+            if category.get("kind") != kind:
+                continue
+            for event in category.get("events", []):
+                code = re.sub(r"\s+", " ", (event.get("code", "") or "")).strip().upper()
+                if code:
+                    events.append(code)
+
+    return list(dict.fromkeys(events))
+
+
+FLIGHT_EVENT_CODES = load_manifest_event_codes("flights")
+FLIGHT_EVENT_CODE_SET = set(FLIGHT_EVENT_CODES)
+SIM_EVENT_CODES = load_manifest_event_codes("sims")
+SIM_EVENT_CODE_SET = set(SIM_EVENT_CODES)
+
+
+def build_first_event_by_family(codes: list[str]) -> dict[tuple[str, str], str]:
+    families: dict[tuple[str, str], str] = {}
+    for code in codes:
+        match = re.match(r"^([A-Z]+)(\d{2})\d{2}$", code)
+        if match is None:
+            continue
+        key = (match.group(1), match.group(2))
+        families.setdefault(key, code)
+    return families
+
+
+FIRST_EVENT_BY_FAMILY = build_first_event_by_family(FLIGHT_EVENT_CODES)
+SIM_FIRST_EVENT_BY_FAMILY = build_first_event_by_family(SIM_EVENT_CODES)
 
 
 def normalize_whitespace(value: str) -> str:
@@ -167,6 +257,20 @@ def sheet_rows(workbook_path: Path, sheet_name: str) -> list[tuple[int, dict[str
         return rows
 
 
+def docx_paragraphs(source: Path) -> list[tuple[int, str]]:
+    with zipfile.ZipFile(source) as archive:
+        root = ET.fromstring(archive.read("word/document.xml"))
+
+    paragraphs: list[tuple[int, str]] = []
+    for index, paragraph in enumerate(root.findall(".//w:p", WORD_NS), start=1):
+        text = "".join(node.text or "" for node in paragraph.findall(".//w:t", WORD_NS))
+        normalized = normalize_whitespace(text)
+        if normalized:
+            paragraphs.append((index, normalized))
+
+    return paragraphs
+
+
 def smart_title(value: str) -> str:
     words = []
     for part in value.split(" "):
@@ -186,8 +290,10 @@ def normalize_name(value: str) -> Optional[str]:
     for prefix in RANK_PREFIXES:
         value = re.sub(prefix, "", value, flags=re.IGNORECASE)
 
+    value = value.replace("“", "").replace("”", "").replace('"', "")
     value = re.sub(r"\(\?\)", "", value)
     value = re.sub(r"\((?:pronounced:[^)]+)\)", "", value, flags=re.IGNORECASE)
+    value = re.sub(r"\(([^)]+)\)", r" \1 ", value)
     value = value.replace(" ,", ",").replace("  ", " ").strip(" ,/")
     if not value:
         return None
@@ -203,6 +309,200 @@ def normalize_name(value: str) -> Optional[str]:
         return None
 
     return value
+
+
+def normalized_name_key(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", value.lower())
+
+
+def normalized_name_tokens(value: str) -> tuple[str, ...]:
+    return tuple(sorted(token for token in re.split(r"[^A-Za-z0-9]+", value.lower()) if token))
+
+
+def surname_key(value: str) -> str:
+    cleaned = normalize_whitespace(value).lower()
+    if "," in cleaned:
+        cleaned = cleaned.split(",", 1)[0]
+    else:
+        parts = [part for part in re.split(r"[^A-Za-z0-9]+", cleaned) if part]
+        cleaned = parts[-1] if parts else ""
+    return re.sub(r"[^a-z0-9]+", "", cleaned)
+
+
+def build_canonical_name_lookup(reviews: list[dict]) -> tuple[dict[str, str], dict[tuple[str, ...], str], dict[str, str]]:
+    exact_lookup: dict[str, str] = {}
+    token_candidates: dict[tuple[str, ...], set[str]] = defaultdict(set)
+    surname_candidates: dict[str, set[str]] = defaultdict(set)
+
+    for review in reviews:
+        name = review["instructorName"]
+        exact_lookup[normalized_name_key(name)] = name
+        token_candidates[normalized_name_tokens(name)].add(name)
+        surname_candidates[surname_key(name)].add(name)
+
+    token_lookup = {
+        tokens: next(iter(names))
+        for tokens, names in token_candidates.items()
+        if len(names) == 1
+    }
+    surname_lookup = {
+        key: next(iter(names))
+        for key, names in surname_candidates.items()
+        if len(names) == 1
+    }
+    return exact_lookup, token_lookup, surname_lookup
+
+
+def canonicalize_name(
+    raw_name: str,
+    exact_lookup: dict[str, str],
+    token_lookup: dict[tuple[str, ...], str],
+    surname_lookup: dict[str, str],
+) -> Optional[str]:
+    normalized = normalize_name(raw_name)
+    if normalized is None:
+        return None
+
+    exact = exact_lookup.get(normalized_name_key(normalized))
+    if exact is not None:
+        return exact
+
+    token_match = token_lookup.get(normalized_name_tokens(normalized))
+    if token_match is not None:
+        return token_match
+
+    if len(normalized_name_tokens(normalized)) == 1:
+        surname_match = surname_lookup.get(surname_key(normalized))
+        if surname_match is not None:
+            return surname_match
+
+    return normalized
+
+
+def docx_name_candidate(value: str) -> Optional[str]:
+    normalized = normalize_whitespace(value).rstrip(":").rstrip("-")
+    lower = normalized.lower()
+
+    if lower in DOCX_NOISE_LINES or lower in DOCX_NON_NAME_PHRASES or lower.startswith("*"):
+        return None
+    if any(marker in lower for marker in DOCX_STOP_MARKERS):
+        return None
+    if any(char.isdigit() for char in normalized):
+        return None
+    if len(normalized) > 48:
+        return None
+    if normalized.count(",") > 1:
+        return None
+
+    token_count = len([token for token in re.split(r"\s+", normalized) if token])
+    if token_count == 0 or token_count > 4:
+        return None
+    lower_tokens = [token for token in re.split(r"[^a-z']+", lower) if token]
+    if any(token in DOCX_NON_NAME_TOKENS for token in lower_tokens):
+        return None
+
+    if re.search(r"[.!?]", normalized):
+        return None
+    if normalized.lower() != smart_title(normalized).lower():
+        return None
+
+    return normalize_name(normalized)
+
+
+def paragraph_looks_like_review(text: str) -> bool:
+    lowered = text.lower()
+
+    if lowered in DOCX_NOISE_LINES or any(lowered == marker for marker in DOCX_STOP_MARKERS):
+        return False
+
+    keyword_patterns = [
+        r"\bgrade",
+        r"\bgrader",
+        r"\bbrief",
+        r"\bdebrief",
+        r"\bsim",
+        r"\binstructor",
+        r"\bteach",
+        r"\bhelp",
+        r"\bchill",
+        r"\bfair",
+        r"\bstrict",
+        r"\bharsh",
+        r"\bnice",
+        r"\bquestions?",
+        r"\bprepared",
+        r"\bprocedure",
+        r"\bmif",
+        r"\bunsat",
+    ]
+
+    if len(text) >= 45 or len(text.split()) >= 8:
+        return True
+
+    return any(re.search(pattern, lowered) for pattern in keyword_patterns)
+
+
+def normalize_event_text(value: str) -> str:
+    normalized = normalize_whitespace(value).upper()
+    normalized = normalized.replace("&", "/")
+    normalized = normalized.replace(" ", "")
+    return normalized
+
+
+def canonical_event_from_segment(segment: str) -> Optional[str]:
+    normalized = normalize_event_text(segment)
+    if not normalized:
+        return None
+
+    if re.search(r"ON-?WING", normalized):
+        return "FAM4101"
+
+    for match in EVENT_CODE_PATTERN.finditer(normalized):
+        code = f"{match.group(1).upper()}{match.group(2)}"
+        if code in FLIGHT_EVENT_CODE_SET:
+            return code
+
+    for match in EVENT_FAMILY_PATTERN.finditer(normalized):
+        prefix = match.group(1).upper()
+        block = match.group(2)
+        first_event = FIRST_EVENT_BY_FAMILY.get((prefix, block))
+        if first_event is not None:
+            return first_event
+
+    return None
+
+
+def extract_vt28_event_name(raw_event: str, review_text: str) -> Optional[str]:
+    for candidate in (raw_event, review_text):
+        code = canonical_event_from_segment(candidate)
+        if code is not None:
+            return code
+
+    return None
+
+
+def canonical_sim_event_from_segment(segment: str) -> Optional[str]:
+    normalized = normalize_event_text(segment)
+    if not normalized:
+        return None
+
+    for match in SIM_EVENT_CODE_PATTERN.finditer(normalized):
+        code = f"{match.group(1).upper()}{match.group(2)}"
+        if code in SIM_EVENT_CODE_SET:
+            return code
+
+    for match in SIM_EVENT_FAMILY_PATTERN.finditer(normalized):
+        prefix = match.group(1).upper()
+        block = match.group(2)
+        first_event = SIM_FIRST_EVENT_BY_FAMILY.get((prefix, block))
+        if first_event is not None:
+            return first_event
+
+    return None
+
+
+def extract_tw5_event_name(paragraph: str) -> Optional[str]:
+    return canonical_sim_event_from_segment(paragraph)
 
 
 def extract_event_name(raw_event: str, review_text: str) -> Optional[str]:
@@ -228,17 +528,17 @@ def chill_score_from_label(label: Optional[str], review_text: str) -> int:
 
     if any(token in text for token in ["game over", "asshole", "nightmare", "unchill/gg", "not chill /", "single most unchill"]):
         return 1
-    if any(token in text for token in ["not chill", "below average chill", "not that chill", "deceptively chill", "intense", "degrading"]):
+    if any(token in text for token in ["blizzard", "bring a parka", "ice water at 2am chill", "nuclear winter chill", "tactical imsafe", "helmet fire", "trip you up", "aggressive", "not chill", "below average chill", "not that chill", "deceptively chill", "intense", "degrading"]):
         return 2
-    if any(token in text for token in ["moderately chill in the air", "serious", "firm but fair", "healthy standard", "tense"]):
+    if any(token in text for token in ["chill until not", "moderately chill in the air", "serious", "firm but fair", "healthy standard", "tense"]):
         return 3
     if any(token in text for token in ["moderately chill", "mid chill", "average chill", "neutral", "standard chill"]):
         return 4
-    if any(token in text for token in ["pretty chill", "chill af", "laid back", "easy going", "mostly chill", "chill"]):
+    if any(token in text for token in ["pretty chill", "chill/goofy", "goofy", "super nice", "easygoing", "easy going", "chill af", "laid back", "mostly chill", "chill"]):
         return 5
-    if any(token in text for token in ["very chill", "super chill", "extremely chill", "biggggg chillin", "too chill"]):
+    if any(token in text for token in ["straight chiller", "very relaxed", "very chilly", "very chill", "superchill", "super chill", "extremely chill", "beyond chill", "biggggg chillin", "too chill"]):
         return 6
-    if any(token in text for token in ["chillmaster", "chillionaire", "chill goblin", "prime minister of chill", "bob ross", "chiller of the universe", "chilltacular"]):
+    if any(token in text for token in ["chillmaster", "chillionaire", "bob ross chill", "chill goblin", "prime minister of chill", "bob ross", "chiller of the universe", "chilltacular"]):
         return 7
     return 4
 
@@ -248,14 +548,14 @@ def grading_score_from_text(review_text: str) -> int:
     score = 4
 
     positive = {
-        3: ["grades insanely well", "straight 4's", "above mif for just about everything", "drag the mouse cursor straight down the 4 column"],
-        2: ["easy grader", "incredibly generous", "generous with grades", "good grades", "grades very well", "very fair grader", "fair to generous"],
+        3: ["santa claus", "grades insanely well", "straight 4's", "above mif for just about everything", "drag the mouse cursor straight down the 4 column"],
+        2: ["easy grader", "incredibly generous", "generous grader", "generous with grades", "good grades", "grades very well", "very fair grader", "fair to generous"],
         1: ["fair grader", "grades well", "good grader", "decent grade", "fair overall", "grades to performance", "follows cts", "by the book", "average grader"],
     }
     negative = {
-        -1: ["tough grader", "strict", "rigid", "underwhelming grades", "not easy on grades", "fair/tough", "graded low"],
-        -2: ["harsh grader", "grades low", "mif you out", "straight mif", "mif across the board", "borderline items broke against me"],
-        -3: ["mif monster", "game over", "received 3s", "fail me", "failed me"],
+        -1: ["honest grader", "tough grader", "strict", "rigid", "underwhelming grades", "not easy on grades", "fair/tough", "graded low"],
+        -2: ["mif monster", "harsh grader", "grades low", "mif you out", "straight mif", "mif across the board", "borderline items broke against me"],
+        -3: ["game over", "received 3s", "fail me", "failed me"],
     }
 
     for delta, phrases in positive.items():
@@ -376,6 +676,109 @@ def parse_sim_reviews(workbook_path: Path) -> list[dict]:
     return reviews
 
 
+def parse_vt28_csv_reviews(
+    csv_path: Path,
+    exact_lookup: dict[str, str],
+    token_lookup: dict[tuple[str, ...], str],
+    surname_lookup: dict[str, str],
+) -> list[dict]:
+    if not csv_path.exists():
+        return []
+
+    rows: list[dict] = []
+    with csv_path.open(newline="", encoding="utf-8-sig") as handle:
+        reader = csv.reader(handle)
+        for row_number, row in enumerate(reader, start=1):
+            padded = row + [""] * max(0, 9 - len(row))
+            marker, name, _, chill_label, raw_event, *comments = padded
+
+            if row_number <= 2:
+                continue
+
+            normalized_name = canonicalize_name(name, exact_lookup, token_lookup, surname_lookup)
+            if normalized_name is None:
+                continue
+
+            if marker.strip().lower().startswith("ex.") or normalized_name == "John, Smith":
+                continue
+
+            event_name = extract_vt28_event_name(raw_event, " ".join(comments))
+
+            for comment_index, comment in enumerate(comments, start=1):
+                review_text = normalize_whitespace(comment)
+                if not review_text:
+                    continue
+
+                rows.append(
+                    {
+                        "kind": "flight",
+                        "source": "vt28_csv",
+                        "sourceRow": row_number,
+                        "sourceCommentIndex": comment_index,
+                        "squadronID": VT28_FLIGHT_SQUADRON,
+                        "instructorName": normalized_name,
+                        "eventName": event_name,
+                        "eventKind": "flight",
+                        "chillScore": chill_score_from_label(chill_label, review_text),
+                        "gradingScore": grading_score_from_text(review_text),
+                        "reviewText": review_text,
+                    }
+                )
+
+    return rows
+
+
+def parse_tw5_docx_reviews(
+    docx_path: Path,
+    exact_lookup: dict[str, str],
+    token_lookup: dict[tuple[str, ...], str],
+    surname_lookup: dict[str, str],
+) -> list[dict]:
+    if not docx_path.exists():
+        return []
+
+    reviews: list[dict] = []
+    current_instructor: Optional[str] = None
+
+    for paragraph_index, paragraph in docx_paragraphs(docx_path):
+        lowered = paragraph.lower()
+        if lowered in DOCX_STOP_MARKERS:
+            break
+
+        possible_name = docx_name_candidate(paragraph)
+        if possible_name is not None:
+            canonical_name = canonicalize_name(possible_name, exact_lookup, token_lookup, surname_lookup)
+            if canonical_name is None:
+                continue
+            if len(normalized_name_tokens(possible_name)) == 1 and len(normalized_name_tokens(canonical_name)) == 1:
+                continue
+            current_instructor = canonical_name
+            continue
+
+        if current_instructor is None:
+            continue
+
+        if not paragraph_looks_like_review(paragraph):
+            continue
+
+        reviews.append(
+            {
+                "kind": "sim",
+                "source": "tw5_docx",
+                "sourceRow": paragraph_index,
+                "squadronID": TW5_SIM_SQUADRON,
+                "instructorName": current_instructor,
+                "eventName": extract_tw5_event_name(paragraph),
+                "eventKind": "sim",
+                "chillScore": chill_score_from_label(None, paragraph),
+                "gradingScore": grading_score_from_text(paragraph),
+                "reviewText": paragraph,
+            }
+        )
+
+    return reviews
+
+
 def select_reviews(parsed_reviews: list[dict]) -> list[dict]:
     grouped: dict[tuple[str, str, str], list[dict]] = defaultdict(list)
     for review in parsed_reviews:
@@ -391,13 +794,31 @@ def select_reviews(parsed_reviews: list[dict]) -> list[dict]:
     return selected
 
 
-def attach_ids_and_dates(reviews: list[dict]) -> list[dict]:
+def sort_reviews_for_seeding(reviews: list[dict]) -> list[dict]:
+    return sorted(
+        reviews,
+        key=lambda review: (
+            review["kind"],
+            review["squadronID"],
+            review["instructorName"],
+            review.get("sourceRow", 0),
+            review.get("sourceCommentIndex", 0),
+            review.get("eventName") or "",
+            review["reviewText"],
+        ),
+    )
+
+
+def attach_ids_and_dates(reviews: list[dict], start_index: int = 1) -> list[dict]:
     seeded = []
-    for index, review in enumerate(reviews, start=1):
+    for index, review in enumerate(reviews, start=start_index):
         slug = re.sub(r"[^a-z0-9]+", "-", review["instructorName"].lower()).strip("-")
+        review_id = review.get("seedID")
+        if review_id is None:
+            review_id = f"seed-{review['kind']}-{slug}-{index:03d}"
         seeded.append(
             {
-                "id": f"seed-{review['kind']}-{slug}-{index:03d}",
+                "id": review_id,
                 "instructorName": review["instructorName"],
                 "squadronID": review["squadronID"],
                 "eventName": review["eventName"],
@@ -412,9 +833,15 @@ def attach_ids_and_dates(reviews: list[dict]) -> list[dict]:
     return seeded
 
 
-def render_base_json(seed_reviews: list[dict], workbook_path: Path) -> str:
+def render_base_json(seed_reviews: list[dict], workbook_path: Path, csv_path: Optional[Path], docx_path: Optional[Path]) -> str:
+    source_parts = [str(workbook_path)]
+    if csv_path is not None and csv_path.exists():
+        source_parts.append(str(csv_path))
+    if docx_path is not None and docx_path.exists():
+        source_parts.append(str(docx_path))
+
     payload = {
-        "sourceWorkbook": str(workbook_path),
+        "sourceWorkbook": " | ".join(source_parts),
         "generatedAt": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "reviews": seed_reviews + MANUAL_DEMO_REVIEWS,
     }
@@ -434,6 +861,8 @@ def ensure_override_file(path: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Import instructor gouge workbook into the editable AppContent JSON seed files.")
     parser.add_argument("--workbook", type=Path, default=DEFAULT_WORKBOOK)
+    parser.add_argument("--vt28-csv", type=Path, default=DEFAULT_VT28_CSV)
+    parser.add_argument("--tw5-docx", type=Path, default=DEFAULT_TW5_DOCX)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--overrides-output", type=Path, default=DEFAULT_OVERRIDES_OUTPUT)
     args = parser.parse_args()
@@ -441,11 +870,36 @@ def main() -> int:
     if not args.workbook.exists():
         raise SystemExit(f"Workbook not found at {args.workbook}")
 
-    parsed = parse_ip_reviews(args.workbook) + parse_sim_reviews(args.workbook)
-    selected = select_reviews(parsed)
-    seeded = attach_ids_and_dates(selected)
+    parsed_workbook = parse_ip_reviews(args.workbook) + parse_sim_reviews(args.workbook)
+    exact_lookup, token_lookup, surname_lookup = build_canonical_name_lookup(parsed_workbook)
+    parsed_vt28_csv = parse_vt28_csv_reviews(args.vt28_csv, exact_lookup, token_lookup, surname_lookup)
+    combined_for_lookup = parsed_workbook + parsed_vt28_csv
+    exact_lookup, token_lookup, surname_lookup = build_canonical_name_lookup(combined_for_lookup)
+    parsed_tw5_docx = parse_tw5_docx_reviews(args.tw5_docx, exact_lookup, token_lookup, surname_lookup)
+
+    selected_workbook = select_reviews(parsed_workbook)
+    seeded_workbook = attach_ids_and_dates(selected_workbook)
+
+    selected_vt28_csv = sort_reviews_for_seeding(parsed_vt28_csv)
+    for review in selected_vt28_csv:
+        slug = re.sub(r"[^a-z0-9]+", "-", review["instructorName"].lower()).strip("-")
+        review["seedID"] = (
+            f"seed-flight-vt28-{slug}-csv-r{review['sourceRow']}-c{review['sourceCommentIndex']}"
+        )
+
+    seeded_vt28_csv = attach_ids_and_dates(selected_vt28_csv, start_index=len(seeded_workbook) + 1)
+    selected_tw5_docx = sort_reviews_for_seeding(parsed_tw5_docx)
+    for review in selected_tw5_docx:
+        slug = re.sub(r"[^a-z0-9]+", "-", review["instructorName"].lower()).strip("-")
+        review["seedID"] = f"seed-sim-tw5-{slug}-docx-p{review['sourceRow']}"
+
+    seeded_tw5_docx = attach_ids_and_dates(
+        selected_tw5_docx,
+        start_index=len(seeded_workbook) + len(seeded_vt28_csv) + 1,
+    )
+    seeded = seeded_workbook + seeded_vt28_csv + seeded_tw5_docx
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    base_json = render_base_json(seeded, args.workbook)
+    base_json = render_base_json(seeded, args.workbook, args.vt28_csv, args.tw5_docx)
     args.output.write_text(base_json, encoding="utf-8")
     ensure_override_file(args.overrides_output)
 

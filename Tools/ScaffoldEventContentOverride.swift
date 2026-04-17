@@ -9,7 +9,6 @@ struct EventContentOverrideScaffold: Codable {
     let studyNotes: StudyNotesScaffold?
     let flashcardDeckTitle: String?
     let flashcardDeckSummary: String?
-    let flashcards: [FlashcardScaffold]
 }
 
 struct StudyNotesScaffold: Codable {
@@ -26,15 +25,6 @@ struct StudyNotesSectionScaffold: Codable {
 struct StudyNotesItemScaffold: Codable {
     let text: String
     let children: [StudyNotesItemScaffold]?
-}
-
-struct FlashcardScaffold: Codable {
-    let prompt: String
-    let answer: String
-    let studyCategories: [String]
-    let tags: [String]
-    let kind: String
-    let requiresVerbatim: Bool
 }
 
 let arguments = CommandLine.arguments.dropFirst()
@@ -80,8 +70,7 @@ let scaffold = EventContentOverrideScaffold(
         ]
     ),
     flashcardDeckTitle: "\(code) Discussion Item Flashcards",
-    flashcardDeckSummary: "",
-    flashcards: []
+    flashcardDeckSummary: ""
 )
 
 let encoder = JSONEncoder()

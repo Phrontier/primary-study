@@ -3,8 +3,28 @@ import Foundation
 @MainActor
 final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
     private struct InstructorReviewDatabase: Codable {
-        var seedVersion = 0
-        var reviews: [InstructorReviewRecord] = []
+        var seedVersion: Int
+        var reviews: [InstructorReviewRecord]
+        var reports: [InstructorGougeReportRecord]
+
+        init(seedVersion: Int = 0, reviews: [InstructorReviewRecord] = [], reports: [InstructorGougeReportRecord] = []) {
+            self.seedVersion = seedVersion
+            self.reviews = reviews
+            self.reports = reports
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case seedVersion
+            case reviews
+            case reports
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            seedVersion = try container.decodeIfPresent(Int.self, forKey: .seedVersion) ?? 0
+            reviews = try container.decodeIfPresent([InstructorReviewRecord].self, forKey: .reviews) ?? []
+            reports = try container.decodeIfPresent([InstructorGougeReportRecord].self, forKey: .reports) ?? []
+        }
     }
 
     private let persistenceURL: URL
@@ -68,6 +88,12 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
             .sorted { $0.submittedAt > $1.submittedAt }
     }
 
+    func fetchOpenReports() -> [InstructorGougeReport] {
+        database.reports
+            .map(makeReport(from:))
+            .sorted { $0.submittedAt > $1.submittedAt }
+    }
+
     func fetchInstructorSuggestions(matching query: String) -> [InstructorNameSuggestion] {
         let query = query.trimmingCharacters(in: .whitespacesAndNewlines)
         let suggestions = Set(database.reviews.map {
@@ -79,7 +105,7 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
         })
         .sorted { lhs, rhs in
             if lhs.name == rhs.name {
-                return lhs.squadron.displayName < rhs.squadron.displayName
+                return lhs.squadron.submissionSortRank < rhs.squadron.submissionSortRank
             }
             return lhs.name < rhs.name
         }
@@ -89,16 +115,22 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
         }
 
         let normalizedQuery = normalized(query)
+        let queryTokens = normalizedNameTokens(query)
         let prefixMatches = suggestions.filter { normalized($0.name).hasPrefix(normalizedQuery) }
+        let tokenMatches = suggestions.filter {
+            !normalized($0.name).hasPrefix(normalizedQuery) &&
+            normalizedNameTokens($0.name) == queryTokens
+        }
         let containsMatches = suggestions.filter {
             !normalized($0.name).hasPrefix(normalizedQuery) &&
+            normalizedNameTokens($0.name) != queryTokens &&
             (normalized($0.name).contains(normalizedQuery) || normalized($0.squadron.displayName).contains(normalizedQuery))
         }
-        return Array((prefixMatches + containsMatches).prefix(6))
+        return Array((prefixMatches + tokenMatches + containsMatches).prefix(6))
     }
 
     func fetchSquadrons() -> [Squadron] {
-        InstructorReviewSeedData.squadrons.sorted { $0.displayName < $1.displayName }
+        InstructorReviewSeedData.squadrons.submissionSorted()
     }
 
     func fetchEvents() -> [InstructorReviewEvent] {
@@ -122,6 +154,34 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
         try persist()
     }
 
+    func submitReport(_ submission: InstructorGougeReportSubmission) throws {
+        let trimmedNote = submission.note?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let record = InstructorGougeReportRecord(
+            targetKind: submission.targetKind,
+            instructorID: submission.instructorID,
+            reviewID: submission.reviewID,
+            instructorName: submission.instructorName.trimmingCharacters(in: .whitespacesAndNewlines),
+            squadronID: submission.squadron.id,
+            eventName: submission.eventName,
+            eventKind: submission.eventKind,
+            reviewText: submission.reviewText?.trimmingCharacters(in: .whitespacesAndNewlines),
+            reasonTitle: submission.reasonTitle,
+            note: trimmedNote?.isEmpty == true ? nil : trimmedNote
+        )
+
+        database.reports.append(record)
+        try persist()
+    }
+
+    func dismissReport(id: String) throws {
+        guard let index = database.reports.firstIndex(where: { $0.id == id }) else {
+            throw InstructorReviewRepositoryError.reviewNotFound
+        }
+
+        database.reports.remove(at: index)
+        try persist()
+    }
+
     func approveReview(id: String) throws {
         guard let index = database.reviews.firstIndex(where: { $0.id == id }) else {
             throw InstructorReviewRepositoryError.reviewNotFound
@@ -137,6 +197,7 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
         }
 
         database.reviews[index].status = .rejected
+        database.reports.removeAll { $0.reviewID == id }
         try persist()
     }
 
@@ -179,6 +240,23 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
         )
     }
 
+    private func makeReport(from record: InstructorGougeReportRecord) -> InstructorGougeReport {
+        InstructorGougeReport(
+            id: record.id,
+            targetKind: record.targetKind,
+            instructorID: record.instructorID,
+            reviewID: record.reviewID,
+            instructorName: record.instructorName,
+            squadron: InstructorReviewSeedData.squadron(for: record.squadronID),
+            eventName: record.eventName,
+            eventKind: record.eventKind,
+            reviewText: record.reviewText,
+            reasonTitle: record.reasonTitle,
+            note: record.note,
+            submittedAt: record.submittedAt
+        )
+    }
+
     private func migrateSeedData() throws {
         let currentSeedIDs = Set(InstructorReviewSeedData.reviews.map(\.id))
         database.reviews.removeAll { record in
@@ -198,6 +276,15 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
             .lowercased()
+    }
+
+    private func normalizedNameTokens(_ value: String) -> [String] {
+        value
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { !$0.isEmpty }
+            .map { $0.lowercased() }
+            .sorted()
     }
 
     private func persist() throws {

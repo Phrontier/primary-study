@@ -37,6 +37,10 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         currentRepository.fetchPendingReviews()
     }
 
+    func fetchOpenReports() -> [InstructorGougeReport] {
+        currentRepository.fetchOpenReports()
+    }
+
     func fetchInstructorSuggestions(matching query: String) -> [InstructorNameSuggestion] {
         currentRepository.fetchInstructorSuggestions(matching: query)
     }
@@ -51,6 +55,16 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
     func submitReview(_ submission: InstructorReviewSubmission) throws {
         try currentRepository.submitReview(submission)
+        revision &+= 1
+    }
+
+    func submitReport(_ submission: InstructorGougeReportSubmission) throws {
+        try currentRepository.submitReport(submission)
+        revision &+= 1
+    }
+
+    func dismissReport(id: String) throws {
+        try currentRepository.dismissReport(id: id)
         revision &+= 1
     }
 
@@ -94,6 +108,10 @@ private final class UnavailableInstructorReviewRepository: InstructorReviewRepos
         []
     }
 
+    func fetchOpenReports() -> [InstructorGougeReport] {
+        []
+    }
+
     func fetchInstructorSuggestions(matching query: String) -> [InstructorNameSuggestion] {
         []
     }
@@ -107,6 +125,14 @@ private final class UnavailableInstructorReviewRepository: InstructorReviewRepos
     }
 
     func submitReview(_ submission: InstructorReviewSubmission) throws {
+        throw InstructorReviewRepositoryError.unavailable
+    }
+
+    func submitReport(_ submission: InstructorGougeReportSubmission) throws {
+        throw InstructorReviewRepositoryError.unavailable
+    }
+
+    func dismissReport(id: String) throws {
         throw InstructorReviewRepositoryError.unavailable
     }
 

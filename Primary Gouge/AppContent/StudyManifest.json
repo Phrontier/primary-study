@@ -13798,7 +13798,7 @@
                 }
               ],
               "id" : "contacts-sims-fam3301",
-              "overview" : "FAM3301 is a sim event focused on crosswind and ground emergency review. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+              "overview" : "This event consolidates earlier pattern and emergency skills into a more complete crosswind and runway-emergency brief. You should be ready to explain how you will adjust the pattern for a crosswind, when an abort becomes mandatory, what changes once the aircraft departs the prepared surface, and how windshear or a UFCP failure can turn a normal pattern into a waveoff or recovery problem.",
               "primaryDocumentIDs" : [
                 "contents-1-fam-contacts-2-sims-fam3300-block-fam-3301-briefing-guide-1542-166d-pdf"
               ],
@@ -13843,316 +13843,184 @@
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "use crab and wing-low techniques to stay aligned with the runway in crosswind conditions. Adjust bank, power, and control inputs as needed; waveoff if overbanking is required"
-                          },
-                          {
-                            "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff if side motion, drift, or crab occurs"
-                          }
-                        ],
-                        "text" : "Purpose"
+                        "text" : "Crosswind work here is less about learning a new technique and more about setting the picture early enough that you never end up chasing lineup late."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Setup \/ entry"
+                            "text" : "Before takeoff, note wind direction from tower and the windsock so you already know which controls will be in as the roll starts."
+                          },
+                          {
+                            "text" : "Start with aileron into the wind, reduce that input as speed builds, and use rudder to stop weathervaning and keep the nose aligned with the runway."
+                          },
+                          {
+                            "text" : "Rotate firmly at takeoff speed so the aircraft does not skip sideways off the upwind wheel, then level the wings and crab into the wind after liftoff."
                           }
                         ],
-                        "text" : "Setup \/ entry"
+                        "text" : "Takeoff priorities:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Procedures:"
+                            "text" : "Carry a crab on downwind as needed to hold the proper track, then use a wing-low final so drift is gone before touchdown."
                           },
                           {
-                            "text" : "Failure to reduce aileron as speed builds."
+                            "text" : "In the approach turn, adjust bank and power early enough to avoid overshooting or undershooting final."
                           },
                           {
-                            "text" : "Improper rudder use leading to drift or weathervaning."
+                            "text" : "On final and through the flare, keep the upwind wing down, align the nose with rudder, and increase aileron as the airplane slows."
                           },
                           {
-                            "text" : "Skipping due to premature liftoff on upwind wing."
-                          },
-                          {
-                            "text" : "Pattern Adjustments for Crosswinds"
-                          },
-                          {
-                            "text" : "crab into the wind to maintain correct WTD"
-                          },
-                          {
-                            "text" : "Approach Turn:"
-                          },
-                          {
-                            "text" : "Adjust bank and power to counter overshooting or undershooting"
-                          },
-                          {
-                            "text" : "Final (Groove):"
-                          },
-                          {
-                            "text" : "Wing-Low Method"
-                          },
-                          {
-                            "text" : "Aileron into the wind - prevent drift"
-                          },
-                          {
-                            "text" : "Rudder - align nose with the runway"
+                            "text" : "For full stops, touchdown should be on the upwind main first and crosswind controls stay in through rollout. For touch-and-goes, hold the crosswind picture through the ground roll and rotate at 90 KIAS."
                           }
                         ],
-                        "text" : "Execution"
+                        "text" : "Pattern and landing priorities:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Max AOB 45°; waveoff if more is required"
+                            "text" : "Wave off if more than 45 degrees of bank is required or if side motion, drift, or crab remain unresolved."
                           },
                           {
-                            "text" : "+½ gust factor to final approach speed (max +10 kts)"
+                            "text" : "In gusty conditions, add one-half the gust factor to final approach speed, but no more than 10 knots."
                           },
                           {
-                            "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
+                            "text" : "Brakes are for directional help only after the aircraft is below 80 KIAS and fully settled on the runway."
                           },
                           {
-                            "text" : "PCL - MAX, rotate at 90 KIAS"
-                          },
-                          {
-                            "text" : "Applying brakes before 80 KIAS."
-                          },
-                          {
-                            "text" : "Delay rotation to VROT + up to 10 KIAS."
-                          },
-                          {
-                            "text" : "Fly approach up to 10 KIAS faster than normal."
-                          },
-                          {
-                            "text" : "Stabilize by 1000’ AGL."
-                          },
-                          {
-                            "text" : "+10 KIAS over normal"
-                          },
-                          {
-                            "text" : "Stabilized approach by 1000' AGL"
+                            "text" : "Common traps are too little aileron at the start of the roll, failing to reduce aileron as speed builds, holding a crab into touchdown, and trying to salvage a bad picture instead of waving off."
                           }
                         ],
-                        "text" : "Standards \/ numbers"
-                      },
-                      {
-                        "children" : [
-                          {
-                            "text" : "Common errors \/ grading traps"
-                          },
-                          {
-                            "text" : "The usual trap is missing the setup picture, then trying to salvage Crosswind Takeoff\/Touch-and-Go\/Full-Stop Landings late."
-                          }
-                        ],
-                        "text" : "Common errors \/ grading traps"
+                        "text" : "Key numbers and traps:"
                       }
                     ],
-                    "title" : "Crosswind Takeoff\/Touch-and-Go\/Full-Stop Landings"
+                    "title" : "Crosswind Operations"
                   },
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "Recognition \/ indications"
-                          },
-                          {
-                            "text" : "use crab and wing-low techniques to stay aligned with the runway in crosswind conditions. Adjust bank, power, and control inputs as needed; waveoff if overbanking is required"
-                          },
-                          {
-                            "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff if side motion, drift, or crab occurs"
-                          },
-                          {
-                            "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
-                          }
-                        ],
-                        "text" : "Recognition \/ indications"
+                        "text" : "An abort is for any abnormal or unsafe condition before max abort speed, but the priority never changes: keep the airplane under control first, then stop it on the remaining runway."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "PCL - IDLE"
+                            "text" : "Abort cues include blown tires, smoke or fuel leak, fire or chip indications, rising ITT, fluctuating oil pressure, bird strike, obstacles, or any malfunction that makes the takeoff unsafe to continue."
                           },
                           {
-                            "text" : "BRAKES - AS REQUIRED"
+                            "text" : "Immediate actions are PCL to IDLE and brakes as required while maintaining directional control with rudder and nosewheel steering."
+                          },
+                          {
+                            "text" : "Call the abort over ICS per local SOP, but do not let radio work get ahead of keeping the airplane straight."
                           }
                         ],
-                        "text" : "Immediate actions \/ procedure"
+                        "text" : "Abort priorities:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Power as required to counter drag"
+                            "text" : "Maximum braking is one smooth, increasing application as the aircraft slows. Do not pump or slam the brakes."
                           },
                           {
-                            "text" : "use crab and wing-low techniques to stay aligned with the runway in crosswind conditions. Adjust bank, power, and control inputs as needed; waveoff if overbanking is required"
+                            "text" : "Above 80 KIAS, braking is less effective because lift is still unloading the wheels, so be cautious about aggressive pedal input and watch for directional-control problems."
                           },
                           {
-                            "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff if side motion, drift, or crab occurs"
+                            "text" : "If directional control is being lost, release braking immediately and reapply cautiously once the airplane is straight again."
                           },
                           {
-                            "text" : "BRAKES - AS REQUIRED"
-                          },
-                          {
-                            "text" : "Max AOB 45°; waveoff if more is required"
-                          },
-                          {
-                            "text" : "+½ gust factor to final approach speed (max +10 kts)"
-                          },
-                          {
-                            "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
-                          },
-                          {
-                            "text" : "PCL - MAX, rotate at 90 KIAS"
+                            "text" : "If you have to cross a lowered BAK-15 during the stop, release the brakes before passing it and resume braking once clear."
                           }
                         ],
-                        "text" : "Decision logic"
+                        "text" : "Maximum braking reminders:"
                       },
                       {
-                        "children" : [
-                          {
-                            "text" : "(1W)"
-                          },
-                          {
-                            "text" : "W - After a stop which required maximum effort braking and if overheated brakes are suspected, do not taxi into or park in a congested area until brakes have had sufficient time to cool. Do not set parking brake."
-                          }
-                        ],
-                        "text" : "N\/W\/Cs"
+                        "text" : "N\/W\/C focus: There is no anti-skid, so do not brake before full weight is on wheels. After maximum-effort braking, do not set the parking brake or taxi into a congested area until the brakes cool, and do not request the barrier."
                       }
                     ],
-                    "title" : "Aborted Takeoff"
+                    "title" : "Abort Takeoff and Maximum Braking"
                   },
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "Recognition \/ indications"
-                          },
-                          {
-                            "text" : "AC is no longer on or will imminently depart the prepared surface, due to:"
-                          }
-                        ],
-                        "text" : "Recognition \/ indications"
+                        "text" : "If the aircraft is about to depart, or has already departed, the prepared surface, stop trying to save the rollout and transition immediately to shutdown and egress decisions."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Immediate actions \/ procedure"
+                            "text" : "Execute Emergency Engine Shutdown on the Ground with PCL OFF and FIREWALL SHUTOFF HANDLE PULL."
                           },
                           {
-                            "text" : "Flap setting"
+                            "text" : "Emergency Ground Egress is then as required based on fire, traffic, terrain, or aircraft damage."
                           },
                           {
-                            "text" : "(W):"
-                          },
-                          {
-                            "text" : "Brake failure, blown tire, loss of directional control, aborted TO with insufficient runway remaining"
-                          },
-                          {
-                            "text" : "AC is no longer on or will imminently depart the prepared surface, due to:"
-                          },
-                          {
-                            "text" : "how Aircraft Departs a Prepared Surface changes the brief, setup, and in-cockpit decision making."
-                          },
-                          {
-                            "text" : "Know what makes this a continue, discontinue, PEL, forced-landing, or eject problem before the cockpit gets busy."
-                          },
-                          {
-                            "text" : "N\/W\/Cs"
-                          },
-                          {
-                            "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Aircraft Departs a Prepared Surface before the event."
+                            "text" : "Do not try to steer back onto the runway once you are off. After engine shutdown, nosewheel steering is gone, so any remaining directional control comes from braking only."
                           }
                         ],
-                        "text" : "Immediate actions \/ procedure"
+                        "text" : "Runway-departure priorities:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know what makes this a continue, discontinue, PEL, forced-landing, or eject problem before the cockpit gets busy."
+                            "text" : "ISS mode selector to SOLO."
+                          },
+                          {
+                            "text" : "Install both seat safety pins before egress."
+                          },
+                          {
+                            "text" : "Set the parking brake as required and open the canopy if possible."
+                          },
+                          {
+                            "text" : "If the canopy cannot be opened or right-side egress is required, remove both CFS handle safety pins, rotate and pull both CFS handles, then release upper fittings, lower fittings, and leg restraint garters before exiting."
+                          },
+                          {
+                            "text" : "After the crew is clear, turn BAT, GEN, and AUX BAT OFF if time and situation allow."
+                          },
+                          {
+                            "text" : "Once clear of the aircraft, move away at a 45-degree angle off the tail and rally 300 feet from the aircraft while staying alert for emergency vehicles."
                           }
                         ],
-                        "text" : "Decision logic"
+                        "text" : "Egress essentials:"
                       },
                       {
-                        "children" : [
-                          {
-                            "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Aircraft Departs a Prepared Surface before the event."
-                          }
-                        ],
-                        "text" : "N\/W\/Cs"
+                        "text" : "Warning-focused note: If the canopy fracturing system and canopy latch both fail, ejection may be the only remaining way out. Ensure oxygen mask on and visor down before actuating CFS."
                       }
                     ],
-                    "title" : "Aircraft Departs a Prepared Surface"
+                    "title" : "Aircraft Departs Prepared Surface \/ Emergency Ground Egress"
                   },
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "Windshear is a sudden change in wind speed or direction; microbursts are intense, short-lived forms of windshear. During takeoff or landing, windshear can lead to rapid airspeed or altitude changes. Recovery involves early detection, avoidance, and proper flying techniques to mitigate danger."
-                          }
-                        ],
-                        "text" : "Purpose"
+                        "text" : "Windshear should be avoided if possible, but once it is part of the picture the goal is to protect margin early instead of reacting late to the airspeed loss."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Setup \/ entry"
+                            "text" : "Treat thunderstorms, gust fronts, virga, LLWAS alerts, PIREPs, and recent frontal passages as cues to slow down the plan or avoid the approach or takeoff entirely."
+                          },
+                          {
+                            "text" : "Use the longest suitable runway, takeoff flaps, and delay rotation up to 10 knots above normal if windshear is suspected on takeoff."
+                          },
+                          {
+                            "text" : "After liftoff, maintain the proper climb attitude instead of chasing airspeed, and do not accelerate past normal climb speed until clear of the shear."
                           }
                         ],
-                        "text" : "Setup \/ entry"
+                        "text" : "Takeoff mindset:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "RCR"
+                            "text" : "On approach, use takeoff flaps, fly up to 10 knots fast, and be stabilized by 1000 feet AGL."
                           },
                           {
-                            "text" : "Flap setting"
+                            "text" : "If windshear is encountered on approach, execute an immediate go-around or waveoff."
                           },
                           {
-                            "text" : "(W):"
+                            "text" : "Do not chase every airspeed change with large trim or power swings. Expect the wind gradient to change what the aircraft is doing as you descend."
                           },
                           {
-                            "text" : "Prevention \/ Detection"
-                          },
-                          {
-                            "text" : "Windshear is a sudden change in wind speed or direction; microbursts are intense, short-lived forms of windshear. During takeoff or landing, windshear can lead to rapid airspeed or altitude changes. Recovery involves early detection, avoidance, and proper flying techniques to mitigate danger."
-                          },
-                          {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
-                          },
-                          {
-                            "text" : "Standards \/ numbers"
-                          },
-                          {
-                            "text" : "Memorize the setup numbers and the recovery numbers for Wind Shear Recovery; that is usually where the grading starts."
+                            "text" : "Severe windshear is roughly a 15-knot airspeed change or 500 FPM vertical-speed change; that is your reminder to treat it as a real hazard, not a nuisance."
                           }
                         ],
-                        "text" : "Execution"
-                      },
-                      {
-                        "children" : [
-                          {
-                            "text" : "Memorize the setup numbers and the recovery numbers for Wind Shear Recovery; that is usually where the grading starts."
-                          }
-                        ],
-                        "text" : "Standards \/ numbers"
-                      },
-                      {
-                        "children" : [
-                          {
-                            "text" : "Common errors \/ grading traps"
-                          },
-                          {
-                            "text" : "The usual trap is missing the setup picture, then trying to salvage Wind Shear Recovery late."
-                          }
-                        ],
-                        "text" : "Common errors \/ grading traps"
+                        "text" : "Approach and recovery priorities:"
                       }
                     ],
                     "title" : "Wind Shear Recovery"
@@ -14160,72 +14028,30 @@
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "Know what Up Front Control Panel (UFCP) Failure changes in the cockpit and why the instructor cares about it in this event."
-                          }
-                        ],
-                        "text" : "Why it matters"
+                        "text" : "A UFCP failure is manageable, but it takes away the normal quick path for radio, nav, transponder, and baro changes. The fix is to transition calmly to the MFD NAV page and land as soon as practical."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "FMS execute, system Mag\/ True heading toggle, system GS\/CAS\/TAS HUD speed toggle, and radio tuning with UFCP"
+                            "text" : "First, check the UFCP circuit breaker and reset it if it is open."
                           },
                           {
-                            "text" : "Land as soon as practical"
+                            "text" : "Use ALT BARO on the NAV page to change the barometric setting, and ALT CNS to adjust COM, NAV, and transponder settings through the scratchpad and line-select keys."
                           },
                           {
-                            "text" : "MFD NAV Page Access:"
+                            "text" : "From the frequency page you can also control transponder mode and altitude reporting without the UFCP."
                           },
                           {
-                            "text" : "Barometric Altimeter Setting (ALT BARO):"
-                          },
-                          {
-                            "text" : "COM\/NAV\/Transponder Frequency Change (ALT CNS):"
-                          },
-                          {
-                            "text" : "Load to standby:"
-                          },
-                          {
-                            "text" : "Toggle standby to active using same LSK again"
-                          },
-                          {
-                            "text" : "Transponder Mode Control:"
-                          },
-                          {
-                            "text" : "These shortcuts only appear on the MFD NAV page, not the TSD"
-                          },
-                          {
-                            "text" : "COM\/NAV\/XPDR remain fully functional without UFCP via MFD"
+                            "text" : "The MFD NAV page is the backup path; these shortcuts are not available from the TSD page."
                           }
                         ],
-                        "text" : "Key knowledge"
+                        "text" : "What still works:"
                       },
                       {
-                        "children" : [
-                          {
-                            "text" : "If the UFCP fails, essential comm\/nav functions and barometric setting adjustments can still be accomplished via MFD NAV display shortcuts."
-                          },
-                          {
-                            "text" : "UFCP circuit breaker (left front console or left rear console) - Check, reset if open"
-                          }
-                        ],
-                        "text" : "Application"
-                      },
-                      {
-                        "children" : [
-                          {
-                            "text" : "Common errors \/ grading traps"
-                          },
-                          {
-                            "text" : "The common trap is memorizing isolated facts about Up Front Control Panel (UFCP) Failure without being able to explain the operational consequence."
-                          }
-                        ],
-                        "text" : "Common errors \/ grading traps"
+                        "text" : "Know what you lose with the failure as well: FMS execute, Mag\/True toggle, GS\/CAS\/TAS HUD speed toggle, and normal radio tuning through the UFCP are unavailable to the cockpit with the failed unit."
                       }
                     ],
-                    "title" : "Up Front Control Panel (UFCP) Failure"
+                    "title" : "UFCP Failure"
                   },
                   {
                     "items" : [
@@ -14248,9 +14074,9 @@
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+                "summary" : "This event is about keeping the pattern disciplined when crosswind, runway margin, and cockpit problems start stacking up."
               },
-              "summary" : "Crosswind and Ground Emergency Review: Crosswind Takeoff\/Touch-and-Go\/Full-Stop Landings, Aborted Takeoff, Aircraft Departs a Prepared Surface, and the remaining required discussion items in the block.",
+              "summary" : "Crosswind operations, abort logic, runway departure emergencies, windshear, and UFCP failure procedures.",
               "tags" : [
                 "contacts",
                 "sims",

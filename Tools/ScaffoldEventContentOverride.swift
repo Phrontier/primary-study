@@ -91,12 +91,14 @@ let scaffold = EventContentOverrideScaffold(
         summary: nil,
         sections: [
             StudyNotesSectionScaffold(
-                title: requiredProcedureItems.first ?? "Primary discussion item",
+                title: generatedTitle ?? "Primary Study Section",
                 items: [
                     StudyNotesItemScaffold(
-                        text: "Why it matters",
+                        text: "Use an event-meaningful section title and a short lead bullet that orients the student to what this part of the brief is trying to accomplish.",
                         children: [
-                            StudyNotesItemScaffold(text: "Add the operational reason this item matters in the event.", children: nil)
+                            StudyNotesItemScaffold(text: "Prefer a few high-value bullets over a rigid template.", children: nil),
+                            StudyNotesItemScaffold(text: "Group related syllabus items when that improves readability, then track the coverage in canonicalCoverage.", children: nil),
+                            StudyNotesItemScaffold(text: "Keep only the numbers, cautions, and procedural details that help the student brief and execute the event cleanly.", children: nil)
                         ]
                     )
                 ]

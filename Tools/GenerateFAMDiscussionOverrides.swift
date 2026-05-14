@@ -1,5 +1,9 @@
 import Foundation
 
+// This tool is intentionally a source-harvesting draft generator.
+// Its output should be treated as a starting point for manual authoring,
+// not as the final student-facing discussion-item voice.
+
 struct SyllabusEventReferenceFile: Decodable {
     let events: [SyllabusEventReferenceEventRecord]
 }

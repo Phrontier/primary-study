@@ -420,6 +420,25 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam3301UsesReadableGroupedDiscussionSections() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM3301"])
+        let notes = try #require(event.studyNotes)
+        let sectionTitles = notes.sections.compactMap(\.title)
+
+        #expect(sectionTitles == [
+            "Crosswind Operations",
+            "Abort Takeoff and Maximum Braking",
+            "Aircraft Departs Prepared Surface / Emergency Ground Egress",
+            "Wind Shear Recovery",
+            "UFCP Failure",
+            "Required Procedures"
+        ])
+    }
+
+    @MainActor
     @Test func famCheckFlightAndSoloEventsHaveAuthoredNotes() throws {
         let manifest = try loadStudyManifestFromAppContent()
         let manifestEvents = manifestEventLookup(from: manifest)

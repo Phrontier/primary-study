@@ -1,0 +1,437 @@
+{
+  "canonicalCoverage" : {
+    "Night flying considerations" : [
+      "Night Flying Considerations"
+    ],
+    "aircraft and cockpit lighting" : [
+      "Aircraft and Cockpit Lighting"
+    ],
+    "airport night lighting" : [
+      "Airport Night Lighting"
+    ],
+    "applicable night emergencies" : [
+      "Applicable Night Emergencies"
+    ],
+    "electrical system malfunctions" : [
+      "Electrical System Malfunctions"
+    ],
+    "local night SOP" : [
+      "Local Night Sop"
+    ],
+    "night VFR chart interpretation" : [
+      "Night VFR Chart Interpretation"
+    ]
+  },
+  "code" : "FAM4601",
+  "overview" : "FAM4601 is a flight event focused on night flying considerations. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4601"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Night Flying Considerations changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Build a clean, plain-language explanation of Night Flying Considerations that ties the system, procedure, or rule to what you will actually see and do."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know what Night Flying Considerations changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "Build a clean, plain-language explanation of Night Flying Considerations that ties the system, procedure, or rule to what you will actually see and do."
+              },
+              {
+                "text" : "how Night Flying Considerations changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Night Flying Considerations without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Night Flying Considerations"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Night VFR Chart Interpretation changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Make the lines thicker?"
+              },
+              {
+                "text" : "Know what Night VFR Chart Interpretation changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "how Night VFR Chart Interpretation changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how Night VFR Chart Interpretation changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Night VFR Chart Interpretation without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Night VFR Chart Interpretation"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Airport Night Lighting changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Must be used whenever the aircraft is in motion at night."
+              },
+              {
+                "text" : "Aerobatics, short breaks, stalls, and formation flights are prohibited at night."
+              },
+              {
+                "text" : "Touch and go’s to uncontrolled airfields may be conducted provided they have night lighting and a wildlife mitigation pass is conducted prior to operations."
+              },
+              {
+                "text" : "Know what Airport Night Lighting changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "Build a clean, plain-language explanation of Airport Night Lighting that ties the system, procedure, or rule to what you will actually see and do."
+              },
+              {
+                "text" : "how Airport Night Lighting changes the brief, setup, and in-cockpit decision making."
+              },
+              {
+                "text" : "VT-27 SOP"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Must be used whenever the aircraft is in motion at night."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Airport Night Lighting without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Airport Night Lighting"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Aircraft and Cockpit Lighting changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Runway Centerline Lights (precision instrument runways):"
+              },
+              {
+                "text" : "Touchdown Zone Lights (TDZL):"
+              },
+              {
+                "text" : "Taxiway Lighting"
+              },
+              {
+                "text" : "Blue."
+              },
+              {
+                "text" : "Green."
+              },
+              {
+                "text" : "Three steady yellow lights at holding points."
+              },
+              {
+                "text" : "Series of lights before the runway to aid in aligning with the runway:"
+              },
+              {
+                "text" : "Often include flashing lights (sequenced flashers or \"the rabbit\")."
+              },
+              {
+                "text" : "Visual Glide Slope Indicators"
+              },
+              {
+                "text" : "Four lights, more precise:"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "red lights across a taxiway—must not be crossed unless ATC clears and lights are off."
+              },
+              {
+                "text" : "red\/White lights indicating if above, below, or on glidepath."
+              },
+              {
+                "text" : "For taxi only. Use ashore except when directed by taxi signalman."
+              },
+              {
+                "text" : "If LDGGR CONT CB is tripped → landing\/taxi lights will NOT illuminate, even if gear down and switches ON."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Aircraft and Cockpit Lighting without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Aircraft and Cockpit Lighting"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Applicable Night Emergencies changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know what Applicable Night Emergencies changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "Build a clean, plain-language explanation of Applicable Night Emergencies that ties the system, procedure, or rule to what you will actually see and do."
+              },
+              {
+                "text" : "how Applicable Night Emergencies changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how Applicable Night Emergencies changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Applicable Night Emergencies without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Applicable Night Emergencies"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Local Night Sop changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Weather Restrictions"
+              },
+              {
+                "text" : "SIGMET Operations:"
+              },
+              {
+                "text" : "Runway Requirements:"
+              },
+              {
+                "text" : "Field Elevation"
+              },
+              {
+                "text" : "Know what Local Night Sop changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Aircraft must not operate within a SIGMET at night unless equipped with operable radar capable of detecting\/avoiding isolated thunderstorms."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Local Night Sop without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Local Night Sop"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Electrical System Malfunctions changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Generator Inoperative"
+              },
+              {
+                "text" : "Loss of generator power = no charging of battery."
+              },
+              {
+                "text" : "Know what Electrical System Malfunctions changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "how Electrical System Malfunctions changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how Electrical System Malfunctions changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Electrical System Malfunctions without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Electrical System Malfunctions"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Night flying considerations"
+          },
+          {
+            "text" : "night VFR chart interpretation"
+          },
+          {
+            "text" : "airport night lighting"
+          },
+          {
+            "text" : "aircraft and cockpit lighting"
+          },
+          {
+            "text" : "applicable night emergencies"
+          },
+          {
+            "text" : "local night SOP"
+          },
+          {
+            "text" : "electrical system malfunctions"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+  },
+  "summary" : "Night Flying Considerations: Night Flying Considerations, Night VFR Chart Interpretation, Airport Night Lighting, and the remaining required discussion items in the block.",
+  "title" : "Night Flying Considerations"
+}

@@ -1,0 +1,315 @@
+{
+  "canonicalCoverage" : {
+    "Crosswind takeoff\/approach\/landing" : [
+      "Crosswind Takeoff\/Approach\/Landing"
+    ],
+    "OCF" : [
+      "OCF"
+    ],
+    "contact unusual attitudes" : [
+      "Contact Unusual Attitudes"
+    ]
+  },
+  "code" : "FAM4104",
+  "overview" : "FAM4104 is a flight event focused on crosswind takeoff\/approach\/landing. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4104"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "use crab and wing-low techniques to stay aligned with the runway in crosswind conditions. Adjust bank, power, and control inputs as needed; waveoff if overbanking is required"
+              },
+              {
+                "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff if side motion, drift, or crab occurs"
+              },
+              {
+                "text" : "Description:"
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Procedures:"
+              },
+              {
+                "text" : "Recovery (Standard OCF\/Incipient Spin):"
+              },
+              {
+                "text" : "Failure to reduce aileron as speed builds."
+              },
+              {
+                "text" : "Improper rudder use leading to drift or weathervaning."
+              },
+              {
+                "text" : "Skipping due to premature liftoff on upwind wing."
+              },
+              {
+                "text" : "Pattern Adjustments for Crosswinds"
+              },
+              {
+                "text" : "crab into the wind to maintain correct WTD"
+              },
+              {
+                "text" : "Approach Turn:"
+              },
+              {
+                "text" : "Adjust bank and power to counter overshooting or undershooting"
+              },
+              {
+                "text" : "Final (Groove):"
+              },
+              {
+                "text" : "Wing-Low Method"
+              },
+              {
+                "text" : "Aileron into the wind - prevent drift"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Max AOB 45°; waveoff if more is required"
+              },
+              {
+                "text" : "+½ gust factor to final approach speed (max +10 kts)"
+              },
+              {
+                "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
+              },
+              {
+                "text" : "PCL - MAX, rotate at 90 KIAS"
+              },
+              {
+                "text" : "Applying brakes before 80 KIAS."
+              },
+              {
+                "text" : "Spin-like motions with oscillations; lasts about 2 turns; recover with inadvertent departure procedure."
+              },
+              {
+                "text" : "Stable spin, 2-3 sec\/turn, ~4500 ft altitude loss per 6 turns; neutral controls initially, then antispin inputs to recover."
+              },
+              {
+                "text" : "Not rolling past 90° AOB"
+              },
+              {
+                "text" : "Monitor Airspeed - (≤316 KIAS), execute AGSM"
+              },
+              {
+                "text" : "If AOA <18 units and airspeed <110 KIAS, advance PCL"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Crosswind Takeoff\/Approach\/Landing late."
+              },
+              {
+                "text" : "stick shaker\/buffet = imminent stall - reduce back pressure"
+              },
+              {
+                "text" : "Warnings:"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Crosswind Takeoff\/Approach\/Landing"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Description:"
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Improper\/aggressive controls near stall, mechanical failure, atmospheric conditions, or combinations."
+              },
+              {
+                "text" : "Aircraft moves unpredictably after stall; controls may feel ineffective or reversed."
+              },
+              {
+                "text" : "OCF phases:"
+              },
+              {
+                "text" : "Uncommanded rapid motions, controls ineffective; neutral controls + idle power recommended."
+              },
+              {
+                "text" : "PCL — IDLE"
+              },
+              {
+                "text" : "Controls — NEUTRAL"
+              },
+              {
+                "text" : "Altitude — CHECK"
+              },
+              {
+                "text" : "Failing to reduce power\/deploy speed brake"
+              },
+              {
+                "text" : "Not reporting oil pressure"
+              },
+              {
+                "text" : "Inverted:"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "UA recovery does not work if stalled or in OCF"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Ocf without being able to explain the operational consequence."
+              },
+              {
+                "text" : "Warnings:"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "OCF"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "recovery from NH, NL, or Inverted attitudes due to disorientation, misflown maneuvers, or external factors. Recovery is visual (VFR) and must be completed above 6000’ AGL"
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Nose-High:"
+              },
+              {
+                "text" : "PCL - MAX (if low airspeed)"
+              },
+              {
+                "text" : "Use back stick to bring nose to horizon"
+              },
+              {
+                "text" : "Roll upright as nose approaches horizon"
+              },
+              {
+                "text" : "Roll wings level, raise nose, check oil pressure, power as req."
+              },
+              {
+                "text" : "Not setting PCL to MAX at low airspeed"
+              },
+              {
+                "text" : "Pushing forward stick (zero or -Gs)"
+              },
+              {
+                "text" : "Stopping roll with nose still above horizon"
+              },
+              {
+                "text" : "N\/W\/Cs:"
+              },
+              {
+                "text" : "Nose-Low:"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If needed, allow nose below horizon to regain airspeed"
+              },
+              {
+                "text" : "UA recovery does not work if stalled or in OCF"
+              },
+              {
+                "text" : "Use back stick to bring nose to horizon"
+              },
+              {
+                "text" : "avoid knife-edge; roll past 90° and use +G"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "never push over with forward stick (induces 0\/-G)"
+              },
+              {
+                "text" : "avoid knife-edge; roll past 90° and use +G"
+              },
+              {
+                "text" : "stick shaker\/buffet = imminent stall - reduce back pressure"
+              },
+              {
+                "text" : "Warnings:"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Contact Unusual Attitudes"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Crosswind takeoff\/approach\/landing"
+          },
+          {
+            "text" : "OCF"
+          },
+          {
+            "text" : "contact unusual attitudes"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+  },
+  "summary" : "Crosswind Takeoff\/Approach\/Landing: Crosswind Takeoff\/Approach\/Landing, OCF, Contact Unusual Attitudes.",
+  "title" : "Crosswind Takeoff\/Approach\/Landing"
+}

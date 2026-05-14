@@ -1,9 +1,46 @@
 {
-  "code": "FAM 2201",
-  "title": "Takeoff Emergencies",
-  "summary": "Abort procedures, engine failures, forced landings, and airstart fundamentals.",
+  "canonicalCoverage": {
+    "Abort takeoff": [
+      "Abort Takeoff"
+    ],
+    "aircraft departs prepared surface": [
+      "Aircraft Departs Prepared Surface"
+    ],
+    "engine failure immediately after takeoff": [
+      "Engine Failure Immediately After Takeoff"
+    ],
+    "engine failure during flight": [
+      "Engine Failure During Flight"
+    ],
+    "immediate air-start": [
+      "Immediate Air-Start"
+    ],
+    "PMU NORM air-start": [
+      "PMU NORM Air-Start"
+    ],
+    "PMU OFF air-start": [
+      "PMU OFF Air-Start"
+    ],
+    "uncommanded power changes/LOP": [
+      "Other In-Flight Emergency Priorities"
+    ],
+    "uncommanded prop feather": [
+      "Other In-Flight Emergency Priorities"
+    ],
+    "smoke and fume elimination": [
+      "Other In-Flight Emergency Priorities"
+    ],
+    "fire warning in flight": [
+      "Other In-Flight Emergency Priorities"
+    ],
+    "controlled ejection and eject": [
+      "Other In-Flight Emergency Priorities"
+    ]
+  },
+  "code": "FAM2201",
   "overview": "This event introduces emergency situations that can happen during takeoff and flight. You will learn how to respond to aborts, engine failures, aircraft departures from the runway, forced landings, and airstarts while focusing on aircraft control, decision making, and when to stop troubleshooting and commit to landing or ejecting.",
   "primaryDocumentTitles": [
+    "FAM2201",
     "FAM 2201 Briefing guide 1542.166D"
   ],
   "studyNotes": {
@@ -35,6 +72,9 @@
           },
           {
             "text": "If maximum braking was used, do not taxi into a congested area or set the parking brake until the brakes cool."
+          },
+          {
+            "text": "N/W/C focus: Hot brakes after maximum-effort stopping can create a second emergency, so do not set the parking brake or taxi into a congested area until they cool."
           }
         ]
       },
@@ -91,6 +131,9 @@
           },
           {
             "text": "If there is not enough runway to land straight ahead, immediate ejection may be the best option."
+          },
+          {
+            "text": "N/W/C focus: Below 2000 feet AGL, do not burn altitude troubleshooting when the safer answer is straight-ahead landing or early ejection."
           }
         ]
       },
@@ -161,11 +204,14 @@
           },
           {
             "text": "Do not delay the ejection decision below 2000 feet AGL."
+          },
+          {
+            "text": "N/W/C focus: Pulling the PCL fully to OFF is what feathers the prop and improves glide; partial movement does not buy the same margin."
           }
         ]
       },
       {
-        "title": "Immediate Airstart",
+        "title": "Immediate Air-Start",
         "items": [
           {
             "text": "The Immediate Airstart is used at low altitude when thrust is urgently needed."
@@ -216,7 +262,7 @@
         ]
       },
       {
-        "title": "PMU NORM Airstart",
+        "title": "PMU NORM Air-Start",
         "items": [
           {
             "text": "PMU NORM is the preferred and simplest airstart method."
@@ -290,7 +336,7 @@
         ]
       },
       {
-        "title": "PMU OFF Airstart",
+        "title": "PMU OFF Air-Start",
         "items": [
           {
             "text": "PMU OFF airstarts are used if the PMU FAIL warning is illuminated."
@@ -336,40 +382,71 @@
         ]
       },
       {
+        "title": "Other In-Flight Emergency Priorities",
+        "items": [
+          {
+            "text": "The remaining FAM2201 EPs all reward the same habit pattern: maintain flying airspeed, turn toward a landing option early, and do not waste altitude troubleshooting below decision altitude."
+          },
+          {
+            "text": "Uncommanded power changes, loss of power, or an uncommanded prop feather should be treated as a deteriorating engine situation until proven otherwise."
+          },
+          {
+            "text": "Smoke and fume elimination is about keeping the cockpit breathable and visible long enough to land as soon as practical."
+          },
+          {
+            "text": "A fire warning in flight is only a confirmed fire when it is backed up by other indications. If confirmed, secure the engine and commit to forced landing or ejection as required."
+          },
+          {
+            "text": "Controlled ejection is a life-saving decision, not a last-second failure. Make it early enough that altitude, airspeed, and aircraft attitude still favor survival."
+          },
+          {
+            "text": "N/W/C focus: The warnings, cautions, and notes on these EPs mainly reinforce one habit pattern: identify the branch early and commit before altitude and options disappear."
+          }
+        ]
+      },
+      {
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Abort Takeoff."
+            "text": "Abort takeoff"
           },
           {
-            "text": "Aircraft Departs Prepared Surface."
+            "text": "aircraft departs prepared surface"
           },
           {
-            "text": "Engine Failure Immediately After Takeoff."
+            "text": "engine failure immediately after takeoff"
           },
           {
-            "text": "Engine Failure During Flight."
+            "text": "engine failure during flight"
           },
           {
-            "text": "Immediate Airstart."
+            "text": "immediate air-start"
           },
           {
-            "text": "PMU NORM Airstart."
+            "text": "PMU NORM air-start"
           },
           {
-            "text": "PMU OFF Airstart."
+            "text": "PMU OFF air-start"
           },
           {
-            "text": "Forced Landing."
+            "text": "uncommanded power changes/LOP"
           },
           {
-            "text": "Ejection Decision Criteria."
+            "text": "uncommanded prop feather"
+          },
+          {
+            "text": "smoke and fume elimination"
+          },
+          {
+            "text": "fire warning in flight"
+          },
+          {
+            "text": "controlled ejection and eject"
           }
         ]
       }
     ]
   },
-  "flashcardDeckTitle": "FAM2201 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Abort logic, engine-failure priorities, and airstart fundamentals for the first FAM2200 emergency event.",
-  "flashcards": []
+  "summary": "Abort procedures, engine failures, forced landings, and airstart fundamentals.",
+  "title": "Takeoff Emergencies"
 }

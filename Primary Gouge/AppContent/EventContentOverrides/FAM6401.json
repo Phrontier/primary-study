@@ -1,91 +1,237 @@
 {
-  "code": "FAM 6401",
-  "title": "PEL and Emergency Memory Review",
-  "summary": "PEL profile work and a consolidated review of critical emergency memory items.",
-  "overview": "This event serves as a transition from individual emergency procedures to integrated emergency response. You will review the full PEL profile, practice PELs from the pattern, and reinforce the critical action memory items that underpin start, ground, engine, system, forced-landing, and ejection emergencies when time no longer permits reference to a checklist.",
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "The standard here is speed and structure. You should be able to build a PEL early, then move through the major memory items without hesitation when the emergency stops being theoretical.",
-    "sections": [
-      {
-        "title": "PEL Profile and PEL/P",
-        "items": [
-          {
-            "text": "The PEL flow remains Turn, Climb or Accelerate, Clean, Check, BIP, Determine, Deliver, Reduce, Lower, and Report."
-          },
-          {
-            "text": "Key profile gates include:",
-            "children": [
-              {
-                "text": "High Key around 3000 feet AGL with gear down and 120 KIAS."
-              },
-              {
-                "text": "Low Key around 1500 feet AGL with takeoff flaps and about 2/3 wingtip distance."
-              },
-              {
-                "text": "Final at or above 110 KIAS with landing flaps only when landing is assured."
-              }
-            ]
-          },
-          {
-            "text": "PEL/P rehearses the same logic from inside the pattern and tests whether you can recognize the problem, turn immediately, and intercept the ELP without getting behind the aircraft."
-          }
-        ]
-      },
-      {
-        "title": "Ground and Engine Emergency Memory Items",
-        "items": [
-          {
-            "text": "This review includes Abort Start, Emergency Engine Shutdown on the Ground, Emergency Ground Egress, Abort, Engine Failure Immediately After Takeoff, Engine Failure During Flight, and Immediate Airstart."
-          },
-          {
-            "text": "The purpose is not just recitation. You should understand when each memory item applies and what decision follows if the aircraft cannot be recovered."
-          }
-        ]
-      },
-      {
-        "title": "System and Forced-Landing Memory Items",
-        "items": [
-          {
-            "text": "The review also covers chip detector warning, oil-system malfunction, low fuel pressure, high fuel flow, OBOGS failure or physiological symptoms, forced landing, and uncommanded power changes."
-          },
-          {
-            "text": "Most of these drive back toward the same big priorities: minimize further damage, preserve energy, and get to a runway or make the ejection decision early."
-          }
-        ]
-      },
-      {
-        "title": "Required Procedures",
-        "items": [
-          {
-            "text": "Precautionary Emergency Landing."
-          },
-          {
-            "text": "PEL from the Pattern."
-          },
-          {
-            "text": "Abort Start Procedure."
-          },
-          {
-            "text": "Emergency Engine Shutdown on the Ground."
-          },
-          {
-            "text": "Emergency Ground Egress."
-          },
-          {
-            "text": "Engine Failure During Flight."
-          },
-          {
-            "text": "Immediate Airstart."
-          },
-          {
-            "text": "Forced Landing."
-          }
-        ]
-      }
+  "canonicalCoverage" : {
+    "PEL profile and procedures" : [
+      "PEL Profile and Procedures"
+    ],
+    "any EP" : [
+      "Any EP"
     ]
   },
-  "flashcardDeckTitle": "FAM6401 Discussion Item Flashcards",
-  "flashcardDeckSummary": "PEL profile and emergency-memory-item discussion items for the first FAM6400 sim.",
-  "flashcards": []
+  "code" : "FAM6401",
+  "overview" : "FAM6401 is a sim event focused on pel and emergency memory review. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM6401"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Check aircraft for further indications"
+              },
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "a profile to safely land at a paved field with indications of engine failure. Prioritize quick setup at High Key using power while available"
+              },
+              {
+                "text" : "simulated engine failure in the landing pattern"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Procedure:"
+              },
+              {
+                "text" : "Immediate actions \/ procedure"
+              },
+              {
+                "text" : "Turn, Climb, Clean, Check, BIP, Determine, Deliver, Reduce, Lower, Report"
+              },
+              {
+                "text" : "Initial actions (nearly simultaneous)"
+              },
+              {
+                "text" : "Turn toward nearest suitable field"
+              },
+              {
+                "text" : "Clean configuration (gear, flaps, speed brake up)"
+              },
+              {
+                "text" : "Plan to intercept ELP at:"
+              },
+              {
+                "text" : "High key"
+              },
+              {
+                "text" : "Another point in the ELP with proper configuration and airspeed"
+              },
+              {
+                "text" : "Turn toward nearest runway"
+              },
+              {
+                "text" : "simulated engine failure in the landing pattern"
+              },
+              {
+                "text" : "The PEL flow remains Turn, Climb or Accelerate, Clean, Check, BIP, Determine, Deliver, Reduce, Lower, and Report."
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Boost pump and Ignition - as required (ON unless airstart not warranted)"
+              },
+              {
+                "text" : "Climb or accelerate to intercept DEGA (140 KIAS climb or increase airspeed if unable to climb)"
+              },
+              {
+                "text" : "Execute PEL at or above 400’ AGL"
+              },
+              {
+                "text" : "1. TURN TO NEAREST SUITABLE FIELD"
+              },
+              {
+                "text" : "2. CLIMB OR ACCELERATE TO INTERCEPT ELP"
+              },
+              {
+                "text" : "3. GEAR, FLAPS, SPEED BRAKE – UP"
+              },
+              {
+                "text" : "High Key around 3000 feet AGL with gear down and 120 KIAS."
+              },
+              {
+                "text" : "Low Key around 1500 feet AGL with takeoff flaps and about 2\/3 wingtip distance."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for PEL Profile and Procedures before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "PEL Profile and Procedures"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "Treat this as a cumulative emergency-procedure review. You may be assigned any previously introduced FAM EP and must know the recognition cues cold."
+              },
+              {
+                "text" : "Immediate actions \/ procedure"
+              },
+              {
+                "text" : "Fire on Ground"
+              },
+              {
+                "text" : "Emergency Engine Shutdown on the Ground"
+              },
+              {
+                "text" : "Emergency Ground Egress"
+              },
+              {
+                "text" : "CFS and Ejection CRM"
+              },
+              {
+                "text" : "Abort Takeoff"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fire on Ground"
+              },
+              {
+                "text" : "Emergency Engine Shutdown on the Ground"
+              },
+              {
+                "text" : "Emergency Ground Egress"
+              },
+              {
+                "text" : "CFS and Ejection CRM"
+              },
+              {
+                "text" : "Abort Takeoff"
+              },
+              {
+                "text" : "Aircraft Departs Prepared Surface"
+              },
+              {
+                "text" : "Engine Failure Immediately After Takeoff"
+              },
+              {
+                "text" : "Engine Failure During Flight"
+              },
+              {
+                "text" : "Immediate Air-Start"
+              },
+              {
+                "text" : "PMU Norm Air-Start"
+              },
+              {
+                "text" : "PMU Off Air-Start"
+              },
+              {
+                "text" : "Uncommanded Power Changes\/LOP"
+              },
+              {
+                "text" : "Uncommanded Prop Feather"
+              },
+              {
+                "text" : "Smoke and Fume Elimination"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know when the problem can be managed with a PEL, when it requires a forced landing, and when it is time to stop troubleshooting and eject."
+              },
+              {
+                "text" : "If the assigned EP includes branches, know what cue drives each branch before you brief the next step."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to state the associated WARNINGs, CAUTIONs, and NOTEs for the assigned EP, not just the memory items."
+              },
+              {
+                "text" : "Review the verbatim N\/W\/C card for every EP title listed above before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Any EP"
+      },
+      {
+        "items" : [
+          {
+            "text" : "PEL profile and procedures"
+          },
+          {
+            "text" : "any EP"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+  },
+  "summary" : "PEL and Emergency Memory Review: PEL Profile and Procedures, Any EP.",
+  "title" : "PEL and Emergency Memory Review"
 }

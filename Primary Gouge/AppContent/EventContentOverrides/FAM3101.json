@@ -1,9 +1,45 @@
 {
-  "code": "FAM 3101",
-  "title": "Basic Contact Maneuvers",
-  "summary": "Normal takeoffs, local departures, scan technique, turns, speed changes, stalls, and spin fundamentals.",
+  "canonicalCoverage": {
+    "Normal takeoff": [
+      "Normal Takeoff"
+    ],
+    "local area departure": [
+      "Local Area Departure"
+    ],
+    "integrated (VMC) scan": [
+      "Integrated VMC Scan"
+    ],
+    "turn pattern": [
+      "Turn Pattern"
+    ],
+    "level speed change": [
+      "Level Speed Change"
+    ],
+    "power-on stalls": [
+      "Power-On Stall"
+    ],
+    "power-off stall (ELP Stall)": [
+      "Power-Off Stall"
+    ],
+    "landing pattern (approach turn and landing attitude) stalls": [
+      "Landing Pattern Stalls",
+      "Approach Turn Stall",
+      "Landing Attitude Stall"
+    ],
+    "intentional spin entry": [
+      "Intentional Spin Entry"
+    ],
+    "incipient spin recovery": [
+      "Incipient Spin Recovery"
+    ],
+    "steady-state spin recovery": [
+      "Steady-State Spin Recovery"
+    ]
+  },
+  "code": "FAM3101",
   "overview": "This event introduces the basic contact flying maneuvers you will use throughout primary. You will practice normal takeoffs, local area departures, scan technique, turns, level speed changes, stalls, and spins while focusing on aircraft control, coordination, trim, and maintaining situational awareness.",
   "primaryDocumentTitles": [
+    "FAM3101",
     "FAM 3101 Briefing guide 1542.166D"
   ],
   "studyNotes": {
@@ -462,6 +498,9 @@
                 "text": "Pulling too aggressively and causing a secondary stall."
               }
             ]
+          },
+          {
+            "text": "N/W/C focus: Treat this as a pattern-energy and stall-recognition event, not a place to chase a perfect picture past the first sign of buffet or nose drop."
           }
         ]
       },
@@ -716,43 +755,42 @@
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Normal Takeoff."
+            "text": "Normal takeoff"
           },
           {
-            "text": "Local Area Departure."
+            "text": "local area departure"
           },
           {
-            "text": "Integrated VMC Scan."
+            "text": "integrated (VMC) scan"
           },
           {
-            "text": "Turn Pattern."
+            "text": "turn pattern"
           },
           {
-            "text": "Level Speed Change."
+            "text": "level speed change"
           },
           {
-            "text": "Power-On Stall."
+            "text": "power-on stalls"
           },
           {
-            "text": "Power-Off Stall."
+            "text": "power-off stall (ELP Stall)"
           },
           {
-            "text": "Landing Pattern Stall."
+            "text": "landing pattern (approach turn and landing attitude) stalls"
           },
           {
-            "text": "Intentional Spin Entry."
+            "text": "intentional spin entry"
           },
           {
-            "text": "Incipient Spin Recovery."
+            "text": "incipient spin recovery"
           },
           {
-            "text": "Steady-State Spin Recovery."
+            "text": "steady-state spin recovery"
           }
         ]
       }
     ]
   },
-  "flashcardDeckTitle": "FAM3101 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Basic contact maneuver, stall, and spin discussion items for the first FAM3100 sim.",
-  "flashcards": []
+  "summary": "Normal takeoffs, local departures, scan technique, turns, speed changes, stalls, and spin fundamentals.",
+  "title": "Basic Contact Maneuvers"
 }

@@ -1,0 +1,299 @@
+{
+  "canonicalCoverage" : {
+    "OCF recovery procedures" : [
+      "OCF Recovery Procedures"
+    ],
+    "all aerobatic maneuvers" : [
+      "All Aerobatic Maneuvers"
+    ],
+    "contact unusual attitudes" : [
+      "Contact Unusual Attitudes"
+    ]
+  },
+  "code" : "FAM4701",
+  "overview" : "FAM4701 is a flight event focused on ocf recovery procedures. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4701"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Description:"
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Aircraft is unresponsive to normal control inputs"
+              },
+              {
+                "text" : "Caused by a stalled condition where inertial forces exceed aerodynamic control authority"
+              },
+              {
+                "text" : "Controls may feel ineffective or act in reverse"
+              },
+              {
+                "text" : "Common Causes:"
+              },
+              {
+                "text" : "Failing to reduce power\/deploy speed brake"
+              },
+              {
+                "text" : "Not reporting oil pressure"
+              },
+              {
+                "text" : "Inverted:"
+              },
+              {
+                "text" : "Roll to the nearest horizon (shortest distance)"
+              },
+              {
+                "text" : "Power as req."
+              },
+              {
+                "text" : "As nose approaches\/slightly above horizon, check\/report oil pressure"
+              },
+              {
+                "text" : "Adjust power to maintain flight"
+              },
+              {
+                "text" : "Not rolling in shortest distance to horizon"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use ~4 Gs to smoothly recover to level flight"
+              },
+              {
+                "text" : "As airspeed\/Gs increase (~4 Gs), perform AGSM"
+              },
+              {
+                "text" : "180-200 KIAS"
+              },
+              {
+                "text" : "Raise nose to ~10° pitch."
+              },
+              {
+                "text" : "Stay inverted only within NATOPS time limit."
+              },
+              {
+                "text" : "Raise gear"
+              },
+              {
+                "text" : "At ≥110 KIAS, raise flaps"
+              },
+              {
+                "text" : "A torque setting above 60% in the stall can induce a left torque roll. Full right rudder and aileron may not prevent departure. Be especially cautious during power-on turning stalls."
+              },
+              {
+                "text" : "If in a low energy state with AOA <18.0 and airspeed too low to sustain level flight, apply power cautiously. If in an unrecoverable descent, EJECT if below 6000’ AGL."
+              },
+              {
+                "text" : "Stick shaker typically activates at 15.5 units AOA, which corresponds to 5–10 KIAS above stall in unaccelerated flight."
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common Errors"
+              },
+              {
+                "text" : "Warnings:"
+              },
+              {
+                "text" : "Note clock and check oil pressure immediately."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "OCF Recovery Procedures"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "recovery from NH, NL, or Inverted attitudes due to disorientation, misflown maneuvers, or external factors. Recovery is visual (VFR) and must be completed above 6000’ AGL"
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Nose-High:"
+              },
+              {
+                "text" : "PCL - MAX (if low airspeed)"
+              },
+              {
+                "text" : "Use back stick to bring nose to horizon"
+              },
+              {
+                "text" : "Roll upright as nose approaches horizon"
+              },
+              {
+                "text" : "Roll wings level, raise nose, check oil pressure, power as req."
+              },
+              {
+                "text" : "Not setting PCL to MAX at low airspeed"
+              },
+              {
+                "text" : "Pushing forward stick (zero or -Gs)"
+              },
+              {
+                "text" : "Stopping roll with nose still above horizon"
+              },
+              {
+                "text" : "Nose-Low:"
+              },
+              {
+                "text" : "Roll to nearest horizon"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If needed, allow nose below horizon to regain airspeed"
+              },
+              {
+                "text" : "UA recovery does not work if stalled or in OCF"
+              },
+              {
+                "text" : "Use back stick to bring nose to horizon"
+              },
+              {
+                "text" : "NOTE: avoid knife-edge; roll past 90° and use +G"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common Errors:"
+              },
+              {
+                "text" : "never push over with forward stick (induces 0\/-G)"
+              },
+              {
+                "text" : "avoid knife-edge; roll past 90° and use +G"
+              },
+              {
+                "text" : "stick shaker\/buffet = imminent stall - reduce back pressure"
+              },
+              {
+                "text" : "Warnings:"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Contact Unusual Attitudes"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "All Aerobatic Maneuvers is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Flown as one continuous evolution."
+              },
+              {
+                "text" : "Thoroughly brief maneuver order and energy management plan with IP before execution."
+              },
+              {
+                "text" : "Execute:"
+              },
+              {
+                "text" : "All Aerobatic Maneuvers is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              },
+              {
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+              },
+              {
+                "text" : "Standards \/ numbers"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Choose and sequence up to 4 aerobatic maneuvers (e.g., Loop → Half Cuban Eight → Immelmann → Split-S)."
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage All Aerobatic Maneuvers late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "All Aerobatic Maneuvers"
+      },
+      {
+        "items" : [
+          {
+            "text" : "OCF recovery procedures"
+          },
+          {
+            "text" : "contact unusual attitudes"
+          },
+          {
+            "text" : "all aerobatic maneuvers"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+  },
+  "summary" : "OCF Recovery Procedures: OCF Recovery Procedures, Contact Unusual Attitudes, All Aerobatic Maneuvers.",
+  "title" : "OCF Recovery Procedures"
+}

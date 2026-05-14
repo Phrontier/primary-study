@@ -376,6 +376,62 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func famDiscussionAuthoringValidationPassesAndTemporaryAuditIsRemoved() throws {
+        let audit = try loadSyllabusAuditReportFromAppContent()
+
+        let discussionIssues = try #require(audit["discussionItemAuthoringIssues"] as? [[String: Any]])
+        #expect(discussionIssues.isEmpty)
+
+        let famAuditURL = appContentRoot().appendingPathComponent("FAMDiscussionItemsAudit.json")
+        #expect(!FileManager.default.fileExists(atPath: famAuditURL.path))
+    }
+
+    @MainActor
+    @Test func everyFamSyllabusEventHasAuthoredNotesAndExactRequiredProcedures() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let reference = try loadSyllabusReferenceFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let famEvents = reference.events
+            .filter { $0.category == .familiarization }
+            .sorted { $0.code < $1.code }
+
+        for famEvent in famEvents {
+            let manifestEvent = try #require(manifestEvents[famEvent.code])
+            let notes = try #require(manifestEvent.studyNotes)
+            let requiredSection = try #require(notes.sections.last)
+            #expect(requiredSection.title == "Required Procedures")
+            #expect(requiredSection.items.map(\.text) == famEvent.discussionItems)
+        }
+    }
+
+    @MainActor
+    @Test func representativeFamRefreshesProvideMultiSectionAuthoredNotes() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        for code in ["FAM3301", "FAM3401", "FAM6101", "FAM6402"] {
+            let event = try #require(manifestEvents[code])
+            let notes = try #require(event.studyNotes)
+            #expect(notes.sections.count >= 2)
+            #expect(notes.sections.first?.items.isEmpty == false)
+            #expect(notes.sections.last?.title == "Required Procedures")
+        }
+    }
+
+    @MainActor
+    @Test func famCheckFlightAndSoloEventsHaveAuthoredNotes() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        for code in ["FAM4490", "FAM4501"] {
+            let event = try #require(manifestEvents[code])
+            let notes = try #require(event.studyNotes)
+            #expect(!notes.sections.isEmpty)
+        }
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

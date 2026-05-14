@@ -1,0 +1,411 @@
+{
+  "canonicalCoverage" : {
+    "Fuel system" : [
+      "Fuel System"
+    ],
+    "any critical action emergency procedure" : [
+      "Any Critical Action Emergency Procedure"
+    ],
+    "full-stop landings" : [
+      "Full-Stop Landings"
+    ],
+    "heavy-weight landing considerations" : [
+      "Heavy-Weight Landing Considerations"
+    ]
+  },
+  "code" : "FAM4302",
+  "overview" : "FAM4302 is a flight event focused on fuel system. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4302"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Stores and delivers fuel to the engine while ensuring:"
+              },
+              {
+                "text" : "Description:"
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Continuous feed in all flight attitudes, including inverted"
+              },
+              {
+                "text" : "Tank Configuration:"
+              },
+              {
+                "text" : "Flow Path:"
+              },
+              {
+                "text" : "Wing tanks → transfer jet pumps → collector tank → Flip-flop valve →"
+              },
+              {
+                "text" : "Primary Jet Pump (normal feed via motive flow) or"
+              },
+              {
+                "text" : "Boost Pump (backup\/startup\/low pressure activation), then:"
+              },
+              {
+                "text" : "Inverted Flight:"
+              },
+              {
+                "text" : "Pump(s) Summary"
+              },
+              {
+                "text" : "Pump"
+              },
+              {
+                "text" : "Function"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Suction feed from collector if needed"
+              },
+              {
+                "text" : "(C) Don’t reset BOOST PUMP CB unless critical"
+              },
+              {
+                "text" : "(N) If FUEL PX warning appears and boost pump activates during inverted flight, stop inverted maneuvers and report to maintenance post-flight."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Fuel System without being able to explain the operational consequence."
+              },
+              {
+                "text" : "Notes"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Fuel System"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Description:"
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Configuration:"
+              },
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Procedure:"
+              },
+              {
+                "text" : "Landing to a full stop with nose-high main gear touchdown, aerodynamic braking, and safe rollout."
+              },
+              {
+                "text" : "LDG (typical)"
+              },
+              {
+                "text" : "Down"
+              },
+              {
+                "text" : "On-speed final per flap setting"
+              },
+              {
+                "text" : "Idle at touchdown"
+              },
+              {
+                "text" : "Before Landing Checklist complete"
+              },
+              {
+                "text" : "Clear:"
+              },
+              {
+                "text" : "Apply smooth brakes, maintain\/increase back-stick"
+              },
+              {
+                "text" : "Use “double the board” method for speed checks:"
+              },
+              {
+                "text" : "Exit runway under control at taxi speed"
+              },
+              {
+                "text" : "NWS only at taxi speed with rudder pedals centered"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "3 C’s:"
+              },
+              {
+                "text" : "Verbalize “Airspeed below 80 KIAS” before braking"
+              },
+              {
+                "text" : "60–70 KIAS"
+              },
+              {
+                "text" : "40–50 KIAS"
+              },
+              {
+                "text" : "20–30 KIAS"
+              },
+              {
+                "text" : "Confirm N1 drops from 67% to ~60% ~4 sec after touchdown"
+              },
+              {
+                "text" : "Nose gear down above 80 KIAS"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common Errors:"
+              },
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Full-Stop Landings late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Full-Stop Landings"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Heavy-Weight Landing Considerations is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Approach Speeds:"
+              },
+              {
+                "text" : "Fly no less than on-speed AOA (amber donut)—cross-check with airspeed to avoid going slow."
+              },
+              {
+                "text" : "Aircraft Handling:"
+              },
+              {
+                "text" : "Heavier aircraft are less responsive to pitch and power inputs."
+              },
+              {
+                "text" : "Sink rates increase faster—anticipate and counteract with coordinated power and trim."
+              },
+              {
+                "text" : "Flare & Touchdown:"
+              },
+              {
+                "text" : "Flare should be more gradual and extended—aircraft will settle faster."
+              },
+              {
+                "text" : "Avoid excessive pitch-up."
+              },
+              {
+                "text" : "Touch down on-speed and on aimpoint—do not float or land long."
+              },
+              {
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+              },
+              {
+                "text" : "Standards \/ numbers"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Increase approach turn speeds by 3–5 KIAS when above 700–800 lbs fuel."
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Heavy-Weight Landing Considerations late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Heavy-Weight Landing Considerations"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "Not listing all these again: EP NWCs.pdf"
+              },
+              {
+                "text" : "N\/A"
+              },
+              {
+                "text" : "Immediate actions \/ procedure"
+              },
+              {
+                "text" : "Fire on Ground"
+              },
+              {
+                "text" : "Emergency Engine Shutdown on the Ground"
+              },
+              {
+                "text" : "Emergency Ground Egress"
+              },
+              {
+                "text" : "CFS and Ejection CRM"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fire on Ground"
+              },
+              {
+                "text" : "Emergency Engine Shutdown on the Ground"
+              },
+              {
+                "text" : "Emergency Ground Egress"
+              },
+              {
+                "text" : "CFS and Ejection CRM"
+              },
+              {
+                "text" : "Abort Takeoff"
+              },
+              {
+                "text" : "Aircraft Departs Prepared Surface"
+              },
+              {
+                "text" : "Engine Failure Immediately After Takeoff"
+              },
+              {
+                "text" : "Engine Failure During Flight"
+              },
+              {
+                "text" : "Immediate Air-Start"
+              },
+              {
+                "text" : "PMU Norm Air-Start"
+              },
+              {
+                "text" : "PMU Off Air-Start"
+              },
+              {
+                "text" : "Uncommanded Power Changes\/LOP"
+              },
+              {
+                "text" : "Uncommanded Prop Feather"
+              },
+              {
+                "text" : "Smoke and Fume Elimination"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know when the problem can be managed with a PEL, when it requires a forced landing, and when it is time to stop troubleshooting and eject."
+              },
+              {
+                "text" : "If the assigned EP includes branches, know what cue drives each branch before you brief the next step."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to state the associated WARNINGs, CAUTIONs, and NOTEs for the assigned EP, not just the memory items."
+              },
+              {
+                "text" : "Review the verbatim N\/W\/C card for every EP title listed above before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Any Critical Action Emergency Procedure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Fuel system"
+          },
+          {
+            "text" : "full-stop landings"
+          },
+          {
+            "text" : "heavy-weight landing considerations"
+          },
+          {
+            "text" : "any critical action emergency procedure"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+  },
+  "summary" : "Fuel System: Fuel System, Full-Stop Landings, Heavy-Weight Landing Considerations, and the remaining required discussion items in the block.",
+  "title" : "Fuel System"
+}

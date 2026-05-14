@@ -11,6 +11,7 @@ Flashcards are no longer authored in these event override files. They now live i
    - `title`
    - `summary`
    - `overview`
+   - `canonicalCoverage`
    - `studyNotes`
 3. Regenerate the manifest:
 
@@ -28,6 +29,10 @@ swift Tools/BuildStudyManifest.swift
   "title": "Cockpit Familiarization",
   "summary": "Short event summary shown in cards and lists.",
   "overview": "Longer event overview shown on the event page.",
+  "canonicalCoverage": {
+    "Before Exterior Inspection": ["Before Exterior Inspection"],
+    "Engine Start (Auto)": ["Engine Start (Auto)"]
+  },
   "primaryDocumentTitles": [
     "FAM 2101 Briefing guide 1542.166D"
   ],
@@ -66,9 +71,12 @@ swift Tools/BuildStudyManifest.swift
 }
 ```
 
+See [DiscussionItemAuthoringRules.md](/Users/conwaybolt/Library/CloudStorage/OneDrive-Personal/Documents/Projects/Development/Primary%20Gouge/Primary%20Gouge/AppContent/EventContentOverrides/DiscussionItemAuthoringRules.md) for the canonical discussion-item authoring standard and validation rules.
+
 ## Notes
 
 - `StudyManifest.json` is generated. Do not hand-edit it.
 - `EventOverrides.json` still exists for legacy compatibility, but new event authoring should go in this folder.
 - Legacy `focusAreas` notes are still supported while older events are being migrated.
+- `canonicalCoverage` is required for FAM event overrides and should map each canonical syllabus discussion item to the authored section title or titles where it is substantively covered.
 - Flashcard authoring now lives in `FlashcardsByEvent.json`, where cards are grouped by event code and can optionally reference images from `Contents/FlashcardImages/`.

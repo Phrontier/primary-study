@@ -1,0 +1,316 @@
+{
+  "canonicalCoverage" : {
+    "T-6B VN diagram" : [
+      "T-6B Vn Diagram"
+    ],
+    "acceleration limitations" : [
+      "Acceleration Limitations"
+    ],
+    "any emergency procedure" : [
+      "Any Emergency Procedure"
+    ],
+    "maneuvering speed" : [
+      "Maneuvering Speed"
+    ]
+  },
+  "code" : "FAM4703",
+  "overview" : "FAM4703 is a flight event focused on t-6b vn diagram. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4703"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what T-6B Vn Diagram changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know what T-6B Vn Diagram changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "Build a clean, plain-language explanation of T-6B Vn Diagram that ties the system, procedure, or rule to what you will actually see and do."
+              },
+              {
+                "text" : "how T-6B Vn Diagram changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how T-6B Vn Diagram changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about T-6B Vn Diagram without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "T-6B Vn Diagram"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Maneuvering Speed is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Load factor = weight × centrifugal force."
+              },
+              {
+                "text" : "Definition"
+              },
+              {
+                "text" : "Max speed where full control deflection will not overstress the aircraft."
+              },
+              {
+                "text" : "abrupt\/full control movement in one axis may cause structural damage."
+              },
+              {
+                "text" : "Key Point"
+              },
+              {
+                "text" : "Full or abrupt multi-axis inputs can overstress even below VO."
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Limitations"
+              },
+              {
+                "text" : "VO = 227 KIAS"
+              },
+              {
+                "text" : "Full rudder deflection > 150 KIAS exceeds system limits."
+              },
+              {
+                "text" : "Acceleration Limitations"
+              },
+              {
+                "text" : "Reference figure 5-4 in the NATOPS page 5-10 (Vn Diagram above)"
+              },
+              {
+                "text" : "Perform coordinated, level 30° AOB turn for ~180°"
+              },
+              {
+                "text" : "Then turn back 30° AOB for ~180° to original heading"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Maneuvering Speed late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Maneuvering Speed"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Acceleration Limitations changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "abrupt\/full control movement in one axis may cause structural damage."
+              },
+              {
+                "text" : "Key Point"
+              },
+              {
+                "text" : "Full or abrupt multi-axis inputs can overstress even below VO."
+              },
+              {
+                "text" : "Return to Cruise"
+              },
+              {
+                "text" : "VO = 227 KIAS"
+              },
+              {
+                "text" : "Full rudder deflection > 150 KIAS exceeds system limits."
+              },
+              {
+                "text" : "Acceleration Limitations"
+              },
+              {
+                "text" : "Reference figure 5-4 in the NATOPS page 5-10 (Vn Diagram above)"
+              },
+              {
+                "text" : "Accelerate to ~200 KIAS"
+              },
+              {
+                "text" : "Reduce power to ~54%"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "VO protects against overstress only if one control axis is deflected at a time."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The common trap is memorizing isolated facts about Acceleration Limitations without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Acceleration Limitations"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "N\/A"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fire on Ground"
+              },
+              {
+                "text" : "Emergency Engine Shutdown on the Ground"
+              },
+              {
+                "text" : "Emergency Ground Egress"
+              },
+              {
+                "text" : "CFS and Ejection CRM"
+              },
+              {
+                "text" : "Abort Takeoff"
+              },
+              {
+                "text" : "Aircraft Departs Prepared Surface"
+              },
+              {
+                "text" : "Engine Failure Immediately After Takeoff"
+              },
+              {
+                "text" : "Engine Failure During Flight"
+              },
+              {
+                "text" : "Immediate Air-Start"
+              },
+              {
+                "text" : "PMU Norm Air-Start"
+              },
+              {
+                "text" : "PMU Off Air-Start"
+              },
+              {
+                "text" : "Uncommanded Power Changes\/LOP"
+              },
+              {
+                "text" : "Uncommanded Prop Feather"
+              },
+              {
+                "text" : "Smoke and Fume Elimination"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know when the problem can be managed with a PEL, when it requires a forced landing, and when it is time to stop troubleshooting and eject."
+              },
+              {
+                "text" : "If the assigned EP includes branches, know what cue drives each branch before you brief the next step."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to state the associated WARNINGs, CAUTIONs, and NOTEs for the assigned EP, not just the memory items."
+              },
+              {
+                "text" : "Review the verbatim N\/W\/C card for every EP title listed above before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Any Emergency Procedure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "T-6B VN diagram"
+          },
+          {
+            "text" : "maneuvering speed"
+          },
+          {
+            "text" : "acceleration limitations"
+          },
+          {
+            "text" : "any emergency procedure"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+  },
+  "summary" : "T-6B VN Diagram: T-6B Vn Diagram, Maneuvering Speed, Acceleration Limitations, and the remaining required discussion items in the block.",
+  "title" : "T-6B VN Diagram"
+}

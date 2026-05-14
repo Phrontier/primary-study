@@ -13,15 +13,11 @@
     {
       "code" : "FAM2201",
       "missingCanonicalItems" : [
-        "immediate air-start",
-        "uncommanded power changes\/LOP",
-        "uncommanded prop feather",
-        "smoke and fume elimination",
-        "fire warning in flight"
+
       ],
       "unexpectedPrimaryItems" : [
-        "Immediate Airstart",
-        "Decision Making Priorities"
+        "Decision Making Priorities",
+        "Other In-Flight Emergency Priorities"
       ]
     },
     {
@@ -46,7 +42,7 @@
     {
       "code" : "FAM3102",
       "missingCanonicalItems" : [
-        "wave-off"
+
       ],
       "unexpectedPrimaryItems" : [
         "Break",
@@ -61,10 +57,9 @@
     {
       "code" : "FAM3103",
       "missingCanonicalItems" : [
-        "crosswind T&Gs"
+
       ],
       "unexpectedPrimaryItems" : [
-        "Crosswind Touch-and-Go",
         "Big Picture Priorities"
       ]
     },
@@ -80,131 +75,10 @@
     {
       "code" : "FAM3202",
       "missingCanonicalItems" : [
-        "immediate air-start (PMU NORM)"
+
       ],
       "unexpectedPrimaryItems" : [
         "Ejection Decision Criteria"
-      ]
-    },
-    {
-      "code" : "FAM3301",
-      "missingCanonicalItems" : [
-        "aborted takeoff",
-        "wind shear recovery"
-      ],
-      "unexpectedPrimaryItems" : [
-        "Crosswind Pattern Review",
-        "Aborts, Braking, and Prepared-Surface Departure",
-        "Emergency Ground Egress Review"
-      ]
-    },
-    {
-      "code" : "FAM3401",
-      "missingCanonicalItems" : [
-        "immelmann",
-        "split-s",
-        "wingover",
-        "barrel roll",
-        "OCF recovery and airborne damaged aircraft",
-        "combination maneuvers",
-        "HUD"
-      ],
-      "unexpectedPrimaryItems" : [
-        "Aerobatic Maneuvers"
-      ]
-    },
-    {
-      "code" : "FAM6101",
-      "missingCanonicalItems" : [
-        "home field arrival",
-        "local VFR sectional review"
-      ],
-      "unexpectedPrimaryItems" : [
-        "Goliad Operations",
-        "Waldron Operations",
-        "Aransas County and Ingleside",
-        "Homefield Arrival Priorities"
-      ]
-    },
-    {
-      "code" : "FAM6102",
-      "missingCanonicalItems" : [
-        "cloud clearances",
-        "local VFR sectional review"
-      ],
-      "unexpectedPrimaryItems" : [
-        "Homefield Visual Straight-In"
-      ]
-    },
-    {
-      "code" : "FAM6201",
-      "missingCanonicalItems" : [
-        "Three Cs"
-      ],
-      "unexpectedPrimaryItems" : [
-        "3 C's"
-      ]
-    },
-    {
-      "code" : "FAM6202",
-      "missingCanonicalItems" : [
-
-      ],
-      "unexpectedPrimaryItems" : [
-        "Waveoff Criteria"
-      ]
-    },
-    {
-      "code" : "FAM6203",
-      "missingCanonicalItems" : [
-
-      ],
-      "unexpectedPrimaryItems" : [
-        "Block Review Focus"
-      ]
-    },
-    {
-      "code" : "FAM6301",
-      "missingCanonicalItems" : [
-        "OLF Course rules for field of use"
-      ],
-      "unexpectedPrimaryItems" : [
-        "Rusty Departure",
-        "Goliad Pattern Operations",
-        "Return Toward Homefield"
-      ]
-    },
-    {
-      "code" : "FAM6302",
-      "missingCanonicalItems" : [
-        "OLF Course rules for field of use"
-      ],
-      "unexpectedPrimaryItems" : [
-        "Beachline Departure",
-        "Aransas County Operations",
-        "SHAMROCK Recovery Options"
-      ]
-    },
-    {
-      "code" : "FAM6401",
-      "missingCanonicalItems" : [
-        "any EP"
-      ],
-      "unexpectedPrimaryItems" : [
-        "Ground and Engine Emergency Memory Items",
-        "System and Forced-Landing Memory Items"
-      ]
-    },
-    {
-      "code" : "FAM6402",
-      "missingCanonicalItems" : [
-        "Any EP"
-      ],
-      "unexpectedPrimaryItems" : [
-        "Start and Ground Emergencies",
-        "Engine Failure and Airstarts",
-        "System Emergencies",
-        "Forced Landing, PEL, and Ejection"
       ]
     }
   ],
@@ -224,24 +98,6 @@
     "F4103",
     "F4104",
     "F4290",
-    "FAM4101",
-    "FAM4102",
-    "FAM4103",
-    "FAM4104",
-    "FAM4201",
-    "FAM4202",
-    "FAM4203",
-    "FAM4204",
-    "FAM4301",
-    "FAM4302",
-    "FAM4303",
-    "FAM4304",
-    "FAM4490",
-    "FAM4501",
-    "FAM4601",
-    "FAM4701",
-    "FAM4702",
-    "FAM4703",
     "I2101",
     "I2102",
     "I2103",
@@ -282,10 +138,13 @@
   "canonicalEventsMissingFromManifest" : [
 
   ],
+  "discussionItemAuthoringIssues" : [
+
+  ],
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-14T18:45:12Z",
+  "generatedAt" : "2026-05-14T23:10:17Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

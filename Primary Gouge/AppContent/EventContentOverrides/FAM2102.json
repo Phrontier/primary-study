@@ -1,9 +1,42 @@
 {
-  "code": "FAM 2102",
-  "title": "Ground Emergencies",
-  "summary": "Start malfunctions, ground emergencies, emergency shutdowns, and egress procedures.",
+  "canonicalCoverage": {
+    "No start": [
+      "Start Malfunctions",
+      "Abort Start Procedure"
+    ],
+    "hung start": [
+      "Start Malfunctions",
+      "Abort Start Procedure"
+    ],
+    "hot start": [
+      "Start Malfunctions",
+      "Abort Start Procedure"
+    ],
+    "loss of start ready light during start sequence": [
+      "Loss of START READY During Start",
+      "Abort Start Procedure"
+    ],
+    "battery bus light during start": [
+      "Battery Bus Warning During Start",
+      "Abort Start Procedure"
+    ],
+    "fire on ground": [
+      "Fire Warning on the Ground"
+    ],
+    "emergency engine shutdown on the ground": [
+      "Emergency Engine Shutdown on the Ground"
+    ],
+    "emergency ground egress": [
+      "Emergency Ground Egress"
+    ],
+    "CFS and ejection CRM": [
+      "CFS and Ejection CRM"
+    ]
+  },
+  "code": "FAM2102",
   "overview": "This event builds on basic cockpit procedures by introducing abnormal starts and ground emergencies. You will practice identifying no starts, hung starts, hot starts, fire indications, emergency shutdown procedures, and emergency ground egress while continuing to build checklist discipline and CRM.",
   "primaryDocumentTitles": [
+    "FAM2102",
     "FAM 2102 Briefing guide 1542.166D"
   ],
   "studyNotes": {
@@ -26,7 +59,7 @@
                 "text": "Hung Start: N1 stops increasing normally."
               },
               {
-                "text": "Hot Start: ITT is rising rapidly and appears likely to exceed 1000°C."
+                "text": "Hot Start: ITT is rising rapidly and appears likely to exceed 1000\u00b0C."
               }
             ]
           },
@@ -34,7 +67,7 @@
             "text": "You should also manually abort if:",
             "children": [
               {
-                "text": "ITT appears likely to stay between 871°C and 1000°C for more than 5 seconds."
+                "text": "ITT appears likely to stay between 871\u00b0C and 1000\u00b0C for more than 5 seconds."
               },
               {
                 "text": "The red BATT BUS warning appears during start."
@@ -156,6 +189,9 @@
           },
           {
             "text": "If a fire is suspected, execute Emergency Engine Shutdown on the Ground and Emergency Ground Egress if required."
+          },
+          {
+            "text": "N/W/C focus: Review the associated WARNINGs, CAUTIONs, and NOTEs before the event so you know when a suspected ground fire becomes a confirmed emergency."
           }
         ]
       },
@@ -195,6 +231,9 @@
                 "text": "Emergency Ground Egress as required."
               }
             ]
+          },
+          {
+            "text": "N/W/C focus: Do not let checklist execution outrun aircraft control or crew coordination during a high-stress ground emergency."
           }
         ]
       },
@@ -246,6 +285,9 @@
           },
           {
             "text": "Both cockpits must activate their own CFS handles if both transparencies need to fracture."
+          },
+          {
+            "text": "N/W/C focus: Oxygen mask on and visor down before actuating CFS, and remember both cockpits must actuate their own CFS handles if both transparencies must fracture."
           }
         ]
       },
@@ -272,6 +314,9 @@
           },
           {
             "text": "The ejection seat is a Martin-Baker system capable of 0/0 ejection."
+          },
+          {
+            "text": "N/W/C focus: Treat seat pins, ISS position, and canopy-fracturing actions as no-fail items because mistakes here can injure the crew on the ground."
           }
         ]
       },
@@ -279,84 +324,36 @@
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Full strap-in with all flight equipment."
+            "text": "No start"
           },
           {
-            "text": "Cockpit Checklist."
+            "text": "hung start"
           },
           {
-            "text": "Engine Start (Auto)."
+            "text": "hot start"
           },
           {
-            "text": "Before Taxi Checklist."
+            "text": "loss of start ready light during start sequence"
           },
           {
-            "text": "Taxi Checklist."
+            "text": "battery bus light during start"
           },
           {
-            "text": "Overspeed Governor Check."
+            "text": "fire on ground"
           },
           {
-            "text": "Before Takeoff Checklist."
+            "text": "emergency engine shutdown on the ground"
           },
           {
-            "text": "Lineup Check."
+            "text": "emergency ground egress"
           },
           {
-            "text": "After Takeoff Checklist."
-          },
-          {
-            "text": "Operations Check."
-          },
-          {
-            "text": "Before Landing Checklist."
-          },
-          {
-            "text": "After Landing Checklist."
-          },
-          {
-            "text": "Engine Shutdown."
-          },
-          {
-            "text": "No Start."
-          },
-          {
-            "text": "Hung Start."
-          },
-          {
-            "text": "Hot Start."
-          },
-          {
-            "text": "Loss of START READY Light During Start."
-          },
-          {
-            "text": "Battery Bus Light During Start."
-          },
-          {
-            "text": "Fire on Ground."
-          },
-          {
-            "text": "Emergency Engine Shutdown."
-          },
-          {
-            "text": "Emergency Ground Egress."
-          }
-        ]
-      },
-      {
-        "title": "Optional Procedures",
-        "items": [
-          {
-            "text": "Climb Checklist (Passing 10,000 Feet)."
-          },
-          {
-            "text": "Descent Checklist."
+            "text": "CFS and ejection CRM"
           }
         ]
       }
     ]
   },
-  "flashcardDeckTitle": "FAM2102 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Start malfunctions, emergency shutdown actions, and ground egress discussion items for the second FAM sim.",
-  "flashcards": []
+  "summary": "Start malfunctions, ground emergencies, emergency shutdowns, and egress procedures.",
+  "title": "Ground Emergencies"
 }

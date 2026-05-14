@@ -1,9 +1,22 @@
 {
-  "code": "FAM 3201",
-  "title": "Impending Engine Failure and PEL",
-  "summary": "Recognizing engine trouble early and using the precautionary emergency landing profile before it becomes a forced landing.",
+  "canonicalCoverage": {
+    "Impending engine failure indications": [
+      "Impending Engine Failure Indications"
+    ],
+    "PEL": [
+      "PEL Fundamentals"
+    ],
+    "PEL/P": [
+      "PEL(P) and ELP Geometry"
+    ],
+    "ELP": [
+      "PEL(P) and ELP Geometry"
+    ]
+  },
+  "code": "FAM3201",
   "overview": "This event teaches how to identify an engine that may be failing before total power loss occurs. You will practice spotting warning signs, deciding when a PEL is warranted, flying the emergency landing pattern early, and using DEGA and PEL(P) concepts to preserve enough energy and runway options before the situation becomes a forced landing or ejection scenario.",
   "primaryDocumentTitles": [
+    "FAM3201",
     "FAM 3201 Briefing guide 1542.166D"
   ],
   "studyNotes": {
@@ -32,6 +45,9 @@
           },
           {
             "text": "If any condition makes engine reliability doubtful, plan for a PEL immediately instead of waiting for a confirmed failure."
+          },
+          {
+            "text": "N/W/C focus: The warning here is indecision. Once engine reliability is doubtful, delaying the turn to a runway is usually the bigger mistake than acting early."
           }
         ]
       },
@@ -60,6 +76,9 @@
           },
           {
             "text": "Do not delay configuration changes to try to rescue a low-energy profile late. If power is available in a PEL, use it."
+          },
+          {
+            "text": "N/W/C focus: In a PEL, power is still a tool. Use it early to stay on profile instead of waiting until the runway picture is already unrecoverable."
           }
         ]
       },
@@ -85,6 +104,9 @@
           },
           {
             "text": "High Key, Low Key, and DEGA calculations matter because they tell you whether a paved field remains reachable and whether you still have recovery options."
+          },
+          {
+            "text": "N/W/C focus: Preserve glide distance until landing is assured; do not trade away runway makeability with early drag or late, desperate corrections."
           }
         ]
       },
@@ -106,25 +128,21 @@
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Impending Engine Failure Recognition."
+            "text": "Impending engine failure indications"
           },
           {
-            "text": "Precautionary Emergency Landing."
+            "text": "PEL"
           },
           {
-            "text": "PEL from the Pattern."
+            "text": "PEL/P"
           },
           {
-            "text": "Emergency Landing Pattern."
-          },
-          {
-            "text": "DEGA Calculations."
+            "text": "ELP"
           }
         ]
       }
     ]
   },
-  "flashcardDeckTitle": "FAM3201 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Impending-engine-failure cues, PEL setup, and emergency landing pattern discussion items for the first FAM3200 sim.",
-  "flashcards": []
+  "summary": "Recognizing engine trouble early and using the precautionary emergency landing profile before it becomes a forced landing.",
+  "title": "Impending Engine Failure and PEL"
 }

@@ -1,106 +1,440 @@
 {
-  "code": "FAM 3301",
-  "title": "Crosswind and Ground Emergency Review",
-  "summary": "Crosswind operations, abort logic, runway departure emergencies, windshear, and UFCP failure procedures.",
-  "overview": "This event consolidates earlier pattern and emergency skills into a more complete ground-operations and crosswind review. You will practice crosswind takeoffs and landings, refine abort and maximum-braking decisions, review what to do when the aircraft departs the prepared surface, and discuss windshear and UFCP failures that can complicate landing or pattern recovery.",
-  "primaryDocumentTitles": [
-    "FAM 3301 Briefing guide 1542.166D"
-  ],
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "The emphasis is on pattern discipline under bad conditions: stay aligned, respect braking limits, and know when an abnormal runway or cockpit condition demands an immediate waveoff, shutdown, or egress.",
-    "sections": [
-      {
-        "title": "Crosswind Pattern Review",
-        "items": [
-          {
-            "text": "Crosswind takeoff and landing techniques are the same fundamentals from earlier events, but the expectation is now faster recognition and cleaner correction."
-          },
-          {
-            "text": "In the pattern, use crab on downwind and a wing-low final to stay aligned with the runway."
-          },
-          {
-            "text": "Wave off if more than 45 degrees of bank is required or if drift, crab, or side motion remain unresolved."
-          }
-        ]
-      },
-      {
-        "title": "Aborts, Braking, and Prepared-Surface Departure",
-        "items": [
-          {
-            "text": "An abort is mandatory for abnormal or unsafe conditions before max abort speed, but aircraft control remains the priority."
-          },
-          {
-            "text": "Maximum braking requires a smooth, increasing application as speed decreases, with immediate release if directional control is lost."
-          },
-          {
-            "text": "If the aircraft departs or is about to depart the prepared surface, execute Emergency Engine Shutdown on the Ground and Emergency Ground Egress as required."
-          },
-          {
-            "text": "Do not request the barrier. If a raised barrier or runway excursion removes recovery margin, preserving life takes priority over preserving the aircraft."
-          }
-        ]
-      },
-      {
-        "title": "Emergency Ground Egress Review",
-        "items": [
-          {
-            "text": "Emergency Ground Egress still hinges on ISS SOLO, seat pins installed, parking brake as required, and canopy open if possible."
-          },
-          {
-            "text": "If the canopy cannot be opened, both cockpit CFS actions and strap release steps must be executed correctly before evacuation."
-          },
-          {
-            "text": "Once clear of the aircraft, move away at a 45-degree angle off the tail and remain alert for emergency vehicles."
-          }
-        ]
-      },
-      {
-        "title": "Windshear and UFCP Failure",
-        "items": [
-          {
-            "text": "Windshear planning includes adding margin where authorized, using takeoff flaps, and avoiding severe windshear or microburst environments when possible."
-          },
-          {
-            "text": "If windshear is encountered on approach, execute an immediate go-around or waveoff."
-          },
-          {
-            "text": "A UFCP failure limits normal cockpit access to some comm and nav functions, but the MFD NAV page provides the backup path needed to continue and land as soon as practical."
-          }
-        ]
-      },
-      {
-        "title": "Required Procedures",
-        "items": [
-          {
-            "text": "Crosswind Takeoff."
-          },
-          {
-            "text": "Crosswind Landing."
-          },
-          {
-            "text": "Abort Takeoff."
-          },
-          {
-            "text": "Maximum Braking."
-          },
-          {
-            "text": "Aircraft Departs Prepared Surface."
-          },
-          {
-            "text": "Emergency Ground Egress."
-          },
-          {
-            "text": "Windshear Recovery."
-          },
-          {
-            "text": "UFCP Failure."
-          }
-        ]
-      }
+  "canonicalCoverage" : {
+    "Crosswind takeoff\/touch-and-go\/full-stop landings" : [
+      "Crosswind Takeoff\/Touch-and-Go\/Full-Stop Landings"
+    ],
+    "Up Front Control Panel (UFCP) failure" : [
+      "Up Front Control Panel (UFCP) Failure"
+    ],
+    "aborted takeoff" : [
+      "Aborted Takeoff"
+    ],
+    "aircraft departs a prepared surface" : [
+      "Aircraft Departs a Prepared Surface"
+    ],
+    "wind shear recovery" : [
+      "Wind Shear Recovery"
     ]
   },
-  "flashcardDeckTitle": "FAM3301 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Crosswind, abort, runway-emergency, and windshear discussion items for the FAM3300 sim.",
-  "flashcards": []
+  "code" : "FAM3301",
+  "overview" : "FAM3301 is a sim event focused on crosswind and ground emergency review. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM3301",
+    "FAM 3301 Briefing guide 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "use crab and wing-low techniques to stay aligned with the runway in crosswind conditions. Adjust bank, power, and control inputs as needed; waveoff if overbanking is required"
+              },
+              {
+                "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff if side motion, drift, or crab occurs"
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Procedures:"
+              },
+              {
+                "text" : "Failure to reduce aileron as speed builds."
+              },
+              {
+                "text" : "Improper rudder use leading to drift or weathervaning."
+              },
+              {
+                "text" : "Skipping due to premature liftoff on upwind wing."
+              },
+              {
+                "text" : "Pattern Adjustments for Crosswinds"
+              },
+              {
+                "text" : "crab into the wind to maintain correct WTD"
+              },
+              {
+                "text" : "Approach Turn:"
+              },
+              {
+                "text" : "Adjust bank and power to counter overshooting or undershooting"
+              },
+              {
+                "text" : "Final (Groove):"
+              },
+              {
+                "text" : "Wing-Low Method"
+              },
+              {
+                "text" : "Aileron into the wind - prevent drift"
+              },
+              {
+                "text" : "Rudder - align nose with the runway"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Max AOB 45°; waveoff if more is required"
+              },
+              {
+                "text" : "+½ gust factor to final approach speed (max +10 kts)"
+              },
+              {
+                "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
+              },
+              {
+                "text" : "PCL - MAX, rotate at 90 KIAS"
+              },
+              {
+                "text" : "Applying brakes before 80 KIAS."
+              },
+              {
+                "text" : "Delay rotation to VROT + up to 10 KIAS."
+              },
+              {
+                "text" : "Fly approach up to 10 KIAS faster than normal."
+              },
+              {
+                "text" : "Stabilize by 1000’ AGL."
+              },
+              {
+                "text" : "+10 KIAS over normal"
+              },
+              {
+                "text" : "Stabilized approach by 1000' AGL"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Crosswind Takeoff\/Touch-and-Go\/Full-Stop Landings late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Crosswind Takeoff\/Touch-and-Go\/Full-Stop Landings"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "use crab and wing-low techniques to stay aligned with the runway in crosswind conditions. Adjust bank, power, and control inputs as needed; waveoff if overbanking is required"
+              },
+              {
+                "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff if side motion, drift, or crab occurs"
+              },
+              {
+                "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "PCL - IDLE"
+              },
+              {
+                "text" : "BRAKES - AS REQUIRED"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Power as required to counter drag"
+              },
+              {
+                "text" : "use crab and wing-low techniques to stay aligned with the runway in crosswind conditions. Adjust bank, power, and control inputs as needed; waveoff if overbanking is required"
+              },
+              {
+                "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff if side motion, drift, or crab occurs"
+              },
+              {
+                "text" : "BRAKES - AS REQUIRED"
+              },
+              {
+                "text" : "Max AOB 45°; waveoff if more is required"
+              },
+              {
+                "text" : "+½ gust factor to final approach speed (max +10 kts)"
+              },
+              {
+                "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
+              },
+              {
+                "text" : "PCL - MAX, rotate at 90 KIAS"
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "(1W)"
+              },
+              {
+                "text" : "W - After a stop which required maximum effort braking and if overheated brakes are suspected, do not taxi into or park in a congested area until brakes have had sufficient time to cool. Do not set parking brake."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Aborted Takeoff"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "AC is no longer on or will imminently depart the prepared surface, due to:"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Immediate actions \/ procedure"
+              },
+              {
+                "text" : "Flap setting"
+              },
+              {
+                "text" : "(W):"
+              },
+              {
+                "text" : "Brake failure, blown tire, loss of directional control, aborted TO with insufficient runway remaining"
+              },
+              {
+                "text" : "AC is no longer on or will imminently depart the prepared surface, due to:"
+              },
+              {
+                "text" : "how Aircraft Departs a Prepared Surface changes the brief, setup, and in-cockpit decision making."
+              },
+              {
+                "text" : "Know what makes this a continue, discontinue, PEL, forced-landing, or eject problem before the cockpit gets busy."
+              },
+              {
+                "text" : "N\/W\/Cs"
+              },
+              {
+                "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Aircraft Departs a Prepared Surface before the event."
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know what makes this a continue, discontinue, PEL, forced-landing, or eject problem before the cockpit gets busy."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Aircraft Departs a Prepared Surface before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Aircraft Departs a Prepared Surface"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Windshear is a sudden change in wind speed or direction; microbursts are intense, short-lived forms of windshear. During takeoff or landing, windshear can lead to rapid airspeed or altitude changes. Recovery involves early detection, avoidance, and proper flying techniques to mitigate danger."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "RCR"
+              },
+              {
+                "text" : "Flap setting"
+              },
+              {
+                "text" : "(W):"
+              },
+              {
+                "text" : "Prevention \/ Detection"
+              },
+              {
+                "text" : "Windshear is a sudden change in wind speed or direction; microbursts are intense, short-lived forms of windshear. During takeoff or landing, windshear can lead to rapid airspeed or altitude changes. Recovery involves early detection, avoidance, and proper flying techniques to mitigate danger."
+              },
+              {
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+              },
+              {
+                "text" : "Standards \/ numbers"
+              },
+              {
+                "text" : "Memorize the setup numbers and the recovery numbers for Wind Shear Recovery; that is usually where the grading starts."
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Memorize the setup numbers and the recovery numbers for Wind Shear Recovery; that is usually where the grading starts."
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Wind Shear Recovery late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Wind Shear Recovery"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Up Front Control Panel (UFCP) Failure changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "FMS execute, system Mag\/ True heading toggle, system GS\/CAS\/TAS HUD speed toggle, and radio tuning with UFCP"
+              },
+              {
+                "text" : "Land as soon as practical"
+              },
+              {
+                "text" : "MFD NAV Page Access:"
+              },
+              {
+                "text" : "Barometric Altimeter Setting (ALT BARO):"
+              },
+              {
+                "text" : "COM\/NAV\/Transponder Frequency Change (ALT CNS):"
+              },
+              {
+                "text" : "Load to standby:"
+              },
+              {
+                "text" : "Toggle standby to active using same LSK again"
+              },
+              {
+                "text" : "Transponder Mode Control:"
+              },
+              {
+                "text" : "These shortcuts only appear on the MFD NAV page, not the TSD"
+              },
+              {
+                "text" : "COM\/NAV\/XPDR remain fully functional without UFCP via MFD"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the UFCP fails, essential comm\/nav functions and barometric setting adjustments can still be accomplished via MFD NAV display shortcuts."
+              },
+              {
+                "text" : "UFCP circuit breaker (left front console or left rear console) - Check, reset if open"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Up Front Control Panel (UFCP) Failure without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Up Front Control Panel (UFCP) Failure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Crosswind takeoff\/touch-and-go\/full-stop landings"
+          },
+          {
+            "text" : "aborted takeoff"
+          },
+          {
+            "text" : "aircraft departs a prepared surface"
+          },
+          {
+            "text" : "wind shear recovery"
+          },
+          {
+            "text" : "Up Front Control Panel (UFCP) failure"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+  },
+  "summary" : "Crosswind and Ground Emergency Review: Crosswind Takeoff\/Touch-and-Go\/Full-Stop Landings, Aborted Takeoff, Aircraft Departs a Prepared Surface, and the remaining required discussion items in the block.",
+  "title" : "Crosswind and Ground Emergency Review"
 }

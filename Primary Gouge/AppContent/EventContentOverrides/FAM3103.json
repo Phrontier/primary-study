@@ -1,9 +1,40 @@
 {
-  "code": "FAM 3103",
-  "title": "Crosswinds and Aborts",
-  "summary": "Crosswind takeoffs and landings, aborts, runway departures, and HUD fundamentals.",
+  "canonicalCoverage": {
+    "Crosswind limits": [
+      "Crosswind Limits"
+    ],
+    "crosswind computations": [
+      "Crosswind Computations"
+    ],
+    "crosswind takeoff": [
+      "Crosswind Takeoff"
+    ],
+    "pattern adjustments for crosswinds": [
+      "Pattern Adjustments for Crosswinds"
+    ],
+    "crosswind landings": [
+      "Crosswind Landings"
+    ],
+    "crosswind T&Gs": [
+      "Crosswind T&Gs"
+    ],
+    "crosswind full-stops": [
+      "Crosswind Full-Stop Landing"
+    ],
+    "aborted takeoff": [
+      "Aborted Takeoff"
+    ],
+    "aircraft departs prepared surface": [
+      "Aircraft Departs Prepared Surface"
+    ],
+    "HUD": [
+      "HUD"
+    ]
+  },
+  "code": "FAM3103",
   "overview": "This event introduces crosswind operations and runway emergencies. You will practice crosswind takeoffs, crosswind landings, touch-and-gos, full-stop landings, aborts, and runway departures while learning how to stay aligned with the runway and make early decisions when things are no longer stable.",
   "primaryDocumentTitles": [
+    "FAM3103",
     "FAM 3103 Briefing guide 1542.166D"
   ],
   "studyNotes": {
@@ -322,7 +353,7 @@
         ]
       },
       {
-        "title": "Crosswind Touch-and-Go",
+        "title": "Crosswind T&Gs",
         "items": [
           {
             "text": "Maintain crosswind controls during rollout."
@@ -451,6 +482,9 @@
                 "text": "Avoid setting the parking brake after heavy braking."
               }
             ]
+          },
+          {
+            "text": "N/W/C focus: The major warning is the same one from earlier events: keep aircraft control first and respect the brake-overheat risk after aggressive stopping."
           }
         ]
       },
@@ -511,7 +545,7 @@
         ]
       },
       {
-        "title": "HUD Introduction",
+        "title": "HUD",
         "items": [
           {
             "text": "The HUD displays flight, navigation, and aircraft information in the pilot's forward field of view."
@@ -616,31 +650,39 @@
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Crosswind Takeoff."
+            "text": "Crosswind limits"
           },
           {
-            "text": "Crosswind Landing."
+            "text": "crosswind computations"
           },
           {
-            "text": "Crosswind Touch-and-Go."
+            "text": "crosswind takeoff"
           },
           {
-            "text": "Crosswind Full-Stop Landing."
+            "text": "pattern adjustments for crosswinds"
           },
           {
-            "text": "Aborted Takeoff."
+            "text": "crosswind landings"
           },
           {
-            "text": "Aircraft Departs Prepared Surface."
+            "text": "crosswind T&Gs"
           },
           {
-            "text": "HUD Introduction."
+            "text": "crosswind full-stops"
+          },
+          {
+            "text": "aborted takeoff"
+          },
+          {
+            "text": "aircraft departs prepared surface"
+          },
+          {
+            "text": "HUD"
           }
         ]
       }
     ]
   },
-  "flashcardDeckTitle": "FAM3103 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Crosswind, abort, runway-departure, and HUD discussion items for the third FAM3100 sim.",
-  "flashcards": []
+  "summary": "Crosswind takeoffs and landings, aborts, runway departures, and HUD fundamentals.",
+  "title": "Crosswinds and Aborts"
 }

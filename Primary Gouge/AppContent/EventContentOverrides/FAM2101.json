@@ -1,14 +1,34 @@
 {
-  "code": "FAM 2101",
-  "flashcardDeckSummary": "Cockpit setup, checklist discipline, and blind-cockpit discussion items for the first FAM sim.",
-  "flashcardDeckTitle": "FAM2101 Discussion Item Flashcards",
-  "flashcards": [],
+  "canonicalCoverage": {
+    "Checklist challenge-action response format": [
+      "Checklist Challenge-Action-Response Format"
+    ],
+    "dual concurrence/response CRM": [
+      "Dual Concurrence and CRM"
+    ],
+    "memorized checklists": [
+      "Memorized Checklists"
+    ],
+    "ground handling signals": [
+      "Ground Handling Signals"
+    ],
+    "safety check/call prior to cockpit entry and departing aircraft": [
+      "Safety Check Prior to Cockpit Entry",
+      "Safety Check Prior to Leaving the Aircraft"
+    ],
+    "blindfold cockpit check": [
+      "Blind Cockpit Check"
+    ]
+  },
+  "code": "FAM2101",
   "overview": "This event is your introduction to operating in the T-6B cockpit. You will practice checklist discipline, challenge-action-response procedures, crew coordination, ground handling signals, and safety checks before entering and leaving the aircraft. You will also begin building cockpit familiarity through blind cockpit checks and repeated strap-in practice.",
   "primaryDocumentTitles": [
-    "FAM 2101 Briefing Guide"
+    "FAM2101",
+    "FAM 2101 Briefing guide 1542.166D"
   ],
   "studyNotes": {
     "headline": "Discussion items",
+    "summary": "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable.",
     "sections": [
       {
         "title": "Checklist Challenge-Action-Response Format",
@@ -266,57 +286,22 @@
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Before Exterior Inspection"
+            "text": "Checklist challenge-action response format"
           },
           {
-            "text": "Full strap-in with all flight equipment"
+            "text": "dual concurrence/response CRM"
           },
           {
-            "text": "Cockpit Checklist"
+            "text": "memorized checklists"
           },
           {
-            "text": "Engine Start (Auto)"
+            "text": "ground handling signals"
           },
           {
-            "text": "Before Taxi Checklist"
+            "text": "safety check/call prior to cockpit entry and departing aircraft"
           },
           {
-            "text": "Taxi Checklist"
-          },
-          {
-            "text": "Overspeed Governor Check"
-          },
-          {
-            "text": "Before Takeoff Checklist"
-          },
-          {
-            "text": "Lineup Check"
-          },
-          {
-            "text": "After Takeoff Checklist"
-          },
-          {
-            "text": "Operations Check"
-          },
-          {
-            "text": "Before Landing Checklist"
-          },
-          {
-            "text": "After Landing Checklist"
-          },
-          {
-            "text": "Engine Shutdown"
-          }
-        ]
-      },
-      {
-        "title": "Optional Procedures",
-        "items": [
-          {
-            "text": "Climb Checklist (Passing 10,000 Feet)"
-          },
-          {
-            "text": "Descent Checklist"
+            "text": "blindfold cockpit check"
           }
         ]
       }

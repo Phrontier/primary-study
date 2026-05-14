@@ -1,0 +1,330 @@
+{
+  "canonicalCoverage" : {
+    "OLF operations" : [
+      "OLF Operations"
+    ],
+    "SCATSAFE maneuver" : [
+      "Scatsafe Maneuver"
+    ],
+    "home-field arrival" : [
+      "Home-Field Arrival"
+    ],
+    "local course rules" : [
+      "Local Course Rules"
+    ]
+  },
+  "code" : "FAM4103",
+  "overview" : "FAM4103 is a flight event focused on olf operations. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4103"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what OLF Operations changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Goliad"
+              },
+              {
+                "text" : "Arrival Procedures"
+              },
+              {
+                "text" : "Communication Requirements:"
+              },
+              {
+                "text" : "Know what OLF Operations changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "how OLF Operations changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how OLF Operations changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about OLF Operations without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "OLF Operations"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Local Course Rules changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Waldron"
+              },
+              {
+                "text" : "VFR Arrivals:"
+              },
+              {
+                "text" : "“Corpus Approach, (Call Sign), request High-Key to Waldron.”"
+              },
+              {
+                "text" : "Sunrise Transition:"
+              },
+              {
+                "text" : "Oso Transition:"
+              },
+              {
+                "text" : "Request Base, Downwind, or Break entry."
+              },
+              {
+                "text" : "IFR Departures:"
+              },
+              {
+                "text" : "Make all IFR requests with Waldron Tower who will coordinate with Corpus Approach."
+              },
+              {
+                "text" : "“Waldron Tower, (call sign), request Oso Transition.”"
+              },
+              {
+                "text" : "“(call sign), Right turnout for Oso Transition is approved. Contact Navy Tower.”"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Contact Navy Corpus Tower when directed."
+              },
+              {
+                "text" : "Use Zulu time"
+              },
+              {
+                "text" : "Aircraft will use local VFR T-6 squawk, also known as “Company”"
+              },
+              {
+                "text" : "3.RADIO CALLS. Make all radio calls “in the blind.” Use frequencies appropriate for route of flight."
+              },
+              {
+                "text" : "(2) Execute a normal break entry to the duty runway (use the inboard runway if the parallels are in use)."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not overfly Padre Island National Seashore below 3000' AGL."
+              },
+              {
+                "text" : "Contact Corpus Approach on CH 6 UHF prior to climbing to High-Key (3000' MSL). KRAS RNAV final approach course (RWY 12) at 1500' MSL, 1 NM SW of KTFP."
+              },
+              {
+                "text" : "IF UNABLE TO MAINTAIN VMC, SQUAWK 7600 AND COMPLY WITH IFR LOST COMMUNICATION PROCEDURES."
+              },
+              {
+                "text" : "THESE PROCEDURES SHOULD NOT PRECLUDE EXERCISING SOUND JUDGEMENT IN WHATEVER ACTION A PILOT ELECTS TO TAKE. (AIM, FAR 91.185)"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Local Course Rules"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Home-Field Arrival is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "General Notes"
+              },
+              {
+                "text" : "PT SHAMROCK is the common reporting point for most arrivals."
+              },
+              {
+                "text" : "Home-Field Arrival is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              },
+              {
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+              },
+              {
+                "text" : "Standards \/ numbers"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fly 240 KIAS until PT SHAMROCK (unless directed otherwise)."
+              },
+              {
+                "text" : "Contact Corpus Approach on CH 8 UHF unless otherwise directed."
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Home-Field Arrival late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Home-Field Arrival"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Demonstrates T-6B flight characteristics near stall speed to build awareness of control responsiveness, coordination, and aerodynamic effects at low airspeed."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Configuration"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Procedure:"
+              },
+              {
+                "text" : "VFR Straight-In from SHAMROCK"
+              },
+              {
+                "text" : "Descend and level:"
+              },
+              {
+                "text" : "Prior to initial:"
+              },
+              {
+                "text" : "Turn to intercept final:"
+              },
+              {
+                "text" : "Report “Left base\/Final gear down.”"
+              },
+              {
+                "text" : "Report “Right base gear down.”"
+              },
+              {
+                "text" : "Carrier Break"
+              },
+              {
+                "text" : "NAS Corpus Christi"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "1000' MSL, 200 KIAS, slightly offset (1\/4 WTD) to pattern side."
+              },
+              {
+                "text" : "Slow to 200 KIAS, request visual straight-in."
+              },
+              {
+                "text" : "800' MSL (South Flow) or 500' MSL (North Flow)."
+              },
+              {
+                "text" : "Slow <150 KIAS, configure (gear\/flaps), complete Before Landing Checklist."
+              },
+              {
+                "text" : "Slow below 150 KIAS"
+              },
+              {
+                "text" : "Remain 5 NM or 5000’+ MSL"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Scatsafe Maneuver late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Scatsafe Maneuver"
+      },
+      {
+        "items" : [
+          {
+            "text" : "OLF operations"
+          },
+          {
+            "text" : "local course rules"
+          },
+          {
+            "text" : "home-field arrival"
+          },
+          {
+            "text" : "SCATSAFE maneuver"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+  },
+  "summary" : "OLF Operations: OLF Operations, Local Course Rules, Home-Field Arrival, and the remaining required discussion items in the block.",
+  "title" : "OLF Operations"
+}

@@ -1,0 +1,452 @@
+{
+  "canonicalCoverage" : {
+    "Hard landings" : [
+      "Hard Landings"
+    ],
+    "any critical action emergency procedures" : [
+      "Any Critical Action Emergency Procedures"
+    ],
+    "emergency orbit pattern" : [
+      "Emergency Orbit Pattern"
+    ],
+    "flap failures" : [
+      "Flap Failures"
+    ],
+    "gear emergencies" : [
+      "Gear Emergencies"
+    ]
+  },
+  "code" : "FAM4303",
+  "overview" : "FAM4303 is a flight event focused on hard landings. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4303"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Hard Landings is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common Causes:"
+              },
+              {
+                "text" : "High Flare"
+              },
+              {
+                "text" : "Flare started too early or with excessive pitch-up"
+              },
+              {
+                "text" : "Can lead to stalling or nose gear striking runway during pitch correction"
+              },
+              {
+                "text" : "Late\/Rapid Flare"
+              },
+              {
+                "text" : "Misjudged altitude or high descent rate"
+              },
+              {
+                "text" : "Can cause abrupt pitch-up → hard landing or approach-to-stall"
+              },
+              {
+                "text" : "Low Airspeed on Final"
+              },
+              {
+                "text" : "Exacerbated by idle power or delayed waveoff"
+              },
+              {
+                "text" : "High Sink Rate \/ Low Power on Final"
+              },
+              {
+                "text" : "May exceed safe touchdown parameters"
+              },
+              {
+                "text" : "Abrupt Control Movements"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Final airspeed <110 KIAS increases risk of stall and hard touchdown"
+              },
+              {
+                "text" : "Idle or low power (<4-6%) on final + LDG flaps = rapid airspeed decay and high descent rate"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Hard Landings late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Hard Landings"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Overview:"
+              },
+              {
+                "text" : "This procedure is used when the landing gear fails to indicate fully up with the gear handle up or fully down with the gear handle down. It’s applicable in situations involving abnormal gear or inboard door positions, and should be used to troubleshoot and determine whether gear indications are safe or if further emergency procedures are required."
+              },
+              {
+                "text" : "Used when any landing gear is confirmed unsafe. A gear-up landing on a suitable area is preferred. Fly a flat, power-on, straight-in approach maintaining directional control with rudder. Treat any gear not fully extended as retracted."
+              },
+              {
+                "text" : "Used to extend and lock the landing gear when normal extension fails or is impossible, typically directed by other emergency checklists. Once the emergency handle is pulled, landing gear and flap retraction are no longer possible."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "High Temperature \/ High Pressure Altitude Conditions"
+              },
+              {
+                "text" : "(N) Execute this checklist anytime the gear doesn’t indicate fully up or down as expected."
+              },
+              {
+                "text" : "LAMP test switch – Check"
+              },
+              {
+                "text" : "LDGGR CONT (left front console), INST (left front console), and INST LT (left rear console) circuit breakers – Check in\/reset (If unable to reset the LDGGR CONT circuit breaker, execute the Emergency Gear Extension Checklist)"
+              },
+              {
+                "text" : "(N) “Reset” means to re-engage a circuit breaker that has tripped. Pilots should evaluate emergency severity and system losses before resetting or opening any circuit breaker."
+              },
+              {
+                "text" : "Gear handle – Cycle"
+              },
+              {
+                "text" : "(N) Multiple gear handle cycles are allowed until fuel becomes critical or the PIC determines further attempts risk more damage or hydraulic pressure loss."
+              },
+              {
+                "text" : "Actions that may help extend the gear during cycling include:"
+              },
+              {
+                "text" : "Applying side loads (slipping)"
+              },
+              {
+                "text" : "Using speed brake"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "(N) Prefer another aircraft’s visual inspection for abnormal gear\/door positions. Don’t rush—coordinate when time permits."
+              },
+              {
+                "text" : "(N) If only the nose gear is unsafe but main gear is down with doors closed, the down lock microswitch might be faulty. Resetting the LDGGR CONT CB may resolve it."
+              },
+              {
+                "text" : "Gear handle – DOWN (Press down firmly. If unable to lower the gear handle, execute the Landing Gear Emergency Extension checklist) (BOTH)"
+              },
+              {
+                "text" : "(N) Confirm all position lights illuminate. Lamp test will not illuminate gear lights if the LDGGR CONT CB is tripped."
+              },
+              {
+                "text" : "(C) If the LDGGR CONT circuit breaker trips, position indicator lights and gear handle lights will not work. Landing light, taxi light, and AOA indexers also become inoperative, preventing internal confirmation of \"down and locked\" gear."
+              },
+              {
+                "text" : "(N) A tripped LDGGR CONT circuit breaker disables landing light, taxi light, and AOA indexers. If the INST circuit breaker trips in either cockpit, position indicator lights and gear handle lights in that cockpit become inoperative."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Gear Emergencies without being able to explain the operational consequence."
+              },
+              {
+                "text" : "Note:"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Gear Emergencies"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Asymmetric (split-flap) condition may cause uncommanded roll or yaw during flap operation. It results from either binding of flap segments or torque link failure between inner and outer flaps. Control authority is sufficient at pattern airspeeds."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Airspeed – Adjust to maintain control and minimize effort"
+              },
+              {
+                "text" : "Flap control handle – Move to minimize\/eliminate asymmetry"
+              },
+              {
+                "text" : "(W) Once asymmetry is minimized or eliminated, do not reposition flap control handle."
+              },
+              {
+                "text" : "Land – Use straight-in approach"
+              },
+              {
+                "text" : "Asymmetric (split-flap) condition may cause uncommanded roll or yaw during flap operation. It results from either binding of flap segments or torque link failure between inner and outer flaps. Control authority is sufficient at pattern airspeeds."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "(N) Do not attempt to extend speed brake when experiencing asymmetric flaps"
+              },
+              {
+                "text" : "(N) If necessary, confirm flap position with tower flyby and\/or visual inspection by another aircraft."
+              },
+              {
+                "text" : "Controllability check – As required"
+              },
+              {
+                "text" : "Asymmetric (split-flap) condition may cause uncommanded roll or yaw during flap operation. It results from either binding of flap segments or torque link failure between inner and outer flaps. Control authority is sufficient at pattern airspeeds."
+              },
+              {
+                "text" : "Land – Use straight-in approach"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Flap Failures without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Flap Failures"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "Used during emergencies or runway changes to maintain safe traffic separation."
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Immediate actions \/ procedure"
+              },
+              {
+                "text" : "Used during emergencies or runway changes to maintain safe traffic separation."
+              },
+              {
+                "text" : "Know the immediate actions for Emergency Orbit Pattern in order and be ready to explain what triggers each branch."
+              },
+              {
+                "text" : "N\/W\/Cs"
+              },
+              {
+                "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Emergency Orbit Pattern before the event."
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "120 KIAS, gear down, flaps up."
+              },
+              {
+                "text" : "2000' MSL."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Emergency Orbit Pattern before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Emergency Orbit Pattern"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "Hard Landings"
+              },
+              {
+                "text" : "Common Causes:"
+              },
+              {
+                "text" : "High Flare"
+              },
+              {
+                "text" : "Flare started too early or with excessive pitch-up"
+              },
+              {
+                "text" : "Can lead to stalling or nose gear striking runway during pitch correction"
+              },
+              {
+                "text" : "Late\/Rapid Flare"
+              },
+              {
+                "text" : "Misjudged altitude or high descent rate"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fire on Ground"
+              },
+              {
+                "text" : "Emergency Engine Shutdown on the Ground"
+              },
+              {
+                "text" : "Emergency Ground Egress"
+              },
+              {
+                "text" : "CFS and Ejection CRM"
+              },
+              {
+                "text" : "Abort Takeoff"
+              },
+              {
+                "text" : "Aircraft Departs Prepared Surface"
+              },
+              {
+                "text" : "Engine Failure Immediately After Takeoff"
+              },
+              {
+                "text" : "Engine Failure During Flight"
+              },
+              {
+                "text" : "Immediate Air-Start"
+              },
+              {
+                "text" : "PMU Norm Air-Start"
+              },
+              {
+                "text" : "PMU Off Air-Start"
+              },
+              {
+                "text" : "Uncommanded Power Changes\/LOP"
+              },
+              {
+                "text" : "Uncommanded Prop Feather"
+              },
+              {
+                "text" : "Smoke and Fume Elimination"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know when the problem can be managed with a PEL, when it requires a forced landing, and when it is time to stop troubleshooting and eject."
+              },
+              {
+                "text" : "If the assigned EP includes branches, know what cue drives each branch before you brief the next step."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to state the associated WARNINGs, CAUTIONs, and NOTEs for the assigned EP, not just the memory items."
+              },
+              {
+                "text" : "Review the verbatim N\/W\/C card for every EP title listed above before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Any Critical Action Emergency Procedures"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Hard landings"
+          },
+          {
+            "text" : "gear emergencies"
+          },
+          {
+            "text" : "flap failures"
+          },
+          {
+            "text" : "emergency orbit pattern"
+          },
+          {
+            "text" : "any critical action emergency procedures"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+  },
+  "summary" : "Hard Landings: Hard Landings, Gear Emergencies, Flap Failures, and the remaining required discussion items in the block.",
+  "title" : "Hard Landings"
+}

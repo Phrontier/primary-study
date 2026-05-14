@@ -1,9 +1,34 @@
 {
-  "code": "FAM 2202",
-  "title": "Systems Emergencies",
-  "summary": "Oil, fuel, hydraulic, oxygen, trim, and landing gear emergency procedures.",
+  "canonicalCoverage": {
+    "Chip detector warning": [
+      "Chip Detector Warning"
+    ],
+    "oil system malfunction or low oil pressure": [
+      "Oil System Malfunction / Low Oil Pressure"
+    ],
+    "low fuel pressure": [
+      "Low Fuel Pressure"
+    ],
+    "hydraulic system malfunctions": [
+      "Hydraulic System Malfunctions"
+    ],
+    "landing gear emergency extension": [
+      "Landing Gear Emergency Extension"
+    ],
+    "OBOGS fail message": [
+      "OBOGS Fail Message"
+    ],
+    "runaway trim": [
+      "Runaway Trim"
+    ],
+    "precautionary emergency landing (PEL) and BFI": [
+      "Precautionary Emergency Landing (PEL) and BFI"
+    ]
+  },
+  "code": "FAM2202",
   "overview": "This event focuses on aircraft system malfunctions that can develop in flight. You will learn how to recognize and respond to oil, fuel, hydraulic, oxygen, trim, and landing gear emergencies while continuing to prioritize aircraft control, PEL setup, and when to land as soon as practical.",
   "primaryDocumentTitles": [
+    "FAM2202",
     "FAM 2202 Briefing guide 1542.166D"
   ],
   "studyNotes": {
@@ -35,6 +60,9 @@
           },
           {
             "text": "Higher power settings can make the problem worse."
+          },
+          {
+            "text": "N/W/C focus: Treat higher power settings and unnecessary PCL movement as risk multipliers once a CHIP indication makes engine health questionable."
           }
         ]
       },
@@ -94,6 +122,9 @@
                 "text": "Execute a PEL."
               }
             ]
+          },
+          {
+            "text": "N/W/C focus: A momentary caution during maneuvering is not the same as a persistent warning tied to bad oil indications; know the difference before you overreact or underreact."
           }
         ]
       },
@@ -150,6 +181,9 @@
           },
           {
             "text": "If the FUEL PX warning remains illuminated, the high pressure fuel pump is suction feeding and engine operation is time limited."
+          },
+          {
+            "text": "N/W/C focus: If suction-feed indications persist, the engine is operating on borrowed time and the landing plan needs to get more aggressive, not less."
           }
         ]
       },
@@ -176,7 +210,7 @@
         ]
       },
       {
-        "title": "Hydraulic System Malfunction",
+        "title": "Hydraulic System Malfunctions",
         "items": [
           {
             "text": "Symptoms include:",
@@ -258,6 +292,9 @@
           },
           {
             "text": "After landing, do not taxi if any gear position light indicates unsafe."
+          },
+          {
+            "text": "N/W/C focus: Once emergency extension is used, gear and flaps are not coming back up, so do not pull the handle unless another malfunction actually calls for it."
           }
         ]
       },
@@ -337,6 +374,9 @@
           },
           {
             "text": "Land as soon as practical."
+          },
+          {
+            "text": "N/W/C focus: Oxygen and cockpit-pressure problems can turn into a crew-survivability issue quickly, so know when descent and checklist execution take priority over everything else."
           }
         ]
       },
@@ -361,7 +401,7 @@
         ]
       },
       {
-        "title": "Precautionary Emergency Landing (PEL)",
+        "title": "Precautionary Emergency Landing (PEL) and BFI",
         "items": [
           {
             "text": "A PEL is used anytime a malfunction exists that may worsen before landing."
@@ -388,6 +428,9 @@
                 "text": "Preserving the aircraft systems that remain."
               }
             ]
+          },
+          {
+            "text": "N/W/C focus: The big warning here is not to let a marginal profile turn into a low-altitude salvage attempt. Use available power early and stay honest about runway makeability."
           }
         ]
       },
@@ -415,37 +458,33 @@
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Chip Detector Warning."
+            "text": "Chip detector warning"
           },
           {
-            "text": "Oil System Malfunction / Low Oil Pressure."
+            "text": "oil system malfunction or low oil pressure"
           },
           {
-            "text": "Low Fuel Pressure."
+            "text": "low fuel pressure"
           },
           {
-            "text": "High Fuel Flow."
+            "text": "hydraulic system malfunctions"
           },
           {
-            "text": "Hydraulic System Malfunction."
+            "text": "landing gear emergency extension"
           },
           {
-            "text": "Landing Gear Emergency Extension."
+            "text": "OBOGS fail message"
           },
           {
-            "text": "OBOGS Fail Message."
+            "text": "runaway trim"
           },
           {
-            "text": "Runaway Trim."
-          },
-          {
-            "text": "Precautionary Emergency Landing."
+            "text": "precautionary emergency landing (PEL) and BFI"
           }
         ]
       }
     ]
   },
-  "flashcardDeckTitle": "FAM2202 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Oil, fuel, hydraulic, oxygen, trim, and gear-emergency discussion items for the second FAM2200 event.",
-  "flashcards": []
+  "summary": "Oil, fuel, hydraulic, oxygen, trim, and landing gear emergency procedures.",
+  "title": "Systems Emergencies"
 }

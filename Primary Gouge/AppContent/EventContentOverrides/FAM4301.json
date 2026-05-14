@@ -1,0 +1,431 @@
+{
+  "canonicalCoverage" : {
+    "OBOGS and pressurization system" : [
+      "OBOGS and Pressurization System"
+    ],
+    "aborted takeoff" : [
+      "Aborted Takeoff"
+    ],
+    "airborne-damaged aircraft" : [
+      "Airborne-Damaged Aircraft"
+    ],
+    "discontinued entry" : [
+      "Discontinued Entry"
+    ],
+    "lost aircraft procedures" : [
+      "Lost Aircraft Procedures"
+    ]
+  },
+  "code" : "FAM4301",
+  "overview" : "FAM4301 is a flight event focused on obogs and pressurization system. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4301"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Failure Indications"
+              },
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "Description"
+              },
+              {
+                "text" : "The pressurization system regulates cockpit pressure during flight to maintain pilot comfort and safety. It uses engine bleed air and a system of valves and regulators to maintain a cockpit pressure altitude of 8,000 ft until a delta P (differential pressure) of 3.6 ± 0.2 psi is reached. Maximum cockpit pressure altitude at service ceiling (31,000 ft) is ~16,600 ft."
+              },
+              {
+                "text" : "Routes high-temp engine bleed air to ECS subsystems."
+              },
+              {
+                "text" : "Description:"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Operation"
+              },
+              {
+                "text" : "Operation:"
+              },
+              {
+                "text" : "Immediate actions \/ procedure"
+              },
+              {
+                "text" : "Oxygen Source and Generation"
+              },
+              {
+                "text" : "Bleed Air Supply:"
+              },
+              {
+                "text" : "Conditioned bleed air is tapped from the engine and routed to the OBOGS concentrator."
+              },
+              {
+                "text" : "Heat Exchanger:"
+              },
+              {
+                "text" : "Uses pressure swing adsorption and a molecular sieve to extract oxygen from bleed air and remove nitrogen."
+              },
+              {
+                "text" : "Plenum:"
+              },
+              {
+                "text" : "A small tank downstream of the concentrator that holds a short-term oxygen supply in the event of OBOGS failure."
+              },
+              {
+                "text" : "BIT (Built-in Test):"
+              },
+              {
+                "text" : "Initiated by BIT button or automatically during power-up."
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Illuminates when either regulator is set to MAX."
+              },
+              {
+                "text" : "After max effort braking, if brake overheating is suspected:"
+              },
+              {
+                "text" : "If brakes fade or are unresponsive:"
+              },
+              {
+                "text" : "If you become unsure of your location in flight, stay calm and follow the established Five Cs to regain orientation or get help. The priority is always to fly the aircraft, maintain VFR, and communicate."
+              },
+              {
+                "text" : "The On-Board Oxygen Generating System (OBOGS) provides each T-6B pilot with an unlimited-duration, automatically regulated oxygen supply using filtered engine bleed air. It generates breathable oxygen using a molecular sieve and delivers it through cockpit-mounted oxygen regulators. In case of OBOGS failure, backup oxygen is available via the ejection seat emergency oxygen system."
+              },
+              {
+                "text" : "OBOGS FAIL should illuminate within 20–30 sec if successful, and extinguish within 2 min once oxygen level recovers."
+              },
+              {
+                "text" : "4-minute warm-up after activation before OBOGS FAIL annunciator is functional."
+              },
+              {
+                "text" : "CRU-60\/P Connector:"
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for OBOGS and Pressurization System before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "OBOGS and Pressurization System"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "PCL - IDLE"
+              },
+              {
+                "text" : "BRAKES - AS REQUIRED"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "BRAKES - AS REQUIRED"
+              },
+              {
+                "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
+              },
+              {
+                "text" : "(1W)"
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "(1W)"
+              },
+              {
+                "text" : "W - After a stop which required maximum effort braking and if overheated brakes are suspected, do not taxi into or park in a congested area until brakes have had sufficient time to cool. Do not set parking brake."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Aborted Takeoff"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Description:"
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Flap setting"
+              },
+              {
+                "text" : "(W):"
+              },
+              {
+                "text" : "CONFESS"
+              },
+              {
+                "text" : "Admit you are lost. Do not delay. Seek assistance."
+              },
+              {
+                "text" : "CLIMB"
+              },
+              {
+                "text" : "Conditions permitting, climb to improve radio range and visibility."
+              },
+              {
+                "text" : "CONSERVE"
+              },
+              {
+                "text" : "COMMUNICATE"
+              },
+              {
+                "text" : "Try contacting:"
+              },
+              {
+                "text" : "Instructor aircraft on area frequency"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If you become unsure of your location in flight, stay calm and follow the established Five Cs to regain orientation or get help. The priority is always to fly the aircraft, maintain VFR, and communicate."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Lost Aircraft Procedures without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Lost Aircraft Procedures"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Discontinued Entry is a mandatory maneuver to safely depart the pattern entry track when proper separation, RDO communication, or traffic alignment is not established. It prevents conflicts with pattern or emergency traffic (e.g., PPEL\/P)."
+              },
+              {
+                "text" : "Applies to in-flight aircraft damage from midair collision, bird strike, FOD, canopy\/gear damage, or other structural issues. Priorities: control, evaluate, recover or abandon as needed."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "When to Execute:"
+              },
+              {
+                "text" : "Directed by the RDO"
+              },
+              {
+                "text" : "Conflict with PPEL\/P traffic exists or is in doubt"
+              },
+              {
+                "text" : "Lined up on the wrong runway"
+              },
+              {
+                "text" : "Past upwind numbers and interval is in doubt"
+              },
+              {
+                "text" : "Goliad-Specific Procedures:"
+              },
+              {
+                "text" : "Do not overfly the field"
+              },
+              {
+                "text" : "Continue inbound at break altitude"
+              },
+              {
+                "text" : "Maintain safe separation and visual lookout"
+              },
+              {
+                "text" : "Responsibilities:"
+              },
+              {
+                "text" : "(N) Always maintain break altitude during departure until safely clear of the airfield environment"
+              },
+              {
+                "text" : "Airborne-damaged Aircraft"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "No RDO acknowledgment by 2 NM from runway threshold"
+              },
+              {
+                "text" : "Not visual with PPEL\/P traffic by 2 NM"
+              },
+              {
+                "text" : "If Outside 2 NM:"
+              },
+              {
+                "text" : "Immediately turn ≥90° away from the inbound runway heading"
+              },
+              {
+                "text" : "Maintain break altitude (1300’ MSL) until clear of the airfield"
+              },
+              {
+                "text" : "If Inside 2 NM:"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Discontinued Entry late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Discontinued Entry"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Applies to in-flight aircraft damage from midair collision, bird strike, FOD, canopy\/gear damage, or other structural issues. Priorities: control, evaluate, recover or abandon as needed."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Flap setting"
+              },
+              {
+                "text" : "(W):"
+              },
+              {
+                "text" : "control, evaluate, recover or abandon as needed."
+              },
+              {
+                "text" : "Build a clean, plain-language explanation of Airborne-Damaged Aircraft that ties the system, procedure, or rule to what you will actually see and do."
+              },
+              {
+                "text" : "how Airborne-Damaged Aircraft changes the brief, setup, and in-cockpit decision making."
+              },
+              {
+                "text" : "Climb to ≥ 6500' AGL (if practical)"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how Airborne-Damaged Aircraft changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Airborne-Damaged Aircraft without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Airborne-Damaged Aircraft"
+      },
+      {
+        "items" : [
+          {
+            "text" : "OBOGS and pressurization system"
+          },
+          {
+            "text" : "aborted takeoff"
+          },
+          {
+            "text" : "lost aircraft procedures"
+          },
+          {
+            "text" : "discontinued entry"
+          },
+          {
+            "text" : "airborne-damaged aircraft"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+  },
+  "summary" : "OBOGS and Pressurization System: OBOGS and Pressurization System, Aborted Takeoff, Lost Aircraft Procedures, and the remaining required discussion items in the block.",
+  "title" : "OBOGS and Pressurization System"
+}

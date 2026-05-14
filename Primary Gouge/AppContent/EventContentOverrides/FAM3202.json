@@ -1,9 +1,25 @@
 {
-  "code": "FAM 3202",
-  "title": "Engine Failure, Forced Landing, and Ejection",
-  "summary": "Engine failure indications, airstarts, forced landings, and the decision to eject.",
+  "canonicalCoverage": {
+    "Engine failure indications": [
+      "Engine Failure Recognition"
+    ],
+    "engine failure during flight": [
+      "Engine Failure During Flight and Airstarts"
+    ],
+    "immediate air-start (PMU NORM)": [
+      "Engine Failure During Flight and Airstarts"
+    ],
+    "forced landing": [
+      "Forced Landing"
+    ],
+    "eject": [
+      "Ejection Decision Criteria"
+    ]
+  },
+  "code": "FAM3202",
   "overview": "This event shifts from impending engine problems to actual engine failure and the decisions that follow. You will practice identifying a failed engine, zooming or gliding to preserve options, selecting the right airstart method, flying a forced landing profile, and deciding when ejection is safer than continuing a bad recovery.",
   "primaryDocumentTitles": [
+    "FAM3202",
     "FAM 3202 Briefing guide 1542.166D"
   ],
   "studyNotes": {
@@ -32,6 +48,9 @@
           },
           {
             "text": "At low altitude, converting excess airspeed into altitude buys time for an airstart, landing setup, or ejection decision."
+          },
+          {
+            "text": "N/W/C focus: Engine indications matter because they drive the branch. A flameout, seizure, or prop issue does not buy the same restart or glide options."
           }
         ]
       },
@@ -63,6 +82,9 @@
           },
           {
             "text": "Airstarts below 2000 feet AGL are usually a trap. Below that altitude, primary attention belongs on landing or ejecting."
+          },
+          {
+            "text": "N/W/C focus: Airstarts below 2000 feet AGL are usually a trap. Below that, landing or ejecting should dominate your thinking."
           }
         ]
       },
@@ -91,6 +113,9 @@
                 "text": "Transmit a distress call and configure the aircraft only as conditions permit."
               }
             ]
+          },
+          {
+            "text": "N/W/C focus: Do not spend the last useful bit of glide margin trying to rescue a bad picture with configuration changes that come too early or too late."
           }
         ]
       },
@@ -119,6 +144,9 @@
           },
           {
             "text": "The number one ejection failure is failure to pull the handle. Make the decision early."
+          },
+          {
+            "text": "N/W/C focus: The seat can save you only if you decide in time. Do not postpone the pull waiting for a cleaner aircraft attitude or a prettier altitude number."
           }
         ]
       },
@@ -126,22 +154,24 @@
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Engine Failure During Flight."
+            "text": "Engine failure indications"
           },
           {
-            "text": "Immediate Airstart."
+            "text": "engine failure during flight"
           },
           {
-            "text": "Forced Landing."
+            "text": "immediate air-start (PMU NORM)"
           },
           {
-            "text": "Ejection Decision Criteria."
+            "text": "forced landing"
+          },
+          {
+            "text": "eject"
           }
         ]
       }
     ]
   },
-  "flashcardDeckTitle": "FAM3202 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Engine-failure, restart, forced-landing, and ejection discussion items for the second FAM3200 sim.",
-  "flashcards": []
+  "summary": "Engine failure indications, airstarts, forced landings, and the decision to eject.",
+  "title": "Engine Failure, Forced Landing, and Ejection"
 }

@@ -1,0 +1,668 @@
+{
+  "canonicalCoverage" : {
+    "Aldis lamp signals" : [
+      "Aldis Lamp Signals"
+    ],
+    "ELP" : [
+      "ELP"
+    ],
+    "NATOPS limitations" : [
+      "Natops Limitations"
+    ],
+    "PEL" : [
+      "PEL"
+    ],
+    "engine malfunctions" : [
+      "Engine Malfunctions"
+    ],
+    "engine system" : [
+      "Engine System"
+    ],
+    "forced landing" : [
+      "Forced Landing"
+    ]
+  },
+  "code" : "FAM4201",
+  "overview" : "FAM4201 is a flight event focused on natops limitations. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4201"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Natops Limitations changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Weight Limitations:"
+              },
+              {
+                "text" : "Maximum ramp weight - 6950 pounds"
+              },
+              {
+                "text" : "Know what Natops Limitations changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "how Natops Limitations changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how Natops Limitations changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Natops Limitations without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Natops Limitations"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Description:"
+              },
+              {
+                "text" : "Safely land at a paved field if engine failure is suspected."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Auto start (ground):"
+              },
+              {
+                "text" : "PCL to auto start detent → wait for ST READY."
+              },
+              {
+                "text" : "Torque surge possible from low power → high power transitions."
+              },
+              {
+                "text" : "Message"
+              },
+              {
+                "text" : "Cause"
+              },
+              {
+                "text" : "RED (WARNING) MESSAGES"
+              },
+              {
+                "text" : "BATT BUS"
+              },
+              {
+                "text" : "Battery bus inoperative"
+              },
+              {
+                "text" : "GEN BUS"
+              },
+              {
+                "text" : "Generator bus inoperative"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If PMU stays online:"
+              },
+              {
+                "text" : "(N) Prop won’t feather unless PCL is OFF"
+              },
+              {
+                "text" : "(N) A mid-range PCL position will minimize the potential of engine overtorque and\/or overtemperature when the PMU is turned OFF."
+              },
+              {
+                "text" : "PCL - as required"
+              },
+              {
+                "text" : "(N) The pilot should consider moving the PCL through the full range of motion to determine power available."
+              },
+              {
+                "text" : "IF POWER IS SUFFICIENT FOR CONTINUED FLIGHT:"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Engine System without being able to explain the operational consequence."
+              },
+              {
+                "text" : "Caution lights:"
+              },
+              {
+                "text" : "WARNING:"
+              },
+              {
+                "text" : "Do not lower flaps LDG until landing is assured. Drag will increase dramatically once landing flaps are lowered"
+              },
+              {
+                "text" : "Alterations to airspeeds, ground track, and configurations might be necessary to meet existing conditions"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Engine System"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Description:"
+              },
+              {
+                "text" : "Safely land at a paved field if engine failure is suspected."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Torque surge possible from low power → high power transitions."
+              },
+              {
+                "text" : "Message"
+              },
+              {
+                "text" : "Cause"
+              },
+              {
+                "text" : "RED (WARNING) MESSAGES"
+              },
+              {
+                "text" : "BATT BUS"
+              },
+              {
+                "text" : "Battery bus inoperative"
+              },
+              {
+                "text" : "GEN BUS"
+              },
+              {
+                "text" : "Generator bus inoperative"
+              },
+              {
+                "text" : "PMU FAIL"
+              },
+              {
+                "text" : "PMU failure"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If PMU stays online:"
+              },
+              {
+                "text" : "(N) Prop won’t feather unless PCL is OFF"
+              },
+              {
+                "text" : "(N) A mid-range PCL position will minimize the potential of engine overtorque and\/or overtemperature when the PMU is turned OFF."
+              },
+              {
+                "text" : "PCL - as required"
+              },
+              {
+                "text" : "(N) The pilot should consider moving the PCL through the full range of motion to determine power available."
+              },
+              {
+                "text" : "IF POWER IS SUFFICIENT FOR CONTINUED FLIGHT:"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Engine Malfunctions without being able to explain the operational consequence."
+              },
+              {
+                "text" : "Caution lights:"
+              },
+              {
+                "text" : "WARNING:"
+              },
+              {
+                "text" : "Do not lower flaps LDG until landing is assured. Drag will increase dramatically once landing flaps are lowered"
+              },
+              {
+                "text" : "Alterations to airspeeds, ground track, and configurations might be necessary to meet existing conditions"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Engine Malfunctions"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "Aligns aircraft for landing from Forced Landing, PEL, or PEL(P)."
+              },
+              {
+                "text" : "Safely land at a paved field if engine failure is suspected."
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Immediate actions \/ procedure"
+              },
+              {
+                "text" : "Prop Sleeve Touchdown:"
+              },
+              {
+                "text" : "Fluctuating NP"
+              },
+              {
+                "text" : "Increased torque"
+              },
+              {
+                "text" : "Decreasing thrust"
+              },
+              {
+                "text" : "(W) Turn immediately to nearest ELP point"
+              },
+              {
+                "text" : "I"
+              },
+              {
+                "text" : "Double surface winds to estimate winds at High Key"
+              },
+              {
+                "text" : "Check:"
+              },
+              {
+                "text" : "PFD wind info"
+              },
+              {
+                "text" : "Windsock, tetrahedron"
+              },
+              {
+                "text" : "ASOS\/FBO\/ATC"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "BOOST PUMP switch - As required"
+              },
+              {
+                "text" : "IGNITION switch - As required"
+              },
+              {
+                "text" : "Safely land at a paved field if engine failure is suspected."
+              },
+              {
+                "text" : "Plan to intercept emergency landing pattern at or below high key in appropriate configuration and a minimum airspeed of 120 KIAS"
+              },
+              {
+                "text" : "Other ELP point (120 KIAS min, proper config)"
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "NOTE"
+              },
+              {
+                "text" : "Do not lower flaps LDG until landing is assured. Drag will increase dramatically once landing flaps are lowered"
+              },
+              {
+                "text" : "Alterations to airspeeds, ground track, and configurations might be necessary to meet existing conditions"
+              },
+              {
+                "text" : "Without hydraulic power use emergency gear and flap extension"
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "ELP"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "Aligns aircraft for landing from Forced Landing, PEL, or PEL(P)."
+              },
+              {
+                "text" : "Safely land at a paved field if engine failure is suspected."
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Immediate actions \/ procedure"
+              },
+              {
+                "text" : "Driven Accessories:"
+              },
+              {
+                "text" : "PMA (Permanent Magnet Alternator)"
+              },
+              {
+                "text" : "Torque Probe"
+              },
+              {
+                "text" : "Air Conditioning compressor"
+              },
+              {
+                "text" : "Control:"
+              },
+              {
+                "text" : "PMU schedules blade angle via PIU (Propeller Interface Unit)."
+              },
+              {
+                "text" : "Automatically unfeathers as oil pressure builds."
+              },
+              {
+                "text" : "Flight Protection:"
+              },
+              {
+                "text" : "Prop Pitch:"
+              },
+              {
+                "text" : "Feathered"
+              },
+              {
+                "text" : "Low (flat\/fine)"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "PCL - as required"
+              },
+              {
+                "text" : "(N) The pilot should consider moving the PCL through the full range of motion to determine power available."
+              },
+              {
+                "text" : "IF POWER IS SUFFICIENT FOR CONTINUED FLIGHT:"
+              },
+              {
+                "text" : "IF POWER IS INSUFFICIENT TO COMPLETE PEL:"
+              },
+              {
+                "text" : "(C) Consideration should be given to leaving the engine operating with PCL at mid range."
+              },
+              {
+                "text" : "PROP SYS circuit breaker - reset, as required"
+              },
+              {
+                "text" : "(W) With the PROP SYS circuit breaker pulled and the PMU switch OFF, the feather dump solenoid will not be powered. The propeller will feather at a slower rate as oil pressure decreases and the feathering spring takes effect. Glide performance will be considerably reduced and it may not be possible to intercept or fly the emergency landing pattern."
+              },
+              {
+                "text" : "Safely land at a paved field if engine failure is suspected."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for PEL before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "PEL"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Recognition \/ indications"
+              },
+              {
+                "text" : "N - Normal safe indications with electrical power, when the emergency extension system has been used to lower the gear, are two green main gear lights, two red main door lights, green nose gear light, and red light in"
+              },
+              {
+                "text" : "Overview:"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "AIRSPEED - 125 KIAS PRIOR TO EXTENDING LANDING GEAR"
+              },
+              {
+                "text" : "EMER LDG GR HANDLE - PULL (AS REQUIRED)"
+              },
+              {
+                "text" : "AIRSPEED - 120 KIAS MINIMUM UNTIL INTERCEPTING FINAL; 110 KIAS MINIMUM ON FINAL"
+              },
+              {
+                "text" : "FLAPS - AS REQUIRED"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "EMER LDG GR HANDLE - PULL (AS REQUIRED)"
+              },
+              {
+                "text" : "FLAPS - AS REQUIRED"
+              },
+              {
+                "text" : "Maximum rate of descent at touchdown is 600 feet per minute (3.7 Gs) when main tires are serviced to normal landing conditions pressure (185±5 psi)."
+              },
+              {
+                "text" : "Maximum rate of descent at touchdown is 780 feet per minute (5.1 Gs) when main tires are serviced to maximum landing conditions pressure (225±5 psi)."
+              },
+              {
+                "text" : "Misc. Limits:"
+              },
+              {
+                "text" : "Ground operation is limited to ambient temperatures of -23 °C to +43 °C."
+              },
+              {
+                "text" : "The canopy shall not be opened on the ground when the surface winds exceed 40 knots."
+              },
+              {
+                "text" : "Ejection seat pilot weight limits are a minimum weight with equipment and flight gear of 131.8 pounds, and a maximum pilot weight with equipment and flight gear of 279.4 pounds."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "(5W\/2C\/4N)"
+              },
+              {
+                "text" : "W - Aircraft may float while approaching touchdown with the propeller feathered more than observed while conducting practice forced landing at 4-6% torque. Energy management is critical to achieving targeted touchdown position. Landing ground roll distance will increase with the propeller feathered."
+              },
+              {
+                "text" : "W - Landing on an unprepared surface may cause structural damage making it impossible to open the canopy or fracture it using the CFS."
+              },
+              {
+                "text" : "W - Engine failure or shutdown will completely disable the bleed air system. Depending on environmental conditions, this may cause significant canopy icing and\/or fogging, and severely hamper visibility, especially from"
+              },
+              {
+                "text" : "the rear cockpit."
+              },
+              {
+                "text" : "C - Ejection is recommended if a suitable landing area is not available. If circumstances dictate an emergency landing and ejection is not possible or the ejection system malfunctions, the pilot may perform an ELP to an unprepared"
+              },
+              {
+                "text" : "surface or ditch the aircraft. The aircraft structure can survive either type of forced landing; however, the risk of injury increases significantly due to crash loads and the complexity of ground or water egress."
+              },
+              {
+                "text" : "C - Inducing yaw (side slipping) with a known engine\/oil malfunction could result in impaired windshield visibility due to oil leakage"
+              },
+              {
+                "text" : "spraying onto the windshield."
+              },
+              {
+                "text" : "W - If landing on an unprepared surface or ditching, do not extend the landing gear. Flaps will not be available without emergency gear"
+              },
+              {
+                "text" : "extension."
+              },
+              {
+                "text" : "N - Normal safe indications with electrical power, when the emergency extension system has been used to lower the gear, are two green main gear lights, two red main door lights, green nose gear light, and red light in"
+              },
+              {
+                "text" : "handle."
+              },
+              {
+                "text" : "W - Do not lower flaps LDG until landing is assured. Drag will increase dramatically once landing flaps are lowered."
+              },
+              {
+                "text" : "N - Selecting either TO or LDG flaps will extend the flaps to the commanded position if the landing gear has been extended using the emergency extension system and if battery power is available."
+              },
+              {
+                "text" : "N - Landing gear\/flap retraction is not possible when the emergency extension system has been used."
+              },
+              {
+                "text" : "N - Nose wheel steering is unavailable with an inoperative engine. Maintain directional control with rudder and differential braking."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Forced Landing"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Aldis Lamp Signals changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know what Aldis Lamp Signals changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "Build a clean, plain-language explanation of Aldis Lamp Signals that ties the system, procedure, or rule to what you will actually see and do."
+              },
+              {
+                "text" : "how Aldis Lamp Signals changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how Aldis Lamp Signals changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Aldis Lamp Signals without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Aldis Lamp Signals"
+      },
+      {
+        "items" : [
+          {
+            "text" : "NATOPS limitations"
+          },
+          {
+            "text" : "engine system"
+          },
+          {
+            "text" : "engine malfunctions"
+          },
+          {
+            "text" : "ELP"
+          },
+          {
+            "text" : "PEL"
+          },
+          {
+            "text" : "forced landing"
+          },
+          {
+            "text" : "Aldis lamp signals"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+  },
+  "summary" : "NATOPS Limitations: Natops Limitations, Engine System, Engine Malfunctions, and the remaining required discussion items in the block.",
+  "title" : "NATOPS Limitations"
+}

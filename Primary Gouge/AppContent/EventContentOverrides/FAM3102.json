@@ -1,9 +1,44 @@
 {
-  "code": "FAM 3102",
-  "title": "Pattern and Landings",
-  "summary": "Landing pattern procedures, trim malfunctions, flap configurations, full-stop landings, and waveoffs.",
+  "canonicalCoverage": {
+    "Normal takeoff": [
+      "Normal Takeoff"
+    ],
+    "local area departure": [
+      "Local Area Departure"
+    ],
+    "inadvertent trim actuation": [
+      "Inadvertent Trim Actuation"
+    ],
+    "landing pattern": [
+      "Landing Pattern",
+      "Break",
+      "Downwind",
+      "Approach Turn",
+      "Final"
+    ],
+    "takeoff flap landings": [
+      "Takeoff Flap Landing"
+    ],
+    "landing flap landings": [
+      "Landing Flap Landing"
+    ],
+    "no-flap landings": [
+      "No-Flap Landing"
+    ],
+    "full-stop landings": [
+      "Full-Stop Landing"
+    ],
+    "wave-off": [
+      "Waveoff"
+    ],
+    "contact unusual attitudes": [
+      "Contact Unusual Attitudes"
+    ]
+  },
+  "code": "FAM3102",
   "overview": "This event builds on basic contact flying by introducing the landing pattern and the different landing configurations you will use throughout primary. You will practice the break, downwind, approach turn, final, waveoffs, and full-stop landings while focusing on spacing, trim, power management, and staying ahead of the aircraft.",
   "primaryDocumentTitles": [
+    "FAM3102",
     "FAM 3102 Briefing guide 1542.166D"
   ],
   "studyNotes": {
@@ -712,43 +747,39 @@
         "title": "Required Procedures",
         "items": [
           {
-            "text": "Normal Takeoff."
+            "text": "Normal takeoff"
           },
           {
-            "text": "Local Area Departure."
+            "text": "local area departure"
           },
           {
-            "text": "Inadvertent Trim Actuation."
+            "text": "inadvertent trim actuation"
           },
           {
-            "text": "Landing Pattern."
+            "text": "landing pattern"
           },
           {
-            "text": "Takeoff Flap Landing."
+            "text": "takeoff flap landings"
           },
           {
-            "text": "Landing Flap Landing."
+            "text": "landing flap landings"
           },
           {
-            "text": "No-Flap Landing."
+            "text": "no-flap landings"
           },
           {
-            "text": "Touch-and-Go Landing."
+            "text": "full-stop landings"
           },
           {
-            "text": "Full-Stop Landing."
+            "text": "wave-off"
           },
           {
-            "text": "Waveoff."
-          },
-          {
-            "text": "Contact Unusual Attitudes."
+            "text": "contact unusual attitudes"
           }
         ]
       }
     ]
   },
-  "flashcardDeckTitle": "FAM3102 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Landing pattern, trim, landing-configuration, and waveoff discussion items for the second FAM3100 sim.",
-  "flashcards": []
+  "summary": "Landing pattern procedures, trim malfunctions, flap configurations, full-stop landings, and waveoffs.",
+  "title": "Pattern and Landings"
 }

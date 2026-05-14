@@ -1,0 +1,341 @@
+{
+  "canonicalCoverage" : {
+    "Electrical system" : [
+      "Electrical System"
+    ],
+    "avionics malfunctions" : [
+      "Avionics Malfunctions"
+    ],
+    "local area flight procedures\/SOP" : [
+      "Local Area Flight Procedures\/Sop"
+    ],
+    "lost communications" : [
+      "Lost Communications"
+    ]
+  },
+  "code" : "FAM4204",
+  "overview" : "FAM4204 is a flight event focused on electrical system. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM4204"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Overview:"
+              },
+              {
+                "text" : "Description"
+              },
+              {
+                "text" : "Loss of airspeed, altimeter, VSI on PFD. Affects gear warning, TAD, transponder Mode C. Use BFI."
+              },
+              {
+                "text" : "Loss of audio or ICS in one or both cockpits. Can affect UHF\/VHF communications."
+              },
+              {
+                "text" : "ADS-B signal not received or transmitting erroneous data. ATC may advise. May require disabling transponder."
+              },
+              {
+                "text" : "Loss of squawk or mode C\/S\/ADS-B. Affects ATC visibility and TCAS."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Theory of Operations:"
+              },
+              {
+                "text" : "It uses electrical buses (fused circuit hubs) to isolate and organize electrical loads."
+              },
+              {
+                "text" : "A bus tie system connects the forward and aft cockpit buses for redundancy and efficiency."
+              },
+              {
+                "text" : "Circuit protection is provided by circuit breakers in both cockpits."
+              },
+              {
+                "text" : "Monitoring and fault protection include voltage sensors and annunciator lights."
+              },
+              {
+                "text" : "The system enables dual-cockpit control and automatically prioritizes power to essential components in the event of failures."
+              },
+              {
+                "text" : "Power Sources:"
+              },
+              {
+                "text" : "Starter\/Generator"
+              },
+              {
+                "text" : "Bus"
+              },
+              {
+                "text" : "Key Components"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Provides continuous power to critical systems even when the BAT switch is OFF."
+              },
+              {
+                "text" : "(N) If an EDM A INOP or EDM B INOP advisory remains, suspect a data bus malfunction. Prior to flight, maintenance action is required."
+              },
+              {
+                "text" : "ADC circuit breaker (right front console) - Check, reset if open"
+              },
+              {
+                "text" : "(N) If the ADC FAIL warning remains displayed, the air data computer has failed. Primary airspeed, altimeter, and VSI will be inoperative. Reference backup flight instrument and AOA as necessary. TAD, aural gear warning, and transponder mode C will also be inoperative. Expect PMU STATUS caution to illuminate after landing."
+              },
+              {
+                "text" : "Switch COMM lead to auxiliary cord (affected cockpit) - Initiate as required"
+              },
+              {
+                "text" : "AUDIO circuit breaker (right front\/rear and left front\/rear console) - Check, reset if open"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Electrical System without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Electrical System"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Avionics Malfunctions changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Not all circuit breakers are accessible in flight (hot bus)"
+              },
+              {
+                "text" : "Relays and Sensors:"
+              },
+              {
+                "text" : "Component"
+              },
+              {
+                "text" : "Function"
+              },
+              {
+                "text" : "Voltage sensors"
+              },
+              {
+                "text" : "Monitor bus and external power voltage levels"
+              },
+              {
+                "text" : "Internal to bus tie logic"
+              },
+              {
+                "text" : "Starter relay"
+              },
+              {
+                "text" : "Connects battery\/external power to starter motor"
+              },
+              {
+                "text" : "Near battery"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how Avionics Malfunctions changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Avionics Malfunctions without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Avionics Malfunctions"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Lost Communications changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know what Lost Communications changes in the cockpit and why the instructor cares about it in this event."
+              },
+              {
+                "text" : "Planned Ejection"
+              },
+              {
+                "text" : "Approximately midway between the Waldron Shrimp Ponds and Chapman Ranch"
+              },
+              {
+                "text" : "Minimizes impact to populated areas and air traffic corridors while maximizing SAR and aircraft reclamation effectiveness."
+              },
+              {
+                "text" : "how Lost Communications changes the brief, setup, and in-cockpit decision making."
+              },
+              {
+                "text" : "The Controlled Ejection Area (CEA) is defined as a 2NM radius around the CRP VORTAC 170 Radial at 20 DME, heading 210."
+              },
+              {
+                "text" : "Aircrew should attempt to complete all necessary checklists and coordination while heading direct to the CEA. Upon arrival, maintain a 210 heading for ejection"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to move from explanation into execution: how Lost Communications changes the brief, setup, and in-cockpit decision making."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Lost Communications"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Know what Local Area Flight Procedures\/Sop changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "General Steps:"
+              },
+              {
+                "text" : "Make all calls in the blind"
+              },
+              {
+                "text" : "Attempt ATIS"
+              },
+              {
+                "text" : "Try multiple radios\/frequencies (UHF, VHF, Backup, manual entry)"
+              },
+              {
+                "text" : "Execute SHAMROCK Re-Entry"
+              },
+              {
+                "text" : "Rock wings at the numbers"
+              },
+              {
+                "text" : "Look for ALDIS lamp signal"
+              },
+              {
+                "text" : "Crew Regulations"
+              },
+              {
+                "text" : "Crew Day:"
+              },
+              {
+                "text" : "Know what Local Area Flight Procedures\/Sop changes in the cockpit and why the instructor cares about it in this event."
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If Receive Only, use IDENT button to acknowledge calls"
+              },
+              {
+                "text" : "If Established on Course Rules Arrival (Radar identified by Approach and instructed to fly Course Rules):"
+              },
+              {
+                "text" : "If no light → Waveoff, re-enter pattern, attempt another pass"
+              },
+              {
+                "text" : "If no light second time but RWY is clear → Land"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "The common trap is memorizing isolated facts about Local Area Flight Procedures\/Sop without being able to explain the operational consequence."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Local Area Flight Procedures\/Sop"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Electrical system"
+          },
+          {
+            "text" : "avionics malfunctions"
+          },
+          {
+            "text" : "lost communications"
+          },
+          {
+            "text" : "local area flight procedures\/SOP"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+  },
+  "summary" : "Electrical System: Electrical System, Avionics Malfunctions, Lost Communications, and the remaining required discussion items in the block.",
+  "title" : "Electrical System"
+}

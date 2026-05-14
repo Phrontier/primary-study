@@ -1,129 +1,131 @@
 {
-  "code": "FAM 6402",
-  "title": "Emergency Procedures Review",
-  "summary": "Comprehensive review of critical action memory items and the major emergency procedures used throughout the FAM syllabus.",
-  "overview": "This event is a comprehensive emergency-procedure review that ties the major FAM memory items together into one decision framework. You will review start, ground, engine, system, forced-landing, PEL, and ejection procedures so that critical actions can be recalled quickly and applied in the correct sequence when time, altitude, or aircraft condition leave no margin for hesitation.",
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "This event is less about learning a new procedure and more about proving that the emergency logic from the earlier sims is still there when the aircraft, altitude, or time available are working against you.",
-    "sections": [
-      {
-        "title": "Start and Ground Emergencies",
-        "items": [
-          {
-            "text": "Review the memory items for Abort Start Procedure, Emergency Engine Shutdown on the Ground, Emergency Ground Egress, and Abort."
-          },
-          {
-            "text": "These procedures all start with stopping the unsafe event quickly, then protecting the crew before the situation escalates."
-          }
-        ]
-      },
-      {
-        "title": "Engine Failure and Airstarts",
-        "items": [
-          {
-            "text": "Review Engine Failure Immediately After Takeoff, Engine Failure During Flight, Immediate Airstart, Uncommanded Power Changes, and Compressor Stalls."
-          },
-          {
-            "text": "Across all of them, the same priorities apply:",
-            "children": [
-              {
-                "text": "Preserve airspeed and altitude."
-              },
-              {
-                "text": "Choose restart attempts only when warranted."
-              },
-              {
-                "text": "Transition early to forced landing or ejection if the aircraft cannot be recovered safely."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "System Emergencies",
-        "items": [
-          {
-            "text": "Review Inadvertent Departure from Controlled Flight, Smoke and Fume Elimination, Chip Detector Warning, Oil System Malfunction or Low Oil Pressure, Low Fuel Pressure, High Fuel Flow, and OBOGS failure or physiological symptoms."
-          },
-          {
-            "text": "These procedures are largely about recognizing when continued maneuvering or troubleshooting will make the situation worse, then preserving enough aircraft to land or eject safely."
-          }
-        ]
-      },
-      {
-        "title": "Forced Landing, PEL, and Ejection",
-        "items": [
-          {
-            "text": "Forced Landing, PEL, and Eject are the terminal procedures that everything else eventually feeds into when the malfunction is not recoverable."
-          },
-          {
-            "text": "Know the key airspeed gates, when gear and flaps can be extended, and the point where ejection becomes the safer choice than stretching a bad landing setup."
-          },
-          {
-            "text": "The review standard is being able to move from the triggering malfunction to the right terminal procedure without delay."
-          }
-        ]
-      },
-      {
-        "title": "Required Procedures",
-        "items": [
-          {
-            "text": "Abort Start Procedure."
-          },
-          {
-            "text": "Emergency Engine Shutdown on the Ground."
-          },
-          {
-            "text": "Emergency Ground Egress."
-          },
-          {
-            "text": "Abort."
-          },
-          {
-            "text": "Engine Failure Immediately After Takeoff."
-          },
-          {
-            "text": "Engine Failure During Flight."
-          },
-          {
-            "text": "Immediate Airstart."
-          },
-          {
-            "text": "Uncommanded Power Changes / Loss of Power / Uncommanded Propeller Feather."
-          },
-          {
-            "text": "Compressor Stalls."
-          },
-          {
-            "text": "Chip Detector Warning."
-          },
-          {
-            "text": "Oil System Malfunction / Low Oil Pressure."
-          },
-          {
-            "text": "Low Fuel Pressure."
-          },
-          {
-            "text": "High Fuel Flow."
-          },
-          {
-            "text": "OBOGS Failure / Overtemp / Physiological Symptoms."
-          },
-          {
-            "text": "Forced Landing."
-          },
-          {
-            "text": "Precautionary Emergency Landing."
-          },
-          {
-            "text": "Eject."
-          }
-        ]
-      }
+  "canonicalCoverage" : {
+    "Any EP" : [
+      "Any EP"
     ]
   },
-  "flashcardDeckTitle": "FAM6402 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Comprehensive emergency-memory-item discussion items for the final FAM6400 sim.",
-  "flashcards": []
+  "code" : "FAM6402",
+  "overview" : "FAM6402 is a sim event focused on emergency procedures review. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM6402"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Any Emergency Procedure"
+              },
+              {
+                "text" : "T-6B EMERGENCY PROCEDURE CRITICAL ACTION MEMORY ITEMS"
+              },
+              {
+                "text" : "& OPERATING LIMITATIONS"
+              },
+              {
+                "text" : "EMERGENCY PROCEDURE CRITICAL ACTION MEMORY ITEMS"
+              },
+              {
+                "text" : "ABORT START PROCEDURE"
+              },
+              {
+                "text" : "1. PCL – OFF or STARTER switch – AUTO\/RESET"
+              },
+              {
+                "text" : "EMERGENCY ENGINE SHUTDOWN ON THE GROUND"
+              },
+              {
+                "text" : "1. PCL – OFF"
+              }
+            ],
+            "text" : "Recognition \/ indications"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fire on Ground"
+              },
+              {
+                "text" : "Emergency Engine Shutdown on the Ground"
+              },
+              {
+                "text" : "Emergency Ground Egress"
+              },
+              {
+                "text" : "CFS and Ejection CRM"
+              },
+              {
+                "text" : "Abort Takeoff"
+              },
+              {
+                "text" : "Aircraft Departs Prepared Surface"
+              },
+              {
+                "text" : "Engine Failure Immediately After Takeoff"
+              },
+              {
+                "text" : "Engine Failure During Flight"
+              },
+              {
+                "text" : "Immediate Air-Start"
+              },
+              {
+                "text" : "PMU Norm Air-Start"
+              },
+              {
+                "text" : "PMU Off Air-Start"
+              },
+              {
+                "text" : "Uncommanded Power Changes\/LOP"
+              },
+              {
+                "text" : "Uncommanded Prop Feather"
+              },
+              {
+                "text" : "Smoke and Fume Elimination"
+              }
+            ],
+            "text" : "Immediate actions \/ procedure"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know when the problem can be managed with a PEL, when it requires a forced landing, and when it is time to stop troubleshooting and eject."
+              },
+              {
+                "text" : "If the assigned EP includes branches, know what cue drives each branch before you brief the next step."
+              }
+            ],
+            "text" : "Decision logic"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready to state the associated WARNINGs, CAUTIONs, and NOTEs for the assigned EP, not just the memory items."
+              },
+              {
+                "text" : "Review the verbatim N\/W\/C card for every EP title listed above before the event."
+              }
+            ],
+            "text" : "N\/W\/Cs"
+          }
+        ],
+        "title" : "Any EP"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Any EP"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+  },
+  "summary" : "Emergency Procedures Review: Any EP.",
+  "title" : "Emergency Procedures Review"
 }

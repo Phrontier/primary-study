@@ -329,6 +329,7 @@ struct SyllabusEventAuditReport: Codable {
     let canonicalEventsMissingFromManifest: [String]
     let canonicalEventsMissingAuthoredNotes: [String]
     let authoredNotesCoverageIssues: [AuthoredNotesCoverageIssue]
+    let discussionItemAuthoringIssues: [DiscussionItemAuthoringIssue]
     let legacyAliasAttachmentsInUse: [LegacyAliasAttachmentIssue]
     let unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue]
     let emergencyProcedureAliasIssues: [EmergencyProcedureAliasIssue]
@@ -339,6 +340,20 @@ struct AuthoredNotesCoverageIssue: Codable {
     let code: String
     let missingCanonicalItems: [String]
     let unexpectedPrimaryItems: [String]
+}
+
+struct DiscussionItemAuthoringIssue: Codable {
+    let code: String
+    let missingStudyNotes: Bool
+    let invalidHeadline: Bool
+    let missingSummary: Bool
+    let missingRequiredProceduresSection: Bool
+    let missingRequiredProcedures: [String]
+    let unexpectedRequiredProcedures: [String]
+    let requiredProceduresOutOfOrder: Bool
+    let missingCanonicalCoverageItems: [String]
+    let missingCoverageSectionTitles: [String]
+    let missingEmergencyProcedureNWCItems: [String]
 }
 
 struct LegacyAliasAttachmentIssue: Codable {
@@ -391,6 +406,7 @@ struct EventOverride: Codable {
     let summary: String?
     let overview: String?
     let studyNotes: EventStudyNotes?
+    let canonicalCoverage: [String: [String]]?
     let primaryDocumentTitles: [String]?
     let sharedResources: [EventResourceLink]?
     let videos: [EventVideoLink]?
@@ -1016,6 +1032,11 @@ struct ManifestBuilder {
         let calloutBlocks = buildCalloutBlocks()
         let manifest = StudyManifest(phases: phases, flashcards: flashcards, sharedResources: sharedResources, libraryStudyHubs: libraryStudyHubs, videos: videos, procedureBlocks: procedureBlocks, calloutBlocks: calloutBlocks)
         try writeAuditReport(for: manifest)
+        let discussionItemIssues = discussionItemAuthoringIssues()
+        if !discussionItemIssues.isEmpty {
+            let codes = discussionItemIssues.map(\.code).joined(separator: ", ")
+            throw ManifestBuildError(message: "FAM discussion-item authoring validation failed for: \(codes). Check SyllabusEventAuditReport.json for details.")
+        }
         if !missingEmergencyProcedureCompanions.isEmpty {
             let details = missingEmergencyProcedureCompanions
                 .map { "\($0.eventCode): \($0.discussionItem)" }
@@ -1370,6 +1391,7 @@ struct ManifestBuilder {
                 .flatMap(\.events)
                 .map { normalizeCode($0.code) }
         )
+        let discussionItemIssues = discussionItemAuthoringIssues()
 
         let report = SyllabusEventAuditReport(
             generatedAt: Date(),
@@ -1377,6 +1399,7 @@ struct ManifestBuilder {
             canonicalEventsMissingFromManifest: canonicalCodes.filter { !manifestCodes.contains($0) },
             canonicalEventsMissingAuthoredNotes: canonicalCodes.filter { eventOverrides[normalizeCode($0)]?.studyNotes == nil },
             authoredNotesCoverageIssues: authoredNotesCoverageIssues(),
+            discussionItemAuthoringIssues: discussionItemIssues,
             legacyAliasAttachmentsInUse: legacyAliasAttachmentIssues(),
             unresolvedEmergencyProcedureItems: unresolvedEmergencyProcedureItems,
             emergencyProcedureAliasIssues: emergencyProcedureAliasIssues,
@@ -1425,6 +1448,91 @@ struct ManifestBuilder {
         }
     }
 
+    private func discussionItemAuthoringIssues() -> [DiscussionItemAuthoringIssue] {
+        famCanonicalEventCodes().compactMap { code in
+            guard let referenceEvent = syllabusReference[code] else { return nil }
+            let override = eventOverrides[code]
+            let studyNotes = override?.studyNotes
+
+            let missingStudyNotes = studyNotes == nil
+            let invalidHeadline = studyNotes?.headline != "Discussion items"
+            let missingSummary = studyNotes?.summary?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
+
+            let requiredProceduresSection = studyNotes?.sections.last.flatMap { section in
+                normalizedText(section.title ?? "") == normalizedText("Required Procedures") ? section : nil
+            }
+            let missingRequiredProceduresSection = requiredProceduresSection == nil
+            let actualRequiredProcedures = requiredProceduresSection?.items.map(\.text) ?? []
+            let expectedRequiredProcedures = referenceEvent.discussionItems
+
+            let missingRequiredProcedures = expectedRequiredProcedures.filter { expected in
+                !actualRequiredProcedures.contains(expected)
+            }
+            let unexpectedRequiredProcedures = actualRequiredProcedures.filter { actual in
+                !expectedRequiredProcedures.contains(actual)
+            }
+            let requiredProceduresOutOfOrder = actualRequiredProcedures != expectedRequiredProcedures
+
+            let coverage = override?.canonicalCoverage ?? [:]
+            let normalizedCoverage = Dictionary(
+                uniqueKeysWithValues: coverage.map { (normalizedText($0.key), $0.value) }
+            )
+            let missingCanonicalCoverageItems = expectedRequiredProcedures.filter { item in
+                normalizedCoverage[normalizedText(item)]?.isEmpty != false
+            }
+
+            let sectionTitles = Set(studyNotes?.sections.compactMap(\.title).map(normalizedText) ?? [])
+            let missingCoverageSectionTitles = expectedRequiredProcedures.flatMap { item -> [String] in
+                let mappedTitles = normalizedCoverage[normalizedText(item)] ?? []
+                return mappedTitles.filter { !sectionTitles.contains(normalizedText($0)) }
+            }
+
+            let missingEmergencyProcedureNWCItems = expectedRequiredProcedures.filter { item in
+                guard Self.looksLikeEmergencyProcedureDiscussionItem(item) else { return false }
+                let mappedTitles = normalizedCoverage[normalizedText(item)] ?? [item]
+                let matchedSections = studyNotes?.sections.filter { section in
+                    guard let title = section.title else { return false }
+                    return mappedTitles.contains { normalizedText($0) == normalizedText(title) }
+                } ?? []
+                let sectionTexts = matchedSections.flatMap { flattenedStudyNoteTexts(from: $0) }
+                return !sectionTexts.contains { text in
+                    let normalized = normalizedText(text)
+                    return normalized.contains("nwc") ||
+                        normalized.contains("n w c") ||
+                        normalized.contains("warning caution note") ||
+                        normalized.contains("warning caution notes")
+                }
+            }
+
+            guard missingStudyNotes ||
+                    invalidHeadline ||
+                    missingSummary ||
+                    missingRequiredProceduresSection ||
+                    !missingRequiredProcedures.isEmpty ||
+                    !unexpectedRequiredProcedures.isEmpty ||
+                    requiredProceduresOutOfOrder ||
+                    !missingCanonicalCoverageItems.isEmpty ||
+                    !missingCoverageSectionTitles.isEmpty ||
+                    !missingEmergencyProcedureNWCItems.isEmpty else {
+                return nil
+            }
+
+            return DiscussionItemAuthoringIssue(
+                code: code,
+                missingStudyNotes: missingStudyNotes,
+                invalidHeadline: invalidHeadline,
+                missingSummary: missingSummary,
+                missingRequiredProceduresSection: missingRequiredProceduresSection,
+                missingRequiredProcedures: missingRequiredProcedures,
+                unexpectedRequiredProcedures: unexpectedRequiredProcedures,
+                requiredProceduresOutOfOrder: requiredProceduresOutOfOrder,
+                missingCanonicalCoverageItems: missingCanonicalCoverageItems,
+                missingCoverageSectionTitles: uniqueStrings(missingCoverageSectionTitles),
+                missingEmergencyProcedureNWCItems: missingEmergencyProcedureNWCItems
+            )
+        }
+    }
+
     private func primaryDiscussionItems(from notes: EventStudyNotes) -> [String] {
         var items: [String] = []
 
@@ -1451,6 +1559,21 @@ struct ManifestBuilder {
             section.items.forEach(walk)
         }
 
+        return uniqueStrings(texts)
+    }
+
+    private func flattenedStudyNoteTexts(from section: EventStudyNotesSection) -> [String] {
+        var texts: [String] = []
+        if let title = section.title, !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            texts.append(title)
+        }
+
+        func walk(_ item: EventStudyNotesItem) {
+            texts.append(item.text)
+            item.children?.forEach(walk)
+        }
+
+        section.items.forEach(walk)
         return uniqueStrings(texts)
     }
 
@@ -1482,6 +1605,13 @@ struct ManifestBuilder {
                 .map(String.init)
                 .filter { $0.count > 1 && !ignoredWords.contains($0) }
         )
+    }
+
+    private func famCanonicalEventCodes() -> [String] {
+        syllabusReference.values
+            .filter { $0.category == "familiarization" }
+            .map { normalizeCode($0.code) }
+            .sorted()
     }
 
     private func legacyAliasAttachmentIssues() -> [LegacyAliasAttachmentIssue] {

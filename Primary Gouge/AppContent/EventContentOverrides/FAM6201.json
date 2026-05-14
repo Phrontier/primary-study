@@ -1,102 +1,459 @@
 {
-  "code": "FAM 6201",
-  "title": "Slow Flight and Energy Management",
-  "summary": "3 C's, slow flight, SCATSAFE, slips, and the energy-management concepts that support contact maneuvering.",
-  "overview": "This event focuses on controlling the aircraft near the low-speed edge of the envelope and understanding how energy moves through a maneuver. You will practice the 3 C's, fly slow flight and SCATSAFE profiles, manage altitude and airspeed efficiently, and use slips to lose energy without losing control or track awareness.",
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "Everything in this event gets better when the setup is clean. Clear the area, configure correctly, and then let airspeed, trim, and coordination tell you what the airplane is trying to do.",
-    "sections": [
-      {
-        "title": "3 C's",
-        "items": [
-          {
-            "text": "The 3 C's are configuration, checklist, and clear area."
-          },
-          {
-            "text": "They are performed before stall-related maneuvers to ensure the aircraft is configured correctly, required checklists are complete, and the area is safe."
-          },
-          {
-            "text": "Clearing turns should be deliberate and flown in a way that supports the next maneuver rather than wastes time and airspace."
-          }
-        ]
-      },
-      {
-        "title": "Slow Flight and SCATSAFE",
-        "items": [
-          {
-            "text": "Slow flight trains control of the aircraft near stall speed in a configuration similar to takeoff and landing."
-          },
-          {
-            "text": "SCATSAFE demonstrates how the airplane behaves at high AOA through straight-and-level flight, coordination exercises, adverse yaw, torque effects, steep turns, abrupt inputs, flap retraction, and reduced control effectiveness."
-          },
-          {
-            "text": "Common themes in both maneuvers are smooth inputs, heavy trim use, ball control, and understanding that the airplane responds sluggishly at low energy."
-          }
-        ]
-      },
-      {
-        "title": "Energy Management",
-        "items": [
-          {
-            "text": "Energy is altitude plus airspeed, and the best contact pilots manage both continuously instead of reacting after the fact."
-          },
-          {
-            "text": "Useful rules from this event include:",
-            "children": [
-              {
-                "text": "About 1000 feet of altitude is roughly equivalent to 50 KIAS in the right conditions."
-              },
-              {
-                "text": "High power and low AOA build energy."
-              },
-              {
-                "text": "Drag, low power, and G-loading spend energy."
-              }
-            ]
-          },
-          {
-            "text": "Good energy management reduces the time wasted repositioning between maneuvers."
-          }
-        ]
-      },
-      {
-        "title": "Slip",
-        "items": [
-          {
-            "text": "A slip is an intentional out-of-balance maneuver used to lose altitude while holding airspeed and ground track."
-          },
-          {
-            "text": "The core technique is lowering one wing while applying opposite rudder to keep the desired track."
-          },
-          {
-            "text": "Monitor descent rate, airspeed, and bank carefully. Recovery must begin early enough to arrest the descent without large or rough control inputs."
-          }
-        ]
-      },
-      {
-        "title": "Required Procedures",
-        "items": [
-          {
-            "text": "3 C's."
-          },
-          {
-            "text": "Slow Flight."
-          },
-          {
-            "text": "SCATSAFE."
-          },
-          {
-            "text": "Energy Management."
-          },
-          {
-            "text": "Slip."
-          }
-        ]
-      }
+  "canonicalCoverage" : {
+    "SCATSAFE maneuver" : [
+      "Scatsafe Maneuver"
+    ],
+    "Three Cs" : [
+      "Three Cs"
+    ],
+    "energy management" : [
+      "Energy Management"
+    ],
+    "slip" : [
+      "Slip"
+    ],
+    "slow flight" : [
+      "Slow Flight"
     ]
   },
-  "flashcardDeckTitle": "FAM6201 Discussion Item Flashcards",
-  "flashcardDeckSummary": "Slow-flight, SCATSAFE, slip, and energy-management discussion items for the first FAM6200 sim.",
-  "flashcards": []
+  "code" : "FAM6201",
+  "overview" : "FAM6201 is a sim event focused on slow flight and energy management. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "primaryDocumentTitles" : [
+    "FAM6201"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "simulates an ELP stall during power-off descent, typically near High Key"
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Abrupt control inputs"
+              },
+              {
+                "text" : "Failure to clear area"
+              },
+              {
+                "text" : "Poor altitude control"
+              },
+              {
+                "text" : "AOA system may lag behind the wing’s actual AOA during rapid G-onset maneuvers—visually identify stall via uncommanded pitch up, wing drop, or oscillations (pitch bucking)."
+              },
+              {
+                "text" : "Power-Off Stalls"
+              },
+              {
+                "text" : "Checklist - PSSA"
+              },
+              {
+                "text" : "Roll wings level"
+              },
+              {
+                "text" : "Simulate ELP"
+              },
+              {
+                "text" : "Simulate High Key, lower gear"
+              },
+              {
+                "text" : "Configuration - clean, slow cruise (~150 KIAS or IP discretion)"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Stall recovery procedures have no effect if the aircraft has departed controlled flight. If aircraft condition is in doubt (e.g., pitch bucking, rapid roll), immediately execute NATOPS Inadvertent Departure From Controlled Flight procedures."
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common Errors:"
+              },
+              {
+                "text" : "stick shaker may activate throughout the maneuver"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Three Cs"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Trains pilots to control the aircraft near stall speed, simulating conditions experienced during takeoff and landing."
+              },
+              {
+                "text" : "Taught to familiarize you with the various trim adjustments required with changes in airspeed, power setting, and aircraft configuration"
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Configuration"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Lower flaps to LDG"
+              },
+              {
+                "text" : "Maneuvering"
+              },
+              {
+                "text" : "SCATSAFE Elements"
+              },
+              {
+                "text" : "S – Straight and Level"
+              },
+              {
+                "text" : "Observe pitch, torque, and rudder needed"
+              },
+              {
+                "text" : "Demonstrates “rotation\/touchdown” sight picture"
+              },
+              {
+                "text" : "Keep ball centered"
+              },
+              {
+                "text" : "A – Adverse Yaw"
+              },
+              {
+                "text" : "turn right → nose tracks properly and stops at rollout"
+              },
+              {
+                "text" : "T – Torque and Turns"
+              },
+              {
+                "text" : "Rapidly go to MAX power, release controls → nose pitches up, rolls\/yaws left"
+              },
+              {
+                "text" : "Recover at buffet"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Reduce airspeed to ~85 KIAS"
+              },
+              {
+                "text" : "Set power to ~45% torque"
+              },
+              {
+                "text" : "Perform coordinated, level 30° AOB turn for ~180°"
+              },
+              {
+                "text" : "Then turn back 30° AOB for ~180° to original heading"
+              },
+              {
+                "text" : "Set ~45% torque"
+              },
+              {
+                "text" : "Execute left\/right turns (15–20° AOB)"
+              },
+              {
+                "text" : "~2 in. right rudder for level; more in right turns, less in left"
+              },
+              {
+                "text" : "turn right 20° AOB → observe nose yaws left and overshoots"
+              },
+              {
+                "text" : "Gradually bank to ~60° with back stick and added power"
+              },
+              {
+                "text" : "30° AOB - 90° L\/R, minimal back-stick\/power change"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common Errors:"
+              },
+              {
+                "text" : "C – Coordination Exercise"
+              },
+              {
+                "text" : "stick shaker may activate throughout the maneuver"
+              },
+              {
+                "text" : "Notes:"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Slow Flight"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Trains pilots to control the aircraft near stall speed, simulating conditions experienced during takeoff and landing."
+              },
+              {
+                "text" : "Demonstrates T-6B flight characteristics near stall speed to build awareness of control responsiveness, coordination, and aerodynamic effects at low airspeed."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Slow Flight"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Slow below 150 KIAS"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The usual trap is missing the setup picture, then trying to salvage Scatsafe Maneuver late."
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Scatsafe Maneuver"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Purpose:"
+              }
+            ],
+            "text" : "Why it matters"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Efficient planning and execution of maneuvers using altitude and airspeed to manage aircraft energy—reducing time lost to repositioning and increasing training effectiveness."
+              },
+              {
+                "text" : "Understand Energy State"
+              },
+              {
+                "text" : "Energy = Altitude (Potential) + Airspeed (Kinetic)"
+              },
+              {
+                "text" : "Use power, drag, and G-loading to manage it"
+              },
+              {
+                "text" : "Altitude\/Airspeed Exchange"
+              },
+              {
+                "text" : "Optimum Energy Level"
+              },
+              {
+                "text" : "Allows transitions into most maneuvers after minor adjustments"
+              },
+              {
+                "text" : "Losing Energy"
+              },
+              {
+                "text" : "Use:"
+              },
+              {
+                "text" : "Low power"
+              }
+            ],
+            "text" : "Key knowledge"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use power, drag, and G-loading to manage it"
+              },
+              {
+                "text" : "Use:"
+              },
+              {
+                "text" : "Rollouts\/Reversal - use ⅓ rule, maintain trim, anticipate nose-drop"
+              },
+              {
+                "text" : "Use PAT"
+              },
+              {
+                "text" : "Use back pressure in steeper turns, forward stick on rollout to prevent ballooning"
+              }
+            ],
+            "text" : "Application"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "Common Errors:"
+              },
+              {
+                "text" : "Notes:"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Energy Management"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "Slip is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              }
+            ],
+            "text" : "Purpose"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Entry Parameters:"
+              },
+              {
+                "text" : "Setup \/ entry"
+              }
+            ],
+            "text" : "Setup \/ entry"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Intentional out-of-balance maneuver used to increase sink rate and lose excess altitude while maintaining constant airspeed and ground track."
+              },
+              {
+                "text" : "“Right\/left wing down, right\/left top rudder”"
+              },
+              {
+                "text" : "From Wings Level:"
+              },
+              {
+                "text" : "Lower one wing + apply opposite rudder"
+              },
+              {
+                "text" : "Maintain track using rudder pressure and bank"
+              },
+              {
+                "text" : "From a Turn:"
+              },
+              {
+                "text" : "Lower inboard wing"
+              },
+              {
+                "text" : "Apply opposite rudder"
+              },
+              {
+                "text" : "Adjust bank and rudder pressure to hold ground track"
+              },
+              {
+                "text" : "Monitoring:"
+              },
+              {
+                "text" : "Maintain airspeed with nose attitude"
+              },
+              {
+                "text" : "Standards \/ numbers"
+              }
+            ],
+            "text" : "Execution"
+          },
+          {
+            "children" : [
+              {
+                "text" : "125 KIAS, clean config"
+              },
+              {
+                "text" : "120 KIAS, gear down\/flaps as required"
+              },
+              {
+                "text" : "Full rudder not required (if used, keep <150 KIAS)"
+              },
+              {
+                "text" : "Observe VSI – descent may exceed 2000 fpm"
+              }
+            ],
+            "text" : "Standards \/ numbers"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors \/ grading traps"
+              },
+              {
+                "text" : "Increased stall speed and reduced stability (esp. gear down)"
+              }
+            ],
+            "text" : "Common errors \/ grading traps"
+          }
+        ],
+        "title" : "Slip"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Three Cs"
+          },
+          {
+            "text" : "slow flight"
+          },
+          {
+            "text" : "SCATSAFE maneuver"
+          },
+          {
+            "text" : "energy management"
+          },
+          {
+            "text" : "slip"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+  },
+  "summary" : "Slow Flight and Energy Management: Three Cs, Slow Flight, Scatsafe Maneuver, and the remaining required discussion items in the block.",
+  "title" : "Slow Flight and Energy Management"
 }

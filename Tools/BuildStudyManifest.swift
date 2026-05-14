@@ -308,6 +308,7 @@ struct SyllabusEventReferenceFile: Codable {
 
 struct SyllabusEventReferenceEventRecord: Codable {
     let code: String
+    let shortTitle: String
     let category: String
     let categoryDisplayName: String
     let media: String
@@ -1115,7 +1116,7 @@ struct ManifestBuilder {
         let scriptTemplate = buildScriptTemplate(for: code, phaseID: phaseID, categoryKind: categoryKind)
         let resourceLinks = override?.sharedResources ?? defaultResourceLinks(for: phaseID, categoryKind: categoryKind, files: sortedFiles)
         let videoLinks = override?.videos ?? []
-        let title = syllabusEvent == nil ? (override?.title ?? inferTitle(for: code, from: sortedFiles)) : code
+        let title = syllabusEvent?.shortTitle ?? override?.title ?? inferTitle(for: code, from: sortedFiles)
         let summary = override?.summary ?? summaryText(from: overview)
 
         return Event(

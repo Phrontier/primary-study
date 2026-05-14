@@ -76,7 +76,7 @@ struct SyllabusEventReference: Codable, Hashable {
     }
 
     func searchTerms(for event: SyllabusEventReferenceEvent) -> [String] {
-        var results = [event.code, event.blockCode, event.blockTitle]
+        var results = [event.code, event.shortTitle, event.blockCode, event.blockTitle]
         results.append(contentsOf: event.legacyReviewAliases)
         results.append(contentsOf: aliases(for: event.category))
         results.append(event.category.displayName)
@@ -96,6 +96,7 @@ struct SyllabusEventReferenceEvent: Codable, Hashable, Identifiable {
     var id: String { code }
 
     let code: String
+    let shortTitle: String
     let category: SyllabusEventCategory
     let categoryDisplayName: String
     let media: String

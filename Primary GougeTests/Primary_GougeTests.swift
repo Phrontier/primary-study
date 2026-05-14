@@ -220,6 +220,27 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func syllabusReferenceProvidesCanonicalShortTitles() throws {
+        let reference = try loadSyllabusReferenceFromAppContent()
+
+        let expectedTitles: [String: String] = [
+            "FAM2101": "Cockpit Familiarization",
+            "FAM2102": "Ground Emergencies",
+            "FAM2201": "Takeoff Emergencies",
+            "FAM2202": "Systems Emergencies",
+            "I4102": "ILS and LOC Approaches",
+            "N4101": "VFR Chart Preparation",
+            "F2101": "Formation Departure Procedures",
+            "CS4101": "Capstone Maneuver and EP Flight 1"
+        ]
+
+        for (code, expectedTitle) in expectedTitles {
+            let event = try #require(reference.event(code: code))
+            #expect(event.shortTitle == expectedTitle)
+        }
+    }
+
+    @MainActor
     @Test func canonicalEventResolutionMapsLegacyCheckFlightAlias() async throws {
         let event = InstructorReviewSeedData.event(for: "FAM4401", kind: .flight)
         #expect(event.displayName == "FAM4490")
@@ -241,6 +262,19 @@ struct Primary_GougeTests {
         #expect(manifestEvents["FAM4401"] == nil)
         #expect(manifestEvents["FAM4501"] != nil)
         #expect(manifestEvents["CS4290"] != nil)
+    }
+
+    @MainActor
+    @Test func manifestUsesCanonicalSyllabusShortTitlesForTargetedEvents() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let reference = try loadSyllabusReferenceFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        for syllabusEvent in reference.events {
+            let manifestEvent = try #require(manifestEvents[syllabusEvent.code])
+            #expect(manifestEvent.title == syllabusEvent.shortTitle)
+            #expect(manifestEvent.title != syllabusEvent.code)
+        }
     }
 
     @MainActor

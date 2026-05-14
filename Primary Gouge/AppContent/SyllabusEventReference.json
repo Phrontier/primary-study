@@ -51,6 +51,7 @@
 
       ],
       "media" : "UTD\/MR",
+      "shortTitle" : "Cruise Position\/Maneuvering",
       "sourcePages" : [
         157
       ]
@@ -74,6 +75,7 @@
 
       ],
       "media" : "UTD\/MR",
+      "shortTitle" : "Aborted Takeoff",
       "sourcePages" : [
         157
       ]
@@ -96,6 +98,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "IFR Pick-Up",
       "sourcePages" : [
         160
       ]
@@ -118,6 +121,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Advanced IMC Emergencies",
       "sourcePages" : [
         160
       ]
@@ -138,6 +142,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Capstone Maneuver and EP Flight 1",
       "sourcePages" : [
         163,
         164
@@ -159,6 +164,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Capstone Maneuver and EP Flight 2",
       "sourcePages" : [
         163,
         164
@@ -180,6 +186,7 @@
         "CS4201"
       ],
       "media" : "T-6B",
+      "shortTitle" : "Capstone Check Flight",
       "sourcePages" : [
         167
       ]
@@ -206,6 +213,7 @@
       ],
       "media" : "UTD",
       "mediaNotes" : "UTD\/ER",
+      "shortTitle" : "Cockpit Familiarization",
       "sourcePages" : [
         60
       ]
@@ -235,6 +243,7 @@
       ],
       "media" : "UTD",
       "mediaNotes" : "UTD\/ER",
+      "shortTitle" : "Ground Emergencies",
       "sourcePages" : [
         60
       ]
@@ -267,6 +276,7 @@
       ],
       "media" : "UTD",
       "mediaNotes" : "UTD\/ER",
+      "shortTitle" : "Takeoff Emergencies",
       "sourcePages" : [
         63
       ]
@@ -294,6 +304,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Systems Emergencies",
       "sourcePages" : [
         63
       ]
@@ -324,6 +335,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Basic Contact Maneuvers",
       "sourcePages" : [
         66
       ]
@@ -353,6 +365,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Pattern and Landings",
       "sourcePages" : [
         66
       ]
@@ -382,6 +395,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Crosswinds and Aborts",
       "sourcePages" : [
         66
       ]
@@ -405,6 +419,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Impending Engine Failure and PEL",
       "sourcePages" : [
         77
       ]
@@ -429,6 +444,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Engine Failure, Forced Landing, and Ejection",
       "sourcePages" : [
         77
       ]
@@ -453,6 +469,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Crosswind and Ground Emergency Review",
       "sourcePages" : [
         79
       ]
@@ -485,6 +502,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "AOA and Aerobatics",
       "sourcePages" : [
         95
       ]
@@ -516,6 +534,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Ejection Seat and CFS",
       "sourcePages" : [
         75
       ]
@@ -546,6 +565,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Tire Failures",
       "sourcePages" : [
         75
       ]
@@ -569,6 +589,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "OLF Operations",
       "sourcePages" : [
         75
       ]
@@ -591,6 +612,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Crosswind Takeoff\/Approach\/Landing",
       "sourcePages" : [
         75
       ]
@@ -617,6 +639,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "NATOPS Limitations",
       "sourcePages" : [
         83,
         84
@@ -642,6 +665,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Hydraulic System",
       "sourcePages" : [
         83,
         84
@@ -665,6 +689,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Oil and Propeller Systems",
       "sourcePages" : [
         83,
         84
@@ -689,6 +714,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Electrical System",
       "sourcePages" : [
         83,
         84
@@ -714,6 +740,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "OBOGS and Pressurization System",
       "sourcePages" : [
         86,
         87
@@ -738,6 +765,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Fuel System",
       "sourcePages" : [
         86,
         87
@@ -763,6 +791,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Hard Landings",
       "sourcePages" : [
         86,
         87
@@ -788,6 +817,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Securing Rear Cockpit for Solo",
       "sourcePages" : [
         86,
         87
@@ -815,6 +845,7 @@
         "FAM4401"
       ],
       "media" : "T-6B",
+      "shortTitle" : "Familiarization Check Flight",
       "sourcePages" : [
         89
       ]
@@ -835,6 +866,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Familiarization Solo Flight",
       "sourcePages" : [
         91
       ]
@@ -861,6 +893,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Night Flying Considerations",
       "sourcePages" : [
         93
       ]
@@ -883,6 +916,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "OCF Recovery Procedures",
       "sourcePages" : [
         97
       ]
@@ -907,6 +941,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Spin",
       "sourcePages" : [
         97
       ]
@@ -930,6 +965,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "T-6B VN Diagram",
       "sourcePages" : [
         97
       ]
@@ -953,6 +989,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Local Course Rules and OLF Operations",
       "sourcePages" : [
         69
       ]
@@ -977,6 +1014,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Risk Management and Homefield Recovery",
       "sourcePages" : [
         69
       ]
@@ -1001,6 +1039,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Slow Flight and Energy Management",
       "sourcePages" : [
         70
       ]
@@ -1024,6 +1063,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "OLF Entries and Crosswind Patterns",
       "sourcePages" : [
         70
       ]
@@ -1044,6 +1084,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Block Maneuver Review",
       "sourcePages" : [
         70
       ]
@@ -1064,6 +1105,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Rusty and Goliad Course Rules",
       "sourcePages" : [
         72
       ]
@@ -1084,6 +1126,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Beachline and Aransas County Course Rules",
       "sourcePages" : [
         72
       ]
@@ -1105,6 +1148,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "PEL and Emergency Memory Review",
       "sourcePages" : [
         81
       ]
@@ -1125,6 +1169,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Emergency Procedures Review",
       "sourcePages" : [
         81
       ]
@@ -1149,6 +1194,7 @@
       ],
       "media" : "UTD\/MR",
       "mediaNotes" : "mixed reality UTD",
+      "shortTitle" : "Formation Arrival and Departure Procedures",
       "sourcePages" : [
         148
       ]
@@ -1169,6 +1215,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Visual Signals and Formation Maneuvers",
       "sourcePages" : [
         146
       ]
@@ -1194,6 +1241,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Hand Signals",
       "sourcePages" : [
         150
       ]
@@ -1217,6 +1265,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Airborne Damaged Aircraft",
       "sourcePages" : [
         150
       ]
@@ -1240,6 +1289,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Section PEL",
       "sourcePages" : [
         150
       ]
@@ -1265,6 +1315,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Landing Gear Inspection",
       "sourcePages" : [
         150
       ]
@@ -1286,6 +1337,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Formation Check Flight",
       "sourcePages" : [
         153
       ]
@@ -1311,6 +1363,7 @@
 
       ],
       "media" : "UTD",
+      "shortTitle" : "Instrument Scan Patterns",
       "sourcePages" : [
         107
       ]
@@ -1333,6 +1386,7 @@
 
       ],
       "media" : "UTD",
+      "shortTitle" : "IMC Emergencies",
       "sourcePages" : [
         107
       ]
@@ -1357,6 +1411,7 @@
 
       ],
       "media" : "UTD",
+      "shortTitle" : "Approach Maneuver",
       "sourcePages" : [
         107
       ]
@@ -1382,6 +1437,7 @@
 
       ],
       "media" : "UTD",
+      "shortTitle" : "HSI Orientation",
       "sourcePages" : [
         109
       ]
@@ -1407,6 +1463,7 @@
 
       ],
       "media" : "UTD",
+      "shortTitle" : "Arcing and Radial Intercepts",
       "sourcePages" : [
         109
       ]
@@ -1430,6 +1487,7 @@
 
       ],
       "media" : "UTD",
+      "shortTitle" : "Holding Entry",
       "sourcePages" : [
         109
       ]
@@ -1455,6 +1513,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Clearance and Departure Procedures",
       "sourcePages" : [
         113
       ]
@@ -1479,6 +1538,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "HILO Approaches",
       "sourcePages" : [
         113
       ]
@@ -1504,6 +1564,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "PAR",
       "sourcePages" : [
         113
       ]
@@ -1529,6 +1590,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Night Cockpit Setup",
       "sourcePages" : [
         113
       ]
@@ -1554,6 +1616,7 @@
       ],
       "media" : "UTD",
       "mediaNotes" : "UTD or UTD\/ER",
+      "shortTitle" : "GPS Procedures",
       "sourcePages" : [
         121
       ]
@@ -1579,6 +1642,7 @@
       ],
       "media" : "UTD",
       "mediaNotes" : "UTD or UTD\/ER",
+      "shortTitle" : "STAR",
       "sourcePages" : [
         121
       ]
@@ -1599,6 +1663,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "No-Gyro Approach",
       "sourcePages" : [
         121
       ]
@@ -1619,6 +1684,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "High-Altitude Approach",
       "sourcePages" : [
         121
       ]
@@ -1641,6 +1707,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Avionics Failures",
       "sourcePages" : [
         121
       ]
@@ -1664,6 +1731,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "En Route Fuel Management",
       "sourcePages" : [
         121
       ]
@@ -1686,6 +1754,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "CRM and Holding",
       "sourcePages" : [
         118,
         119
@@ -1709,6 +1778,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "ILS and LOC Approaches",
       "sourcePages" : [
         118,
         119
@@ -1733,6 +1803,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "PAR, ASR, and No-Gyro",
       "sourcePages" : [
         118,
         119
@@ -1757,6 +1828,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Departure Procedures and Airway Navigation",
       "sourcePages" : [
         127
       ]
@@ -1777,6 +1849,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "FMS Arrivals",
       "sourcePages" : [
         127
       ]
@@ -1799,6 +1872,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "No-Gyro and Fuel Management",
       "sourcePages" : [
         127
       ]
@@ -1819,6 +1893,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Takeoff and Alternate Minimums",
       "sourcePages" : [
         127
       ]
@@ -1846,6 +1921,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Flight Planning and Jet Logs",
       "sourcePages" : [
         130
       ]
@@ -1871,6 +1947,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "En Route Weather and Circling",
       "sourcePages" : [
         130
       ]
@@ -1895,6 +1972,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Airspace and Field Selection",
       "sourcePages" : [
         130
       ]
@@ -1920,6 +1998,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Lost Communications and SID\/STAR",
       "sourcePages" : [
         130
       ]
@@ -1946,6 +2025,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "Instrument Check Flight",
       "sourcePages" : [
         132
       ]
@@ -1972,6 +2052,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Procedure Turns and Missed Approach",
       "sourcePages" : [
         111
       ]
@@ -1997,6 +2078,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Arcing and Holding",
       "sourcePages" : [
         111
       ]
@@ -2023,6 +2105,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "CNAF M-3710.7 Minimum Fuel Requirements",
       "sourcePages" : [
         116
       ]
@@ -2048,6 +2131,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "En Route Weather Sources",
       "sourcePages" : [
         116
       ]
@@ -2068,6 +2152,7 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "EPs and NWCs",
       "sourcePages" : [
         124
       ]
@@ -2095,6 +2180,7 @@
 
       ],
       "media" : "OFT",
+      "shortTitle" : "Day Navigation",
       "sourcePages" : [
         137
       ]
@@ -2126,6 +2212,7 @@
 
       ],
       "media" : "T-6B",
+      "shortTitle" : "VFR Chart Preparation",
       "sourcePages" : [
         141
       ]
@@ -2150,12 +2237,13 @@
 
       ],
       "media" : "VTD",
+      "shortTitle" : "Night Navigation",
       "sourcePages" : [
         139
       ]
     }
   ],
-  "generatedAt" : "2026-05-14T17:08:13Z",
+  "generatedAt" : "2026-05-14T19:54:02Z",
   "sourceDocumentDate" : "2024-07-15",
   "sourceDocumentTitle" : "CNATRAINST 1542.166D T-6B Joint Primary Pilot Training (JPPT) Curriculum"
 }

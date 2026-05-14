@@ -40,6 +40,7 @@ struct SyllabusEventReferenceFile: Codable {
 
 struct SyllabusEventReferenceRecord: Codable {
     let code: String
+    let shortTitle: String
     let category: String
     let categoryDisplayName: String
     let media: String
@@ -67,6 +68,54 @@ struct EventMediaOverride {
     let media: String
     let note: String?
 }
+
+struct EventOverrideTitle: Codable {
+    let code: String
+    let title: String?
+}
+
+enum ShortTitleSource {
+    case override
+    case generatedOverride
+    case block
+    case heading
+    case discussion
+}
+
+struct ShortTitleDecision {
+    var title: String
+    let source: ShortTitleSource
+    let fallbackDiscussionTitle: String?
+    let eventKind: String
+}
+
+let generatedShortTitleOverrides: [String: String] = [
+    "CS3102": "Advanced IMC Emergencies",
+    "CS4101": "Capstone Maneuver and EP Flight 1",
+    "CS4102": "Capstone Maneuver and EP Flight 2",
+    "F2101": "Formation Arrival and Departure Procedures",
+    "F3101": "Visual Signals and Formation Maneuvers",
+    "FAM4203": "Oil and Propeller Systems",
+    "FAM4301": "OBOGS and Pressurization System",
+    "I2102": "IMC Emergencies",
+    "I2202": "Arcing and Radial Intercepts",
+    "I3101": "Clearance and Departure Procedures",
+    "I4101": "CRM and Holding",
+    "I4102": "ILS and LOC Approaches",
+    "I4103": "PAR, ASR, and No-Gyro",
+    "I4201": "Departure Procedures and Airway Navigation",
+    "I4202": "FMS Arrivals",
+    "I4203": "No-Gyro and Fuel Management",
+    "I4204": "Takeoff and Alternate Minimums",
+    "I4301": "Flight Planning and Jet Logs",
+    "I4302": "En Route Weather and Circling",
+    "I4303": "Airspace and Field Selection",
+    "I4304": "Lost Communications and SID/STAR",
+    "I6101": "Procedure Turns and Missed Approach",
+    "I6102": "Arcing and Holding",
+    "I6202": "En Route Weather Sources",
+    "I6301": "EPs and NWCs"
+]
 
 let arguments = CommandLine.arguments.dropFirst()
 guard let rawPDFPath = arguments.first else {
@@ -203,12 +252,13 @@ for block in blocks {
 
         let isCheckride = code.hasSuffix("90")
         let isSolo = code == "FAM4501"
-        records.append(
-            SyllabusEventReferenceRecord(
-                code: code,
-                category: block.category.rawValue,
-                categoryDisplayName: block.category.displayName,
-                media: mediaOverride.media,
+            records.append(
+                SyllabusEventReferenceRecord(
+                    code: code,
+                    shortTitle: code,
+                    category: block.category.rawValue,
+                    categoryDisplayName: block.category.displayName,
+                    media: mediaOverride.media,
                 eventKind: eventKind(for: mediaOverride.media),
                 isCheckride: isCheckride,
                 isSolo: isSolo,
@@ -241,6 +291,18 @@ for code in requiredCodes {
         throw SyllabusBuildError.message("Missing required syllabus event \(code).")
     }
 }
+
+let overrideTitles = loadOverrideTitles(
+    from: currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventContentOverrides", isDirectory: true)
+)
+let sourceFilesByCode = loadSourceFilesByCode(
+    under: currentDirectory.appendingPathComponent("Contents", isDirectory: true)
+)
+records = applyShortTitles(
+    to: records,
+    overrideTitles: overrideTitles,
+    sourceFilesByCode: sourceFilesByCode
+)
 
 let file = SyllabusEventReferenceFile(
     sourceDocumentTitle: "CNATRAINST 1542.166D T-6B Joint Primary Pilot Training (JPPT) Curriculum",
@@ -502,4 +564,426 @@ func legacyAliases(for code: String, block: Block, isCheckride: Bool) -> [String
     }
 
     return []
+}
+
+func loadOverrideTitles(from url: URL) -> [String: String] {
+    guard let files = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil) else {
+        return [:]
+    }
+
+    let decoder = JSONDecoder()
+    var results: [String: String] = [:]
+
+    for fileURL in files where fileURL.pathExtension.lowercased() == "json" {
+        guard
+            let data = try? Data(contentsOf: fileURL),
+            let override = try? decoder.decode(EventOverrideTitle.self, from: data),
+            let title = override.title?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !title.isEmpty
+        else {
+            continue
+        }
+
+        results[normalizeCode(override.code)] = title
+    }
+
+    return results
+}
+
+func loadSourceFilesByCode(under rootURL: URL) -> [String: [URL]] {
+    guard let enumerator = FileManager.default.enumerator(at: rootURL, includingPropertiesForKeys: nil) else {
+        return [:]
+    }
+
+    var grouped: [String: [URL]] = [:]
+    while let item = enumerator.nextObject() as? URL {
+        var isDirectory: ObjCBool = false
+        guard FileManager.default.fileExists(atPath: item.path, isDirectory: &isDirectory), !isDirectory.boolValue else {
+            continue
+        }
+        guard let code = eventCode(fromFilename: item.lastPathComponent) else {
+            continue
+        }
+        grouped[code, default: []].append(item)
+    }
+
+    return grouped
+}
+
+func eventCode(fromFilename filename: String) -> String? {
+    guard let range = filename.range(of: #"(?:FAM|I|N|F|CS)\s?\d{4}"#, options: .regularExpression) else {
+        return nil
+    }
+    return normalizeCode(String(filename[range]))
+}
+
+func applyShortTitles(
+    to records: [SyllabusEventReferenceRecord],
+    overrideTitles: [String: String],
+    sourceFilesByCode: [String: [URL]]
+) -> [SyllabusEventReferenceRecord] {
+    var decisions: [String: ShortTitleDecision] = [:]
+
+    for record in records {
+        decisions[record.code] = decideShortTitle(
+            for: record,
+            overrideTitles: overrideTitles,
+            sourceFilesByCode: sourceFilesByCode
+        )
+    }
+
+    resolveDuplicateShortTitles(in: &decisions, records: records)
+
+    return records.map { record in
+        SyllabusEventReferenceRecord(
+            code: record.code,
+            shortTitle: decisions[record.code]?.title ?? record.code,
+            category: record.category,
+            categoryDisplayName: record.categoryDisplayName,
+            media: record.media,
+            eventKind: record.eventKind,
+            isCheckride: record.isCheckride,
+            isSolo: record.isSolo,
+            blockCode: record.blockCode,
+            blockTitle: record.blockTitle,
+            discussionItems: record.discussionItems,
+            sourcePages: record.sourcePages,
+            mediaNotes: record.mediaNotes,
+            legacyReviewAliases: record.legacyReviewAliases
+        )
+    }
+}
+
+func decideShortTitle(
+    for record: SyllabusEventReferenceRecord,
+    overrideTitles: [String: String],
+    sourceFilesByCode: [String: [URL]]
+) -> ShortTitleDecision {
+    if let overrideTitle = overrideTitles[record.code] {
+        return ShortTitleDecision(
+            title: overrideTitle,
+            source: .override,
+            fallbackDiscussionTitle: normalizedDiscussionTitle(from: record.discussionItems),
+            eventKind: record.eventKind
+        )
+    }
+
+    if let generatedTitle = generatedShortTitleOverrides[record.code] {
+        return ShortTitleDecision(
+            title: generatedTitle,
+            source: .generatedOverride,
+            fallbackDiscussionTitle: normalizedDiscussionTitle(from: record.discussionItems),
+            eventKind: record.eventKind
+        )
+    }
+
+    if record.isCheckride || record.isSolo {
+        return ShortTitleDecision(
+            title: cleanedShortTitle(record.blockTitle),
+            source: .block,
+            fallbackDiscussionTitle: normalizedDiscussionTitle(from: record.discussionItems),
+            eventKind: record.eventKind
+        )
+    }
+
+    if let headingTitle = sourceHeadingTitle(for: record, sourceFilesByCode: sourceFilesByCode) {
+        return ShortTitleDecision(
+            title: headingTitle,
+            source: .heading,
+            fallbackDiscussionTitle: normalizedDiscussionTitle(from: record.discussionItems),
+            eventKind: record.eventKind
+        )
+    }
+
+    if let discussionTitle = normalizedDiscussionTitle(from: record.discussionItems) {
+        return ShortTitleDecision(
+            title: discussionTitle,
+            source: .discussion,
+            fallbackDiscussionTitle: discussionTitle,
+            eventKind: record.eventKind
+        )
+    }
+
+    return ShortTitleDecision(
+        title: cleanedShortTitle(record.blockTitle),
+        source: .block,
+        fallbackDiscussionTitle: nil,
+        eventKind: record.eventKind
+    )
+}
+
+func sourceHeadingTitle(
+    for record: SyllabusEventReferenceRecord,
+    sourceFilesByCode: [String: [URL]]
+) -> String? {
+    let files = prioritizedSourceFiles(for: sourceFilesByCode[record.code] ?? [])
+    for file in files {
+        guard let text = extractText(from: file) else { continue }
+        guard let title = extractHeadingTitle(from: text, code: record.code) else { continue }
+        let cleaned = cleanedShortTitle(title)
+        guard cleaned.caseInsensitiveCompare(record.code) != .orderedSame else { continue }
+        return cleaned
+    }
+    return nil
+}
+
+func prioritizedSourceFiles(for files: [URL]) -> [URL] {
+    files.sorted { lhs, rhs in
+        let lhsRank = sourcePriority(for: lhs)
+        let rhsRank = sourcePriority(for: rhs)
+        if lhsRank == rhsRank {
+            return lhs.lastPathComponent < rhs.lastPathComponent
+        }
+        return lhsRank < rhsRank
+    }
+}
+
+func sourcePriority(for file: URL) -> Int {
+    let name = file.lastPathComponent.lowercased()
+    let ext = file.pathExtension.lowercased()
+    if name.contains("briefing guide") { return 0 }
+    if ext == "docx" || ext == "doc" { return 1 }
+    if ext == "pdf" { return 2 }
+    return 3
+}
+
+func extractText(from file: URL) -> String? {
+    let ext = file.pathExtension.lowercased()
+    if ext == "docx" || ext == "doc" {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/textutil")
+        process.arguments = ["-convert", "txt", "-stdout", file.path]
+        let pipe = Pipe()
+        process.standardOutput = pipe
+        process.standardError = Pipe()
+
+        do {
+            try process.run()
+            process.waitUntilExit()
+            guard process.terminationStatus == 0 else { return nil }
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            return String(decoding: data, as: UTF8.self)
+        } catch {
+            return nil
+        }
+    }
+
+    if ext == "pdf", let document = PDFDocument(url: file) {
+        return document.string
+    }
+
+    return nil
+}
+
+func extractHeadingTitle(from text: String, code: String) -> String? {
+    let lines = text
+        .components(separatedBy: .newlines)
+        .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        .filter { !$0.isEmpty }
+
+    guard !lines.isEmpty else { return nil }
+
+    for line in lines.prefix(12) {
+        let normalizedLine = line.replacingOccurrences(of: "\t", with: " ")
+        if normalizedLine.hasPrefix(code + ":") || normalizedLine.hasPrefix(code + " -") {
+            let title = normalizedLine
+                .replacingOccurrences(of: code + ":", with: "")
+                .replacingOccurrences(of: code + " -", with: "")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            if let candidate = preferredShortTitleCandidate(from: title) {
+                return candidate
+            }
+        }
+    }
+
+    if lines.first == code {
+        for line in lines.dropFirst().prefix(16) {
+            if let candidate = preferredShortTitleCandidate(from: line) {
+                return candidate
+            }
+        }
+    }
+
+    return nil
+}
+
+func normalizedDiscussionTitle(from discussionItems: [String]) -> String? {
+    for item in discussionItems {
+        if let candidate = preferredShortTitleCandidate(from: item) {
+            return candidate
+        }
+    }
+
+    return nil
+}
+
+func preferredShortTitleCandidate(from rawValue: String) -> String? {
+    let stripped = rawValue
+        .replacingOccurrences(of: "\t", with: " ")
+        .replacingOccurrences(of: #"^[•\-]\s*"#, with: "", options: .regularExpression)
+        .replacingOccurrences(of: #"^\d+[\.\)]\s*"#, with: "", options: .regularExpression)
+        .components(separatedBy: CharacterSet(charactersIn: ":,;("))
+        .first?
+        .trimmingCharacters(in: .whitespacesAndNewlines) ?? rawValue
+
+    guard !stripped.isEmpty else { return nil }
+    guard !isWeakShortTitleCandidate(stripped) else { return nil }
+
+    let cleaned = cleanedShortTitle(stripped)
+    guard !cleaned.isEmpty else { return nil }
+    guard cleaned.caseInsensitiveCompare("N/A") != .orderedSame else { return nil }
+    return cleaned
+}
+
+func isWeakShortTitleCandidate(_ value: String) -> Bool {
+    let normalized = value
+        .lowercased()
+        .replacingOccurrences(of: #"\s+"#, with: " ", options: .regularExpression)
+        .trimmingCharacters(in: .whitespacesAndNewlines)
+
+    let weakExactMatches: Set<String> = [
+        "discuss items",
+        "discuss items:",
+        "syllabus notes",
+        "syllabus notes:",
+        "special syllabus requirements",
+        "special syllabus requirements:",
+        "ssrs",
+        "n/a",
+        "type",
+        "description",
+        "purpose",
+        "general"
+    ]
+
+    if weakExactMatches.contains(normalized) {
+        return true
+    }
+
+    return normalized.hasPrefix("any ")
+        || normalized.hasPrefix("per the ")
+        || normalized.hasPrefix("definition")
+        || normalized.hasPrefix("objective")
+        || normalized.hasPrefix("requirement")
+}
+
+func cleanedShortTitle(_ value: String) -> String {
+    var title = value
+        .replacingOccurrences(of: #"\s+"#, with: " ", options: .regularExpression)
+        .trimmingCharacters(in: .whitespacesAndNewlines)
+        .lowercased()
+        .localizedCapitalized
+
+    let replacements: [(String, String)] = [
+        (#"\bAnd\b"#, "and"),
+        (#"\bOr\b"#, "or"),
+        (#"\bOf\b"#, "of"),
+        (#"\bIn\b"#, "in"),
+        (#"\bOn\b"#, "on"),
+        (#"\bFor\b"#, "for"),
+        (#"\bFrom\b"#, "from"),
+        (#"\bTo\b"#, "to"),
+        (#"\bThe\b"#, "the"),
+        (#"\bA\b"#, "a"),
+        (#"\bAn\b"#, "an"),
+        (#"\bWith\b"#, "with"),
+        (#"\bAsr\b"#, "ASR"),
+        (#"\bBfi\b"#, "BFI"),
+        (#"\bCnaf\b"#, "CNAF"),
+        (#"\bCrm\b"#, "CRM"),
+        (#"\bEp\b"#, "EP"),
+        (#"\bEps\b"#, "EPs"),
+        (#"\bFms\b"#, "FMS"),
+        (#"\bGca\b"#, "GCA"),
+        (#"\bGps\b"#, "GPS"),
+        (#"\bHilo\b"#, "HILO"),
+        (#"\bHsi\b"#, "HSI"),
+        (#"\bPel/P\b"#, "PEL/P"),
+        (#"\bPel\b"#, "PEL"),
+        (#"\bElp\b"#, "ELP"),
+        (#"\bEnroute\b"#, "En Route"),
+        (#"\bVfr\b"#, "VFR"),
+        (#"\bIfr\b"#, "IFR"),
+        (#"\bAim\b"#, "AIM"),
+        (#"\bLoc\b"#, "LOC"),
+        (#"\bNatops\b"#, "NATOPS"),
+        (#"\bNwc\b"#, "NWC"),
+        (#"\bNwcs\b"#, "NWCs"),
+        (#"\bOcf\b"#, "OCF"),
+        (#"\bOlf\b"#, "OLF"),
+        (#"\bRdo\b"#, "RDO"),
+        (#"\bRvfac\b"#, "RVFAC"),
+        (#"\bSid/Star\b"#, "SID/STAR"),
+        (#"\bSid\b"#, "SID"),
+        (#"\bStar\b"#, "STAR"),
+        (#"\bTrsa\b"#, "TRSA"),
+        (#"\bCfs\b"#, "CFS"),
+        (#"\bObogs\b"#, "OBOGS"),
+        (#"\bHud\b"#, "HUD"),
+        (#"\bHefoe\b"#, "HEFOE"),
+        (#"\bPmu\b"#, "PMU"),
+        (#"\bPar\b"#, "PAR"),
+        (#"\bDd-1801\b"#, "DD-1801"),
+        (#"\bT-6b\b"#, "T-6B"),
+        (#"\bVn\b"#, "VN"),
+        (#"\bVor\b"#, "VOR")
+    ]
+
+    for replacement in replacements {
+        title = title.replacingOccurrences(
+            of: replacement.0,
+            with: replacement.1,
+            options: [.regularExpression]
+        )
+    }
+
+    if title == "Day Navigation" {
+        return "Day Navigation"
+    }
+
+    return title
+}
+
+func resolveDuplicateShortTitles(
+    in decisions: inout [String: ShortTitleDecision],
+    records: [SyllabusEventReferenceRecord]
+) {
+    var titlesToCodes = Dictionary(grouping: records.map(\.code)) { code in
+        decisions[code]?.title ?? code
+    }
+
+    for (_, codes) in titlesToCodes where codes.count > 1 {
+        for code in codes {
+            guard var decision = decisions[code] else { continue }
+            guard decision.source != .override else { continue }
+            if decision.eventKind == "sim", let discussionTitle = decision.fallbackDiscussionTitle, discussionTitle != decision.title {
+                decision.title = discussionTitle
+                decisions[code] = decision
+            }
+        }
+    }
+
+    titlesToCodes = Dictionary(grouping: records.map(\.code)) { code in
+        decisions[code]?.title ?? code
+    }
+
+    for (_, codes) in titlesToCodes where codes.count > 1 {
+        for code in codes.sorted() {
+            guard var decision = decisions[code] else { continue }
+            guard decision.source != .override else { continue }
+            let suffix = decision.eventKind == "flight" ? " Flight" : " Sim"
+            decision.title += suffix
+            decisions[code] = decision
+        }
+    }
+}
+
+extension ComparisonResult {
+    var isOrderedSame: Bool {
+        self == .orderedSame
+    }
+}
+
+func normalizeCode(_ value: String) -> String {
+    value.replacingOccurrences(of: " ", with: "")
 }

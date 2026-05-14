@@ -102,22 +102,26 @@ struct InstructorReviewsRootView: View {
             ],
             metricLayout: .compactRow
         ) {
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: 10) {
-                    InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
-                        showingSubmission = true
+            VStack(alignment: .leading, spacing: 12) {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: 10) {
+                        InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
+                            showingSubmission = true
+                        }
+
+                        moderationBubble
                     }
 
-                    moderationBubble
-                }
+                    VStack(spacing: 10) {
+                        InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
+                            showingSubmission = true
+                        }
 
-                VStack(spacing: 10) {
-                    InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
-                        showingSubmission = true
+                        moderationBubble
                     }
-
-                    moderationBubble
                 }
+
+                syncStatusLine
             }
         }
     }
@@ -130,5 +134,46 @@ struct InstructorReviewsRootView: View {
         }
         .buttonStyle(.plain)
         .accessibilityLabel("Open moderation queue")
+    }
+
+    private var syncStatusLine: some View {
+        HStack(spacing: 8) {
+            Circle()
+                .fill(syncStatusColor)
+                .frame(width: 8, height: 8)
+
+            Text(syncStatusText)
+                .font(.system(.footnote, design: .rounded, weight: .semibold))
+                .foregroundStyle(AppTheme.textSecondary)
+        }
+    }
+
+    private var syncStatusText: String {
+        switch reviewStore.syncStatus.phase {
+        case .idle:
+            if let lastSyncedAt = reviewStore.syncStatus.lastSyncedAt {
+                return "Synced \(lastSyncedAt.formatted(date: .abbreviated, time: .shortened))"
+            }
+            return reviewStore.isRemoteConfigured ? "Ready to sync instructor reviews." : "Remote sync is not configured yet."
+        case .syncing:
+            return "Syncing latest instructor reviews…"
+        case .offline:
+            return reviewStore.isRemoteConfigured ? "Offline. Reading local reviews and queueing submissions." : "Remote sync is not configured yet."
+        case .failed:
+            return reviewStore.syncStatus.errorMessage ?? "Sync hit an error. Local reviews are still available."
+        }
+    }
+
+    private var syncStatusColor: Color {
+        switch reviewStore.syncStatus.phase {
+        case .idle:
+            return AppTheme.success
+        case .syncing:
+            return AppTheme.accent
+        case .offline:
+            return AppTheme.warning
+        case .failed:
+            return AppTheme.danger
+        }
     }
 }

@@ -316,7 +316,7 @@ struct InstructorAggregateCard: View {
                     .lineLimit(2)
 
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    Text("\(InstructorRatingScale.format(average: average)) / 7")
+                    Text("\(InstructorRatingScale.format(average: InstructorRatingScale.tenScaleValue(for: average))) / 10")
                         .font(.system(size: 30, weight: .bold, design: .rounded))
                         .foregroundStyle(AppTheme.prominentText(accent))
 
@@ -665,14 +665,14 @@ struct InstructorReviewCard: View {
                     InstructorRatingBadge(
                         title: "Chill Factor",
                         label: InstructorRatingScale.label(for: review.chillScore, category: .chillFactor),
-                        subtitle: InstructorRatingScale.formatOutOfSeven(score: review.chillScore),
+                        subtitle: InstructorRatingScale.formatOutOfTen(score: review.chillScore),
                         score: review.chillScore,
                         style: .individual
                     )
                     InstructorRatingBadge(
                         title: "Grading Style",
                         label: InstructorRatingScale.label(for: review.gradingScore, category: .gradingStyle),
-                        subtitle: InstructorRatingScale.formatOutOfSeven(score: review.gradingScore),
+                        subtitle: InstructorRatingScale.formatOutOfTen(score: review.gradingScore),
                         score: review.gradingScore,
                         style: .individual
                     )
@@ -728,14 +728,14 @@ struct InstructorSummaryCard: View {
                     InstructorRatingBadge(
                         title: "Chill Factor",
                         label: instructor.chillLabel,
-                        subtitle: instructor.chillAverageOutOfSevenText,
+                        subtitle: instructor.chillAverageOutOfTenText,
                         score: instructor.chillRoundedScore,
                         style: .roster
                     )
                     InstructorRatingBadge(
                         title: "Grading Style",
                         label: instructor.gradingLabel,
-                        subtitle: instructor.gradingAverageOutOfSevenText,
+                        subtitle: instructor.gradingAverageOutOfTenText,
                         score: instructor.gradingRoundedScore,
                         style: .roster
                     )

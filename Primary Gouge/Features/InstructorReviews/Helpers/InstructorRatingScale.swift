@@ -59,7 +59,7 @@ enum InstructorRatingScale {
             case 4: return "Neutral"
             case 3: return "Serious"
             case 2: return "Intense"
-            default: return "Nightmare Fuel"
+            default: return "Hammer"
             }
         case .gradingStyle:
             switch score {
@@ -109,17 +109,22 @@ enum InstructorRatingScale {
         String(format: "%.1f", average)
     }
 
-    static func formatOutOfSeven(average: Double, includeAverageSuffix: Bool = false) -> String {
-        let base = "\(format(average: average))/7"
+    static func tenScaleValue(for rawValue: Double) -> Double {
+        let clampedValue = min(max(rawValue, 0), Double(validScores.upperBound))
+        return clampedValue / Double(validScores.upperBound) * 10
+    }
+
+    static func formatOutOfTen(average: Double, includeAverageSuffix: Bool = false) -> String {
+        let base = "\(format(average: tenScaleValue(for: average)))/10"
         return includeAverageSuffix ? "\(base) avg" : base
     }
 
-    static func formatOutOfSeven(score: Int) -> String {
-        "\(clamped(score))/7"
+    static func formatOutOfTen(score: Int) -> String {
+        "\(format(average: tenScaleValue(for: Double(clamped(score)))))/10"
     }
 
-    static func formatSpacedOutOfSeven(score: Int, includeAverageSuffix: Bool = false) -> String {
-        let base = "\(clamped(score)) / 7"
+    static func formatSpacedOutOfTen(score: Int, includeAverageSuffix: Bool = false) -> String {
+        let base = "\(format(average: tenScaleValue(for: Double(clamped(score))))) / 10"
         return includeAverageSuffix ? "\(base) avg" : base
     }
 
@@ -153,11 +158,11 @@ extension Instructor {
         InstructorRatingScale.format(average: averageGradingScore)
     }
 
-    var chillAverageOutOfSevenText: String {
-        InstructorRatingScale.formatOutOfSeven(average: averageChillScore, includeAverageSuffix: true)
+    var chillAverageOutOfTenText: String {
+        InstructorRatingScale.formatOutOfTen(average: averageChillScore, includeAverageSuffix: true)
     }
 
-    var gradingAverageOutOfSevenText: String {
-        InstructorRatingScale.formatOutOfSeven(average: averageGradingScore, includeAverageSuffix: true)
+    var gradingAverageOutOfTenText: String {
+        InstructorRatingScale.formatOutOfTen(average: averageGradingScore, includeAverageSuffix: true)
     }
 }

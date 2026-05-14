@@ -132,13 +132,21 @@ final class ReviewSubmissionViewModel: ObservableObject {
         let query = trimmedEventName
         guard !query.isEmpty else { return [] }
 
-        let normalizedQuery = normalizedEventText(query)
-        let prefixMatches = visibleEvents.filter {
-            normalizedEventText($0.displayName).hasPrefix(normalizedQuery)
+        if let matchedCategory = InstructorReviewSeedData.category(forAlias: query) {
+            return visibleEvents.filter { $0.syllabusCategory == matchedCategory }
         }
-        let containsMatches = visibleEvents.filter {
-            !normalizedEventText($0.displayName).hasPrefix(normalizedQuery) &&
-            normalizedEventText($0.displayName).contains(normalizedQuery)
+
+        let normalizedQuery = normalizedEventText(query)
+        let prefixMatches = visibleEvents.filter { event in
+            InstructorReviewSeedData.searchTerms(for: event).contains {
+                normalizedEventText($0).hasPrefix(normalizedQuery)
+            }
+        }
+        let containsMatches = visibleEvents.filter { event in
+            !prefixMatches.contains(event) &&
+            InstructorReviewSeedData.searchTerms(for: event).contains {
+                normalizedEventText($0).contains(normalizedQuery)
+            }
         }
         return prefixMatches + containsMatches
     }
@@ -295,7 +303,11 @@ final class ReviewSubmissionViewModel: ObservableObject {
             return
         }
 
-        if let exactEvent = visibleEvents.first(where: { $0.displayName.caseInsensitiveCompare(trimmedEventName) == .orderedSame }) {
+        let kind = selectedSquadron?.reviewEventKind ?? submissionMode.defaultEventKind
+        if let canonicalEvent = InstructorReviewSeedData.canonicalEvent(named: trimmedEventName, kind: kind),
+           let exactEvent = visibleEvents.first(where: {
+               $0.kind == canonicalEvent.kind && $0.displayName.caseInsensitiveCompare(canonicalEvent.displayName) == .orderedSame
+           }) {
             if selectedEvent != exactEvent {
                 selectedEvent = exactEvent
             }
@@ -311,11 +323,14 @@ final class ReviewSubmissionViewModel: ObservableObject {
             return selectedEvent
         }
 
-        if let exactMatch = visibleEvents.first(where: { $0.displayName.caseInsensitiveCompare(trimmedEventName) == .orderedSame }) {
-            return exactMatch
+        let kind = selectedSquadron?.reviewEventKind ?? submissionMode.defaultEventKind
+        if let canonicalEvent = InstructorReviewSeedData.canonicalEvent(named: trimmedEventName, kind: kind),
+           let visibleCanonicalEvent = visibleEvents.first(where: {
+               $0.kind == canonicalEvent.kind && $0.displayName.caseInsensitiveCompare(canonicalEvent.displayName) == .orderedSame
+           }) {
+            return visibleCanonicalEvent
         }
 
-        let kind = selectedSquadron?.reviewEventKind ?? submissionMode.defaultEventKind
         return InstructorReviewSeedData.event(for: trimmedEventName, kind: kind)
     }
 
@@ -369,7 +384,7 @@ struct InstructorReviewRatingOption: Identifiable, Hashable {
     }
 
     var subtitle: String {
-        "Score \(score) / 7"
+        "Score \(InstructorRatingScale.format(average: InstructorRatingScale.tenScaleValue(for: Double(score)))) / 10"
     }
 
     var accent: Color {
@@ -391,37 +406,40 @@ final class ModerationQueueViewModel: ObservableObject {
 
     func approve(reviewID: String, using repository: InstructorReviewRepository) {
         process(reviewID: reviewID, using: repository) {
-            try repository.approveReview(id: reviewID)
+            try await repository.approveReview(id: reviewID)
         }
     }
 
     func reject(reviewID: String, using repository: InstructorReviewRepository) {
         process(reviewID: reviewID, using: repository) {
-            try repository.rejectReview(id: reviewID)
+            try await repository.rejectReview(id: reviewID)
         }
     }
 
     func dismissReport(reportID: String, using repository: InstructorReviewRepository) {
         process(reviewID: reportID, using: repository) {
-            try repository.dismissReport(id: reportID)
+            try await repository.dismissReport(id: reportID)
         }
     }
 
     private func process(
         reviewID: String,
         using repository: InstructorReviewRepository,
-        action: () throws -> Void
+        action: @escaping () async throws -> Void
     ) {
         processingIDs.insert(reviewID)
-        defer { processingIDs.remove(reviewID) }
 
-        do {
-            try action()
-            pendingReviews = repository.fetchPendingReviews()
-            openReports = repository.fetchOpenReports()
-            errorMessage = nil
-        } catch {
-            errorMessage = error.localizedDescription
+        Task { @MainActor in
+            defer { processingIDs.remove(reviewID) }
+
+            do {
+                try await action()
+                pendingReviews = repository.fetchPendingReviews()
+                openReports = repository.fetchOpenReports()
+                errorMessage = nil
+            } catch {
+                errorMessage = error.localizedDescription
+            }
         }
     }
 }

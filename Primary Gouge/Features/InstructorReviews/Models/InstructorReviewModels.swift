@@ -206,6 +206,59 @@ enum ReviewStatus: String, Codable, CaseIterable, Hashable {
     }
 }
 
+enum InstructorReviewOrigin: String, Codable, CaseIterable, Hashable {
+    case seed
+    case localSubmission
+    case remote
+}
+
+enum InstructorReviewSyncState: String, Codable, CaseIterable, Hashable {
+    case localOnly
+    case queuedUpload
+    case uploadedPending
+    case synced
+    case failed
+}
+
+enum InstructorGougeReportStatus: String, Codable, CaseIterable, Hashable {
+    case open
+    case dismissed
+    case resolved
+}
+
+enum InstructorReviewSyncPhase: Hashable {
+    case idle
+    case syncing
+    case offline
+    case failed
+}
+
+struct InstructorReviewSyncStatus: Hashable {
+    var phase: InstructorReviewSyncPhase
+    var lastSyncedAt: Date?
+    var errorMessage: String?
+
+    static let idle = InstructorReviewSyncStatus(phase: .idle, lastSyncedAt: nil, errorMessage: nil)
+}
+
+struct ModeratorSession: Codable, Hashable {
+    let email: String
+    let accessToken: String
+    let refreshToken: String
+    let expiresAt: Date
+
+    var isExpired: Bool {
+        expiresAt <= Date()
+    }
+}
+
+enum ModeratorSessionState: Hashable {
+    case signedOut
+    case signingIn
+    case signedIn(email: String)
+    case failed(message: String)
+}
+
 enum InstructorGougeReportTargetKind: String, Codable, CaseIterable, Hashable {
     case instructor
     case review
@@ -301,6 +354,14 @@ struct InstructorReviewEvent: Identifiable, Hashable, Codable {
     let id: String
     let displayName: String
     let kind: InstructorReviewEventKind
+    let syllabusCategory: SyllabusEventCategory?
+
+    init(id: String, displayName: String, kind: InstructorReviewEventKind, syllabusCategory: SyllabusEventCategory? = nil) {
+        self.id = id
+        self.displayName = displayName
+        self.kind = kind
+        self.syllabusCategory = syllabusCategory
+    }
 }
 
 struct Instructor: Identifiable, Hashable {
@@ -345,6 +406,9 @@ struct InstructorReview: Identifiable, Hashable {
     let reviewText: String
     let submittedAt: Date
     let status: ReviewStatus
+    let origin: InstructorReviewOrigin
+    let syncState: InstructorReviewSyncState
+    let submitterClientID: String?
 
     var overallScore: Double {
         Double(chillScore + gradingScore) / 2.0
@@ -396,6 +460,10 @@ struct InstructorGougeReport: Identifiable, Hashable {
     let reasonTitle: String
     let note: String?
     let submittedAt: Date
+    let status: InstructorGougeReportStatus
+    let origin: InstructorReviewOrigin
+    let syncState: InstructorReviewSyncState
+    let submitterClientID: String?
 
     var isReviewTarget: Bool {
         targetKind == .review
@@ -404,6 +472,7 @@ struct InstructorGougeReport: Identifiable, Hashable {
 
 struct InstructorGougeReportRecord: Identifiable, Codable, Hashable {
     let id: String
+    var remoteID: String?
     var targetKind: InstructorGougeReportTargetKind
     var instructorID: String
     var reviewID: String?
@@ -415,9 +484,16 @@ struct InstructorGougeReportRecord: Identifiable, Codable, Hashable {
     var reasonTitle: String
     var note: String?
     var submittedAt: Date
+    var status: InstructorGougeReportStatus
+    var origin: InstructorReviewOrigin
+    var syncState: InstructorReviewSyncState
+    var lastModifiedAt: Date
+    var lastSyncedAt: Date?
+    var submitterClientID: String?
 
     init(
         id: String = UUID().uuidString,
+        remoteID: String? = nil,
         targetKind: InstructorGougeReportTargetKind,
         instructorID: String,
         reviewID: String? = nil,
@@ -428,9 +504,16 @@ struct InstructorGougeReportRecord: Identifiable, Codable, Hashable {
         reviewText: String? = nil,
         reasonTitle: String,
         note: String? = nil,
-        submittedAt: Date = .now
+        submittedAt: Date = .now,
+        status: InstructorGougeReportStatus = .open,
+        origin: InstructorReviewOrigin = .localSubmission,
+        syncState: InstructorReviewSyncState = .localOnly,
+        lastModifiedAt: Date = .now,
+        lastSyncedAt: Date? = nil,
+        submitterClientID: String? = nil
     ) {
         self.id = id
+        self.remoteID = remoteID
         self.targetKind = targetKind
         self.instructorID = instructorID
         self.reviewID = reviewID
@@ -442,12 +525,19 @@ struct InstructorGougeReportRecord: Identifiable, Codable, Hashable {
         self.reasonTitle = reasonTitle
         self.note = note
         self.submittedAt = submittedAt
+        self.status = status
+        self.origin = origin
+        self.syncState = syncState
+        self.lastModifiedAt = lastModifiedAt
+        self.lastSyncedAt = lastSyncedAt
+        self.submitterClientID = submitterClientID
     }
 }
 
 struct InstructorReviewRecord: Identifiable, Codable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case id
+        case remoteID
         case instructorName
         case squadronID
         case eventName
@@ -458,9 +548,15 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         case reviewText
         case submittedAt
         case status
+        case origin
+        case syncState
+        case lastModifiedAt
+        case lastSyncedAt
+        case submitterClientID
     }
 
     let id: String
+    var remoteID: String?
     var instructorName: String
     var squadronID: String
     var eventName: String?
@@ -470,9 +566,15 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
     var reviewText: String
     var submittedAt: Date
     var status: ReviewStatus
+    var origin: InstructorReviewOrigin
+    var syncState: InstructorReviewSyncState
+    var lastModifiedAt: Date
+    var lastSyncedAt: Date?
+    var submitterClientID: String?
 
     init(
         id: String = UUID().uuidString,
+        remoteID: String? = nil,
         instructorName: String,
         squadronID: String,
         eventName: String?,
@@ -481,9 +583,15 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         gradingScore: Int,
         reviewText: String,
         submittedAt: Date = .now,
-        status: ReviewStatus
+        status: ReviewStatus,
+        origin: InstructorReviewOrigin = .localSubmission,
+        syncState: InstructorReviewSyncState = .localOnly,
+        lastModifiedAt: Date = .now,
+        lastSyncedAt: Date? = nil,
+        submitterClientID: String? = nil
     ) {
         self.id = id
+        self.remoteID = remoteID
         self.instructorName = instructorName
         self.squadronID = squadronID
         self.eventName = eventName
@@ -493,11 +601,17 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         self.reviewText = reviewText
         self.submittedAt = submittedAt
         self.status = status
+        self.origin = origin
+        self.syncState = syncState
+        self.lastModifiedAt = lastModifiedAt
+        self.lastSyncedAt = lastSyncedAt
+        self.submitterClientID = submitterClientID
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decodeIfPresent(String.self, forKey: .id) ?? UUID().uuidString
+        remoteID = try container.decodeIfPresent(String.self, forKey: .remoteID)
         instructorName = try container.decode(String.self, forKey: .instructorName)
         squadronID = try container.decode(String.self, forKey: .squadronID)
         chillScore = try container.decode(Int.self, forKey: .chillScore)
@@ -505,6 +619,11 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         reviewText = try container.decode(String.self, forKey: .reviewText)
         submittedAt = try container.decode(Date.self, forKey: .submittedAt)
         status = try container.decode(ReviewStatus.self, forKey: .status)
+        origin = try container.decodeIfPresent(InstructorReviewOrigin.self, forKey: .origin) ?? .seed
+        syncState = try container.decodeIfPresent(InstructorReviewSyncState.self, forKey: .syncState) ?? .synced
+        lastModifiedAt = try container.decodeIfPresent(Date.self, forKey: .lastModifiedAt) ?? submittedAt
+        lastSyncedAt = try container.decodeIfPresent(Date.self, forKey: .lastSyncedAt)
+        submitterClientID = try container.decodeIfPresent(String.self, forKey: .submitterClientID)
 
         if let eventKind = try container.decodeIfPresent(InstructorReviewEventKind.self, forKey: .eventKind) {
             self.eventName = try container.decodeIfPresent(String.self, forKey: .eventName)
@@ -522,6 +641,7 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(remoteID, forKey: .remoteID)
         try container.encode(instructorName, forKey: .instructorName)
         try container.encode(squadronID, forKey: .squadronID)
         try container.encodeIfPresent(eventName, forKey: .eventName)
@@ -531,6 +651,11 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         try container.encode(reviewText, forKey: .reviewText)
         try container.encode(submittedAt, forKey: .submittedAt)
         try container.encode(status, forKey: .status)
+        try container.encode(origin, forKey: .origin)
+        try container.encode(syncState, forKey: .syncState)
+        try container.encode(lastModifiedAt, forKey: .lastModifiedAt)
+        try container.encodeIfPresent(lastSyncedAt, forKey: .lastSyncedAt)
+        try container.encodeIfPresent(submitterClientID, forKey: .submitterClientID)
     }
 }
 

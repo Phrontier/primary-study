@@ -237,6 +237,7 @@ struct FlashcardDefinition: Codable {
 
 struct ReferenceStudyConfigFile: Codable {
     let libraryStudyHubs: [ReferenceStudyHubConfig]
+    let discussionItemEmergencyProcedureAliases: [String: String]?
 }
 
 struct ReferenceStudyHubConfig: Codable {
@@ -295,6 +296,92 @@ struct VideoAsset: Codable {
 
 struct EventOverrideFile: Codable {
     let events: [EventOverride]
+}
+
+struct SyllabusEventReferenceFile: Codable {
+    let sourceDocumentTitle: String
+    let sourceDocumentDate: String
+    let generatedAt: Date
+    let aliases: [String: [String]]
+    let events: [SyllabusEventReferenceEventRecord]
+}
+
+struct SyllabusEventReferenceEventRecord: Codable {
+    let code: String
+    let category: String
+    let categoryDisplayName: String
+    let media: String
+    let eventKind: String
+    let isCheckride: Bool
+    let isSolo: Bool
+    let blockCode: String
+    let blockTitle: String
+    let discussionItems: [String]
+    let sourcePages: [Int]
+    let mediaNotes: String?
+    let legacyReviewAliases: [String]
+}
+
+struct SyllabusEventAuditReport: Codable {
+    let generatedAt: Date
+    let canonicalEventCount: Int
+    let canonicalEventsMissingFromManifest: [String]
+    let canonicalEventsMissingAuthoredNotes: [String]
+    let authoredNotesCoverageIssues: [AuthoredNotesCoverageIssue]
+    let legacyAliasAttachmentsInUse: [LegacyAliasAttachmentIssue]
+    let unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue]
+    let emergencyProcedureAliasIssues: [EmergencyProcedureAliasIssue]
+    let missingEmergencyProcedureCompanions: [EmergencyProcedureAuditIssue]
+}
+
+struct AuthoredNotesCoverageIssue: Codable {
+    let code: String
+    let missingCanonicalItems: [String]
+    let unexpectedPrimaryItems: [String]
+}
+
+struct LegacyAliasAttachmentIssue: Codable {
+    let canonicalCode: String
+    let aliasCode: String
+    let filePaths: [String]
+}
+
+struct EmergencyProcedureAuditIssue: Codable {
+    let eventCode: String
+    let discussionItem: String
+    let canonicalTitle: String?
+    let reason: String
+}
+
+struct EmergencyProcedureAliasIssue: Codable {
+    let discussionItemKey: String
+    let canonicalTitle: String
+    let reason: String
+}
+
+struct CanonicalReferenceCardTemplate {
+    let id: String
+    let prompt: String
+    let answer: String
+    let tags: [String]
+    let kind: FlashcardKind
+    let requiresVerbatim: Bool
+    let companionGroupID: String?
+    let normalizedTitle: String
+}
+
+struct CanonicalEmergencyProcedureReferenceDeck {
+    let allCards: [CanonicalReferenceCardTemplate]
+    let epCardsByNormalizedTitle: [String: CanonicalReferenceCardTemplate]
+    let nwcCardsByCompanionGroupID: [String: CanonicalReferenceCardTemplate]
+}
+
+struct SyllabusFlashcardBuildResult {
+    let generatedDiscussionItemCards: [FlashcardDefinition]
+    let deckCardIDsByEvent: [String: [String]]
+    let referenceCardEventAssignments: [String: Set<String>]
+    let unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue]
+    let missingEmergencyProcedureCompanions: [EmergencyProcedureAuditIssue]
 }
 
 struct EventOverride: Codable {
@@ -367,6 +454,13 @@ struct ManifestBuilder {
     let flashcardLibrary: [FlashcardDefinition]
     let validEventCodes: Set<String>
     let referenceStudyConfig: ReferenceStudyConfigFile
+    let syllabusReference: [String: SyllabusEventReferenceEventRecord]
+    let canonicalAttachmentAliases: [String: String]
+    let auditReportURL: URL
+    let syllabusDeckCardIDsByEvent: [String: [String]]
+    let unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue]
+    let emergencyProcedureAliasIssues: [EmergencyProcedureAliasIssue]
+    let missingEmergencyProcedureCompanions: [EmergencyProcedureAuditIssue]
 
     private let phaseSeeds: [PhaseSeed] = [
         PhaseSeed(folderName: "1. FAM (Contacts)", id: "contacts", title: "Contacts", summary: "Contact phase prep with aircraft systems, procedures, patterns, and foundational flying workflows.", iconName: "airplane"),
@@ -382,6 +476,23 @@ struct ManifestBuilder {
         ("3. Flights", .flights, "Student-planned flight events with gradesheets, procedures, shared references, and execution aids.")
     ]
 
+    private static let placeholderDiscussionItemAnswer = "Answer pending generation."
+
+    private let syllabusCategoryByPhaseID: [String: String] = [
+        "contacts": "familiarization",
+        "instruments": "instruments",
+        "vnav": "navigation",
+        "formation": "formation",
+        "capstone": "capstone"
+    ]
+
+    private let supplementalPrimaryTitles: Set<String> = [
+        "required procedures",
+        "optional procedures"
+    ]
+
+    private static let xmlSourceDirectory = "Primary Gouge/AppContent/XMLSources"
+
     init(rootURL: URL) throws {
         self.rootURL = rootURL
 
@@ -392,6 +503,9 @@ struct ManifestBuilder {
         let groupedFlashcardsURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/FlashcardsByEvent.json")
         let flashcardImagesURL = currentDirectory.appendingPathComponent("Contents/FlashcardImages", isDirectory: true)
         let referenceConfigURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/ReferenceStudyConfig.json")
+        let syllabusReferenceURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/SyllabusEventReference.json")
+        let xmlDirectoryURL = currentDirectory.appendingPathComponent(Self.xmlSourceDirectory, isDirectory: true)
+        self.auditReportURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/SyllabusEventAuditReport.json")
 
         let legacyOverrides: [String: EventOverride]
         if let data = try? Data(contentsOf: overridesURL),
@@ -412,26 +526,66 @@ struct ManifestBuilder {
             self.videoLibrary = []
         }
 
-        self.validEventCodes = Self.discoverEventCodes(under: rootURL).union(self.eventOverrides.keys)
+        let syllabusDecoder = JSONDecoder()
+        syllabusDecoder.dateDecodingStrategy = .iso8601
+        if let data = try? Data(contentsOf: syllabusReferenceURL),
+           let file = try? syllabusDecoder.decode(SyllabusEventReferenceFile.self, from: data) {
+            self.syllabusReference = Dictionary(
+                uniqueKeysWithValues: file.events.map { (Self.normalizeCode($0.code), $0) }
+            )
+        } else {
+            self.syllabusReference = [:]
+        }
+        self.canonicalAttachmentAliases = Self.buildCanonicalAttachmentAliases(from: syllabusReference)
+        self.validEventCodes = Self.discoverEventCodes(under: rootURL)
+            .union(self.eventOverrides.keys)
+            .union(self.syllabusReference.keys)
+            .union(self.canonicalAttachmentAliases.keys)
+
+        if let data = try? Data(contentsOf: referenceConfigURL),
+           let file = try? JSONDecoder().decode(ReferenceStudyConfigFile.self, from: data) {
+            self.referenceStudyConfig = file
+        } else {
+            self.referenceStudyConfig = ReferenceStudyConfigFile(libraryStudyHubs: [], discussionItemEmergencyProcedureAliases: [:])
+        }
+
         let groupedFlashcardSource = try Self.loadGroupedFlashcardSource(
             at: groupedFlashcardsURL,
             validEventCodes: validEventCodes
         )
         self.groupedFlashcardSections = groupedFlashcardSource.sections
         self.groupedLibraryCards = groupedFlashcardSource.libraryCards
-        self.flashcardLibrary = try Self.materializeGroupedFlashcards(
-            from: groupedFlashcardSections,
-            libraryCards: groupedLibraryCards,
-            validEventCodes: validEventCodes,
-            imageRootURL: flashcardImagesURL
+
+        let canonicalEmergencyProcedureReferenceDeck = try Self.loadCanonicalEmergencyProcedureReferenceDeck(from: xmlDirectoryURL)
+        let emergencyProcedureAliasValidation = Self.validateEmergencyProcedureAliases(
+            referenceStudyConfig.discussionItemEmergencyProcedureAliases ?? [:],
+            availableEmergencyProcedures: canonicalEmergencyProcedureReferenceDeck.epCardsByNormalizedTitle
+        )
+        self.emergencyProcedureAliasIssues = emergencyProcedureAliasValidation
+
+        let syllabusFlashcardBuildResult = try Self.buildSyllabusEventFlashcards(
+            from: syllabusReference,
+            emergencyProcedureReferenceDeck: canonicalEmergencyProcedureReferenceDeck,
+            emergencyProcedureAliases: referenceStudyConfig.discussionItemEmergencyProcedureAliases ?? [:],
+            placeholderAnswer: Self.placeholderDiscussionItemAnswer
+        )
+        self.syllabusDeckCardIDsByEvent = syllabusFlashcardBuildResult.deckCardIDsByEvent
+        self.unresolvedEmergencyProcedureItems = syllabusFlashcardBuildResult.unresolvedEmergencyProcedureItems
+        self.missingEmergencyProcedureCompanions = syllabusFlashcardBuildResult.missingEmergencyProcedureCompanions
+
+        let canonicalReferenceCards = Self.materializeCanonicalReferenceCards(
+            from: canonicalEmergencyProcedureReferenceDeck,
+            eventAssignments: syllabusFlashcardBuildResult.referenceCardEventAssignments,
+            syllabusReference: syllabusReference
         )
 
-        if let data = try? Data(contentsOf: referenceConfigURL),
-           let file = try? JSONDecoder().decode(ReferenceStudyConfigFile.self, from: data) {
-            self.referenceStudyConfig = file
-        } else {
-            self.referenceStudyConfig = ReferenceStudyConfigFile(libraryStudyHubs: [])
-        }
+        self.flashcardLibrary = Self.dedupeFlashcards(
+            syllabusFlashcardBuildResult.generatedDiscussionItemCards + (try Self.materializeGroupedFlashcards(
+                libraryCards: groupedLibraryCards,
+                validEventCodes: validEventCodes,
+                imageRootURL: flashcardImagesURL
+            )) + canonicalReferenceCards
+            )
     }
 
     private static func loadEventOverrideDirectory(at url: URL) -> [String: EventOverride] {
@@ -510,8 +664,215 @@ struct ManifestBuilder {
         return (normalizedSections, file.libraryCards ?? [])
     }
 
+    private static func buildCanonicalAttachmentAliases(from reference: [String: SyllabusEventReferenceEventRecord]) -> [String: String] {
+        var aliases: [String: String] = [:]
+
+        for (canonicalCode, event) in reference {
+            for alias in event.legacyReviewAliases {
+                let normalizedAlias = normalizeCode(alias)
+                guard !normalizedAlias.isEmpty, normalizedAlias != canonicalCode else { continue }
+                aliases[normalizedAlias] = canonicalCode
+            }
+        }
+
+        return aliases
+    }
+
+    private static func loadCanonicalEmergencyProcedureReferenceDeck(from xmlDirectoryURL: URL) throws -> CanonicalEmergencyProcedureReferenceDeck {
+        let epCards = try parseCanonicalReferenceDeck(
+            fileURL: xmlDirectoryURL.appendingPathComponent("T-6 EP's.xml"),
+            filter: .ep,
+            epGroupIDs: [:]
+        )
+        let epGroupIDs = Dictionary(uniqueKeysWithValues: epCards.map { ($0.normalizedTitle, $0.normalizedTitle) })
+        let nwcCards = try parseCanonicalReferenceDeck(
+            fileURL: xmlDirectoryURL.appendingPathComponent("EP's N_W_C.xml"),
+            filter: .nwc,
+            epGroupIDs: epGroupIDs
+        )
+
+        return CanonicalEmergencyProcedureReferenceDeck(
+            allCards: epCards + nwcCards,
+            epCardsByNormalizedTitle: Dictionary(uniqueKeysWithValues: epCards.map { ($0.normalizedTitle, $0) }),
+            nwcCardsByCompanionGroupID: Dictionary(uniqueKeysWithValues: nwcCards.compactMap { card in
+                guard let companionGroupID = card.companionGroupID else { return nil }
+                return (companionGroupID, card)
+            })
+        )
+    }
+
+    private static func validateEmergencyProcedureAliases(
+        _ aliases: [String: String],
+        availableEmergencyProcedures: [String: CanonicalReferenceCardTemplate]
+    ) -> [EmergencyProcedureAliasIssue] {
+        aliases.keys.sorted().compactMap { aliasKey in
+            guard let canonicalTitle = aliases[aliasKey] else { return nil }
+            let normalizedCanonicalTitle = normalizeReferenceTitle(canonicalTitle)
+            guard availableEmergencyProcedures[normalizedCanonicalTitle] == nil else { return nil }
+            return EmergencyProcedureAliasIssue(
+                discussionItemKey: normalizedText(aliasKey),
+                canonicalTitle: canonicalTitle,
+                reason: "Alias points to a canonical emergency procedure title that was not found in the XML source."
+            )
+        }
+    }
+
+    private static func buildSyllabusEventFlashcards(
+        from reference: [String: SyllabusEventReferenceEventRecord],
+        emergencyProcedureReferenceDeck: CanonicalEmergencyProcedureReferenceDeck,
+        emergencyProcedureAliases: [String: String],
+        placeholderAnswer: String
+    ) throws -> SyllabusFlashcardBuildResult {
+        let normalizedAliasMap = Dictionary(
+            uniqueKeysWithValues: emergencyProcedureAliases.map { (normalizedText($0.key), normalizeReferenceTitle($0.value)) }
+        )
+
+        var generatedDiscussionItemCards: [FlashcardDefinition] = []
+        var deckCardIDsByEvent: [String: [String]] = [:]
+        var referenceCardEventAssignments: [String: Set<String>] = [:]
+        var unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue] = []
+        var missingEmergencyProcedureCompanions: [EmergencyProcedureAuditIssue] = []
+
+        for event in reference.values.sorted(by: { normalizeCode($0.code) < normalizeCode($1.code) }) {
+            let normalizedCode = normalizeCode(event.code)
+            let categoryKind = event.eventKind.lowercased() == "flight" ? StudyCategoryKind.flights : StudyCategoryKind.sims
+            var deckCardIDs: [String] = []
+
+            for (index, rawPrompt) in event.discussionItems.enumerated() {
+                let normalizedDiscussionItem = normalizeReferenceTitle(rawPrompt)
+                let matchedEmergencyProcedure = emergencyProcedureReferenceDeck.epCardsByNormalizedTitle[normalizedDiscussionItem]
+                    ?? normalizedAliasMap[normalizedText(rawPrompt)].flatMap { emergencyProcedureReferenceDeck.epCardsByNormalizedTitle[$0] }
+
+                if let emergencyProcedureCard = matchedEmergencyProcedure {
+                    deckCardIDs.append(emergencyProcedureCard.id)
+                    referenceCardEventAssignments[emergencyProcedureCard.id, default: []].insert(normalizedCode)
+
+                    guard let companionGroupID = emergencyProcedureCard.companionGroupID,
+                          let nwcCard = emergencyProcedureReferenceDeck.nwcCardsByCompanionGroupID[companionGroupID] else {
+                        missingEmergencyProcedureCompanions.append(
+                            EmergencyProcedureAuditIssue(
+                                eventCode: normalizedCode,
+                                discussionItem: rawPrompt,
+                                canonicalTitle: emergencyProcedureCard.prompt,
+                                reason: "Matched emergency procedure is missing its canonical companion N/W/C card."
+                            )
+                        )
+                        continue
+                    }
+
+                    deckCardIDs.append(nwcCard.id)
+                    referenceCardEventAssignments[nwcCard.id, default: []].insert(normalizedCode)
+                    continue
+                }
+
+                if looksLikeEmergencyProcedureDiscussionItem(rawPrompt) {
+                    unresolvedEmergencyProcedureItems.append(
+                        EmergencyProcedureAuditIssue(
+                            eventCode: normalizedCode,
+                            discussionItem: rawPrompt,
+                            canonicalTitle: nil,
+                            reason: "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+                        )
+                    )
+                }
+
+                let displayPrompt = titleCasedDiscussionItemPrompt(rawPrompt)
+                let card = FlashcardDefinition(
+                    id: sanitizedIdentifier("flashcard-\(normalizedCode)-discussion-item-\(index + 1)"),
+                    prompt: displayPrompt,
+                    answer: placeholderAnswer,
+                    imageRelativePath: nil,
+                    tags: buildSyllabusFlashcardTags(for: event, prompt: displayPrompt),
+                    studyCategories: [categoryKind],
+                    eventCodes: [normalizedCode],
+                    kind: .standard,
+                    requiresVerbatim: false,
+                    companionGroupID: nil
+                )
+                generatedDiscussionItemCards.append(card)
+                deckCardIDs.append(card.id)
+            }
+
+            deckCardIDsByEvent[normalizedCode] = deckCardIDs
+        }
+
+        return SyllabusFlashcardBuildResult(
+            generatedDiscussionItemCards: generatedDiscussionItemCards,
+            deckCardIDsByEvent: deckCardIDsByEvent,
+            referenceCardEventAssignments: referenceCardEventAssignments,
+            unresolvedEmergencyProcedureItems: unresolvedEmergencyProcedureItems,
+            missingEmergencyProcedureCompanions: missingEmergencyProcedureCompanions
+        )
+    }
+
+    private static func buildSyllabusFlashcardTags(for event: SyllabusEventReferenceEventRecord, prompt: String) -> [String] {
+        var tags: [String] = [
+            normalizeCode(event.code).lowercased(),
+            categoryTag(for: event.category),
+            event.eventKind.lowercased(),
+            "discussion-item"
+        ]
+
+        let normalizedPrompt = normalizedText(prompt)
+        if normalizedPrompt.contains("emergency") ||
+            normalizedPrompt.contains("engine failure") ||
+            normalizedPrompt.contains("pel") ||
+            normalizedPrompt.contains("elp") ||
+            normalizedPrompt.contains("lost aircraft") ||
+            normalizedPrompt.contains("unintentional instrument") {
+            tags.append("emergency-procedures")
+        }
+
+        if normalizedPrompt.contains("maneuver") ||
+            normalizedPrompt.contains("landing") ||
+            normalizedPrompt.contains("takeoff") ||
+            normalizedPrompt.contains("approach") {
+            tags.append("maneuvers")
+        }
+
+        return uniqueStrings(tags)
+    }
+
+    private static func categoryTag(for category: String) -> String {
+        switch category {
+        case "familiarization":
+            return "fam"
+        case "instruments":
+            return "instruments"
+        case "navigation":
+            return "nav"
+        case "formation":
+            return "formation"
+        case "capstone":
+            return "capstone"
+        default:
+            return normalizedText(category)
+        }
+    }
+
+    private static func materializeCanonicalReferenceCards(
+        from deck: CanonicalEmergencyProcedureReferenceDeck,
+        eventAssignments: [String: Set<String>],
+        syllabusReference: [String: SyllabusEventReferenceEventRecord]
+    ) -> [FlashcardDefinition] {
+        deck.allCards.map { card in
+            let eventCodes = sortedEventCodes(eventAssignments[card.id] ?? [])
+            return FlashcardDefinition(
+                id: card.id,
+                prompt: card.prompt,
+                answer: card.answer,
+                imageRelativePath: nil,
+                tags: card.tags,
+                studyCategories: studyCategories(for: eventCodes, syllabusReference: syllabusReference),
+                eventCodes: eventCodes,
+                kind: card.kind,
+                requiresVerbatim: card.requiresVerbatim,
+                companionGroupID: card.companionGroupID
+            )
+        }
+    }
+
     private static func materializeGroupedFlashcards(
-        from sections: [String: GroupedFlashcardEventSection],
         libraryCards: [GroupedFlashcardSourceCard],
         validEventCodes: Set<String>,
         imageRootURL: URL
@@ -519,47 +880,18 @@ struct ManifestBuilder {
         var cards: [FlashcardDefinition] = []
         var seenExplicitIDs = Set<String>()
 
-        for eventCode in sections.keys.sorted() {
-            guard let section = sections[eventCode] else { continue }
-
-            for (index, card) in section.cards.enumerated() {
-                let explicitSecondaryCodes = (card.alsoIncludeInEvents ?? []).map(normalizeCode)
-                let eventCodes = uniqueEventCodes([eventCode] + explicitSecondaryCodes)
-
-                for mappedCode in eventCodes {
-                    guard validEventCodes.contains(mappedCode) else {
-                        throw ManifestBuildError(message: "Flashcard '\(card.prompt)' references unknown event code '\(mappedCode)'.")
-                    }
-                }
-
-                if let explicitID = card.id {
-                    guard seenExplicitIDs.insert(explicitID).inserted else {
-                        throw ManifestBuildError(message: "Duplicate flashcard id '\(explicitID)' found in grouped flashcard source.")
-                    }
-                }
-
-                let fallbackID = sanitizedIdentifier(
-                    "flashcard-\(eventCode)-\(String(sanitizedIdentifier(card.prompt).prefix(48)))-\(index + 1)"
-                )
-
-                cards.append(
-                    FlashcardDefinition(
-                        id: card.id ?? fallbackID,
-                        prompt: card.prompt,
-                        answer: card.answer,
-                        imageRelativePath: try manifestImageRelativePath(for: card.image, imageRootURL: imageRootURL),
-                        tags: card.tags ?? [],
-                        studyCategories: card.studyCategories ?? [],
-                        eventCodes: eventCodes,
-                        kind: card.kind ?? .standard,
-                        requiresVerbatim: false,
-                        companionGroupID: nil
-                    )
-                )
-            }
-        }
-
         for (index, card) in libraryCards.enumerated() {
+            if isLegacyEmergencyProcedureReferenceCard(card) {
+                continue
+            }
+
+            let eventCodes = uniqueEventCodes((card.alsoIncludeInEvents ?? []).map(normalizeCode))
+            for mappedCode in eventCodes {
+                guard validEventCodes.contains(mappedCode) else {
+                    throw ManifestBuildError(message: "Library flashcard '\(card.prompt)' references unknown event code '\(mappedCode)'.")
+                }
+            }
+
             if let explicitID = card.id {
                 guard seenExplicitIDs.insert(explicitID).inserted else {
                     throw ManifestBuildError(message: "Duplicate flashcard id '\(explicitID)' found in grouped flashcard source.")
@@ -578,7 +910,7 @@ struct ManifestBuilder {
                     imageRelativePath: try manifestImageRelativePath(for: card.image, imageRootURL: imageRootURL),
                     tags: card.tags ?? [],
                     studyCategories: card.studyCategories ?? [],
-                    eventCodes: [],
+                    eventCodes: eventCodes,
                     kind: card.kind ?? .standard,
                     requiresVerbatim: false,
                     companionGroupID: nil
@@ -587,6 +919,11 @@ struct ManifestBuilder {
         }
 
         return dedupeFlashcards(cards)
+    }
+
+    private static func isLegacyEmergencyProcedureReferenceCard(_ card: GroupedFlashcardSourceCard) -> Bool {
+        let tags = Set(card.tags ?? [])
+        return tags.contains(FlashcardFilterToken.ep.tagValue) || tags.contains(FlashcardFilterToken.nwc.tagValue)
     }
 
     private static func manifestImageRelativePath(for image: String?, imageRootURL: URL) throws -> String? {
@@ -676,7 +1013,15 @@ struct ManifestBuilder {
         let videos = videoLibrary
         let procedureBlocks = buildProcedureBlocks()
         let calloutBlocks = buildCalloutBlocks()
-        return StudyManifest(phases: phases, flashcards: flashcards, sharedResources: sharedResources, libraryStudyHubs: libraryStudyHubs, videos: videos, procedureBlocks: procedureBlocks, calloutBlocks: calloutBlocks)
+        let manifest = StudyManifest(phases: phases, flashcards: flashcards, sharedResources: sharedResources, libraryStudyHubs: libraryStudyHubs, videos: videos, procedureBlocks: procedureBlocks, calloutBlocks: calloutBlocks)
+        try writeAuditReport(for: manifest)
+        if !missingEmergencyProcedureCompanions.isEmpty {
+            let details = missingEmergencyProcedureCompanions
+                .map { "\($0.eventCode): \($0.discussionItem)" }
+                .joined(separator: ", ")
+            throw ManifestBuildError(message: "Matched emergency procedures are missing canonical companion N/W/C cards: \(details)")
+        }
+        return manifest
     }
 
     private func buildPhase(from seed: PhaseSeed) throws -> Phase {
@@ -695,6 +1040,10 @@ struct ManifestBuilder {
     }
 
     private func buildEvents(in categoryURL: URL, phaseID: String, categoryKind: StudyCategoryKind) throws -> [Event] {
+        if categoryKind != .groundSchool, syllabusCategoryByPhaseID[phaseID] != nil {
+            return buildCanonicalSyllabusEvents(in: categoryURL, phaseID: phaseID, categoryKind: categoryKind)
+        }
+
         let files = allFiles(under: categoryURL)
         let grouped = Dictionary(grouping: files.compactMap { file -> (String, URL)? in
             guard let code = eventCode(from: file.lastPathComponent) else { return nil }
@@ -716,10 +1065,29 @@ struct ManifestBuilder {
         return events.sorted { $0.code < $1.code }
     }
 
+    private func buildCanonicalSyllabusEvents(in categoryURL: URL, phaseID: String, categoryKind: StudyCategoryKind) -> [Event] {
+        let files = allFiles(under: categoryURL)
+        let canonicalEvents = canonicalSyllabusEvents(forPhaseID: phaseID, categoryKind: categoryKind)
+        let allowedCodes = Set(canonicalEvents.map { normalizeCode($0.code) })
+        let groupedFiles = groupedFilesByCanonicalCode(files, allowedCodes: allowedCodes)
+
+        return canonicalEvents.map { event in
+            let code = normalizeCode(event.code)
+            return buildEvent(
+                code: code,
+                files: groupedFiles[code] ?? [],
+                phaseID: phaseID,
+                categoryKind: categoryKind
+            )
+        }
+    }
+
     private func buildEvent(code: String, files: [URL], phaseID: String, categoryKind: StudyCategoryKind) -> Event {
         let sortedFiles = files.sorted { $0.lastPathComponent < $1.lastPathComponent }
         let sourceDocuments = sortedFiles.filter(isUserVisibleDocumentFile(_:)).map(buildSourceDocument)
-        let override = eventOverrides[normalizeCode(code)]
+        let normalizedCode = normalizeCode(code)
+        let override = eventOverrides[normalizedCode]
+        let syllabusEvent = syllabusReference[normalizedCode]
 
         let questionBanks = sortedFiles
             .filter { isQuestionFile($0.lastPathComponent) }
@@ -738,14 +1106,16 @@ struct ManifestBuilder {
         let noteCandidate = sortedFiles.first(where: isStudyNoteFile(_:))
         let noteText = noteCandidate.flatMap(extractText)
         let overview = override?.overview ?? buildOverview(for: code, phaseID: phaseID, categoryKind: categoryKind, text: noteText)
-        let studyNotes = override?.studyNotes ?? noteText.flatMap { buildStudyNotes(from: $0, code: code, categoryKind: categoryKind) }
+        let studyNotes = override?.studyNotes
+            ?? buildStudyNotes(fromSyllabusReferenceFor: code)
+            ?? noteText.flatMap { buildStudyNotes(from: $0, code: code, categoryKind: categoryKind) }
         let primaryDocumentIDs = resolvePrimaryDocumentIDs(from: sourceDocuments, override: override)
         let flashcardDecks = resolvedFlashcardDecks(for: code, override: override)
 
         let scriptTemplate = buildScriptTemplate(for: code, phaseID: phaseID, categoryKind: categoryKind)
         let resourceLinks = override?.sharedResources ?? defaultResourceLinks(for: phaseID, categoryKind: categoryKind, files: sortedFiles)
         let videoLinks = override?.videos ?? []
-        let title = override?.title ?? inferTitle(for: code, from: sortedFiles)
+        let title = syllabusEvent == nil ? (override?.title ?? inferTitle(for: code, from: sortedFiles)) : code
         let summary = override?.summary ?? summaryText(from: overview)
 
         return Event(
@@ -763,7 +1133,7 @@ struct ManifestBuilder {
             scriptTemplate: scriptTemplate,
             resourceLinks: resourceLinks,
             videoLinks: videoLinks,
-            tags: [phaseID, categoryKind.rawValue]
+            tags: uniqueStrings([phaseID, categoryKind.rawValue, normalizedCode.lowercased()])
         )
     }
 
@@ -831,6 +1201,24 @@ struct ManifestBuilder {
                 EventStudyNotesSection(
                     title: nil,
                     items: Array(focusAreas).map { EventStudyNotesItem(text: $0) }
+                )
+            ]
+        )
+    }
+
+    private func buildStudyNotes(fromSyllabusReferenceFor code: String) -> EventStudyNotes? {
+        guard let event = syllabusReference[normalizeCode(code)], !event.discussionItems.isEmpty else {
+            return nil
+        }
+
+        let summary = "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+        return EventStudyNotes(
+            headline: "Discussion items",
+            summary: summary,
+            sections: [
+                EventStudyNotesSection(
+                    title: event.blockTitle,
+                    items: event.discussionItems.map { EventStudyNotesItem(text: $0) }
                 )
             ]
         )
@@ -926,7 +1314,7 @@ struct ManifestBuilder {
 
     private func resolvedFlashcardDecks(for code: String, override: EventOverride?) -> [FlashcardDeck] {
         let normalizedCode = normalizeCode(code)
-        let cardIDs = flashcardLibrary
+        let cardIDs = syllabusDeckCardIDsByEvent[normalizedCode] ?? flashcardLibrary
             .filter { card in
                 card.eventCodes.contains { normalizeCode($0) == normalizedCode }
             }
@@ -937,15 +1325,186 @@ struct ManifestBuilder {
         return [
             FlashcardDeck(
                 id: sanitizeID("\(normalizedCode)-flashcards"),
-                title: groupedFlashcardSections[normalizedCode]?.deckTitle
-                    ?? override?.flashcardDeckTitle
-                    ?? "Discussion Item Flashcards",
-                summary: groupedFlashcardSections[normalizedCode]?.deckSummary
-                    ?? override?.flashcardDeckSummary
-                    ?? "Official discussion items and repeated memory references for focused recall practice.",
+                title: "\(normalizedCode) Discussion Item Flashcards",
+                summary: override?.flashcardDeckSummary
+                    ?? "Canonical syllabus discussion items for \(normalizedCode), ready for answer generation and event-specific study.",
                 cardIDs: cardIDs
             )
         ]
+    }
+
+    private func canonicalSyllabusEvents(forPhaseID phaseID: String, categoryKind: StudyCategoryKind) -> [SyllabusEventReferenceEventRecord] {
+        guard let syllabusCategory = syllabusCategoryByPhaseID[phaseID] else { return [] }
+
+        return syllabusReference.values
+            .filter { event in
+                guard event.category == syllabusCategory else { return false }
+                switch categoryKind {
+                case .sims:
+                    return event.eventKind.lowercased() == "sim"
+                case .flights:
+                    return event.eventKind.lowercased() == "flight"
+                case .groundSchool:
+                    return false
+                }
+            }
+            .sorted { normalizeCode($0.code) < normalizeCode($1.code) }
+    }
+
+    private func groupedFilesByCanonicalCode(_ files: [URL], allowedCodes: Set<String>) -> [String: [URL]] {
+        Dictionary(grouping: files.compactMap { file -> (String, URL)? in
+            guard let rawCode = eventCode(from: file.lastPathComponent) else { return nil }
+            let normalizedRawCode = normalizeCode(rawCode)
+            let canonicalCode = canonicalAttachmentAliases[normalizedRawCode] ?? normalizedRawCode
+            guard allowedCodes.contains(canonicalCode) else { return nil }
+            return (canonicalCode, file)
+        }, by: \.0).mapValues { $0.map(\.1) }
+    }
+
+    private func writeAuditReport(for manifest: StudyManifest) throws {
+        let canonicalCodes = syllabusReference.keys.sorted()
+        let manifestCodes = Set(
+            manifest.phases
+                .flatMap(\.categories)
+                .flatMap(\.events)
+                .map { normalizeCode($0.code) }
+        )
+
+        let report = SyllabusEventAuditReport(
+            generatedAt: Date(),
+            canonicalEventCount: canonicalCodes.count,
+            canonicalEventsMissingFromManifest: canonicalCodes.filter { !manifestCodes.contains($0) },
+            canonicalEventsMissingAuthoredNotes: canonicalCodes.filter { eventOverrides[normalizeCode($0)]?.studyNotes == nil },
+            authoredNotesCoverageIssues: authoredNotesCoverageIssues(),
+            legacyAliasAttachmentsInUse: legacyAliasAttachmentIssues(),
+            unresolvedEmergencyProcedureItems: unresolvedEmergencyProcedureItems,
+            emergencyProcedureAliasIssues: emergencyProcedureAliasIssues,
+            missingEmergencyProcedureCompanions: missingEmergencyProcedureCompanions
+        )
+
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let data = try encoder.encode(report)
+        try data.write(to: auditReportURL)
+    }
+
+    private func authoredNotesCoverageIssues() -> [AuthoredNotesCoverageIssue] {
+        syllabusReference.keys.sorted().compactMap { code in
+            guard let override = eventOverrides[code],
+                  let studyNotes = override.studyNotes,
+                  let referenceEvent = syllabusReference[code],
+                  !referenceEvent.discussionItems.isEmpty else {
+                return nil
+            }
+
+            let primaryItems = primaryDiscussionItems(from: studyNotes)
+            let allTexts = flattenedStudyNoteTexts(from: studyNotes)
+
+            let missingCanonicalItems = referenceEvent.discussionItems.filter { canonicalItem in
+                !allTexts.contains { notesText in itemsRoughlyMatch(canonicalItem, notesText) }
+            }
+
+            let unexpectedPrimaryItems = primaryItems.filter { item in
+                guard !supplementalPrimaryTitles.contains(normalizedText(item)) else { return false }
+                return !referenceEvent.discussionItems.contains { canonicalItem in
+                    itemsRoughlyMatch(canonicalItem, item)
+                }
+            }
+
+            guard !missingCanonicalItems.isEmpty || !unexpectedPrimaryItems.isEmpty else {
+                return nil
+            }
+
+            return AuthoredNotesCoverageIssue(
+                code: code,
+                missingCanonicalItems: missingCanonicalItems,
+                unexpectedPrimaryItems: unexpectedPrimaryItems
+            )
+        }
+    }
+
+    private func primaryDiscussionItems(from notes: EventStudyNotes) -> [String] {
+        var items: [String] = []
+
+        for section in notes.sections {
+            if let title = section.title?.trimmingCharacters(in: .whitespacesAndNewlines), !title.isEmpty {
+                items.append(title)
+            } else {
+                items.append(contentsOf: section.items.map(\.text))
+            }
+        }
+
+        return uniqueStrings(items)
+    }
+
+    private func flattenedStudyNoteTexts(from notes: EventStudyNotes) -> [String] {
+        var texts = primaryDiscussionItems(from: notes)
+
+        func walk(_ item: EventStudyNotesItem) {
+            texts.append(item.text)
+            item.children?.forEach(walk)
+        }
+
+        for section in notes.sections {
+            section.items.forEach(walk)
+        }
+
+        return uniqueStrings(texts)
+    }
+
+    private func itemsRoughlyMatch(_ lhs: String, _ rhs: String) -> Bool {
+        let lhsTokens = significantTokens(in: lhs)
+        let rhsTokens = significantTokens(in: rhs)
+        guard !lhsTokens.isEmpty, !rhsTokens.isEmpty else {
+            return normalizedText(lhs) == normalizedText(rhs)
+        }
+
+        let overlap = lhsTokens.intersection(rhsTokens).count
+        let requiredOverlap = min(lhsTokens.count, rhsTokens.count)
+        if overlap == requiredOverlap {
+            return true
+        }
+
+        return Double(overlap) / Double(requiredOverlap) >= 0.6
+    }
+
+    private func significantTokens(in value: String) -> Set<String> {
+        let ignoredWords: Set<String> = [
+            "a", "an", "and", "the", "to", "of", "or", "for", "in", "on", "prior",
+            "with", "all", "any", "be", "is"
+        ]
+
+        return Set(
+            Self.normalizedText(value)
+                .split(separator: " ")
+                .map(String.init)
+                .filter { $0.count > 1 && !ignoredWords.contains($0) }
+        )
+    }
+
+    private func legacyAliasAttachmentIssues() -> [LegacyAliasAttachmentIssue] {
+        let files = allFiles(under: rootURL)
+        var grouped: [String: [String: [String]]] = [:]
+
+        for file in files {
+            guard let rawCode = eventCode(from: file.lastPathComponent) else { continue }
+            let normalizedRawCode = normalizeCode(rawCode)
+            guard let canonicalCode = canonicalAttachmentAliases[normalizedRawCode] else { continue }
+
+            let relativePath = file.path.replacingOccurrences(of: rootURL.path + "/", with: "")
+            grouped[canonicalCode, default: [:]][normalizedRawCode, default: []].append(relativePath)
+        }
+
+        return grouped.keys.sorted().flatMap { canonicalCode in
+            grouped[canonicalCode, default: [:]].keys.sorted().map { aliasCode in
+                LegacyAliasAttachmentIssue(
+                    canonicalCode: canonicalCode,
+                    aliasCode: aliasCode,
+                    filePaths: grouped[canonicalCode]?[aliasCode, default: []].sorted() ?? []
+                )
+            }
+        }
     }
 
     private static func sanitizedIdentifier(_ value: String) -> String {
@@ -957,6 +1516,248 @@ struct ManifestBuilder {
             .joined()
             .replacingOccurrences(of: "--", with: "-")
             .trimmingCharacters(in: CharacterSet(charactersIn: "-"))
+    }
+
+    private static func normalizedText(_ value: String) -> String {
+        value
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+            .replacingOccurrences(of: "[^a-z0-9]+", with: " ", options: .regularExpression)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+    }
+
+    private func normalizedText(_ value: String) -> String {
+        Self.normalizedText(value)
+    }
+
+    private func uniqueStrings(_ values: [String]) -> [String] {
+        Self.uniqueStrings(values)
+    }
+
+    private static func uniqueStrings(_ values: [String]) -> [String] {
+        var seen = Set<String>()
+        var result: [String] = []
+
+        for value in values {
+            guard seen.insert(value).inserted else { continue }
+            result.append(value)
+        }
+
+        return result
+    }
+
+    private static func sortedEventCodes(_ eventCodes: Set<String>) -> [String] {
+        eventCodes.sorted()
+    }
+
+    private static func studyCategories(
+        for eventCodes: [String],
+        syllabusReference: [String: SyllabusEventReferenceEventRecord]
+    ) -> [StudyCategoryKind] {
+        uniqueStudyCategories(
+            eventCodes.compactMap { code in
+                guard let event = syllabusReference[normalizeCode(code)] else { return nil }
+                return event.eventKind.lowercased() == "flight" ? .flights : .sims
+            }
+        )
+    }
+
+    private static func uniqueStudyCategories(_ categories: [StudyCategoryKind]) -> [StudyCategoryKind] {
+        var seen = Set<StudyCategoryKind>()
+        var result: [StudyCategoryKind] = []
+
+        for category in categories {
+            guard seen.insert(category).inserted else { continue }
+            result.append(category)
+        }
+
+        return result
+    }
+
+    private static func parseCanonicalReferenceDeck(
+        fileURL: URL,
+        filter: FlashcardFilterToken,
+        epGroupIDs: [String: String]
+    ) throws -> [CanonicalReferenceCardTemplate] {
+        let text = try String(contentsOf: fileURL, encoding: .utf8)
+        let cardBlocks = regexMatches(for: #"<card>(.*?)</card>"#, in: text)
+
+        return cardBlocks.compactMap { cardXML in
+            guard let frontRaw = firstRegexMatch(for: #"<rich-text name='Front'>(.*?)</rich-text>"#, in: cardXML),
+                  let backRaw = firstRegexMatch(for: #"<rich-text name='Back'>(.*?)</rich-text>"#, in: cardXML) else {
+                return nil
+            }
+
+            let prompt = normalizedRichText(from: frontRaw)
+            let answer = normalizedRichText(from: backRaw)
+            guard !prompt.isEmpty, !answer.isEmpty else { return nil }
+
+            let groupID = normalizeReferenceTitle(prompt)
+            let companionGroupID: String?
+            switch filter {
+            case .ep:
+                companionGroupID = groupID
+            case .nwc:
+                companionGroupID = epGroupIDs[groupID]
+            case .limits:
+                companionGroupID = nil
+            }
+
+            return CanonicalReferenceCardTemplate(
+                id: canonicalReferenceCardID(filter: filter, title: prompt),
+                prompt: prompt,
+                answer: answer,
+                tags: [filter.tagValue],
+                kind: filter == .ep ? .ep : .standard,
+                requiresVerbatim: filter == .ep || filter == .nwc,
+                companionGroupID: companionGroupID,
+                normalizedTitle: groupID
+            )
+        }
+    }
+
+    private static func normalizedRichText(from rawXML: String) -> String {
+        var rendered = rawXML
+            .replacingOccurrences(of: "<br/>", with: "\n")
+            .replacingOccurrences(of: "<br />", with: "\n")
+            .replacingOccurrences(of: "</p>", with: "\n")
+            .replacingOccurrences(of: "<p>", with: "")
+            .replacingOccurrences(of: "<ol>", with: "")
+            .replacingOccurrences(of: "</ol>", with: "\n")
+            .replacingOccurrences(of: "<ul>", with: "")
+            .replacingOccurrences(of: "</ul>", with: "\n")
+            .replacingOccurrences(of: "<li>", with: "- ")
+            .replacingOccurrences(of: "</li>", with: "\n")
+            .replacingOccurrences(of: "&lt;", with: "<")
+            .replacingOccurrences(of: "&gt;", with: ">")
+            .replacingOccurrences(of: "&amp;", with: "&")
+            .replacingOccurrences(of: "&quot;", with: "\"")
+            .replacingOccurrences(of: "&#39;", with: "'")
+
+        rendered = rendered.replacingOccurrences(of: #"<[^>]+>"#, with: "", options: .regularExpression)
+        let lines = rendered
+            .components(separatedBy: .newlines)
+            .map { $0.replacingOccurrences(of: "\u{00A0}", with: " ") }
+            .map { $0.replacingOccurrences(of: #"\s+"#, with: " ", options: .regularExpression) }
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+        return lines.joined(separator: "\n")
+    }
+
+    private static func canonicalReferenceCardID(filter: FlashcardFilterToken, title: String) -> String {
+        sanitizedIdentifier("reference-\(filter.rawValue)-\(title)")
+    }
+
+    private static func normalizeReferenceTitle(_ title: String) -> String {
+        title
+            .lowercased()
+            .replacingOccurrences(of: "&amp;", with: "and")
+            .replacingOccurrences(of: "&", with: "and")
+            .replacingOccurrences(of: "/", with: " ")
+            .replacingOccurrences(of: #"[^\p{L}\p{N}]+"#, with: " ", options: .regularExpression)
+            .replacingOccurrences(of: #"\s+"#, with: " ", options: .regularExpression)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private static func titleCasedDiscussionItemPrompt(_ value: String) -> String {
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return trimmed }
+
+        var result = trimmed.lowercased().localizedCapitalized
+        result = result.replacingOccurrences(of: #"\bAnd\b"#, with: "and", options: [.regularExpression])
+        result = result.replacingOccurrences(of: #"\bOr\b"#, with: "or", options: [.regularExpression])
+        result = result.replacingOccurrences(of: #"\bOf\b"#, with: "of", options: [.regularExpression])
+        result = result.replacingOccurrences(of: #"\bIn\b"#, with: "in", options: [.regularExpression])
+        result = result.replacingOccurrences(of: #"\bOn\b"#, with: "on", options: [.regularExpression])
+        result = result.replacingOccurrences(of: #"\bTo\b"#, with: "to", options: [.regularExpression])
+        result = result.replacingOccurrences(of: #"\bThe\b"#, with: "the", options: [.regularExpression])
+        result = result.replacingOccurrences(of: #"\bA\b"#, with: "a", options: [.regularExpression])
+        result = result.replacingOccurrences(of: #"\bAn\b"#, with: "an", options: [.regularExpression])
+
+        let tokenReplacements: [(pattern: String, replacement: String)] = [
+            (#"\bEp\b"#, "EP"),
+            (#"\bN/W/C\b"#, "N/W/C"),
+            (#"\bCrm\b"#, "CRM"),
+            (#"\bPel/P\b"#, "PEL(P)"),
+            (#"\bPel\b"#, "PEL"),
+            (#"\bElp\b"#, "ELP"),
+            (#"\bOft\b"#, "OFT"),
+            (#"\bUtd/Mr\b"#, "UTD/MR"),
+            (#"\bUtd\b"#, "UTD"),
+            (#"\bVtd\b"#, "VTD"),
+            (#"\bT-6b\b"#, "T-6B"),
+            (#"\bRdo\b"#, "RDO"),
+            (#"\bOlf\b"#, "OLF"),
+            (#"\bSid\b"#, "SID"),
+            (#"\bStar\b"#, "STAR"),
+            (#"\bIls\b"#, "ILS"),
+            (#"\bVfr\b"#, "VFR"),
+            (#"\bIfr\b"#, "IFR"),
+            (#"\bAim\b"#, "AIM"),
+            (#"\bCfs\b"#, "CFS"),
+            (#"\bObogs\b"#, "OBOGS"),
+            (#"\bPmu\b"#, "PMU"),
+            (#"\bBfi\b"#, "BFI"),
+            (#"\bLop\b"#, "LOP")
+        ]
+
+        for replacement in tokenReplacements {
+            result = result.replacingOccurrences(
+                of: replacement.pattern,
+                with: replacement.replacement,
+                options: [.regularExpression]
+            )
+        }
+
+        if let firstCharacter = result.first {
+            result.replaceSubrange(result.startIndex...result.startIndex, with: String(firstCharacter).uppercased())
+        }
+
+        return result
+    }
+
+    private static func looksLikeEmergencyProcedureDiscussionItem(_ value: String) -> Bool {
+        let normalized = normalizedText(value)
+        let signals = [
+            "abort",
+            "engine failure",
+            "pel",
+            "elp",
+            "emergency",
+            "eject",
+            "forced landing",
+            "chip detector",
+            "fire",
+            "oil",
+            "power changes",
+            "airstart",
+            "obogs",
+            "fuel pressure",
+            "compressor stall",
+            "high fuel flow",
+            "precautionary",
+            "ground egress",
+            "cfs"
+        ]
+
+        return signals.contains { normalized.contains($0) }
+    }
+
+    private static func regexMatches(for pattern: String, in text: String) -> [String] {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: [.dotMatchesLineSeparators]) else {
+            return []
+        }
+
+        let range = NSRange(text.startIndex..., in: text)
+        return regex.matches(in: text, range: range).compactMap { match in
+            guard match.numberOfRanges > 1, let swiftRange = Range(match.range(at: 1), in: text) else { return nil }
+            return String(text[swiftRange])
+        }
+    }
+
+    private static func firstRegexMatch(for pattern: String, in text: String) -> String? {
+        regexMatches(for: pattern, in: text).first
     }
 
     private func defaultResourceLinks(for phaseID: String, categoryKind: StudyCategoryKind, files: [URL]) -> [EventResourceLink] {

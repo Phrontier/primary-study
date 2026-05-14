@@ -206,7 +206,9 @@ struct ReviewSubmissionView: View {
                         title: "Chill Factor",
                         placeholder: viewModel.canChooseRatings ? "Select chill factor" : "Choose an event first",
                         selection: viewModel.chillScore.map { InstructorRatingScale.label(for: $0, category: .chillFactor) },
-                        detail: viewModel.chillScore.map { "Score \($0) / 7" },
+                        detail: viewModel.chillScore.map {
+                            "Score \(InstructorRatingScale.format(average: InstructorRatingScale.tenScaleValue(for: Double($0)))) / 10"
+                        },
                         accent: AppTheme.success,
                         enabled: viewModel.canChooseRatings
                     ) {
@@ -217,7 +219,9 @@ struct ReviewSubmissionView: View {
                         title: "Grading Style",
                         placeholder: viewModel.canChooseRatings ? "Select grading style" : "Choose an event first",
                         selection: viewModel.gradingScore.map { InstructorRatingScale.label(for: $0, category: .gradingStyle) },
-                        detail: viewModel.gradingScore.map { "Score \($0) / 7" },
+                        detail: viewModel.gradingScore.map {
+                            "Score \(InstructorRatingScale.format(average: InstructorRatingScale.tenScaleValue(for: Double($0)))) / 10"
+                        },
                         accent: AppTheme.warning,
                         enabled: viewModel.canChooseRatings
                     ) {

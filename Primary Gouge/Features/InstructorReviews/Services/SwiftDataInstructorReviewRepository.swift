@@ -1,20 +1,28 @@
 import Foundation
 
 @MainActor
-final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
+final class LocalInstructorReviewRepository: InstructorReviewRepository {
     private struct InstructorReviewDatabase: Codable {
         var seedVersion: Int
+        var lastSuccessfulSyncAt: Date?
         var reviews: [InstructorReviewRecord]
         var reports: [InstructorGougeReportRecord]
 
-        init(seedVersion: Int = 0, reviews: [InstructorReviewRecord] = [], reports: [InstructorGougeReportRecord] = []) {
+        init(
+            seedVersion: Int = 0,
+            lastSuccessfulSyncAt: Date? = nil,
+            reviews: [InstructorReviewRecord] = [],
+            reports: [InstructorGougeReportRecord] = []
+        ) {
             self.seedVersion = seedVersion
+            self.lastSuccessfulSyncAt = lastSuccessfulSyncAt
             self.reviews = reviews
             self.reports = reports
         }
 
         private enum CodingKeys: String, CodingKey {
             case seedVersion
+            case lastSuccessfulSyncAt
             case reviews
             case reports
         }
@@ -22,6 +30,7 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             seedVersion = try container.decodeIfPresent(Int.self, forKey: .seedVersion) ?? 0
+            lastSuccessfulSyncAt = try container.decodeIfPresent(Date.self, forKey: .lastSuccessfulSyncAt)
             reviews = try container.decodeIfPresent([InstructorReviewRecord].self, forKey: .reviews) ?? []
             reports = try container.decodeIfPresent([InstructorGougeReportRecord].self, forKey: .reports) ?? []
         }
@@ -37,7 +46,7 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
 
     func seedIfNeeded() throws {
         if database.reviews.isEmpty {
-            database.reviews = InstructorReviewSeedData.reviews.map(Self.makeRecord(from:))
+            database.reviews = InstructorReviewSeedData.reviews.map(Self.makeSeedRecord(from:))
             database.seedVersion = InstructorReviewSeedData.currentSeedVersion
             try persist()
             return
@@ -90,6 +99,7 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
 
     func fetchOpenReports() -> [InstructorGougeReport] {
         database.reports
+            .filter { $0.status == .open }
             .map(makeReport(from:))
             .sorted { $0.submittedAt > $1.submittedAt }
     }
@@ -138,6 +148,53 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
     }
 
     func submitReview(_ submission: InstructorReviewSubmission) throws {
+        try enqueueReviewSubmission(submission, clientID: nil)
+    }
+
+    func submitReport(_ submission: InstructorGougeReportSubmission) throws {
+        try enqueueReport(submission, clientID: nil)
+    }
+
+    func dismissReport(id: String) async throws {
+        guard let index = database.reports.firstIndex(where: { $0.id == id }) else {
+            throw InstructorReviewRepositoryError.reviewNotFound
+        }
+
+        database.reports[index].status = .dismissed
+        database.reports[index].lastModifiedAt = .now
+        try persist()
+    }
+
+    func approveReview(id: String) async throws {
+        guard let index = database.reviews.firstIndex(where: { $0.id == id }) else {
+            throw InstructorReviewRepositoryError.reviewNotFound
+        }
+
+        database.reviews[index].status = .approved
+        database.reviews[index].syncState = .synced
+        database.reviews[index].lastModifiedAt = .now
+        try persist()
+    }
+
+    func rejectReview(id: String) async throws {
+        guard let index = database.reviews.firstIndex(where: { $0.id == id }) else {
+            throw InstructorReviewRepositoryError.reviewNotFound
+        }
+
+        database.reviews[index].status = .rejected
+        database.reviews[index].syncState = .synced
+        database.reviews[index].lastModifiedAt = .now
+        database.reports.indices
+            .filter { database.reports[$0].reviewID == id && database.reports[$0].status == .open }
+            .forEach {
+                database.reports[$0].status = .resolved
+                database.reports[$0].lastModifiedAt = .now
+            }
+        try persist()
+    }
+
+    func enqueueReviewSubmission(_ submission: InstructorReviewSubmission, clientID: String?) throws {
+        let now = Date()
         let record = InstructorReviewRecord(
             instructorName: submission.instructorName.trimmingCharacters(in: .whitespacesAndNewlines),
             squadronID: submission.squadron.id,
@@ -146,16 +203,22 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
             chillScore: InstructorRatingScale.clamped(submission.chillScore),
             gradingScore: InstructorRatingScale.clamped(submission.gradingScore),
             reviewText: submission.reviewText.trimmingCharacters(in: .whitespacesAndNewlines),
-            submittedAt: .now,
-            status: .pending
+            submittedAt: now,
+            status: .pending,
+            origin: .localSubmission,
+            syncState: .queuedUpload,
+            lastModifiedAt: now,
+            lastSyncedAt: nil,
+            submitterClientID: clientID
         )
 
         database.reviews.append(record)
         try persist()
     }
 
-    func submitReport(_ submission: InstructorGougeReportSubmission) throws {
+    func enqueueReport(_ submission: InstructorGougeReportSubmission, clientID: String?) throws {
         let trimmedNote = submission.note?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let now = Date()
         let record = InstructorGougeReportRecord(
             targetKind: submission.targetKind,
             instructorID: submission.instructorID,
@@ -166,39 +229,234 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
             eventKind: submission.eventKind,
             reviewText: submission.reviewText?.trimmingCharacters(in: .whitespacesAndNewlines),
             reasonTitle: submission.reasonTitle,
-            note: trimmedNote?.isEmpty == true ? nil : trimmedNote
+            note: trimmedNote?.isEmpty == true ? nil : trimmedNote,
+            submittedAt: now,
+            status: .open,
+            origin: .localSubmission,
+            syncState: .queuedUpload,
+            lastModifiedAt: now,
+            lastSyncedAt: nil,
+            submitterClientID: clientID
         )
 
         database.reports.append(record)
         try persist()
     }
 
-    func dismissReport(id: String) throws {
-        guard let index = database.reports.firstIndex(where: { $0.id == id }) else {
-            throw InstructorReviewRepositoryError.reviewNotFound
-        }
-
-        database.reports.remove(at: index)
-        try persist()
+    func fetchQueuedReviewUploads() -> [InstructorReviewRecord] {
+        database.reviews
+            .filter {
+                $0.origin == .localSubmission &&
+                $0.status == .pending &&
+                ($0.syncState == .queuedUpload || $0.syncState == .failed)
+            }
+            .sorted { $0.submittedAt < $1.submittedAt }
     }
 
-    func approveReview(id: String) throws {
-        guard let index = database.reviews.firstIndex(where: { $0.id == id }) else {
-            throw InstructorReviewRepositoryError.reviewNotFound
-        }
-
-        database.reviews[index].status = .approved
-        try persist()
+    func fetchQueuedReportUploads() -> [InstructorGougeReportRecord] {
+        database.reports
+            .filter {
+                $0.origin == .localSubmission &&
+                $0.status == .open &&
+                ($0.syncState == .queuedUpload || $0.syncState == .failed)
+            }
+            .sorted { $0.submittedAt < $1.submittedAt }
     }
 
-    func rejectReview(id: String) throws {
-        guard let index = database.reviews.firstIndex(where: { $0.id == id }) else {
-            throw InstructorReviewRepositoryError.reviewNotFound
+    func markReviewUploaded(localID: String, remoteID: String, syncedAt: Date) {
+        guard let index = database.reviews.firstIndex(where: { $0.id == localID }) else { return }
+        database.reviews[index].remoteID = remoteID
+        database.reviews[index].syncState = .uploadedPending
+        database.reviews[index].lastSyncedAt = syncedAt
+        database.reviews[index].submitterClientID = database.reviews[index].submitterClientID ?? database.reviews[index].submitterClientID
+        try? persist()
+    }
+
+    func markReviewUploadFailed(localID: String) {
+        guard let index = database.reviews.firstIndex(where: { $0.id == localID }) else { return }
+        database.reviews[index].syncState = .failed
+        try? persist()
+    }
+
+    func markReportUploaded(localID: String, remoteID: String, syncedAt: Date) {
+        guard let index = database.reports.firstIndex(where: { $0.id == localID }) else { return }
+        database.reports[index].remoteID = remoteID
+        database.reports[index].syncState = .synced
+        database.reports[index].lastSyncedAt = syncedAt
+        try? persist()
+    }
+
+    func markReportUploadFailed(localID: String) {
+        guard let index = database.reports.firstIndex(where: { $0.id == localID }) else { return }
+        database.reports[index].syncState = .failed
+        try? persist()
+    }
+
+    func applySubmissionStatuses(_ statuses: [RemoteSubmissionStatusSnapshot], syncedAt: Date) {
+        guard !statuses.isEmpty else { return }
+
+        for snapshot in statuses {
+            guard let index = database.reviews.firstIndex(where: { ($0.remoteID ?? $0.id) == snapshot.id }) else {
+                continue
+            }
+
+            database.reviews[index].status = snapshot.status
+            database.reviews[index].lastModifiedAt = snapshot.updatedAt
+            database.reviews[index].lastSyncedAt = syncedAt
+            switch snapshot.status {
+            case .approved, .rejected:
+                database.reviews[index].syncState = .synced
+            case .pending:
+                database.reviews[index].syncState = .uploadedPending
+            }
+        }
+        try? persist()
+    }
+
+    func applyReportStatuses(_ statuses: [RemoteReportStatusSnapshot], syncedAt: Date) {
+        guard !statuses.isEmpty else { return }
+
+        for snapshot in statuses {
+            guard let index = database.reports.firstIndex(where: { ($0.remoteID ?? $0.id) == snapshot.id }) else {
+                continue
+            }
+
+            database.reports[index].status = snapshot.status
+            database.reports[index].lastModifiedAt = snapshot.updatedAt
+            database.reports[index].lastSyncedAt = syncedAt
+            database.reports[index].syncState = snapshot.status == .open ? .synced : .synced
+        }
+        try? persist()
+    }
+
+    func upsertPublishedReviews(_ reviews: [InstructorReviewRecord], syncedAt: Date) {
+        let remoteIDs = Set(reviews.map(\.id))
+        for incoming in reviews {
+            if let index = database.reviews.firstIndex(where: { $0.id == incoming.id || $0.remoteID == incoming.remoteID }) {
+                database.reviews[index].remoteID = incoming.remoteID ?? incoming.id
+                database.reviews[index].instructorName = incoming.instructorName
+                database.reviews[index].squadronID = incoming.squadronID
+                database.reviews[index].eventName = incoming.eventName
+                database.reviews[index].eventKind = incoming.eventKind
+                database.reviews[index].chillScore = incoming.chillScore
+                database.reviews[index].gradingScore = incoming.gradingScore
+                database.reviews[index].reviewText = incoming.reviewText
+                database.reviews[index].submittedAt = incoming.submittedAt
+                database.reviews[index].status = .approved
+                database.reviews[index].syncState = .synced
+                database.reviews[index].lastModifiedAt = incoming.lastModifiedAt
+                database.reviews[index].lastSyncedAt = syncedAt
+                database.reviews[index].submitterClientID = incoming.submitterClientID ?? database.reviews[index].submitterClientID
+            } else {
+                var record = incoming
+                record.lastSyncedAt = syncedAt
+                database.reviews.append(record)
+            }
         }
 
-        database.reviews[index].status = .rejected
-        database.reports.removeAll { $0.reviewID == id }
-        try persist()
+        for index in database.reviews.indices {
+            let record = database.reviews[index]
+            guard record.status == .approved else { continue }
+            guard record.origin != .seed else { continue }
+            guard let remoteID = record.remoteID ?? Optional(record.id) else { continue }
+            guard !remoteIDs.contains(remoteID) else { continue }
+            database.reviews[index].status = .rejected
+            database.reviews[index].syncState = .synced
+            database.reviews[index].lastSyncedAt = syncedAt
+        }
+
+        try? persist()
+    }
+
+    func mergeModerationSnapshot(_ reviews: [InstructorReviewRecord], reports: [InstructorGougeReportRecord], syncedAt: Date) {
+        let pendingIDs = Set(reviews.map(\.id))
+        let openReportIDs = Set(reports.map(\.id))
+
+        for incoming in reviews {
+            if let index = database.reviews.firstIndex(where: { $0.id == incoming.id || $0.remoteID == incoming.remoteID }) {
+                database.reviews[index].remoteID = incoming.remoteID ?? incoming.id
+                database.reviews[index].instructorName = incoming.instructorName
+                database.reviews[index].squadronID = incoming.squadronID
+                database.reviews[index].eventName = incoming.eventName
+                database.reviews[index].eventKind = incoming.eventKind
+                database.reviews[index].chillScore = incoming.chillScore
+                database.reviews[index].gradingScore = incoming.gradingScore
+                database.reviews[index].reviewText = incoming.reviewText
+                database.reviews[index].submittedAt = incoming.submittedAt
+                database.reviews[index].status = .pending
+                database.reviews[index].lastModifiedAt = incoming.lastModifiedAt
+                database.reviews[index].lastSyncedAt = syncedAt
+                database.reviews[index].remoteID = incoming.id
+                if database.reviews[index].origin == .seed {
+                    database.reviews[index].origin = .remote
+                }
+                if database.reviews[index].origin == .remote {
+                    database.reviews[index].syncState = .synced
+                }
+            } else {
+                var record = incoming
+                record.origin = .remote
+                record.syncState = .synced
+                record.lastSyncedAt = syncedAt
+                database.reviews.append(record)
+            }
+        }
+
+        for incoming in reports {
+            if let index = database.reports.firstIndex(where: { $0.id == incoming.id || $0.remoteID == incoming.remoteID }) {
+                database.reports[index].remoteID = incoming.remoteID ?? incoming.id
+                database.reports[index].targetKind = incoming.targetKind
+                database.reports[index].instructorID = incoming.instructorID
+                database.reports[index].reviewID = incoming.reviewID
+                database.reports[index].instructorName = incoming.instructorName
+                database.reports[index].squadronID = incoming.squadronID
+                database.reports[index].eventName = incoming.eventName
+                database.reports[index].eventKind = incoming.eventKind
+                database.reports[index].reviewText = incoming.reviewText
+                database.reports[index].reasonTitle = incoming.reasonTitle
+                database.reports[index].note = incoming.note
+                database.reports[index].submittedAt = incoming.submittedAt
+                database.reports[index].status = .open
+                database.reports[index].lastModifiedAt = incoming.lastModifiedAt
+                database.reports[index].lastSyncedAt = syncedAt
+                if database.reports[index].origin == .remote {
+                    database.reports[index].syncState = .synced
+                }
+            } else {
+                var record = incoming
+                record.origin = .remote
+                record.syncState = .synced
+                record.lastSyncedAt = syncedAt
+                database.reports.append(record)
+            }
+        }
+
+        for index in database.reviews.indices {
+            let record = database.reviews[index]
+            guard record.status == .pending, record.origin == .remote else { continue }
+            guard !pendingIDs.contains(record.id) else { continue }
+            database.reviews[index].status = .rejected
+            database.reviews[index].lastSyncedAt = syncedAt
+        }
+
+        for index in database.reports.indices {
+            let record = database.reports[index]
+            guard record.status == .open, record.origin == .remote else { continue }
+            guard !openReportIDs.contains(record.id) else { continue }
+            database.reports[index].status = .resolved
+            database.reports[index].lastSyncedAt = syncedAt
+        }
+
+        try? persist()
+    }
+
+    func setLastSuccessfulSync(at date: Date) {
+        database.lastSuccessfulSyncAt = date
+        try? persist()
+    }
+
+    func lastSuccessfulSyncAt() -> Date? {
+        database.lastSuccessfulSyncAt
     }
 
     private func approvedRecords() -> [InstructorReviewRecord] {
@@ -236,7 +494,10 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
             gradingScore: InstructorRatingScale.clamped(record.gradingScore),
             reviewText: record.reviewText,
             submittedAt: record.submittedAt,
-            status: record.status
+            status: record.status,
+            origin: record.origin,
+            syncState: record.syncState,
+            submitterClientID: record.submitterClientID
         )
     }
 
@@ -253,7 +514,11 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
             reviewText: record.reviewText,
             reasonTitle: record.reasonTitle,
             note: record.note,
-            submittedAt: record.submittedAt
+            submittedAt: record.submittedAt,
+            status: record.status,
+            origin: record.origin,
+            syncState: record.syncState,
+            submitterClientID: record.submitterClientID
         )
     }
 
@@ -262,7 +527,7 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
         database.reviews.removeAll { record in
             currentSeedIDs.contains(record.id) || InstructorReviewSeedData.legacyInstructorNames.contains(record.instructorName)
         }
-        database.reviews.append(contentsOf: InstructorReviewSeedData.reviews.map(Self.makeRecord(from:)))
+        database.reviews.append(contentsOf: InstructorReviewSeedData.reviews.map(Self.makeSeedRecord(from:)))
         database.seedVersion = InstructorReviewSeedData.currentSeedVersion
         try persist()
     }
@@ -313,9 +578,10 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
         return database
     }
 
-    private static func makeRecord(from item: InstructorReviewSeedItem) -> InstructorReviewRecord {
+    private static func makeSeedRecord(from item: InstructorReviewSeedItem) -> InstructorReviewRecord {
         InstructorReviewRecord(
             id: item.id,
+            remoteID: item.id,
             instructorName: item.instructorName,
             squadronID: item.squadronID,
             eventName: item.eventName,
@@ -324,10 +590,17 @@ final class SwiftDataInstructorReviewRepository: InstructorReviewRepository {
             gradingScore: item.gradingScore,
             reviewText: item.reviewText,
             submittedAt: item.submittedAt,
-            status: item.status
+            status: item.status,
+            origin: .seed,
+            syncState: .synced,
+            lastModifiedAt: item.submittedAt,
+            lastSyncedAt: nil,
+            submitterClientID: nil
         )
     }
 }
+
+typealias SwiftDataInstructorReviewRepository = LocalInstructorReviewRepository
 
 private extension Collection where Element == Int {
     var average: Double {
@@ -336,7 +609,7 @@ private extension Collection where Element == Int {
     }
 }
 
-private extension JSONEncoder {
+extension JSONEncoder {
     static var reviewEncoder: JSONEncoder {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
@@ -345,7 +618,7 @@ private extension JSONEncoder {
     }
 }
 
-private extension JSONDecoder {
+extension JSONDecoder {
     static var reviewDecoder: JSONDecoder {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601

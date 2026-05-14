@@ -1,0 +1,513 @@
+{
+  "authoredNotesCoverageIssues" : [
+    {
+      "code" : "FAM2102",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Start Malfunctions",
+        "Abort Start Procedure"
+      ]
+    },
+    {
+      "code" : "FAM2201",
+      "missingCanonicalItems" : [
+        "immediate air-start",
+        "uncommanded power changes\/LOP",
+        "uncommanded prop feather",
+        "smoke and fume elimination",
+        "fire warning in flight"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Immediate Airstart",
+        "Decision Making Priorities"
+      ]
+    },
+    {
+      "code" : "FAM2202",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "High Fuel Flow",
+        "Big Picture Priorities"
+      ]
+    },
+    {
+      "code" : "FAM3101",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Big Picture Priorities"
+      ]
+    },
+    {
+      "code" : "FAM3102",
+      "missingCanonicalItems" : [
+        "wave-off"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Break",
+        "Downwind",
+        "Approach Turn",
+        "Final",
+        "Touch-and-Go Landing",
+        "Waveoff",
+        "Big Picture Priorities"
+      ]
+    },
+    {
+      "code" : "FAM3103",
+      "missingCanonicalItems" : [
+        "crosswind T&Gs"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Crosswind Touch-and-Go",
+        "Big Picture Priorities"
+      ]
+    },
+    {
+      "code" : "FAM3201",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Decision Making Priorities"
+      ]
+    },
+    {
+      "code" : "FAM3202",
+      "missingCanonicalItems" : [
+        "immediate air-start (PMU NORM)"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Ejection Decision Criteria"
+      ]
+    },
+    {
+      "code" : "FAM3301",
+      "missingCanonicalItems" : [
+        "aborted takeoff",
+        "wind shear recovery"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Crosswind Pattern Review",
+        "Aborts, Braking, and Prepared-Surface Departure",
+        "Emergency Ground Egress Review"
+      ]
+    },
+    {
+      "code" : "FAM3401",
+      "missingCanonicalItems" : [
+        "immelmann",
+        "split-s",
+        "wingover",
+        "barrel roll",
+        "OCF recovery and airborne damaged aircraft",
+        "combination maneuvers",
+        "HUD"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Aerobatic Maneuvers"
+      ]
+    },
+    {
+      "code" : "FAM6101",
+      "missingCanonicalItems" : [
+        "home field arrival",
+        "local VFR sectional review"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Goliad Operations",
+        "Waldron Operations",
+        "Aransas County and Ingleside",
+        "Homefield Arrival Priorities"
+      ]
+    },
+    {
+      "code" : "FAM6102",
+      "missingCanonicalItems" : [
+        "cloud clearances",
+        "local VFR sectional review"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Homefield Visual Straight-In"
+      ]
+    },
+    {
+      "code" : "FAM6201",
+      "missingCanonicalItems" : [
+        "Three Cs"
+      ],
+      "unexpectedPrimaryItems" : [
+        "3 C's"
+      ]
+    },
+    {
+      "code" : "FAM6202",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Waveoff Criteria"
+      ]
+    },
+    {
+      "code" : "FAM6203",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Block Review Focus"
+      ]
+    },
+    {
+      "code" : "FAM6301",
+      "missingCanonicalItems" : [
+        "OLF Course rules for field of use"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Rusty Departure",
+        "Goliad Pattern Operations",
+        "Return Toward Homefield"
+      ]
+    },
+    {
+      "code" : "FAM6302",
+      "missingCanonicalItems" : [
+        "OLF Course rules for field of use"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Beachline Departure",
+        "Aransas County Operations",
+        "SHAMROCK Recovery Options"
+      ]
+    },
+    {
+      "code" : "FAM6401",
+      "missingCanonicalItems" : [
+        "any EP"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Ground and Engine Emergency Memory Items",
+        "System and Forced-Landing Memory Items"
+      ]
+    },
+    {
+      "code" : "FAM6402",
+      "missingCanonicalItems" : [
+        "Any EP"
+      ],
+      "unexpectedPrimaryItems" : [
+        "Start and Ground Emergencies",
+        "Engine Failure and Airstarts",
+        "System Emergencies",
+        "Forced Landing, PEL, and Ejection"
+      ]
+    }
+  ],
+  "canonicalEventCount" : 88,
+  "canonicalEventsMissingAuthoredNotes" : [
+    "CS2101",
+    "CS2102",
+    "CS3101",
+    "CS3102",
+    "CS4101",
+    "CS4102",
+    "CS4290",
+    "F2101",
+    "F3101",
+    "F4101",
+    "F4102",
+    "F4103",
+    "F4104",
+    "F4290",
+    "FAM4101",
+    "FAM4102",
+    "FAM4103",
+    "FAM4104",
+    "FAM4201",
+    "FAM4202",
+    "FAM4203",
+    "FAM4204",
+    "FAM4301",
+    "FAM4302",
+    "FAM4303",
+    "FAM4304",
+    "FAM4490",
+    "FAM4501",
+    "FAM4601",
+    "FAM4701",
+    "FAM4702",
+    "FAM4703",
+    "I2101",
+    "I2102",
+    "I2103",
+    "I2201",
+    "I2202",
+    "I2203",
+    "I3101",
+    "I3102",
+    "I3103",
+    "I3104",
+    "I3201",
+    "I3202",
+    "I3203",
+    "I3204",
+    "I3205",
+    "I3206",
+    "I4101",
+    "I4102",
+    "I4103",
+    "I4201",
+    "I4202",
+    "I4203",
+    "I4204",
+    "I4301",
+    "I4302",
+    "I4303",
+    "I4304",
+    "I4490",
+    "I6101",
+    "I6102",
+    "I6201",
+    "I6202",
+    "I6301",
+    "N3101",
+    "N4101",
+    "N6101"
+  ],
+  "canonicalEventsMissingFromManifest" : [
+
+  ],
+  "emergencyProcedureAliasIssues" : [
+
+  ],
+  "generatedAt" : "2026-05-14T18:45:12Z",
+  "legacyAliasAttachmentsInUse" : [
+    {
+      "aliasCode" : "FAM4401",
+      "canonicalCode" : "FAM4490",
+      "filePaths" : [
+        "1. FAM (Contacts)\/3. Flights\/FAM4400 Block\/FAM4401 (Check Flight).docx"
+      ]
+    }
+  ],
+  "missingEmergencyProcedureCompanions" : [
+
+  ],
+  "unresolvedEmergencyProcedureItems" : [
+    {
+      "discussionItem" : "section PEL procedures",
+      "eventCode" : "CS2101",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Any previously discussed maneuver and any emergency procedure",
+      "eventCode" : "CS4101",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Any previously discussed maneuver and any emergency procedure",
+      "eventCode" : "CS4102",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Any previously discussed maneuver and any emergency procedure",
+      "eventCode" : "CS4290",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Section PEL",
+      "eventCode" : "F4103",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "emergency field selection",
+      "eventCode" : "F4103",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any emergency procedure",
+      "eventCode" : "F4290",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "fire on ground",
+      "eventCode" : "FAM2102",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "CFS and ejection CRM",
+      "eventCode" : "FAM2102",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "landing gear emergency extension",
+      "eventCode" : "FAM2202",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "power-off stall (ELP Stall)",
+      "eventCode" : "FAM3101",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Impending engine failure indications",
+      "eventCode" : "FAM3201",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "PEL",
+      "eventCode" : "FAM3201",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "PEL\/P",
+      "eventCode" : "FAM3201",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "ELP",
+      "eventCode" : "FAM3201",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Engine failure indications",
+      "eventCode" : "FAM3202",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Ejection seat and CFS",
+      "eventCode" : "FAM4101",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "ELP",
+      "eventCode" : "FAM4201",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "PEL",
+      "eventCode" : "FAM4201",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Oil and propeller systems",
+      "eventCode" : "FAM4203",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "ejection and visual straight-in",
+      "eventCode" : "FAM4203",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "OBOGS and pressurization system",
+      "eventCode" : "FAM4301",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any critical action emergency procedure",
+      "eventCode" : "FAM4302",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "emergency orbit pattern",
+      "eventCode" : "FAM4303",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any critical action emergency procedures",
+      "eventCode" : "FAM4303",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "emergency procedures",
+      "eventCode" : "FAM4490",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any emergency procedure",
+      "eventCode" : "FAM4703",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "PEL profile and procedures",
+      "eventCode" : "FAM6401",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "propeller malfunctions",
+      "eventCode" : "I3103",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any emergency procedure",
+      "eventCode" : "I3104",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "no-gyro approaches; hypoxia\/hyperventilation; and OBOGS malfunctions",
+      "eventCode" : "I4103",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "inadvertent thunderstorm penetration and any emergency procedure",
+      "eventCode" : "I4103",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "emergency field selection",
+      "eventCode" : "I4203",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "emergency field selection",
+      "eventCode" : "I4303",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any emergency procedure",
+      "eventCode" : "I4304",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any emergency procedure",
+      "eventCode" : "I4304",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any emergency procedure",
+      "eventCode" : "I4490",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "Any emergency procedure",
+      "eventCode" : "I6301",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "emergency field selection",
+      "eventCode" : "N3101",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "emergency field selection",
+      "eventCode" : "N4101",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any applicable day emergency",
+      "eventCode" : "N4101",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    },
+    {
+      "discussionItem" : "any applicable night emergency procedure",
+      "eventCode" : "N6101",
+      "reason" : "Discussion item looked emergency-procedure-related but did not resolve to a canonical EP title or alias."
+    }
+  ]
+}

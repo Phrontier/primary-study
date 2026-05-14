@@ -39,11 +39,12 @@ struct Primary_GougeTests {
     }
 
     @MainActor
-    @Test func instructorRatingScaleFormatsOutOfSevenStrings() async throws {
-        #expect(InstructorRatingScale.formatOutOfSeven(score: 5) == "5/7")
-        #expect(InstructorRatingScale.formatOutOfSeven(average: 5.5) == "5.5/7")
-        #expect(InstructorRatingScale.formatOutOfSeven(average: 5.5, includeAverageSuffix: true) == "5.5/7 avg")
+    @Test func instructorRatingScaleFormatsOutOfTenStrings() async throws {
+        #expect(InstructorRatingScale.formatOutOfTen(score: 5) == "7.1/10")
+        #expect(InstructorRatingScale.formatOutOfTen(average: 5.5) == "7.9/10")
+        #expect(InstructorRatingScale.formatOutOfTen(average: 5.5, includeAverageSuffix: true) == "7.9/10 avg")
         #expect(InstructorRatingScale.label(for: 5, category: .gradingStyle) == "Good but Fair")
+        #expect(InstructorRatingScale.label(for: 1, category: .chillFactor) == "Hammer")
     }
 
     @MainActor
@@ -171,6 +172,176 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func eventSuggestionsExpandCategoryAliasesIntoCanonicalEvents() async throws {
+        let repository = MockInstructorReviewRepository()
+        let viewModel = ReviewSubmissionViewModel()
+
+        viewModel.load(using: repository)
+        viewModel.submissionMode = .flights
+        viewModel.selectedSquadron = repository.squadrons.first(where: { $0.displayName == "VT-27" })
+        viewModel.eventName = "fams"
+
+        #expect(viewModel.eventSuggestions.map(\.displayName) == ["FAM2101", "FAM2102"])
+    }
+
+    @MainActor
+    @Test func syllabusReferenceLoadsRepresentativeEventsAndAliases() async throws {
+        let reference = InstructorReviewSeedData.syllabusReference
+
+        #expect(reference.category(forAlias: "Forms") == .formation)
+        #expect(reference.category(forAlias: "INS") == .instruments)
+        #expect(reference.category(forAlias: "Navaigation") == .navigation)
+        #expect(reference.category(forAlias: "Contacts") == .familiarization)
+
+        let fam2101 = try #require(reference.event(code: "FAM2101"))
+        #expect(fam2101.category == .familiarization)
+        #expect(fam2101.media == "UTD")
+        #expect(fam2101.eventKind == .sim)
+
+        let fam2202 = try #require(reference.event(code: "FAM2202"))
+        #expect(fam2202.media == "OFT")
+        #expect(fam2202.eventKind == .sim)
+
+        let f2101 = try #require(reference.event(code: "F2101"))
+        #expect(f2101.media == "UTD/MR")
+        #expect(f2101.eventKind == .sim)
+
+        let n4101 = try #require(reference.event(code: "N4101"))
+        #expect(n4101.media == "T-6B")
+        #expect(n4101.eventKind == .flight)
+
+        for code in ["I4490", "F4290", "CS4290"] {
+            let event = try #require(reference.event(code: code))
+            #expect(event.isCheckride)
+        }
+
+        let fam4501 = try #require(reference.event(code: "FAM4501"))
+        #expect(fam4501.isSolo)
+    }
+
+    @MainActor
+    @Test func canonicalEventResolutionMapsLegacyCheckFlightAlias() async throws {
+        let event = InstructorReviewSeedData.event(for: "FAM4401", kind: .flight)
+        #expect(event.displayName == "FAM4490")
+        #expect(event.kind == .flight)
+        #expect(event.syllabusCategory == .familiarization)
+    }
+
+    @MainActor
+    @Test func manifestUsesCanonicalSyllabusEventCodesForTargetedEvents() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let reference = try loadSyllabusReferenceFromAppContent()
+
+        let manifestEvents = manifestEventLookup(from: manifest)
+        let manifestCodes = Set(manifestEvents.keys)
+        let referenceCodes = Set(reference.events.map(\.code))
+
+        #expect(referenceCodes.isSubset(of: manifestCodes))
+        #expect(manifestEvents["FAM4490"] != nil)
+        #expect(manifestEvents["FAM4401"] == nil)
+        #expect(manifestEvents["FAM4501"] != nil)
+        #expect(manifestEvents["CS4290"] != nil)
+    }
+
+    @MainActor
+    @Test func canonicalDiscussionItemFlashcardDecksExistForAllSyllabusEvents() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let reference = try loadSyllabusReferenceFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        for syllabusEvent in reference.events {
+            let manifestEvent = try #require(manifestEvents[syllabusEvent.code])
+            #expect(manifestEvent.flashcardDecks.first?.title == "\(syllabusEvent.code) Discussion Item Flashcards")
+        }
+    }
+
+    @MainActor
+    @Test func nonEmergencyDiscussionItemFlashcardsUseTitleCaseAndPlaceholderAnswers() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+        let flashcardsByID = Dictionary(uniqueKeysWithValues: manifest.flashcards.map { ($0.id, $0) })
+
+        let fam2101 = try #require(manifestEvents["FAM2101"])
+        let deck = try #require(fam2101.flashcardDecks.first)
+        let cards = try deck.cardIDs.map { cardID in
+            try #require(flashcardsByID[cardID])
+        }
+
+        #expect(cards.map(\.prompt) == [
+            "Checklist Challenge-Action Response Format",
+            "Dual Concurrence/Response CRM",
+            "Memorized Checklists",
+            "Ground Handling Signals",
+            "Safety Check/Call Prior to Cockpit Entry and Departing Aircraft",
+            "Blindfold Cockpit Check"
+        ])
+        #expect(cards.allSatisfy { $0.answer == "Answer pending generation." })
+        #expect(cards.allSatisfy { !$0.requiresVerbatim })
+    }
+
+    @MainActor
+    @Test func emergencyProcedureFlashcardsInjectCanonicalEpAndCompanionNwcCards() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+        let flashcardsByID = Dictionary(uniqueKeysWithValues: manifest.flashcards.map { ($0.id, $0) })
+
+        let fam2201 = try #require(manifestEvents["FAM2201"])
+        let deck = try #require(fam2201.flashcardDecks.first)
+        let cards = try deck.cardIDs.map { cardID in
+            try #require(flashcardsByID[cardID])
+        }
+
+        #expect(Array(cards.prefix(6)).map(\.prompt) == [
+            "Abort",
+            "ABORT",
+            "Aircraft Departs Prepared Surface",
+            "Engine Failure Immediately After Takeoff (Sufficient Runway Remaining Straight Ahead)",
+            "ENGINE FAILURE IMMEDIATELY AFTER TAKEOFF (SUFFICIENT RUNWAY REMAINING STRAIGHT AHEAD)",
+            "Engine Failure During Flight"
+        ])
+
+        let abortEP = cards[0]
+        let abortNWC = cards[1]
+        #expect(abortEP.kind == .ep)
+        #expect(abortEP.requiresVerbatim)
+        #expect(abortNWC.requiresVerbatim)
+        #expect(abortEP.companionGroupID == abortNWC.companionGroupID)
+        #expect(cards.contains { $0.prompt == "UNCOMMANDED POWER CHANGES/LOSS OF\nPOWER/UNCOMMANDED PROPELLER FEATHER" })
+        #expect(!cards.contains { $0.prompt == "Abort Takeoff" })
+    }
+
+    @MainActor
+    @Test func emergencyProcedureAuditTracksUnresolvedItemsWithoutAliasOrCompanionFailures() throws {
+        let audit = try loadSyllabusAuditReportFromAppContent()
+
+        let aliasIssues = try #require(audit["emergencyProcedureAliasIssues"] as? [[String: Any]])
+        let missingCompanions = try #require(audit["missingEmergencyProcedureCompanions"] as? [[String: Any]])
+        let unresolvedItems = try #require(audit["unresolvedEmergencyProcedureItems"] as? [[String: Any]])
+
+        #expect(aliasIssues.isEmpty)
+        #expect(missingCompanions.isEmpty)
+        #expect(unresolvedItems.contains {
+            ($0["eventCode"] as? String) == "FAM3201" && ($0["discussionItem"] as? String) == "PEL"
+        })
+    }
+
+    @MainActor
+    @Test func authoredFamNotesRemainVisibleWhileOtherEventsUseSyllabusFallback() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let fam2101 = try #require(manifestEvents["FAM2101"])
+        let famNotes = try #require(fam2101.studyNotes)
+        #expect(famNotes.sections.count > 1)
+        #expect(famNotes.sections.contains { $0.title == "Required Procedures" })
+
+        let cs4101 = try #require(manifestEvents["CS4101"])
+        let csNotes = try #require(cs4101.studyNotes)
+        #expect(csNotes.summary?.contains("canonical syllabus event reference") == true)
+        #expect(csNotes.sections.first?.title == "Capstone")
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 
@@ -193,7 +364,7 @@ struct Primary_GougeTests {
         #expect(repository.fetchOpenReports().first?.reasonTitle == "Incorrect Name")
 
         if let reportID = repository.fetchOpenReports().first?.id {
-            try repository.dismissReport(id: reportID)
+            try await repository.dismissReport(id: reportID)
         }
 
         #expect(repository.fetchOpenReports().isEmpty)
@@ -220,7 +391,7 @@ struct Primary_GougeTests {
 
         #expect(repository.fetchOpenReports().count == 1)
 
-        try repository.rejectReview(id: "review-1")
+        try await repository.rejectReview(id: "review-1")
 
         #expect(repository.fetchOpenReports().isEmpty)
     }
@@ -247,6 +418,139 @@ struct Primary_GougeTests {
         #expect(repository.fetchOpenReports().first?.reasonTitle == "Review Report")
         #expect(repository.fetchOpenReports().first?.note == "This review needs another look.")
     }
+
+    @MainActor
+    @Test func localRepositoryPromotesQueuedSubmissionIntoPublishedReviewAfterSync() async throws {
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("instructor-reviews-\(UUID().uuidString).json")
+        let repository = LocalInstructorReviewRepository(persistenceURL: tempURL)
+        let squadron = Squadron(id: "vt-27", displayName: "VT-27")
+        let event = InstructorReviewEvent(id: "fam2101", displayName: "FAM2101", kind: .flight, syllabusCategory: .familiarization)
+
+        try repository.enqueueReviewSubmission(
+            InstructorReviewSubmission(
+                instructorName: "Offline Pilot",
+                squadron: squadron,
+                event: event,
+                chillScore: 5,
+                gradingScore: 4,
+                reviewText: String(repeating: "Great ", count: 12)
+            ),
+            clientID: "client-1"
+        )
+
+        let queued = repository.fetchQueuedReviewUploads()
+        #expect(queued.count == 1)
+        #expect(queued.first?.syncState == .queuedUpload)
+
+        if let queuedID = queued.first?.id {
+            repository.markReviewUploaded(localID: queuedID, remoteID: queuedID, syncedAt: .now)
+            repository.applySubmissionStatuses(
+                [RemoteSubmissionStatusSnapshot(id: queuedID, status: .approved, updatedAt: .now)],
+                syncedAt: .now
+            )
+            repository.upsertPublishedReviews(
+                [
+                    InstructorReviewRecord(
+                        id: queuedID,
+                        remoteID: queuedID,
+                        instructorName: "Offline Pilot",
+                        squadronID: "vt-27",
+                        eventName: "FAM2101",
+                        eventKind: .flight,
+                        chillScore: 5,
+                        gradingScore: 4,
+                        reviewText: String(repeating: "Great ", count: 12),
+                        submittedAt: .now,
+                        status: .approved,
+                        origin: .remote,
+                        syncState: .synced,
+                        lastModifiedAt: .now,
+                        lastSyncedAt: .now,
+                        submitterClientID: "client-1"
+                    )
+                ],
+                syncedAt: .now
+            )
+        }
+
+        #expect(repository.fetchPendingReviews().isEmpty)
+        #expect(repository.fetchInstructorSummaries(searchText: "Offline").first?.publishedReviewCount == 1)
+    }
+
+    @MainActor
+    @Test func localRepositoryResolvesOpenReportsWhenRemoteStatusClosesThem() async throws {
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("instructor-reports-\(UUID().uuidString).json")
+        let repository = LocalInstructorReviewRepository(persistenceURL: tempURL)
+
+        try repository.enqueueReport(
+            InstructorGougeReportSubmission(
+                targetKind: .review,
+                instructorID: "inst-1",
+                reviewID: "review-1",
+                instructorName: "Garrecht, Alex",
+                squadron: Squadron(id: "tw-4", displayName: "TW-4"),
+                eventName: "C3101",
+                eventKind: .sim,
+                reviewText: "Needs moderation",
+                reasonTitle: "Review Report",
+                note: "Contains details that should be reviewed."
+            ),
+            clientID: "client-1"
+        )
+
+        let queued = repository.fetchQueuedReportUploads()
+        #expect(queued.count == 1)
+
+        if let queuedID = queued.first?.id {
+            repository.markReportUploaded(localID: queuedID, remoteID: queuedID, syncedAt: .now)
+            repository.applyReportStatuses(
+                [RemoteReportStatusSnapshot(id: queuedID, status: .resolved, updatedAt: .now)],
+                syncedAt: .now
+            )
+        }
+
+        #expect(repository.fetchOpenReports().isEmpty)
+    }
+
+    @MainActor
+    private func loadStudyManifestFromAppContent() throws -> StudyManifest {
+        let url = appContentRoot().appendingPathComponent("StudyManifest.json")
+        let data = try Data(contentsOf: url)
+        return try JSONDecoder().decode(StudyManifest.self, from: data)
+    }
+
+    @MainActor
+    private func loadSyllabusReferenceFromAppContent() throws -> SyllabusEventReference {
+        let url = appContentRoot().appendingPathComponent("SyllabusEventReference.json")
+        let data = try Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return try decoder.decode(SyllabusEventReference.self, from: data)
+    }
+
+    @MainActor
+    private func loadSyllabusAuditReportFromAppContent() throws -> [String: Any] {
+        let url = appContentRoot().appendingPathComponent("SyllabusEventAuditReport.json")
+        let data = try Data(contentsOf: url)
+        let object = try JSONSerialization.jsonObject(with: data)
+        return try #require(object as? [String: Any])
+    }
+
+    private func appContentRoot() -> URL {
+        URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .appendingPathComponent("Primary Gouge/AppContent", isDirectory: true)
+    }
+
+    private func manifestEventLookup(from manifest: StudyManifest) -> [String: Event] {
+        Dictionary(
+            uniqueKeysWithValues: manifest.phases
+                .flatMap(\.categories)
+                .flatMap(\.events)
+                .map { ($0.code, $0) }
+        )
+    }
 }
 
 @MainActor
@@ -262,9 +566,9 @@ private final class MockInstructorReviewRepository: InstructorReviewRepository {
     ]
 
     let events: [InstructorReviewEvent] = [
-        InstructorReviewEvent(id: "c3101", displayName: "C3101", kind: .sim),
-        InstructorReviewEvent(id: "fam2101", displayName: "FAM2101", kind: .flight),
-        InstructorReviewEvent(id: "fam2102", displayName: "FAM2102", kind: .flight)
+        InstructorReviewEvent(id: "c3101", displayName: "C3101", kind: .sim, syllabusCategory: .capstone),
+        InstructorReviewEvent(id: "fam2101", displayName: "FAM2101", kind: .flight, syllabusCategory: .familiarization),
+        InstructorReviewEvent(id: "fam2102", displayName: "FAM2102", kind: .flight, syllabusCategory: .familiarization)
     ]
 
     let suggestions: [InstructorNameSuggestion] = [
@@ -311,15 +615,19 @@ private final class MockInstructorReviewRepository: InstructorReviewRepository {
                 reviewText: submission.reviewText,
                 reasonTitle: submission.reasonTitle,
                 note: submission.note,
-                submittedAt: .now
+                submittedAt: .now,
+                status: .open,
+                origin: .localSubmission,
+                syncState: .localOnly,
+                submitterClientID: nil
             )
         )
     }
-    func dismissReport(id: String) throws {
+    func dismissReport(id: String) async throws {
         openReports.removeAll { $0.id == id }
     }
-    func approveReview(id: String) throws {}
-    func rejectReview(id: String) throws {
+    func approveReview(id: String) async throws {}
+    func rejectReview(id: String) async throws {
         openReports.removeAll { $0.reviewID == id }
     }
 

@@ -39,6 +39,7 @@ enum InstructorReviewSeedData {
     static let currentSeedVersion = 3
     static let baseFileName = "InstructorReviewSeedBase"
     static let overridesFileName = "InstructorReviewSeedOverrides"
+    static let syllabusReferenceFileName = "SyllabusEventReference"
 
     static let legacyInstructorNames: Set<String> = [
         "Lt. James Holloway",
@@ -58,7 +59,8 @@ enum InstructorReviewSeedData {
         Squadron(id: "vt-6", displayName: "VT-6")
     ]
 
-    static let events: [InstructorReviewEvent] = loadManifestEvents()
+    static let syllabusReference: SyllabusEventReference = loadSyllabusReference()
+    static let events: [InstructorReviewEvent] = loadReferenceEvents()
 
     private static let fallbackEvents: [InstructorReviewEvent] = [
         InstructorReviewEvent(id: "c3101", displayName: "C3101", kind: .sim),
@@ -111,8 +113,35 @@ enum InstructorReviewSeedData {
         squadrons.first(where: { $0.id == id }) ?? Squadron(id: id, displayName: id.uppercased())
     }
 
+    static func category(forAlias value: String) -> SyllabusEventCategory? {
+        syllabusReference.category(forAlias: value)
+    }
+
+    static func canonicalEvent(named name: String, kind: InstructorReviewEventKind) -> InstructorReviewEvent? {
+        if let referenceEvent = syllabusReference.matchingEvent(named: name, kind: kind) {
+            return makeInstructorReviewEvent(from: referenceEvent)
+        }
+
+        return events.first(where: {
+            $0.kind == kind && $0.displayName.caseInsensitiveCompare(name) == .orderedSame
+        })
+    }
+
+    static func searchTerms(for event: InstructorReviewEvent) -> [String] {
+        if let referenceEvent = syllabusReference.event(code: event.displayName) {
+            return syllabusReference.searchTerms(for: referenceEvent)
+        }
+
+        return [event.displayName]
+    }
+
+    static func canonicalEventName(for name: String?, kind: InstructorReviewEventKind) -> String? {
+        guard let name, !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return nil }
+        return canonicalEvent(named: name, kind: kind)?.displayName ?? name
+    }
+
     static func event(for name: String, kind: InstructorReviewEventKind) -> InstructorReviewEvent {
-        if let event = events.first(where: { $0.displayName.caseInsensitiveCompare(name) == .orderedSame && $0.kind == kind }) {
+        if let event = canonicalEvent(named: name, kind: kind) {
             return event
         }
 
@@ -194,6 +223,41 @@ enum InstructorReviewSeedData {
         resourceURL(fileName: overridesFileName)
     }
 
+    private static func loadReferenceEvents() -> [InstructorReviewEvent] {
+        let mappedEvents = syllabusReference.events.map(makeInstructorReviewEvent(from:))
+        guard !mappedEvents.isEmpty else {
+            let manifestEvents = loadManifestEvents()
+            return manifestEvents.isEmpty ? fallbackEvents : manifestEvents
+        }
+
+        var seen = Set<String>()
+        return mappedEvents.filter { event in
+            let key = "\(event.kind.rawValue)|\(event.displayName.lowercased())"
+            return seen.insert(key).inserted
+        }
+    }
+
+    private static func loadSyllabusReference() -> SyllabusEventReference {
+        let contentRepository = ContentRepository(bundle: .main)
+        let bundledReference = contentRepository.loadSyllabusEventReference()
+        if !bundledReference.events.isEmpty {
+            return bundledReference
+        }
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+
+        guard
+            let url = resourceURL(fileName: syllabusReferenceFileName),
+            let data = try? Data(contentsOf: url),
+            let reference = try? decoder.decode(SyllabusEventReference.self, from: data)
+        else {
+            return .empty
+        }
+
+        return reference
+    }
+
     private static func loadManifestEvents() -> [InstructorReviewEvent] {
         let decoder = JSONDecoder()
         let manifest = loadManifest(decoder: decoder)
@@ -205,7 +269,8 @@ enum InstructorReviewSeedData {
                     InstructorReviewEvent(
                         id: makeEventID(from: event.code, kind: kind),
                         displayName: event.code,
-                        kind: kind
+                        kind: kind,
+                        syllabusCategory: nil
                     )
                 }
             }
@@ -217,6 +282,15 @@ enum InstructorReviewSeedData {
             let key = "\(event.kind.rawValue)|\(event.displayName.lowercased())"
             return seen.insert(key).inserted
         }
+    }
+
+    private static func makeInstructorReviewEvent(from event: SyllabusEventReferenceEvent) -> InstructorReviewEvent {
+        InstructorReviewEvent(
+            id: makeEventID(from: event.code, kind: event.eventKind),
+            displayName: event.code,
+            kind: event.eventKind,
+            syllabusCategory: event.category
+        )
     }
 
     private static func loadManifest(decoder: JSONDecoder) -> StudyManifest {

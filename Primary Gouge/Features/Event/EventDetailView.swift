@@ -81,7 +81,7 @@ struct EventDetailView: View {
             VStack(spacing: 12) {
                 if let notes = event.studyNotes {
                     NavigationLink {
-                        NotesDetailView(notes: notes, eventTitle: event.displayTitle)
+                        NotesDetailView(notes: notes, eventTitle: event.code)
                     } label: {
                         ToolCard(title: "Discussion items", subtitle: nil, icon: "text.alignleft", accent: AppTheme.domainColor(.discussionItems))
                     }

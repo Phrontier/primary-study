@@ -1,0 +1,2161 @@
+{
+  "aliases" : {
+    "capstone" : [
+      "cs",
+      "capstone"
+    ],
+    "familiarization" : [
+      "fam",
+      "fams",
+      "familiarization",
+      "contacts"
+    ],
+    "formation" : [
+      "f",
+      "form",
+      "forms",
+      "formation"
+    ],
+    "instruments" : [
+      "i",
+      "ins",
+      "instrument",
+      "instruments"
+    ],
+    "navigation" : [
+      "n",
+      "nav",
+      "navigation",
+      "navaigation"
+    ]
+  },
+  "events" : [
+    {
+      "blockCode" : "CS21",
+      "blockTitle" : "Advanced Formation Training",
+      "category" : "capstone",
+      "categoryDisplayName" : "Capstone",
+      "code" : "CS2101",
+      "discussionItems" : [
+        "Cruise position\/maneuvering",
+        "lead\/lag and pure pursuit",
+        "knock-it-off\/terminate procedures",
+        "aborted takeoff",
+        "section PEL procedures",
+        "section approach procedures"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD\/MR",
+      "sourcePages" : [
+        157
+      ]
+    },
+    {
+      "blockCode" : "CS21",
+      "blockTitle" : "Advanced Formation Training",
+      "category" : "capstone",
+      "categoryDisplayName" : "Capstone",
+      "code" : "CS2102",
+      "discussionItems" : [
+        "Aborted takeoff",
+        "dissolving the flight (flight split)",
+        "radial rendezvous",
+        "fan break"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD\/MR",
+      "sourcePages" : [
+        157
+      ]
+    },
+    {
+      "blockCode" : "CS31",
+      "blockTitle" : "Advanced Familiarization\/ Radio Instruments Training",
+      "category" : "capstone",
+      "categoryDisplayName" : "Capstone",
+      "code" : "CS3101",
+      "discussionItems" : [
+        "Any previously discussed familiarization items",
+        "IFR pick-up",
+        "GCA pattern"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        160
+      ]
+    },
+    {
+      "blockCode" : "CS31",
+      "blockTitle" : "Advanced Familiarization\/ Radio Instruments Training",
+      "category" : "capstone",
+      "categoryDisplayName" : "Capstone",
+      "code" : "CS3102",
+      "discussionItems" : [
+        "Any previously discussed familiarization items",
+        "IMC emergencies",
+        "lost communications (FIH)"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        160
+      ]
+    },
+    {
+      "blockCode" : "CS41",
+      "blockTitle" : "Capstone",
+      "category" : "capstone",
+      "categoryDisplayName" : "Capstone",
+      "code" : "CS4101",
+      "discussionItems" : [
+        "Any previously discussed maneuver and any emergency procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        163,
+        164
+      ]
+    },
+    {
+      "blockCode" : "CS41",
+      "blockTitle" : "Capstone",
+      "category" : "capstone",
+      "categoryDisplayName" : "Capstone",
+      "code" : "CS4102",
+      "discussionItems" : [
+        "Any previously discussed maneuver and any emergency procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        163,
+        164
+      ]
+    },
+    {
+      "blockCode" : "CS42",
+      "blockTitle" : "Capstone Check Flight",
+      "category" : "capstone",
+      "categoryDisplayName" : "Capstone",
+      "code" : "CS4290",
+      "discussionItems" : [
+        "Any previously discussed maneuver and any emergency procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : true,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+        "CS4201"
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        167
+      ]
+    },
+    {
+      "blockCode" : "FAM21",
+      "blockTitle" : "Familiarization Cockpit Procedures",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM2101",
+      "discussionItems" : [
+        "Checklist challenge-action response format",
+        "dual concurrence\/response CRM",
+        "memorized checklists",
+        "ground handling signals",
+        "safety check\/call prior to cockpit entry and departing aircraft",
+        "blindfold cockpit check"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "mediaNotes" : "UTD\/ER",
+      "sourcePages" : [
+        60
+      ]
+    },
+    {
+      "blockCode" : "FAM21",
+      "blockTitle" : "Familiarization Cockpit Procedures",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM2102",
+      "discussionItems" : [
+        "No start",
+        "hung start",
+        "hot start",
+        "loss of start ready light during start sequence",
+        "battery bus light during start",
+        "fire on ground",
+        "emergency engine shutdown on the ground",
+        "emergency ground egress",
+        "CFS and ejection CRM"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "mediaNotes" : "UTD\/ER",
+      "sourcePages" : [
+        60
+      ]
+    },
+    {
+      "blockCode" : "FAM22",
+      "blockTitle" : "Familiarization Emergency Procedures Trainer",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM2201",
+      "discussionItems" : [
+        "Abort takeoff",
+        "aircraft departs prepared surface",
+        "engine failure immediately after takeoff",
+        "engine failure during flight",
+        "immediate air-start",
+        "PMU NORM air-start",
+        "PMU OFF air-start",
+        "uncommanded power changes\/LOP",
+        "uncommanded prop feather",
+        "smoke and fume elimination",
+        "fire warning in flight",
+        "controlled ejection and eject"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "mediaNotes" : "UTD\/ER",
+      "sourcePages" : [
+        63
+      ]
+    },
+    {
+      "blockCode" : "FAM22",
+      "blockTitle" : "Familiarization Emergency Procedures Trainer",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM2202",
+      "discussionItems" : [
+        "Chip detector warning",
+        "oil system malfunction or low oil pressure",
+        "low fuel pressure",
+        "hydraulic system malfunctions",
+        "landing gear emergency extension",
+        "OBOGS fail message",
+        "runaway trim",
+        "precautionary emergency landing (PEL) and BFI"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        63
+      ]
+    },
+    {
+      "blockCode" : "FAM31",
+      "blockTitle" : "Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM3101",
+      "discussionItems" : [
+        "Normal takeoff",
+        "local area departure",
+        "integrated (VMC) scan",
+        "turn pattern",
+        "level speed change",
+        "power-on stalls",
+        "power-off stall (ELP Stall)",
+        "landing pattern (approach turn and landing attitude) stalls",
+        "intentional spin entry",
+        "incipient spin recovery",
+        "steady-state spin recovery"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        66
+      ]
+    },
+    {
+      "blockCode" : "FAM31",
+      "blockTitle" : "Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM3102",
+      "discussionItems" : [
+        "Normal takeoff",
+        "local area departure",
+        "inadvertent trim actuation",
+        "landing pattern",
+        "takeoff flap landings",
+        "landing flap landings",
+        "no-flap landings",
+        "full-stop landings",
+        "wave-off",
+        "contact unusual attitudes"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        66
+      ]
+    },
+    {
+      "blockCode" : "FAM31",
+      "blockTitle" : "Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM3103",
+      "discussionItems" : [
+        "Crosswind limits",
+        "crosswind computations",
+        "crosswind takeoff",
+        "pattern adjustments for crosswinds",
+        "crosswind landings",
+        "crosswind T&Gs",
+        "crosswind full-stops",
+        "aborted takeoff",
+        "aircraft departs prepared surface",
+        "HUD"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        66
+      ]
+    },
+    {
+      "blockCode" : "FAM32",
+      "blockTitle" : "Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM3201",
+      "discussionItems" : [
+        "Impending engine failure indications",
+        "PEL",
+        "PEL\/P",
+        "ELP"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        77
+      ]
+    },
+    {
+      "blockCode" : "FAM32",
+      "blockTitle" : "Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM3202",
+      "discussionItems" : [
+        "Engine failure indications",
+        "engine failure during flight",
+        "immediate air-start (PMU NORM)",
+        "forced landing",
+        "eject"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        77
+      ]
+    },
+    {
+      "blockCode" : "FAM33",
+      "blockTitle" : "Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM3301",
+      "discussionItems" : [
+        "Crosswind takeoff\/touch-and-go\/full-stop landings",
+        "aborted takeoff",
+        "aircraft departs a prepared surface",
+        "wind shear recovery",
+        "Up Front Control Panel (UFCP) failure"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        79
+      ]
+    },
+    {
+      "blockCode" : "FAM34",
+      "blockTitle" : "Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM3401",
+      "discussionItems" : [
+        "AOA approach",
+        "maneuvering speeds",
+        "contact unusual attitudes",
+        "aileron roll",
+        "loop",
+        "half cuban eight",
+        "immelmann",
+        "split-s",
+        "wingover",
+        "barrel roll",
+        "OCF recovery and airborne damaged aircraft",
+        "combination maneuvers",
+        "HUD"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        95
+      ]
+    },
+    {
+      "blockCode" : "FAM41",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4101",
+      "discussionItems" : [
+        "Ejection seat and CFS",
+        "abnormal starts",
+        "brake failure",
+        "strike of ground object",
+        "takeoff",
+        "departure",
+        "basic transitions",
+        "trim",
+        "turn pattern",
+        "level speed change",
+        "slow flight",
+        "HUD"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        75
+      ]
+    },
+    {
+      "blockCode" : "FAM41",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4102",
+      "discussionItems" : [
+        "Tire failures",
+        "aborted takeoff",
+        "power-on stalls",
+        "landing pattern stalls",
+        "power-off stalls",
+        "landing pattern",
+        "no-flap landing",
+        "takeoff flap landing",
+        "landing flap landing",
+        "landing irregularities",
+        "wave-off"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        75
+      ]
+    },
+    {
+      "blockCode" : "FAM41",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4103",
+      "discussionItems" : [
+        "OLF operations",
+        "local course rules",
+        "home-field arrival",
+        "SCATSAFE maneuver"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        75
+      ]
+    },
+    {
+      "blockCode" : "FAM41",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4104",
+      "discussionItems" : [
+        "Crosswind takeoff\/approach\/landing",
+        "OCF",
+        "contact unusual attitudes"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        75
+      ]
+    },
+    {
+      "blockCode" : "FAM42",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4201",
+      "discussionItems" : [
+        "NATOPS limitations",
+        "engine system",
+        "engine malfunctions",
+        "ELP",
+        "PEL",
+        "forced landing",
+        "Aldis lamp signals"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        83,
+        84
+      ]
+    },
+    {
+      "blockCode" : "FAM42",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4202",
+      "discussionItems" : [
+        "Hydraulic system",
+        "spin",
+        "OCF recovery procedures",
+        "anti-spin recovery procedures",
+        "crosswind takeoffs\/touch-and-goes\/full-stop landings"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        83,
+        84
+      ]
+    },
+    {
+      "blockCode" : "FAM42",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4203",
+      "discussionItems" : [
+        "Oil and propeller systems",
+        "engine air starts",
+        "ejection and visual straight-in"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        83,
+        84
+      ]
+    },
+    {
+      "blockCode" : "FAM42",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4204",
+      "discussionItems" : [
+        "Electrical system",
+        "avionics malfunctions",
+        "lost communications",
+        "local area flight procedures\/SOP"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        83,
+        84
+      ]
+    },
+    {
+      "blockCode" : "FAM43",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4301",
+      "discussionItems" : [
+        "OBOGS and pressurization system",
+        "aborted takeoff",
+        "lost aircraft procedures",
+        "discontinued entry",
+        "airborne-damaged aircraft"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        86,
+        87
+      ]
+    },
+    {
+      "blockCode" : "FAM43",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4302",
+      "discussionItems" : [
+        "Fuel system",
+        "full-stop landings",
+        "heavy-weight landing considerations",
+        "any critical action emergency procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        86,
+        87
+      ]
+    },
+    {
+      "blockCode" : "FAM43",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4303",
+      "discussionItems" : [
+        "Hard landings",
+        "gear emergencies",
+        "flap failures",
+        "emergency orbit pattern",
+        "any critical action emergency procedures"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        86,
+        87
+      ]
+    },
+    {
+      "blockCode" : "FAM43",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4304",
+      "discussionItems" : [
+        "Securing rear cockpit for solo",
+        "unauthorized solo maneuvers",
+        "unintentional instrument flight",
+        "local course rules",
+        "any previously discussed maneuver or procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        86,
+        87
+      ]
+    },
+    {
+      "blockCode" : "FAM44",
+      "blockTitle" : "Familiarization Check Flight",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4490",
+      "discussionItems" : [
+        "Any previously discussed items",
+        "unauthorized solo maneuvers",
+        "lost aircraft procedures",
+        "unintentional instrument flight",
+        "local course rules",
+        "maneuvers",
+        "emergency procedures"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : true,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+        "FAM4401"
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        89
+      ]
+    },
+    {
+      "blockCode" : "FAM45",
+      "blockTitle" : "Familiarization Solo Flight",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4501",
+      "discussionItems" : [
+        "Per the ODO\/FDO solo brief"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : true,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        91
+      ]
+    },
+    {
+      "blockCode" : "FAM46",
+      "blockTitle" : "Night Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4601",
+      "discussionItems" : [
+        "Night flying considerations",
+        "night VFR chart interpretation",
+        "airport night lighting",
+        "aircraft and cockpit lighting",
+        "applicable night emergencies",
+        "local night SOP",
+        "electrical system malfunctions"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        93
+      ]
+    },
+    {
+      "blockCode" : "FAM47",
+      "blockTitle" : "Familiarization Aerobatics",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4701",
+      "discussionItems" : [
+        "OCF recovery procedures",
+        "contact unusual attitudes",
+        "all aerobatic maneuvers"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        97
+      ]
+    },
+    {
+      "blockCode" : "FAM47",
+      "blockTitle" : "Familiarization Aerobatics",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4702",
+      "discussionItems" : [
+        "Spin",
+        "inverted spin",
+        "progressive spin",
+        "accelerated stall",
+        "AOA approach"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        97
+      ]
+    },
+    {
+      "blockCode" : "FAM47",
+      "blockTitle" : "Familiarization Aerobatics",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM4703",
+      "discussionItems" : [
+        "T-6B VN diagram",
+        "maneuvering speed",
+        "acceleration limitations",
+        "any emergency procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        97
+      ]
+    },
+    {
+      "blockCode" : "FAM61",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6101",
+      "discussionItems" : [
+        "Local course rules",
+        "OLF arrival and departure",
+        "home field arrival",
+        "local VFR sectional review"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        69
+      ]
+    },
+    {
+      "blockCode" : "FAM61",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6102",
+      "discussionItems" : [
+        "“IMSAFE” checklist",
+        "CRM",
+        "see & avoid principle",
+        "cloud clearances",
+        "local VFR sectional review"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        69
+      ]
+    },
+    {
+      "blockCode" : "FAM62",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6201",
+      "discussionItems" : [
+        "Three Cs",
+        "slow flight",
+        "SCATSAFE maneuver",
+        "energy management",
+        "slip"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        70
+      ]
+    },
+    {
+      "blockCode" : "FAM62",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6202",
+      "discussionItems" : [
+        "OLF entry",
+        "OLF\/RDO communication",
+        "crosswind takeoff and landings",
+        "wave-off"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        70
+      ]
+    },
+    {
+      "blockCode" : "FAM62",
+      "blockTitle" : "Day Familiarization",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6203",
+      "discussionItems" : [
+        "Any maneuver performed in this block"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        70
+      ]
+    },
+    {
+      "blockCode" : "FAM63",
+      "blockTitle" : "RDO Pattern Party",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6301",
+      "discussionItems" : [
+        "OLF Course rules for field of use"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        72
+      ]
+    },
+    {
+      "blockCode" : "FAM63",
+      "blockTitle" : "RDO Pattern Party",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6302",
+      "discussionItems" : [
+        "OLF Course rules for field of use"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        72
+      ]
+    },
+    {
+      "blockCode" : "FAM64",
+      "blockTitle" : "Advanced RDO Pattern Party",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6401",
+      "discussionItems" : [
+        "PEL profile and procedures",
+        "any EP"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        81
+      ]
+    },
+    {
+      "blockCode" : "FAM64",
+      "blockTitle" : "Advanced RDO Pattern Party",
+      "category" : "familiarization",
+      "categoryDisplayName" : "Familiarization",
+      "code" : "FAM6402",
+      "discussionItems" : [
+        "Any EP"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        81
+      ]
+    },
+    {
+      "blockCode" : "F21",
+      "blockTitle" : "Formation",
+      "category" : "formation",
+      "categoryDisplayName" : "Formation",
+      "code" : "F2101",
+      "discussionItems" : [
+        "Formation arrival and departure procedures",
+        "wingman\/flight leader responsibilities",
+        "formation communications",
+        "formation position corrections"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD\/MR",
+      "mediaNotes" : "mixed reality UTD",
+      "sourcePages" : [
+        148
+      ]
+    },
+    {
+      "blockCode" : "F31",
+      "blockTitle" : "Formation",
+      "category" : "formation",
+      "categoryDisplayName" : "Formation",
+      "code" : "F3101",
+      "discussionItems" : [
+        "Visual signals and Formation maneuvers"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        146
+      ]
+    },
+    {
+      "blockCode" : "F41",
+      "blockTitle" : "Formation",
+      "category" : "formation",
+      "categoryDisplayName" : "Formation",
+      "code" : "F4101",
+      "discussionItems" : [
+        "Hand signals",
+        "wingman\/flight leader responsibilities",
+        "aborted takeoff",
+        "lost sight procedures",
+        "blind procedures",
+        "HEFOE"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        150
+      ]
+    },
+    {
+      "blockCode" : "F41",
+      "blockTitle" : "Formation",
+      "category" : "formation",
+      "categoryDisplayName" : "Formation",
+      "code" : "F4102",
+      "discussionItems" : [
+        "Airborne damaged aircraft",
+        "speed brake use as a section",
+        "area\/sun management",
+        "lost communication procedures"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        150
+      ]
+    },
+    {
+      "blockCode" : "F41",
+      "blockTitle" : "Formation",
+      "category" : "formation",
+      "categoryDisplayName" : "Formation",
+      "code" : "F4103",
+      "discussionItems" : [
+        "Section PEL",
+        "section takeoff",
+        "emergency field selection",
+        "inadvertent instrument flight"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        150
+      ]
+    },
+    {
+      "blockCode" : "F41",
+      "blockTitle" : "Formation",
+      "category" : "formation",
+      "categoryDisplayName" : "Formation",
+      "code" : "F4104",
+      "discussionItems" : [
+        "Landing gear inspection",
+        "knock-it-off",
+        "terminate",
+        "cruise maneuvering",
+        "principles of lead",
+        "lag and pure pursuit"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        150
+      ]
+    },
+    {
+      "blockCode" : "F42",
+      "blockTitle" : "Formation Check Flight",
+      "category" : "formation",
+      "categoryDisplayName" : "Formation",
+      "code" : "F4290",
+      "discussionItems" : [
+        "Any previously discussed maneuver",
+        "any emergency procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : true,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        153
+      ]
+    },
+    {
+      "blockCode" : "I21",
+      "blockTitle" : "Basic Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I2101",
+      "discussionItems" : [
+        "Instrument scan patterns",
+        "airspeed changes",
+        "steep turns",
+        "timed-turns",
+        "constant airspeed climbs and descents",
+        "en route descent"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "sourcePages" : [
+        107
+      ]
+    },
+    {
+      "blockCode" : "I21",
+      "blockTitle" : "Basic Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I2102",
+      "discussionItems" : [
+        "IMC emergencies",
+        "GCA pattern",
+        "S-1 pattern"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "sourcePages" : [
+        107
+      ]
+    },
+    {
+      "blockCode" : "I21",
+      "blockTitle" : "Basic Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I2103",
+      "discussionItems" : [
+        "Approach maneuver",
+        "IFR unusual attitudes",
+        "IMC emergencies",
+        "IAC failure (dual)",
+        "BFI"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "sourcePages" : [
+        107
+      ]
+    },
+    {
+      "blockCode" : "I22",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I2201",
+      "discussionItems" : [
+        "HSI orientation",
+        "direct to a VOR",
+        "tracking",
+        "station passage",
+        "over-the-station intercepts",
+        "radial intercept procedures"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "sourcePages" : [
+        109
+      ]
+    },
+    {
+      "blockCode" : "I22",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I2202",
+      "discussionItems" : [
+        "Arcing",
+        "radial-arc intercepts",
+        "arc-radial intercepts",
+        "OBOGS malfunctions",
+        "hyperventilation\/hypoxia",
+        "point-to-point"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "sourcePages" : [
+        109
+      ]
+    },
+    {
+      "blockCode" : "I22",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I2203",
+      "discussionItems" : [
+        "Holding entry",
+        "no-wind orbit",
+        "holding corrections",
+        "battery and generator failure"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "sourcePages" : [
+        109
+      ]
+    },
+    {
+      "blockCode" : "I31",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3101",
+      "discussionItems" : [
+        "Clearance and departure procedures",
+        "en route procedures",
+        "procedure turn",
+        "tear drop",
+        "arcing approaches",
+        "missed approach procedures"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        113
+      ]
+    },
+    {
+      "blockCode" : "I31",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3102",
+      "discussionItems" : [
+        "HILO approaches",
+        "holding",
+        "shuttle descent",
+        "intersections",
+        "oil system malfunctions"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        113
+      ]
+    },
+    {
+      "blockCode" : "I31",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3103",
+      "discussionItems" : [
+        "PAR",
+        "PAR W\/O GS",
+        "ASR",
+        "recommended altitudes",
+        "IMC emergencies",
+        "propeller malfunctions"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        113
+      ]
+    },
+    {
+      "blockCode" : "I31",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3104",
+      "discussionItems" : [
+        "Night cockpit setup",
+        "SID",
+        "RVFAC",
+        "ILS\/LOV approaches",
+        "PTP",
+        "any emergency procedure"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        113
+      ]
+    },
+    {
+      "blockCode" : "I32",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3201",
+      "discussionItems" : [
+        "GPS procedures",
+        "GPS allowable operations (GPS waypoints in lieu of NDB, VOR, TACAN fixes)",
+        "GPS approaches",
+        "GPS holding",
+        "GPS flight modes"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "mediaNotes" : "UTD or UTD\/ER",
+      "sourcePages" : [
+        121
+      ]
+    },
+    {
+      "blockCode" : "I32",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3202",
+      "discussionItems" : [
+        "STAR",
+        "Trouble T",
+        "obstacle departure procedures",
+        "obtaining IFR clearance from uncontrolled airports",
+        "RVFAC for RNAV approaches"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "UTD",
+      "mediaNotes" : "UTD or UTD\/ER",
+      "sourcePages" : [
+        121
+      ]
+    },
+    {
+      "blockCode" : "I32",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3203",
+      "discussionItems" : [
+        "No-gyro approach and BFI approach"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        121
+      ]
+    },
+    {
+      "blockCode" : "I32",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3204",
+      "discussionItems" : [
+        "High-altitude approach and non-radar environment communications"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        121
+      ]
+    },
+    {
+      "blockCode" : "I32",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3205",
+      "discussionItems" : [
+        "Avionics failures",
+        "obstacle departure procedures",
+        "ILS full procedure turn"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        121
+      ]
+    },
+    {
+      "blockCode" : "I32",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I3206",
+      "discussionItems" : [
+        "En route fuel management",
+        "feeder fixes",
+        "feeder routes",
+        "CDI reverse sensing precautions"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        121
+      ]
+    },
+    {
+      "blockCode" : "I41",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4101",
+      "discussionItems" : [
+        "CRM",
+        "holding",
+        "VOR approach procedures"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        118,
+        119
+      ]
+    },
+    {
+      "blockCode" : "I41",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4102",
+      "discussionItems" : [
+        "ILS\/LOC approach procedures",
+        "RVFAC",
+        "icing considerations"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        118,
+        119
+      ]
+    },
+    {
+      "blockCode" : "I41",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4103",
+      "discussionItems" : [
+        "PAR",
+        "ASR",
+        "no-gyro approaches; hypoxia\/hyperventilation; and OBOGS malfunctions",
+        "inadvertent thunderstorm penetration and any emergency procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        118,
+        119
+      ]
+    },
+    {
+      "blockCode" : "I42",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4201",
+      "discussionItems" : [
+        "Clearance and departure procedures",
+        "stereo routes (canned flight plans)",
+        "airway navigation",
+        "lost communications (local\/FIH)"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        127
+      ]
+    },
+    {
+      "blockCode" : "I42",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4202",
+      "discussionItems" : [
+        "FMS flight plan usage (SID\/STAR, holding, approach) and FMS arrivals"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        127
+      ]
+    },
+    {
+      "blockCode" : "I42",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4203",
+      "discussionItems" : [
+        "No-gyro approach",
+        "emergency field selection",
+        "fuel management"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        127
+      ]
+    },
+    {
+      "blockCode" : "I42",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4204",
+      "discussionItems" : [
+        "CNAF M-3710.7 takeoff and approach minimums and alternate filing minimums"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        127
+      ]
+    },
+    {
+      "blockCode" : "I43",
+      "blockTitle" : "Instrument Navigation",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4301",
+      "discussionItems" : [
+        "Flight planning",
+        "jet log",
+        "DD-1801",
+        "DD-175-1 weather brief",
+        "CNAF M-3710.7 takeoff and approach minimums",
+        "alternate filing minimums",
+        "FSS",
+        "Strange Field operations"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        130
+      ]
+    },
+    {
+      "blockCode" : "I43",
+      "blockTitle" : "Instrument Navigation",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4302",
+      "discussionItems" : [
+        "En route weather",
+        "divert to alternate",
+        "change of flight plan while airborne",
+        "IFR supplement",
+        "circling maneuver",
+        "VDP"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        130
+      ]
+    },
+    {
+      "blockCode" : "I43",
+      "blockTitle" : "Instrument Navigation",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4303",
+      "discussionItems" : [
+        "Controlled\/uncontrolled airspace",
+        "emergency field selection",
+        "high altitude approach",
+        "CNAF M-3710.7 minimum fuel requirements",
+        "fuel management"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        130
+      ]
+    },
+    {
+      "blockCode" : "I43",
+      "blockTitle" : "Instrument Navigation",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4304",
+      "discussionItems" : [
+        "Lost communications (FIH)",
+        "SID\/STAR",
+        "any emergency procedure",
+        "obstacle departure procedures",
+        "Trouble T",
+        "any emergency procedure"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        130
+      ]
+    },
+    {
+      "blockCode" : "I44",
+      "blockTitle" : "Instrument Check Flight",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I4490",
+      "discussionItems" : [
+        "Lost communications (FIH)",
+        "CNAF M-3710.7 takeoff\/approach minimums",
+        "flight planning (submit a completed DD-1801 and jet log: Stopover flight plan to include an en route holding delay (1st leg), terminal delay (2nd leg))",
+        "NOTAM",
+        "en route weather",
+        "any emergency procedure",
+        "any previously discussed item"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : true,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        132
+      ]
+    },
+    {
+      "blockCode" : "I61",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I6101",
+      "discussionItems" : [
+        "Clearance and departure procedures",
+        "VOR procedure turn",
+        "teardrop",
+        "HILO approach procedure",
+        "FAF-to-MAP timing adjustments",
+        "VDP",
+        "missed approach"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        111
+      ]
+    },
+    {
+      "blockCode" : "I61",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I6102",
+      "discussionItems" : [
+        "Arcing",
+        "RVFAC",
+        "ILS",
+        "localizer approach procedure",
+        "holding",
+        "shuttle descent"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        111
+      ]
+    },
+    {
+      "blockCode" : "I62",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I6201",
+      "discussionItems" : [
+        "CNAF M-3710.7 minimum fuel requirements",
+        "NOTAM to include local",
+        "FDC",
+        "center",
+        "special notices",
+        "International\/Domestic Notices",
+        "GPS"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        116
+      ]
+    },
+    {
+      "blockCode" : "I62",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I6202",
+      "discussionItems" : [
+        "En route weather sources",
+        "icing",
+        "inadvertent thunderstorm penetration",
+        "change of route or destination (inflight)",
+        "IMC lost communications",
+        "ground-speed calculations"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        116
+      ]
+    },
+    {
+      "blockCode" : "I63",
+      "blockTitle" : "Radio Instruments",
+      "category" : "instruments",
+      "categoryDisplayName" : "Instruments",
+      "code" : "I6301",
+      "discussionItems" : [
+        "Any emergency procedure"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        124
+      ]
+    },
+    {
+      "blockCode" : "N31",
+      "blockTitle" : "Day Navigation",
+      "category" : "navigation",
+      "categoryDisplayName" : "Navigation",
+      "code" : "N3101",
+      "discussionItems" : [
+        "VFR chart preparation",
+        "emergency field selection",
+        "airspace classification",
+        "VFR field entry\/departure (AIM)",
+        "HUD",
+        "route management",
+        "standard time corrections",
+        "standard course corrections"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "OFT",
+      "sourcePages" : [
+        137
+      ]
+    },
+    {
+      "blockCode" : "N41",
+      "blockTitle" : "Day Navigation",
+      "category" : "navigation",
+      "categoryDisplayName" : "Navigation",
+      "code" : "N4101",
+      "discussionItems" : [
+        "VFR chart preparation",
+        "route management",
+        "standard time corrections",
+        "standard course corrections",
+        "airspace classification",
+        "VFR field entry-departure (AIM)",
+        "local cross-country SOP",
+        "FMS procedures",
+        "emergency field selection",
+        "destination maintenance facilities and operating procedures",
+        "TOT",
+        "any applicable day emergency"
+      ],
+      "eventKind" : "flight",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "T-6B",
+      "sourcePages" : [
+        141
+      ]
+    },
+    {
+      "blockCode" : "N61",
+      "blockTitle" : "Night Navigation",
+      "category" : "navigation",
+      "categoryDisplayName" : "Navigation",
+      "code" : "N6101",
+      "discussionItems" : [
+        "Night VNAV timing and course corrections",
+        "night VFR chart interpretation",
+        "airfield and runway lighting",
+        "local night VNAV SOP",
+        "any applicable night emergency procedure"
+      ],
+      "eventKind" : "sim",
+      "isCheckride" : false,
+      "isSolo" : false,
+      "legacyReviewAliases" : [
+
+      ],
+      "media" : "VTD",
+      "sourcePages" : [
+        139
+      ]
+    }
+  ],
+  "generatedAt" : "2026-05-14T17:08:13Z",
+  "sourceDocumentDate" : "2024-07-15",
+  "sourceDocumentTitle" : "CNATRAINST 1542.166D T-6B Joint Primary Pilot Training (JPPT) Curriculum"
+}

@@ -331,18 +331,18 @@ private struct TopicActionRow: View {
     let action: () -> Void
 
     var body: some View {
-        InsetListRow(title: item.title, subtitle: showsDetail ? item.detail : nil) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(accentColor.opacity(0.12))
-                    .frame(width: 40, height: 40)
+        Button(action: action) {
+            InsetListRow(title: item.title, subtitle: showsDetail ? item.detail : nil) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .fill(accentColor.opacity(0.12))
+                        .frame(width: 40, height: 40)
 
-                Image(systemName: item.iconName)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(accentColor)
-            }
-        } trailing: {
-            Button(action: action) {
+                    Image(systemName: item.iconName)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(accentColor)
+                }
+            } trailing: {
                 HStack(spacing: 4) {
                     Text(item.actionTitle)
                     Image(systemName: "chevron.right")
@@ -358,6 +358,7 @@ private struct TopicActionRow: View {
                 )
             }
         }
+        .buttonStyle(.plain)
         .fixedSize(horizontal: false, vertical: true)
     }
 

@@ -5,28 +5,46 @@ struct ModerationQueueView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @StateObject private var viewModel = ModerationQueueViewModel()
+    @State private var email = ""
+    @State private var password = ""
+    @State private var authErrorMessage: String?
+    @State private var signingIn = false
 
     var body: some View {
         AppScrollScreen(bottomPadding: 36) {
             HeroCard(
                 eyebrow: "Moderation",
                 title: "Review queue",
-                subtitle: "Pending reviews stay out of the public list until they are approved."
+                subtitle: heroSubtitle,
+                accessory: {
+                    if isModeratorSignedIn {
+                        Button("Sign Out") {
+                            reviewStore.signOutModerator()
+                            viewModel.load(using: reviewStore)
+                        }
+                        .font(.system(.footnote, design: .rounded, weight: .bold))
+                        .foregroundStyle(AppTheme.textSecondary)
+                    }
+                }
             ) {
-                HStack(spacing: 12) {
-                    MetricChip(label: "Pending", value: "\(viewModel.pendingReviews.count)", color: AppTheme.warning)
-                    MetricChip(label: "Reports", value: "\(viewModel.openReports.count)", color: AppTheme.danger)
+                if isModeratorSignedIn {
+                    HStack(spacing: 12) {
+                        MetricChip(label: "Pending", value: "\(viewModel.pendingReviews.count)", color: AppTheme.warning)
+                        MetricChip(label: "Reports", value: "\(viewModel.openReports.count)", color: AppTheme.danger)
+                    }
                 }
             }
 
-            if let message = viewModel.errorMessage {
+            if let message = activeErrorMessage {
                 Text(message)
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(AppTheme.warning)
                     .padding(.horizontal, 6)
             }
 
-            if viewModel.pendingReviews.isEmpty && viewModel.openReports.isEmpty {
+            if !isModeratorSignedIn {
+                signInCard
+            } else if viewModel.pendingReviews.isEmpty && viewModel.openReports.isEmpty {
                 EmptyStateCard(
                     icon: "checkmark.seal.fill",
                     title: "Queue is clear",
@@ -82,6 +100,110 @@ struct ModerationQueueView: View {
         }
     }
 
+    private var isModeratorSignedIn: Bool {
+        if case .signedIn = reviewStore.moderatorSessionState {
+            return true
+        }
+        return false
+    }
+
+    private var heroSubtitle: String {
+        switch reviewStore.moderatorSessionState {
+        case .signedOut:
+            return "Moderator sign-in is required to review pending submissions and reports."
+        case .signingIn:
+            return "Signing in to fetch the remote moderation queue."
+        case .signedIn(let email):
+            return "Signed in as \(email). Pending reviews stay out of the public list until they are approved."
+        case .failed(let message):
+            return message
+        }
+    }
+
+    private var activeErrorMessage: String? {
+        authErrorMessage ?? viewModel.errorMessage
+    }
+
+    private var signInCard: some View {
+        SectionContainer {
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Moderator Sign In")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(AppTheme.textPrimary)
+
+                Text("Use your moderator account to review queued instructor gouge from every device.")
+                    .font(.subheadline)
+                    .foregroundStyle(AppTheme.textSecondary)
+
+                authField(title: "Email", placeholder: "moderator@primarygouge.app", text: $email, secure: false)
+                authField(title: "Password", placeholder: "Required", text: $password, secure: true)
+
+                InstructorPrimaryButton(
+                    title: signingIn ? "Signing In…" : "Sign In to Moderate",
+                    icon: "checkmark.shield.fill",
+                    enabled: !signingIn && !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !password.isEmpty
+                ) {
+                    signIn()
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func authField(title: String, placeholder: String, text: Binding<String>, secure: Bool) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(title.uppercased())
+                .font(.system(.caption, design: .rounded, weight: .bold))
+                .foregroundStyle(AppTheme.textMuted)
+                .tracking(0.6)
+
+            Group {
+                if secure {
+                    SecureField(placeholder, text: text)
+                        .textContentType(.password)
+                } else {
+                    TextField(placeholder, text: text)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .textContentType(.username)
+                        .keyboardType(.emailAddress)
+                }
+            }
+            .font(.system(.body, design: .rounded, weight: .semibold))
+            .foregroundStyle(AppTheme.textPrimary)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 16)
+            .frame(minHeight: 56)
+            .background(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(AppTheme.elevatedSurface)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                    )
+            )
+        }
+    }
+
+    private func signIn() {
+        authErrorMessage = nil
+        signingIn = true
+
+        Task { @MainActor in
+            defer { signingIn = false }
+            do {
+                try await reviewStore.signInModerator(
+                    email: email.trimmingCharacters(in: .whitespacesAndNewlines),
+                    password: password
+                )
+                password = ""
+                viewModel.load(using: reviewStore)
+            } catch {
+                authErrorMessage = error.localizedDescription
+            }
+        }
+    }
+
     private func pendingReviewCard(_ review: InstructorReview) -> some View {
         SectionContainer {
             VStack(alignment: .leading, spacing: 16) {
@@ -119,14 +241,14 @@ struct ModerationQueueView: View {
                     InstructorRatingBadge(
                         title: "Chill Factor",
                         label: InstructorRatingScale.label(for: review.chillScore, category: .chillFactor),
-                        subtitle: InstructorRatingScale.formatOutOfSeven(score: review.chillScore),
+                        subtitle: InstructorRatingScale.formatOutOfTen(score: review.chillScore),
                         score: review.chillScore,
                         style: .individual
                     )
                     InstructorRatingBadge(
                         title: "Grading Style",
                         label: InstructorRatingScale.label(for: review.gradingScore, category: .gradingStyle),
-                        subtitle: InstructorRatingScale.formatOutOfSeven(score: review.gradingScore),
+                        subtitle: InstructorRatingScale.formatOutOfTen(score: review.gradingScore),
                         score: review.gradingScore,
                         style: .individual
                     )

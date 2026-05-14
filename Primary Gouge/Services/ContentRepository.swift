@@ -4,12 +4,19 @@ struct ContentRepository {
     private let bundle: Bundle
     private let manifestFileName: String
     private let quizBankFileName: String
+    private let syllabusReferenceFileName: String
     private let resourceNamespace = "StudyAssets"
 
-    init(bundle: Bundle = .main, manifestFileName: String = "StudyManifest", quizBankFileName: String = "QuizBank") {
+    init(
+        bundle: Bundle = .main,
+        manifestFileName: String = "StudyManifest",
+        quizBankFileName: String = "QuizBank",
+        syllabusReferenceFileName: String = "SyllabusEventReference"
+    ) {
         self.bundle = bundle
         self.manifestFileName = manifestFileName
         self.quizBankFileName = quizBankFileName
+        self.syllabusReferenceFileName = syllabusReferenceFileName
     }
 
     func loadManifest() -> StudyManifest {
@@ -31,6 +38,25 @@ struct ContentRepository {
 
         let validQuestions = bank.questions.filter(\.isValid)
         return QuizBank(categories: bank.categories, questions: validQuestions)
+    }
+
+    func loadSyllabusEventReference() -> SyllabusEventReference {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+
+        if let url = fileURL(for: "AppContent/\(syllabusReferenceFileName).json"),
+           let data = try? Data(contentsOf: url),
+           let reference = try? decoder.decode(SyllabusEventReference.self, from: data) {
+            return reference
+        }
+
+        if let url = Bundle.main.url(forResource: syllabusReferenceFileName, withExtension: "json"),
+           let data = try? Data(contentsOf: url),
+           let reference = try? decoder.decode(SyllabusEventReference.self, from: data) {
+            return reference
+        }
+
+        return .empty
     }
 
     func fileURL(for relativePath: String) -> URL? {

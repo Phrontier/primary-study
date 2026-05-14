@@ -1,4 +1,16 @@
 {
+  "discussionItemEmergencyProcedureAliases": {
+    "abort takeoff": "Abort",
+    "aborted takeoff": "Abort",
+    "controlled ejection and eject": "Eject",
+    "engine failure immediately after takeoff": "Engine Failure Immediately After Takeoff (Sufficient Runway Remaining Straight Ahead)",
+    "fire warning in flight": "Fire In Flight",
+    "obogs fail message": "OBOGS Failure / Overtemp / Physiological Symptoms",
+    "obogs malfunctions": "OBOGS Failure / Overtemp / Physiological Symptoms",
+    "oil system malfunctions": "Oil System Malfunction or Low Oil Pressure",
+    "precautionary emergency landing pel and bfi": "Precautionary Emergency Landing (PEL)",
+    "uncommanded power changes lop": "Uncommanded Power Changes / Loss of Power / Uncommanded Propeller Feather"
+  },
   "libraryStudyHubs": [
     {
       "id": "emergency-reference-hub",

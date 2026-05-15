@@ -347,6 +347,8 @@ struct DiscussionItemAuthoringIssue: Codable {
     let missingStudyNotes: Bool
     let invalidHeadline: Bool
     let missingSummary: Bool
+    let boilerplateOverview: Bool
+    let boilerplateNotesSummary: Bool
     let missingRequiredProceduresSection: Bool
     let missingRequiredProcedures: [String]
     let unexpectedRequiredProcedures: [String]
@@ -1457,6 +1459,8 @@ struct ManifestBuilder {
             let missingStudyNotes = studyNotes == nil
             let invalidHeadline = studyNotes?.headline != "Discussion items"
             let missingSummary = studyNotes?.summary?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
+            let boilerplateOverview = Self.containsFAMOverviewBoilerplate(override?.overview)
+            let boilerplateNotesSummary = Self.containsFAMNotesSummaryBoilerplate(studyNotes?.summary)
 
             let requiredProceduresSection = studyNotes?.sections.last.flatMap { section in
                 normalizedText(section.title ?? "") == normalizedText("Required Procedures") ? section : nil
@@ -1507,6 +1511,8 @@ struct ManifestBuilder {
             guard missingStudyNotes ||
                     invalidHeadline ||
                     missingSummary ||
+                    boilerplateOverview ||
+                    boilerplateNotesSummary ||
                     missingRequiredProceduresSection ||
                     !missingRequiredProcedures.isEmpty ||
                     !unexpectedRequiredProcedures.isEmpty ||
@@ -1522,6 +1528,8 @@ struct ManifestBuilder {
                 missingStudyNotes: missingStudyNotes,
                 invalidHeadline: invalidHeadline,
                 missingSummary: missingSummary,
+                boilerplateOverview: boilerplateOverview,
+                boilerplateNotesSummary: boilerplateNotesSummary,
                 missingRequiredProceduresSection: missingRequiredProceduresSection,
                 missingRequiredProcedures: missingRequiredProcedures,
                 unexpectedRequiredProcedures: unexpectedRequiredProcedures,
@@ -1873,6 +1881,19 @@ struct ManifestBuilder {
         ]
 
         return signals.contains { normalized.contains($0) }
+    }
+
+    private static func containsFAMOverviewBoilerplate(_ value: String?) -> Bool {
+        guard let value else { return true }
+        let normalized = normalizedText(value)
+        return normalized.contains("is a sim event focused on") ||
+            normalized.contains("is a flight event focused on")
+    }
+
+    private static func containsFAMNotesSummaryBoilerplate(_ value: String?) -> Bool {
+        guard let value else { return true }
+        let normalized = normalizedText(value)
+        return normalized.contains("use these notes to cover every required discussion item in syllabus order")
     }
 
     private static func regexMatches(for pattern: String, in text: String) -> [String] {

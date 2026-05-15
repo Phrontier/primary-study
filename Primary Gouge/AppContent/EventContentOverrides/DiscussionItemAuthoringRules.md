@@ -75,6 +75,7 @@ Rules:
 - section titles referenced in `canonicalCoverage` must actually exist in `studyNotes.sections`
 - if a section title exactly matches the canonical item, map it directly to itself
 - do not use `Required Procedures` as the only coverage location unless that section truly contains the substantive content
+- for FAM generation, grouped section intent and locked-baseline behavior live in `FAMDiscussionAuthoringConfig.json`
 
 `canonicalCoverage` exists for traceability and validation. It should not drive the visible structure of the notes.
 

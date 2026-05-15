@@ -22,6 +22,8 @@ swift Tools/BuildStudyManifest.swift
 
 4. Build the app.
 
+For FAM discussion-item generation, grouped section layout and locked baseline behavior are driven by [FAMDiscussionAuthoringConfig.json](/Users/conwaybolt/Library/CloudStorage/OneDrive-Personal/Documents/Projects/Development/Primary%20Gouge/Primary%20Gouge/AppContent/EventContentOverrides/FAMDiscussionAuthoringConfig.json).
+
 ## File shape
 
 ```json

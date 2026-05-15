@@ -1,0 +1,267 @@
+{
+  "lockedEvents" : [
+    "FAM2101",
+    "FAM2102",
+    "FAM2201",
+    "FAM2202",
+    "FAM3101",
+    "FAM3102",
+    "FAM3103",
+    "FAM3201",
+    "FAM3202",
+    "FAM3301"
+  ],
+  "blockDefaults" : {
+    "checkFlight" : {
+      "fallbackSourceTitles" : [
+        "FAM4304",
+        "FAM4401"
+      ],
+      "maxGroupedChildrenPerItem" : 4,
+      "maxStandaloneBullets" : 4,
+      "maxStandaloneChildren" : 4,
+      "preserveExistingVisibleContent" : false
+    },
+    "flight" : {
+      "maxGroupedChildrenPerItem" : 4,
+      "maxStandaloneBullets" : 4,
+      "maxStandaloneChildren" : 4,
+      "preserveExistingVisibleContent" : false
+    },
+    "reviewSim" : {
+      "maxGroupedChildrenPerItem" : 4,
+      "maxStandaloneBullets" : 4,
+      "maxStandaloneChildren" : 4,
+      "preserveExistingVisibleContent" : false
+    },
+    "sim" : {
+      "maxGroupedChildrenPerItem" : 4,
+      "maxStandaloneBullets" : 4,
+      "maxStandaloneChildren" : 4,
+      "preserveExistingVisibleContent" : false
+    },
+    "solo" : {
+      "fallbackSourceTitles" : [
+        "FAM4304",
+        "FAM4401"
+      ],
+      "maxGroupedChildrenPerItem" : 4,
+      "maxStandaloneBullets" : 4,
+      "maxStandaloneChildren" : 4,
+      "preserveExistingVisibleContent" : false
+    }
+  },
+  "eventOverrides" : {
+    "FAM3401" : {
+      "authoringProfile" : "sim",
+      "sections" : [
+        {
+          "discussionItems" : [
+            "AOA approach",
+            "maneuvering speeds"
+          ],
+          "title" : "AOA Approach and Energy Management"
+        },
+        {
+          "discussionItems" : [
+            "contact unusual attitudes",
+            "OCF recovery and airborne damaged aircraft"
+          ],
+          "title" : "Unusual Attitudes and Recovery Priorities"
+        },
+        {
+          "discussionItems" : [
+            "aileron roll",
+            "loop",
+            "half cuban eight",
+            "immelmann",
+            "split-s",
+            "wingover",
+            "barrel roll"
+          ],
+          "title" : "Core Aerobatic Maneuvers"
+        },
+        {
+          "discussionItems" : [
+            "combination maneuvers",
+            "HUD"
+          ],
+          "title" : "Combination Maneuver Planning and HUD Use"
+        }
+      ]
+    },
+    "FAM4101" : {
+      "authoringProfile" : "flight",
+      "sections" : [
+        {
+          "discussionItems" : [
+            "Ejection seat and CFS",
+            "abnormal starts",
+            "brake failure",
+            "strike of ground object"
+          ],
+          "title" : "Ground Safety and Cockpit Survival"
+        },
+        {
+          "discussionItems" : [
+            "takeoff",
+            "departure",
+            "basic transitions",
+            "trim",
+            "turn pattern",
+            "level speed change",
+            "slow flight"
+          ],
+          "title" : "Contact Flight Refresh"
+        },
+        {
+          "discussionItems" : [
+            "HUD"
+          ],
+          "title" : "HUD Integration"
+        }
+      ]
+    },
+    "FAM4201" : {
+      "authoringProfile" : "flight",
+      "sections" : [
+        {
+          "discussionItems" : [
+            "NATOPS limitations",
+            "engine system",
+            "engine malfunctions"
+          ],
+          "title" : "NATOPS and Engine System Review"
+        },
+        {
+          "discussionItems" : [
+            "ELP",
+            "PEL",
+            "forced landing"
+          ],
+          "title" : "Landing Option Decision Chain"
+        },
+        {
+          "discussionItems" : [
+            "Aldis lamp signals"
+          ],
+          "title" : "Aldis Lamp Signals"
+        }
+      ]
+    },
+    "FAM4490" : {
+      "authoringProfile" : "checkFlight",
+      "fallbackSourceTitles" : [
+        "FAM4304",
+        "FAM4401"
+      ],
+      "sections" : [
+        {
+          "discussionItems" : [
+            "Any previously discussed items",
+            "local course rules"
+          ],
+          "title" : "Check-Flight Knowledge Review"
+        },
+        {
+          "discussionItems" : [
+            "unauthorized solo maneuvers",
+            "lost aircraft procedures",
+            "unintentional instrument flight"
+          ],
+          "title" : "Solo and Weather Decision Traps"
+        },
+        {
+          "discussionItems" : [
+            "maneuvers"
+          ],
+          "title" : "Maneuver Standards Refresh"
+        },
+        {
+          "discussionItems" : [
+            "emergency procedures"
+          ],
+          "title" : "Emergency Decision Review"
+        }
+      ]
+    },
+    "FAM4501" : {
+      "authoringProfile" : "solo",
+      "fallbackSourceTitles" : [
+        "FAM4304",
+        "FAM4401"
+      ],
+      "notesSummary" : "Show up with the solo items already sorted, then use the day-of brief to confirm the go/no-go details instead of learning them from scratch.",
+      "overview" : "This event is about showing up for the solo brief with the major risk, weather, and execution items already organized. Use these notes to walk in ahead of the day-of ODO/FDO brief instead of trying to build the whole picture on the spot.",
+      "summary" : "Solo-brief risk, weather, support-agency, and execution priorities.",
+      "sections" : [
+        {
+          "discussionItems" : [
+            "Per the ODO/FDO solo brief"
+          ],
+          "title" : "Solo Brief Focus"
+        }
+      ]
+    },
+    "FAM4601" : {
+      "authoringProfile" : "flight",
+      "sections" : [
+        {
+          "discussionItems" : [
+            "Night flying considerations",
+            "night VFR chart interpretation",
+            "airport night lighting",
+            "aircraft and cockpit lighting"
+          ],
+          "title" : "Night Environment and Lighting Setup"
+        },
+        {
+          "discussionItems" : [
+            "applicable night emergencies",
+            "electrical system malfunctions"
+          ],
+          "title" : "Night Emergencies and Electrical Degradation"
+        },
+        {
+          "discussionItems" : [
+            "local night SOP"
+          ],
+          "title" : "Local Night Procedures"
+        }
+      ]
+    },
+    "FAM6101" : {
+      "authoringProfile" : "reviewSim",
+      "sections" : [
+        {
+          "discussionItems" : [
+            "Local course rules",
+            "local VFR sectional review"
+          ],
+          "title" : "Course Rules and Sectional Setup"
+        },
+        {
+          "discussionItems" : [
+            "OLF arrival and departure",
+            "home field arrival"
+          ],
+          "title" : "OLF and Home-Field Flow"
+        }
+      ]
+    },
+    "FAM6402" : {
+      "authoringProfile" : "reviewSim",
+      "notesSummary" : "Treat this like a cumulative EP check: know the cue, the immediate action, and the N/W/C that changes the safe answer.",
+      "overview" : "Use this event to review the familiarization EP set as one connected decision tree. You should be ready to move from recognition to memory items to PEL, forced-landing, or ejection logic without stopping to rebuild the picture.",
+      "summary" : "Cumulative emergency-procedure recognition, memory items, and N/W/C decision logic.",
+      "sections" : [
+        {
+          "discussionItems" : [
+            "Any EP"
+          ],
+          "title" : "Cumulative EP Review"
+        }
+      ]
+    }
+  }
+}

@@ -1,44 +1,44 @@
 {
   "canonicalCoverage" : {
     "Ejection seat and CFS" : [
-      "Ejection Seat and CFS"
+      "Ground Safety and Cockpit Survival"
     ],
     "HUD" : [
-      "HUD"
+      "HUD Integration"
     ],
     "abnormal starts" : [
-      "Abnormal Starts"
+      "Ground Safety and Cockpit Survival"
     ],
     "basic transitions" : [
-      "Basic Transitions"
+      "Contact Flight Refresh"
     ],
     "brake failure" : [
-      "Brake Failure"
+      "Ground Safety and Cockpit Survival"
     ],
     "departure" : [
-      "Departure"
+      "Contact Flight Refresh"
     ],
     "level speed change" : [
-      "Level Speed Change"
+      "Contact Flight Refresh"
     ],
     "slow flight" : [
-      "Slow Flight"
+      "Contact Flight Refresh"
     ],
     "strike of ground object" : [
-      "Strike of Ground Object"
+      "Ground Safety and Cockpit Survival"
     ],
     "takeoff" : [
-      "Takeoff"
+      "Contact Flight Refresh"
     ],
     "trim" : [
-      "Trim"
+      "Contact Flight Refresh"
     ],
     "turn pattern" : [
-      "Turn Pattern"
+      "Contact Flight Refresh"
     ]
   },
   "code" : "FAM4101",
-  "overview" : "FAM4101 is a flight event focused on ejection seat and cfs. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event ties together ground safety and cockpit survival, contact flight refresh, and hud integration in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
   "primaryDocumentTitles" : [
     "FAM4101"
   ],
@@ -50,107 +50,16 @@
           {
             "children" : [
               {
-                "text" : "Recognition \/ indications"
-              }
-            ],
-            "text" : "Recognition \/ indications"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Operation:"
-              },
-              {
-                "text" : "Immediate actions \/ procedure"
-              },
-              {
-                "text" : "General:"
-              },
-              {
-                "text" : "“Respect the Seat”"
-              },
-              {
-                "text" : "ENTERING COCKPIT"
-              },
-              {
-                "text" : "“Two Pins In” (CFS and Ejection safety pins)"
-              },
-              {
-                "text" : "“Two Pins In”"
-              },
-              {
-                "text" : "BEFORE LEAVING WING"
-              },
-              {
-                "text" : "“Two pins in, OFF (PCL), NORMAL (STARTER), NORMAL (IGNITION)”"
-              },
-              {
-                "text" : "“Two pins in, Off, Normal, Normal, Solo (ISS mode selector)”"
-              },
-              {
-                "text" : "Both CFS and emergency oxygen automatically activates upon any activation of ejection seat"
-              },
-              {
-                "text" : "Envelope:"
-              }
-            ],
-            "text" : "Immediate actions \/ procedure"
-          },
-          {
-            "children" : [
-              {
                 "text" : "(N) If ejecting at low speed, one or both sets of risers may remain velcroed together following seat separation, which may result in slight increase in descent rate and\/or uncommanded turn"
               },
               {
-                "text" : "If time permits, manually separate risers. Steering lines (toggles) are located on backside of each front riser"
-              },
-              {
-                "text" : "( R ) Release raft via SSK handle - AS REQUIRED"
-              },
-              {
-                "text" : "( O ) Options - AS REQUIRED:"
-              },
-              {
-                "text" : "Visor - If over water, visor up for increased visibility"
-              },
-              {
-                "text" : "Gloves - If over water, gloves may be removed for better dexterity; if removed, retain and stow; If over land, keep on for protection"
-              },
-              {
-                "text" : "Components\/Limitations"
-              },
-              {
-                "text" : "Martin Baker Mk 16 Ejection Seat with GQ5000 nylon parachute"
+                "text" : "N\/W\/C focus: Review the associated WARNINGs, CAUTIONs, and NOTEs for Ejection Seat and CFS before the event."
               }
             ],
-            "text" : "Decision logic"
+            "text" : "Ejection Seat and CFS:"
           },
           {
             "children" : [
-              {
-                "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Ejection Seat and CFS before the event."
-              }
-            ],
-            "text" : "N\/W\/Cs"
-          }
-        ],
-        "title" : "Ejection Seat and CFS"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Know what Abnormal Starts changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Types of Abnormal Starts:"
-              },
               {
                 "text" : "Hot Start"
               },
@@ -162,62 +71,12 @@
               },
               {
                 "text" : "Loss of ST READY"
-              },
-              {
-                "text" : "ST READY light extinguishes during start sequence"
-              },
-              {
-                "text" : "BAT BUS Warning"
-              },
-              {
-                "text" : "Battery Bus failure indicated"
-              },
-              {
-                "text" : "Low Oil Pressure"
-              },
-              {
-                "text" : "Oil PX fails to rise to green range by late start phase (less common)"
               }
             ],
-            "text" : "Key knowledge"
+            "text" : "Abnormal Starts:"
           },
           {
             "children" : [
-              {
-                "text" : "Be ready to move from explanation into execution: how Abnormal Starts changes the brief, setup, and in-cockpit decision making."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Abnormal Starts without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Abnormal Starts"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Know what Brake Failure changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Types of Failure:"
-              },
               {
                 "text" : "Brake Pressure Fade or No Brake Response"
               },
@@ -225,254 +84,37 @@
                 "text" : "Hydraulic pressure drop, overheated brakes, or cockpit input issue"
               },
               {
-                "text" : "Response:"
-              },
-              {
                 "text" : "Fully release brakes, then re-apply"
               },
               {
                 "text" : "(C) Both crewmembers must fully release brakes for reapplication to be effective"
-              },
-              {
-                "text" : "(N) Braking force is determined by the pilot applying the most pedal pressure"
-              },
-              {
-                "text" : "One Brake Failure (Known or Unexpected)"
-              },
-              {
-                "text" : "Use opposite brake + rudder\/aileron for directional control"
-              },
-              {
-                "text" : "Known one brake inop"
               }
             ],
-            "text" : "Key knowledge"
+            "text" : "Brake Failure:"
           },
           {
             "children" : [
-              {
-                "text" : "Prioritize stall recovery over ground track. Eject if recovery appears unlikely at low altitude."
-              },
-              {
-                "text" : "Upon recovery, be mindful of retarding PCL if still in a nose-high, low-speed condition"
-              },
-              {
-                "text" : "Use opposite brake + rudder\/aileron for directional control"
-              },
-              {
-                "text" : "Use max AOA (14–17.9 units) during recovery to minimize altitude loss and achieve Vx"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Brake Failure without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Brake Failure"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Know what Strike of Ground Object changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Definition:"
-              },
               {
                 "text" : "Contact between the aircraft and any ground object (e.g., cones, lights, barriers) during taxi, takeoff, or landing."
               },
               {
                 "text" : "Stop immediately"
-              },
-              {
-                "text" : "Know what Strike of Ground Object changes in the cockpit and why the instructor cares about it in this event."
-              },
-              {
-                "text" : "how Strike of Ground Object changes the brief, setup, and in-cockpit decision making."
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Be ready to move from explanation into execution: how Strike of Ground Object changes the brief, setup, and in-cockpit decision making."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Strike of Ground Object without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Strike of Ground Object:"
           }
         ],
-        "title" : "Strike of Ground Object"
+        "title" : "Ground Safety and Cockpit Survival"
       },
       {
         "items" : [
-          {
-            "children" : [
-              {
-                "text" : "transition the aircraft from ground roll to controlled flight safely and efficiently"
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Configuration"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Immediate Actions:"
-              },
-              {
-                "text" : "Stop immediately"
-              },
-              {
-                "text" : "Takeoff"
-              },
-              {
-                "text" : "Lineup:"
-              },
-              {
-                "text" : "Call tower - request takeoff per local SOP (“BOOMER ### ready for departure”)"
-              },
-              {
-                "text" : "“Lineup and wait”\/”Hold Short” (read back); “Cleared for takeoff” (acknowledge)"
-              },
-              {
-                "text" : "Taxi to position - clear final, align on centerline"
-              },
-              {
-                "text" : "Lineup Checklist - from memory"
-              },
-              {
-                "text" : "Call crosswind direction - confirm with windsock"
-              },
-              {
-                "text" : "Improper rudder - directional loss"
-              },
-              {
-                "text" : "late\/early\/incorrect rotation"
-              },
-              {
-                "text" : "Over-rotation\/Over-control"
-              }
-            ],
-            "text" : "Execution"
-          },
           {
             "children" : [
               {
                 "text" : "200’ prior to hold short - switch to tower freq"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common Errors:"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Takeoff"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "used to enter or exit a climb or descent, 4 types"
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Transitions:"
-              },
-              {
-                "text" : "Entry (straight ahead):"
-              },
-              {
-                "text" : "Entry (turning stall):"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Immediate Actions:"
-              },
-              {
-                "text" : "Recovery:"
-              },
-              {
-                "text" : "Execute Aircraft Departs Prepared Surface EP"
-              },
-              {
-                "text" : "Dual cockpit"
-              },
-              {
-                "text" : "Pilot with effective brakes assumes braking authority"
-              },
-              {
-                "text" : "Strike of Ground Object"
-              },
-              {
-                "text" : "Definition:"
-              },
-              {
-                "text" : "Contact between the aircraft and any ground object (e.g., cones, lights, barriers) during taxi, takeoff, or landing."
-              },
-              {
-                "text" : "Stop immediately"
-              },
-              {
-                "text" : "“Lineup and wait”\/”Hold Short” (read back); “Cleared for takeoff” (acknowledge)"
-              },
-              {
-                "text" : "Taxi to position - clear final, align on centerline"
-              },
-              {
-                "text" : "Lineup Checklist - from memory"
-              }
-            ],
-            "text" : "Execution"
+            "text" : "Takeoff:"
           },
           {
             "children" : [
@@ -487,123 +129,20 @@
               },
               {
                 "text" : "HDG 125° to High Bridge…."
-              },
-              {
-                "text" : "HDG 135° to High Bridge…"
-              },
-              {
-                "text" : "HDG 305° (when cleared)..."
-              },
-              {
-                "text" : "“Corpus Departure, (call sign), 500 feet off Navy Corpus, (Transition)”"
-              },
-              {
-                "text" : "Foxtrot\/North Mustang - turn N, climb to 5500’ MSL, ½ WTD"
-              },
-              {
-                "text" : "South Mustang - turn S, climb to 5500’ MSL, ½ WTD"
-              },
-              {
-                "text" : "Central Mustang - continue 105°, climb to assigned altitude"
               }
             ],
-            "text" : "Standards \/ numbers"
+            "text" : "Departure:"
           },
           {
             "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Departure late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Departure"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "used to enter or exit a climb or descent, 4 types"
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Cruise-to-Climb:"
-              },
               {
                 "text" : "Power – Advance PCL to MAX"
               },
               {
-                "text" : "Improper nose attitudes"
-              },
-              {
-                "text" : "how Basic Transitions changes the brief, setup, and in-cockpit decision making."
-              },
-              {
                 "text" : "Attitude – Raise nose to 12–15° NH"
-              },
-              {
-                "text" : "used to enter or exit a climb or descent, 4 types"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "used to enter or exit a climb or descent, 4 types"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Basic Transitions without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Basic Transitions"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Taught to familiarize you with the various trim adjustments required with changes in airspeed, power setting, and aircraft configuration"
-              },
-              {
-                "text" : "Trains pilots to control the aircraft near stall speed, simulating conditions experienced during takeoff and landing."
-              },
-              {
-                "text" : "simulate departure stalls to train recognition and recovery techniques"
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Configuration"
-              },
-              {
-                "text" : "Entry (straight ahead):"
-              },
-              {
-                "text" : "Entry (turning stall):"
-              }
-            ],
-            "text" : "Setup \/ entry"
+            "text" : "Basic Transitions:"
           },
           {
             "children" : [
@@ -614,253 +153,30 @@
                 "text" : "Recovery"
               },
               {
-                "text" : "Recovery:"
-              },
-              {
-                "text" : "XW Takeoff - rudder for yaw; aileron into the wind; right aileron for left XW"
-              },
-              {
-                "text" : "Improper rudder - directional loss"
-              },
-              {
-                "text" : "late\/early\/incorrect rotation"
-              },
-              {
-                "text" : "Over-rotation\/Over-control"
-              },
-              {
-                "text" : "Skipping\/swerve from bad XW inputs"
-              },
-              {
-                "text" : "Using aileron instead of rudder for yaw"
-              },
-              {
-                "text" : "Missed “gear up, flaps up” call"
-              },
-              {
-                "text" : "Attitude – Set level picture"
-              },
-              {
-                "text" : "Cruise-to-Descent:"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
                 "text" : "Approaching 180 KIAS - set 180 KIAS climb pitch, comply with SOP, CR, or DP"
               },
               {
                 "text" : "TAD activates at 80 KIAS and weight off wheels"
-              },
-              {
-                "text" : "140 KIAS, 15° NH"
-              },
-              {
-                "text" : "At 180 KIAS – Lower to ~8° NH (climb attitude)"
-              },
-              {
-                "text" : "5 knots prior to cruise airspeed:"
-              },
-              {
-                "text" : "Power – Reduce to cruise (54% or 80%)"
-              },
-              {
-                "text" : "Power – Reduce to 20%"
-              },
-              {
-                "text" : "Attitude – Lower nose to ~5° NL"
-              },
-              {
-                "text" : "100 ft prior to level-off:"
-              },
-              {
-                "text" : "Power – Increase to cruise (54% or 80%)"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common Errors:"
-              },
-              {
-                "text" : "Notes:"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Trim"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "practice smooth, coordinated turns at varying bank angles while maintaining altitude and airspeed"
-              },
-              {
-                "text" : "Taught to familiarize you with the various trim adjustments required with changes in airspeed, power setting, and aircraft configuration"
-              },
-              {
-                "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Trim:"
           },
           {
             "children" : [
               {
                 "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Procedure:"
               },
               {
                 "text" : "Recovery must be completed above 6000’ AGL"
               },
               {
-                "text" : "Establish - level flight, normal\/slow cruise on any numbered heading"
-              },
-              {
-                "text" : "Rollouts\/Reversal - use ⅓ rule, maintain trim, anticipate nose-drop"
-              },
-              {
-                "text" : "Complete - return to original heading, reset cruise power, re-trim"
-              },
-              {
-                "text" : "Use PAT"
-              },
-              {
-                "text" : "Check area before\/during each turn"
-              },
-              {
-                "text" : "Scan horizon and instruments (don’t fixate)"
-              },
-              {
-                "text" : "Use back pressure in steeper turns, forward stick on rollout to prevent ballooning"
-              },
-              {
-                "text" : "Abrupt or premature control inputs"
-              },
-              {
-                "text" : "Inconsistent nose attitude"
-              },
-              {
-                "text" : "Fixation (especially on PFD)"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
                 "text" : "30° AOB - 90° L\/R, minimal back-stick\/power change"
               },
               {
                 "text" : "45° AOB - 180° L\/R, add power and raise nose slightly to maintain energy"
-              },
-              {
-                "text" : "60° AOB - 360° L\/R, significant nose-up and power increase required"
-              },
-              {
-                "text" : "Establish - normal cruise (200 KIAS), straight and level, any #’d heading"
-              },
-              {
-                "text" : "Decelerate to No Flap Configuration (120 KIAS)"
-              },
-              {
-                "text" : "~20% power"
-              },
-              {
-                "text" : "Descent in 30° AOB turn, trimmed"
-              },
-              {
-                "text" : "Airspeed based on flaps (NF\/TO\/LDG) = (120\/115\/110)"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common Errors:"
-              },
-              {
-                "text" : "Notes:"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Turn Pattern"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Taught to familiarize you with the various trim adjustments required with changes in airspeed, power setting, and aircraft configuration"
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "BALL"
-              },
-              {
-                "text" : "Complete"
-              },
-              {
-                "text" : "Failure to maintain turn coordination during the approach turn"
-              },
-              {
-                "text" : "Releasing instead of relaxing back-stick pressure"
-              },
-              {
-                "text" : "Not relaxing back-stick pressure enough"
-              },
-              {
-                "text" : "Cycling rudders to center ball before flying speed is attained"
-              },
-              {
-                "text" : "Delay in raising nose to recovery attitude to stop altitude loss"
-              },
-              {
-                "text" : "Failure to add sufficient power on recovery"
-              },
-              {
-                "text" : "📝 NOTE:"
-              },
-              {
-                "text" : "Continuously scan AOA and BALL — maintain balance to avoid drag and improve climb"
-              },
-              {
-                "text" : "Avoid abrupt rudder inputs during recovery"
-              },
-              {
-                "text" : "As AOA decreases and airspeed increases, expect to re-adjust stick pressure"
-              }
-            ],
-            "text" : "Execution"
+            "text" : "Turn Pattern:"
           },
           {
             "children" : [
@@ -875,91 +191,9 @@
               },
               {
                 "text" : "Wings level, 2 positive rates of climb"
-              },
-              {
-                "text" : "If nose exceeds 10°, lower to within range to prevent full stall"
-              },
-              {
-                "text" : "Avoid lowering nose below 5° → risk of prop strike or porpoising"
-              },
-              {
-                "text" : "Use max AOA (14–17.9 units) during recovery to minimize altitude loss and achieve Vx"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Level Speed Change late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Level Speed Change"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Taught to familiarize you with the various trim adjustments required with changes in airspeed, power setting, and aircraft configuration"
-              },
-              {
-                "text" : "Trains pilots to control the aircraft near stall speed, simulating conditions experienced during takeoff and landing."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Configuration"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Rollouts\/Reversal - use ⅓ rule, maintain trim, anticipate nose-drop"
-              },
-              {
-                "text" : "Complete - return to original heading, reset cruise power, re-trim"
-              },
-              {
-                "text" : "Use PAT"
-              },
-              {
-                "text" : "Check area before\/during each turn"
-              },
-              {
-                "text" : "Scan horizon and instruments (don’t fixate)"
-              },
-              {
-                "text" : "Use back pressure in steeper turns, forward stick on rollout to prevent ballooning"
-              },
-              {
-                "text" : "Abrupt or premature control inputs"
-              },
-              {
-                "text" : "Inconsistent nose attitude"
-              },
-              {
-                "text" : "Fixation (especially on PFD)"
-              },
-              {
-                "text" : "Late corrections for altitude\/airspeed"
-              },
-              {
-                "text" : "Not clearing the area"
-              },
-              {
-                "text" : "Uncoordinated (unbalanced) flight"
-              }
-            ],
-            "text" : "Execution"
+            "text" : "Level Speed Change:"
           },
           {
             "children" : [
@@ -974,57 +208,20 @@
               },
               {
                 "text" : "Establish - normal cruise (200 KIAS), straight and level, any #’d heading"
-              },
-              {
-                "text" : "Decelerate to No Flap Configuration (120 KIAS)"
-              },
-              {
-                "text" : "Reduce airspeed to ~85 KIAS"
-              },
-              {
-                "text" : "Set power to ~45% torque"
-              },
-              {
-                "text" : "Perform coordinated, level 30° AOB turn for ~180°"
-              },
-              {
-                "text" : "Then turn back 30° AOB for ~180° to original heading"
-              },
-              {
-                "text" : "If AOA <18 units and airspeed can’t sustain level flight, add power"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common Errors:"
-              },
-              {
-                "text" : "Notes:"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Slow Flight:"
           }
         ],
-        "title" : "Slow Flight"
+        "title" : "Contact Flight Refresh"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Overview:"
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "FWD Cockpit HUD and right MFD HUD repeater (FWD\/AFT cockpits)"
           },
           {
             "children" : [
-              {
-                "text" : "FWD Cockpit HUD and right MFD HUD repeater (FWD\/AFT cockpits)"
-              },
               {
                 "text" : "flight, navigation, tactical data, weapon info, steering cues"
               },
@@ -1032,53 +229,13 @@
                 "text" : "NAV (navigation), A\/A (air-to-air), A\/G (air-to-ground)"
               },
               {
-                "text" : "Visual Alerts:"
-              },
-              {
                 "text" : "Flash - time-critical or symbol outside FOV"
-              },
-              {
-                "text" : "No colors\/Off Flags - invalid symbology disappears or shows “X”"
-              },
-              {
-                "text" : "Flight Symbology:"
-              },
-              {
-                "text" : "Performance Symbology:"
-              },
-              {
-                "text" : "NAV only; triangle shows slip\/skid relative to lubber line"
-              },
-              {
-                "text" : "Magnetic\/true heading at HUD top; read at lubber line"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Extension of aircraft longitudinal axis; used when CDM fails or in NAV"
-              },
-              {
-                "text" : "Shows climb\/dive angle; moves vertically; caged if off-HUD (broken lines)"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about HUD without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
-        "title" : "HUD"
+        "title" : "HUD Integration"
       },
       {
         "items" : [
@@ -1122,8 +279,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+    "summary" : "Keep Ground Safety and Cockpit Survival, plus Contact Flight Refresh organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
   },
-  "summary" : "Ejection Seat and CFS: Ejection Seat and CFS, Abnormal Starts, Brake Failure, and the remaining required discussion items in the block.",
+  "summary" : "Ground Safety and Cockpit Survival, Contact Flight Refresh, and HUD Integration.",
   "title" : "Ejection Seat and CFS"
 }

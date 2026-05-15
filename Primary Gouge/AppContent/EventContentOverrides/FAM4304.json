@@ -17,7 +17,7 @@
     ]
   },
   "code" : "FAM4304",
-  "overview" : "FAM4304 is a flight event focused on securing rear cockpit for solo. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event ties together securing rear cockpit for solo, unauthorized solo maneuvers, and unintentional instrument flight in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
   "primaryDocumentTitles" : [
     "FAM4304"
   ],
@@ -27,18 +27,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Overview:"
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Read checklists out loud to reduce omissions."
           },
           {
             "children" : [
-              {
-                "text" : "Read checklists out loud to reduce omissions."
-              },
               {
                 "text" : "Maintain situational awareness while taxiing—use \"see-and-avoid\" doctrine."
               },
@@ -47,73 +39,9 @@
               },
               {
                 "text" : "(N) Set aft UFCP HUD switch to DAY mode for solo flight."
-              },
-              {
-                "text" : "Ejection Seat – Inspect"
-              },
-              {
-                "text" : "Seat safety pin - Installed and warning streamer is free and clear of ejection seat handle (BOTH)"
-              },
-              {
-                "text" : "CFS Handle Safety Pin – Installed"
-              },
-              {
-                "text" : "Left and right leg restraint lines - Extend fully to facilitate steps d and e below"
-              },
-              {
-                "text" : "(W) Failure to tighten leg garters may cause interference with oxygen hoses and comm cord, affecting flight control."
-              },
-              {
-                "text" : "Shoulder harness control lever - Lock"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Ask FDO\/ODO for help if issues arise."
-              },
-              {
-                "text" : "Seek instructor or maintenance help if unsure."
-              },
-              {
-                "text" : "(W) Keep head clear of canopy handle, latch hooks, and guide pins when entering or exiting to avoid injury."
-              },
-              {
-                "text" : "(W) If rear cockpit isn’t secured for solo flight, flight control movement may be restricted."
-              },
-              {
-                "text" : "Seat - Lower seat as required to ensure seat safety pin clearance with control stick in full aft position"
-              },
-              {
-                "text" : "Maintain situational awareness while taxiing—use \"see-and-avoid\" doctrine."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "(W) Before lowering the seat, ensure seat pan and side consoles are clear of all straps, cords, and connections to avoid damage."
-              },
-              {
-                "text" : "Right leg garter - Route through right lap strap and right parachute riser and secure around oxygen hoses and comm cord"
-              },
-              {
-                "text" : "Left leg garter - Route through left lap strap and left parachute riser and secure around oxygen hoses and comm cord"
-              },
-              {
-                "text" : "Lap straps - Tighten"
-              },
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Securing Rear Cockpit For Solo without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Securing Rear Cockpit For Solo"
@@ -121,57 +49,18 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what Unauthorized Solo Maneuvers changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "No spins, stalls, simulated engine failures, PPELs, or maneuvers not previously introduced."
           },
           {
             "children" : [
-              {
-                "text" : "No spins, stalls, simulated engine failures, PPELs, or maneuvers not previously introduced."
-              },
               {
                 "text" : "Unauthorized Solo Maneuvers is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
               },
               {
                 "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
-              },
-              {
-                "text" : "Standards \/ numbers"
-              },
-              {
-                "text" : "Memorize the setup numbers and the recovery numbers for Unauthorized Solo Maneuvers; that is usually where the grading starts."
-              },
-              {
-                "text" : "how Unauthorized Solo Maneuvers changes the brief, setup, and in-cockpit decision making."
-              },
-              {
-                "text" : "Setup \/ entry"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Be ready to move from explanation into execution: how Unauthorized Solo Maneuvers changes the brief, setup, and in-cockpit decision making."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Unauthorized Solo Maneuvers late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Unauthorized Solo Maneuvers"
@@ -179,18 +68,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what Unintentional Instrument Flight changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Avoid IMC at all times."
           },
           {
             "children" : [
-              {
-                "text" : "Avoid IMC at all times."
-              },
               {
                 "text" : "a. Maintain control of the aircraft."
               },
@@ -198,38 +79,10 @@
                 "text" : "b. Establish instrument scan and check altitude."
               },
               {
-                "text" : "Know what Unintentional Instrument Flight changes in the cockpit and why the instructor cares about it in this event."
-              },
-              {
                 "text" : "c. If below MEF+1000’ or OROCA, climb immediately and turn away from obstacles."
-              },
-              {
-                "text" : "d. If above MEF+1000’ or OROCA, exit IMC the way you entered (climb → descend, etc.)."
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "If encountered:"
-              },
-              {
-                "text" : "e. If unable to regain VMC:"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Unintentional Instrument Flight without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Unintentional Instrument Flight"
@@ -237,21 +90,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what Local Course Rules changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "NAS Corpus Christi (KNGP)"
           },
           {
             "children" : [
-              {
-                "text" : "Know what Local Course Rules changes in the cockpit and why the instructor cares about it in this event."
-              },
-              {
-                "text" : "NAS Corpus Christi (KNGP)"
-              },
               {
                 "text" : "General Guidelines"
               },
@@ -260,58 +102,9 @@
               },
               {
                 "text" : "Use Zulu time"
-              },
-              {
-                "text" : "During Before Taxi Checklist, call NGP Clearance"
-              },
-              {
-                "text" : "Mustang\/Foxtrot\/Rockport\/Goliad"
-              },
-              {
-                "text" : "No clearance required"
-              },
-              {
-                "text" : "The XX is the last two digits of the aircraft callsign"
-              },
-              {
-                "text" : "Callsign vs. BUNO (side #)"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Use Zulu time"
-              },
-              {
-                "text" : "Aircraft will use local VFR T-6 squawk, also known as “Company”"
-              },
-              {
-                "text" : "3.RADIO CALLS. Make all radio calls “in the blind.” Use frequencies appropriate for route of flight."
-              },
-              {
-                "text" : "(2) Execute a normal break entry to the duty runway (use the inboard runway if the parallels are in use)."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Local Course Rules without being able to explain the operational consequence."
-              },
-              {
-                "text" : "IF UNABLE TO MAINTAIN VMC, SQUAWK 7600 AND COMPLY WITH IFR LOST COMMUNICATION PROCEDURES."
-              },
-              {
-                "text" : "THESE PROCEDURES SHOULD NOT PRECLUDE EXERCISING SOUND JUDGEMENT IN WHATEVER ACTION A PILOT ELECTS TO TAKE. (AIM, FAR 91.185)"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Local Course Rules"
@@ -319,78 +112,40 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "This is a cumulative review item. Treat it like a check-event probe: you can be asked to explain prior FAM procedures, systems, maneuvers, and emergency logic without a warm-up."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Any Previously Discussed Maneuver or Procedure is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
           },
           {
             "children" : [
               {
-                "text" : "safety check\/call prior to cockpit entry and departing aircraft"
-              },
-              {
-                "text" : "runaway trim"
-              },
-              {
-                "text" : "Normal takeoff"
-              },
-              {
-                "text" : "local area departure"
-              },
-              {
-                "text" : "integrated (VMC) scan"
-              },
-              {
-                "text" : "turn pattern"
-              },
-              {
-                "text" : "level speed change"
-              },
-              {
-                "text" : "power-on stalls"
-              },
-              {
-                "text" : "landing pattern (approach turn and landing attitude) stalls"
-              },
-              {
-                "text" : "intentional spin entry"
-              },
-              {
-                "text" : "incipient spin recovery"
-              },
-              {
-                "text" : "steady-state spin recovery"
-              },
-              {
-                "text" : "inadvertent trim actuation"
-              },
-              {
-                "text" : "landing pattern"
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
               }
             ],
-            "text" : "Key knowledge"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
               {
-                "text" : "Build your prep around the assigned profile first, then backfill the earlier blocks that feed into it."
+                "text" : "N\/A"
               },
               {
-                "text" : "Be ready to move from verbal explanation to a cockpit decision or maneuver setup without changing gears."
+                "text" : "Any Previously Discussed Maneuver or Procedure is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+              },
+              {
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+              },
+              {
+                "text" : "you can be asked to explain prior FAM procedures, systems, maneuvers, and emergency logic without a warm-up."
               }
             ],
-            "text" : "Application"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
               {
-                "text" : "Do not study only the newest block. Review questions on older FAM material are often used to check whether the fundamentals are still automatic."
+                "text" : "Memorize the setup numbers and the recovery numbers for Any Previously Discussed Maneuver or Procedure; that is usually where the grading starts."
               }
             ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Any Previously Discussed Maneuver or Procedure"
@@ -416,8 +171,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Have Securing Rear Cockpit For Solo and Unauthorized Solo Maneuvers organized before step so the cockpit workload never outruns the brief."
   },
-  "summary" : "Securing Rear Cockpit for Solo: Securing Rear Cockpit For Solo, Unauthorized Solo Maneuvers, Unintentional Instrument Flight, and the remaining required discussion items in the block.",
+  "summary" : "Securing Rear Cockpit For Solo, Unauthorized Solo Maneuvers, and Unintentional Instrument Flight.",
   "title" : "Securing Rear Cockpit for Solo"
 }

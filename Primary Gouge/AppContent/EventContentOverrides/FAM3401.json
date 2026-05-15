@@ -1,47 +1,47 @@
 {
   "canonicalCoverage" : {
     "AOA approach" : [
-      "AOA Approach"
+      "AOA Approach and Energy Management"
     ],
     "HUD" : [
-      "HUD"
+      "Combination Maneuver Planning and HUD Use"
     ],
     "OCF recovery and airborne damaged aircraft" : [
-      "OCF Recovery and Airborne Damaged Aircraft"
+      "Unusual Attitudes and Recovery Priorities"
     ],
     "aileron roll" : [
-      "Aileron Roll"
+      "Core Aerobatic Maneuvers"
     ],
     "barrel roll" : [
-      "Barrel Roll"
+      "Core Aerobatic Maneuvers"
     ],
     "combination maneuvers" : [
-      "Combination Maneuvers"
+      "Combination Maneuver Planning and HUD Use"
     ],
     "contact unusual attitudes" : [
-      "Contact Unusual Attitudes"
+      "Unusual Attitudes and Recovery Priorities"
     ],
     "half cuban eight" : [
-      "Half Cuban Eight"
+      "Core Aerobatic Maneuvers"
     ],
     "immelmann" : [
-      "Immelmann"
+      "Core Aerobatic Maneuvers"
     ],
     "loop" : [
-      "Loop"
+      "Core Aerobatic Maneuvers"
     ],
     "maneuvering speeds" : [
-      "Maneuvering Speeds"
+      "AOA Approach and Energy Management"
     ],
     "split-s" : [
-      "Split-S"
+      "Core Aerobatic Maneuvers"
     ],
     "wingover" : [
-      "Wingover"
+      "Core Aerobatic Maneuvers"
     ]
   },
   "code" : "FAM3401",
-  "overview" : "FAM3401 is a sim event focused on aoa and aerobatics. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event ties together aoa approach and energy management, unusual attitudes and recovery priorities, and core aerobatic maneuvers into a cleaner familiarization brief. You should be ready to explain the setup picture, the decision chain, and the mistakes that usually appear when the pace picks up.",
   "primaryDocumentTitles" : [
     "FAM3401",
     "FAM 3401 Briefing guide 1542.166D"
@@ -54,166 +54,24 @@
           {
             "children" : [
               {
-                "text" : "The AOA approach teaches precise energy and attitude control, using optimum AOA (10-11 units) instead of airspeed for approach guidance. It's a 180° descending turn to final followed by a normal flared landing. This technique is critical for short-field landings and jet\/carrier ops."
-              },
-              {
-                "text" : "Description:"
-              },
-              {
-                "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Setup (Post Touch-and-Go):"
-              },
-              {
-                "text" : "Transition on Downwind:"
-              },
-              {
-                "text" : "Configuration:"
-              },
-              {
                 "text" : "Check and report over ICS"
-              },
-              {
-                "text" : "Entry"
               },
               {
                 "text" : "Level flight, wings level"
               },
               {
                 "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Procedure:"
-              },
-              {
-                "text" : "Execution:"
               },
               {
                 "text" : "Recovery"
-              },
-              {
-                "text" : "IDLE power, controls neutral"
-              },
-              {
-                "text" : "Recovery must be completed above 6000’ AGL"
-              },
-              {
-                "text" : "Flap Setting"
-              },
-              {
-                "text" : "Turn with a shallower bank than normal (TO\/LDG flaps)"
-              },
-              {
-                "text" : "Final Approach"
-              },
-              {
-                "text" : "Cross runway threshold on-speed, begin flare"
-              },
-              {
-                "text" : "N\/W\/Cs:"
-              },
-              {
-                "text" : "Transitioning to on-speed AOA simulates a flared attitude—important for carrier-style landings"
-              },
-              {
-                "text" : "(C):"
               }
             ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Climb out at 120 KIAS with flaps up"
-              },
-              {
-                "text" : "Approx. KIAS"
-              },
-              {
-                "text" : "Final Turn (180° Position)"
-              },
-              {
-                "text" : "Begin turn with 15–20% power, slight nose-down"
-              },
-              {
-                "text" : "Aim to arrive at 90° position at ~450’ AGL"
-              },
-              {
-                "text" : "Ensure ~200’ AGL at 1200–1500 ft from runway threshold"
-              },
-              {
-                "text" : "A 360° roll about the longitudinal axis with wings returning to level flight at completion. The nose traces a circular path around the horizon while maintaining overall energy."
-              },
-              {
-                "text" : "180–220 KIAS"
-              },
-              {
-                "text" : "~80%"
-              },
-              {
-                "text" : "≥ 6,000’ AGL recommended"
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage AOA Approach late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "AOA Approach"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Maneuvering Speeds is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Above this speed, full or abrupt control inputs in one axis can cause structural damage."
-              },
-              {
-                "text" : "Other:"
-              }
-            ],
-            "text" : "Execution"
+            "text" : "AOA Approach:"
           },
           {
             "children" : [
               {
                 "text" : "227 KIAS"
-              },
-              {
-                "text" : "Rudder Limitation:"
               },
               {
                 "text" : "Full rudder deflection above 150 KIAS exceeds rudder system limits and can cause damage, even if below VO."
@@ -223,51 +81,17 @@
               },
               {
                 "text" : "(19,020 MSL transition)"
-              },
-              {
-                "text" : "207 KIAS"
-              },
-              {
-                "text" : "150 KIAS"
-              },
-              {
-                "text" : "180 KIAS"
-              },
-              {
-                "text" : "Perform coordinated, level 30° AOB turn for ~180°"
-              },
-              {
-                "text" : "Then turn back 30° AOB for ~180° to original heading"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Maneuvering Speeds late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Maneuvering Speeds:"
           }
         ],
-        "title" : "Maneuvering Speeds"
+        "title" : "AOA Approach and Energy Management"
       },
       {
         "items" : [
           {
             "children" : [
-              {
-                "text" : "recovery from NH, NL, or Inverted attitudes due to disorientation, misflown maneuvers, or external factors. Recovery is visual (VFR) and must be completed above 6000’ AGL"
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Nose-High:"
-              },
               {
                 "text" : "PCL - MAX (if low airspeed)"
               },
@@ -279,363 +103,71 @@
               },
               {
                 "text" : "Roll wings level, raise nose, check oil pressure, power as req."
-              },
-              {
-                "text" : "Not setting PCL to MAX at low airspeed"
-              },
-              {
-                "text" : "Pushing forward stick (zero or -Gs)"
-              },
-              {
-                "text" : "Stopping roll with nose still above horizon"
-              },
-              {
-                "text" : "Nose-Low:"
-              },
-              {
-                "text" : "Roll to nearest horizon"
               }
             ],
-            "text" : "Key knowledge"
+            "text" : "Contact Unusual Attitudes:"
           },
           {
             "children" : [
               {
-                "text" : "If needed, allow nose below horizon to regain airspeed"
-              },
-              {
-                "text" : "UA recovery does not work if stalled or in OCF"
-              },
-              {
-                "text" : "Use back stick to bring nose to horizon"
-              },
-              {
-                "text" : "NOTE: avoid knife-edge; roll past 90° and use +G"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common Errors:"
-              },
-              {
-                "text" : "never push over with forward stick (induces 0\/-G)"
-              },
-              {
-                "text" : "avoid knife-edge; roll past 90° and use +G"
-              },
-              {
-                "text" : "stick shaker\/buffet = imminent stall - reduce back pressure"
-              },
-              {
-                "text" : "Warnings:"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Contact Unusual Attitudes"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Description:"
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Configuration:"
-              },
-              {
-                "text" : "Check and report over ICS"
-              },
-              {
-                "text" : "Entry"
-              },
-              {
-                "text" : "From wings-level upright flight"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Execution:"
-              },
-              {
-                "text" : "Recovery"
-              },
-              {
-                "text" : "Complete Pre-Stalling, Spinning, and Aerobatic Checklist"
-              },
-              {
-                "text" : "Visually scan, use TCAS, and perform clearing turns"
-              },
-              {
-                "text" : "Relax back-stick pressure to stop nose tracking upward"
-              },
-              {
-                "text" : "Apply full aileron in desired direction (left or right)"
-              },
-              {
-                "text" : "As wings approach level, neutralize ailerons"
-              },
-              {
-                "text" : "Return to level flight"
-              },
-              {
-                "text" : "Failure to Relax Back-Stick Pressure:"
-              },
-              {
-                "text" : "Leads to nose pitching in an arc, not a clean roll"
-              },
-              {
-                "text" : "Causes rapid nose drop through inverted"
-              },
-              {
-                "text" : "Delayed Roll Initiation:"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
-                "text" : "A 360° roll about the longitudinal axis with wings returning to level flight at completion. The nose traces a circular path around the horizon while maintaining overall energy."
-              },
-              {
-                "text" : "180–220 KIAS"
-              },
-              {
-                "text" : "~80%"
-              },
-              {
-                "text" : "≥ 6,000’ AGL recommended"
-              },
-              {
-                "text" : "Raise nose smoothly to ~10° nose-high"
-              },
-              {
-                "text" : "A 360° turn in the vertical plane flown on a constant heading and nose track. Elevator is the primary control surface; rudder and aileron are used for coordinated and directional control. Ends wings level, on the same heading as entry."
-              },
-              {
-                "text" : "230–250 KIAS"
-              },
-              {
-                "text" : "Approximately 3,000 feet above ground level"
-              },
-              {
-                "text" : "Pull straight back to achieve 4 Gs in 2–3 seconds"
-              },
-              {
-                "text" : "Expect slowest airspeed at top (~100–120 KIAS)"
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Aileron Roll late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Aileron Roll"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Loop is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Check and report over ICS"
-              },
-              {
-                "text" : "Entry"
-              },
-              {
-                "text" : "230–250 KIAS"
+                "text" : "Wings level on a well-defined section line"
               },
               {
                 "text" : "From wings-level upright flight"
               },
               {
-                "text" : "Setup \/ entry"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Recovery"
-              },
-              {
-                "text" : "MAX"
-              },
-              {
-                "text" : "PSSA"
-              },
-              {
-                "text" : "visual scan, TCAS, clearing turns"
-              },
-              {
-                "text" : "Ensure wings level and airspace above is clear"
-              },
-              {
-                "text" : "Smoothly initiate AGSM"
-              },
-              {
-                "text" : "Keep wings level, no aileron input during pull-up"
-              },
-              {
-                "text" : "Upward Segment"
-              },
-              {
-                "text" : "As nose passes through horizon, verify wings level"
-              },
-              {
-                "text" : "Adjust back-stick to maintain constant nose pitch rate"
-              },
-              {
-                "text" : "Increase right rudder input as airspeed decreases"
-              },
-              {
-                "text" : "Vertical and Over-the-Top"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
-                "text" : "A 360° turn in the vertical plane flown on a constant heading and nose track. Elevator is the primary control surface; rudder and aileron are used for coordinated and directional control. Ends wings level, on the same heading as entry."
-              },
-              {
-                "text" : "230–250 KIAS"
-              },
-              {
-                "text" : "Approximately 3,000 feet above ground level"
-              },
-              {
-                "text" : "Pull straight back to achieve 4 Gs in 2–3 seconds"
-              },
-              {
-                "text" : "Expect slowest airspeed at top (~100–120 KIAS)"
+                "text" : "Inadvertent Departure from Controlled Flight"
               },
               {
                 "text" : "Use ~4 Gs to smoothly recover to level flight"
-              },
-              {
-                "text" : "Smooth pull-up to 4 G's within 2–3 seconds"
-              },
-              {
-                "text" : "Airspeed ~100–120 KIAS"
-              },
-              {
-                "text" : "Approaching 45° nose-low, release back-stick to slow nose movement"
-              },
-              {
-                "text" : "At 45° nose-low inverted (feet on the horizon), momentarily freeze controls"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Loop late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "OCF Recovery and Airborne Damaged Aircraft:"
           }
         ],
-        "title" : "Loop"
+        "title" : "Unusual Attitudes and Recovery Priorities"
       },
       {
         "items" : [
           {
             "children" : [
               {
-                "text" : "Half Cuban Eight is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                "text" : "Check and report over ICS"
+              },
+              {
+                "text" : "From wings-level upright flight"
+              },
+              {
+                "text" : "Recovery"
+              },
+              {
+                "text" : "A 360° roll about the longitudinal axis with wings returning to level flight at completion. The nose traces a circular path around the horizon while maintaining overall energy."
               }
             ],
-            "text" : "Purpose"
+            "text" : "Aileron Roll:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Check and report over ICS"
+              },
+              {
+                "text" : "230–250 KIAS"
+              },
+              {
+                "text" : "From wings-level upright flight"
+              },
+              {
+                "text" : "Recovery"
+              }
+            ],
+            "text" : "Loop:"
           },
           {
             "children" : [
               {
                 "text" : "230–250 KIAS"
               },
-              {
-                "text" : "Setup \/ entry"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "MAX"
-              },
-              {
-                "text" : "Recheck wings level and airspace above"
-              },
-              {
-                "text" : "Call out entry altitude over ICS"
-              },
-              {
-                "text" : "Initiate Pull-Up"
-              },
-              {
-                "text" : "Begin AGSM"
-              },
-              {
-                "text" : "Do not use aileron"
-              },
-              {
-                "text" : "Vertical Segment"
-              },
-              {
-                "text" : "Maintain wings level as nose passes horizon"
-              },
-              {
-                "text" : "Adjust stick pressure for constant pitch rate"
-              },
-              {
-                "text" : "Increase right rudder as airspeed decreases"
-              },
-              {
-                "text" : "Top of Loop"
-              },
-              {
-                "text" : "Look for opposite horizon after vertical"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
               {
                 "text" : "A combination of a modified Loop and an Immelmann. Starts with a vertical pull like a Loop, transitions at the top with a 45° nose-low rolling maneuver, and completes in level flight at entry airspeed and reciprocal heading."
               },
@@ -644,54 +176,9 @@
               },
               {
                 "text" : "Airspeed ~100–120 KIAS"
-              },
-              {
-                "text" : "Approaching 45° nose-low, release back-stick to slow nose movement"
-              },
-              {
-                "text" : "At 45° nose-low inverted (feet on the horizon), momentarily freeze controls"
-              },
-              {
-                "text" : "Maintain 45° nose-low"
-              },
-              {
-                "text" : "Begin pull-up around 205–210 KIAS (lead point ≈ nose-low angle)"
-              },
-              {
-                "text" : "Improper forward stick during roll → nose not held at 45° down"
-              },
-              {
-                "text" : "(N) Use ground references or heading bug\/CDI. Upon reaching 45° nose-low inverted (feet on the horizon), momentarily freeze the control stick before the coordinated roll. To maintain 45° nose-low, pick a point on the ground and freeze it in the windscreen."
-              },
-              {
-                "text" : "230–250 KIAS"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Half Cuban Eight late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Half Cuban Eight"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Immelmann is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Half Cuban Eight:"
           },
           {
             "children" : [
@@ -702,110 +189,13 @@
                 "text" : "Level flight, wings level"
               },
               {
-                "text" : "Setup \/ entry"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "MAX"
-              },
-              {
-                "text" : "Recheck wings level and airspace above"
-              },
-              {
-                "text" : "Call out entry altitude over ICS"
-              },
-              {
-                "text" : "Initiate Pull-Up"
-              },
-              {
-                "text" : "Begin AGSM"
-              },
-              {
-                "text" : "Do not use aileron"
-              },
-              {
-                "text" : "Vertical Segment"
-              },
-              {
-                "text" : "Maintain wings level as nose passes horizon"
-              },
-              {
-                "text" : "Adjust stick pressure for constant pitch rate"
-              },
-              {
-                "text" : "Increase right rudder as airspeed decreases"
-              },
-              {
-                "text" : "Top of Loop"
-              },
-              {
-                "text" : "Look for opposite horizon after vertical"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
                 "text" : "Smooth pull-up to 4 G's within 2–3 seconds"
               },
               {
                 "text" : "Airspeed ~100–120 KIAS"
-              },
-              {
-                "text" : "Approaching 45° nose-low, release back-stick to slow nose movement"
-              },
-              {
-                "text" : "At 45° nose-low inverted (feet on the horizon), momentarily freeze controls"
-              },
-              {
-                "text" : "Maintain 45° nose-low"
-              },
-              {
-                "text" : "Begin pull-up around 205–210 KIAS (lead point ≈ nose-low angle)"
-              },
-              {
-                "text" : "Improper forward stick during roll → nose not held at 45° down"
-              },
-              {
-                "text" : "(N) Use ground references or heading bug\/CDI. Upon reaching 45° nose-low inverted (feet on the horizon), momentarily freeze the control stick before the coordinated roll. To maintain 45° nose-low, pick a point on the ground and freeze it in the windscreen."
-              },
-              {
-                "text" : "A 180° reversal combining a smooth climbing 90° turn with a smooth descending 90° turn. Ends on the same altitude and approximately the same airspeed as entry."
-              },
-              {
-                "text" : "200–220 KIAS"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Immelmann late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Immelmann"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Split-S is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Immelmann:"
           },
           {
             "children" : [
@@ -816,71 +206,18 @@
                 "text" : "Level flight, wings level"
               },
               {
-                "text" : "Setup \/ entry"
-              },
-              {
-                "text" : "Transition to 150 KIAS"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Combines the first half of an Aileron Roll with the last half of a Loop. Used to rapidly reverse direction and convert altitude into airspeed. Ends in level flight."
-              },
-              {
-                "text" : "Idle prior to roll"
-              },
-              {
-                "text" : "Retard PCL to IDLE"
-              },
-              {
-                "text" : "Execute half roll to inverted"
-              },
-              {
-                "text" : "Neutralize ailerons after inverted"
-              },
-              {
-                "text" : "Check\/correct wings level using the horizon"
-              },
-              {
-                "text" : "Apply back-stick to pull through horizon"
-              },
-              {
-                "text" : "Aim for max nose track without stalling"
-              },
-              {
-                "text" : "Recover to level flight"
-              },
-              {
-                "text" : "Check\/report oil pressure is normal"
-              },
-              {
-                "text" : "Not maintaining altitude\/balanced flight during decel"
-              },
-              {
-                "text" : "Delaying roll → decayed airspeed → poor lateral control"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
                 "text" : "Transition to 150 KIAS"
               },
               {
                 "text" : "High enough for ~3000 ft loss"
-              },
+              }
+            ],
+            "text" : "Split-S:"
+          },
+          {
+            "children" : [
               {
-                "text" : "Maintain altitude, slow to 140 KIAS"
-              },
-              {
-                "text" : "Raise nose to ~10° nose high"
-              },
-              {
-                "text" : "As airspeed\/Gs increase (~4 Gs), perform AGSM"
+                "text" : "Level flight, wings level"
               },
               {
                 "text" : "A 180° reversal combining a smooth climbing 90° turn with a smooth descending 90° turn. Ends on the same altitude and approximately the same airspeed as entry."
@@ -890,196 +227,9 @@
               },
               {
                 "text" : "~70%"
-              },
-              {
-                "text" : "Pick reference point on horizon 90º off wingtip"
-              },
-              {
-                "text" : "Reach 45º nose up and 45º AOB at 45º of turn"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Split-S late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Split-S"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Wingover is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Level flight, wings level"
-              },
-              {
-                "text" : "Setup \/ entry"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Performed in a series of two to return to the original heading."
-              },
-              {
-                "text" : "Sufficient for nose-low maneuvering"
-              },
-              {
-                "text" : "Establish straight-and-level flight at briefed entry parameters"
-              },
-              {
-                "text" : "Begin climbing turn toward reference point:"
-              },
-              {
-                "text" : "Shallow bank initially"
-              },
-              {
-                "text" : "Nose and bank should increase together"
-              },
-              {
-                "text" : "Continue turn and increase bank as nose falls:"
-              },
-              {
-                "text" : "Lowest airspeed as nose reaches the horizon"
-              },
-              {
-                "text" : "Allow nose to fall below horizon, reduce bank symmetrically:"
-              },
-              {
-                "text" : "Begin second leaf in opposite direction, repeat steps"
-              },
-              {
-                "text" : "Recover wings level, original altitude and heading"
-              },
-              {
-                "text" : "Level flight, wings level"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
-                "text" : "A 180° reversal combining a smooth climbing 90° turn with a smooth descending 90° turn. Ends on the same altitude and approximately the same airspeed as entry."
-              },
-              {
-                "text" : "200–220 KIAS"
-              },
-              {
-                "text" : "~70%"
-              },
-              {
-                "text" : "Pick reference point on horizon 90º off wingtip"
-              },
-              {
-                "text" : "Reach 45º nose up and 45º AOB at 45º of turn"
-              },
-              {
-                "text" : "Reach 90º AOB and nose on horizon at 90º of turn"
-              },
-              {
-                "text" : "Reach 45º AOB and ~35º nose low at 135º of turn"
-              },
-              {
-                "text" : "Complete turn to original altitude\/airspeed with wings level at 180º of turn"
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Wingover late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Wingover"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Barrel Roll is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Setup \/ entry"
-              },
-              {
-                "text" : "Entry (turning stall):"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Recovery:"
-              },
-              {
-                "text" : "Nose follows an arcing path above and below horizon."
-              },
-              {
-                "text" : "Ends on original heading and altitude."
-              },
-              {
-                "text" : "Report entry altitude"
-              },
-              {
-                "text" : "Start in straight and level flight."
-              },
-              {
-                "text" : "Smoothly raise nose while wings stay level."
-              },
-              {
-                "text" : "Increase roll rate slightly to reach:"
-              },
-              {
-                "text" : "Continue rolling\/pulling at a constant rate."
-              },
-              {
-                "text" : "Complete roll on original heading and altitude."
-              },
-              {
-                "text" : "Ensure symmetrical path above and below horizon."
-              },
-              {
-                "text" : "Poor coordination between pitch and roll"
-              },
-              {
-                "text" : "Imbalanced flight (rudder misuse)"
-              }
-            ],
-            "text" : "Execution"
+            "text" : "Wingover:"
           },
           {
             "children" : [
@@ -1093,268 +243,32 @@
                 "text" : "At ~20° nose up, begin coordinated roll and pull."
               },
               {
-                "text" : "At 45° of turn:"
-              },
-              {
                 "text" : "90°"
-              },
-              {
-                "text" : "~55–60° above horizon"
-              },
-              {
-                "text" : "Wings level inverted at 90° checkpoint"
-              },
-              {
-                "text" : "~10° above horizon"
-              },
-              {
-                "text" : "100–120 KIAS"
-              },
-              {
-                "text" : "Maintain positive Gs throughout (<2.5 Gs)."
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Barrel Roll late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Barrel Roll:"
           }
         ],
-        "title" : "Barrel Roll"
+        "title" : "Core Aerobatic Maneuvers"
       },
       {
         "items" : [
-          {
-            "children" : [
-              {
-                "text" : "OCF Recovery and Airborne Damaged Aircraft is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Wings level on a well-defined section line"
-              },
-              {
-                "text" : "From wings-level upright flight"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Inadvertent Departure from Controlled Flight"
-              },
-              {
-                "text" : "Failing to reduce power\/deploy speed brake"
-              },
-              {
-                "text" : "Not reporting oil pressure"
-              },
-              {
-                "text" : "Inverted:"
-              },
-              {
-                "text" : "Roll to the nearest horizon (shortest distance)"
-              },
-              {
-                "text" : "Power as req."
-              },
-              {
-                "text" : "As nose approaches\/slightly above horizon, check\/report oil pressure"
-              },
-              {
-                "text" : "Adjust power to maintain flight"
-              },
-              {
-                "text" : "Not rolling in shortest distance to horizon"
-              },
-              {
-                "text" : "Resume AGSM"
-              },
-              {
-                "text" : "PCL – IDLE"
-              },
-              {
-                "text" : "CONTROLS – NEUTRAL"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Use ~4 Gs to smoothly recover to level flight"
-              },
-              {
-                "text" : "4 Gs in 2–3 seconds"
-              },
-              {
-                "text" : "As nose approaches ~10° above opposite horizon (canopy bow on horizon), neutralize back-stick"
-              },
-              {
-                "text" : "Use slight forward stick past 90° roll"
-              },
-              {
-                "text" : "End maneuver wings level on reciprocal heading, ~120 KIAS, slightly nose high"
-              },
-              {
-                "text" : "Transition to 150 KIAS"
-              },
-              {
-                "text" : "High enough for ~3000 ft loss"
-              },
-              {
-                "text" : "Maintain altitude, slow to 140 KIAS"
-              },
-              {
-                "text" : "Raise nose to ~10° nose high"
-              },
-              {
-                "text" : "As airspeed\/Gs increase (~4 Gs), perform AGSM"
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Warnings:"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "OCF Recovery and Airborne Damaged Aircraft"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Combination Maneuvers is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
-          },
           {
             "children" : [
               {
                 "text" : "Level flight, wings level"
               },
               {
-                "text" : "Setup \/ entry"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "(N) Ensure wings level inverted before pull; use ground reference above canopy bow to maintain straight pull"
+                "text" : "recovery by maintaining neutral controls is possible but time and altitude loss will be greater than with the"
               },
-              {
-                "text" : "Wingover"
-              },
-              {
-                "text" : "Performed in a series of two to return to the original heading."
-              },
-              {
-                "text" : "Sufficient for nose-low maneuvering"
-              },
-              {
-                "text" : "Establish straight-and-level flight at briefed entry parameters"
-              },
-              {
-                "text" : "Begin climbing turn toward reference point:"
-              },
-              {
-                "text" : "Shallow bank initially"
-              },
-              {
-                "text" : "Nose and bank should increase together"
-              },
-              {
-                "text" : "Continue turn and increase bank as nose falls:"
-              },
-              {
-                "text" : "Lowest airspeed as nose reaches the horizon"
-              },
-              {
-                "text" : "Allow nose to fall below horizon, reduce bank symmetrically:"
-              },
-              {
-                "text" : "Begin second leaf in opposite direction, repeat steps"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
               {
                 "text" : "A 180° reversal combining a smooth climbing 90° turn with a smooth descending 90° turn. Ends on the same altitude and approximately the same airspeed as entry."
               },
               {
                 "text" : "200–220 KIAS"
-              },
-              {
-                "text" : "~70%"
-              },
-              {
-                "text" : "Pick reference point on horizon 90º off wingtip"
-              },
-              {
-                "text" : "Reach 45º nose up and 45º AOB at 45º of turn"
-              },
-              {
-                "text" : "Reach 90º AOB and nose on horizon at 90º of turn"
-              },
-              {
-                "text" : "Reach 45º AOB and ~35º nose low at 135º of turn"
-              },
-              {
-                "text" : "Complete turn to original altitude\/airspeed with wings level at 180º of turn"
-              },
-              {
-                "text" : "Choose and sequence up to 4 aerobatic maneuvers (e.g., Loop → Half Cuban Eight → Immelmann → Split-S)."
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Combination Maneuvers late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Combination Maneuvers"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Overview:"
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Combination Maneuvers:"
           },
           {
             "children" : [
@@ -1368,53 +282,13 @@
                 "text" : "NAV (navigation), A\/A (air-to-air), A\/G (air-to-ground)"
               },
               {
-                "text" : "Visual Alerts:"
-              },
-              {
                 "text" : "Flash - time-critical or symbol outside FOV"
-              },
-              {
-                "text" : "No colors\/Off Flags - invalid symbology disappears or shows “X”"
-              },
-              {
-                "text" : "Flight Symbology:"
-              },
-              {
-                "text" : "Performance Symbology:"
-              },
-              {
-                "text" : "NAV only; triangle shows slip\/skid relative to lubber line"
-              },
-              {
-                "text" : "Magnetic\/true heading at HUD top; read at lubber line"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Extension of aircraft longitudinal axis; used when CDM fails or in NAV"
-              },
-              {
-                "text" : "Shows climb\/dive angle; moves vertically; caged if off-HUD (broken lines)"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about HUD without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "HUD:"
           }
         ],
-        "title" : "HUD"
+        "title" : "Combination Maneuver Planning and HUD Use"
       },
       {
         "items" : [
@@ -1461,8 +335,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Focus on AOA Approach and Energy Management, plus Unusual Attitudes and Recovery Priorities first; the rest of the event gets much easier once the setup and the common misses are already clear."
   },
-  "summary" : "AOA and Aerobatics: AOA Approach, Maneuvering Speeds, Contact Unusual Attitudes, and the remaining required discussion items in the block.",
+  "summary" : "AOA Approach and Energy Management, Unusual Attitudes and Recovery Priorities, and Core Aerobatic Maneuvers.",
   "title" : "AOA and Aerobatics"
 }

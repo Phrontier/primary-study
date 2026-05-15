@@ -614,7 +614,10 @@ struct ManifestBuilder {
 
         let decoder = JSONDecoder()
         let overrides = files
-            .filter { $0.pathExtension.lowercased() == "json" }
+            .filter {
+                $0.pathExtension.lowercased() == "json" &&
+                $0.deletingPathExtension().lastPathComponent != "FAMDiscussionAuthoringConfig"
+            }
             .compactMap { fileURL -> EventOverride? in
                 do {
                     let data = try Data(contentsOf: fileURL)

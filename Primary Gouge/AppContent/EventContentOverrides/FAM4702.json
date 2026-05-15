@@ -17,7 +17,7 @@
     ]
   },
   "code" : "FAM4702",
-  "overview" : "FAM4702 is a flight event focused on spin. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event ties together spin, inverted spin, and progressive spin in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
   "primaryDocumentTitles" : [
     "FAM4702"
   ],
@@ -27,15 +27,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
-              },
-              {
-                "text" : "Description"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
           },
           {
             "children" : [
@@ -43,19 +35,13 @@
                 "text" : "Configuration - slow cruise (150 KIAS), minimum entry 13500’ AGL"
               },
               {
-                "text" : "Entry:"
-              },
-              {
                 "text" : "torque roll left → near inverted, nose-level attitude."
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
-              {
-                "text" : "Procedure:"
-              },
               {
                 "text" : "Recovery"
               },
@@ -63,34 +49,13 @@
                 "text" : "Inadvertent Departure from Controlled Flight"
               },
               {
-                "text" : "Establish:"
-              },
-              {
                 "text" : "Checklist - PSSA"
               },
               {
                 "text" : "Clear - TCAS [Below], visual scan, clearing turns"
-              },
-              {
-                "text" : "At full stall (nose drop) - full rudder, full aft stick, neutral ailerons"
-              },
-              {
-                "text" : "Check oil pressure and report post-recovery"
-              },
-              {
-                "text" : "Avoid secondary stalls and excess Gs during pullout"
-              },
-              {
-                "text" : "Intentional inverted departures\/spins prohibited."
-              },
-              {
-                "text" : "Driven primarily by engine torque at high power\/near aft CG."
-              },
-              {
-                "text" : "General Characteristics"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -105,35 +70,9 @@
               },
               {
                 "text" : "yaw rate ↑, enters right spin, stabilizes ~120°\/sec after 2 turns."
-              },
-              {
-                "text" : "With PCL IDLE → spin terminates without recovery controls (first ~2 turns)."
-              },
-              {
-                "text" : "nose rises above horizon after 1st turn."
-              },
-              {
-                "text" : "1-turn incipient spins tested (power ON\/OFF, SB extended)."
-              },
-              {
-                "text" : "Misidentifying inverted spiral (rapid airspeed buildup, nose steeply low) vs inverted spin (flat, ~40 KIAS, AOA pegged zero)."
-              },
-              {
-                "text" : "Aircraft continues rotating in original spin direction for ~1.5–2 turns (depends on CG and initial direction)."
-              },
-              {
-                "text" : "Airspeed increases during reversal, up to 175 KIAS."
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Spin late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Spin"
@@ -141,15 +80,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
-              },
-              {
-                "text" : "Description"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
           },
           {
             "children" : [
@@ -157,19 +88,13 @@
                 "text" : "Configuration - slow cruise (150 KIAS), minimum entry 13500’ AGL"
               },
               {
-                "text" : "Entry:"
-              },
-              {
                 "text" : "torque roll left → near inverted, nose-level attitude."
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
-              {
-                "text" : "Procedure:"
-              },
               {
                 "text" : "Recovery"
               },
@@ -177,34 +102,13 @@
                 "text" : "Inadvertent Departure from Controlled Flight"
               },
               {
-                "text" : "Establish:"
-              },
-              {
                 "text" : "Checklist - PSSA"
               },
               {
                 "text" : "Clear - TCAS [Below], visual scan, clearing turns"
-              },
-              {
-                "text" : "At full stall (nose drop) - full rudder, full aft stick, neutral ailerons"
-              },
-              {
-                "text" : "Check oil pressure and report post-recovery"
-              },
-              {
-                "text" : "Avoid secondary stalls and excess Gs during pullout"
-              },
-              {
-                "text" : "Inverted Spin"
-              },
-              {
-                "text" : "Intentional inverted departures\/spins prohibited."
-              },
-              {
-                "text" : "Driven primarily by engine torque at high power\/near aft CG."
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -219,35 +123,9 @@
               },
               {
                 "text" : "yaw rate ↑, enters right spin, stabilizes ~120°\/sec after 2 turns."
-              },
-              {
-                "text" : "~30° nose low (slight oscillations)."
-              },
-              {
-                "text" : "With PCL IDLE → spin terminates without recovery controls (first ~2 turns)."
-              },
-              {
-                "text" : "nose rises above horizon after 1st turn."
-              },
-              {
-                "text" : "1-turn incipient spins tested (power ON\/OFF, SB extended)."
-              },
-              {
-                "text" : "Misidentifying inverted spiral (rapid airspeed buildup, nose steeply low) vs inverted spin (flat, ~40 KIAS, AOA pegged zero)."
-              },
-              {
-                "text" : "Aircraft continues rotating in original spin direction for ~1.5–2 turns (depends on CG and initial direction)."
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Notes"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Inverted Spin"
@@ -255,15 +133,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
-              },
-              {
-                "text" : "Description"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
           },
           {
             "children" : [
@@ -271,19 +141,13 @@
                 "text" : "Configuration - slow cruise (150 KIAS), minimum entry 13500’ AGL"
               },
               {
-                "text" : "Entry:"
-              },
-              {
                 "text" : "torque roll left → near inverted, nose-level attitude."
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
-              {
-                "text" : "Procedure:"
-              },
               {
                 "text" : "Recovery"
               },
@@ -291,34 +155,13 @@
                 "text" : "Inadvertent Departure from Controlled Flight"
               },
               {
-                "text" : "Establish:"
-              },
-              {
                 "text" : "Checklist - PSSA"
               },
               {
                 "text" : "Clear - TCAS [Below], visual scan, clearing turns"
-              },
-              {
-                "text" : "At full stall (nose drop) - full rudder, full aft stick, neutral ailerons"
-              },
-              {
-                "text" : "Check oil pressure and report post-recovery"
-              },
-              {
-                "text" : "Avoid secondary stalls and excess Gs during pullout"
-              },
-              {
-                "text" : "Intentional inverted departures\/spins prohibited."
-              },
-              {
-                "text" : "Driven primarily by engine torque at high power\/near aft CG."
-              },
-              {
-                "text" : "General Characteristics"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -333,38 +176,9 @@
               },
               {
                 "text" : "yaw rate ↑, enters right spin, stabilizes ~120°\/sec after 2 turns."
-              },
-              {
-                "text" : "~30° nose low (slight oscillations)."
-              },
-              {
-                "text" : "With PCL IDLE → spin terminates without recovery controls (first ~2 turns)."
-              },
-              {
-                "text" : "nose rises above horizon after 1st turn."
-              },
-              {
-                "text" : "1-turn incipient spins tested (power ON\/OFF, SB extended)."
-              },
-              {
-                "text" : "Aircraft continues rotating in original spin direction for ~1.5–2 turns (depends on CG and initial direction)."
-              },
-              {
-                "text" : "Airspeed increases during reversal, up to 175 KIAS."
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common Errors"
-              },
-              {
-                "text" : "Notes"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Progressive Spin"
@@ -372,18 +186,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
-              },
-              {
-                "text" : "focuses on maintaining proper AOA and bank control, and recovering without fixating on ground track or airspeed during the maneuver"
-              },
-              {
-                "text" : "simulates an ELP stall during power-off descent, typically near High Key"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
           },
           {
             "children" : [
@@ -395,12 +198,9 @@
               },
               {
                 "text" : "Configuration - clean, slow cruise (~150 KIAS or IP discretion)"
-              },
-              {
-                "text" : "Transition to Best Glide:"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
@@ -415,33 +215,9 @@
               },
               {
                 "text" : "Not checking\/reporting oil pressure"
-              },
-              {
-                "text" : "Aft stick delays recovery"
-              },
-              {
-                "text" : "N\/W\/Cs:"
-              },
-              {
-                "text" : "Ailerons must remain neutral"
-              },
-              {
-                "text" : "With PCL IDLE + ailerons neutral → usually becomes an inverted spiral:"
-              },
-              {
-                "text" : "Nose steeply down"
-              },
-              {
-                "text" : "Airspeed rapidly ↑"
-              },
-              {
-                "text" : "Rudder direction controls spiral"
-              },
-              {
-                "text" : "Effect of Power"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -456,35 +232,9 @@
               },
               {
                 "text" : "~20% power"
-              },
-              {
-                "text" : "Descent in 30° AOB turn, trimmed"
-              },
-              {
-                "text" : "Airspeed based on flaps (NF\/TO\/LDG) = (120\/115\/110)"
-              },
-              {
-                "text" : "Once stabilized in approach turn, pitch 5-10° NH"
-              },
-              {
-                "text" : "Maintain AOB 20-45°"
-              },
-              {
-                "text" : "Minimize altitude loss, return to 120 KIAS in downwind configuration"
-              },
-              {
-                "text" : "Wings level, 2 positive rates of climb"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "same as Approach Turn"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Accelerated Stall"
@@ -492,29 +242,15 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "The AOA approach teaches precise energy and attitude control, using optimum AOA (10-11 units) instead of airspeed for approach guidance. It's a 180° descending turn to final followed by a normal flared landing. This technique is critical for short-field landings and jet\/carrier ops."
-              },
-              {
-                "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "The AOA approach teaches precise energy and attitude control, using optimum AOA (10-11 units) instead of airspeed for approach guidance. It's a 180° descending turn to final followed by a normal flared landing. This technique is critical for short-field landings and jet\/carrier ops."
           },
           {
             "children" : [
               {
-                "text" : "Setup (Post Touch-and-Go):"
-              },
-              {
-                "text" : "Transition on Downwind:"
-              },
-              {
                 "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
@@ -529,33 +265,9 @@
               },
               {
                 "text" : "disorientation\/delayed recovery due to external fixation"
-              },
-              {
-                "text" : "Not neutralizing controls as rotation stops"
-              },
-              {
-                "text" : "Ease back-stick \/ reduce AOB."
-              },
-              {
-                "text" : "Flap Setting"
-              },
-              {
-                "text" : "Turn with a shallower bank than normal (TO\/LDG flaps)"
-              },
-              {
-                "text" : "Final Approach"
-              },
-              {
-                "text" : "Cross runway threshold on-speed, begin flare"
-              },
-              {
-                "text" : "Transitioning to on-speed AOA simulates a flared attitude—important for carrier-style landings"
-              },
-              {
-                "text" : "(C):"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -570,35 +282,9 @@
               },
               {
                 "text" : "Approx. KIAS"
-              },
-              {
-                "text" : "Final Turn (180° Position)"
-              },
-              {
-                "text" : "Begin turn with 15–20% power, slight nose-down"
-              },
-              {
-                "text" : "Aim to arrive at 90° position at ~450’ AGL"
-              },
-              {
-                "text" : "Ensure ~200’ AGL at 1200–1500 ft from runway threshold"
-              },
-              {
-                "text" : "Wings level, 2 positive rates of climb"
-              },
-              {
-                "text" : "A torque setting above 60% in the stall can induce a left torque roll. Full right rudder and aileron may not prevent departure. Be especially cautious during power-on turning stalls."
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common Errors:"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "AOA Approach"
@@ -624,8 +310,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Have Spin and Inverted Spin organized before step so the cockpit workload never outruns the brief."
   },
-  "summary" : "Spin: Spin, Inverted Spin, Progressive Spin, and the remaining required discussion items in the block.",
+  "summary" : "Spin, Inverted Spin, and Progressive Spin.",
   "title" : "Spin"
 }

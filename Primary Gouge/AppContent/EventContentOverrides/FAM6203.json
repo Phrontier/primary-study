@@ -5,7 +5,7 @@
     ]
   },
   "code" : "FAM6203",
-  "overview" : "FAM6203 is a sim event focused on block maneuver review. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "Use this event as a cumulative review of block maneuver review. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
   "primaryDocumentTitles" : [
     "FAM6203"
   ],
@@ -15,56 +15,39 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "This is a block-level maneuver review. The goal is to prove you can set up, brief, and fly anything already introduced in this block without getting behind the aircraft."
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Treat this as a cumulative maneuver brief. You should be able to move from setup to recovery without needing a rescue cue once the instructor picks the maneuver."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry picture, starting altitude, airspeed, configuration, and required radio\/CRM setup for each maneuver you may be assigned."
+                "text" : "Safety Check\/Call Prior to Cockpit Entry and Departing Aircraft"
+              },
+              {
+                "text" : "Runaway Trim"
+              },
+              {
+                "text" : "Normal Takeoff"
+              },
+              {
+                "text" : "Local Area Departure"
+              },
+              {
+                "text" : "Integrated (Vmc) Scan"
+              },
+              {
+                "text" : "Turn Pattern"
+              },
+              {
+                "text" : "Level Speed Change"
+              },
+              {
+                "text" : "Power-on Stalls"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Be ready to brief:"
           },
           {
-            "children" : [
-              {
-                "text" : "slow flight"
-              },
-              {
-                "text" : "SCATSAFE maneuver"
-              },
-              {
-                "text" : "slip"
-              },
-              {
-                "text" : "OLF entry"
-              },
-              {
-                "text" : "crosswind takeoff and landings"
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
-                "text" : "For each maneuver, memorize the setup numbers first. Missing the entry picture usually creates the rest of the errors."
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is assuming you only need the maneuver you flew most recently. Treat the whole block as available for review."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Know the entry picture, the recovery picture, and the common grading misses for each maneuver you expect to be fair game."
           }
         ],
         "title" : "Any Maneuver Performed in This Block"
@@ -78,8 +61,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Treat Block Maneuver Review like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
   },
-  "summary" : "Block Maneuver Review: Any Maneuver Performed in This Block.",
+  "summary" : "Any Maneuver Performed in This Block.",
   "title" : "Block Maneuver Review"
 }

@@ -1,490 +1,490 @@
 {
-  "canonicalCoverage": {
-    "Chip detector warning": [
+  "canonicalCoverage" : {
+    "Chip detector warning" : [
       "Chip Detector Warning"
     ],
-    "oil system malfunction or low oil pressure": [
-      "Oil System Malfunction / Low Oil Pressure"
-    ],
-    "low fuel pressure": [
-      "Low Fuel Pressure"
-    ],
-    "hydraulic system malfunctions": [
-      "Hydraulic System Malfunctions"
-    ],
-    "landing gear emergency extension": [
-      "Landing Gear Emergency Extension"
-    ],
-    "OBOGS fail message": [
+    "OBOGS fail message" : [
       "OBOGS Fail Message"
     ],
-    "runaway trim": [
-      "Runaway Trim"
+    "hydraulic system malfunctions" : [
+      "Hydraulic System Malfunctions"
     ],
-    "precautionary emergency landing (PEL) and BFI": [
+    "landing gear emergency extension" : [
+      "Landing Gear Emergency Extension"
+    ],
+    "low fuel pressure" : [
+      "Low Fuel Pressure"
+    ],
+    "oil system malfunction or low oil pressure" : [
+      "Oil System Malfunction \/ Low Oil Pressure"
+    ],
+    "precautionary emergency landing (PEL) and BFI" : [
       "Precautionary Emergency Landing (PEL) and BFI"
+    ],
+    "runaway trim" : [
+      "Runaway Trim"
     ]
   },
-  "code": "FAM2202",
-  "overview": "This event focuses on aircraft system malfunctions that can develop in flight. You will learn how to recognize and respond to oil, fuel, hydraulic, oxygen, trim, and landing gear emergencies while continuing to prioritize aircraft control, PEL setup, and when to land as soon as practical.",
-  "primaryDocumentTitles": [
+  "code" : "FAM2202",
+  "overview" : "This event focuses on aircraft system malfunctions that can develop in flight. You will learn how to recognize and respond to oil, fuel, hydraulic, oxygen, trim, and landing gear emergencies while continuing to prioritize aircraft control, PEL setup, and when to land as soon as practical.",
+  "primaryDocumentTitles" : [
     "FAM2202",
     "FAM 2202 Briefing guide 1542.166D"
   ],
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "Most of these malfunctions are handled by preserving what still works, minimizing extra power or configuration changes, and getting to the nearest suitable runway early.",
-    "sections": [
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
       {
-        "title": "Chip Detector Warning",
-        "items": [
+        "items" : [
           {
-            "text": "A CHIP warning indicates possible metal contamination in the engine oil system."
+            "text" : "A CHIP warning indicates possible metal contamination in the engine oil system."
           },
           {
-            "text": "Severe contamination can lead to engine failure with little warning."
+            "text" : "Severe contamination can lead to engine failure with little warning."
           },
           {
-            "text": "Immediate actions:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL to minimum power required to intercept the ELP."
+                "text" : "PCL to minimum power required to intercept the ELP."
               },
               {
-                "text": "Avoid unnecessary PCL movements."
+                "text" : "Avoid unnecessary PCL movements."
               },
               {
-                "text": "Execute a PEL."
+                "text" : "Execute a PEL."
               }
-            ]
+            ],
+            "text" : "Immediate actions:"
           },
           {
-            "text": "Higher power settings can make the problem worse."
+            "text" : "Higher power settings can make the problem worse."
           },
           {
-            "text": "N/W/C focus: Treat higher power settings and unnecessary PCL movement as risk multipliers once a CHIP indication makes engine health questionable."
+            "text" : "N\/W\/C focus: Treat higher power settings and unnecessary PCL movement as risk multipliers once a CHIP indication makes engine health questionable."
           }
-        ]
+        ],
+        "title" : "Chip Detector Warning"
       },
       {
-        "title": "Oil System Malfunction / Low Oil Pressure",
-        "items": [
+        "items" : [
           {
-            "text": "Symptoms may include:",
-            "children": [
+            "children" : [
               {
-                "text": "Red OIL PX warning."
+                "text" : "Red OIL PX warning."
               },
               {
-                "text": "Amber OIL PX caution."
+                "text" : "Amber OIL PX caution."
               },
               {
-                "text": "Oil pressure fluctuations."
+                "text" : "Oil pressure fluctuations."
               },
               {
-                "text": "Oil temperature outside normal limits."
+                "text" : "Oil temperature outside normal limits."
               },
               {
-                "text": "Visible oil leaking from the aircraft."
+                "text" : "Visible oil leaking from the aircraft."
               }
-            ]
+            ],
+            "text" : "Symptoms may include:"
           },
           {
-            "text": "A momentary amber OIL PX during maneuvering may not indicate a malfunction."
+            "text" : "A momentary amber OIL PX during maneuvering may not indicate a malfunction."
           },
           {
-            "text": "If both red and amber OIL PX messages appear with normal oil pressure, it may indicate an SCU failure."
+            "text" : "If both red and amber OIL PX messages appear with normal oil pressure, it may indicate an SCU failure."
           },
           {
-            "text": "If only the amber OIL PX caution appears:",
-            "children": [
+            "children" : [
               {
-                "text": "Terminate maneuvering."
+                "text" : "Terminate maneuvering."
               },
               {
-                "text": "Check oil pressure."
+                "text" : "Check oil pressure."
               },
               {
-                "text": "Continue only if oil pressure is normal."
+                "text" : "Continue only if oil pressure is normal."
               }
-            ]
+            ],
+            "text" : "If only the amber OIL PX caution appears:"
           },
           {
-            "text": "If the red OIL PX warning appears, amber OIL PX remains illuminated for more than 5 seconds, oil pressure fluctuates, or oil temperature is out of limits:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL to minimum power needed to intercept the ELP."
+                "text" : "PCL to minimum power needed to intercept the ELP."
               },
               {
-                "text": "Avoid unnecessary power changes."
+                "text" : "Avoid unnecessary power changes."
               },
               {
-                "text": "Execute a PEL."
+                "text" : "Execute a PEL."
               }
-            ]
+            ],
+            "text" : "If the red OIL PX warning appears, amber OIL PX remains illuminated for more than 5 seconds, oil pressure fluctuates, or oil temperature is out of limits:"
           },
           {
-            "text": "N/W/C focus: A momentary caution during maneuvering is not the same as a persistent warning tied to bad oil indications; know the difference before you overreact or underreact."
+            "text" : "N\/W\/C focus: A momentary caution during maneuvering is not the same as a persistent warning tied to bad oil indications; know the difference before you overreact or underreact."
           }
-        ]
+        ],
+        "title" : "Oil System Malfunction \/ Low Oil Pressure"
       },
       {
-        "title": "Low Fuel Pressure",
-        "items": [
+        "items" : [
           {
-            "text": "Low fuel pressure may be caused by:",
-            "children": [
+            "children" : [
               {
-                "text": "Blocked fuel line."
+                "text" : "Blocked fuel line."
               },
               {
-                "text": "Fuel leak."
+                "text" : "Fuel leak."
               },
               {
-                "text": "Low pressure pump failure."
+                "text" : "Low pressure pump failure."
               },
               {
-                "text": "Oil scavenge pump failure."
+                "text" : "Oil scavenge pump failure."
               },
               {
-                "text": "Fuel pressure switch failure."
+                "text" : "Fuel pressure switch failure."
               }
-            ]
+            ],
+            "text" : "Low fuel pressure may be caused by:"
           },
           {
-            "text": "Symptoms include:",
-            "children": [
+            "children" : [
               {
-                "text": "FUEL PX warning."
+                "text" : "FUEL PX warning."
               },
               {
-                "text": "Fuel feed pressure below 10 PSI."
+                "text" : "Fuel feed pressure below 10 PSI."
               },
               {
-                "text": "BOOST PUMP advisory cycling on and off."
+                "text" : "BOOST PUMP advisory cycling on and off."
               }
-            ]
+            ],
+            "text" : "Symptoms include:"
           },
           {
-            "text": "Immediate actions:",
-            "children": [
+            "children" : [
               {
-                "text": "Execute a PEL."
+                "text" : "Execute a PEL."
               },
               {
-                "text": "BOOST PUMP switch ON."
+                "text" : "BOOST PUMP switch ON."
               }
-            ]
+            ],
+            "text" : "Immediate actions:"
           },
           {
-            "text": "Do not reset the BOOST PUMP circuit breaker unless a greater emergency exists."
+            "text" : "Do not reset the BOOST PUMP circuit breaker unless a greater emergency exists."
           },
           {
-            "text": "If the FUEL PX warning remains illuminated, the high pressure fuel pump is suction feeding and engine operation is time limited."
+            "text" : "If the FUEL PX warning remains illuminated, the high pressure fuel pump is suction feeding and engine operation is time limited."
           },
           {
-            "text": "N/W/C focus: If suction-feed indications persist, the engine is operating on borrowed time and the landing plan needs to get more aggressive, not less."
+            "text" : "N\/W\/C focus: If suction-feed indications persist, the engine is operating on borrowed time and the landing plan needs to get more aggressive, not less."
           }
-        ]
+        ],
+        "title" : "Low Fuel Pressure"
       },
       {
-        "title": "High Fuel Flow",
-        "items": [
+        "items" : [
           {
-            "text": "High fuel flow is considered 800 PPH or greater."
+            "text" : "High fuel flow is considered 800 PPH or greater."
           },
           {
-            "text": "Immediate action:",
-            "children": [
+            "children" : [
               {
-                "text": "Execute a PEL."
+                "text" : "Execute a PEL."
               }
-            ]
+            ],
+            "text" : "Immediate action:"
           },
           {
-            "text": "High power settings combined with high ITT can make the condition worse."
+            "text" : "High power settings combined with high ITT can make the condition worse."
           },
           {
-            "text": "Reducing power too aggressively can also risk engine flameout."
+            "text" : "Reducing power too aggressively can also risk engine flameout."
           }
-        ]
+        ],
+        "title" : "High Fuel Flow"
       },
       {
-        "title": "Hydraulic System Malfunctions",
-        "items": [
+        "items" : [
           {
-            "text": "Symptoms include:",
-            "children": [
+            "children" : [
               {
-                "text": "HYD FL LO caution."
+                "text" : "HYD FL LO caution."
               },
               {
-                "text": "Hydraulic pressure below 1800 PSI."
+                "text" : "Hydraulic pressure below 1800 PSI."
               },
               {
-                "text": "Rapidly decreasing hydraulic pressure."
+                "text" : "Rapidly decreasing hydraulic pressure."
               },
               {
-                "text": "EHYD PX LO caution."
+                "text" : "EHYD PX LO caution."
               }
-            ]
+            ],
+            "text" : "Symptoms include:"
           },
           {
-            "text": "If normal hydraulic pressure is lost:",
-            "children": [
+            "children" : [
               {
-                "text": "Landing gear, flaps, speed brake, and nosewheel steering should be considered unavailable."
+                "text" : "Landing gear, flaps, speed brake, and nosewheel steering should be considered unavailable."
               }
-            ]
+            ],
+            "text" : "If normal hydraulic pressure is lost:"
           },
           {
-            "text": "If EHYD PX LO appears:",
-            "children": [
+            "children" : [
               {
-                "text": "Emergency landing gear and flap extension system should be considered unavailable."
+                "text" : "Emergency landing gear and flap extension system should be considered unavailable."
               }
-            ]
+            ],
+            "text" : "If EHYD PX LO appears:"
           },
           {
-            "text": "Gear and flaps should generally be lowered early if hydraulic fluid loss is suspected."
+            "text" : "Gear and flaps should generally be lowered early if hydraulic fluid loss is suspected."
           },
           {
-            "text": "If all hydraulic fluid is lost, a gear-up landing may become necessary."
+            "text" : "If all hydraulic fluid is lost, a gear-up landing may become necessary."
           },
           {
-            "text": "Low hydraulic pressure may require emergency landing gear extension."
+            "text" : "Low hydraulic pressure may require emergency landing gear extension."
           }
-        ]
+        ],
+        "title" : "Hydraulic System Malfunctions"
       },
       {
-        "title": "Landing Gear Emergency Extension",
-        "items": [
+        "items" : [
           {
-            "text": "Use this procedure only when directed by another malfunction checklist."
+            "text" : "Use this procedure only when directed by another malfunction checklist."
           },
           {
-            "text": "Pulling the Emergency Landing Gear Handle extends the gear regardless of gear handle position."
+            "text" : "Pulling the Emergency Landing Gear Handle extends the gear regardless of gear handle position."
           },
           {
-            "text": "Once emergency extension is used:",
-            "children": [
+            "children" : [
               {
-                "text": "Landing gear and flaps cannot be retracted."
+                "text" : "Landing gear and flaps cannot be retracted."
               }
-            ]
+            ],
+            "text" : "Once emergency extension is used:"
           },
           {
-            "text": "Normal indications after emergency extension are:",
-            "children": [
+            "children" : [
               {
-                "text": "Green gear lights."
+                "text" : "Green gear lights."
               },
               {
-                "text": "Red gear door lights."
+                "text" : "Red gear door lights."
               },
               {
-                "text": "Red light in the gear handle."
+                "text" : "Red light in the gear handle."
               }
-            ]
+            ],
+            "text" : "Normal indications after emergency extension are:"
           },
           {
-            "text": "The pull may require significant force, sometimes over 80 pounds."
+            "text" : "The pull may require significant force, sometimes over 80 pounds."
           },
           {
-            "text": "After landing, do not taxi if any gear position light indicates unsafe."
+            "text" : "After landing, do not taxi if any gear position light indicates unsafe."
           },
           {
-            "text": "N/W/C focus: Once emergency extension is used, gear and flaps are not coming back up, so do not pull the handle unless another malfunction actually calls for it."
+            "text" : "N\/W\/C focus: Once emergency extension is used, gear and flaps are not coming back up, so do not pull the handle unless another malfunction actually calls for it."
           }
-        ]
+        ],
+        "title" : "Landing Gear Emergency Extension"
       },
       {
-        "title": "OBOGS Fail Message",
-        "items": [
+        "items" : [
           {
-            "text": "OBOGS FAIL indicates a malfunction in the oxygen system."
+            "text" : "OBOGS FAIL indicates a malfunction in the oxygen system."
           },
           {
-            "text": "Causes may include:",
-            "children": [
+            "children" : [
               {
-                "text": "Heat exchanger failure."
+                "text" : "Heat exchanger failure."
               },
               {
-                "text": "Bleed air supply problems."
+                "text" : "Bleed air supply problems."
               },
               {
-                "text": "Electrical failures."
+                "text" : "Electrical failures."
               },
               {
-                "text": "Excessive leakage."
+                "text" : "Excessive leakage."
               }
-            ]
+            ],
+            "text" : "Causes may include:"
           },
           {
-            "text": "Symptoms may include:",
-            "children": [
+            "children" : [
               {
-                "text": "Reduced oxygen flow."
+                "text" : "Reduced oxygen flow."
               },
               {
-                "text": "Breathing difficulty."
+                "text" : "Breathing difficulty."
               },
               {
-                "text": "Hypoxia symptoms."
+                "text" : "Hypoxia symptoms."
               }
-            ]
+            ],
+            "text" : "Symptoms may include:"
           },
           {
-            "text": "If any physiological symptoms occur:",
-            "children": [
+            "children" : [
               {
-                "text": "Pull the Green Ring as required."
+                "text" : "Pull the Green Ring as required."
               },
               {
-                "text": "Descend below 10,000 feet MSL."
+                "text" : "Descend below 10,000 feet MSL."
               },
               {
-                "text": "OBOGS Supply Lever OFF."
+                "text" : "OBOGS Supply Lever OFF."
               },
               {
-                "text": "Check emergency oxygen hose."
+                "text" : "Check emergency oxygen hose."
               },
               {
-                "text": "Normalize breathing."
+                "text" : "Normalize breathing."
               }
-            ]
+            ],
+            "text" : "If any physiological symptoms occur:"
           },
           {
-            "text": "The emergency oxygen bottle lasts approximately 10 minutes."
+            "text" : "The emergency oxygen bottle lasts approximately 10 minutes."
           },
           {
-            "text": "Below 10,000 feet MSL:",
-            "children": [
+            "children" : [
               {
-                "text": "Pressurization switch to RAM/DUMP."
+                "text" : "Pressurization switch to RAM\/DUMP."
               },
               {
-                "text": "Bleed Air Inflow OFF."
+                "text" : "Bleed Air Inflow OFF."
               },
               {
-                "text": "Oxygen mask may be removed if required."
+                "text" : "Oxygen mask may be removed if required."
               }
-            ]
+            ],
+            "text" : "Below 10,000 feet MSL:"
           },
           {
-            "text": "Land as soon as practical."
+            "text" : "Land as soon as practical."
           },
           {
-            "text": "N/W/C focus: Oxygen and cockpit-pressure problems can turn into a crew-survivability issue quickly, so know when descent and checklist execution take priority over everything else."
+            "text" : "N\/W\/C focus: Oxygen and cockpit-pressure problems can turn into a crew-survivability issue quickly, so know when descent and checklist execution take priority over everything else."
           }
-        ]
+        ],
+        "title" : "OBOGS Fail Message"
       },
       {
-        "title": "Runaway Trim",
-        "items": [
+        "items" : [
           {
-            "text": "A runaway trim condition occurs when trim moves without pilot input."
+            "text" : "A runaway trim condition occurs when trim moves without pilot input."
           },
           {
-            "text": "The trim interrupt button or trim disconnect switch can be used to stop unwanted trim movement."
+            "text" : "The trim interrupt button or trim disconnect switch can be used to stop unwanted trim movement."
           },
           {
-            "text": "Pulling a trim circuit breaker makes that trim system inoperative."
+            "text" : "Pulling a trim circuit breaker makes that trim system inoperative."
           },
           {
-            "text": "Loss of rudder trim may significantly increase workload."
+            "text" : "Loss of rudder trim may significantly increase workload."
           },
           {
-            "text": "Maintain aircraft control first, then isolate the malfunction."
+            "text" : "Maintain aircraft control first, then isolate the malfunction."
           }
-        ]
+        ],
+        "title" : "Runaway Trim"
       },
       {
-        "title": "Precautionary Emergency Landing (PEL) and BFI",
-        "items": [
+        "items" : [
           {
-            "text": "A PEL is used anytime a malfunction exists that may worsen before landing."
+            "text" : "A PEL is used anytime a malfunction exists that may worsen before landing."
           },
           {
-            "text": "The goal is to safely reach the nearest suitable runway before the condition becomes an emergency."
+            "text" : "The goal is to safely reach the nearest suitable runway before the condition becomes an emergency."
           },
           {
-            "text": "Most system malfunctions in this event eventually lead to a PEL."
+            "text" : "Most system malfunctions in this event eventually lead to a PEL."
           },
           {
-            "text": "Focus on:",
-            "children": [
+            "children" : [
               {
-                "text": "Maintaining aircraft control."
+                "text" : "Maintaining aircraft control."
               },
               {
-                "text": "Intercepting the ELP early."
+                "text" : "Intercepting the ELP early."
               },
               {
-                "text": "Avoiding unnecessary power changes."
+                "text" : "Avoiding unnecessary power changes."
               },
               {
-                "text": "Preserving the aircraft systems that remain."
+                "text" : "Preserving the aircraft systems that remain."
               }
-            ]
+            ],
+            "text" : "Focus on:"
           },
           {
-            "text": "N/W/C focus: The big warning here is not to let a marginal profile turn into a low-altitude salvage attempt. Use available power early and stay honest about runway makeability."
+            "text" : "N\/W\/C focus: The big warning here is not to let a marginal profile turn into a low-altitude salvage attempt. Use available power early and stay honest about runway makeability."
           }
-        ]
+        ],
+        "title" : "Precautionary Emergency Landing (PEL) and BFI"
       },
       {
-        "title": "Big Picture Priorities",
-        "items": [
+        "items" : [
           {
-            "text": "Aviate first."
+            "text" : "Aviate first."
           },
           {
-            "text": "Intercept the nearest suitable ELP early."
+            "text" : "Intercept the nearest suitable ELP early."
           },
           {
-            "text": "Avoid unnecessary power changes when a system malfunction is already developing."
+            "text" : "Avoid unnecessary power changes when a system malfunction is already developing."
           },
           {
-            "text": "Land as soon as practical before a manageable malfunction becomes a major emergency."
+            "text" : "Land as soon as practical before a manageable malfunction becomes a major emergency."
           },
           {
-            "text": "Many of these procedures are less about fixing the issue and more about preserving enough aircraft to safely land."
+            "text" : "Many of these procedures are less about fixing the issue and more about preserving enough aircraft to safely land."
           }
-        ]
+        ],
+        "title" : "Big Picture Priorities"
       },
       {
-        "title": "Required Procedures",
-        "items": [
+        "items" : [
           {
-            "text": "Chip detector warning"
+            "text" : "Chip detector warning"
           },
           {
-            "text": "oil system malfunction or low oil pressure"
+            "text" : "oil system malfunction or low oil pressure"
           },
           {
-            "text": "low fuel pressure"
+            "text" : "low fuel pressure"
           },
           {
-            "text": "hydraulic system malfunctions"
+            "text" : "hydraulic system malfunctions"
           },
           {
-            "text": "landing gear emergency extension"
+            "text" : "landing gear emergency extension"
           },
           {
-            "text": "OBOGS fail message"
+            "text" : "OBOGS fail message"
           },
           {
-            "text": "runaway trim"
+            "text" : "runaway trim"
           },
           {
-            "text": "precautionary emergency landing (PEL) and BFI"
+            "text" : "precautionary emergency landing (PEL) and BFI"
           }
-        ]
+        ],
+        "title" : "Required Procedures"
       }
-    ]
+    ],
+    "summary" : "Most of these malfunctions are handled by preserving what still works, minimizing extra power or configuration changes, and getting to the nearest suitable runway early."
   },
-  "summary": "Oil, fuel, hydraulic, oxygen, trim, and landing gear emergency procedures.",
-  "title": "Systems Emergencies"
+  "summary" : "Oil, fuel, hydraulic, oxygen, trim, and landing gear emergency procedures.",
+  "title" : "Systems Emergencies"
 }

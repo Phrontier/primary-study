@@ -1,11 +1,11 @@
 {
   "canonicalCoverage" : {
     "Per the ODO\/FDO solo brief" : [
-      "Per the ODO\/FDO Solo Brief"
+      "Solo Brief Focus"
     ]
   },
   "code" : "FAM4501",
-  "overview" : "FAM4501 is a flight event focused on familiarization solo flight. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event is about showing up for the solo brief with the major risk, weather, and execution items already organized. Use these notes to walk in ahead of the day-of ODO\/FDO brief instead of trying to build the whole picture on the spot.",
   "primaryDocumentTitles" : [
 
   ],
@@ -15,78 +15,27 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "The solo brief is the final risk-control gate. Treat it as a go\/no-go event, not just an admin requirement."
-              },
-              {
-                "text" : "This note is a conservative prep aid. The day-of ODO\/FDO solo brief still remains mandatory."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Treat the solo brief as a go\/no-go gate, not an admin step. You should arrive already knowing the weather, runway, emergency, and support-agency items that will drive the brief."
           },
           {
             "children" : [
               {
-                "text" : "Securing Rear Cockpit for Solo"
+                "text" : "Solo weather, runway, crosswind, BASH, landing, and divert limits."
               },
               {
-                "text" : "Read checklists out loud to reduce omissions."
+                "text" : "Rear-cockpit securing items, unauthorized solo maneuver limits, and what will terminate the sortie early."
               },
               {
-                "text" : "Maintain situational awareness while taxiing—use \"see-and-avoid\" doctrine."
-              },
-              {
-                "text" : "Monitor radio calls, especially those using your call sign."
-              },
-              {
-                "text" : "Secure rear cockpit per NATOPS for solo flights."
-              },
-              {
-                "text" : "(N) Set aft UFCP HUD switch to DAY mode for solo flight."
-              },
-              {
-                "text" : "Ejection Seat – Inspect"
-              },
-              {
-                "text" : "Seat safety pin - Installed and warning streamer is free and clear of ejection seat handle (BOTH)"
-              },
-              {
-                "text" : "CFS Handle Safety Pin – Installed"
-              },
-              {
-                "text" : "ISS Mode Selector – SOLO (locked)"
-              },
-              {
-                "text" : "Left Console Circuit Breakers – Check in"
-              },
-              {
-                "text" : "TRIM DISCONNECT Switch – NORM"
+                "text" : "Emergency, lost-aircraft, and support-agency expectations if the profile does not stay routine."
               }
             ],
-            "text" : "Key knowledge"
+            "text" : "Show up ready to cover:"
           },
           {
-            "children" : [
-              {
-                "text" : "Be ready to verbalize solo weather minimums, runway and field-use limits, emergency expectations, and what support agency you will call if the sortie does not go normally."
-              },
-              {
-                "text" : "Use the brief to close every open question before you start the airplane."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Do not assume a previous instructor brief covers the same details. The day-of solo brief is its own gate and must be treated that way."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "The day-of ODO\/FDO solo brief still remains required, even if these notes already make the overall picture familiar."
           }
         ],
-        "title" : "Per the ODO\/FDO Solo Brief"
+        "title" : "Solo Brief Focus"
       },
       {
         "items" : [
@@ -97,8 +46,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Show up with the solo items already sorted, then use the day-of brief to confirm the go\/no-go details instead of learning them from scratch."
   },
-  "summary" : "Familiarization Solo Flight: Per the ODO\/FDO Solo Brief.",
+  "summary" : "Solo-brief risk, weather, support-agency, and execution priorities.",
   "title" : "Familiarization Solo Flight"
 }

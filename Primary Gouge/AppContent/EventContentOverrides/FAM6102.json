@@ -17,7 +17,7 @@
     ]
   },
   "code" : "FAM6102",
-  "overview" : "FAM6102 is a sim event focused on risk management and homefield recovery. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event pulls together “imsafe” checklist, crm, and see & avoid principle into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
   "primaryDocumentTitles" : [
     "FAM6102"
   ],
@@ -27,12 +27,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "helps IPs and SNAs identify issues that could impact flight safety"
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "helps IPs and SNAs identify issues that could impact flight safety"
           },
           {
             "children" : [
@@ -43,59 +38,13 @@
                 "text" : "does not excuse poor planning or unpreparedness"
               },
               {
-                "text" : "Briefing Requirements:"
-              },
-              {
                 "text" : "IP escorts SNA to the ODO"
               },
               {
                 "text" : "ODO gives it to the ASO or Safety Officer"
-              },
-              {
-                "text" : "Medical Issues"
-              },
-              {
-                "text" : "SNAs not SIQ may be assigned other duties at ODO’s discretion"
-              },
-              {
-                "text" : "may be convened at any time based on the SNA’s IMSAFE assessment"
-              },
-              {
-                "text" : "Discussion and Mentorship:"
-              },
-              {
-                "text" : "SNAs can expect a frank discussion with IP or ODO"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "If an SNA is not fit to fly:"
-              },
-              {
-                "text" : "If medically unfit, ODO sends SNA to the flight surgeon"
-              },
-              {
-                "text" : "preferred method over course rules to Shamrock when aircrews are forced to return to KNGP with the landing gear or flaps extended."
-              },
-              {
-                "text" : "3.RADIO CALLS. Make all radio calls “in the blind.” Use frequencies appropriate for route of flight."
-              },
-              {
-                "text" : "(2) Execute a normal break entry to the duty runway (use the inboard runway if the parallels are in use)."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The common trap is memorizing isolated facts about “Imsafe” Checklist without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "“Imsafe” Checklist"
@@ -103,18 +52,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what CRM changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "use of defined behavioral skills to:"
           },
           {
             "children" : [
-              {
-                "text" : "use of defined behavioral skills to:"
-              },
               {
                 "text" : "Reduce preventable crew errors"
               },
@@ -123,52 +64,9 @@
               },
               {
                 "text" : "Optimize risk management"
-              },
-              {
-                "text" : "Applies from pre-brief to post-brief, and includes people, equipment, and external factors"
-              },
-              {
-                "text" : "Primary Training:"
-              },
-              {
-                "text" : "Decision Making"
-              },
-              {
-                "text" : "Make sound choices based on logic and available info"
-              },
-              {
-                "text" : "Assertiveness"
-              },
-              {
-                "text" : "Speak up professionally and persist respectfully until facts support a better course of action"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "SNAs still need to perform as if single-piloted even when an IP is present. Good CRM does not replace aircraft control; it supports it."
-              },
-              {
-                "text" : "use of defined behavioral skills to:"
-              },
-              {
-                "text" : "CRM is the use of behavioral skills to reduce preventable crew error and optimize risk management."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about CRM without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "CRM"
@@ -176,78 +74,21 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Purpose:"
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Primary defense against midair collisions"
           },
           {
             "children" : [
               {
-                "text" : "Primary defense against midair collisions"
-              },
-              {
                 "text" : "Relies on vigilant visual scanning and situational awareness"
-              },
-              {
-                "text" : "Key Points:"
-              },
-              {
-                "text" : "Most midairs happen:"
               },
               {
                 "text" : "In daylight, VMC conditions"
               },
               {
                 "text" : "During crossing\/overtaking maneuvers"
-              },
-              {
-                "text" : "On warm weekend days"
-              },
-              {
-                "text" : "Common Causes:"
-              },
-              {
-                "text" : "Failure to visually detect other aircraft in time"
-              },
-              {
-                "text" : "Lack of proper visual scan"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "occurs when no horizon is visible - eyes don’t focus"
-              },
-              {
-                "text" : "if only one eye sees the threat, brain may not process it"
-              },
-              {
-                "text" : "Accommodation delay when shifting focus outside."
-              },
-              {
-                "text" : "Common Causes:"
-              },
-              {
-                "text" : "Use disciplined scan patterns and TCAS support, but do not substitute electronics for actually looking outside."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about See & Avoid Principle without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "See & Avoid Principle"
@@ -255,45 +96,15 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what Cloud Clearances changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Cloud Clearances matters because it changes what you brief, what you look for in the cockpit, or what the next safe decision needs to be."
           },
           {
             "children" : [
-              {
-                "text" : "Know what Cloud Clearances changes in the cockpit and why the instructor cares about it in this event."
-              },
-              {
-                "text" : "how Cloud Clearances changes the brief, setup, and in-cockpit decision making."
-              },
               {
                 "text" : "TW4 SOP Guidance"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Be ready to move from explanation into execution: how Cloud Clearances changes the brief, setup, and in-cockpit decision making."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Cloud Clearances without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Cloud Clearances"
@@ -301,12 +112,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "At SHAMROCK, slow to 200 KIAS, request straight-in; descend to 800'\/500' MSL (south\/north flow); configure below 150 KIAS; intercept extended centerline, report gear down on base\/final; descend to land IAW FTI."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "At SHAMROCK, slow to 200 KIAS, request straight-in; descend to 800'\/500' MSL (south\/north flow); configure below 150 KIAS; intercept extended centerline, report gear down on base\/final; descend to land IAW FTI."
           },
           {
             "children" : [
@@ -314,25 +120,7 @@
                 "text" : "Student executes a homefield visual straight in"
               },
               {
-                "text" : "At PT SHAMROCK:"
-              },
-              {
                 "text" : "\"Navy Corpus Tower, [Call Sign], SHAMROCK, Straight-In\""
-              },
-              {
-                "text" : "Altitude:"
-              },
-              {
-                "text" : "Approaching Initial Reporting Point:"
-              },
-              {
-                "text" : "The XX is the last two digits of the aircraft callsign"
-              },
-              {
-                "text" : "Callsign vs. BUNO (side #)"
-              },
-              {
-                "text" : "be familiar with VFR Sectional Legend"
               },
               {
                 "text" : "Slow to 200 KIAS"
@@ -341,26 +129,7 @@
                 "text" : "Descend and level at 800' MSL"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Gear down, flaps as required"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "be familiar with VFR Sectional Legend"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Local VFR Sectional Review"
@@ -386,8 +155,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Treat “Imsafe” Checklist and CRM like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
   },
-  "summary" : "Risk Management and Homefield Recovery: “Imsafe” Checklist, CRM, See & Avoid Principle, and the remaining required discussion items in the block.",
+  "summary" : "“Imsafe” Checklist, CRM, and See & Avoid Principle.",
   "title" : "Risk Management and Homefield Recovery"
 }

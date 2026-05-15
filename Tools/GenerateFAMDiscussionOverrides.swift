@@ -627,14 +627,29 @@ private func groupedStudyBullet(
         emergencyProcedureAliases: emergencyProcedureAliases
     )
     let nwcTemplate = epTemplate.flatMap { nwcCardsByTitle[$0.normalizedTitle] }
-    let children = readableChildLines(
-        for: item,
-        style: style,
-        categorized: categorized,
-        epTemplate: epTemplate,
-        nwcTemplate: nwcTemplate,
-        maxChildren: maxChildren
-    )
+    let children: [String]
+    if style == .emergencyProcedure {
+        let procedureLines = epTemplate.map(answerLines) ?? categorized.execution
+        let decisionLines = Array(categorized.application.prefix(1))
+        let nwcLines = nwcTemplate.map(answerLines) ?? Array(categorized.nwc.prefix(1))
+        var combined = pickLines(
+            procedureLines + decisionLines,
+            maxCount: max(1, maxChildren - 1),
+            fallback: [genericProcedureFallback(for: item)]
+        )
+        let nwcLead = nwcLines.first ?? genericNWCRequirement(for: item)
+        combined.append("N/W/C focus: \(nwcLead)")
+        children = uniqueStrings(Array(combined.prefix(maxChildren)))
+    } else {
+        children = readableChildLines(
+            for: item,
+            style: style,
+            categorized: categorized,
+            epTemplate: epTemplate,
+            nwcTemplate: nwcTemplate,
+            maxChildren: maxChildren
+        )
+    }
 
     return StudyNotesItemOutput(
         text: "\(titleCasedDiscussionItemPrompt(item)):",

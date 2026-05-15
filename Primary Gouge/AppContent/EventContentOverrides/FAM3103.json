@@ -1,688 +1,688 @@
 {
-  "canonicalCoverage": {
-    "Crosswind limits": [
+  "canonicalCoverage" : {
+    "Crosswind limits" : [
       "Crosswind Limits"
     ],
-    "crosswind computations": [
-      "Crosswind Computations"
+    "HUD" : [
+      "HUD"
     ],
-    "crosswind takeoff": [
-      "Crosswind Takeoff"
-    ],
-    "pattern adjustments for crosswinds": [
-      "Pattern Adjustments for Crosswinds"
-    ],
-    "crosswind landings": [
-      "Crosswind Landings"
-    ],
-    "crosswind T&Gs": [
-      "Crosswind T&Gs"
-    ],
-    "crosswind full-stops": [
-      "Crosswind Full-Stop Landing"
-    ],
-    "aborted takeoff": [
+    "aborted takeoff" : [
       "Aborted Takeoff"
     ],
-    "aircraft departs prepared surface": [
+    "aircraft departs prepared surface" : [
       "Aircraft Departs Prepared Surface"
     ],
-    "HUD": [
-      "HUD"
+    "crosswind T&Gs" : [
+      "Crosswind T&Gs"
+    ],
+    "crosswind computations" : [
+      "Crosswind Computations"
+    ],
+    "crosswind full-stops" : [
+      "Crosswind Full-Stop Landing"
+    ],
+    "crosswind landings" : [
+      "Crosswind Landings"
+    ],
+    "crosswind takeoff" : [
+      "Crosswind Takeoff"
+    ],
+    "pattern adjustments for crosswinds" : [
+      "Pattern Adjustments for Crosswinds"
     ]
   },
-  "code": "FAM3103",
-  "overview": "This event introduces crosswind operations and runway emergencies. You will practice crosswind takeoffs, crosswind landings, touch-and-gos, full-stop landings, aborts, and runway departures while learning how to stay aligned with the runway and make early decisions when things are no longer stable.",
-  "primaryDocumentTitles": [
+  "code" : "FAM3103",
+  "overview" : "This event introduces crosswind operations and runway emergencies. You will practice crosswind takeoffs, crosswind landings, touch-and-gos, full-stop landings, aborts, and runway departures while learning how to stay aligned with the runway and make early decisions when things are no longer stable.",
+  "primaryDocumentTitles" : [
     "FAM3103",
     "FAM 3103 Briefing guide 1542.166D"
   ],
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "Focus on smooth crosswind corrections, early waveoff or abort decisions, and keeping aircraft control ahead of every other task.",
-    "sections": [
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
       {
-        "title": "Crosswind Limits",
-        "items": [
+        "items" : [
           {
-            "text": "NATOPS Limits:",
-            "children": [
+            "children" : [
               {
-                "text": "Dry runway: 25 knot crosswind component."
+                "text" : "Dry runway: 25 knot crosswind component."
               },
               {
-                "text": "Wet runway: 10 knot crosswind component."
+                "text" : "Wet runway: 10 knot crosswind component."
               },
               {
-                "text": "Icy runway: 5 knot crosswind component."
+                "text" : "Icy runway: 5 knot crosswind component."
               },
               {
-                "text": "Maximum takeoff tailwind: 10 knots."
+                "text" : "Maximum takeoff tailwind: 10 knots."
               }
-            ]
+            ],
+            "text" : "NATOPS Limits:"
           },
           {
-            "text": "Solo Limits:",
-            "children": [
+            "children" : [
               {
-                "text": "10 knot maximum crosswind component."
+                "text" : "10 knot maximum crosswind component."
               },
               {
-                "text": "No tailwind component."
+                "text" : "No tailwind component."
               },
               {
-                "text": "25 knot steady winds or 30 knot gusts."
+                "text" : "25 knot steady winds or 30 knot gusts."
               }
-            ]
+            ],
+            "text" : "Solo Limits:"
           },
           {
-            "text": "Flap recommendations:",
-            "children": [
+            "children" : [
               {
-                "text": "Use takeoff flaps for crosswinds greater than 10 knots or gusty conditions."
+                "text" : "Use takeoff flaps for crosswinds greater than 10 knots or gusty conditions."
               },
               {
-                "text": "Consider no-flap landings for crosswinds greater than 20 knots if runway length allows."
+                "text" : "Consider no-flap landings for crosswinds greater than 20 knots if runway length allows."
               }
-            ]
+            ],
+            "text" : "Flap recommendations:"
           }
-        ]
+        ],
+        "title" : "Crosswind Limits"
       },
       {
-        "title": "Crosswind Computations",
-        "items": [
+        "items" : [
           {
-            "text": "Determine the angle between runway heading and wind direction."
+            "text" : "Determine the angle between runway heading and wind direction."
           },
           {
-            "text": "Estimate headwind and crosswind components using:",
-            "children": [
+            "children" : [
               {
-                "text": "NATOPS chart."
+                "text" : "NATOPS chart."
               },
               {
-                "text": "PCL crosswind chart."
+                "text" : "PCL crosswind chart."
               },
               {
-                "text": "IFG crosswind table."
+                "text" : "IFG crosswind table."
               }
-            ]
+            ],
+            "text" : "Estimate headwind and crosswind components using:"
           },
           {
-            "text": "Quick mental rules:",
-            "children": [
+            "children" : [
               {
-                "text": "15 degrees off runway heading is approximately 25% of the wind."
+                "text" : "15 degrees off runway heading is approximately 25% of the wind."
               },
               {
-                "text": "30 degrees is approximately 50%."
+                "text" : "30 degrees is approximately 50%."
               },
               {
-                "text": "45 degrees is approximately 75%."
+                "text" : "45 degrees is approximately 75%."
               },
               {
-                "text": "60 degrees or greater is nearly full value."
+                "text" : "60 degrees or greater is nearly full value."
               }
-            ]
+            ],
+            "text" : "Quick mental rules:"
           },
           {
-            "text": "Example:",
-            "children": [
+            "children" : [
               {
-                "text": "Runway 05."
+                "text" : "Runway 05."
               },
               {
-                "text": "Winds 020 at 10 knots."
+                "text" : "Winds 020 at 10 knots."
               },
               {
-                "text": "Crosswind component approximately 5 knots."
+                "text" : "Crosswind component approximately 5 knots."
               }
-            ]
+            ],
+            "text" : "Example:"
           }
-        ]
+        ],
+        "title" : "Crosswind Computations"
       },
       {
-        "title": "Crosswind Takeoff",
-        "items": [
+        "items" : [
           {
-            "text": "Before takeoff:",
-            "children": [
+            "children" : [
               {
-                "text": "Note wind direction from tower and windsock."
+                "text" : "Note wind direction from tower and windsock."
               },
               {
-                "text": "Anticipate required aileron and rudder inputs."
+                "text" : "Anticipate required aileron and rudder inputs."
               },
               {
-                "text": "Position aileron into the wind."
+                "text" : "Position aileron into the wind."
               }
-            ]
+            ],
+            "text" : "Before takeoff:"
           },
           {
-            "text": "Takeoff roll:",
-            "children": [
+            "children" : [
               {
-                "text": "Use up to full aileron into the wind initially."
+                "text" : "Use up to full aileron into the wind initially."
               },
               {
-                "text": "Reduce aileron input as speed increases."
+                "text" : "Reduce aileron input as speed increases."
               },
               {
-                "text": "Use rudder to maintain runway centerline and counter weathervaning."
+                "text" : "Use rudder to maintain runway centerline and counter weathervaning."
               }
-            ]
+            ],
+            "text" : "Takeoff roll:"
           },
           {
-            "text": "Rotation:",
-            "children": [
+            "children" : [
               {
-                "text": "Rotate firmly at 90 KIAS."
+                "text" : "Rotate firmly at 90 KIAS."
               },
               {
-                "text": "Prevent skipping by keeping the upwind wing from rising."
+                "text" : "Prevent skipping by keeping the upwind wing from rising."
               },
               {
-                "text": "Maintain coordinated flight through liftoff."
+                "text" : "Maintain coordinated flight through liftoff."
               }
-            ]
+            ],
+            "text" : "Rotation:"
           },
           {
-            "text": "Initial climb:",
-            "children": [
+            "children" : [
               {
-                "text": "Level the wings."
+                "text" : "Level the wings."
               },
               {
-                "text": "Allow the aircraft to crab into the wind."
+                "text" : "Allow the aircraft to crab into the wind."
               },
               {
-                "text": "Keep the ball centered."
+                "text" : "Keep the ball centered."
               }
-            ]
+            ],
+            "text" : "Initial climb:"
           },
           {
-            "text": "Common errors:",
-            "children": [
+            "children" : [
               {
-                "text": "Not using enough aileron."
+                "text" : "Not using enough aileron."
               },
               {
-                "text": "Not reducing aileron as speed increases."
+                "text" : "Not reducing aileron as speed increases."
               },
               {
-                "text": "Using poor rudder control."
+                "text" : "Using poor rudder control."
               },
               {
-                "text": "Allowing the aircraft to skip sideways."
+                "text" : "Allowing the aircraft to skip sideways."
               }
-            ]
+            ],
+            "text" : "Common errors:"
           }
-        ]
+        ],
+        "title" : "Crosswind Takeoff"
       },
       {
-        "title": "Pattern Adjustments for Crosswinds",
-        "items": [
+        "items" : [
           {
-            "text": "Crab into the wind on upwind and downwind to maintain the desired ground track."
+            "text" : "Crab into the wind on upwind and downwind to maintain the desired ground track."
           },
           {
-            "text": "Overshooting winds:",
-            "children": [
+            "children" : [
               {
-                "text": "Push the aircraft outside of normal final."
+                "text" : "Push the aircraft outside of normal final."
               },
               {
-                "text": "Require slightly more bank and slightly lower power in the final turn."
+                "text" : "Require slightly more bank and slightly lower power in the final turn."
               }
-            ]
+            ],
+            "text" : "Overshooting winds:"
           },
           {
-            "text": "Undershooting winds:",
-            "children": [
+            "children" : [
               {
-                "text": "Push the aircraft inside of normal final."
+                "text" : "Push the aircraft inside of normal final."
               },
               {
-                "text": "Require slightly less bank and slightly more power in the final turn."
+                "text" : "Require slightly less bank and slightly more power in the final turn."
               }
-            ]
+            ],
+            "text" : "Undershooting winds:"
           },
           {
-            "text": "Final turn:",
-            "children": [
+            "children" : [
               {
-                "text": "Normal AOB is approximately 30 degrees."
+                "text" : "Normal AOB is approximately 30 degrees."
               },
               {
-                "text": "Maximum AOB is 45 degrees."
+                "text" : "Maximum AOB is 45 degrees."
               },
               {
-                "text": "If more than 45 degrees is required, waveoff."
+                "text" : "If more than 45 degrees is required, waveoff."
               }
-            ]
+            ],
+            "text" : "Final turn:"
           },
           {
-            "text": "Gusty conditions:",
-            "children": [
+            "children" : [
               {
-                "text": "Increase final approach speed by one half the gust factor."
+                "text" : "Increase final approach speed by one half the gust factor."
               },
               {
-                "text": "Maximum speed increase is 10 knots."
+                "text" : "Maximum speed increase is 10 knots."
               }
-            ]
+            ],
+            "text" : "Gusty conditions:"
           }
-        ]
+        ],
+        "title" : "Pattern Adjustments for Crosswinds"
       },
       {
-        "title": "Crosswind Landings",
-        "items": [
+        "items" : [
           {
-            "text": "Final:",
-            "children": [
+            "children" : [
               {
-                "text": "Use the wing-low method."
+                "text" : "Use the wing-low method."
               },
               {
-                "text": "Apply aileron into the wind to stop drift."
+                "text" : "Apply aileron into the wind to stop drift."
               },
               {
-                "text": "Use rudder to align the nose with the runway."
+                "text" : "Use rudder to align the nose with the runway."
               },
               {
-                "text": "Add power as required to counter additional drag."
+                "text" : "Add power as required to counter additional drag."
               }
-            ]
+            ],
+            "text" : "Final:"
           },
           {
-            "text": "Flare:",
-            "children": [
+            "children" : [
               {
-                "text": "Maintain the upwind wing low."
+                "text" : "Maintain the upwind wing low."
               },
               {
-                "text": "Do not level the wings before touchdown."
+                "text" : "Do not level the wings before touchdown."
               },
               {
-                "text": "Continue using rudder to keep the nose aligned."
+                "text" : "Continue using rudder to keep the nose aligned."
               }
-            ]
+            ],
+            "text" : "Flare:"
           },
           {
-            "text": "Touchdown:",
-            "children": [
+            "children" : [
               {
-                "text": "Land on the upwind main gear first."
+                "text" : "Land on the upwind main gear first."
               },
               {
-                "text": "Avoid landing with side motion or while crabbed."
+                "text" : "Avoid landing with side motion or while crabbed."
               }
-            ]
+            ],
+            "text" : "Touchdown:"
           },
           {
-            "text": "Rollout:",
-            "children": [
+            "children" : [
               {
-                "text": "Continue increasing aileron into the wind as speed decreases."
+                "text" : "Continue increasing aileron into the wind as speed decreases."
               },
               {
-                "text": "Use rudder and brakes to maintain centerline."
+                "text" : "Use rudder and brakes to maintain centerline."
               },
               {
-                "text": "Avoid braking above 80 KIAS."
+                "text" : "Avoid braking above 80 KIAS."
               }
-            ]
+            ],
+            "text" : "Rollout:"
           },
           {
-            "text": "Common errors:",
-            "children": [
+            "children" : [
               {
-                "text": "Landing in a crab."
+                "text" : "Landing in a crab."
               },
               {
-                "text": "Releasing crosswind controls after touchdown."
+                "text" : "Releasing crosswind controls after touchdown."
               },
               {
-                "text": "Overcorrecting back toward centerline."
+                "text" : "Overcorrecting back toward centerline."
               },
               {
-                "text": "Failing to waveoff when unstable."
+                "text" : "Failing to waveoff when unstable."
               }
-            ]
+            ],
+            "text" : "Common errors:"
           }
-        ]
+        ],
+        "title" : "Crosswind Landings"
       },
       {
-        "title": "Crosswind T&Gs",
-        "items": [
+        "items" : [
           {
-            "text": "Maintain crosswind controls during rollout."
+            "text" : "Maintain crosswind controls during rollout."
           },
           {
-            "text": "Keep aileron into the wind."
+            "text" : "Keep aileron into the wind."
           },
           {
-            "text": "Smoothly advance PCL to MAX."
+            "text" : "Smoothly advance PCL to MAX."
           },
           {
-            "text": "Rotate at 90 KIAS."
+            "text" : "Rotate at 90 KIAS."
           },
           {
-            "text": "After liftoff:",
-            "children": [
+            "children" : [
               {
-                "text": "Level the wings."
+                "text" : "Level the wings."
               },
               {
-                "text": "Crab into the wind."
+                "text" : "Crab into the wind."
               },
               {
-                "text": "Maintain coordinated flight."
+                "text" : "Maintain coordinated flight."
               }
-            ]
+            ],
+            "text" : "After liftoff:"
           }
-        ]
+        ],
+        "title" : "Crosswind T&Gs"
       },
       {
-        "title": "Crosswind Full-Stop Landing",
-        "items": [
+        "items" : [
           {
-            "text": "Maintain aileron into the wind throughout rollout."
+            "text" : "Maintain aileron into the wind throughout rollout."
           },
           {
-            "text": "Keep directional control with rudder and brakes."
+            "text" : "Keep directional control with rudder and brakes."
           },
           {
-            "text": "Lower the nosewheel smoothly."
+            "text" : "Lower the nosewheel smoothly."
           },
           {
-            "text": "Do not use brakes aggressively."
+            "text" : "Do not use brakes aggressively."
           },
           {
-            "text": "Continue crosswind corrections until clear of the runway."
+            "text" : "Continue crosswind corrections until clear of the runway."
           }
-        ]
+        ],
+        "title" : "Crosswind Full-Stop Landing"
       },
       {
-        "title": "Aborted Takeoff",
-        "items": [
+        "items" : [
           {
-            "text": "Used for any unsafe condition before maximum abort speed."
+            "text" : "Used for any unsafe condition before maximum abort speed."
           },
           {
-            "text": "Common reasons:",
-            "children": [
+            "children" : [
               {
-                "text": "Blown tire."
+                "text" : "Blown tire."
               },
               {
-                "text": "Fire."
+                "text" : "Fire."
               },
               {
-                "text": "Smoke."
+                "text" : "Smoke."
               },
               {
-                "text": "Chip light."
+                "text" : "Chip light."
               },
               {
-                "text": "Rising ITT."
+                "text" : "Rising ITT."
               },
               {
-                "text": "Engine malfunction."
+                "text" : "Engine malfunction."
               },
               {
-                "text": "Bird strike."
+                "text" : "Bird strike."
               },
               {
-                "text": "Runway obstruction."
+                "text" : "Runway obstruction."
               }
-            ]
+            ],
+            "text" : "Common reasons:"
           },
           {
-            "text": "Procedure:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL to IDLE."
+                "text" : "PCL to IDLE."
               },
               {
-                "text": "Brakes as required."
+                "text" : "Brakes as required."
               },
               {
-                "text": "Call \"Abort, Abort, Abort\"."
+                "text" : "Call \"Abort, Abort, Abort\"."
               },
               {
-                "text": "Maintain directional control with rudder and nosewheel steering."
+                "text" : "Maintain directional control with rudder and nosewheel steering."
               },
               {
-                "text": "Taxi clear if able."
+                "text" : "Taxi clear if able."
               },
               {
-                "text": "If required, execute Emergency Engine Shutdown on the Ground and Emergency Ground Egress."
+                "text" : "If required, execute Emergency Engine Shutdown on the Ground and Emergency Ground Egress."
               }
-            ]
+            ],
+            "text" : "Procedure:"
           },
           {
-            "text": "Maximum abort speed:",
-            "children": [
+            "children" : [
               {
-                "text": "60 KIAS or 1500 feet remaining runway."
+                "text" : "60 KIAS or 1500 feet remaining runway."
               }
-            ]
+            ],
+            "text" : "Maximum abort speed:"
           },
           {
-            "text": "Notes:",
-            "children": [
+            "children" : [
               {
-                "text": "Aircraft control takes priority over radio calls."
+                "text" : "Aircraft control takes priority over radio calls."
               },
               {
-                "text": "Do not request the barrier."
+                "text" : "Do not request the barrier."
               },
               {
-                "text": "Avoid setting the parking brake after heavy braking."
+                "text" : "Avoid setting the parking brake after heavy braking."
               }
-            ]
+            ],
+            "text" : "Notes:"
           },
           {
-            "text": "N/W/C focus: The major warning is the same one from earlier events: keep aircraft control first and respect the brake-overheat risk after aggressive stopping."
+            "text" : "N\/W\/C focus: The major warning is the same one from earlier events: keep aircraft control first and respect the brake-overheat risk after aggressive stopping."
           }
-        ]
+        ],
+        "title" : "Aborted Takeoff"
       },
       {
-        "title": "Aircraft Departs Prepared Surface",
-        "items": [
+        "items" : [
           {
-            "text": "Can result from:",
-            "children": [
+            "children" : [
               {
-                "text": "Blown tire."
+                "text" : "Blown tire."
               },
               {
-                "text": "Brake failure."
+                "text" : "Brake failure."
               },
               {
-                "text": "Loss of directional control."
+                "text" : "Loss of directional control."
               },
               {
-                "text": "Aborted takeoff with insufficient runway remaining."
+                "text" : "Aborted takeoff with insufficient runway remaining."
               }
-            ]
+            ],
+            "text" : "Can result from:"
           },
           {
-            "text": "Procedure:",
-            "children": [
+            "children" : [
               {
-                "text": "Execute Emergency Engine Shutdown on the Ground."
+                "text" : "Execute Emergency Engine Shutdown on the Ground."
               },
               {
-                "text": "Execute Emergency Ground Egress if required."
+                "text" : "Execute Emergency Ground Egress if required."
               },
               {
-                "text": "Exit at a 45 degree angle from the tail."
+                "text" : "Exit at a 45 degree angle from the tail."
               },
               {
-                "text": "Assemble 300 feet away from the aircraft."
+                "text" : "Assemble 300 feet away from the aircraft."
               }
-            ]
+            ],
+            "text" : "Procedure:"
           },
           {
-            "text": "Notes:",
-            "children": [
+            "children" : [
               {
-                "text": "Do not try to steer back onto the runway."
+                "text" : "Do not try to steer back onto the runway."
               },
               {
-                "text": "Nosewheel steering is lost after engine shutdown."
+                "text" : "Nosewheel steering is lost after engine shutdown."
               },
               {
-                "text": "Use differential braking if required."
+                "text" : "Use differential braking if required."
               },
               {
-                "text": "If collision is unavoidable, consider ejection."
+                "text" : "If collision is unavoidable, consider ejection."
               }
-            ]
+            ],
+            "text" : "Notes:"
           }
-        ]
+        ],
+        "title" : "Aircraft Departs Prepared Surface"
       },
       {
-        "title": "HUD",
-        "items": [
+        "items" : [
           {
-            "text": "The HUD displays flight, navigation, and aircraft information in the pilot's forward field of view."
+            "text" : "The HUD displays flight, navigation, and aircraft information in the pilot's forward field of view."
           },
           {
-            "text": "Main HUD items:",
-            "children": [
+            "children" : [
               {
-                "text": "Flight Path Marker."
+                "text" : "Flight Path Marker."
               },
               {
-                "text": "Climb Dive Marker."
+                "text" : "Climb Dive Marker."
               },
               {
-                "text": "Climb Dive Ladder."
+                "text" : "Climb Dive Ladder."
               },
               {
-                "text": "Heading Scale."
+                "text" : "Heading Scale."
               },
               {
-                "text": "Bank Angle Indicator."
+                "text" : "Bank Angle Indicator."
               },
               {
-                "text": "Sideslip Indicator."
+                "text" : "Sideslip Indicator."
               }
-            ]
+            ],
+            "text" : "Main HUD items:"
           },
           {
-            "text": "Flight Path Marker:",
-            "children": [
+            "children" : [
               {
-                "text": "Shows where the aircraft is actually going."
+                "text" : "Shows where the aircraft is actually going."
               }
-            ]
+            ],
+            "text" : "Flight Path Marker:"
           },
           {
-            "text": "Climb Dive Marker:",
-            "children": [
+            "children" : [
               {
-                "text": "Shows aircraft pitch attitude."
+                "text" : "Shows aircraft pitch attitude."
               }
-            ]
+            ],
+            "text" : "Climb Dive Marker:"
           },
           {
-            "text": "Climb Dive Ladder:",
-            "children": [
+            "children" : [
               {
-                "text": "Displays pitch references in 5 degree increments."
+                "text" : "Displays pitch references in 5 degree increments."
               }
-            ]
+            ],
+            "text" : "Climb Dive Ladder:"
           },
           {
-            "text": "Bank Angle Indicator:",
-            "children": [
+            "children" : [
               {
-                "text": "Displays current bank angle."
+                "text" : "Displays current bank angle."
               }
-            ]
+            ],
+            "text" : "Bank Angle Indicator:"
           },
           {
-            "text": "Sideslip Indicator:",
-            "children": [
+            "children" : [
               {
-                "text": "Helps identify slip or skid."
+                "text" : "Helps identify slip or skid."
               }
-            ]
+            ],
+            "text" : "Sideslip Indicator:"
           },
           {
-            "text": "Important HUD cautions:",
-            "children": [
+            "children" : [
               {
-                "text": "Flashing symbols indicate urgent information or items outside the field of view."
+                "text" : "Flashing symbols indicate urgent information or items outside the field of view."
               },
               {
-                "text": "Limit crosses show that a symbol has moved outside the HUD field of view."
+                "text" : "Limit crosses show that a symbol has moved outside the HUD field of view."
               }
-            ]
+            ],
+            "text" : "Important HUD cautions:"
           }
-        ]
+        ],
+        "title" : "HUD"
       },
       {
-        "title": "Big Picture Priorities",
-        "items": [
+        "items" : [
           {
-            "text": "Make smooth, early corrections in crosswinds."
+            "text" : "Make smooth, early corrections in crosswinds."
           },
           {
-            "text": "Keep the aircraft aligned with the runway at touchdown."
+            "text" : "Keep the aircraft aligned with the runway at touchdown."
           },
           {
-            "text": "Waveoff early if the approach is unstable."
+            "text" : "Waveoff early if the approach is unstable."
           },
           {
-            "text": "Maintain aircraft control before troubleshooting or making radio calls."
+            "text" : "Maintain aircraft control before troubleshooting or making radio calls."
           },
           {
-            "text": "Stay disciplined during aborts and emergencies."
+            "text" : "Stay disciplined during aborts and emergencies."
           }
-        ]
+        ],
+        "title" : "Big Picture Priorities"
       },
       {
-        "title": "Required Procedures",
-        "items": [
+        "items" : [
           {
-            "text": "Crosswind limits"
+            "text" : "Crosswind limits"
           },
           {
-            "text": "crosswind computations"
+            "text" : "crosswind computations"
           },
           {
-            "text": "crosswind takeoff"
+            "text" : "crosswind takeoff"
           },
           {
-            "text": "pattern adjustments for crosswinds"
+            "text" : "pattern adjustments for crosswinds"
           },
           {
-            "text": "crosswind landings"
+            "text" : "crosswind landings"
           },
           {
-            "text": "crosswind T&Gs"
+            "text" : "crosswind T&Gs"
           },
           {
-            "text": "crosswind full-stops"
+            "text" : "crosswind full-stops"
           },
           {
-            "text": "aborted takeoff"
+            "text" : "aborted takeoff"
           },
           {
-            "text": "aircraft departs prepared surface"
+            "text" : "aircraft departs prepared surface"
           },
           {
-            "text": "HUD"
+            "text" : "HUD"
           }
-        ]
+        ],
+        "title" : "Required Procedures"
       }
-    ]
+    ],
+    "summary" : "Focus on smooth crosswind corrections, early waveoff or abort decisions, and keeping aircraft control ahead of every other task."
   },
-  "summary": "Crosswind takeoffs and landings, aborts, runway departures, and HUD fundamentals.",
-  "title": "Crosswinds and Aborts"
+  "summary" : "Crosswind takeoffs and landings, aborts, runway departures, and HUD fundamentals.",
+  "title" : "Crosswinds and Aborts"
 }

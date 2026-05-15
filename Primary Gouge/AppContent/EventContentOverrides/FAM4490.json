@@ -1,29 +1,29 @@
 {
   "canonicalCoverage" : {
     "Any previously discussed items" : [
-      "Any Previously Discussed Items"
+      "Check-Flight Knowledge Review"
     ],
     "emergency procedures" : [
-      "Emergency Procedures"
+      "Emergency Decision Review"
     ],
     "local course rules" : [
-      "Local Course Rules"
+      "Check-Flight Knowledge Review"
     ],
     "lost aircraft procedures" : [
-      "Lost Aircraft Procedures"
+      "Solo and Weather Decision Traps"
     ],
     "maneuvers" : [
-      "Maneuvers"
+      "Maneuver Standards Refresh"
     ],
     "unauthorized solo maneuvers" : [
-      "Unauthorized Solo Maneuvers"
+      "Solo and Weather Decision Traps"
     ],
     "unintentional instrument flight" : [
-      "Unintentional Instrument Flight"
+      "Solo and Weather Decision Traps"
     ]
   },
   "code" : "FAM4490",
-  "overview" : "FAM4490 is a flight event focused on familiarization check flight. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event is a cumulative familiarization check. You should be ready to brief check-flight knowledge review, solo and weather decision traps, and maneuver standards refresh cleanly, then pivot between systems, procedures, maneuvers, and emergency logic without losing the big picture.",
   "primaryDocumentTitles" : [
     "FAM4401 (Check Flight)"
   ],
@@ -35,260 +35,22 @@
           {
             "children" : [
               {
-                "text" : "This is a cumulative review item. Treat it like a check-event probe: you can be asked to explain prior FAM procedures, systems, maneuvers, and emergency logic without a warm-up."
+                "text" : "Checklist Challenge-Action Response Format"
+              },
+              {
+                "text" : "Dual Concurrence\/Response CRM"
+              },
+              {
+                "text" : "Memorized Checklists"
+              },
+              {
+                "text" : "Ground Handling Signals"
+              },
+              {
+                "text" : "Safety Check\/Call Prior to Cockpit Entry and Departing Aircraft"
               }
             ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "safety check\/call prior to cockpit entry and departing aircraft"
-              },
-              {
-                "text" : "runaway trim"
-              },
-              {
-                "text" : "Normal takeoff"
-              },
-              {
-                "text" : "local area departure"
-              },
-              {
-                "text" : "integrated (VMC) scan"
-              },
-              {
-                "text" : "turn pattern"
-              },
-              {
-                "text" : "level speed change"
-              },
-              {
-                "text" : "power-on stalls"
-              },
-              {
-                "text" : "landing pattern (approach turn and landing attitude) stalls"
-              },
-              {
-                "text" : "intentional spin entry"
-              },
-              {
-                "text" : "incipient spin recovery"
-              },
-              {
-                "text" : "steady-state spin recovery"
-              },
-              {
-                "text" : "inadvertent trim actuation"
-              },
-              {
-                "text" : "landing pattern"
-              }
-            ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Build your prep around the assigned profile first, then backfill the earlier blocks that feed into it."
-              },
-              {
-                "text" : "Be ready to move from verbal explanation to a cockpit decision or maneuver setup without changing gears."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Do not study only the newest block. Review questions on older FAM material are often used to check whether the fundamentals are still automatic."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Any Previously Discussed Items"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Know what Unauthorized Solo Maneuvers changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "No spins, stalls, simulated engine failures, PPELs, or maneuvers not previously introduced."
-              },
-              {
-                "text" : "FAM4100 Block Maneuvers"
-              }
-            ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Be ready to move from explanation into execution: how Unauthorized Solo Maneuvers changes the brief, setup, and in-cockpit decision making."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The common trap is memorizing isolated facts about Unauthorized Solo Maneuvers without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Unauthorized Solo Maneuvers"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Description:"
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "CONFESS"
-              },
-              {
-                "text" : "Admit you are lost. Do not delay. Seek assistance."
-              },
-              {
-                "text" : "CLIMB"
-              },
-              {
-                "text" : "Conditions permitting, climb to improve radio range and visibility."
-              },
-              {
-                "text" : "CONSERVE"
-              },
-              {
-                "text" : "COMMUNICATE"
-              },
-              {
-                "text" : "Try contacting:"
-              },
-              {
-                "text" : "Instructor aircraft on area frequency"
-              },
-              {
-                "text" : "FDO\/ODO"
-              },
-              {
-                "text" : "Approach Control for vectors"
-              }
-            ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "If you become unsure of your location in flight, stay calm and follow the established Five Cs to regain orientation or get help. The priority is always to fly the aircraft, maintain VFR, and communicate."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "THESE PROCEDURES SHOULD NOT PRECLUDE EXERCISING SOUND JUDGEMENT IN WHATEVER ACTION A PILOT ELECTS TO TAKE. (AIM, FAR 91.185)"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Lost Aircraft Procedures"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Know what Unintentional Instrument Flight changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Avoid IMC at all times."
-              },
-              {
-                "text" : "Maintain control of the aircraft."
-              },
-              {
-                "text" : "Establish instrument scan and check altitude."
-              },
-              {
-                "text" : "a. Maintain control of the aircraft."
-              },
-              {
-                "text" : "b. Establish instrument scan and check altitude."
-              },
-              {
-                "text" : "If below MEF+1000’ or OROCA, climb immediately and turn away from obstacles."
-              },
-              {
-                "text" : "If above MEF+1000’ or OROCA, exit IMC the way you entered (climb → descend, etc.)."
-              },
-              {
-                "text" : "c. If below MEF+1000’ or OROCA, climb immediately and turn away from obstacles."
-              },
-              {
-                "text" : "d. If above MEF+1000’ or OROCA, exit IMC the way you entered (climb → descend, etc.)."
-              }
-            ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "If encountered:"
-              },
-              {
-                "text" : "If unable to regain VMC:"
-              },
-              {
-                "text" : "e. If unable to regain VMC:"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The common trap is memorizing isolated facts about Unintentional Instrument Flight without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Unintentional Instrument Flight"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Know what Local Course Rules changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Any Previously Discussed Items:"
           },
           {
             "children" : [
@@ -303,16 +65,45 @@
               },
               {
                 "text" : "Make voice reports in the blind"
+              }
+            ],
+            "text" : "Local Course Rules:"
+          }
+        ],
+        "title" : "Check-Flight Knowledge Review"
+      },
+      {
+        "items" : [
+          {
+            "children" : [
+              {
+                "text" : "No spins, stalls, simulated engine failures, PPELs, or maneuvers not previously introduced."
               },
               {
-                "text" : "Rock wings overhead the numbers"
+                "text" : "FAM4100 Block Maneuvers"
+              }
+            ],
+            "text" : "Unauthorized Solo Maneuvers:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "CONFESS"
               },
               {
-                "text" : "Do not attempt touch-and-go landings while NORDO"
+                "text" : "Admit you are lost. Do not delay. Seek assistance."
               },
               {
-                "text" : "Unintentional Instrument Flight"
+                "text" : "CLIMB"
               },
+              {
+                "text" : "Conditions permitting, climb to improve radio range and visibility."
+              }
+            ],
+            "text" : "Lost Aircraft Procedures:"
+          },
+          {
+            "children" : [
               {
                 "text" : "Avoid IMC at all times."
               },
@@ -321,64 +112,20 @@
               },
               {
                 "text" : "Establish instrument scan and check altitude."
+              },
+              {
+                "text" : "a. Maintain control of the aircraft."
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "circle, assess, land when safe"
-              },
-              {
-                "text" : "If encountered:"
-              },
-              {
-                "text" : "If unable to regain VMC:"
-              },
-              {
-                "text" : "Use Zulu time"
-              },
-              {
-                "text" : "Aircraft will use local VFR T-6 squawk, also known as “Company”"
-              },
-              {
-                "text" : "3.RADIO CALLS. Make all radio calls “in the blind.” Use frequencies appropriate for route of flight."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "IF UNABLE TO MAINTAIN VMC, SQUAWK 7600 AND COMPLY WITH IFR LOST COMMUNICATION PROCEDURES."
-              },
-              {
-                "text" : "THESE PROCEDURES SHOULD NOT PRECLUDE EXERCISING SOUND JUDGEMENT IN WHATEVER ACTION A PILOT ELECTS TO TAKE. (AIM, FAR 91.185)"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Unintentional Instrument Flight:"
           }
         ],
-        "title" : "Local Course Rules"
+        "title" : "Solo and Weather Decision Traps"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "This is the cumulative maneuver bucket for the check flight. You should be able to brief, set up, and fly any previously introduced FAM maneuver without needing a rescue cue."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Know the entry altitude, airspeed, configuration, and pre-maneuver checks for each maneuver that is still fair game."
-              }
-            ],
-            "text" : "Setup \/ entry"
+            "text" : "Treat this as a cumulative maneuver brief. You should be able to move from setup to recovery without needing a rescue cue once the instructor picks the maneuver."
           },
           {
             "children" : [
@@ -405,77 +152,20 @@
               },
               {
                 "text" : "Power-on Stalls"
-              },
-              {
-                "text" : "Landing Pattern (Approach Turn and Landing Attitude) Stalls"
-              },
-              {
-                "text" : "Intentional Spin Entry"
-              },
-              {
-                "text" : "Incipient Spin Recovery"
-              },
-              {
-                "text" : "Steady-State Spin Recovery"
-              },
-              {
-                "text" : "Inadvertent Trim Actuation"
-              },
-              {
-                "text" : "Landing Pattern"
               }
             ],
-            "text" : "Execution"
+            "text" : "Be ready to brief:"
           },
           {
-            "children" : [
-              {
-                "text" : "Memorize the setup numbers and the recovery numbers. In cumulative events, those are usually what separates a clean brief from a shaky one."
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Do not narrow your study to the last flight. Check-flight maneuver questions often jump across earlier blocks."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Know the entry picture, the recovery picture, and the common grading misses for each maneuver you expect to be fair game."
           }
         ],
-        "title" : "Maneuvers"
+        "title" : "Maneuver Standards Refresh"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "T-6B solos limited to full or takeoff flap settings unless emergency or flap malfunction."
-              },
-              {
-                "text" : "Runway Requirements:"
-              },
-              {
-                "text" : "Minimum runway lengths vary by altitude, condition, and day\/night:"
-              },
-              {
-                "text" : "Below 3500 ft MSL: 4000 ft dry\/day; 4000 ft wet\/night for touch-and-go\/full stop; 5000 ft for student solos."
-              },
-              {
-                "text" : "Above 3500 ft MSL: 5000-6000 ft depending on conditions."
-              },
-              {
-                "text" : "Width minimum: 75-100 ft depending on conditions."
-              },
-              {
-                "text" : "BASH Conditions:"
-              },
-              {
-                "text" : "In severe BASH conditions, solos must full stop or depart pattern."
-              }
-            ],
-            "text" : "Recognition \/ indications"
+            "text" : "Treat this as a cumulative EP brief. The instructor can move quickly between recognition, memory items, and the branch logic that decides whether you continue, land, or eject."
           },
           {
             "children" : [
@@ -514,40 +204,26 @@
               },
               {
                 "text" : "Uncommanded Power Changes\/LOP"
-              },
-              {
-                "text" : "Uncommanded Prop Feather"
-              },
-              {
-                "text" : "Smoke and Fume Elimination"
               }
             ],
-            "text" : "Immediate actions \/ procedure"
+            "text" : "Expected review set:"
           },
           {
             "children" : [
               {
-                "text" : "Know when the problem can be managed with a PEL, when it requires a forced landing, and when it is time to stop troubleshooting and eject."
+                "text" : "Be able to state the recognition cue before you recite the steps."
               },
               {
-                "text" : "If the assigned EP includes branches, know what cue drives each branch before you brief the next step."
-              }
-            ],
-            "text" : "Decision logic"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Be ready to state the associated WARNINGs, CAUTIONs, and NOTEs for the assigned EP, not just the memory items."
+                "text" : "Know the associated N\/W\/Cs, not just the memory items."
               },
               {
-                "text" : "Review the verbatim N\/W\/C card for every EP title listed above before the event."
+                "text" : "Have a clear answer for when the EP becomes a PEL, forced-landing, or ejection problem."
               }
             ],
-            "text" : "N\/W\/Cs"
+            "text" : "How to study it:"
           }
         ],
-        "title" : "Emergency Procedures"
+        "title" : "Emergency Decision Review"
       },
       {
         "items" : [
@@ -576,8 +252,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+    "summary" : "Keep Check-Flight Knowledge Review, plus Solo and Weather Decision Traps organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
   },
-  "summary" : "Familiarization Check Flight: Any Previously Discussed Items, Unauthorized Solo Maneuvers, Lost Aircraft Procedures, and the remaining required discussion items in the block.",
+  "summary" : "Check-Flight Knowledge Review, Solo and Weather Decision Traps, and Maneuver Standards Refresh.",
   "title" : "Familiarization Check Flight"
 }

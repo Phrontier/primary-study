@@ -1,11 +1,11 @@
 {
   "canonicalCoverage" : {
     "Any EP" : [
-      "Any EP"
+      "Cumulative EP Review"
     ]
   },
   "code" : "FAM6402",
-  "overview" : "FAM6402 is a sim event focused on emergency procedures review. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "Use this event to review the familiarization EP set as one connected decision tree. You should be ready to move from recognition to memory items to PEL, forced-landing, or ejection logic without stopping to rebuild the picture.",
   "primaryDocumentTitles" : [
     "FAM6402"
   ],
@@ -15,33 +15,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Any Emergency Procedure"
-              },
-              {
-                "text" : "T-6B EMERGENCY PROCEDURE CRITICAL ACTION MEMORY ITEMS"
-              },
-              {
-                "text" : "& OPERATING LIMITATIONS"
-              },
-              {
-                "text" : "EMERGENCY PROCEDURE CRITICAL ACTION MEMORY ITEMS"
-              },
-              {
-                "text" : "ABORT START PROCEDURE"
-              },
-              {
-                "text" : "1. PCL – OFF or STARTER switch – AUTO\/RESET"
-              },
-              {
-                "text" : "EMERGENCY ENGINE SHUTDOWN ON THE GROUND"
-              },
-              {
-                "text" : "1. PCL – OFF"
-              }
-            ],
-            "text" : "Recognition \/ indications"
+            "text" : "Treat this as a cumulative EP brief. The instructor can move quickly between recognition, memory items, and the branch logic that decides whether you continue, land, or eject."
           },
           {
             "children" : [
@@ -80,40 +54,26 @@
               },
               {
                 "text" : "Uncommanded Power Changes\/LOP"
-              },
-              {
-                "text" : "Uncommanded Prop Feather"
-              },
-              {
-                "text" : "Smoke and Fume Elimination"
               }
             ],
-            "text" : "Immediate actions \/ procedure"
+            "text" : "Expected review set:"
           },
           {
             "children" : [
               {
-                "text" : "Know when the problem can be managed with a PEL, when it requires a forced landing, and when it is time to stop troubleshooting and eject."
+                "text" : "Be able to state the recognition cue before you recite the steps."
               },
               {
-                "text" : "If the assigned EP includes branches, know what cue drives each branch before you brief the next step."
-              }
-            ],
-            "text" : "Decision logic"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Be ready to state the associated WARNINGs, CAUTIONs, and NOTEs for the assigned EP, not just the memory items."
+                "text" : "Know the associated N\/W\/Cs, not just the memory items."
               },
               {
-                "text" : "Review the verbatim N\/W\/C card for every EP title listed above before the event."
+                "text" : "Have a clear answer for when the EP becomes a PEL, forced-landing, or ejection problem."
               }
             ],
-            "text" : "N\/W\/Cs"
+            "text" : "How to study it:"
           }
         ],
-        "title" : "Any EP"
+        "title" : "Cumulative EP Review"
       },
       {
         "items" : [
@@ -124,8 +84,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Treat this like a cumulative EP check: know the cue, the immediate action, and the N\/W\/C that changes the safe answer."
   },
-  "summary" : "Emergency Procedures Review: Any EP.",
+  "summary" : "Cumulative emergency-procedure recognition, memory items, and N\/W\/C decision logic.",
   "title" : "Emergency Procedures Review"
 }

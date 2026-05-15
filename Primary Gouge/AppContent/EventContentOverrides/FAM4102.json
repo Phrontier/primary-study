@@ -35,7 +35,7 @@
     ]
   },
   "code" : "FAM4102",
-  "overview" : "FAM4102 is a flight event focused on tire failures. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event ties together tire failures, aborted takeoff, and power-on stalls in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
   "primaryDocumentTitles" : [
     "FAM4102"
   ],
@@ -45,45 +45,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what Tire Failures changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Know what Tire Failures changes in the cockpit and why the instructor cares about it in this event."
-              },
-              {
-                "text" : "Build a clean, plain-language explanation of Tire Failures that ties the system, procedure, or rule to what you will actually see and do."
-              },
-              {
-                "text" : "how Tire Failures changes the brief, setup, and in-cockpit decision making."
-              }
-            ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Be ready to move from explanation into execution: how Tire Failures changes the brief, setup, and in-cockpit decision making."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Tire Failures without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Tire Failures matters because it changes what you brief, what you look for in the cockpit, or what the next safe decision needs to be."
           }
         ],
         "title" : "Tire Failures"
@@ -91,15 +53,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Recognition \/ indications"
-              },
-              {
-                "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
-              }
-            ],
-            "text" : "Recognition \/ indications"
+            "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
           },
           {
             "children" : [
@@ -110,22 +64,10 @@
                 "text" : "BRAKES - AS REQUIRED"
               }
             ],
-            "text" : "Immediate actions \/ procedure"
+            "text" : "Immediate actions:"
           },
           {
             "children" : [
-              {
-                "text" : "If decision is made to stop:"
-              },
-              {
-                "text" : "Additional Considerations:"
-              },
-              {
-                "text" : "BRAKES - AS REQUIRED"
-              },
-              {
-                "text" : "Configuration"
-              },
               {
                 "text" : "Anticipate increased brake sensitivity above 80 KIAS."
               },
@@ -139,7 +81,7 @@
                 "text" : "Most blown tires occur before tire spin-up or below 40 knots."
               }
             ],
-            "text" : "Decision logic"
+            "text" : "Decision cues:"
           },
           {
             "children" : [
@@ -150,7 +92,7 @@
                 "text" : "W - After a stop which required maximum effort braking and if overheated brakes are suspected, do not taxi into or park in a congested area until brakes have had sufficient time to cool. Do not set parking brake."
               }
             ],
-            "text" : "N\/W\/Cs"
+            "text" : "N\/W\/C focus:"
           }
         ],
         "title" : "Aborted Takeoff"
@@ -158,38 +100,18 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "simulate departure stalls to train recognition and recovery techniques"
-              },
-              {
-                "text" : "simulates an ELP stall during power-off descent, typically near High Key"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "simulate departure stalls to train recognition and recovery techniques"
           },
           {
             "children" : [
-              {
-                "text" : "Entry (straight ahead):"
-              },
-              {
-                "text" : "Entry (turning stall):"
-              },
               {
                 "text" : "Configuration - clean, slow cruise (~150 KIAS or IP discretion)"
-              },
-              {
-                "text" : "Transition to Best Glide:"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
-              {
-                "text" : "Recovery:"
-              },
               {
                 "text" : "Recovery"
               },
@@ -201,38 +123,14 @@
               },
               {
                 "text" : "Hold AOB until uncommanded nose drop or wing roll"
-              },
-              {
-                "text" : "RELAX - ease back-stick pressure"
-              },
-              {
-                "text" : "MAX - PCL to max"
-              },
-              {
-                "text" : "LEVEL - level wings"
-              },
-              {
-                "text" : "BALL - center the ball with rudder"
-              },
-              {
-                "text" : "AOA system may lag behind the wing’s actual AOA during rapid G-onset maneuvers—visually identify stall via uncommanded pitch up, wing drop, or oscillations (pitch bucking)."
-              },
-              {
-                "text" : "Checklist - PSSA"
-              },
-              {
-                "text" : "Roll wings level"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
               {
                 "text" : "Establish - clean, 6000’+ AGL, 150 KIAS, 3 C’s"
-              },
-              {
-                "text" : "PCL - 30-60%"
               },
               {
                 "text" : "Pitch - 15-40° NH"
@@ -242,32 +140,9 @@
               },
               {
                 "text" : "If in a low energy state with AOA <18.0 and airspeed too low to sustain level flight, apply power cautiously. If in an unrecoverable descent, EJECT if below 6000’ AGL."
-              },
-              {
-                "text" : "Stick shaker typically activates at 15.5 units AOA, which corresponds to 5–10 KIAS above stall in unaccelerated flight."
-              },
-              {
-                "text" : "Recover above 6000’ AGL"
-              },
-              {
-                "text" : "800’"
-              },
-              {
-                "text" : "1000-2000’"
-              },
-              {
-                "text" : "If ≤150 KIAS - Retard PCL to 4-6%, allow deceleration"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Power-on Stalls late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Power-on Stalls"
@@ -275,15 +150,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
-              },
-              {
-                "text" : "Racetrack shaped course flown so approach and landing can be executed in a systematic sequence"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
           },
           {
             "children" : [
@@ -291,7 +158,7 @@
                 "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
@@ -299,19 +166,13 @@
                 "text" : "Recovery must be completed above 6000’ AGL"
               },
               {
-                "text" : "Establish:"
-              },
-              {
                 "text" : "Checklist - PSSA and Before Landing Checklists"
               },
               {
                 "text" : "Clear - TCAS, visual scan, clearing turns"
-              },
-              {
-                "text" : "Simulate Abeam Transition:"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -325,15 +186,7 @@
                 "text" : "Airspeed based on flaps (NF\/TO\/LDG) = (120\/115\/110)"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Landing Pattern Stalls late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Landing Pattern Stalls"
@@ -341,38 +194,18 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "simulate departure stalls to train recognition and recovery techniques"
-              },
-              {
-                "text" : "simulates an ELP stall during power-off descent, typically near High Key"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "simulate departure stalls to train recognition and recovery techniques"
           },
           {
             "children" : [
-              {
-                "text" : "Entry (straight ahead):"
-              },
-              {
-                "text" : "Entry (turning stall):"
-              },
               {
                 "text" : "Configuration - clean, slow cruise (~150 KIAS or IP discretion)"
-              },
-              {
-                "text" : "Transition to Best Glide:"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
-              {
-                "text" : "Recovery:"
-              },
               {
                 "text" : "Maintain level with rudder\/aileron"
               },
@@ -384,38 +217,14 @@
               },
               {
                 "text" : "RELAX - ease back-stick pressure"
-              },
-              {
-                "text" : "MAX - PCL to max"
-              },
-              {
-                "text" : "LEVEL - level wings"
-              },
-              {
-                "text" : "BALL - center the ball with rudder"
-              },
-              {
-                "text" : "AOA system may lag behind the wing’s actual AOA during rapid G-onset maneuvers—visually identify stall via uncommanded pitch up, wing drop, or oscillations (pitch bucking)."
-              },
-              {
-                "text" : "Checklist - PSSA"
-              },
-              {
-                "text" : "Roll wings level"
-              },
-              {
-                "text" : "Simulate ELP"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
               {
                 "text" : "Establish - clean, 6000’+ AGL, 150 KIAS, 3 C’s"
-              },
-              {
-                "text" : "PCL - 30-60%"
               },
               {
                 "text" : "Pitch - 15-40° NH"
@@ -425,32 +234,9 @@
               },
               {
                 "text" : "If in a low energy state with AOA <18.0 and airspeed too low to sustain level flight, apply power cautiously. If in an unrecoverable descent, EJECT if below 6000’ AGL."
-              },
-              {
-                "text" : "Stick shaker typically activates at 15.5 units AOA, which corresponds to 5–10 KIAS above stall in unaccelerated flight."
-              },
-              {
-                "text" : "Recover above 6000’ AGL"
-              },
-              {
-                "text" : "800’"
-              },
-              {
-                "text" : "1000-2000’"
-              },
-              {
-                "text" : "If ≤150 KIAS - Retard PCL to 4-6%, allow deceleration"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Power-Off Stalls late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Power-Off Stalls"
@@ -458,24 +244,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
-              },
-              {
-                "text" : "focuses on maintaining proper AOA and bank control, and recovering without fixating on ground track or airspeed during the maneuver"
-              },
-              {
-                "text" : "Racetrack shaped course flown so approach and landing can be executed in a systematic sequence"
-              },
-              {
-                "text" : "practice smooth, coordinated turns at varying bank angles while maintaining altitude and airspeed"
-              },
-              {
-                "text" : "Taught to familiarize you with the various trim adjustments required with changes in airspeed, power setting, and aircraft configuration"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
           },
           {
             "children" : [
@@ -490,15 +259,9 @@
               },
               {
                 "text" : "Transition no sooner than Abeam the Intended Point of Landing"
-              },
-              {
-                "text" : "Transition to Landing:"
-              },
-              {
-                "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100) = 115\/110\/105"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
@@ -509,37 +272,13 @@
                 "text" : "Recovery must be complete above 6000’ AGL"
               },
               {
-                "text" : "Procedure:"
-              },
-              {
-                "text" : "Establish:"
-              },
-              {
                 "text" : "Checklist - PSSA and Before Landing Checklists"
               },
               {
                 "text" : "Clear - TCAS, visual scan, clearing turns"
-              },
-              {
-                "text" : "Simulate Abeam Transition:"
-              },
-              {
-                "text" : "Maintain turn or ground track"
-              },
-              {
-                "text" : "Break - overhead transition from cruise to downwind configuration"
-              },
-              {
-                "text" : "Abeam"
-              },
-              {
-                "text" : "Lower flaps to TO or LDG (if not done already)"
-              },
-              {
-                "text" : "Approach:"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -554,38 +293,9 @@
               },
               {
                 "text" : "Pitch - 5-10° NH"
-              },
-              {
-                "text" : "FLOP - 30-60° AOB"
-              },
-              {
-                "text" : "CHOP - 0-10% power"
-              },
-              {
-                "text" : "CHECK - <150 KIAS"
-              },
-              {
-                "text" : "“Below 150, Gear” - “Clear”"
-              },
-              {
-                "text" : "Adjust - AOB for ¾ - 1 WTD from RWY on Downwind, maintain altitude"
-              },
-              {
-                "text" : "Approaching 120 KIAS (~130 KIAS) - PCL 31%"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common Errors:"
-              },
-              {
-                "text" : "Notes:"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Landing Pattern"
@@ -593,20 +303,15 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "No-Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "No-Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
           },
           {
             "children" : [
               {
-                "text" : "Setup \/ entry"
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
@@ -621,34 +326,17 @@
               },
               {
                 "text" : "Brief the maneuver in order from setup through recovery, using the same language you will use in the cockpit."
-              },
-              {
-                "text" : "Standards \/ numbers"
-              },
-              {
-                "text" : "Memorize the setup numbers and the recovery numbers for No-Flap Landing; that is usually where the grading starts."
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
-              {
-                "text" : "Memorize the setup numbers and the recovery numbers for No-Flap Landing; that is usually where the grading starts."
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
               {
                 "text" : "The usual trap is missing the setup picture, then trying to salvage No-Flap Landing late."
               }
             ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "No-Flap Landing"
@@ -656,29 +344,18 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Takeoff Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Takeoff Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
           },
           {
             "children" : [
               {
-                "text" : "Setup \/ entry"
-              },
-              {
-                "text" : "Configuration"
+                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
-              {
-                "text" : "Abeam"
-              },
               {
                 "text" : "No-Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
               },
@@ -686,35 +363,21 @@
                 "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
               },
               {
+                "text" : "Abeam"
+              },
+              {
                 "text" : "Brief the maneuver in order from setup through recovery, using the same language you will use in the cockpit."
-              },
-              {
-                "text" : "Standards \/ numbers"
-              },
-              {
-                "text" : "Memorize the setup numbers and the recovery numbers for No-Flap Landing; that is usually where the grading starts."
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
-              {
-                "text" : "Memorize the setup numbers and the recovery numbers for Takeoff Flap Landing; that is usually where the grading starts."
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
               {
                 "text" : "The usual trap is missing the setup picture, then trying to salvage No-Flap Landing late."
               }
             ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Takeoff Flap Landing"
@@ -722,18 +385,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
-              },
-              {
-                "text" : "focuses on maintaining proper AOA and bank control, and recovering without fixating on ground track or airspeed during the maneuver"
-              },
-              {
-                "text" : "Racetrack shaped course flown so approach and landing can be executed in a systematic sequence"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
           },
           {
             "children" : [
@@ -742,9 +394,6 @@
               },
               {
                 "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100)"
-              },
-              {
-                "text" : "Transition to Landing:"
               },
               {
                 "text" : "Transition back to Normal Cruise (200 KIAS)"
@@ -753,7 +402,7 @@
                 "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100) = 115\/110\/105"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
@@ -764,37 +413,13 @@
                 "text" : "Recovery must be complete above 6000’ AGL"
               },
               {
-                "text" : "Establish:"
-              },
-              {
                 "text" : "Checklist - PSSA and Before Landing Checklists"
               },
               {
                 "text" : "Clear - TCAS, visual scan, clearing turns"
-              },
-              {
-                "text" : "Simulate Abeam Transition:"
-              },
-              {
-                "text" : "Maintain turn or ground track"
-              },
-              {
-                "text" : "Lower flaps to TO or LDG (if not done already)"
-              },
-              {
-                "text" : "Approach:"
-              },
-              {
-                "text" : "POWER, PITCH, ROLL, CALL"
-              },
-              {
-                "text" : "Turn to Final"
-              },
-              {
-                "text" : "LEVEL - crossing threshold, level nose"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -809,35 +434,9 @@
               },
               {
                 "text" : "Pitch - 5-10° NH"
-              },
-              {
-                "text" : "“Below 150, Gear” - “Clear”"
-              },
-              {
-                "text" : "Adjust - AOB for ¾ - 1 WTD from RWY on Downwind, maintain altitude"
-              },
-              {
-                "text" : "Approaching 120 KIAS (~130 KIAS) - PCL 31%"
-              },
-              {
-                "text" : "PCL - 14\/15\/18% for NF\/TO\/LDG configuration"
-              },
-              {
-                "text" : "180 - 1200-1500 past RWY threshold"
-              },
-              {
-                "text" : "Airspeed - 120\/115\/110 KIAS for NF\/TO\/LDG configuration"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Landing Flap Landing late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Landing Flap Landing"
@@ -845,18 +444,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
-              },
-              {
-                "text" : "focuses on maintaining proper AOA and bank control, and recovering without fixating on ground track or airspeed during the maneuver"
-              },
-              {
-                "text" : "Racetrack shaped course flown so approach and landing can be executed in a systematic sequence"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
           },
           {
             "children" : [
@@ -867,13 +455,10 @@
                 "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100)"
               },
               {
-                "text" : "Transition to Landing:"
-              },
-              {
                 "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100) = 115\/110\/105"
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
@@ -884,37 +469,13 @@
                 "text" : "Recovery must be complete above 6000’ AGL"
               },
               {
-                "text" : "Establish:"
-              },
-              {
                 "text" : "Checklist - PSSA and Before Landing Checklists"
               },
               {
                 "text" : "Clear - TCAS, visual scan, clearing turns"
-              },
-              {
-                "text" : "Simulate Abeam Transition:"
-              },
-              {
-                "text" : "Maintain turn or ground track"
-              },
-              {
-                "text" : "Lower flaps to TO or LDG (if not done already)"
-              },
-              {
-                "text" : "Approach:"
-              },
-              {
-                "text" : "POWER, PITCH, ROLL, CALL"
-              },
-              {
-                "text" : "Turn to Final"
-              },
-              {
-                "text" : "LEVEL - crossing threshold, level nose"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -929,35 +490,9 @@
               },
               {
                 "text" : "Pitch - 5-10° NH"
-              },
-              {
-                "text" : "“Below 150, Gear” - “Clear”"
-              },
-              {
-                "text" : "Adjust - AOB for ¾ - 1 WTD from RWY on Downwind, maintain altitude"
-              },
-              {
-                "text" : "Approaching 120 KIAS (~130 KIAS) - PCL 31%"
-              },
-              {
-                "text" : "PCL - 14\/15\/18% for NF\/TO\/LDG configuration"
-              },
-              {
-                "text" : "180 - 1200-1500 past RWY threshold"
-              },
-              {
-                "text" : "Airspeed - 120\/115\/110 KIAS for NF\/TO\/LDG configuration"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Landing Irregularities late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Landing Irregularities"
@@ -965,18 +500,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what Wave-Off changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Late or Rapid Flare"
           },
           {
             "children" : [
-              {
-                "text" : "Late or Rapid Flare"
-              },
               {
                 "text" : "Misjudged altitude"
               },
@@ -985,46 +512,9 @@
               },
               {
                 "text" : "Firm\/hard touchdown"
-              },
-              {
-                "text" : "Porpoising"
-              },
-              {
-                "text" : "Do not chase each bounce with opposite stick"
-              },
-              {
-                "text" : "Floating"
-              },
-              {
-                "text" : "Late power reduction"
-              },
-              {
-                "text" : "Excessive airspeed"
-              },
-              {
-                "text" : "Incorrect flap setting"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Preceding AC has not landed when you are on roll out"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Wave-Off without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Wave-Off"
@@ -1068,8 +558,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+    "summary" : "Keep Tire Failures and Aborted Takeoff organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
   },
-  "summary" : "Tire Failures: Tire Failures, Aborted Takeoff, Power-on Stalls, and the remaining required discussion items in the block.",
+  "summary" : "Tire Failures, Aborted Takeoff, and Power-on Stalls.",
   "title" : "Tire Failures"
 }

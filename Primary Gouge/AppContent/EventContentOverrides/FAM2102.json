@@ -1,359 +1,359 @@
 {
-  "canonicalCoverage": {
-    "No start": [
+  "canonicalCoverage" : {
+    "CFS and ejection CRM" : [
+      "CFS and Ejection CRM"
+    ],
+    "No start" : [
       "Start Malfunctions",
       "Abort Start Procedure"
     ],
-    "hung start": [
-      "Start Malfunctions",
-      "Abort Start Procedure"
-    ],
-    "hot start": [
-      "Start Malfunctions",
-      "Abort Start Procedure"
-    ],
-    "loss of start ready light during start sequence": [
-      "Loss of START READY During Start",
-      "Abort Start Procedure"
-    ],
-    "battery bus light during start": [
+    "battery bus light during start" : [
       "Battery Bus Warning During Start",
       "Abort Start Procedure"
     ],
-    "fire on ground": [
-      "Fire Warning on the Ground"
-    ],
-    "emergency engine shutdown on the ground": [
+    "emergency engine shutdown on the ground" : [
       "Emergency Engine Shutdown on the Ground"
     ],
-    "emergency ground egress": [
+    "emergency ground egress" : [
       "Emergency Ground Egress"
     ],
-    "CFS and ejection CRM": [
-      "CFS and Ejection CRM"
+    "fire on ground" : [
+      "Fire Warning on the Ground"
+    ],
+    "hot start" : [
+      "Start Malfunctions",
+      "Abort Start Procedure"
+    ],
+    "hung start" : [
+      "Start Malfunctions",
+      "Abort Start Procedure"
+    ],
+    "loss of start ready light during start sequence" : [
+      "Loss of START READY During Start",
+      "Abort Start Procedure"
     ]
   },
-  "code": "FAM2102",
-  "overview": "This event builds on basic cockpit procedures by introducing abnormal starts and ground emergencies. You will practice identifying no starts, hung starts, hot starts, fire indications, emergency shutdown procedures, and emergency ground egress while continuing to build checklist discipline and CRM.",
-  "primaryDocumentTitles": [
+  "code" : "FAM2102",
+  "overview" : "This event builds on basic cockpit procedures by introducing abnormal starts and ground emergencies. You will practice identifying no starts, hung starts, hot starts, fire indications, emergency shutdown procedures, and emergency ground egress while continuing to build checklist discipline and CRM.",
+  "primaryDocumentTitles" : [
     "FAM2102",
     "FAM 2102 Briefing guide 1542.166D"
   ],
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "Focus on recognizing a bad start early, taking immediate abort actions, and knowing when ground emergencies require an engine shutdown or egress.",
-    "sections": [
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
       {
-        "title": "Start Malfunctions",
-        "items": [
+        "items" : [
           {
-            "text": "The PMU will often automatically terminate a bad start, but you still need to recognize the indications and be ready to manually abort."
+            "text" : "The PMU will often automatically terminate a bad start, but you still need to recognize the indications and be ready to manually abort."
           },
           {
-            "text": "Three primary start malfunctions:",
-            "children": [
+            "children" : [
               {
-                "text": "No Start: No ITT rise within 10 seconds after fuel flow indications."
+                "text" : "No Start: No ITT rise within 10 seconds after fuel flow indications."
               },
               {
-                "text": "Hung Start: N1 stops increasing normally."
+                "text" : "Hung Start: N1 stops increasing normally."
               },
               {
-                "text": "Hot Start: ITT is rising rapidly and appears likely to exceed 1000\u00b0C."
+                "text" : "Hot Start: ITT is rising rapidly and appears likely to exceed 1000°C."
               }
-            ]
+            ],
+            "text" : "Three primary start malfunctions:"
           },
           {
-            "text": "You should also manually abort if:",
-            "children": [
+            "children" : [
               {
-                "text": "ITT appears likely to stay between 871\u00b0C and 1000\u00b0C for more than 5 seconds."
+                "text" : "ITT appears likely to stay between 871°C and 1000°C for more than 5 seconds."
               },
               {
-                "text": "The red BATT BUS warning appears during start."
+                "text" : "The red BATT BUS warning appears during start."
               },
               {
-                "text": "The ST READY advisory extinguishes during the start sequence."
+                "text" : "The ST READY advisory extinguishes during the start sequence."
               },
               {
-                "text": "The PCL is moved incorrectly during start."
+                "text" : "The PCL is moved incorrectly during start."
               }
-            ]
+            ],
+            "text" : "You should also manually abort if:"
           },
           {
-            "text": "Any overtemperature should be noted and reported to maintenance."
+            "text" : "Any overtemperature should be noted and reported to maintenance."
           }
-        ]
+        ],
+        "title" : "Start Malfunctions"
       },
       {
-        "title": "Abort Start Procedure",
-        "items": [
+        "items" : [
           {
-            "text": "If a start must be aborted:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL to OFF."
+                "text" : "PCL to OFF."
               },
               {
-                "text": "Or reselect STARTER switch to AUTO/RESET if appropriate."
+                "text" : "Or reselect STARTER switch to AUTO\/RESET if appropriate."
               }
-            ]
+            ],
+            "text" : "If a start must be aborted:"
           },
           {
-            "text": "After any aborted start where fuel was introduced, perform a motoring run."
+            "text" : "After any aborted start where fuel was introduced, perform a motoring run."
           },
           {
-            "text": "Motoring Run Procedure:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL OFF."
+                "text" : "PCL OFF."
               },
               {
-                "text": "Ignition switch NORM."
+                "text" : "Ignition switch NORM."
               },
               {
-                "text": "Prop area clear."
+                "text" : "Prop area clear."
               },
               {
-                "text": "Starter switch MANUAL for 20 seconds."
+                "text" : "Starter switch MANUAL for 20 seconds."
               },
               {
-                "text": "Starter switch NORM."
+                "text" : "Starter switch NORM."
               }
-            ]
+            ],
+            "text" : "Motoring Run Procedure:"
           },
           {
-            "text": "The goal of the motoring run is to clear residual fuel and lower ITT."
+            "text" : "The goal of the motoring run is to clear residual fuel and lower ITT."
           }
-        ]
+        ],
+        "title" : "Abort Start Procedure"
       },
       {
-        "title": "Loss of START READY During Start",
-        "items": [
+        "items" : [
           {
-            "text": "Ensure the ST READY advisory remains on for at least 3 seconds before selecting AUTO/RESET."
+            "text" : "Ensure the ST READY advisory remains on for at least 3 seconds before selecting AUTO\/RESET."
           },
           {
-            "text": "If the ST READY advisory extinguishes at any point during the start sequence, the PMU no longer provides automatic start protection."
+            "text" : "If the ST READY advisory extinguishes at any point during the start sequence, the PMU no longer provides automatic start protection."
           },
           {
-            "text": "Once ST READY is lost, the start must be manually aborted."
+            "text" : "Once ST READY is lost, the start must be manually aborted."
           },
           {
-            "text": "If the PCL is still before idle, abort by moving the PCL to OFF or selecting AUTO/RESET."
+            "text" : "If the PCL is still before idle, abort by moving the PCL to OFF or selecting AUTO\/RESET."
           },
           {
-            "text": "If the PCL is already past the idle gate, abort with PCL OFF."
+            "text" : "If the PCL is already past the idle gate, abort with PCL OFF."
           }
-        ]
+        ],
+        "title" : "Loss of START READY During Start"
       },
       {
-        "title": "Battery Bus Warning During Start",
-        "items": [
+        "items" : [
           {
-            "text": "The red BATT BUS warning during start is a serious indication."
+            "text" : "The red BATT BUS warning during start is a serious indication."
           },
           {
-            "text": "It may appear before the displays fail."
+            "text" : "It may appear before the displays fail."
           },
           {
-            "text": "If it appears, MFD failure and the inability to monitor the start may be imminent."
+            "text" : "If it appears, MFD failure and the inability to monitor the start may be imminent."
           },
           {
-            "text": "Immediately abort the start."
+            "text" : "Immediately abort the start."
           }
-        ]
+        ],
+        "title" : "Battery Bus Warning During Start"
       },
       {
-        "title": "Fire Warning on the Ground",
-        "items": [
+        "items" : [
           {
-            "text": "The primary indication of an engine fire is illumination of the FIRE annunciators."
+            "text" : "The primary indication of an engine fire is illumination of the FIRE annunciators."
           },
           {
-            "text": "Other signs include:",
-            "children": [
+            "children" : [
               {
-                "text": "Visible smoke or flames."
+                "text" : "Visible smoke or flames."
               },
               {
-                "text": "High or fluctuating fuel flow."
+                "text" : "High or fluctuating fuel flow."
               },
               {
-                "text": "High ITT."
+                "text" : "High ITT."
               },
               {
-                "text": "Notification from tower, ground crew, or another aircraft."
+                "text" : "Notification from tower, ground crew, or another aircraft."
               }
-            ]
+            ],
+            "text" : "Other signs include:"
           },
           {
-            "text": "If a fire is suspected, execute Emergency Engine Shutdown on the Ground and Emergency Ground Egress if required."
+            "text" : "If a fire is suspected, execute Emergency Engine Shutdown on the Ground and Emergency Ground Egress if required."
           },
           {
-            "text": "N/W/C focus: Review the associated WARNINGs, CAUTIONs, and NOTEs before the event so you know when a suspected ground fire becomes a confirmed emergency."
+            "text" : "N\/W\/C focus: Review the associated WARNINGs, CAUTIONs, and NOTEs before the event so you know when a suspected ground fire becomes a confirmed emergency."
           }
-        ]
+        ],
+        "title" : "Fire Warning on the Ground"
       },
       {
-        "title": "Emergency Engine Shutdown on the Ground",
-        "items": [
+        "items" : [
           {
-            "text": "Use this procedure for:",
-            "children": [
+            "children" : [
               {
-                "text": "Engine fire."
+                "text" : "Engine fire."
               },
               {
-                "text": "Prop strike."
+                "text" : "Prop strike."
               },
               {
-                "text": "Chip light."
+                "text" : "Chip light."
               },
               {
-                "text": "Aircraft departing the prepared surface."
+                "text" : "Aircraft departing the prepared surface."
               },
               {
-                "text": "Any other major ground emergency."
+                "text" : "Any other major ground emergency."
               }
-            ]
+            ],
+            "text" : "Use this procedure for:"
           },
           {
-            "text": "Immediate actions:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL OFF."
+                "text" : "PCL OFF."
               },
               {
-                "text": "Firewall Shutoff Handle PULL."
+                "text" : "Firewall Shutoff Handle PULL."
               },
               {
-                "text": "Emergency Ground Egress as required."
+                "text" : "Emergency Ground Egress as required."
               }
-            ]
+            ],
+            "text" : "Immediate actions:"
           },
           {
-            "text": "N/W/C focus: Do not let checklist execution outrun aircraft control or crew coordination during a high-stress ground emergency."
+            "text" : "N\/W\/C focus: Do not let checklist execution outrun aircraft control or crew coordination during a high-stress ground emergency."
           }
-        ]
+        ],
+        "title" : "Emergency Engine Shutdown on the Ground"
       },
       {
-        "title": "Emergency Ground Egress",
-        "items": [
+        "items" : [
           {
-            "text": "The aircraft has 0/0 ejection capability, but ground egress should be completed once the aircraft is stopped and the engine is shut down."
+            "text" : "The aircraft has 0\/0 ejection capability, but ground egress should be completed once the aircraft is stopped and the engine is shut down."
           },
           {
-            "text": "Standard procedure:",
-            "children": [
+            "children" : [
               {
-                "text": "ISS to SOLO."
+                "text" : "ISS to SOLO."
               },
               {
-                "text": "Seat safety pin installed."
+                "text" : "Seat safety pin installed."
               },
               {
-                "text": "Parking brake as required."
+                "text" : "Parking brake as required."
               },
               {
-                "text": "Canopy open."
+                "text" : "Canopy open."
               }
-            ]
+            ],
+            "text" : "Standard procedure:"
           },
           {
-            "text": "If the canopy cannot be opened:",
-            "children": [
+            "children" : [
               {
-                "text": "Remove CFS safety pins."
+                "text" : "Remove CFS safety pins."
               },
               {
-                "text": "Rotate and pull CFS handles."
+                "text" : "Rotate and pull CFS handles."
               },
               {
-                "text": "Release restraints and garters."
+                "text" : "Release restraints and garters."
               },
               {
-                "text": "BAT, GEN, and AUX BAT switches OFF."
+                "text" : "BAT, GEN, and AUX BAT switches OFF."
               },
               {
-                "text": "Evacuate aircraft."
+                "text" : "Evacuate aircraft."
               }
-            ]
+            ],
+            "text" : "If the canopy cannot be opened:"
           },
           {
-            "text": "Oxygen mask on and visor down before activating the CFS."
+            "text" : "Oxygen mask on and visor down before activating the CFS."
           },
           {
-            "text": "Both cockpits must activate their own CFS handles if both transparencies need to fracture."
+            "text" : "Both cockpits must activate their own CFS handles if both transparencies need to fracture."
           },
           {
-            "text": "N/W/C focus: Oxygen mask on and visor down before actuating CFS, and remember both cockpits must actuate their own CFS handles if both transparencies must fracture."
+            "text" : "N\/W\/C focus: Oxygen mask on and visor down before actuating CFS, and remember both cockpits must actuate their own CFS handles if both transparencies must fracture."
           }
-        ]
+        ],
+        "title" : "Emergency Ground Egress"
       },
       {
-        "title": "CFS and Ejection CRM",
-        "items": [
+        "items" : [
           {
-            "text": "The Canopy Fracturing System clears a path through the canopy during ejection."
+            "text" : "The Canopy Fracturing System clears a path through the canopy during ejection."
           },
           {
-            "text": "Front cockpit uses a stronger explosive charge because the front windscreen is thicker."
+            "text" : "Front cockpit uses a stronger explosive charge because the front windscreen is thicker."
           },
           {
-            "text": "Rear cockpit uses a lighter charge because the rear transparency is thinner."
+            "text" : "Rear cockpit uses a lighter charge because the rear transparency is thinner."
           },
           {
-            "text": "Minimum uncontrolled ejection altitude is 6000 feet AGL."
+            "text" : "Minimum uncontrolled ejection altitude is 6000 feet AGL."
           },
           {
-            "text": "Minimum controlled ejection altitude is 2000 feet AGL."
+            "text" : "Minimum controlled ejection altitude is 2000 feet AGL."
           },
           {
-            "text": "Controlled ejections rely heavily on CRM to split checklist tasks and maximize survivability."
+            "text" : "Controlled ejections rely heavily on CRM to split checklist tasks and maximize survivability."
           },
           {
-            "text": "The ejection seat is a Martin-Baker system capable of 0/0 ejection."
+            "text" : "The ejection seat is a Martin-Baker system capable of 0\/0 ejection."
           },
           {
-            "text": "N/W/C focus: Treat seat pins, ISS position, and canopy-fracturing actions as no-fail items because mistakes here can injure the crew on the ground."
+            "text" : "N\/W\/C focus: Treat seat pins, ISS position, and canopy-fracturing actions as no-fail items because mistakes here can injure the crew on the ground."
           }
-        ]
+        ],
+        "title" : "CFS and Ejection CRM"
       },
       {
-        "title": "Required Procedures",
-        "items": [
+        "items" : [
           {
-            "text": "No start"
+            "text" : "No start"
           },
           {
-            "text": "hung start"
+            "text" : "hung start"
           },
           {
-            "text": "hot start"
+            "text" : "hot start"
           },
           {
-            "text": "loss of start ready light during start sequence"
+            "text" : "loss of start ready light during start sequence"
           },
           {
-            "text": "battery bus light during start"
+            "text" : "battery bus light during start"
           },
           {
-            "text": "fire on ground"
+            "text" : "fire on ground"
           },
           {
-            "text": "emergency engine shutdown on the ground"
+            "text" : "emergency engine shutdown on the ground"
           },
           {
-            "text": "emergency ground egress"
+            "text" : "emergency ground egress"
           },
           {
-            "text": "CFS and ejection CRM"
+            "text" : "CFS and ejection CRM"
           }
-        ]
+        ],
+        "title" : "Required Procedures"
       }
-    ]
+    ],
+    "summary" : "Focus on recognizing a bad start early, taking immediate abort actions, and knowing when ground emergencies require an engine shutdown or egress."
   },
-  "summary": "Start malfunctions, ground emergencies, emergency shutdowns, and egress procedures.",
-  "title": "Ground Emergencies"
+  "summary" : "Start malfunctions, ground emergencies, emergency shutdowns, and egress procedures.",
+  "title" : "Ground Emergencies"
 }

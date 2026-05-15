@@ -5,7 +5,7 @@
     ]
   },
   "code" : "FAM6302",
-  "overview" : "FAM6302 is a sim event focused on beachline and aransas county course rules. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "Use this event as a cumulative review of beachline and aransas county course rules. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
   "primaryDocumentTitles" : [
     "FAM6302"
   ],
@@ -15,93 +15,21 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what OLF Course Rules For Field of Use changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Arrival Procedures"
           },
           {
             "children" : [
-              {
-                "text" : "OLF Course Rules Beachline Departure, Aransas Co\/Rockport"
-              },
-              {
-                "text" : "Beachline Departure:"
-              },
-              {
-                "text" : "Runway Departures:"
-              },
-              {
-                "text" : "Abeam High Bridge:"
-              },
-              {
-                "text" : "Aransas County"
-              },
-              {
-                "text" : "Arrival Procedures"
-              },
-              {
-                "text" : "North MUSTANG\/South-North Transition:"
-              },
-              {
-                "text" : "Execute area exit\/transition procedures."
-              },
-              {
-                "text" : "Radio Calls:"
-              },
               {
                 "text" : "“Corpus Approach, (call sign), Over Woodsboro, course rules Aransas County.”"
+              },
+              {
+                "text" : "“Aransas County Traffic, (Call Sign), Numbers (RWY #) for left overhead.”"
+              },
+              {
+                "text" : "PPEL Entry"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Contact Departure when directed"
-              },
-              {
-                "text" : "Contact CRP Approach if proceeding South"
-              },
-              {
-                "text" : "If proceeding to the North, contact Houston Center and request flight following"
-              },
-              {
-                "text" : "Must be cleared by tower prior, when directed:"
-              },
-              {
-                "text" : "preferred method over course rules to Shamrock when aircrews are forced to return to KNGP with the landing gear or flaps extended."
-              },
-              {
-                "text" : "Use Zulu time"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Exercise caution when descending to initial due to potential traffic at 1500' MSL."
-              },
-              {
-                "text" : "Coordinate with Corpus Approach if climbing above 4500' MSL for High-Key."
-              },
-              {
-                "text" : "If there's doubt on civilian aircraft's understanding, reset to High-Key and clarify intentions."
-              },
-              {
-                "text" : "YOU ARE CONSIDERED ESTABLISHED ON COURSE RULES ARRIVAL WHEN YOU ARE RADAR IDENTIFIED WITH APPROACH AND THEY HAVE INSTRUCTED YOU TO FLY COURSE RULES."
-              },
-              {
-                "text" : "IF UNABLE TO MAINTAIN VMC, SQUAWK 7600 AND COMPLY WITH IFR LOST COMMUNICATION PROCEDURES."
-              },
-              {
-                "text" : "THESE PROCEDURES SHOULD NOT PRECLUDE EXERCISING SOUND JUDGEMENT IN WHATEVER ACTION A PILOT ELECTS TO TAKE. (AIM, FAR 91.185)"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "OLF Course Rules For Field of Use"
@@ -115,8 +43,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Treat Beachline and Aransas County Course Rules like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
   },
-  "summary" : "Beachline and Aransas County Course Rules: OLF Course Rules For Field of Use.",
+  "summary" : "OLF Course Rules For Field of Use.",
   "title" : "Beachline and Aransas County Course Rules"
 }

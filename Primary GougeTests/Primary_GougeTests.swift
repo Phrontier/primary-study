@@ -439,6 +439,60 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func regeneratedFamEventsUseReadableGroupedSectionsAndNoBoilerplateCopy() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let expectedSections: [String: [String]] = [
+            "FAM3401": [
+                "AOA Approach and Energy Management",
+                "Unusual Attitudes and Recovery Priorities",
+                "Core Aerobatic Maneuvers",
+                "Combination Maneuver Planning and HUD Use",
+                "Required Procedures"
+            ],
+            "FAM4101": [
+                "Ground Safety and Cockpit Survival",
+                "Contact Flight Refresh",
+                "HUD Integration",
+                "Required Procedures"
+            ],
+            "FAM4201": [
+                "NATOPS and Engine System Review",
+                "Landing Option Decision Chain",
+                "Aldis Lamp Signals",
+                "Required Procedures"
+            ],
+            "FAM4601": [
+                "Night Environment and Lighting Setup",
+                "Night Emergencies and Electrical Degradation",
+                "Local Night Procedures",
+                "Required Procedures"
+            ],
+            "FAM6101": [
+                "Course Rules and Sectional Setup",
+                "OLF and Home-Field Flow",
+                "Required Procedures"
+            ],
+            "FAM6402": [
+                "Cumulative EP Review",
+                "Required Procedures"
+            ]
+        ]
+
+        for (code, expectedTitles) in expectedSections {
+            let event = try #require(manifestEvents[code])
+            #expect(!event.overview.lowercased().contains("is a sim event focused on"))
+            #expect(!event.overview.lowercased().contains("is a flight event focused on"))
+
+            let notes = try #require(event.studyNotes)
+            let summary = try #require(notes.summary)
+            #expect(!summary.lowercased().contains("use these notes to cover every required discussion item in syllabus order"))
+            #expect(notes.sections.compactMap(\.title) == expectedTitles)
+        }
+    }
+
+    @MainActor
     @Test func famCheckFlightAndSoloEventsHaveAuthoredNotes() throws {
         let manifest = try loadStudyManifestFromAppContent()
         let manifestEvents = manifestEventLookup(from: manifest)
@@ -448,6 +502,10 @@ struct Primary_GougeTests {
             let notes = try #require(event.studyNotes)
             #expect(!notes.sections.isEmpty)
         }
+
+        let fam4501 = try #require(manifestEvents["FAM4501"])
+        #expect(fam4501.summary == "Solo-brief risk, weather, support-agency, and execution priorities.")
+        #expect(fam4501.studyNotes?.sections.first?.title == "Solo Brief Focus")
     }
 
     @MainActor

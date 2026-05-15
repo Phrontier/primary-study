@@ -11,7 +11,7 @@
     ]
   },
   "code" : "FAM4203",
-  "overview" : "FAM4203 is a flight event focused on oil and propeller systems. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event ties together oil and propeller systems, engine air starts, and ejection and visual straight-in in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
   "primaryDocumentTitles" : [
     "FAM4203"
   ],
@@ -21,36 +21,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Indication"
-              },
-              {
-                "text" : "Range\/Indication"
-              },
-              {
-                "text" : "Recognition \/ indications"
-              },
-              {
-                "text" : "Overview"
-              },
-              {
-                "text" : "Provides pressurized, filtered, and cooled oil to engine and propeller components for lubrication and cooling."
-              },
-              {
-                "text" : "Ensures continuous oil supply during various attitudes"
-              },
-              {
-                "text" : "Reduces engine RPM (30,000 RPM) to usable prop speed (2000 RPM)"
-              }
-            ],
-            "text" : "Recognition \/ indications"
+            "text" : "Indication"
           },
           {
             "children" : [
-              {
-                "text" : "Immediate actions \/ procedure"
-              },
               {
                 "text" : "Self-contained, dry sump, pressurized oil system with scavenging and breather subsystems."
               },
@@ -62,30 +36,9 @@
               },
               {
                 "text" : "Driven by Accessory Gearbox (AGB)"
-              },
-              {
-                "text" : "Draws oil from tank and pressurizes for distribution"
-              },
-              {
-                "text" : "Oil Pickups"
-              },
-              {
-                "text" : "Lower pickup (center of tank)"
-              },
-              {
-                "text" : "Upper pickup (top of tank)"
-              },
-              {
-                "text" : "Oil Filter"
-              },
-              {
-                "text" : "Inside the tank (right side)"
-              },
-              {
-                "text" : "Bypass valve (if clogged)"
               }
             ],
-            "text" : "Immediate actions \/ procedure"
+            "text" : "Immediate actions:"
           },
           {
             "children" : [
@@ -100,21 +53,9 @@
               },
               {
                 "text" : "Modulates oil pressure if PMU fails"
-              },
-              {
-                "text" : "Sends signal to CWS (Chip warning) if metal debris is detected → possible gearbox damage"
-              },
-              {
-                "text" : "If PMU is OFF:"
-              },
-              {
-                "text" : "If PROP SYS CB is pulled → feathering may be delayed or incomplete"
-              },
-              {
-                "text" : "Cycle PMU switch — works only if not a true sensor failure"
               }
             ],
-            "text" : "Decision logic"
+            "text" : "Decision cues:"
           },
           {
             "children" : [
@@ -129,12 +70,9 @@
               },
               {
                 "text" : "Illumination of both red and amber OIL PX messages while the oil pressure gauge indicates normal pressure indicates an SCU failure."
-              },
-              {
-                "text" : "Higher power settings may aggravate the existing condition."
               }
             ],
-            "text" : "N\/W\/Cs"
+            "text" : "N\/W\/C focus:"
           }
         ],
         "title" : "Oil and Propeller Systems"
@@ -142,21 +80,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what Engine Air Starts changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "An airstart is an attempt to restart the engine in-flight after a flameout or shutdown not caused by fire or mechanical failure."
           },
           {
             "children" : [
-              {
-                "text" : "An airstart is an attempt to restart the engine in-flight after a flameout or shutdown not caused by fire or mechanical failure."
-              },
-              {
-                "text" : "General Notes:"
-              },
               {
                 "text" : "All airstarts are starter assisted."
               },
@@ -165,46 +92,9 @@
               },
               {
                 "text" : "START, IGN, and BOOST PUMP circuit breakers (left front console) - In"
-              },
-              {
-                "text" : "STARTER switch - MANUAL"
-              },
-              {
-                "text" : "Know what Engine Air Starts changes in the cockpit and why the instructor cares about it in this event."
-              },
-              {
-                "text" : ">1200’ altitude loss per attempt"
-              },
-              {
-                "text" : "(W) Do not delay ejection while attempting airstart at low altitude if below 2000 feet AGL."
-              },
-              {
-                "text" : "PCL - At 13% N1 minimum, advance to obtain initial fuel flow, then slowly to IDLE"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "(W) PCL must be in OFF to feather the propeller, and stop fuel flow; if start is attempted without the PCL in OFF, fuel is introduced without ignition and a hot start will likely result when ignition begins."
-              },
-              {
-                "text" : "An airstart is an attempt to restart the engine in-flight after a flameout or shutdown not caused by fire or mechanical failure."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Engine Air Starts without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Engine Air Starts"
@@ -212,30 +102,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "(C) If there is no rise in ITT within 10 seconds after fuel flow indications, place the PCL to OFF and abort the start."
-              },
-              {
-                "text" : "Monitor ITT, N1, fuel flow, and other engine indications. Typically, in excess of 1200 feet will be lost for each attempt. The propeller will unfeather and accelerate to operating RPM approximately 20 seconds after N1 reaches 45%. Useful power will be available after 40 seconds from starter engagement."
-              },
-              {
-                "text" : "(C) After fuel flow is indicated (75 to 80 pph), ITT will rise and peak. Continue to smoothly advance the PCL while monitoring ITT, N1, fuel flow, and engine indications until IDLE is reached."
-              },
-              {
-                "text" : "Recognition \/ indications"
-              },
-              {
-                "text" : "Overview:"
-              }
-            ],
-            "text" : "Recognition \/ indications"
+            "text" : "(C) If there is no rise in ITT within 10 seconds after fuel flow indications, place the PCL to OFF and abort the start."
           },
           {
             "children" : [
-              {
-                "text" : "Immediate actions \/ procedure"
-              },
               {
                 "text" : "(W) PCL must be in OFF to feather the propeller, and ensure proper starter, ignition, boost pump, and PMU operation during airstart."
               },
@@ -243,34 +113,13 @@
                 "text" : "(C) Ensure PCL is in OFF; otherwise, fuel may be prematurely introduced during start."
               },
               {
-                "text" : "Confirm the position of the following:"
-              },
-              {
                 "text" : "START, IGN, BOOST PUMP, and PMU circuit breakers (left front console) - In"
               },
               {
                 "text" : "FIREWALL SHUTOFF handle - Down"
-              },
-              {
-                "text" : "BLEED AIR INFLOW switch - OFF"
-              },
-              {
-                "text" : "BOOST PUMP switch - ON"
-              },
-              {
-                "text" : "(C) Continuous operation with the BOOST PUMP switch in the ON position will cause damage to the engine-driven low pressure fuel pump. Upon landing, notify maintenance of the duration of flight with BOOST PUMP switch in the ON position."
-              },
-              {
-                "text" : "IGNITION switch - ON"
-              },
-              {
-                "text" : "STARTER switch - AUTO\/RESET"
-              },
-              {
-                "text" : "PMU switch - OFF"
               }
             ],
-            "text" : "Immediate actions \/ procedure"
+            "text" : "Immediate actions:"
           },
           {
             "children" : [
@@ -285,21 +134,9 @@
               },
               {
                 "text" : "(N) If ejecting at low speed, one or both sets of risers may remain velcroed together following seat separation. This may create a slight increase in descent rate and\/or an uncommanded turn. Manually separate the risers if time permits. The steering lines (toggles) are located on the backside of each of the front risers. To counter any uncommanded turns, unstow the opposite steering line or use risers for controllability."
-              },
-              {
-                "text" : "(R) Release raft (SSK) – Pull SSK manual release handle as required"
-              },
-              {
-                "text" : "(O) Options – As Required"
-              },
-              {
-                "text" : "Used when overhead\/break patterns are impractical due to weather, traffic, or local procedures; also suitable during certain emergencies."
-              },
-              {
-                "text" : "(C) If N1 does not rise within 5 seconds, discontinue the airstart attempt and proceed to IF AIRSTART IS UNSUCCESSFUL due to suspected mechanical failure."
               }
             ],
-            "text" : "Decision logic"
+            "text" : "Decision cues:"
           },
           {
             "children" : [
@@ -307,7 +144,7 @@
                 "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Ejection and Visual Straight-in before the event."
               }
             ],
-            "text" : "N\/W\/Cs"
+            "text" : "N\/W\/C focus:"
           }
         ],
         "title" : "Ejection and Visual Straight-in"
@@ -327,8 +164,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. Emergency-procedure sections include both the procedure content and the associated N\/W\/Cs so event prep stays tied to the canonical FAM expectations."
+    "summary" : "Keep Oil and Propeller Systems, plus Engine Air Starts organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
   },
-  "summary" : "Oil and Propeller Systems: Oil and Propeller Systems, Engine Air Starts, Ejection and Visual Straight-in.",
+  "summary" : "Oil and Propeller Systems, Engine Air Starts, and Ejection and Visual Straight-in.",
   "title" : "Oil and Propeller Systems"
 }

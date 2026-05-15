@@ -90,6 +90,46 @@
         "Crosswind Operations",
         "Abort Takeoff and Maximum Braking"
       ]
+    },
+    {
+      "code" : "FAM3401",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Core Aerobatic Maneuvers"
+      ]
+    },
+    {
+      "code" : "FAM4101",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Ground Safety and Cockpit Survival",
+        "Contact Flight Refresh"
+      ]
+    },
+    {
+      "code" : "FAM4201",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Landing Option Decision Chain"
+      ]
+    },
+    {
+      "code" : "FAM4490",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Check-Flight Knowledge Review",
+        "Solo and Weather Decision Traps",
+        "Maneuver Standards Refresh",
+        "Emergency Decision Review"
+      ]
     }
   ],
   "canonicalEventCount" : 88,
@@ -154,7 +194,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-14T23:19:15Z",
+  "generatedAt" : "2026-05-15T00:26:24Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

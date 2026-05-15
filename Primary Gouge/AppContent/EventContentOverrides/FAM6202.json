@@ -14,7 +14,7 @@
     ]
   },
   "code" : "FAM6202",
-  "overview" : "FAM6202 is a sim event focused on olf entries and crosswind patterns. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event pulls together olf entry, olf and rdo communication, and crosswind takeoff and landings into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
   "primaryDocumentTitles" : [
     "FAM6202"
   ],
@@ -24,12 +24,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "OLF Entry is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "OLF Entry is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
           },
           {
             "children" : [
@@ -37,7 +32,7 @@
                 "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
@@ -48,37 +43,13 @@
                 "text" : "Arrival Procedures"
               },
               {
-                "text" : "Communication Requirements:"
-              },
-              {
-                "text" : "Weather & Runway Determination:"
-              },
-              {
-                "text" : "Practice PEL Entry:"
-              },
-              {
                 "text" : "Request PPEL via Corpus Approach."
               },
               {
-                "text" : "Initial Call (Inbound):"
-              },
-              {
                 "text" : "Before entering the pattern, make a call to the RDO (Runway Duty Officer)."
-              },
-              {
-                "text" : "Include:"
-              },
-              {
-                "text" : "Call sign"
-              },
-              {
-                "text" : "RDO Acknowledgment:"
-              },
-              {
-                "text" : "RDO will respond with:"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -89,36 +60,13 @@
                 "text" : "Switch to UHF CH 14 for ASOS."
               },
               {
-                "text" : "Switch to CH 15 and call:"
-              },
-              {
                 "text" : "If no radio contact by Shrimp Ponds, or pattern full, fly south and contact Corpus Approach (CH 8)."
               },
               {
                 "text" : "Announce intentions on CTAF (CH 21 VHF) and report \"High-Key\" on KRKP common (CH 21 UHF)."
-              },
-              {
-                "text" : "Position (e.g., \"5 miles to the north\")"
-              },
-              {
-                "text" : "\"BOOMER ###, 5 miles north, inbound for left pattern, Runway 17.\""
-              },
-              {
-                "text" : "CH. 15"
-              },
-              {
-                "text" : "Initial\/Break - 1300’ MSL"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage OLF Entry late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "OLF Entry"
@@ -126,78 +74,21 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what OLF\/RDO Communication changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "Goliad"
           },
           {
             "children" : [
               {
-                "text" : "Goliad"
-              },
-              {
                 "text" : "Arrival Procedures"
-              },
-              {
-                "text" : "Communication Requirements:"
-              },
-              {
-                "text" : "Weather & Runway Determination:"
               },
               {
                 "text" : "Aransas County"
               },
               {
-                "text" : "Initial Call (Inbound):"
-              },
-              {
                 "text" : "Before entering the pattern, make a call to the RDO (Runway Duty Officer)."
-              },
-              {
-                "text" : "Include:"
-              },
-              {
-                "text" : "Call sign"
-              },
-              {
-                "text" : "Crosswind\/Downwind\/Base\/Final:"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "14 – When #1 downwind at the 180, descend to 500‘ MSL. Turn northbound to circle around Redfish Point to the east."
-              },
-              {
-                "text" : "18 – When #1 downwind at the 180, descend to 500‘ MSL. Going “feet wet” turn east."
-              },
-              {
-                "text" : "32 – When #1 upwind, climb to 500’ MSL. Turn northbound to circle around Redfish Point to the east."
-              },
-              {
-                "text" : "36 - When #1 upwind, climb to 500’ MSL. Going “feet wet” turn east."
-              },
-              {
-                "text" : "[Basically, get out of the pattern going NW at 500’, turn East and cross LBJ Causeway at 1500’, turn South and join Northern Arrival]"
-              },
-              {
-                "text" : "Turn to intercept extended centerline for the runway in use"
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The common trap is memorizing isolated facts about OLF\/RDO Communication without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "OLF\/RDO Communication"
@@ -205,15 +96,7 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "XW takeoff requires aileron into the wind and rudder to counter drift. Rotate positively, maintain wings level at liftoff, and crab into the wind after airborne"
-              },
-              {
-                "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff is side motion, drift, or crab occurs"
-              }
-            ],
-            "text" : "Purpose"
+            "text" : "XW takeoff requires aileron into the wind and rudder to counter drift. Rotate positively, maintain wings level at liftoff, and crab into the wind after airborne"
           },
           {
             "children" : [
@@ -221,21 +104,12 @@
                 "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
               }
             ],
-            "text" : "Setup \/ entry"
+            "text" : "Setup cues:"
           },
           {
             "children" : [
               {
-                "text" : "Procedure:"
-              },
-              {
-                "text" : "Crosswind Interval:"
-              },
-              {
                 "text" : "“(AC ID), crosswind (touch & go \/ pattern PEL \/ AOA).”"
-              },
-              {
-                "text" : "PEL\/P Entry:"
               },
               {
                 "text" : "“Goliad RDO, (Call Sign), __ miles to the (cardinal direction), (altitude), Practice PEL, (RWY #).”"
@@ -244,25 +118,10 @@
                 "text" : "Waldron"
               },
               {
-                "text" : "VFR Arrivals:"
-              },
-              {
-                "text" : "TO:"
-              },
-              {
                 "text" : "note wind direction from tower and windsock; anticipate XW corrections"
-              },
-              {
-                "text" : "TO Roll:"
-              },
-              {
-                "text" : "Apply aileron into the wind (up to full deflection at low speed)"
-              },
-              {
-                "text" : "Reduce aileron input as speed increases (keep wings level)"
               }
             ],
-            "text" : "Execution"
+            "text" : "Execution priorities:"
           },
           {
             "children" : [
@@ -277,35 +136,9 @@
               },
               {
                 "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
-              },
-              {
-                "text" : "PCL - MAX, rotate at 90 KIAS"
-              },
-              {
-                "text" : "1500 ft"
-              },
-              {
-                "text" : "1000 ft."
-              },
-              {
-                "text" : "Preceding aircraft is airborne and 1500 ft of runway"
-              },
-              {
-                "text" : "Climb on runway HDG to no higher than 500’ MSL (HDG 105° 18\/22 at upwind numbers)"
-              },
-              {
-                "text" : "No turns prior to 300’ MSL (400’ IMC)"
               }
             ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Crosswind Takeoff and Landings late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Numbers \/ traps:"
           }
         ],
         "title" : "Crosswind Takeoff and Landings"
@@ -313,18 +146,10 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know what Wave-Off changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
+            "text" : "(compliance is mandatory)"
           },
           {
             "children" : [
-              {
-                "text" : "(compliance is mandatory)"
-              },
               {
                 "text" : "Directed externally"
               },
@@ -333,52 +158,9 @@
               },
               {
                 "text" : "ELP traffic has ROW"
-              },
-              {
-                "text" : "PCL - as req. (MAX may not be necessary)"
-              },
-              {
-                "text" : "MAX - in round-out\/flare"
-              },
-              {
-                "text" : "Late or Rapid Flare"
-              },
-              {
-                "text" : "Misjudged altitude"
-              },
-              {
-                "text" : "High descent rate"
-              },
-              {
-                "text" : "Firm\/hard touchdown"
               }
             ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Preceding AC has not landed when you are on roll out"
-              },
-              {
-                "text" : "NOTE: YOU ARE CONSIDERED ESTABLISHED ON COURSE RULES ARRIVAL WHEN YOU ARE RADAR IDENTIFIED WITH APPROACH AND THEY HAVE INSTRUCTED YOU TO FLY COURSE RULES."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "YOU ARE CONSIDERED ESTABLISHED ON COURSE RULES ARRIVAL WHEN YOU ARE RADAR IDENTIFIED WITH APPROACH AND THEY HAVE INSTRUCTED YOU TO FLY COURSE RULES."
-              },
-              {
-                "text" : "IF UNABLE TO MAINTAIN VMC, SQUAWK 7600 AND COMPLY WITH IFR LOST COMMUNICATION PROCEDURES."
-              },
-              {
-                "text" : "THESE PROCEDURES SHOULD NOT PRECLUDE EXERCISING SOUND JUDGEMENT IN WHATEVER ACTION A PILOT ELECTS TO TAKE. (AIM, FAR 91.185)"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Key points:"
           }
         ],
         "title" : "Wave-Off"
@@ -401,8 +183,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Treat OLF Entry, plus OLF and RDO Communication like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
   },
-  "summary" : "OLF Entries and Crosswind Patterns: OLF Entry, OLF\/RDO Communication, Crosswind Takeoff and Landings, and the remaining required discussion items in the block.",
+  "summary" : "OLF Entry, OLF and RDO Communication, and Crosswind Takeoff and Landings.",
   "title" : "OLF Entries and Crosswind Patterns"
 }

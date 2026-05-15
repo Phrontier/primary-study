@@ -1,6 +1,6 @@
 {
   "canonicalCoverage" : {
-    "Crosswind takeoff/touch-and-go/full-stop landings" : [
+    "Crosswind takeoff\/touch-and-go\/full-stop landings" : [
       "Crosswind Operations"
     ],
     "Up Front Control Panel (UFCP) failure" : [
@@ -10,7 +10,7 @@
       "Abort Takeoff and Maximum Braking"
     ],
     "aircraft departs a prepared surface" : [
-      "Aircraft Departs Prepared Surface / Emergency Ground Egress"
+      "Aircraft Departs Prepared Surface \/ Emergency Ground Egress"
     ],
     "wind shear recovery" : [
       "Wind Shear Recovery"
@@ -118,7 +118,7 @@
             "text" : "Maximum braking reminders:"
           },
           {
-            "text" : "N/W/C focus: There is no anti-skid, so do not brake before full weight is on wheels. After maximum-effort braking, do not set the parking brake or taxi into a congested area until the brakes cool, and do not request the barrier."
+            "text" : "N\/W\/C focus: There is no anti-skid, so do not brake before full weight is on wheels. After maximum-effort braking, do not set the parking brake or taxi into a congested area until the brakes cool, and do not request the barrier."
           }
         ],
         "title" : "Abort Takeoff and Maximum Braking"
@@ -169,7 +169,7 @@
             "text" : "Warning-focused note: If the canopy fracturing system and canopy latch both fail, ejection may be the only remaining way out. Ensure oxygen mask on and visor down before actuating CFS."
           }
         ],
-        "title" : "Aircraft Departs Prepared Surface / Emergency Ground Egress"
+        "title" : "Aircraft Departs Prepared Surface \/ Emergency Ground Egress"
       },
       {
         "items" : [
@@ -233,7 +233,7 @@
             "text" : "What still works:"
           },
           {
-            "text" : "Know what you lose with the failure as well: FMS execute, Mag/True toggle, GS/CAS/TAS HUD speed toggle, and normal radio tuning through the UFCP are unavailable to the cockpit with the failed unit."
+            "text" : "Know what you lose with the failure as well: FMS execute, Mag\/True toggle, GS\/CAS\/TAS HUD speed toggle, and normal radio tuning through the UFCP are unavailable to the cockpit with the failed unit."
           }
         ],
         "title" : "UFCP Failure"
@@ -241,7 +241,7 @@
       {
         "items" : [
           {
-            "text" : "Crosswind takeoff/touch-and-go/full-stop landings"
+            "text" : "Crosswind takeoff\/touch-and-go\/full-stop landings"
           },
           {
             "text" : "aborted takeoff"

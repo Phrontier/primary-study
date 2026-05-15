@@ -1,177 +1,177 @@
 {
-  "canonicalCoverage": {
-    "Engine failure indications": [
+  "canonicalCoverage" : {
+    "Engine failure indications" : [
       "Engine Failure Recognition"
     ],
-    "engine failure during flight": [
+    "eject" : [
+      "Ejection Decision Criteria"
+    ],
+    "engine failure during flight" : [
       "Engine Failure During Flight and Airstarts"
     ],
-    "immediate air-start (PMU NORM)": [
-      "Engine Failure During Flight and Airstarts"
-    ],
-    "forced landing": [
+    "forced landing" : [
       "Forced Landing"
     ],
-    "eject": [
-      "Ejection Decision Criteria"
+    "immediate air-start (PMU NORM)" : [
+      "Engine Failure During Flight and Airstarts"
     ]
   },
-  "code": "FAM3202",
-  "overview": "This event shifts from impending engine problems to actual engine failure and the decisions that follow. You will practice identifying a failed engine, zooming or gliding to preserve options, selecting the right airstart method, flying a forced landing profile, and deciding when ejection is safer than continuing a bad recovery.",
-  "primaryDocumentTitles": [
+  "code" : "FAM3202",
+  "overview" : "This event shifts from impending engine problems to actual engine failure and the decisions that follow. You will practice identifying a failed engine, zooming or gliding to preserve options, selecting the right airstart method, flying a forced landing profile, and deciding when ejection is safer than continuing a bad recovery.",
+  "primaryDocumentTitles" : [
     "FAM3202",
     "FAM 3202 Briefing guide 1542.166D"
   ],
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "The decision chain is simple but unforgiving: recognize the failure, preserve energy, choose between restart, landing, or ejection, and do not waste the altitude you need for the next step.",
-    "sections": [
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
       {
-        "title": "Engine Failure Recognition",
-        "items": [
+        "items" : [
           {
-            "text": "Primary indications are loss of power and airspeed with rapid decay in N1, torque, and ITT."
+            "text" : "Primary indications are loss of power and airspeed with rapid decay in N1, torque, and ITT."
           },
           {
-            "text": "Secondary indications often include:",
-            "children": [
+            "children" : [
               {
-                "text": "Propeller movement toward feather."
+                "text" : "Propeller movement toward feather."
               },
               {
-                "text": "GEN, FUEL PX, OIL PX, and OBOGS FAIL warnings."
+                "text" : "GEN, FUEL PX, OIL PX, and OBOGS FAIL warnings."
               },
               {
-                "text": "Hydraulic degradation and frozen gear or flap position."
+                "text" : "Hydraulic degradation and frozen gear or flap position."
               }
-            ]
+            ],
+            "text" : "Secondary indications often include:"
           },
           {
-            "text": "At low altitude, converting excess airspeed into altitude buys time for an airstart, landing setup, or ejection decision."
+            "text" : "At low altitude, converting excess airspeed into altitude buys time for an airstart, landing setup, or ejection decision."
           },
           {
-            "text": "N/W/C focus: Engine indications matter because they drive the branch. A flameout, seizure, or prop issue does not buy the same restart or glide options."
+            "text" : "N\/W\/C focus: Engine indications matter because they drive the branch. A flameout, seizure, or prop issue does not buy the same restart or glide options."
           }
-        ]
+        ],
+        "title" : "Engine Failure Recognition"
       },
       {
-        "title": "Engine Failure During Flight and Airstarts",
-        "items": [
+        "items" : [
           {
-            "text": "The initial engine-failure flow is zoom or glide, PCL OFF, intercept the ELP, and attempt an airstart only if warranted."
+            "text" : "The initial engine-failure flow is zoom or glide, PCL OFF, intercept the ELP, and attempt an airstart only if warranted."
           },
           {
-            "text": "Immediate Airstart is used when thrust is urgently needed and time does not permit the full restart setup."
+            "text" : "Immediate Airstart is used when thrust is urgently needed and time does not permit the full restart setup."
           },
           {
-            "text": "Critical airstart points include:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL must be OFF first so the prop feathers and the restart is configured correctly."
+                "text" : "PCL must be OFF first so the prop feathers and the restart is configured correctly."
               },
               {
-                "text": "If N1 does not rise within 5 seconds, stop the attempt."
+                "text" : "If N1 does not rise within 5 seconds, stop the attempt."
               },
               {
-                "text": "If ITT does not rise within 10 seconds after fuel flow, abort the start."
+                "text" : "If ITT does not rise within 10 seconds after fuel flow, abort the start."
               },
               {
-                "text": "Do not advance the PCL above IDLE before N1 stabilizes around 67 percent."
+                "text" : "Do not advance the PCL above IDLE before N1 stabilizes around 67 percent."
               }
-            ]
+            ],
+            "text" : "Critical airstart points include:"
           },
           {
-            "text": "Airstarts below 2000 feet AGL are usually a trap. Below that altitude, primary attention belongs on landing or ejecting."
+            "text" : "Airstarts below 2000 feet AGL are usually a trap. Below that altitude, primary attention belongs on landing or ejecting."
           },
           {
-            "text": "N/W/C focus: Airstarts below 2000 feet AGL are usually a trap. Below that, landing or ejecting should dominate your thinking."
+            "text" : "N\/W\/C focus: Airstarts below 2000 feet AGL are usually a trap. Below that, landing or ejecting should dominate your thinking."
           }
-        ]
+        ],
+        "title" : "Engine Failure During Flight and Airstarts"
       },
       {
-        "title": "Forced Landing",
-        "items": [
+        "items" : [
           {
-            "text": "Forced landing is used when the engine is inoperative or power is insufficient for continued flight."
+            "text" : "Forced landing is used when the engine is inoperative or power is insufficient for continued flight."
           },
           {
-            "text": "The forced landing profile differs from a PEL because low energy is corrected by delaying drag, not by using power that no longer exists."
+            "text" : "The forced landing profile differs from a PEL because low energy is corrected by delaying drag, not by using power that no longer exists."
           },
           {
-            "text": "Key forced-landing considerations include:",
-            "children": [
+            "children" : [
               {
-                "text": "125 KIAS before gear extension."
+                "text" : "125 KIAS before gear extension."
               },
               {
-                "text": "Minimum 120 KIAS until intercepting final and 110 KIAS on final."
+                "text" : "Minimum 120 KIAS until intercepting final and 110 KIAS on final."
               },
               {
-                "text": "Use emergency landing gear extension as required."
+                "text" : "Use emergency landing gear extension as required."
               },
               {
-                "text": "Transmit a distress call and configure the aircraft only as conditions permit."
+                "text" : "Transmit a distress call and configure the aircraft only as conditions permit."
               }
-            ]
+            ],
+            "text" : "Key forced-landing considerations include:"
           },
           {
-            "text": "N/W/C focus: Do not spend the last useful bit of glide margin trying to rescue a bad picture with configuration changes that come too early or too late."
+            "text" : "N\/W\/C focus: Do not spend the last useful bit of glide margin trying to rescue a bad picture with configuration changes that come too early or too late."
           }
-        ]
+        ],
+        "title" : "Forced Landing"
       },
       {
-        "title": "Ejection Decision Criteria",
-        "items": [
+        "items" : [
           {
-            "text": "Ejection is a life-saving action, not a failure, and it must be chosen before altitude and airspeed margins are gone."
+            "text" : "Ejection is a life-saving action, not a failure, and it must be chosen before altitude and airspeed margins are gone."
           },
           {
-            "text": "The three ejection categories are immediate, time-critical, and controlled ejection."
+            "text" : "The three ejection categories are immediate, time-critical, and controlled ejection."
           },
           {
-            "text": "Important thresholds include:",
-            "children": [
+            "children" : [
               {
-                "text": "Controlled ejection recommended above 2000 feet AGL."
+                "text" : "Controlled ejection recommended above 2000 feet AGL."
               },
               {
-                "text": "Uncontrolled ejection recommended above 6000 feet AGL."
+                "text" : "Uncontrolled ejection recommended above 6000 feet AGL."
               },
               {
-                "text": "If the aircraft is no longer controllable, eject regardless of speed, altitude, or attitude."
+                "text" : "If the aircraft is no longer controllable, eject regardless of speed, altitude, or attitude."
               }
-            ]
+            ],
+            "text" : "Important thresholds include:"
           },
           {
-            "text": "The number one ejection failure is failure to pull the handle. Make the decision early."
+            "text" : "The number one ejection failure is failure to pull the handle. Make the decision early."
           },
           {
-            "text": "N/W/C focus: The seat can save you only if you decide in time. Do not postpone the pull waiting for a cleaner aircraft attitude or a prettier altitude number."
+            "text" : "N\/W\/C focus: The seat can save you only if you decide in time. Do not postpone the pull waiting for a cleaner aircraft attitude or a prettier altitude number."
           }
-        ]
+        ],
+        "title" : "Ejection Decision Criteria"
       },
       {
-        "title": "Required Procedures",
-        "items": [
+        "items" : [
           {
-            "text": "Engine failure indications"
+            "text" : "Engine failure indications"
           },
           {
-            "text": "engine failure during flight"
+            "text" : "engine failure during flight"
           },
           {
-            "text": "immediate air-start (PMU NORM)"
+            "text" : "immediate air-start (PMU NORM)"
           },
           {
-            "text": "forced landing"
+            "text" : "forced landing"
           },
           {
-            "text": "eject"
+            "text" : "eject"
           }
-        ]
+        ],
+        "title" : "Required Procedures"
       }
-    ]
+    ],
+    "summary" : "The decision chain is simple but unforgiving: recognize the failure, preserve energy, choose between restart, landing, or ejection, and do not waste the altitude you need for the next step."
   },
-  "summary": "Engine failure indications, airstarts, forced landings, and the decision to eject.",
-  "title": "Engine Failure, Forced Landing, and Ejection"
+  "summary" : "Engine failure indications, airstarts, forced landings, and the decision to eject.",
+  "title" : "Engine Failure, Forced Landing, and Ejection"
 }

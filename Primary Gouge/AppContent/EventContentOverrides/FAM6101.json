@@ -1,20 +1,20 @@
 {
   "canonicalCoverage" : {
     "Local course rules" : [
-      "Local Course Rules"
+      "Course Rules and Sectional Setup"
     ],
     "OLF arrival and departure" : [
-      "OLF Arrival and Departure"
+      "OLF and Home-Field Flow"
     ],
     "home field arrival" : [
-      "Home Field Arrival"
+      "OLF and Home-Field Flow"
     ],
     "local VFR sectional review" : [
-      "Local VFR Sectional Review"
+      "Course Rules and Sectional Setup"
     ]
   },
   "code" : "FAM6101",
-  "overview" : "FAM6101 is a sim event focused on local course rules and olf operations. The notes below are organized off the canonical syllabus items first, then filled out with local FAM gouge so students can brief the event, explain the why behind each item, and stay ahead of instructor follow-up questions.",
+  "overview" : "This event pulls together course rules and sectional setup, plus olf and home-field flow into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
   "primaryDocumentTitles" : [
     "FAM6101"
   ],
@@ -26,156 +26,38 @@
           {
             "children" : [
               {
-                "text" : "Know what Local Course Rules changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Know them?"
-              },
-              {
                 "text" : "Waldron"
-              },
-              {
-                "text" : "VFR Arrivals:"
               },
               {
                 "text" : "“Corpus Approach, (Call Sign), request High-Key to Waldron.”"
               },
               {
-                "text" : "Sunrise Transition:"
-              },
-              {
-                "text" : "Oso Transition:"
-              },
-              {
                 "text" : "Request Base, Downwind, or Break entry."
               },
               {
-                "text" : "IFR Departures:"
-              },
-              {
                 "text" : "Make all IFR requests with Waldron Tower who will coordinate with Corpus Approach."
-              },
-              {
-                "text" : "“Waldron Tower, (call sign), request Oso Transition.”"
               }
             ],
-            "text" : "Key knowledge"
+            "text" : "Local Course Rules:"
           },
           {
             "children" : [
               {
-                "text" : "Contact Navy Corpus Tower when directed."
-              },
-              {
-                "text" : "Use Zulu time"
-              },
-              {
-                "text" : "Aircraft will use local VFR T-6 squawk, also known as “Company”"
-              },
-              {
-                "text" : "3.RADIO CALLS. Make all radio calls “in the blind.” Use frequencies appropriate for route of flight."
-              },
-              {
-                "text" : "(2) Execute a normal break entry to the duty runway (use the inboard runway if the parallels are in use)."
+                "text" : "Know the operational purpose, the pilot-visible cues, and the follow-on actions or limits tied to Local VFR Sectional Review."
               }
             ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Do not overfly Padre Island National Seashore below 3000' AGL."
-              },
-              {
-                "text" : "Contact Corpus Approach on CH 6 UHF prior to climbing to High-Key (3000' MSL). KRAS RNAV final approach course (RWY 12) at 1500' MSL, 1 NM SW of KTFP."
-              },
-              {
-                "text" : "IF UNABLE TO MAINTAIN VMC, SQUAWK 7600 AND COMPLY WITH IFR LOST COMMUNICATION PROCEDURES."
-              },
-              {
-                "text" : "THESE PROCEDURES SHOULD NOT PRECLUDE EXERCISING SOUND JUDGEMENT IN WHATEVER ACTION A PILOT ELECTS TO TAKE. (AIM, FAR 91.185)"
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Local VFR Sectional Review:"
           }
         ],
-        "title" : "Local Course Rules"
+        "title" : "Course Rules and Sectional Setup"
       },
       {
         "items" : [
           {
             "children" : [
               {
-                "text" : "OLF Arrival and Departure is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Transition Procedures to NAS Corpus Christi:"
-              },
-              {
-                "text" : "Entry Procedures"
-              },
-              {
                 "text" : "Entry via 2 NM initial, PPEL, instrument approach, or as permitted by FAR\/AIM."
               },
-              {
-                "text" : "Transitions:"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Recovery:"
-              },
-              {
-                "text" : "Goliad"
-              },
-              {
-                "text" : "Arrival Procedures"
-              },
-              {
-                "text" : "Communication Requirements:"
-              },
-              {
-                "text" : "Raise gear and flaps."
-              },
-              {
-                "text" : "“Goliad RDO, (Call Sign), departing.”"
-              },
-              {
-                "text" : "Waldron"
-              },
-              {
-                "text" : "VFR Arrivals:"
-              },
-              {
-                "text" : "Under South MUSTANG or via Oso Transition from NAS Corpus Christi."
-              },
-              {
-                "text" : "Climb\/Descend:"
-              },
-              {
-                "text" : "Power Plant Avoidance:"
-              },
-              {
-                "text" : "Turn eastbound to avoid Waldron Power Plant."
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
               {
                 "text" : "Ensure Number 1, Upwind (if not, maintain 800' MSL, 120 KIAS, landing configuration until Number 1)."
               },
@@ -184,159 +66,29 @@
               },
               {
                 "text" : "Turn 45 degrees away from runway heading (opposite pattern direction)."
-              },
-              {
-                "text" : "Once clear of traffic, climb to 2,500' MSL."
-              },
-              {
-                "text" : "Turn to heading 140° towards Woodsboro and join course rules to SHAMROCK."
-              },
-              {
-                "text" : "Accelerate to 240 KIAS."
-              },
-              {
-                "text" : "Climb\/descend to 500' MSL (Plate 2-19)."
-              },
-              {
-                "text" : "Fly RWY HDG, accelerate to 240 KIAS."
-              },
-              {
-                "text" : "Fly reciprocal runway heading, accelerate to 240 KIAS."
-              },
-              {
-                "text" : "Once feet wet, turn to ~120° toward Padre Island, maintain 500' MSL."
               }
             ],
-            "text" : "Standards \/ numbers"
+            "text" : "OLF Arrival and Departure:"
           },
           {
             "children" : [
               {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage OLF Arrival and Departure late."
+                "text" : "Entry via 2 NM initial, PPEL, instrument approach, or as permitted by FAR\/AIM."
+              },
+              {
+                "text" : "Ensure Number 1, Upwind (if not, maintain 800' MSL, 120 KIAS, landing configuration until Number 1)."
+              },
+              {
+                "text" : "Maintain 800' MSL."
+              },
+              {
+                "text" : "Turn 45 degrees away from runway heading (opposite pattern direction)."
               }
             ],
-            "text" : "Common errors \/ grading traps"
+            "text" : "Home Field Arrival:"
           }
         ],
-        "title" : "OLF Arrival and Departure"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Home Field Arrival is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              }
-            ],
-            "text" : "Purpose"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Setup \/ entry"
-              }
-            ],
-            "text" : "Setup \/ entry"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Home Field Arrival is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              },
-              {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
-              },
-              {
-                "text" : "Brief the maneuver in order from setup through recovery, using the same language you will use in the cockpit."
-              },
-              {
-                "text" : "Standards \/ numbers"
-              },
-              {
-                "text" : "Memorize the setup numbers and the recovery numbers for Home Field Arrival; that is usually where the grading starts."
-              }
-            ],
-            "text" : "Execution"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Memorize the setup numbers and the recovery numbers for Home Field Arrival; that is usually where the grading starts."
-              }
-            ],
-            "text" : "Standards \/ numbers"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Home Field Arrival late."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Home Field Arrival"
-      },
-      {
-        "items" : [
-          {
-            "children" : [
-              {
-                "text" : "Know what Local VFR Sectional Review changes in the cockpit and why the instructor cares about it in this event."
-              }
-            ],
-            "text" : "Why it matters"
-          },
-          {
-            "children" : [
-              {
-                "text" : "?"
-              },
-              {
-                "text" : "Know what Local VFR Sectional Review changes in the cockpit and why the instructor cares about it in this event."
-              },
-              {
-                "text" : "The XX is the last two digits of the aircraft callsign"
-              },
-              {
-                "text" : "Callsign vs. BUNO (side #)"
-              },
-              {
-                "text" : "how Local VFR Sectional Review changes the brief, setup, and in-cockpit decision making."
-              },
-              {
-                "text" : "For a 7XX series aircraft the code starts with 55XX"
-              },
-              {
-                "text" : "For a 8XX series aircraft the code starts with 56XX"
-              }
-            ],
-            "text" : "Key knowledge"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Be ready to move from explanation into execution: how Local VFR Sectional Review changes the brief, setup, and in-cockpit decision making."
-              }
-            ],
-            "text" : "Application"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Common errors \/ grading traps"
-              },
-              {
-                "text" : "The common trap is memorizing isolated facts about Local VFR Sectional Review without being able to explain the operational consequence."
-              }
-            ],
-            "text" : "Common errors \/ grading traps"
-          }
-        ],
-        "title" : "Local VFR Sectional Review"
+        "title" : "OLF and Home-Field Flow"
       },
       {
         "items" : [
@@ -356,8 +108,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Use these notes to cover every required discussion item in syllabus order. The local event gouge drives the content, while the canonical syllabus reference keeps coverage complete and traceable."
+    "summary" : "Treat Course Rules and Sectional Setup, plus OLF and Home-Field Flow like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
   },
-  "summary" : "Local Course Rules and OLF Operations: Local Course Rules, OLF Arrival and Departure, Home Field Arrival, and the remaining required discussion items in the block.",
+  "summary" : "Course Rules and Sectional Setup, plus OLF and Home-Field Flow.",
   "title" : "Local Course Rules and OLF Operations"
 }

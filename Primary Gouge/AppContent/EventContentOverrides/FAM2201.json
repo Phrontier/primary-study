@@ -1,452 +1,452 @@
 {
-  "canonicalCoverage": {
-    "Abort takeoff": [
+  "canonicalCoverage" : {
+    "Abort takeoff" : [
       "Abort Takeoff"
     ],
-    "aircraft departs prepared surface": [
-      "Aircraft Departs Prepared Surface"
-    ],
-    "engine failure immediately after takeoff": [
-      "Engine Failure Immediately After Takeoff"
-    ],
-    "engine failure during flight": [
-      "Engine Failure During Flight"
-    ],
-    "immediate air-start": [
-      "Immediate Air-Start"
-    ],
-    "PMU NORM air-start": [
+    "PMU NORM air-start" : [
       "PMU NORM Air-Start"
     ],
-    "PMU OFF air-start": [
+    "PMU OFF air-start" : [
       "PMU OFF Air-Start"
     ],
-    "uncommanded power changes/LOP": [
+    "aircraft departs prepared surface" : [
+      "Aircraft Departs Prepared Surface"
+    ],
+    "controlled ejection and eject" : [
       "Other In-Flight Emergency Priorities"
     ],
-    "uncommanded prop feather": [
+    "engine failure during flight" : [
+      "Engine Failure During Flight"
+    ],
+    "engine failure immediately after takeoff" : [
+      "Engine Failure Immediately After Takeoff"
+    ],
+    "fire warning in flight" : [
       "Other In-Flight Emergency Priorities"
     ],
-    "smoke and fume elimination": [
+    "immediate air-start" : [
+      "Immediate Air-Start"
+    ],
+    "smoke and fume elimination" : [
       "Other In-Flight Emergency Priorities"
     ],
-    "fire warning in flight": [
+    "uncommanded power changes\/LOP" : [
       "Other In-Flight Emergency Priorities"
     ],
-    "controlled ejection and eject": [
+    "uncommanded prop feather" : [
       "Other In-Flight Emergency Priorities"
     ]
   },
-  "code": "FAM2201",
-  "overview": "This event introduces emergency situations that can happen during takeoff and flight. You will learn how to respond to aborts, engine failures, aircraft departures from the runway, forced landings, and airstarts while focusing on aircraft control, decision making, and when to stop troubleshooting and commit to landing or ejecting.",
-  "primaryDocumentTitles": [
+  "code" : "FAM2201",
+  "overview" : "This event introduces emergency situations that can happen during takeoff and flight. You will learn how to respond to aborts, engine failures, aircraft departures from the runway, forced landings, and airstarts while focusing on aircraft control, decision making, and when to stop troubleshooting and commit to landing or ejecting.",
+  "primaryDocumentTitles" : [
     "FAM2201",
     "FAM 2201 Briefing guide 1542.166D"
   ],
-  "studyNotes": {
-    "headline": "Discussion items",
-    "summary": "Keep the priorities simple: aviate first, point the aircraft toward the best landing option early, and do not burn altitude troubleshooting below decision altitude.",
-    "sections": [
+  "studyNotes" : {
+    "headline" : "Discussion items",
+    "sections" : [
       {
-        "title": "Abort Takeoff",
-        "items": [
+        "items" : [
           {
-            "text": "If it becomes necessary to abort, aircraft control is the priority."
+            "text" : "If it becomes necessary to abort, aircraft control is the priority."
           },
           {
-            "text": "Focus on maintaining directional control while stopping on the remaining runway."
+            "text" : "Focus on maintaining directional control while stopping on the remaining runway."
           },
           {
-            "text": "Immediate actions:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL to IDLE."
+                "text" : "PCL to IDLE."
               },
               {
-                "text": "Brakes as required."
+                "text" : "Brakes as required."
               }
-            ]
+            ],
+            "text" : "Immediate actions:"
           },
           {
-            "text": "Heavy braking can overheat the brakes."
+            "text" : "Heavy braking can overheat the brakes."
           },
           {
-            "text": "If maximum braking was used, do not taxi into a congested area or set the parking brake until the brakes cool."
+            "text" : "If maximum braking was used, do not taxi into a congested area or set the parking brake until the brakes cool."
           },
           {
-            "text": "N/W/C focus: Hot brakes after maximum-effort stopping can create a second emergency, so do not set the parking brake or taxi into a congested area until they cool."
+            "text" : "N\/W\/C focus: Hot brakes after maximum-effort stopping can create a second emergency, so do not set the parking brake or taxi into a congested area until they cool."
           }
-        ]
+        ],
+        "title" : "Abort Takeoff"
       },
       {
-        "title": "Aircraft Departs Prepared Surface",
-        "items": [
+        "items" : [
           {
-            "text": "If it appears likely the aircraft will depart the runway or taxiway, execute Emergency Engine Shutdown on the Ground."
+            "text" : "If it appears likely the aircraft will depart the runway or taxiway, execute Emergency Engine Shutdown on the Ground."
           },
           {
-            "text": "The priority is to stop the aircraft and shut the engine down before further damage occurs."
+            "text" : "The priority is to stop the aircraft and shut the engine down before further damage occurs."
           }
-        ]
+        ],
+        "title" : "Aircraft Departs Prepared Surface"
       },
       {
-        "title": "Engine Failure Immediately After Takeoff",
-        "items": [
+        "items" : [
           {
-            "text": "Primary indications:",
-            "children": [
+            "children" : [
               {
-                "text": "Total loss of power."
+                "text" : "Total loss of power."
               },
               {
-                "text": "Rapid reduction in airspeed."
+                "text" : "Rapid reduction in airspeed."
               }
-            ]
+            ],
+            "text" : "Primary indications:"
           },
           {
-            "text": "Early ejection may be the safest option if there is not enough runway remaining."
+            "text" : "Early ejection may be the safest option if there is not enough runway remaining."
           },
           {
-            "text": "Immediate actions:",
-            "children": [
+            "children" : [
               {
-                "text": "Maintain at least 110 knots."
+                "text" : "Maintain at least 110 knots."
               },
               {
-                "text": "PCL as required."
+                "text" : "PCL as required."
               },
               {
-                "text": "Pull Emergency Landing Gear Handle if required."
+                "text" : "Pull Emergency Landing Gear Handle if required."
               },
               {
-                "text": "Flaps as required."
+                "text" : "Flaps as required."
               }
-            ]
+            ],
+            "text" : "Immediate actions:"
           },
           {
-            "text": "If hydraulic pressure is lost, gear and flaps cannot be lowered normally."
+            "text" : "If hydraulic pressure is lost, gear and flaps cannot be lowered normally."
           },
           {
-            "text": "Below 2000 feet AGL, avoid wasting time troubleshooting."
+            "text" : "Below 2000 feet AGL, avoid wasting time troubleshooting."
           },
           {
-            "text": "If there is not enough runway to land straight ahead, immediate ejection may be the best option."
+            "text" : "If there is not enough runway to land straight ahead, immediate ejection may be the best option."
           },
           {
-            "text": "N/W/C focus: Below 2000 feet AGL, do not burn altitude troubleshooting when the safer answer is straight-ahead landing or early ejection."
+            "text" : "N\/W\/C focus: Below 2000 feet AGL, do not burn altitude troubleshooting when the safer answer is straight-ahead landing or early ejection."
           }
-        ]
+        ],
+        "title" : "Engine Failure Immediately After Takeoff"
       },
       {
-        "title": "Engine Failure During Flight",
-        "items": [
+        "items" : [
           {
-            "text": "An engine failure in flight creates three possible paths:",
-            "children": [
+            "children" : [
               {
-                "text": "Airstart."
+                "text" : "Airstart."
               },
               {
-                "text": "Forced landing."
+                "text" : "Forced landing."
               },
               {
-                "text": "Ejection."
+                "text" : "Ejection."
               }
-            ]
+            ],
+            "text" : "An engine failure in flight creates three possible paths:"
           },
           {
-            "text": "Initial indications include:",
-            "children": [
+            "children" : [
               {
-                "text": "Loss of power and airspeed."
+                "text" : "Loss of power and airspeed."
               },
               {
-                "text": "Rapid drop in N1, torque, and ITT."
+                "text" : "Rapid drop in N1, torque, and ITT."
               },
               {
-                "text": "Propeller moving toward feather."
+                "text" : "Propeller moving toward feather."
               },
               {
-                "text": "GEN, FUEL PX, OIL PX, and OBOGS warnings."
+                "text" : "GEN, FUEL PX, OIL PX, and OBOGS warnings."
               }
-            ]
+            ],
+            "text" : "Initial indications include:"
           },
           {
-            "text": "Immediate actions:",
-            "children": [
+            "children" : [
               {
-                "text": "Establish at least 125 knots."
+                "text" : "Establish at least 125 knots."
               },
               {
-                "text": "PCL to OFF."
+                "text" : "PCL to OFF."
               },
               {
-                "text": "Intercept the nearest suitable ELP."
+                "text" : "Intercept the nearest suitable ELP."
               },
               {
-                "text": "Attempt an airstart if warranted."
+                "text" : "Attempt an airstart if warranted."
               }
-            ]
+            ],
+            "text" : "Immediate actions:"
           },
           {
-            "text": "Pulling the PCL fully to OFF feathers the propeller and improves glide performance."
+            "text" : "Pulling the PCL fully to OFF feathers the propeller and improves glide performance."
           },
           {
-            "text": "If an airstart is not appropriate or unsuccessful:",
-            "children": [
+            "children" : [
               {
-                "text": "Firewall Shutoff Handle PULL."
+                "text" : "Firewall Shutoff Handle PULL."
               },
               {
-                "text": "Execute forced landing or eject."
+                "text" : "Execute forced landing or eject."
               }
-            ]
+            ],
+            "text" : "If an airstart is not appropriate or unsuccessful:"
           },
           {
-            "text": "Do not delay the ejection decision below 2000 feet AGL."
+            "text" : "Do not delay the ejection decision below 2000 feet AGL."
           },
           {
-            "text": "N/W/C focus: Pulling the PCL fully to OFF is what feathers the prop and improves glide; partial movement does not buy the same margin."
+            "text" : "N\/W\/C focus: Pulling the PCL fully to OFF is what feathers the prop and improves glide; partial movement does not buy the same margin."
           }
-        ]
+        ],
+        "title" : "Engine Failure During Flight"
       },
       {
-        "title": "Immediate Air-Start",
-        "items": [
+        "items" : [
           {
-            "text": "The Immediate Airstart is used at low altitude when thrust is urgently needed."
+            "text" : "The Immediate Airstart is used at low altitude when thrust is urgently needed."
           },
           {
-            "text": "It is faster than the full PMU NORM procedure."
+            "text" : "It is faster than the full PMU NORM procedure."
           },
           {
-            "text": "Immediate actions:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL OFF."
+                "text" : "PCL OFF."
               },
               {
-                "text": "Starter switch AUTO/RESET."
+                "text" : "Starter switch AUTO\/RESET."
               },
               {
-                "text": "PCL to IDLE above 13% N1."
+                "text" : "PCL to IDLE above 13% N1."
               },
               {
-                "text": "Monitor ITT, N1, and oil pressure."
+                "text" : "Monitor ITT, N1, and oil pressure."
               }
-            ]
+            ],
+            "text" : "Immediate actions:"
           },
           {
-            "text": "If N1 does not rise within 5 seconds, discontinue the attempt."
+            "text" : "If N1 does not rise within 5 seconds, discontinue the attempt."
           },
           {
-            "text": "If there is no ITT rise within 10 seconds after fuel flow, abort the start."
+            "text" : "If there is no ITT rise within 10 seconds after fuel flow, abort the start."
           },
           {
-            "text": "Useful power is not available until approximately 67% N1."
+            "text" : "Useful power is not available until approximately 67% N1."
           },
           {
-            "text": "If the airstart fails:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL OFF."
+                "text" : "PCL OFF."
               },
               {
-                "text": "Firewall Shutoff Handle PULL."
+                "text" : "Firewall Shutoff Handle PULL."
               },
               {
-                "text": "Forced landing or eject."
+                "text" : "Forced landing or eject."
               }
-            ]
+            ],
+            "text" : "If the airstart fails:"
           }
-        ]
+        ],
+        "title" : "Immediate Air-Start"
       },
       {
-        "title": "PMU NORM Air-Start",
-        "items": [
+        "items" : [
           {
-            "text": "PMU NORM is the preferred and simplest airstart method."
+            "text" : "PMU NORM is the preferred and simplest airstart method."
           },
           {
-            "text": "Use it if the PMU FAIL warning is not illuminated."
+            "text" : "Use it if the PMU FAIL warning is not illuminated."
           },
           {
-            "text": "Airstart envelope:",
-            "children": [
+            "children" : [
               {
-                "text": "125 to 200 knots from sea level to 15,000 feet."
+                "text" : "125 to 200 knots from sea level to 15,000 feet."
               },
               {
-                "text": "135 to 200 knots from 15,001 to 20,000 feet."
+                "text" : "135 to 200 knots from 15,001 to 20,000 feet."
               }
-            ]
+            ],
+            "text" : "Airstart envelope:"
           },
           {
-            "text": "Key setup items:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL OFF."
+                "text" : "PCL OFF."
               },
               {
-                "text": "Firewall Shutoff Handle down."
+                "text" : "Firewall Shutoff Handle down."
               },
               {
-                "text": "Bleed Air Inflow OFF."
+                "text" : "Bleed Air Inflow OFF."
               },
               {
-                "text": "Boost Pump ON."
+                "text" : "Boost Pump ON."
               },
               {
-                "text": "Ignition ON."
+                "text" : "Ignition ON."
               },
               {
-                "text": "Starter switch AUTO/RESET."
+                "text" : "Starter switch AUTO\/RESET."
               }
-            ]
+            ],
+            "text" : "Key setup items:"
           },
           {
-            "text": "Move the PCL to IDLE above 13% N1."
+            "text" : "Move the PCL to IDLE above 13% N1."
           },
           {
-            "text": "Do not move the PCL above IDLE before N1 stabilizes around 67%."
+            "text" : "Do not move the PCL above IDLE before N1 stabilizes around 67%."
           },
           {
-            "text": "Each airstart attempt can cost more than 1200 feet of altitude."
+            "text" : "Each airstart attempt can cost more than 1200 feet of altitude."
           },
           {
-            "text": "After a successful airstart:",
-            "children": [
+            "children" : [
               {
-                "text": "PCL as required."
+                "text" : "PCL as required."
               },
               {
-                "text": "Starter switch NORM."
+                "text" : "Starter switch NORM."
               },
               {
-                "text": "Verify GEN ON."
+                "text" : "Verify GEN ON."
               },
               {
-                "text": "Bleed Air Inflow NORM."
+                "text" : "Bleed Air Inflow NORM."
               },
               {
-                "text": "Execute a PEL."
+                "text" : "Execute a PEL."
               }
-            ]
+            ],
+            "text" : "After a successful airstart:"
           }
-        ]
+        ],
+        "title" : "PMU NORM Air-Start"
       },
       {
-        "title": "PMU OFF Air-Start",
-        "items": [
+        "items" : [
           {
-            "text": "PMU OFF airstarts are used if the PMU FAIL warning is illuminated."
+            "text" : "PMU OFF airstarts are used if the PMU FAIL warning is illuminated."
           },
           {
-            "text": "This method increases workload because the pilot manually controls fuel introduction."
+            "text" : "This method increases workload because the pilot manually controls fuel introduction."
           },
           {
-            "text": "Ignition must be manually selected."
+            "text" : "Ignition must be manually selected."
           },
           {
-            "text": "The same airstart envelope and altitude considerations apply."
+            "text" : "The same airstart envelope and altitude considerations apply."
           },
           {
-            "text": "PMU OFF starts are more sensitive to PCL movement and can more easily lead to an overtemperature."
+            "text" : "PMU OFF starts are more sensitive to PCL movement and can more easily lead to an overtemperature."
           },
           {
-            "text": "Use this procedure only when PMU NORM is unavailable."
+            "text" : "Use this procedure only when PMU NORM is unavailable."
           }
-        ]
+        ],
+        "title" : "PMU OFF Air-Start"
       },
       {
-        "title": "Decision Making Priorities",
-        "items": [
+        "items" : [
           {
-            "text": "Aviate first."
+            "text" : "Aviate first."
           },
           {
-            "text": "Establish a safe airspeed and glide profile before troubleshooting."
+            "text" : "Establish a safe airspeed and glide profile before troubleshooting."
           },
           {
-            "text": "If a suitable runway or landing surface is available, immediately turn toward it."
+            "text" : "If a suitable runway or landing surface is available, immediately turn toward it."
           },
           {
-            "text": "Every second spent troubleshooting reduces glide distance."
+            "text" : "Every second spent troubleshooting reduces glide distance."
           },
           {
-            "text": "Below 2000 feet AGL, focus on landing or ejecting rather than trying to save the engine."
+            "text" : "Below 2000 feet AGL, focus on landing or ejecting rather than trying to save the engine."
           },
           {
-            "text": "Airstarts should only be attempted when altitude, airspeed, and position allow."
+            "text" : "Airstarts should only be attempted when altitude, airspeed, and position allow."
           }
-        ]
+        ],
+        "title" : "Decision Making Priorities"
       },
       {
-        "title": "Other In-Flight Emergency Priorities",
-        "items": [
+        "items" : [
           {
-            "text": "The remaining FAM2201 EPs all reward the same habit pattern: maintain flying airspeed, turn toward a landing option early, and do not waste altitude troubleshooting below decision altitude."
+            "text" : "The remaining FAM2201 EPs all reward the same habit pattern: maintain flying airspeed, turn toward a landing option early, and do not waste altitude troubleshooting below decision altitude."
           },
           {
-            "text": "Uncommanded power changes, loss of power, or an uncommanded prop feather should be treated as a deteriorating engine situation until proven otherwise."
+            "text" : "Uncommanded power changes, loss of power, or an uncommanded prop feather should be treated as a deteriorating engine situation until proven otherwise."
           },
           {
-            "text": "Smoke and fume elimination is about keeping the cockpit breathable and visible long enough to land as soon as practical."
+            "text" : "Smoke and fume elimination is about keeping the cockpit breathable and visible long enough to land as soon as practical."
           },
           {
-            "text": "A fire warning in flight is only a confirmed fire when it is backed up by other indications. If confirmed, secure the engine and commit to forced landing or ejection as required."
+            "text" : "A fire warning in flight is only a confirmed fire when it is backed up by other indications. If confirmed, secure the engine and commit to forced landing or ejection as required."
           },
           {
-            "text": "Controlled ejection is a life-saving decision, not a last-second failure. Make it early enough that altitude, airspeed, and aircraft attitude still favor survival."
+            "text" : "Controlled ejection is a life-saving decision, not a last-second failure. Make it early enough that altitude, airspeed, and aircraft attitude still favor survival."
           },
           {
-            "text": "N/W/C focus: The warnings, cautions, and notes on these EPs mainly reinforce one habit pattern: identify the branch early and commit before altitude and options disappear."
+            "text" : "N\/W\/C focus: The warnings, cautions, and notes on these EPs mainly reinforce one habit pattern: identify the branch early and commit before altitude and options disappear."
           }
-        ]
+        ],
+        "title" : "Other In-Flight Emergency Priorities"
       },
       {
-        "title": "Required Procedures",
-        "items": [
+        "items" : [
           {
-            "text": "Abort takeoff"
+            "text" : "Abort takeoff"
           },
           {
-            "text": "aircraft departs prepared surface"
+            "text" : "aircraft departs prepared surface"
           },
           {
-            "text": "engine failure immediately after takeoff"
+            "text" : "engine failure immediately after takeoff"
           },
           {
-            "text": "engine failure during flight"
+            "text" : "engine failure during flight"
           },
           {
-            "text": "immediate air-start"
+            "text" : "immediate air-start"
           },
           {
-            "text": "PMU NORM air-start"
+            "text" : "PMU NORM air-start"
           },
           {
-            "text": "PMU OFF air-start"
+            "text" : "PMU OFF air-start"
           },
           {
-            "text": "uncommanded power changes/LOP"
+            "text" : "uncommanded power changes\/LOP"
           },
           {
-            "text": "uncommanded prop feather"
+            "text" : "uncommanded prop feather"
           },
           {
-            "text": "smoke and fume elimination"
+            "text" : "smoke and fume elimination"
           },
           {
-            "text": "fire warning in flight"
+            "text" : "fire warning in flight"
           },
           {
-            "text": "controlled ejection and eject"
+            "text" : "controlled ejection and eject"
           }
-        ]
+        ],
+        "title" : "Required Procedures"
       }
-    ]
+    ],
+    "summary" : "Keep the priorities simple: aviate first, point the aircraft toward the best landing option early, and do not burn altitude troubleshooting below decision altitude."
   },
-  "summary": "Abort procedures, engine failures, forced landings, and airstart fundamentals.",
-  "title": "Takeoff Emergencies"
+  "summary" : "Abort procedures, engine failures, forced landings, and airstart fundamentals.",
+  "title" : "Takeoff Emergencies"
 }

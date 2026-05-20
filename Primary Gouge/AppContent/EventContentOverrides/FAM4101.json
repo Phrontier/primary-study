@@ -1,44 +1,44 @@
 {
   "canonicalCoverage" : {
     "Ejection seat and CFS" : [
-      "Ground Safety and Cockpit Survival"
+      "Ejection Seat and CFS"
     ],
     "HUD" : [
-      "HUD Integration"
+      "HUD"
     ],
     "abnormal starts" : [
-      "Ground Safety and Cockpit Survival"
+      "Abnormal Starts"
     ],
     "basic transitions" : [
-      "Contact Flight Refresh"
+      "Basic Transitions"
     ],
     "brake failure" : [
-      "Ground Safety and Cockpit Survival"
+      "Brake Failure"
     ],
     "departure" : [
-      "Contact Flight Refresh"
+      "Departure"
     ],
     "level speed change" : [
-      "Contact Flight Refresh"
+      "Level Speed Change"
     ],
     "slow flight" : [
-      "Contact Flight Refresh"
+      "Slow Flight"
     ],
     "strike of ground object" : [
-      "Ground Safety and Cockpit Survival"
+      "Strike of Ground Object"
     ],
     "takeoff" : [
-      "Contact Flight Refresh"
+      "Takeoff"
     ],
     "trim" : [
-      "Contact Flight Refresh"
+      "Trim"
     ],
     "turn pattern" : [
-      "Contact Flight Refresh"
+      "Turn Pattern"
     ]
   },
   "code" : "FAM4101",
-  "overview" : "This event ties together ground safety and cockpit survival, contact flight refresh, and hud integration in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+  "overview" : "The first contact flight is about surviving the cockpit setup and launch cleanly, then proving you can transition into basic airwork without getting behind the aircraft. Be ready to brief seat and start discipline, takeoff and departure flow, and the first core maneuvers that set the tone for the rest of FAM.",
   "primaryDocumentTitles" : [
     "FAM4101"
   ],
@@ -48,229 +48,718 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "(N) If ejecting at low speed, one or both sets of risers may remain velcroed together following seat separation, which may result in slight increase in descent rate and\/or uncommanded turn"
-              },
-              {
-                "text" : "N\/W\/C focus: Review the associated WARNINGs, CAUTIONs, and NOTEs for Ejection Seat and CFS before the event."
-              }
-            ],
-            "text" : "Ejection Seat and CFS:"
+            "text" : "Seat and canopy-fracturing knowledge come before any flying in this event. You should be able to brief pin discipline, seat envelope, CFS and ISS logic, and the immediate priorities after leaving the aircraft."
           },
           {
             "children" : [
               {
-                "text" : "Hot Start"
+                "text" : "Respect the seat every time you approach the aircraft."
               },
               {
-                "text" : "Hung Start"
+                "text" : "Before entering the cockpit, confirm both CFS and ejection-seat safety pins are installed and use the standard pin calls between cockpits."
               },
               {
-                "text" : "No Start"
-              },
-              {
-                "text" : "Loss of ST READY"
+                "text" : "Before leaving the wing, confirm both pins are back in and the cockpit is left in the required safe configuration. If solo mode applies, ISS mode selection must match the brief."
               }
             ],
-            "text" : "Abnormal Starts:"
+            "text" : "Cockpit and pin discipline:"
           },
           {
             "children" : [
               {
-                "text" : "Brake Pressure Fade or No Brake Response"
+                "text" : "The aircraft uses the Martin-Baker Mk 16 seat with the GQ5000 parachute, and both emergency oxygen and CFS activate automatically on ejection."
               },
               {
-                "text" : "Hydraulic pressure drop, overheated brakes, or cockpit input issue"
+                "text" : "The published escape envelope runs from 0\/0 up to about 35,000 feet and 370 KIAS."
               },
               {
-                "text" : "Fully release brakes, then re-apply"
+                "text" : "Controlled ejection minimum altitude is 6000 feet AGL. Break out PCL and complete as many steps as time permits."
               },
               {
-                "text" : "(C) Both crewmembers must fully release brakes for reapplication to be effective"
+                "text" : "Uncontrolled ejection minimum altitude is 2000 feet AGL."
               }
             ],
-            "text" : "Brake Failure:"
+            "text" : "Seat basics and ejection envelope:"
           },
           {
             "children" : [
               {
-                "text" : "Contact between the aircraft and any ground object (e.g., cones, lights, barriers) during taxi, takeoff, or landing."
+                "text" : "CFS can activate automatically during ejection or manually through the CFS handle."
               },
               {
-                "text" : "Stop immediately"
+                "text" : "Each internal CFS handle fractures only that cockpit transparency, so both may be required if both canopies need to be cleared."
+              },
+              {
+                "text" : "ISS mode logic matters: SOLO ejects only the initiating seat, BOTH ejects both seats with the rear seat leaving first, and CMD FWD lets the front cockpit command both seats while the aft cockpit ejects only itself."
               }
             ],
-            "text" : "Strike of Ground Object:"
+            "text" : "CFS and ISS mode logic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "After ejection, inspect the canopy and suspension lines, inflate the LPU, release the raft as required, and work through the remaining post-ejection priorities."
+              },
+              {
+                "text" : "Over land, steer into the wind and execute a proper PLF. Over water, release the upper Koch fittings at the surface and execute ADR."
+              }
+            ],
+            "text" : "Post-ejection priorities:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Grasp the ejection handle and pull sharply toward the abdomen with elbows against the body."
+              },
+              {
+                "text" : "The emergency escape system is explosive. Exposed skin should be covered, with O2 mask on and visor down before actuating CFS or ejecting."
+              },
+              {
+                "text" : "If ejecting over mountainous terrain above 8000 feet MSL, use the MOR handle to separate from the seat and deploy the parachute."
+              },
+              {
+                "text" : "At low speed, one or both riser sets may remain together after separation, producing a slightly higher descent rate or an uncommanded turn."
+              }
+            ],
+            "text" : "N\/W\/C focus:"
           }
         ],
-        "title" : "Ground Safety and Cockpit Survival"
+        "title" : "Ejection Seat and CFS"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "200’ prior to hold short - switch to tower freq"
-              }
-            ],
-            "text" : "Takeoff:"
+            "text" : "Abnormal starts are a recognition-and-abort problem. Know the start types, the abort criteria, and what has to happen after fuel has been introduced."
           },
           {
             "children" : [
               {
-                "text" : "No turn prior to 300’ AGL"
+                "text" : "Hot start: ITT is likely to exceed 1000 C, or ITT remains between 871 and 1000 C for more than 5 seconds."
               },
               {
-                "text" : "180 KIAS climb, 200 KIAS level"
+                "text" : "Hung start: N1 stops increasing normally or stagnates below 60 percent, often around 30 percent."
               },
               {
-                "text" : "Above Class D (2.5 NM) - 240 KIAS"
+                "text" : "No start: no ITT rise within 10 seconds of fuel flow."
               },
               {
-                "text" : "HDG 125° to High Bridge…."
+                "text" : "Loss of ST READY, red BAT BUS, or low oil pressure during start all drive you toward an abort."
               }
             ],
-            "text" : "Departure:"
+            "text" : "Recognize the start type:"
           },
           {
             "children" : [
               {
-                "text" : "Power – Advance PCL to MAX"
+                "text" : "Abort if ITT is likely to exceed 1000 C."
               },
               {
-                "text" : "Attitude – Raise nose to 12–15° NH"
+                "text" : "Abort if ITT remains between 871 and 1000 C for more than 5 seconds."
+              },
+              {
+                "text" : "Abort if N1 increase halts, if there is no ITT rise within 10 seconds of fuel flow, if BAT BUS appears, or if ST READY extinguishes during start."
               }
             ],
-            "text" : "Basic Transitions:"
+            "text" : "Abort criteria:"
           },
           {
             "children" : [
               {
-                "text" : "P-A-T (Power–Attitude–Trim)"
+                "text" : "Use PCL OFF or STARTER AUTO\/RESET as required by the PCL position when the abort is called."
               },
               {
-                "text" : "Recovery"
+                "text" : "If an overtemperature occurred, record both the degree and the duration."
               },
               {
-                "text" : "Approaching 180 KIAS - set 180 KIAS climb pitch, comply with SOP, CR, or DP"
-              },
-              {
-                "text" : "TAD activates at 80 KIAS and weight off wheels"
+                "text" : "Any aborted start with fuel introduced requires a motoring run with PCL OFF, ignition NORM, prop area clear, and STARTER MANUAL for 20 seconds before returning the switch to NORM."
               }
             ],
-            "text" : "Trim:"
+            "text" : "Abort procedure and motoring run:"
           },
           {
             "children" : [
               {
-                "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
+                "text" : "ST READY confirms the PMU is armed and should remain illuminated for at least 3 seconds after the PCL is moved toward IDLE."
               },
               {
-                "text" : "Recovery must be completed above 6000’ AGL"
+                "text" : "PMU auto-aborts for no ITT rise, excessive ITT, or poor N1 acceleration."
               },
               {
-                "text" : "30° AOB - 90° L\/R, minimal back-stick\/power change"
-              },
-              {
-                "text" : "45° AOB - 180° L\/R, add power and raise nose slightly to maintain energy"
+                "text" : "Weak battery, high OAT, high pre-start ITT, high density altitude, and tailwind battery starts are common PMU-abort contributors."
               }
             ],
-            "text" : "Turn Pattern:"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Establish - normal cruise (200 KIAS), straight and level, any #’d heading"
-              },
-              {
-                "text" : "Decelerate to No Flap Configuration (120 KIAS)"
-              },
-              {
-                "text" : "Minimize altitude loss, return to 120 KIAS in downwind configuration"
-              },
-              {
-                "text" : "Wings level, 2 positive rates of climb"
-              }
-            ],
-            "text" : "Level Speed Change:"
-          },
-          {
-            "children" : [
-              {
-                "text" : "30° AOB - 90° L\/R, minimal back-stick\/power change"
-              },
-              {
-                "text" : "45° AOB - 180° L\/R, add power and raise nose slightly to maintain energy"
-              },
-              {
-                "text" : "60° AOB - 360° L\/R, significant nose-up and power increase required"
-              },
-              {
-                "text" : "Establish - normal cruise (200 KIAS), straight and level, any #’d heading"
-              }
-            ],
-            "text" : "Slow Flight:"
+            "text" : "PMU notes:"
           }
         ],
-        "title" : "Contact Flight Refresh"
+        "title" : "Abnormal Starts"
       },
       {
         "items" : [
           {
-            "text" : "FWD Cockpit HUD and right MFD HUD repeater (FWD\/AFT cockpits)"
+            "text" : "Brake failure can range from a simple reapplication problem to a directional-control problem on landing. Brief who has braking authority and what the runway plan becomes if a brake is lost."
           },
           {
             "children" : [
               {
-                "text" : "flight, navigation, tactical data, weapon info, steering cues"
+                "text" : "If braking pressure fades or there is no brake response, fully release the brakes in both cockpits and then re-apply."
               },
               {
-                "text" : "NAV (navigation), A\/A (air-to-air), A\/G (air-to-ground)"
-              },
-              {
-                "text" : "Flash - time-critical or symbol outside FOV"
+                "text" : "Braking force is determined by the pilot applying the greater pedal pressure."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Pressure fade or no response:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Land on the side of the runway corresponding to the failed brake."
+              },
+              {
+                "text" : "Use the opposite brake, rudder, and ailerons to maintain directional control."
+              },
+              {
+                "text" : "If both cockpits are occupied, the pilot with the effective brake becomes the braking authority."
+              }
+            ],
+            "text" : "One brake failure:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Plan for a firm, centered, on-speed touchdown."
+              },
+              {
+                "text" : "Use rudder and ailerons to maintain directional control."
+              },
+              {
+                "text" : "Be ready to transition immediately to aircraft-departs-prepared-surface logic if runway departure becomes likely."
+              }
+            ],
+            "text" : "Both brakes fail:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Top red band only visible means the reservoir needs servicing."
+              },
+              {
+                "text" : "Red-green visible means the reservoir is adequately serviced."
+              },
+              {
+                "text" : "Red-green-red visible means the reservoir is overserviced."
+              }
+            ],
+            "text" : "Reservoir indications:"
           }
         ],
-        "title" : "HUD Integration"
+        "title" : "Brake Failure"
       },
       {
         "items" : [
           {
-            "text" : "Ejection seat and CFS"
+            "text" : "Treat any strike of a ground object as aircraft damage until maintenance proves otherwise, even if the contact felt minor."
           },
           {
-            "text" : "abnormal starts"
+            "children" : [
+              {
+                "text" : "A strike of a ground object is contact with any ground obstacle during taxi, takeoff, or landing."
+              },
+              {
+                "text" : "Stop immediately, execute emergency engine shutdown on the ground as required, notify Ground or Tower, and do not continue taxi without maintenance direction."
+              },
+              {
+                "text" : "Use judgment conservatively: even minor contact can create damage that makes a later takeoff unsafe."
+              },
+              {
+                "text" : "Ensure the strike is documented for maintenance action."
+              }
+            ],
+            "text" : "Immediate actions:"
+          }
+        ],
+        "title" : "Strike of Ground Object"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Takeoff in this event is about disciplined setup, smooth rotation, and an organized cleanup. If the launch is rushed on the ground, the rest of the sortie starts behind the aircraft."
           },
           {
-            "text" : "brake failure"
+            "children" : [
+              {
+                "text" : "Switch to Tower as required before hold short, read back lineup or hold-short instructions correctly, and align on centerline only after clearing final."
+              },
+              {
+                "text" : "Run the lineup checklist from memory, and if held in position, stop the checklist at the published hold point until cleared."
+              },
+              {
+                "text" : "Call the crosswind direction and set the flight controls appropriately before brake release."
+              },
+              {
+                "text" : "Bring torque up to about 30 percent and verify the engine instruments before releasing the brakes."
+              }
+            ],
+            "text" : "Lineup and before brake release:"
           },
           {
-            "text" : "strike of ground object"
+            "children" : [
+              {
+                "text" : "Release brakes, center the nosewheel, and advance PCL to MAX over about 2 to 3 seconds while using rudder for directional control."
+              },
+              {
+                "text" : "At 60 KIAS, verify minimum power and acceptable fuel flow."
+              },
+              {
+                "text" : "Use aileron into the wind for crosswind correction and do not use aileron to solve yaw."
+              }
+            ],
+            "text" : "Takeoff roll:"
           },
           {
-            "text" : "takeoff"
+            "children" : [
+              {
+                "text" : "At 90 KIAS, apply smooth back stick to set about 7 to 10 degrees nose high and let the aircraft fly off."
+              },
+              {
+                "text" : "For gusts, add one-half the gust factor to rotation speed, not more than 10 knots."
+              }
+            ],
+            "text" : "Rotation:"
           },
           {
-            "text" : "departure"
+            "children" : [
+              {
+                "text" : "Confirm two positive rates with airspeed below 150 KIAS, then call for gear."
+              },
+              {
+                "text" : "Above 110 KIAS, call for flaps up and trim as required."
+              },
+              {
+                "text" : "Maintain the initial climb picture, then transition to the briefed climb attitude and airspeed as the aircraft accelerates. Best-rate climb is about 140 KIAS, but the departure profile you brief is what governs the sortie."
+              }
+            ],
+            "text" : "Initial climb and cleanup:"
           },
           {
-            "text" : "basic transitions"
+            "children" : [
+              {
+                "text" : "Improper rudder causes immediate directional-control problems."
+              },
+              {
+                "text" : "Late, early, or excessive rotation turns the takeoff into a pitch-control problem."
+              },
+              {
+                "text" : "Students often forget rudder trim or the gear\/flaps cleanup calls once the aircraft starts accelerating."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Takeoff"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Departure knowledge here is about flying a clean climbout and understanding which parts of the plan are universal versus local. The goal is to leave the field safely without memorizing a base-specific route as if it applied everywhere."
           },
           {
-            "text" : "trim"
+            "children" : [
+              {
+                "text" : "Call for departure only when number one, and read back hold-short, lineup, or takeoff instructions correctly."
+              },
+              {
+                "text" : "If using a departure option or practice abort option, ensure that has already been coordinated with ATC."
+              }
+            ],
+            "text" : "Clearance and coordination:"
           },
           {
-            "text" : "turn pattern"
+            "children" : [
+              {
+                "text" : "Do not turn before the briefed safe altitude or departure condition."
+              },
+              {
+                "text" : "Fly the takeoff climb picture first, then transition to the briefed climb and level-off airspeeds as you leave the pattern."
+              },
+              {
+                "text" : "Know when the sortie transitions from runway control to the next agency or frequency in the brief, and do not let the radio call interrupt aircraft control."
+              }
+            ],
+            "text" : "Climbout priorities:"
           },
           {
-            "text" : "level speed change"
+            "children" : [
+              {
+                "text" : "Runway-specific headings, named VFR routes, class D exit points, transition gates, and local frequencies are location-specific and must come from the current SOP or day-of brief."
+              },
+              {
+                "text" : "The transferable knowledge is understanding why those items exist: obstacle clearance, traffic deconfliction, airspace transition, and proper radio handoff timing."
+              }
+            ],
+            "text" : "What stays local:"
+          }
+        ],
+        "title" : "Departure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Basic transitions are the building blocks for changing between climb, cruise, and descent without fighting trim or chasing the airspeed after the fact."
           },
           {
-            "text" : "slow flight"
+            "children" : [
+              {
+                "text" : "Advance PCL to MAX, raise the nose to about 12 to 15 degrees nose high, and trim as required."
+              },
+              {
+                "text" : "At 180 KIAS, lower to the normal climb picture at about 8 degrees nose high, retrim, and center the ball."
+              },
+              {
+                "text" : "For climbs greater than 1000 feet, use 180 KIAS. Shorter climbs can stay at cruise airspeed with MAX power."
+              }
+            ],
+            "text" : "Cruise-to-Climb:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "About 200 feet prior to level-off, start lowering the nose toward the level picture."
+              },
+              {
+                "text" : "About 5 knots prior to cruise airspeed, reduce power to cruise, set the level attitude, trim, and center the ball."
+              }
+            ],
+            "text" : "Climb-to-Cruise:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Reduce power to about 20 percent and lower the nose to about 5 degrees nose low."
+              },
+              {
+                "text" : "Trim for the power reduction, clear as required, and retrim once the descent stabilizes."
+              }
+            ],
+            "text" : "Cruise-to-Descent:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "About 100 feet prior to level-off, add cruise power and raise the nose to the level picture."
+              },
+              {
+                "text" : "Trim for the power addition, then retrim and center the ball once level."
+              }
+            ],
+            "text" : "Descent-to-Cruise:"
+          }
+        ],
+        "title" : "Basic Transitions"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Trim keeps the aircraft from becoming a control-force workout. The correct habit is always Power, then Attitude, then Trim."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Lead with the power change, set the new attitude picture, then use trim to remove the control pressure you are holding."
+              },
+              {
+                "text" : "Trim in order: rudder first, then elevator, then aileron only if the aircraft still wants to roll."
+              }
+            ],
+            "text" : "PAT flow:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Rudder trim is controlled on the PCL and is used to center the ball."
+              },
+              {
+                "text" : "Elevator trim relieves stick force after the correct nose attitude is already set."
+              },
+              {
+                "text" : "Aileron trim physically repositions the ailerons and is used only after rudder trim if a roll tendency remains."
+              }
+            ],
+            "text" : "Trim devices:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The Trim Aid Device commands rudder trim only."
+              },
+              {
+                "text" : "It becomes active once the aircraft is above 80 KIAS and weight off wheels."
+              },
+              {
+                "text" : "It helps with rudder trim, but it does not remove the pilot's responsibility to trim the aircraft correctly."
+              }
+            ],
+            "text" : "TAD basics:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Power addition usually needs right rudder trim and down elevator trim."
+              },
+              {
+                "text" : "Power reduction usually needs left rudder trim and up elevator trim."
+              },
+              {
+                "text" : "Acceleration usually trends toward left rudder trim and down elevator trim."
+              },
+              {
+                "text" : "Deceleration usually trends toward right rudder trim and up elevator trim."
+              }
+            ],
+            "text" : "Typical trim trends:"
+          }
+        ],
+        "title" : "Trim"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The turn pattern is your first deliberate contact-airwork energy exercise. Smooth roll rate, coordinated rudder, and early trim matter more than muscling the airplane back to altitude after each turn."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Establish level flight on a numbered heading at about 200 KIAS and the briefed cruise power setting."
+              },
+              {
+                "text" : "Clear the area before the pattern and keep scanning outside throughout the maneuver."
+              }
+            ],
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For 30 degrees AOB, turn 90 degrees left and right with minimal power or back-stick change."
+              },
+              {
+                "text" : "For 45 degrees AOB, turn 180 degrees left and right while adding a little power and slight nose-up attitude to maintain energy."
+              },
+              {
+                "text" : "For 60 degrees AOB, turn 360 degrees left and right with noticeably more back pressure and power."
+              },
+              {
+                "text" : "Use the one-third rollout or reversal rule, maintain trim, and prevent the nose from dropping or ballooning through the rollout."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Return to the original heading with altitude and airspeed under control, reset cruise power, and retrim the aircraft."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Abrupt control inputs and inconsistent nose attitude create most altitude and airspeed errors."
+              },
+              {
+                "text" : "Students often fixate inside or stop clearing the area once the turn starts."
+              },
+              {
+                "text" : "Unbalanced flight and late corrections make the steep turns look much worse than they started."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Turn Pattern"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Level speed change teaches how configuration, airspeed, power, and trim all move together while you stay level and ahead of the aircraft."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Start from normal cruise at about 200 KIAS and cruise power on a numbered heading, then clear the area before the configuration changes begin."
+              }
+            ],
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Reduce to IDLE and trim while decelerating."
+              },
+              {
+                "text" : "Below 150 KIAS, lower the gear. At about 130 KIAS, set about 31 percent power and stabilize at 120 KIAS."
+              },
+              {
+                "text" : "Select landing flaps, immediately increase power to about 52 percent, hold 120 KIAS, and complete the Before Landing Checklist."
+              },
+              {
+                "text" : "To recover, set PCL to MAX, raise gear and flaps below 150 KIAS as allowed, raise flaps fully at or above 110 KIAS, then reduce to about 54 percent as airspeed approaches 200 KIAS."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Stabilize back at normal cruise with the aircraft level, trimmed, and the ball centered."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Poor rudder trim causes heading drift through the whole demonstration."
+              },
+              {
+                "text" : "Trying to do the Before Landing Checklist mid-transition usually ruins the basic airwork."
+              },
+              {
+                "text" : "Improper nose attitudes and poor elevator-trim discipline cause most of the altitude-control errors."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Level Speed Change"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Slow flight teaches you to stay ahead of the aircraft when it is trimmed, configured, and powered close to the landing regime. The goal is controlled, coordinated maneuvering without letting AOA or trim get away from you."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Complete the maneuver above 6000 feet AGL."
+              },
+              {
+                "text" : "Slow below 150 KIAS, lower the landing gear, and complete the Before Landing Checklist and the pre-stall \/ spin \/ aerobatic checklist."
+              },
+              {
+                "text" : "Clear the area, lower flaps to LDG, reduce to about 85 KIAS, and set power to about 45 percent torque."
+              }
+            ],
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Perform a coordinated 30-degree AOB turn for about 180 degrees, then return with a coordinated 30-degree AOB turn the opposite direction."
+              },
+              {
+                "text" : "Add power and trim as required to hold altitude and the slow-flight airspeed."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Advance PCL to MAX, raise the gear below 150 KIAS, move flaps from LDG to TO, raise flaps fully at or above 110 KIAS, accelerate to about 200 KIAS, reduce to about 54 percent power, and retrim."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Students usually get behind on trim first, then try to fix the slow-flight picture with large pitch changes instead of small power and trim corrections."
+              },
+              {
+                "text" : "Letting bank angle creep up or rushing the cleanup sequence turns the recovery into a configuration-management problem instead of a basic-airwork recovery."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Slow Flight"
+      },
+      {
+        "items" : [
+          {
+            "text" : "HUD knowledge is introductory in this event. You should know what the major cues are doing, but the outside picture remains primary from brake release through the basic maneuver set."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The HUD and repeater present flight, navigation, steering, and master-mode information in front of the pilot."
+              },
+              {
+                "text" : "Know the master modes NAV, A\/A, and A\/G, and understand what Flash, Limit Cross, and invalid symbology are telling you."
+              }
+            ],
+            "text" : "What it shows:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The basic symbols to recognize early are the waterline reference, flight path marker, climb dive marker, climb dive ladder, bank references, sideslip, and heading scale."
+              },
+              {
+                "text" : "You do not need to brief every symbol from memory yet, but you should know the big-picture job of the major flight cues."
+              }
+            ],
+            "text" : "Core symbology:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "In this event, the HUD should support takeoff, climb, scan-pattern work, trim demonstration, AGSM discussion, and TCAS integration without dragging your eyes off the outside picture."
+              },
+              {
+                "text" : "If the HUD cue conflicts with what the airplane is obviously doing outside, re-anchor to the outside attitude picture first and then use the HUD as a cross-check again."
+              }
+            ],
+            "text" : "How to use it in this event:"
+          }
+        ],
+        "title" : "HUD"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Ejection Seat and CFS"
+          },
+          {
+            "text" : "Abnormal Starts"
+          },
+          {
+            "text" : "Brake Failure"
+          },
+          {
+            "text" : "Strike of Ground Object"
+          },
+          {
+            "text" : "Takeoff"
+          },
+          {
+            "text" : "Departure"
+          },
+          {
+            "text" : "Basic Transitions"
+          },
+          {
+            "text" : "Trim"
+          },
+          {
+            "text" : "Turn Pattern"
+          },
+          {
+            "text" : "Level Speed Change"
+          },
+          {
+            "text" : "Slow Flight"
           },
           {
             "text" : "HUD"
@@ -279,8 +768,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Keep Ground Safety and Cockpit Survival, plus Contact Flight Refresh organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
+    "summary" : "Prioritize seat safety, a clean launch sequence, and smooth P-A-T flying in the first contact maneuver set."
   },
-  "summary" : "Ground Safety and Cockpit Survival, Contact Flight Refresh, and HUD Integration.",
-  "title" : "Ejection Seat and CFS"
+  "summary" : "First contact flight fundamentals: cockpit survival, a clean launch, and the first basic contact maneuver set.",
+  "title" : "First Contact Flight"
 }

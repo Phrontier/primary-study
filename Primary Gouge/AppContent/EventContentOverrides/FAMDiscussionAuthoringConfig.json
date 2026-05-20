@@ -54,71 +54,166 @@
   "eventOverrides" : {
     "FAM3401" : {
       "authoringProfile" : "sim",
-      "sections" : [
+      "eventEmphasisKeywords" : [
+        "aerobatic",
+        "aerobatics",
+        "maneuver"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
         {
-          "discussionItems" : [
-            "AOA approach",
-            "maneuvering speeds"
-          ],
-          "title" : "AOA Approach and Energy Management"
+          "discussionItem" : "AOA approach",
+          "displayTitle" : "AOA Approach",
+          "presentationStyle" : "procedure"
         },
         {
-          "discussionItems" : [
-            "contact unusual attitudes",
-            "OCF recovery and airborne damaged aircraft"
-          ],
-          "title" : "Unusual Attitudes and Recovery Priorities"
+          "discussionItem" : "maneuvering speeds",
+          "displayTitle" : "Maneuvering Speeds",
+          "presentationStyle" : "limits"
         },
         {
-          "discussionItems" : [
-            "aileron roll",
-            "loop",
-            "half cuban eight",
-            "immelmann",
-            "split-s",
-            "wingover",
-            "barrel roll"
-          ],
-          "title" : "Core Aerobatic Maneuvers"
+          "discussionItem" : "contact unusual attitudes",
+          "displayTitle" : "Contact Unusual Attitudes",
+          "presentationStyle" : "recovery",
+          "subsections" : [
+            {
+              "title" : "Nose-High"
+            },
+            {
+              "title" : "Nose-Low"
+            },
+            {
+              "title" : "Inverted"
+            }
+          ]
         },
         {
-          "discussionItems" : [
-            "combination maneuvers",
-            "HUD"
-          ],
-          "title" : "Combination Maneuver Planning and HUD Use"
+          "discussionItem" : "aileron roll",
+          "displayTitle" : "Aileron Roll",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "loop",
+          "displayTitle" : "Loop",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "half cuban eight",
+          "displayTitle" : "Half Cuban Eight",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "immelmann",
+          "displayTitle" : "Immelmann",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "split-s",
+          "displayTitle" : "Split-S",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "wingover",
+          "displayTitle" : "Wingover",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "barrel roll",
+          "displayTitle" : "Barrel Roll",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "OCF recovery and airborne damaged aircraft",
+          "displayTitle" : "OCF Recovery and Airborne Damaged Aircraft",
+          "presentationStyle" : "recovery",
+          "splitSectionTitles" : [
+            "OCF Recovery",
+            "Airborne Damaged Aircraft"
+          ]
+        },
+        {
+          "discussionItem" : "combination maneuvers",
+          "displayTitle" : "Combination Maneuvers",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "HUD",
+          "displayTitle" : "HUD",
+          "manualOnly" : true,
+          "presentationStyle" : "systems"
         }
       ]
     },
     "FAM4101" : {
       "authoringProfile" : "flight",
-      "sections" : [
+      "eventEmphasisKeywords" : [
+        "familiarization",
+        "contact"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
         {
-          "discussionItems" : [
-            "Ejection seat and CFS",
-            "abnormal starts",
-            "brake failure",
-            "strike of ground object"
-          ],
-          "title" : "Ground Safety and Cockpit Survival"
+          "discussionItem" : "Ejection seat and CFS",
+          "displayTitle" : "Ejection Seat and CFS",
+          "presentationStyle" : "procedure"
         },
         {
-          "discussionItems" : [
-            "takeoff",
-            "departure",
-            "basic transitions",
-            "trim",
-            "turn pattern",
-            "level speed change",
-            "slow flight"
-          ],
-          "title" : "Contact Flight Refresh"
+          "discussionItem" : "abnormal starts",
+          "displayTitle" : "Abnormal Starts",
+          "presentationStyle" : "procedure"
         },
         {
-          "discussionItems" : [
-            "HUD"
-          ],
-          "title" : "HUD Integration"
+          "discussionItem" : "brake failure",
+          "displayTitle" : "Brake Failure",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "strike of ground object",
+          "displayTitle" : "Strike of Ground Object",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "takeoff",
+          "displayTitle" : "Takeoff",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "departure",
+          "displayTitle" : "Departure",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "basic transitions",
+          "displayTitle" : "Basic Transitions",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "trim",
+          "displayTitle" : "Trim",
+          "presentationStyle" : "knowledge"
+        },
+        {
+          "discussionItem" : "turn pattern",
+          "displayTitle" : "Turn Pattern",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "level speed change",
+          "displayTitle" : "Level Speed Change",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "slow flight",
+          "displayTitle" : "Slow Flight",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "HUD",
+          "displayTitle" : "HUD",
+          "manualOnly" : true,
+          "presentationStyle" : "systems"
         }
       ]
     },

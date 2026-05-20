@@ -1,47 +1,48 @@
 {
   "canonicalCoverage" : {
     "AOA approach" : [
-      "AOA Approach and Energy Management"
+      "AOA Approach"
     ],
     "HUD" : [
-      "Combination Maneuver Planning and HUD Use"
+      "HUD"
     ],
     "OCF recovery and airborne damaged aircraft" : [
-      "Unusual Attitudes and Recovery Priorities"
+      "OCF Recovery",
+      "Airborne Damaged Aircraft"
     ],
     "aileron roll" : [
-      "Core Aerobatic Maneuvers"
+      "Aileron Roll"
     ],
     "barrel roll" : [
-      "Core Aerobatic Maneuvers"
+      "Barrel Roll"
     ],
     "combination maneuvers" : [
-      "Combination Maneuver Planning and HUD Use"
+      "Combination Maneuvers"
     ],
     "contact unusual attitudes" : [
-      "Unusual Attitudes and Recovery Priorities"
+      "Contact Unusual Attitudes"
     ],
     "half cuban eight" : [
-      "Core Aerobatic Maneuvers"
+      "Half Cuban Eight"
     ],
     "immelmann" : [
-      "Core Aerobatic Maneuvers"
+      "Immelmann"
     ],
     "loop" : [
-      "Core Aerobatic Maneuvers"
+      "Loop"
     ],
     "maneuvering speeds" : [
-      "AOA Approach and Energy Management"
+      "Maneuvering Speeds"
     ],
     "split-s" : [
-      "Core Aerobatic Maneuvers"
+      "Split-S"
     ],
     "wingover" : [
-      "Core Aerobatic Maneuvers"
+      "Wingover"
     ]
   },
   "code" : "FAM3401",
-  "overview" : "This event ties together aoa approach and energy management, unusual attitudes and recovery priorities, and core aerobatic maneuvers into a cleaner familiarization brief. You should be ready to explain the setup picture, the decision chain, and the mistakes that usually appear when the pace picks up.",
+  "overview" : "This event introduces the first aerobatic maneuver set. Be ready to define, brief, and execute each maneuver from entry setup through recovery while using AOA, unusual-attitude, OCF, and HUD knowledge to stay oriented and safe.",
   "primaryDocumentTitles" : [
     "FAM3401",
     "FAM 3401 Briefing guide 1542.166D"
@@ -52,281 +53,784 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Check and report over ICS"
-              },
-              {
-                "text" : "Level flight, wings level"
-              },
-              {
-                "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
-              },
-              {
-                "text" : "Recovery"
-              }
-            ],
-            "text" : "AOA Approach:"
+            "text" : "The AOA approach is an energy-management pattern. Fly optimum AOA on downwind and through the 180 so pitch and power control the picture instead of chasing airspeed late."
           },
           {
             "children" : [
               {
-                "text" : "227 KIAS"
+                "text" : "After the climbout, level at pattern altitude on downwind at 120 KIAS."
               },
               {
-                "text" : "Full rudder deflection above 150 KIAS exceeds rudder system limits and can cause damage, even if below VO."
+                "text" : "Gear down, complete the Before Landing Checklist, and reduce power to about 15 to 20 percent."
               },
               {
-                "text" : "316 KIAS\/ 0.67 Mach"
+                "text" : "Maintain about 3\/4 to 1 wingtip distance from the runway while transitioning to on-speed AOA."
               },
               {
-                "text" : "(19,020 MSL transition)"
+                "text" : "Flaps UP normally settles near 110 KIAS, flaps TO near 100 KIAS, and flaps LDG near 95 KIAS. Adjust pitch for 10.5 units \/ amber donut and use roughly 25 to 30 percent power to hold altitude."
               }
             ],
-            "text" : "Maneuvering Speeds:"
+            "text" : "Downwind transition:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Start the turn from the 180 with 15 to 20 percent power and a slight nose-low attitude."
+              },
+              {
+                "text" : "Stay on-speed throughout the turn. If the green chevron appears, trim nose down and add power as required instead of forcing the aircraft around the corner."
+              },
+              {
+                "text" : "A good checkpoint is about 450 feet AGL at the 90 and about 200 feet AGL, 1200 to 1500 feet from the threshold, on final."
+              },
+              {
+                "text" : "Cross the threshold on-speed and fly it to a normal flare. The goal is an AOA approach to a flared landing, not an AOA touchdown."
+              }
+            ],
+            "text" : "180 to final:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Flaps LDG is the preferred setup because drag, camber, and engine response give the easiest on-speed picture."
+              },
+              {
+                "text" : "Flaps TO is workable but gives less spool-up margin. Flaps UP is the hardest version and is the easiest way to create a high descent rate at low power."
+              },
+              {
+                "text" : "Do not skid or slip the aircraft in the turn. Keep the airplane balanced and correct early with power and attitude instead of waiting until the flare."
+              }
+            ],
+            "text" : "N\/W\/C focus:"
           }
         ],
-        "title" : "AOA Approach and Energy Management"
+        "title" : "AOA Approach"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "PCL - MAX (if low airspeed)"
-              },
-              {
-                "text" : "Use back stick to bring nose to horizon"
-              },
-              {
-                "text" : "Roll upright as nose approaches horizon"
-              },
-              {
-                "text" : "Roll wings level, raise nose, check oil pressure, power as req."
-              }
-            ],
-            "text" : "Contact Unusual Attitudes:"
+            "text" : "Maneuvering speeds define the structural and control-input limits that protect the aircraft during aerobatic setup, recovery, and downhill acceleration."
           },
           {
             "children" : [
               {
-                "text" : "Wings level on a well-defined section line"
+                "text" : "VO is 227 KIAS. Above it, a full or abrupt control input in one axis can overstress the aircraft."
               },
               {
-                "text" : "From wings-level upright flight"
+                "text" : "Full rudder above 150 KIAS exceeds rudder system limits and can damage the aircraft even if you are still below VO."
               },
               {
-                "text" : "Inadvertent Departure from Controlled Flight"
-              },
-              {
-                "text" : "Use ~4 Gs to smoothly recover to level flight"
+                "text" : "Watch the max airspeed of 316 KIAS \/ 0.67 Mach and the 19,020-foot Mach crossover whenever a recovery or downhill maneuver is accelerating."
               }
             ],
-            "text" : "OCF Recovery and Airborne Damaged Aircraft:"
+            "text" : "Know these numbers:"
           }
         ],
-        "title" : "Unusual Attitudes and Recovery Priorities"
+        "title" : "Maneuvering Speeds"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Check and report over ICS"
-              },
-              {
-                "text" : "From wings-level upright flight"
-              },
-              {
-                "text" : "Recovery"
-              },
-              {
-                "text" : "A 360° roll about the longitudinal axis with wings returning to level flight at completion. The nose traces a circular path around the horizon while maintaining overall energy."
-              }
-            ],
-            "text" : "Aileron Roll:"
+            "text" : "Contact unusual attitudes are visual recoveries. The goal is to get back to controlled flight above 6000 feet AGL without turning a recoverable upset into OCF."
           },
           {
             "children" : [
               {
-                "text" : "Check and report over ICS"
+                "text" : "Set PCL to MAX."
               },
               {
-                "text" : "230–250 KIAS"
+                "text" : "Roll past 90 degrees AOB toward the nearest horizon, then use back stick to bring the nose to the horizon."
               },
               {
-                "text" : "From wings-level upright flight"
+                "text" : "Roll upright as the nose approaches the horizon. If needed, allow the nose to fall slightly below the horizon to rebuild airspeed before returning to level flight."
               },
               {
-                "text" : "Recovery"
+                "text" : "Once the aircraft is flying again, roll wings level, raise the nose to level flight, check oil pressure, and set power as required."
               }
             ],
-            "text" : "Loop:"
+            "text" : "Nose-High:"
           },
           {
             "children" : [
               {
-                "text" : "230–250 KIAS"
+                "text" : "Roll the aircraft to the nearest horizon while simultaneously retarding PCL to IDLE."
               },
               {
-                "text" : "A combination of a modified Loop and an Immelmann. Starts with a vertical pull like a Loop, transitions at the top with a 45° nose-low rolling maneuver, and completes in level flight at entry airspeed and reciprocal heading."
+                "text" : "Use speed brake as required to help control the acceleration."
               },
               {
-                "text" : "Smooth pull-up to 4 G's within 2–3 seconds"
+                "text" : "Make a smooth pull to level flight while monitoring airspeed up to 316 KIAS and performing AGSM as the G builds."
               },
               {
-                "text" : "Airspeed ~100–120 KIAS"
+                "text" : "If AOA is below 18 units and airspeed is below 110 KIAS, you can advance power. If AOA is above 18 units or the airplane is not responding normally, transition to OCF recovery."
               }
             ],
-            "text" : "Half Cuban Eight:"
+            "text" : "Nose-Low:"
           },
           {
             "children" : [
               {
-                "text" : "230–250 KIAS"
+                "text" : "Roll the shortest way to the horizon."
               },
               {
-                "text" : "Level flight, wings level"
+                "text" : "Use power as required."
               },
               {
-                "text" : "Smooth pull-up to 4 G's within 2–3 seconds"
-              },
-              {
-                "text" : "Airspeed ~100–120 KIAS"
+                "text" : "As the nose approaches or slightly passes the horizon, check and report oil pressure, then adjust power to maintain level flight."
               }
             ],
-            "text" : "Immelmann:"
+            "text" : "Inverted:"
           },
           {
             "children" : [
               {
-                "text" : "From wings-level upright flight"
+                "text" : "Never push with forward stick in a nose-high recovery. That creates zero or negative G and can make the departure worse."
               },
               {
-                "text" : "Level flight, wings level"
+                "text" : "Avoid stopping the roll at knife-edge. Roll past 90 degrees and use positive G to bring the nose back to the horizon."
               },
               {
-                "text" : "Transition to 150 KIAS"
+                "text" : "Stick shaker or buffet means the aircraft is at the edge of a stall. Reduce back pressure."
               },
               {
-                "text" : "High enough for ~3000 ft loss"
+                "text" : "If the aircraft is stalled or in OCF, stop trying to fly a normal unusual-attitude recovery and go straight to OCF recovery."
               }
             ],
-            "text" : "Split-S:"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Level flight, wings level"
-              },
-              {
-                "text" : "A 180° reversal combining a smooth climbing 90° turn with a smooth descending 90° turn. Ends on the same altitude and approximately the same airspeed as entry."
-              },
-              {
-                "text" : "200–220 KIAS"
-              },
-              {
-                "text" : "~70%"
-              }
-            ],
-            "text" : "Wingover:"
-          },
-          {
-            "children" : [
-              {
-                "text" : "360° roll around an imaginary point 45° off the nose."
-              },
-              {
-                "text" : "Pick reference point 45° off nose (left or right)."
-              },
-              {
-                "text" : "At ~20° nose up, begin coordinated roll and pull."
-              },
-              {
-                "text" : "90°"
-              }
-            ],
-            "text" : "Barrel Roll:"
+            "text" : "N\/W\/C focus:"
           }
         ],
-        "title" : "Core Aerobatic Maneuvers"
+        "title" : "Contact Unusual Attitudes"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Level flight, wings level"
-              },
-              {
-                "text" : "recovery by maintaining neutral controls is possible but time and altitude loss will be greater than with the"
-              },
-              {
-                "text" : "A 180° reversal combining a smooth climbing 90° turn with a smooth descending 90° turn. Ends on the same altitude and approximately the same airspeed as entry."
-              },
-              {
-                "text" : "200–220 KIAS"
-              }
-            ],
-            "text" : "Combination Maneuvers:"
+            "text" : "An aileron roll is a 360-degree roll about the longitudinal axis. The nose traces a small circle around the horizon and the maneuver finishes on the entry heading."
           },
           {
             "children" : [
               {
-                "text" : "FWD Cockpit HUD and right MFD HUD repeater (FWD\/AFT cockpits)"
+                "text" : "Set about 80 percent PCL and enter at 180 to 220 KIAS."
               },
               {
-                "text" : "flight, navigation, tactical data, weapon info, steering cues"
+                "text" : "Be at or above 6000 feet AGL, start wings level from upright flight, and use a clean heading or section-line reference before you begin the pull."
               },
               {
-                "text" : "NAV (navigation), A\/A (air-to-air), A\/G (air-to-ground)"
-              },
-              {
-                "text" : "Flash - time-critical or symbol outside FOV"
+                "text" : "Complete the pre-stall \/ spin \/ aerobatic checks, clear the area, and confirm enough maneuvering room to recover on the entry heading."
               }
             ],
-            "text" : "HUD:"
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Raise the nose smoothly to about 10 degrees nose high."
+              },
+              {
+                "text" : "Relax back-stick pressure so the nose stops tracking upward, then apply full aileron in the desired direction."
+              },
+              {
+                "text" : "Stay coordinated and neutralize aileron as the wings approach level so the maneuver finishes on the entry heading."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Finish wings level on the entry heading with altitude, airspeed, and nose attitude close enough that no cleanup turn or pitch correction is required."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Holding back stick through the roll drives the nose in an arc and makes the inverted portion ugly."
+              },
+              {
+                "text" : "Waiting too long to start the roll bleeds energy and slows the roll rate."
+              }
+            ],
+            "text" : "Common errors:"
           }
         ],
-        "title" : "Combination Maneuver Planning and HUD Use"
+        "title" : "Aileron Roll"
       },
       {
         "items" : [
           {
-            "text" : "AOA approach"
+            "text" : "The loop is a 360-degree turn in the vertical plane flown on a constant heading and nose track. Elevator is primary; rudder and aileron only keep the airplane coordinated and aligned."
           },
           {
-            "text" : "maneuvering speeds"
+            "children" : [
+              {
+                "text" : "Set PCL to MAX and enter at 230 to 250 KIAS."
+              },
+              {
+                "text" : "Start wings level on a well-defined section line with clear airspace above, PSSA complete, and entry altitude reported over ICS."
+              },
+              {
+                "text" : "Plan around 3000 feet of maneuvering room for the loop and recovery, and confirm you are high enough to finish without forcing the pull-out."
+              }
+            ],
+            "text" : "Entry setup:"
           },
           {
-            "text" : "contact unusual attitudes"
+            "children" : [
+              {
+                "text" : "Initiate AGSM and make a smooth 4 G pull-up within about 2 to 3 seconds."
+              },
+              {
+                "text" : "Keep the wings level with rudder, not aileron, and increase right rudder as airspeed decreases."
+              },
+              {
+                "text" : "Expect roughly 100 to 120 KIAS over the top while maintaining positive G."
+              },
+              {
+                "text" : "On the backside, let the nose fall, relax rudder as airspeed builds, resume AGSM, and recover wings level on the original heading."
+              }
+            ],
+            "text" : "Execution:"
           },
           {
-            "text" : "aileron roll"
+            "children" : [
+              {
+                "text" : "Recover wings level on the original heading with energy back under control, enough altitude margin remaining, and no stall or OCF cues present."
+              }
+            ],
+            "text" : "Maneuver complete when:"
           },
           {
-            "text" : "loop"
+            "children" : [
+              {
+                "text" : "A delayed pull-out is how you end up fast and low in the recovery."
+              },
+              {
+                "text" : "If the aircraft stalls, go PCL IDLE, controls neutral, and let the nose fall to recover before trying to salvage the loop."
+              }
+            ],
+            "text" : "N\/W\/C focus:"
+          }
+        ],
+        "title" : "Loop"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The half Cuban Eight is a modified loop that carries the airplane to a 45-degree nose-low line, then uses a half roll to recover upright, followed by a pull to finish on reciprocal heading at the original altitude."
           },
           {
-            "text" : "half cuban eight"
+            "children" : [
+              {
+                "text" : "Set PCL to MAX and enter at 230 to 250 KIAS."
+              },
+              {
+                "text" : "Complete PSSA, clear the area, recheck wings level and the airspace above, and call the entry altitude over ICS."
+              },
+              {
+                "text" : "Start wings level on a well-defined section line and allow roughly 3000 feet of maneuvering room so you can pull over the top, establish the 45-degree nose-low line, and still complete the pull-out on reciprocal heading."
+              }
+            ],
+            "text" : "Entry setup:"
           },
           {
-            "text" : "immelmann"
+            "children" : [
+              {
+                "text" : "Make the same smooth 4 G pull-up as the loop, keep the wings level with rudder, and do not use aileron through the pull."
+              },
+              {
+                "text" : "Over the top, let the nose fall to the 45-degree nose-low line, then execute a coordinated roll upright."
+              },
+              {
+                "text" : "After the roll, hold the 45-degree line long enough to look stable, then pull out on heading with energy under control."
+              }
+            ],
+            "text" : "Execution:"
           },
           {
-            "text" : "split-s"
+            "children" : [
+              {
+                "text" : "Finish in level flight at entry airspeed on reciprocal heading, with the rollout and pull-out complete before you start cleaning up the picture."
+              }
+            ],
+            "text" : "Maneuver complete when:"
           },
           {
-            "text" : "wingover"
+            "children" : [
+              {
+                "text" : "Wrong G-loading or poor timing on the pull-up wrecks the picture early."
+              },
+              {
+                "text" : "Aft stick during the roll drives an off-heading recovery."
+              },
+              {
+                "text" : "Raising the nose too early after the roll erases the 45-degree line and turns the maneuver into a rushed pull-out."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Half Cuban Eight"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The Immelmann is a half loop followed by a half roll to upright at the top. It should reverse your heading while keeping the airplane organized through the slowest part of the maneuver."
           },
           {
-            "text" : "barrel roll"
+            "children" : [
+              {
+                "text" : "Set PCL to MAX and enter at 230 to 250 KIAS."
+              },
+              {
+                "text" : "Start wings level on a well-defined section line, complete PSSA and clearing turns, and report the entry altitude over ICS."
+              },
+              {
+                "text" : "Confirm clear airspace above before you begin the pull, because the top of the maneuver is slow and leaves little margin for rushed corrections."
+              }
+            ],
+            "text" : "Entry setup:"
           },
           {
-            "text" : "OCF recovery and airborne damaged aircraft"
+            "children" : [
+              {
+                "text" : "Begin AGSM and make a smooth 4 G pull-up within about 2 to 3 seconds without aileron input, then keep the wings level with rudder as airspeed decays."
+              },
+              {
+                "text" : "Past vertical, find the opposite horizon, use aileron to roll upright, and use slight forward stick past 90 degrees of roll if needed."
+              },
+              {
+                "text" : "Let airspeed rebuild after the rollout without dropping the nose excessively or drifting off heading."
+              }
+            ],
+            "text" : "Execution:"
           },
           {
-            "text" : "combination maneuvers"
+            "children" : [
+              {
+                "text" : "Finish upright and wings level on reciprocal heading, slightly nose high, around 120 KIAS, ready to let airspeed rebuild without an avoidable descent."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Poor rudder coordination shows up fast at the top of the maneuver."
+              },
+              {
+                "text" : "Rolling too early or too late creates off-heading or nose-low recoveries."
+              },
+              {
+                "text" : "Pulling during the roll is an easy way to ruin the heading reversal."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Immelmann"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A Split-S combines a half roll to inverted with the second half of a loop. It reverses direction while converting altitude into airspeed and finishes in level flight."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Retard PCL to IDLE, hold altitude, and slow to about 140 KIAS after transitioning through 150 KIAS."
+              },
+              {
+                "text" : "Start from wings-level upright flight with PSSA complete, the area cleared, and enough altitude for about 3000 feet of altitude loss."
+              },
+              {
+                "text" : "Raise the nose to about 10 degrees nose high, then execute a half roll to inverted and confirm the wings are truly level before you pull."
+              }
+            ],
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Apply back stick to pull through the horizon while maximizing nose track without stalling."
+              },
+              {
+                "text" : "If you get shaker or buffet, ease off the back stick rather than forcing the pull-through."
+              },
+              {
+                "text" : "As airspeed and G build, perform AGSM, recover to level flight, check and report oil pressure, and add power as required."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Finish in level flight on reciprocal heading with oil pressure checked, power reset as required, and enough altitude margin left to reset cleanly."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Solos are prohibited from Split-S, Immelmann, Combination Maneuvers, and sustained inverted flight."
+              },
+              {
+                "text" : "Ensure the wings are level inverted before the pull. Use a ground reference above the canopy bow to keep the pull straight."
+              },
+              {
+                "text" : "If the aircraft becomes unresponsive during the pull-through, stop trying to force the maneuver and transition to OCF recovery."
+              }
+            ],
+            "text" : "N\/W\/C focus:"
+          }
+        ],
+        "title" : "Split-S"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A wingover is flown as two leafs, each a smooth 180-degree reversal combining a climbing turn and a descending turn. The full series returns the aircraft to the original heading at approximately the original altitude and airspeed."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Set about 70 percent PCL and enter at 200 to 220 KIAS."
+              },
+              {
+                "text" : "Start from level flight with the area cleared, PSSA complete, and enough altitude to work the nose-low backside safely."
+              },
+              {
+                "text" : "Pick a reference point about 90 degrees off the wingtip and be ready to fly the maneuver as a pair so you return to original heading after the second leaf."
+              }
+            ],
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Begin with a shallow bank and let nose position and bank angle build together."
+              },
+              {
+                "text" : "As the nose approaches the horizon on the climbing side, expect bank to build toward the steepest part of the maneuver."
+              },
+              {
+                "text" : "Let the nose fall and time the roll so the airplane finishes wings level on reciprocal heading without a rushed pull at the bottom."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Finish the first wingover on reciprocal heading at original altitude and approximately entry airspeed, then repeat opposite direction and end back on original heading without a rushed recovery."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Rushing the maneuver makes the bank and pitch get out of sync."
+              },
+              {
+                "text" : "Exceeding 90 degrees of bank or forcing the recovery is a sign the setup picture was not right."
+              },
+              {
+                "text" : "If you are off airspeed, altitude, or heading at the end, the timing was not smooth enough."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Wingover"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A barrel roll is a 360-degree rolling maneuver flown around an imaginary reference point about 45 degrees off the nose. Pitch and roll are blended so the nose traces a corkscrew path and the aircraft returns to the original heading and altitude."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Set about 80 percent PCL and enter at 200 to 220 KIAS."
+              },
+              {
+                "text" : "Complete PSSA, clear the area, report entry altitude, and pick the 45-degree off-the-nose reference point before you move the stick."
+              },
+              {
+                "text" : "Start straight and level so the roll begins from a stable sight picture instead of from a wandering heading or altitude."
+              }
+            ],
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Raise the nose smoothly with the wings level, then begin the coordinated pull-and-roll around the reference."
+              },
+              {
+                "text" : "Be wings level while inverted at the 90-degree checkpoint and finish on the original heading and altitude."
+              },
+              {
+                "text" : "Keep positive G throughout and avoid flying it like an instrument maneuver from inside the cockpit."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Finish on original heading and altitude with wings level, positive G maintained throughout, and a symmetrical path above and below the horizon."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Poor pitch-and-roll coordination turns the barrel roll into either an aileron roll or a lopsided climbing turn."
+              },
+              {
+                "text" : "Bad rudder inputs create imbalance and make the path asymmetrical above and below the horizon."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Barrel Roll"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Out-of-control flight recovery starts with recognition, disciplined neutral-control recovery inputs, and patience while the aircraft responds."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Poststall gyration shows up right after the stall with uncommanded motion about one or more axes, erratic airspeed, high AOA, and controls that feel ineffective."
+              },
+              {
+                "text" : "An incipient spin is the transition between poststall gyration and a steady-state spin. Expect oscillatory spin-like motion, a pegged turn needle, stalled AOA, and changing airspeed."
+              },
+              {
+                "text" : "A steady-state spin has aerodynamic and inertial forces in balance. Expect the turn needle pegged and airspeed around 120 to 135 KIAS, stable or only slightly oscillating."
+              },
+              {
+                "text" : "Airspeed and nose attitude are not reliable stall cues here. Better cues are uncommanded pitch-up, nose drop, wing roll, or pitch bucking."
+              }
+            ],
+            "text" : "Recognition:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Go PCL IDLE, physically confirm controls neutral, check altitude, and then recover from the resulting unusual attitude once the stall breaks and the airplane responds."
+              },
+              {
+                "text" : "If the aircraft is not responding yet, keep the controls neutral and do not start inventing anti-spin inputs early just because the motion feels wrong."
+              },
+              {
+                "text" : "Time distortion and G distortion are part of the trap. Be patient and let the recovery work before you decide it has failed."
+              }
+            ],
+            "text" : "Recovery:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "6000 feet AGL is the minimum altitude for uncontrolled ejection."
+              }
+            ],
+            "text" : "Critical altitude reminder:"
+          }
+        ],
+        "title" : "OCF Recovery"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Airborne damaged aircraft procedures apply once the aircraft is still controllable but structural, control-surface, or engine damage is suspected."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Maintain aircraft control first."
+              },
+              {
+                "text" : "If the aircraft is uncontrollable, eject."
+              },
+              {
+                "text" : "Assess engine status. If bird strike or damage is suspected within the prop arc, be ready to execute a PEL."
+              }
+            ],
+            "text" : "Immediate priorities:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the aircraft is still controllable, perform a controllability check for structural or flight-control damage and, if practical, climb to at least 6500 feet AGL before working the rest of the problem."
+              },
+              {
+                "text" : "Slow the aircraft progressively while checking flight characteristics, test the power range, and avoid stalling or using full control inputs to maintain flight."
+              },
+              {
+                "text" : "If flap damage is known or suspected, do not reposition flaps once the configuration risk is identified."
+              }
+            ],
+            "text" : "Controllability check:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fly no slower than minimum controllable airspeed plus 20 KIAS until final, and plan a power-on straight-in approach with minimum flare."
+              },
+              {
+                "text" : "Limited rudder or crosswind problems may require a no-flap straight-in, slow PCL movement on a go-around, and differential braking during rollout."
+              }
+            ],
+            "text" : "Landing considerations:"
+          }
+        ],
+        "title" : "Airborne Damaged Aircraft"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Combination maneuvers are an energy-management and planning problem as much as they are a stick-and-rudder problem. The goal is to make the sequence look deliberate instead of like a set of disconnected recoveries."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Choose and brief the sequence before you start, including maneuver order, expected heading changes, and the altitude and energy state you need when each maneuver ends."
+              },
+              {
+                "text" : "Start with enough working altitude and airspeed to fly the highest-energy maneuver first without painting yourself into a slow or low corner."
+              },
+              {
+                "text" : "Use the normal clear-area, checklist, and working-area setup before the first maneuver so the sequence starts from a controlled picture instead of a rushed one."
+              }
+            ],
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fly the sequence as one continuous evolution, but transition while the previous maneuver is still under control instead of waiting to think about the next step after the recovery."
+              },
+              {
+                "text" : "Maintain positive aircraft control and keep the outside picture primary so heading, altitude, and energy changes stay ahead of you."
+              },
+              {
+                "text" : "If the first maneuver ends sloppy, recover to level flight and reset instead of forcing a bad second maneuver."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The final maneuver ends on the planned heading, altitude, and airspeed with enough control margin to recover or re-enter the next profile without rescue coaching."
+              }
+            ],
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Poor maneuver sequencing is the fastest way to create avoidable low-energy or low-altitude problems."
+              },
+              {
+                "text" : "Do not let a sloppy first maneuver force you into a rushed transition that makes the rest of the sequence worse."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Combination Maneuvers"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Treat the HUD as a heads-up cross-check for aerobatic setup and recovery, not as the primary thing you are trying to fly off of. It should support the outside picture and help you stay oriented when the workload jumps."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know the basic job of the HUD: it presents flight, navigation, steering, and master-mode information in front of the pilot, with the repeater available in the other cockpit."
+              },
+              {
+                "text" : "Understand what Flash, Limit Cross, and invalid or missing symbology are telling you so you do not chase a cue that is outside the field of view or no longer trustworthy."
+              }
+            ],
+            "text" : "What to understand:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For AOA work, the HUD should help confirm the on-speed picture and the basic attitude cues, but it should not pull your scan inside during the pattern."
+              },
+              {
+                "text" : "For aerobatics, use the HUD to support section-line awareness, pitch \/ bank orientation, and quick cross-checks like the aerobatic maneuver chart or SSR references while keeping the horizon and outside attitude picture primary."
+              },
+              {
+                "text" : "For unusual attitudes or OCF-related work, the HUD is a secondary orientation tool once you have re-anchored to the correct recovery picture; it is not a substitute for flying the recovery."
+              }
+            ],
+            "text" : "How it helps:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "You should be able to explain the broad HUD cues that matter in this event without trying to brief every symbol on the combiner glass."
+              },
+              {
+                "text" : "If the symbology stops making sense, look outside, regain the correct attitude picture, and then use the HUD as a confirming cross-check again."
+              }
+            ],
+            "text" : "Study standard:"
+          }
+        ],
+        "title" : "HUD"
+      },
+      {
+        "items" : [
+          {
+            "text" : "AOA Approach"
+          },
+          {
+            "text" : "Maneuvering Speeds"
+          },
+          {
+            "text" : "Contact Unusual Attitudes"
+          },
+          {
+            "text" : "Aileron Roll"
+          },
+          {
+            "text" : "Loop"
+          },
+          {
+            "text" : "Half Cuban Eight"
+          },
+          {
+            "text" : "Immelmann"
+          },
+          {
+            "text" : "Split-S"
+          },
+          {
+            "text" : "Wingover"
+          },
+          {
+            "text" : "Barrel Roll"
+          },
+          {
+            "text" : "OCF Recovery and Airborne Damaged Aircraft"
+          },
+          {
+            "text" : "Combination Maneuvers"
           },
           {
             "text" : "HUD"
@@ -335,8 +839,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Focus on AOA Approach and Energy Management, plus Unusual Attitudes and Recovery Priorities first; the rest of the event gets much easier once the setup and the common misses are already clear."
+    "summary" : "Focus on textbook maneuver briefs: definition, entry setup, execution, and maneuver-complete cues for every aerobatic item, with AOA, unusual-attitude, OCF, and HUD knowledge supporting the larger maneuver set."
   },
-  "summary" : "AOA Approach and Energy Management, Unusual Attitudes and Recovery Priorities, and Core Aerobatic Maneuvers.",
-  "title" : "AOA and Aerobatics"
+  "summary" : "First aerobatics event: maneuver definitions, entry setup, recovery cues, and the supporting AOA, OCF, and HUD knowledge required to brief the sortie accurately.",
+  "title" : "Introduction to Aerobatics"
 }

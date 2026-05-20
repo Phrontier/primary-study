@@ -92,25 +92,6 @@
       ]
     },
     {
-      "code" : "FAM3401",
-      "missingCanonicalItems" : [
-
-      ],
-      "unexpectedPrimaryItems" : [
-        "Core Aerobatic Maneuvers"
-      ]
-    },
-    {
-      "code" : "FAM4101",
-      "missingCanonicalItems" : [
-
-      ],
-      "unexpectedPrimaryItems" : [
-        "Ground Safety and Cockpit Survival",
-        "Contact Flight Refresh"
-      ]
-    },
-    {
       "code" : "FAM4201",
       "missingCanonicalItems" : [
 
@@ -194,7 +175,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-15T00:26:24Z",
+  "generatedAt" : "2026-05-20T22:40:14Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

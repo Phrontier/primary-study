@@ -387,7 +387,7 @@ struct Primary_GougeTests {
     }
 
     @MainActor
-    @Test func everyFamSyllabusEventHasAuthoredNotesAndExactRequiredProcedures() throws {
+    @Test func everyFamSyllabusEventHasAuthoredNotesAndNormalizedRequiredProcedures() throws {
         let manifest = try loadStudyManifestFromAppContent()
         let reference = try loadSyllabusReferenceFromAppContent()
         let manifestEvents = manifestEventLookup(from: manifest)
@@ -401,7 +401,7 @@ struct Primary_GougeTests {
             let notes = try #require(manifestEvent.studyNotes)
             let requiredSection = try #require(notes.sections.last)
             #expect(requiredSection.title == "Required Procedures")
-            #expect(requiredSection.items.map(\.text) == famEvent.discussionItems)
+            #expect(requiredSection.items.map(\.text).map(normalizedAuditText) == famEvent.discussionItems.map(normalizedAuditText))
         }
     }
 
@@ -439,57 +439,146 @@ struct Primary_GougeTests {
     }
 
     @MainActor
-    @Test func regeneratedFamEventsUseReadableGroupedSectionsAndNoBoilerplateCopy() throws {
+    @Test func fam3401UsesPerItemSectionsAndEventSpecificCopy() throws {
         let manifest = try loadStudyManifestFromAppContent()
         let manifestEvents = manifestEventLookup(from: manifest)
 
-        let expectedSections: [String: [String]] = [
-            "FAM3401": [
-                "AOA Approach and Energy Management",
-                "Unusual Attitudes and Recovery Priorities",
-                "Core Aerobatic Maneuvers",
-                "Combination Maneuver Planning and HUD Use",
-                "Required Procedures"
-            ],
-            "FAM4101": [
-                "Ground Safety and Cockpit Survival",
-                "Contact Flight Refresh",
-                "HUD Integration",
-                "Required Procedures"
-            ],
-            "FAM4201": [
-                "NATOPS and Engine System Review",
-                "Landing Option Decision Chain",
-                "Aldis Lamp Signals",
-                "Required Procedures"
-            ],
-            "FAM4601": [
-                "Night Environment and Lighting Setup",
-                "Night Emergencies and Electrical Degradation",
-                "Local Night Procedures",
-                "Required Procedures"
-            ],
-            "FAM6101": [
-                "Course Rules and Sectional Setup",
-                "OLF and Home-Field Flow",
-                "Required Procedures"
-            ],
-            "FAM6402": [
-                "Cumulative EP Review",
-                "Required Procedures"
-            ]
-        ]
+        let event = try #require(manifestEvents["FAM3401"])
+        #expect(event.title == "Introduction to Aerobatics")
+        #expect(event.summary.lowercased().contains("aerobatic"))
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(!event.overview.lowercased().contains("this event pulls together"))
+        #expect(event.overview.lowercased().contains("first aerobatic maneuver set"))
 
-        for (code, expectedTitles) in expectedSections {
-            let event = try #require(manifestEvents[code])
-            #expect(!event.overview.lowercased().contains("is a sim event focused on"))
-            #expect(!event.overview.lowercased().contains("is a flight event focused on"))
+        let notes = try #require(event.studyNotes)
+        let summary = try #require(notes.summary)
+        #expect(!summary.lowercased().contains("use these notes to cover every required discussion item in syllabus order"))
+        #expect(summary.lowercased().contains("aerobatic"))
+        #expect(notes.sections.compactMap(\.title) == [
+            "AOA Approach",
+            "Maneuvering Speeds",
+            "Contact Unusual Attitudes",
+            "Aileron Roll",
+            "Loop",
+            "Half Cuban Eight",
+            "Immelmann",
+            "Split-S",
+            "Wingover",
+            "Barrel Roll",
+            "OCF Recovery",
+            "Airborne Damaged Aircraft",
+            "Combination Maneuvers",
+            "HUD",
+            "Required Procedures"
+        ])
 
-            let notes = try #require(event.studyNotes)
-            let summary = try #require(notes.summary)
-            #expect(!summary.lowercased().contains("use these notes to cover every required discussion item in syllabus order"))
-            #expect(notes.sections.compactMap(\.title) == expectedTitles)
+        let aoaSection = try #require(notes.sections.first(where: { $0.title == "AOA Approach" }))
+        let aoaText = aoaSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(aoaText.contains("10.5 units"))
+
+        let maneuveringSpeedsSection = try #require(notes.sections.first(where: { $0.title == "Maneuvering Speeds" }))
+        #expect(!maneuveringSpeedsSection.items.map(\.text).joined(separator: " ").contains("Know the limit before you need it"))
+
+        for title in ["Aileron Roll", "Loop", "Half Cuban Eight", "Immelmann", "Split-S", "Wingover", "Barrel Roll"] {
+            let section = try #require(notes.sections.first(where: { $0.title == title }))
+            #expect(section.items.contains(where: { $0.text == "Entry setup:" }))
+            #expect(section.items.contains(where: { $0.text == "Execution:" }))
+            #expect(section.items.contains(where: { $0.text == "Maneuver complete when:" }))
         }
+
+        let contactUASection = try #require(notes.sections.first(where: { $0.title == "Contact Unusual Attitudes" }))
+        let noseHigh = try #require(contactUASection.items.first(where: { $0.text == "Nose-High:" }))
+        #expect(noseHigh.children?.first?.text == "Set PCL to MAX.")
+        let noseLow = try #require(contactUASection.items.first(where: { $0.text == "Nose-Low:" }))
+        let noseLowChildren = noseLow.children?.map(\.text) ?? []
+        #expect(noseLowChildren.first == "Roll the aircraft to the nearest horizon while simultaneously retarding PCL to IDLE.")
+        #expect(noseLowChildren.dropFirst().first == "Use speed brake as required to help control the acceleration.")
+
+        let aileronRollSection = try #require(notes.sections.first(where: { $0.title == "Aileron Roll" }))
+        #expect(aileronRollSection.items.first?.text == "An aileron roll is a 360-degree roll about the longitudinal axis. The nose traces a small circle around the horizon and the maneuver finishes on the entry heading.")
+
+        let loopSection = try #require(notes.sections.first(where: { $0.title == "Loop" }))
+        let loopEntry = try #require(loopSection.items.first(where: { $0.text == "Entry setup:" }))
+        let loopEntryText = ([loopEntry.text] + (loopEntry.children?.map(\.text) ?? [])).joined(separator: " ")
+        #expect(loopEntryText.contains("MAX"))
+        #expect(loopEntryText.contains("230 to 250 KIAS"))
+
+        let cubanSection = try #require(notes.sections.first(where: { $0.title == "Half Cuban Eight" }))
+        let cubanLead = try #require(cubanSection.items.first?.text)
+        #expect(cubanLead.range(of: "followed by a pull to finish on reciprocal heading at the original altitude") != nil)
+        let cubanEntry = try #require(cubanSection.items.first(where: { $0.text == "Entry setup:" }))
+        let cubanEntryText = ([cubanEntry.text] + (cubanEntry.children?.map(\.text) ?? [])).joined(separator: " ")
+        #expect(cubanEntryText.contains("MAX"))
+        #expect(cubanEntryText.contains("230 to 250 KIAS"))
+        #expect(cubanEntryText.contains("3000 feet"))
+
+        let immelmannSection = try #require(notes.sections.first(where: { $0.title == "Immelmann" }))
+        let immelmannEntry = try #require(immelmannSection.items.first(where: { $0.text == "Entry setup:" }))
+        let immelmannEntryText = ([immelmannEntry.text] + (immelmannEntry.children?.map(\.text) ?? [])).joined(separator: " ")
+        #expect(immelmannEntryText.contains("MAX"))
+        #expect(immelmannEntryText.contains("230 to 250 KIAS"))
+        let immelmannExecution = try #require(immelmannSection.items.first(where: { $0.text == "Execution:" }))
+        let immelmannExecutionLead = (immelmannExecution.children ?? []).first?.text ?? ""
+        #expect(immelmannExecutionLead.range(of: "4 G") != nil)
+
+        let wingoverSection = try #require(notes.sections.first(where: { $0.title == "Wingover" }))
+        let wingoverLead = try #require(wingoverSection.items.first?.text)
+        #expect(wingoverLead.range(of: "two leafs") != nil)
+        let wingoverEntry = try #require(wingoverSection.items.first(where: { $0.text == "Entry setup:" }))
+        let wingoverEntryText = ([wingoverEntry.text] + (wingoverEntry.children?.map(\.text) ?? [])).joined(separator: " ")
+        #expect(wingoverEntryText.contains("70 percent PCL"))
+        #expect(wingoverEntryText.contains("200 to 220 KIAS"))
+
+        let barrelSection = try #require(notes.sections.first(where: { $0.title == "Barrel Roll" }))
+        let barrelLead = try #require(barrelSection.items.first?.text)
+        #expect(barrelLead.range(of: "corkscrew path") != nil)
+        let barrelEntry = try #require(barrelSection.items.first(where: { $0.text == "Entry setup:" }))
+        let barrelEntryText = ([barrelEntry.text] + (barrelEntry.children?.map(\.text) ?? [])).joined(separator: " ")
+        #expect(barrelEntryText.contains("80 percent PCL"))
+        #expect(barrelEntryText.contains("200 to 220 KIAS"))
+
+        let splitSSection = try #require(notes.sections.first(where: { $0.title == "Split-S" }))
+        #expect(splitSSection.items.first?.text == "A Split-S combines a half roll to inverted with the second half of a loop. It reverses direction while converting altitude into airspeed and finishes in level flight.")
+
+        let ocfSection = try #require(notes.sections.first(where: { $0.title == "OCF Recovery" }))
+        let recoveryItem = try #require(ocfSection.items.first(where: { $0.text == "Recovery:" }))
+        let recoveryText = ([recoveryItem.text] + (recoveryItem.children?.map(\.text) ?? [])).joined(separator: " ").lowercased()
+        #expect(!recoveryText.contains("eject"))
+        let criticalAltitudeItem = try #require(ocfSection.items.first(where: { $0.text == "Critical altitude reminder:" }))
+        let criticalAltitudeText = (criticalAltitudeItem.children ?? []).map(\.text).joined(separator: " ")
+        #expect(criticalAltitudeText.contains("6000 feet AGL"))
+        let airborneDamagedSection = try #require(notes.sections.first(where: { $0.title == "Airborne Damaged Aircraft" }))
+        #expect(airborneDamagedSection.items.map(\.text) == [
+            "Airborne damaged aircraft procedures apply once the aircraft is still controllable but structural, control-surface, or engine damage is suspected.",
+            "Immediate priorities:",
+            "Controllability check:",
+            "Landing considerations:"
+        ])
+
+        let hudSection = try #require(notes.sections.first(where: { $0.title == "HUD" }))
+        #expect(hudSection.items.map(\.text) == [
+            "Treat the HUD as a heads-up cross-check for aerobatic setup and recovery, not as the primary thing you are trying to fly off of. It should support the outside picture and help you stay oriented when the workload jumps.",
+            "What to understand:",
+            "How it helps:",
+            "Study standard:"
+        ])
+
+        let requiredSection = try #require(notes.sections.last)
+        #expect(requiredSection.items.map(\.text) == [
+            "AOA Approach",
+            "Maneuvering Speeds",
+            "Contact Unusual Attitudes",
+            "Aileron Roll",
+            "Loop",
+            "Half Cuban Eight",
+            "Immelmann",
+            "Split-S",
+            "Wingover",
+            "Barrel Roll",
+            "OCF Recovery and Airborne Damaged Aircraft",
+            "Combination Maneuvers",
+            "HUD"
+        ])
     }
 
     @MainActor
@@ -506,6 +595,54 @@ struct Primary_GougeTests {
         let fam4501 = try #require(manifestEvents["FAM4501"])
         #expect(fam4501.summary == "Solo-brief risk, weather, support-agency, and execution priorities.")
         #expect(fam4501.studyNotes?.sections.first?.title == "Solo Brief Focus")
+    }
+
+    @MainActor
+    @Test func fam4101UsesReadablePerItemFlightSectionsWithoutLocalProcedureLeakage() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4101"])
+        #expect(event.title == "First Contact Flight")
+        #expect(event.summary.lowercased().contains("first contact flight"))
+        #expect(!event.overview.lowercased().contains("this is the first day familiarization flight"))
+
+        let notes = try #require(event.studyNotes)
+        let summary = try #require(notes.summary)
+        #expect(summary.contains("P-A-T"))
+        #expect(notes.sections.compactMap(\.title) == [
+            "Ejection Seat and CFS",
+            "Abnormal Starts",
+            "Brake Failure",
+            "Strike of Ground Object",
+            "Takeoff",
+            "Departure",
+            "Basic Transitions",
+            "Trim",
+            "Turn Pattern",
+            "Level Speed Change",
+            "Slow Flight",
+            "HUD",
+            "Required Procedures"
+        ])
+
+        let departureSection = try #require(notes.sections.first(where: { $0.title == "Departure" }))
+        let departureText = departureSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        for forbidden in ["waldron", "rusty", "high bridge", "camel humps", "pt silver", "pt sunrise", "beachline", "nueces", "oso", "shamrock", "corpus departure"] {
+            #expect(!departureText.contains(forbidden))
+        }
+        #expect(departureText.contains("what stays local"))
+
+        let takeoffSection = try #require(notes.sections.first(where: { $0.title == "Takeoff" }))
+        let lineupItem = try #require(takeoffSection.items.first(where: { $0.text == "Lineup and before brake release:" }))
+        let lineupText = ([lineupItem.text] + (lineupItem.children?.map(\.text) ?? [])).joined(separator: " ")
+        #expect(lineupText.contains("30 percent"))
+
+        let slowFlightSection = try #require(notes.sections.first(where: { $0.title == "Slow Flight" }))
+        #expect(slowFlightSection.items.contains(where: { $0.text == "Common errors:" }))
+
+        let hudSection = try #require(notes.sections.first(where: { $0.title == "HUD" }))
+        #expect(hudSection.items.first?.text.contains("outside picture remains primary") == true)
     }
 
     @MainActor
@@ -717,6 +854,14 @@ struct Primary_GougeTests {
                 .flatMap(\.events)
                 .map { ($0.code, $0) }
         )
+    }
+
+    private func normalizedAuditText(_ value: String) -> String {
+        value
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+            .replacingOccurrences(of: "[^a-z0-9]+", with: " ", options: .regularExpression)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
     }
 }
 

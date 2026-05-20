@@ -41,12 +41,30 @@ struct FAMAuthoringBlockDefaults: Decodable {
 
 struct FAMDiscussionAuthoringEventOverride: Decodable {
     let authoringProfile: String?
+    let eventEmphasisKeywords: [String]?
     let preserveExistingVisibleContent: Bool?
+    let itemSections: [FAMDiscussionAuthoringItemSection]?
     let sections: [FAMDiscussionAuthoringSection]?
     let summary: String?
     let overview: String?
     let notesSummary: String?
     let fallbackSourceTitles: [String]?
+    let standardizeRequiredProcedureDisplay: Bool?
+}
+
+struct FAMDiscussionAuthoringItemSection: Decodable {
+    let discussionItem: String
+    let displayTitle: String?
+    let manualOnly: Bool?
+    let presentationStyle: String?
+    let splitSectionTitles: [String]?
+    let sourceKeywordHints: [String]?
+    let subsections: [FAMDiscussionAuthoringSubsection]?
+}
+
+struct FAMDiscussionAuthoringSubsection: Decodable {
+    let title: String
+    let sourceKeywordHints: [String]?
 }
 
 struct FAMDiscussionAuthoringSection: Decodable {
@@ -58,6 +76,14 @@ struct FAMDiscussionAuthoringSection: Decodable {
 struct FAMResolvedSectionDefinition {
     let title: String
     let discussionItems: [String]
+    let manualOnly: Bool
+    let sourceKeywordHints: [String]
+    let preferredStyle: DiscussionItemStyle?
+    let subsections: [FAMResolvedSectionSubsection]
+}
+
+struct FAMResolvedSectionSubsection {
+    let title: String
     let sourceKeywordHints: [String]
 }
 
@@ -137,6 +163,7 @@ enum DiscussionItemStyle {
     case knowledge
     case maneuver
     case emergencyProcedure
+    case localGeneralized
 }
 
 let cwd = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
@@ -157,6 +184,24 @@ let referenceFile = try referenceDecoder.decode(SyllabusEventReferenceFile.self,
 let famEvents = referenceFile.events
     .filter { $0.category == "familiarization" }
     .sorted { normalizeCode($0.code) < normalizeCode($1.code) }
+
+let requestedEventCodes = Set(CommandLine.arguments.dropFirst().map(normalizeCode))
+let selectedFamEvents: [SyllabusEventReferenceEventRecord]
+if requestedEventCodes.isEmpty {
+    selectedFamEvents = famEvents
+} else {
+    let availableCodes = Set(famEvents.map { normalizeCode($0.code) })
+    let missingCodes = requestedEventCodes.subtracting(availableCodes)
+    if !missingCodes.isEmpty {
+        throw NSError(
+            domain: "GenerateFAMDiscussionOverrides",
+            code: 1,
+            userInfo: [NSLocalizedDescriptionKey: "Unknown FAM event code(s): \(missingCodes.sorted().joined(separator: ", "))"]
+        )
+    }
+
+    selectedFamEvents = famEvents.filter { requestedEventCodes.contains(normalizeCode($0.code)) }
+}
 
 let referenceConfig: ReferenceStudyConfigFile
 if let data = try? Data(contentsOf: referenceConfigURL),
@@ -205,7 +250,7 @@ let fam4490AliasURL = allFamFiles.first { normalizeCode(inferredEventCode(from: 
 
 var extractionCache: [String: [String]] = [:]
 
-for event in famEvents {
+for event in selectedFamEvents {
     let output = buildOverride(
         for: event,
         famEvents: famEvents,
@@ -260,13 +305,14 @@ private func buildOverride(
         authoringProfile: authoringProfile
     )
 
-    if lockedEventCodes().contains(normalizedCode),
+    if shouldPreserveVisibleContent(for: normalizedCode, authoringProfile: authoringProfile, override: authoringOverride),
        let existingOverride {
-        return preservedLockedOverride(
+        return preservedVisibleOverride(
             existingOverride,
             for: event,
             authoringProfile: authoringProfile,
-            context: context
+            context: context,
+            authoringOverride: authoringOverride
         )
     }
 
@@ -297,7 +343,14 @@ private func buildOverride(
     sections.append(
         StudyNotesSectionOutput(
             title: "Required Procedures",
-            items: event.discussionItems.map { StudyNotesItemOutput(text: $0, children: nil) }
+            items: event.discussionItems.map { item in
+                StudyNotesItemOutput(
+                    text: (authoringOverride?.standardizeRequiredProcedureDisplay ?? true)
+                        ? titleCasedDiscussionItemPrompt(item)
+                        : item,
+                    children: nil
+                )
+            }
         )
     )
 
@@ -325,6 +378,22 @@ private func buildOverride(
 
 private func lockedEventCodes() -> Set<String> {
     Set(famAuthoringConfig.lockedEvents.map(normalizeCode))
+}
+
+private func shouldPreserveVisibleContent(
+    for code: String,
+    authoringProfile: FAMAuthoringProfile,
+    override: FAMDiscussionAuthoringEventOverride?
+) -> Bool {
+    if lockedEventCodes().contains(code) {
+        return true
+    }
+
+    if let explicit = override?.preserveExistingVisibleContent {
+        return explicit
+    }
+
+    return famAuthoringConfig.blockDefaults[authoringProfile.rawValue]?.preserveExistingVisibleContent ?? false
 }
 
 private func resolvedAuthoringProfile(
@@ -356,12 +425,33 @@ private func resolvedSectionDefinitions(
     for event: SyllabusEventReferenceEventRecord,
     override: FAMDiscussionAuthoringEventOverride?
 ) -> [FAMResolvedSectionDefinition] {
+    if let itemSections = override?.itemSections, !itemSections.isEmpty {
+        return itemSections.map {
+            FAMResolvedSectionDefinition(
+                title: $0.displayTitle ?? titleCasedDiscussionItemPrompt($0.discussionItem),
+                discussionItems: [$0.discussionItem],
+                manualOnly: $0.manualOnly ?? false,
+                sourceKeywordHints: $0.sourceKeywordHints ?? [],
+                preferredStyle: preferredDiscussionItemStyle(from: $0.presentationStyle),
+                subsections: ($0.subsections ?? []).map {
+                    FAMResolvedSectionSubsection(
+                        title: $0.title,
+                        sourceKeywordHints: $0.sourceKeywordHints ?? []
+                    )
+                }
+            )
+        }
+    }
+
     if let sections = override?.sections, !sections.isEmpty {
         return sections.map {
             FAMResolvedSectionDefinition(
                 title: $0.title,
                 discussionItems: $0.discussionItems,
-                sourceKeywordHints: $0.sourceKeywordHints ?? []
+                manualOnly: false,
+                sourceKeywordHints: $0.sourceKeywordHints ?? [],
+                preferredStyle: nil,
+                subsections: []
             )
         }
     }
@@ -370,16 +460,20 @@ private func resolvedSectionDefinitions(
         FAMResolvedSectionDefinition(
             title: titleCasedDiscussionItemPrompt(item),
             discussionItems: [item],
-            sourceKeywordHints: []
+            manualOnly: false,
+            sourceKeywordHints: [],
+            preferredStyle: nil,
+            subsections: []
         )
     }
 }
 
-private func preservedLockedOverride(
+private func preservedVisibleOverride(
     _ existingOverride: ExistingOverride,
     for event: SyllabusEventReferenceEventRecord,
     authoringProfile: FAMAuthoringProfile,
-    context: EventDocumentContext
+    context: EventDocumentContext,
+    authoringOverride: FAMDiscussionAuthoringEventOverride?
 ) -> EventContentOverrideOutput {
     let existingNotes = existingOverride.studyNotes
     let sectionDefinitions = (existingNotes?.sections ?? []).compactMap { section -> FAMResolvedSectionDefinition? in
@@ -395,25 +489,34 @@ private func preservedLockedOverride(
         return FAMResolvedSectionDefinition(
             title: title,
             discussionItems: uniqueStrings(mappedItems),
-            sourceKeywordHints: []
+            manualOnly: false,
+            sourceKeywordHints: [],
+            preferredStyle: nil,
+            subsections: []
         )
     }
 
-    let summary = existingOverride.summary ?? buildEventSummary(for: event, sections: sectionDefinitions)
-    let overview = isBoilerplateOverview(existingOverride.overview)
+    let summary = authoringOverride?.summary ?? existingOverride.summary ?? buildEventSummary(for: event, sections: sectionDefinitions)
+    let overview = authoringOverride?.overview ?? (isBoilerplateOverview(existingOverride.overview)
         ? buildEventOverview(for: event, authoringProfile: authoringProfile, sections: sectionDefinitions)
-        : (existingOverride.overview ?? buildEventOverview(for: event, authoringProfile: authoringProfile, sections: sectionDefinitions))
-    let notesSummary = isBoilerplateNotesSummary(existingNotes?.summary)
+        : (existingOverride.overview ?? buildEventOverview(for: event, authoringProfile: authoringProfile, sections: sectionDefinitions)))
+    let notesSummary = authoringOverride?.notesSummary ?? (isBoilerplateNotesSummary(existingNotes?.summary)
         ? buildStudyNotesSummary(for: event, authoringProfile: authoringProfile, sections: sectionDefinitions)
-        : (existingNotes?.summary ?? buildStudyNotesSummary(for: event, authoringProfile: authoringProfile, sections: sectionDefinitions))
+        : (existingNotes?.summary ?? buildStudyNotesSummary(for: event, authoringProfile: authoringProfile, sections: sectionDefinitions)))
 
     let notes = StudyNotesOutput(
         headline: existingNotes?.headline ?? "Discussion items",
         summary: notesSummary,
         sections: (existingNotes?.sections ?? []).map { section in
-            StudyNotesSectionOutput(
+            let standardizedRequiredProcedures = (authoringOverride?.standardizeRequiredProcedureDisplay ?? false) &&
+                normalizedText(section.title ?? "") == normalizedText("Required Procedures")
+            return StudyNotesSectionOutput(
                 title: section.title,
-                items: section.items.map(convertExistingItem)
+                items: section.items.map { item in
+                    standardizedRequiredProcedures
+                        ? convertExistingRequiredProcedureItem(item)
+                        : convertExistingItem(item)
+                }
             )
         }
     )
@@ -433,6 +536,13 @@ private func convertExistingItem(_ item: ExistingStudyNotesItem) -> StudyNotesIt
     StudyNotesItemOutput(
         text: item.text,
         children: item.children?.map(convertExistingItem)
+    )
+}
+
+private func convertExistingRequiredProcedureItem(_ item: ExistingStudyNotesItem) -> StudyNotesItemOutput {
+    StudyNotesItemOutput(
+        text: titleCasedDiscussionItemPrompt(item.text),
+        children: item.children?.map(convertExistingRequiredProcedureItem)
     )
 }
 
@@ -542,6 +652,20 @@ private func buildReadableSection(
     }
 
     let item = definition.discussionItems.first ?? definition.title
+    if let subsectionSection = buildSubsectionDrivenSection(
+        definition: definition,
+        item: item,
+        context: context,
+        existingOverride: existingOverride
+    ) {
+        return subsectionSection
+    }
+
+    if definition.manualOnly,
+       let preservedSection = preservedSection(named: definition.title, from: existingOverride) {
+        return preservedSection
+    }
+
     if let special = readableSpecialSection(
         for: item,
         title: definition.title,
@@ -557,6 +681,7 @@ private func buildReadableSection(
     }
 
     let style = discussionItemStyle(for: item, event: event, epCardsByTitle: epCardsByTitle, emergencyProcedureAliases: emergencyProcedureAliases)
+    let resolvedStyle = definition.preferredStyle ?? style
     let primaryLines = relevantLines(
         for: item,
         in: context.primaryLinesByTitle,
@@ -571,7 +696,7 @@ private func buildReadableSection(
     let combinedLines = filteredReadableLines(primaryLines + supplementalLines, excluding: item)
     let sectionItems = buildStandaloneItems(
         for: item,
-        style: style,
+        style: resolvedStyle,
         lines: combinedLines,
         maxBullets: maxStandaloneBullets,
         maxChildren: maxStandaloneChildren,
@@ -583,6 +708,60 @@ private func buildReadableSection(
     return StudyNotesSectionOutput(
         title: definition.title,
         items: sectionItems.isEmpty ? [fallbackSectionBullet(for: definition.title)] : sectionItems
+    )
+}
+
+private func preservedSection(named title: String, from existingOverride: ExistingOverride?) -> StudyNotesSectionOutput? {
+    guard let section = existingOverride?.studyNotes?.sections.first(where: {
+        normalizedText($0.title ?? "") == normalizedText(title)
+    }) else {
+        return nil
+    }
+
+    return StudyNotesSectionOutput(
+        title: section.title,
+        items: section.items.map(convertExistingItem)
+    )
+}
+
+private func buildSubsectionDrivenSection(
+    definition: FAMResolvedSectionDefinition,
+    item: String,
+    context: EventDocumentContext,
+    existingOverride: ExistingOverride?
+) -> StudyNotesSectionOutput? {
+    guard !definition.subsections.isEmpty else { return nil }
+
+    let primaryLines = relevantLines(for: item, in: context.primaryLinesByTitle, fallback: existingOverride)
+    let supplementalLines = relevantLines(for: item, in: context.supplementalLinesByTitle, fallback: existingOverride)
+    let combinedLines = uniqueStrings(primaryLines + supplementalLines)
+    guard !combinedLines.isEmpty else { return nil }
+
+    let lead = firstUsefulLine(
+        combinedLines.filter { !isStructuralSourceLabel($0) },
+        fallback: genericPurpose(for: item)
+    )
+
+    var items: [StudyNotesItemOutput] = [StudyNotesItemOutput(text: lead, children: nil)]
+
+    for subsection in definition.subsections {
+        let matchedLines = subsectionLines(
+            for: subsection,
+            in: combinedLines
+        )
+
+        guard !matchedLines.isEmpty else { continue }
+        items.append(
+            StudyNotesItemOutput(
+                text: subsection.title,
+                children: matchedLines.map { StudyNotesItemOutput(text: $0, children: nil) }
+            )
+        )
+    }
+
+    return StudyNotesSectionOutput(
+        title: definition.title,
+        items: items
     )
 }
 
@@ -697,6 +876,29 @@ private func buildStandaloneItems(
         }
         return Array(bullets.prefix(maxBullets))
 
+    case .localGeneralized:
+        let generalizedLines = generalizedLocalKnowledgeLines(lines)
+        let generalizedCategorized = categorize(lines: generalizedLines)
+        let lead = firstUsefulLine(
+            generalizedCategorized.purpose + generalizedCategorized.keyKnowledge,
+            fallback: "Know the general operating purpose, what must be briefed locally, and what cannot be assumed from one airfield to the next."
+        )
+        var bullets: [StudyNotesItemOutput] = [StudyNotesItemOutput(text: lead, children: nil)]
+        let keyPoints = pickLines(
+            generalizedCategorized.keyKnowledge + generalizedCategorized.setup + generalizedCategorized.application + generalizedCategorized.standards,
+            maxCount: maxChildren,
+            fallback: ["Be ready to brief the local route, altitude, speed, runway, reporting-point, and communication requirements from the current SOP or day-of brief."]
+        ).filter { normalizedText($0) != normalizedText(lead) }
+        if !keyPoints.isEmpty {
+            bullets.append(
+                StudyNotesItemOutput(
+                    text: "Local brief reminders:",
+                    children: keyPoints.map { StudyNotesItemOutput(text: $0, children: nil) }
+                )
+            )
+        }
+        return Array(bullets.prefix(maxBullets))
+
     case .maneuver:
         let lead = firstUsefulLine(
             categorized.purpose,
@@ -705,16 +907,21 @@ private func buildStandaloneItems(
         var bullets: [StudyNotesItemOutput] = [StudyNotesItemOutput(text: lead, children: nil)]
         let setupChildren = pickLines(categorized.setup, maxCount: maxChildren, fallback: [genericSetup(for: item)])
         let executionChildren = pickLines(categorized.execution + categorized.keyKnowledge, maxCount: maxChildren, fallback: [genericExecution(for: item)])
-        let numbersAndTraps = pickLines(
-            categorized.standards + categorized.commonErrors + categorized.nwc.filter { containsNumbers($0) || normalizedText($0).contains("warning") || normalizedText($0).contains("caution") },
+        let completionChildren = pickLines(
+            maneuverCompletionLines(from: categorized),
             maxCount: maxChildren,
-            fallback: [genericStandards(for: item)]
+            fallback: [genericManeuverCompletion(for: item)]
         )
+        let commonErrorChildren = pickLines(categorized.commonErrors, maxCount: maxChildren, fallback: [])
+        let nwcChildren = pickLines(categorized.nwc, maxCount: maxChildren, fallback: [])
 
-        bullets.append(StudyNotesItemOutput(text: "Setup cues:", children: setupChildren.map { StudyNotesItemOutput(text: $0, children: nil) }))
-        bullets.append(StudyNotesItemOutput(text: "Execution priorities:", children: executionChildren.map { StudyNotesItemOutput(text: $0, children: nil) }))
-        if !numbersAndTraps.isEmpty {
-            bullets.append(StudyNotesItemOutput(text: "Numbers / traps:", children: numbersAndTraps.map { StudyNotesItemOutput(text: $0, children: nil) }))
+        bullets.append(StudyNotesItemOutput(text: "Entry setup:", children: setupChildren.map { StudyNotesItemOutput(text: $0, children: nil) }))
+        bullets.append(StudyNotesItemOutput(text: "Execution:", children: executionChildren.map { StudyNotesItemOutput(text: $0, children: nil) }))
+        bullets.append(StudyNotesItemOutput(text: "Maneuver complete when:", children: completionChildren.map { StudyNotesItemOutput(text: $0, children: nil) }))
+        if !commonErrorChildren.isEmpty {
+            bullets.append(StudyNotesItemOutput(text: "Common errors:", children: commonErrorChildren.map { StudyNotesItemOutput(text: $0, children: nil) }))
+        } else if !nwcChildren.isEmpty {
+            bullets.append(StudyNotesItemOutput(text: "N/W/C focus:", children: nwcChildren.map { StudyNotesItemOutput(text: $0, children: nil) }))
         }
         return Array(bullets.prefix(maxBullets))
 
@@ -941,6 +1148,12 @@ private func readableChildLines(
     switch style {
     case .knowledge:
         return readableKnowledgeLines(for: item, categorized: categorized, maxChildren: maxChildren)
+    case .localGeneralized:
+        return pickLines(
+            generalizedLocalKnowledgeLines(categorized.keyKnowledge + categorized.setup + categorized.application + categorized.standards),
+            maxCount: maxChildren,
+            fallback: ["Use the local brief to confirm the route, altitude, speed, runway, and reporting-point specifics before the event."]
+        )
     case .maneuver:
         return pickLines(
             categorized.setup + categorized.execution + categorized.standards + categorized.commonErrors.prefix(1),
@@ -976,6 +1189,108 @@ private func keywordHintLines(_ hints: [String], in linesByTitle: [String: [Stri
 
 private func firstUsefulLine(_ candidates: [String], fallback: String) -> String {
     pickLines(candidates, maxCount: 1, fallback: [fallback]).first ?? fallback
+}
+
+private func subsectionLines(
+    for subsection: FAMResolvedSectionSubsection,
+    in lines: [String]
+) -> [String] {
+    let anchors = uniqueStrings([subsection.title] + subsection.sourceKeywordHints)
+    let anchorIndices = lines.enumerated().compactMap { index, line -> Int? in
+        matchesSubsectionAnchor(line, anchors: anchors) ? index : nil
+    }
+
+    guard !anchorIndices.isEmpty else {
+        let hinted = uniqueStrings(lines.filter { line in
+            let normalizedLine = normalizedText(line)
+            return subsection.sourceKeywordHints.contains { normalizedLine.contains(normalizedText($0)) }
+        })
+        return filteredReadableLines(hinted)
+    }
+
+    var collected: [String] = []
+    for startIndex in anchorIndices {
+        var nextIndex = lines.count
+        for candidate in anchorIndices where candidate > startIndex {
+            nextIndex = candidate
+            break
+        }
+
+        let slice = Array(lines[(startIndex + 1)..<nextIndex])
+        collected.append(contentsOf: slice.filter { !isStructuralSourceLabel($0) })
+    }
+
+    return pickLines(filteredReadableLines(collected), maxCount: 8, fallback: [])
+}
+
+private func matchesSubsectionAnchor(_ line: String, anchors: [String]) -> Bool {
+    let cleaned = cleanLine(line)
+    let normalizedLine = normalizedText(cleaned)
+    guard !normalizedLine.isEmpty else { return false }
+
+    return anchors.contains { anchor in
+        let normalizedAnchor = normalizedText(anchor)
+        guard !normalizedAnchor.isEmpty else { return false }
+        return normalizedLine == normalizedAnchor ||
+            normalizedLine == "\(normalizedAnchor):" ||
+            normalizedLine.hasPrefix("\(normalizedAnchor):")
+    }
+}
+
+private func isStructuralSourceLabel(_ value: String) -> Bool {
+    let cleaned = cleanLine(value)
+    let normalized = normalizedText(cleaned).replacingOccurrences(of: ":", with: "")
+    let labels: Set<String> = [
+        "description",
+        "overview",
+        "purpose",
+        "setup",
+        "entry",
+        "configuration",
+        "procedure",
+        "procedures",
+        "execution",
+        "common errors",
+        "warnings",
+        "warning",
+        "cautions",
+        "caution",
+        "notes",
+        "note",
+        "n/w/cs",
+        "n/w/c",
+        "other"
+    ]
+
+    if labels.contains(normalized) {
+        return true
+    }
+
+    return cleaned.hasSuffix(":") && significantTokens(in: cleaned).count <= 4
+}
+
+private func generalizedLocalKnowledgeLines(_ values: [String]) -> [String] {
+    let localSpecificSignals = [
+        "waldron",
+        "rusty",
+        "camel humps",
+        "high bridge",
+        "pt sunrise",
+        "pt silver",
+        "mustang",
+        "shamrock",
+        "corpus",
+        "cabaniss",
+        "ingleside",
+        "nueces",
+        "goliad",
+        "boomer"
+    ]
+
+    return filteredReadableLines(values).filter { line in
+        let normalized = normalizedText(line)
+        return !localSpecificSignals.contains { normalized.contains($0) }
+    }
 }
 
 private func fallbackSectionBullet(for title: String) -> StudyNotesItemOutput {
@@ -1021,6 +1336,19 @@ private func buildStandardSection(
                 labeledItem("Key knowledge", keyKnowledge),
                 labeledItem("Application", application),
                 labeledItem("Common errors / grading traps", commonErrors)
+            ]
+        )
+
+    case .localGeneralized:
+        let generalizedLines = generalizedLocalKnowledgeLines(combinedLines)
+        let generalizedCategorized = categorize(lines: generalizedLines)
+        return StudyNotesSectionOutput(
+            title: displayTitle,
+            items: [
+                labeledItem("Why it matters", generalizedCategorized.purpose.isEmpty ? ["This item should leave you with the general operating logic, then push the location-specific details back to the current local brief."] : generalizedCategorized.purpose),
+                labeledItem("Key knowledge", pickLines(generalizedCategorized.keyKnowledge + generalizedCategorized.standards, maxCount: 10, fallback: ["Know the route purpose, altitude and speed discipline, communication expectations, and what local items must be verified before step."])),
+                labeledItem("Application", pickLines(generalizedCategorized.application + generalizedCategorized.setup, maxCount: 8, fallback: ["Use the day-of local brief or SOP to confirm the exact reporting points, runway-specific flows, and local naming that apply today."])),
+                labeledItem("Common errors / grading traps", pickLines(generalizedCategorized.commonErrors, maxCount: 6, fallback: ["Do not memorize one field's named routes or landmarks as if they are universal course rules."]))
             ]
         )
 
@@ -1244,6 +1572,26 @@ private func discussionItemStyle(
     }
 
     return .knowledge
+}
+
+private func preferredDiscussionItemStyle(from rawValue: String?) -> DiscussionItemStyle? {
+    guard let normalized = rawValue?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
+          !normalized.isEmpty else {
+        return nil
+    }
+
+    switch normalized {
+    case "knowledge", "systems", "limits":
+        return .knowledge
+    case "maneuver", "procedure", "recovery":
+        return .maneuver
+    case "ep", "emergencyprocedure", "emergency-procedure", "emergency procedure":
+        return .emergencyProcedure
+    case "local-generalized", "local_generalized", "localgeneralized":
+        return .localGeneralized
+    default:
+        return nil
+    }
 }
 
 private func relevantLines(
@@ -1488,17 +1836,17 @@ private func buildEventOverview(
     switch authoringProfile {
     case .reviewSim:
         if overviewSource.count == 1 {
-            return "Use this event as a cumulative review of \(lead). You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions."
+            return "Use \(event.shortTitle) as a cumulative review of \(lead). You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions."
         }
-        return "This event pulls together \(lead) into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions."
+        return "\(event.shortTitle) is a cumulative review of \(lead). You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions."
     case .checkFlight:
-        return "This event is a cumulative familiarization check. You should be ready to brief \(lead) cleanly, then pivot between systems, procedures, maneuvers, and emergency logic without losing the big picture."
+        return "\(event.shortTitle) is a cumulative familiarization check. You should be ready to brief \(lead) cleanly, then pivot between systems, procedures, maneuvers, and emergency logic without losing the big picture."
     case .solo:
         return "This event is about showing up for the solo brief with the major risk, weather, and execution items already organized. Use these notes to walk in ahead of the day-of ODO/FDO brief instead of trying to build the whole picture on the spot."
     case .flight:
-        return "This event ties together \(lead) in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs."
+        return "\(event.shortTitle) is about \(lead). You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs."
     case .sim:
-        return "This event ties together \(lead) into a cleaner familiarization brief. You should be ready to explain the setup picture, the decision chain, and the mistakes that usually appear when the pace picks up."
+        return "\(event.shortTitle) is about \(lead). Be ready to explain the setup picture, the decision chain, and the mistakes that usually appear when the pace picks up."
     }
 }
 
@@ -1817,6 +2165,8 @@ private func titleCasedDiscussionItemPrompt(_ value: String) -> String {
 
     let tokenReplacements: [(pattern: String, replacement: String)] = [
         (#"\bEp\b"#, "EP"),
+        (#"\bN/W/Cs\b"#, "N/W/Cs"),
+        (#"\bN/W/C\b"#, "N/W/C"),
         (#"\bCrm\b"#, "CRM"),
         (#"\bPel/P\b"#, "PEL(P)"),
         (#"\bPel\b"#, "PEL"),
@@ -1828,6 +2178,8 @@ private func titleCasedDiscussionItemPrompt(_ value: String) -> String {
         (#"\bT-6b\b"#, "T-6B"),
         (#"\bRdo\b"#, "RDO"),
         (#"\bOlf\b"#, "OLF"),
+        (#"\bSid\b"#, "SID"),
+        (#"\bStar\b"#, "STAR"),
         (#"\bIls\b"#, "ILS"),
         (#"\bVfr\b"#, "VFR"),
         (#"\bIfr\b"#, "IFR"),
@@ -2178,6 +2530,10 @@ private func genericStandards(for item: String) -> String {
     "Memorize the setup numbers and the recovery numbers for \(titleCasedDiscussionItemPrompt(item)); that is usually where the grading starts."
 }
 
+private func genericManeuverCompletion(for item: String) -> String {
+    "Finish \(titleCasedDiscussionItemPrompt(item)) back in controlled flight, on the briefed heading, and with altitude and energy close enough that you do not need cleanup coaching."
+}
+
 private func genericManeuverTrap(for item: String) -> String {
     "The usual trap is missing the setup picture, then trying to salvage \(titleCasedDiscussionItemPrompt(item)) late."
 }
@@ -2196,6 +2552,37 @@ private func genericDecisionLogic(for item: String) -> String {
 
 private func genericNWCRequirement(for item: String) -> String {
     "Review the associated WARNINGs, CAUTIONs, and NOTEs for \(titleCasedDiscussionItemPrompt(item)) before the event."
+}
+
+private func maneuverCompletionLines(
+    from categorized: (
+        purpose: [String],
+        setup: [String],
+        execution: [String],
+        standards: [String],
+        commonErrors: [String],
+        recognition: [String],
+        application: [String],
+        nwc: [String],
+        keyKnowledge: [String]
+    )
+) -> [String] {
+    let candidates = uniqueStrings(
+        categorized.standards +
+        categorized.execution +
+        categorized.keyKnowledge
+    )
+
+    return candidates.filter { line in
+        let normalized = normalizedText(line)
+        return normalized.contains("complete") ||
+            normalized.contains("finish") ||
+            normalized.contains("ends") ||
+            normalized.contains("recover to level flight") ||
+            normalized.contains("recover wings level") ||
+            normalized.contains("original heading") ||
+            normalized.contains("reciprocal heading")
+    }
 }
 
 private func firstRegexMatch(for pattern: String, in text: String) -> String? {

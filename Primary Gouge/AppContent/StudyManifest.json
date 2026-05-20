@@ -1391,7 +1391,7 @@
       ],
       "id" : "flashcard-fam3101-discussion-item-6",
       "kind" : "standard",
-      "prompt" : "Power-on Stalls",
+      "prompt" : "Power-On Stalls",
       "requiresVerbatim" : false,
       "studyCategories" : [
         "sims"
@@ -1995,7 +1995,7 @@
       ],
       "id" : "flashcard-fam3301-discussion-item-1",
       "kind" : "standard",
-      "prompt" : "Crosswind Takeoff\/Touch-and-Go\/Full-Stop Landings",
+      "prompt" : "Crosswind Takeoff\/Touch-And-Go\/Full-Stop Landings",
       "requiresVerbatim" : false,
       "studyCategories" : [
         "sims"
@@ -2570,7 +2570,7 @@
       ],
       "id" : "flashcard-fam4102-discussion-item-3",
       "kind" : "standard",
-      "prompt" : "Power-on Stalls",
+      "prompt" : "Power-On Stalls",
       "requiresVerbatim" : false,
       "studyCategories" : [
         "flights"
@@ -3074,7 +3074,7 @@
       ],
       "id" : "flashcard-fam4202-discussion-item-5",
       "kind" : "standard",
-      "prompt" : "Crosswind Takeoffs\/Touch-and-Goes\/Full-Stop Landings",
+      "prompt" : "Crosswind Takeoffs\/Touch-And-Goes\/Full-Stop Landings",
       "requiresVerbatim" : false,
       "studyCategories" : [
         "flights"
@@ -3133,7 +3133,7 @@
       ],
       "id" : "flashcard-fam4203-discussion-item-3",
       "kind" : "standard",
-      "prompt" : "Ejection and Visual Straight-in",
+      "prompt" : "Ejection and Visual Straight-In",
       "requiresVerbatim" : false,
       "studyCategories" : [
         "flights"
@@ -4905,7 +4905,7 @@
       ],
       "id" : "flashcard-i2201-discussion-item-5",
       "kind" : "standard",
-      "prompt" : "Over-the-Station Intercepts",
+      "prompt" : "Over-The-Station Intercepts",
       "requiresVerbatim" : false,
       "studyCategories" : [
         "sims"
@@ -5019,7 +5019,7 @@
       ],
       "id" : "flashcard-i2202-discussion-item-6",
       "kind" : "standard",
-      "prompt" : "Point-to-Point",
+      "prompt" : "Point-To-Point",
       "requiresVerbatim" : false,
       "studyCategories" : [
         "sims"
@@ -6965,7 +6965,7 @@
       ],
       "id" : "flashcard-i6101-discussion-item-5",
       "kind" : "standard",
-      "prompt" : "Faf-to-Map Timing Adjustments",
+      "prompt" : "Faf-To-Map Timing Adjustments",
       "requiresVerbatim" : false,
       "studyCategories" : [
         "sims"
@@ -17253,7 +17253,7 @@
                 }
               ],
               "id" : "contacts-flights-fam4102",
-              "overview" : "This event ties together tire failures, aborted takeoff, and power-on stalls in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+              "overview" : "This event turns basic contact flying into real landing work. You should be ready to recognize and recover from stall cues, fly a disciplined pattern in each flap configuration, and wave off instead of trying to salvage a landing that is already going bad.",
               "primaryDocumentIDs" : [
 
               ],
@@ -17292,23 +17292,18 @@
                   {
                     "items" : [
                       {
-                        "text" : "Tire Failures matters because it changes what you brief, what you look for in the cockpit, or what the next safe decision needs to be."
-                      }
-                    ],
-                    "title" : "Tire Failures"
-                  },
-                  {
-                    "items" : [
-                      {
-                        "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
+                        "text" : "An aborted takeoff is an early stop decision, not a last-second attempt to save a bad rollout. Keep the aircraft straight first, then stop it with a smooth braking application."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "PCL - IDLE"
+                            "text" : "PCL - IDLE."
                           },
                           {
-                            "text" : "BRAKES - AS REQUIRED"
+                            "text" : "BRAKES - AS REQUIRED with one smooth application; do not pump or slam them."
+                          },
+                          {
+                            "text" : "Maintain directional control with rudder and nosewheel steering. The abort call comes after the aircraft is under control, not before."
                           }
                         ],
                         "text" : "Immediate actions:"
@@ -17316,16 +17311,13 @@
                       {
                         "children" : [
                           {
-                            "text" : "Anticipate increased brake sensitivity above 80 KIAS."
+                            "text" : "Abort for any unsafe condition before the briefed max-abort point: blown tire, smoke or fuel leak, chip or fire light, bird strike, runway obstacle, rising ITT, fluctuating oil pressure, or engine\/system malfunction."
                           },
                           {
-                            "text" : "225 ±5 psi or 185 ±5 psi"
+                            "text" : "For this event, the local gouge teaches the decision as an early takeoff-roll problem, commonly briefed around 60 KIAS or 1500 feet remaining unless the day-of brief is more restrictive."
                           },
                           {
-                            "text" : "120 ±5 psi"
-                          },
-                          {
-                            "text" : "Most blown tires occur before tire spin-up or below 40 knots."
+                            "text" : "Above 80 KIAS, braking is less effective because lift is still unloading the wheels, so do not let aggressive braking create a skid or blown tire problem."
                           }
                         ],
                         "text" : "Decision cues:"
@@ -17333,10 +17325,13 @@
                       {
                         "children" : [
                           {
-                            "text" : "(1W)"
+                            "text" : "After maximum-effort braking, do not set the parking brake or taxi into a congested area until the brakes cool."
                           },
                           {
-                            "text" : "W - After a stop which required maximum effort braking and if overheated brakes are suspected, do not taxi into or park in a congested area until brakes have had sufficient time to cool. Do not set parking brake."
+                            "text" : "If an arresting cable is lowered, release the brakes before crossing it and resume braking once clear."
+                          },
+                          {
+                            "text" : "If the aircraft cannot taxi clear safely, transition to Emergency Engine Shutdown on the Ground and Emergency Ground Egress as required."
                           }
                         ],
                         "text" : "N\/W\/C focus:"
@@ -17347,143 +17342,179 @@
                   {
                     "items" : [
                       {
-                        "text" : "simulate departure stalls to train recognition and recovery techniques"
+                        "text" : "A tire failure changes whether you stop now or continue to a controlled landing. Directional control is the constant priority either way."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - clean, slow cruise (~150 KIAS or IP discretion)"
+                            "text" : "If the decision is to stop, execute the abort immediately."
+                          },
+                          {
+                            "text" : "If the takeoff continues, do not change gear or flap position. Fly a straight-in approach and land on the side of the runway with the good tire so the drag stays toward centerline."
+                          },
+                          {
+                            "text" : "Maintain directional control with rudder, brakes, and nosewheel steering as required, and expect the airplane to feel more sensitive on rollout above 80 KIAS."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "During takeoff and landing:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery"
+                            "text" : "Main tire pressure is 225 +\/- 5 PSI or 185 +\/- 5 PSI, depending on tire installation. Nose tire pressure is 120 +\/- 5 PSI."
                           },
                           {
-                            "text" : "Maintain level with rudder\/aileron"
+                            "text" : "The aircraft has no anti-skid or anti-lock braking. Do not apply wheel brakes until weight is firmly on wheels."
                           },
                           {
-                            "text" : "Hold pitch and bank until uncommanded nose drop or wing roll"
-                          },
-                          {
-                            "text" : "Hold AOB until uncommanded nose drop or wing roll"
+                            "text" : "Most blown tires occur before tire spin-up or below about 40 knots. Excessive brake pressure below about 20 knots can also lock a wheel and fail a tire."
                           }
                         ],
-                        "text" : "Execution priorities:"
-                      },
-                      {
-                        "children" : [
-                          {
-                            "text" : "Establish - clean, 6000’+ AGL, 150 KIAS, 3 C’s"
-                          },
-                          {
-                            "text" : "Pitch - 15-40° NH"
-                          },
-                          {
-                            "text" : "Same as above but with 20-30% AOB"
-                          },
-                          {
-                            "text" : "If in a low energy state with AOA <18.0 and airspeed too low to sustain level flight, apply power cautiously. If in an unrecoverable descent, EJECT if below 6000’ AGL."
-                          }
-                        ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Technical reminders:"
                       }
                     ],
-                    "title" : "Power-on Stalls"
+                    "title" : "Tire Failures"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
+                        "text" : "Power-on stalls teach recognition and recovery when thrust is available. The goal is to break the stall cleanly and recover with minimum altitude loss, not to force the airplane to hold an impossible pitch picture."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
+                            "text" : "Establish the aircraft clean above 6000 feet AGL and complete the Three Cs."
+                          },
+                          {
+                            "text" : "Begin at about 150 KIAS. For the straight-ahead entry, set PCL to achieve about 30-60% torque and raise the nose to about 15-40 degrees nose high."
+                          },
+                          {
+                            "text" : "For the turning entry, use the same setup but add 20-30 degrees of bank and hold that bank with coordinated rudder and aileron."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Entry setup:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery must be completed above 6000’ AGL"
+                            "text" : "Hold the pitch and bank constant until uncommanded nose drop or unplanned rolling motion occurs. Do not chase the exact full-stall point."
                           },
                           {
-                            "text" : "Checklist - PSSA and Before Landing Checklists"
+                            "text" : "Recover with RELAX, MAX, LEVEL, BALL. Reduce AOA first, advance PCL to MAX, level the wings, and use rudder to keep the ball centered."
                           },
                           {
-                            "text" : "Clear - TCAS, visual scan, clearing turns"
+                            "text" : "Once the stall is broken, keep scanning AOA and BALL. As airspeed rebuilds, re-adjust the stick to stay near maximum recovery AOA instead of over-pitching into a secondary stall."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Execution:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "~20% power"
-                          },
-                          {
-                            "text" : "Descent in 30° AOB turn, trimmed"
-                          },
-                          {
-                            "text" : "Airspeed based on flaps (NF\/TO\/LDG) = (120\/115\/110)"
+                            "text" : "The maneuver is complete when the aircraft is wings level with two positive rates of climb and the recovery is stabilized without entering a secondary stall."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Failing to hold a constant pitch or bank attitude prior to loss of control effectiveness."
+                          },
+                          {
+                            "text" : "Late recognition of the stall break or late transition from stall recovery back to level flight."
+                          },
+                          {
+                            "text" : "Recovering with less than maximum recovery AOA, or pulling too soon and inducing a secondary stall."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Torque above 60% in the stall can induce a left torque roll. Be especially cautious in turning entries."
+                          },
+                          {
+                            "text" : "If the aircraft condition is in doubt or a departure develops, stop trying to fly a normal stall recovery and transition to the applicable departure recovery."
+                          },
+                          {
+                            "text" : "If the aircraft is in an unrecoverable descent below 6000 feet AGL, eject."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
-                    "title" : "Landing Pattern Stalls"
+                    "title" : "Power-On Stalls"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "simulate departure stalls to train recognition and recovery techniques"
+                        "text" : "Power-off stalls are ELP-profile stalls. The real lesson is not just stall recovery; it is protecting glide profile and not wasting altitude once the airplane gets slow."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - clean, slow cruise (~150 KIAS or IP discretion)"
+                            "text" : "Start clean above 6000 feet AGL at about 150 KIAS or at the IP's discretion, and complete the Three Cs."
+                          },
+                          {
+                            "text" : "Retard PCL to 4-6% torque. If at or below 150 KIAS, decelerate directly to best glide. If above 150 KIAS, zoom glide to capture best glide."
+                          },
+                          {
+                            "text" : "As airspeed approaches 125 KIAS, lower the nose to the best-glide attitude and verify roughly 1350-1500 FPM sink rate."
+                          },
+                          {
+                            "text" : "Simulate high key, lower the gear, re-trim for 120 KIAS glide, start a 15-20 degree AOB turn to low key, and complete the Before Landing Checklist."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Entry setup:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Maintain level with rudder\/aileron"
+                            "text" : "Raise the nose to about 5-10 degrees nose high and let the airspeed decay to the first indication of stall."
                           },
                           {
-                            "text" : "Hold pitch and bank until uncommanded nose drop or wing roll"
+                            "text" : "Maintain the turn or profile ground track, then recover by lowering the pitch attitude until the prop arc is on the horizon, about 8 degrees nose low, until 120 KIAS is regained."
                           },
                           {
-                            "text" : "Hold AOB until uncommanded nose drop or wing roll"
-                          },
-                          {
-                            "text" : "RELAX - ease back-stick pressure"
+                            "text" : "Re-trim and stabilize the glide instead of letting the recovery turn into a dive-and-chase exercise."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Execution:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Establish - clean, 6000’+ AGL, 150 KIAS, 3 C’s"
-                          },
-                          {
-                            "text" : "Pitch - 15-40° NH"
-                          },
-                          {
-                            "text" : "Same as above but with 20-30% AOB"
-                          },
-                          {
-                            "text" : "If in a low energy state with AOA <18.0 and airspeed too low to sustain level flight, apply power cautiously. If in an unrecoverable descent, EJECT if below 6000’ AGL."
+                            "text" : "The maneuver is complete when 120 KIAS glide is reestablished, the aircraft is trimmed, and the profile is back under control."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Failure to recognize the first approach-to-stall cue."
+                          },
+                          {
+                            "text" : "Lowering the nose too far and giving away excessive altitude."
+                          },
+                          {
+                            "text" : "Failing to recapture 120 KIAS or re-trim the aircraft after recovery."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Expect to lose at least 800 feet in the recovery and another 1000-2000 feet in the setup. Give yourself room before starting."
+                          },
+                          {
+                            "text" : "Best glide is about 125 KIAS clean and about 120 KIAS with the gear down in the simulated ELP portion."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
                     "title" : "Power-Off Stalls"
@@ -17491,58 +17522,66 @@
                   {
                     "items" : [
                       {
-                        "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
+                        "text" : "The landing pattern is a disciplined racetrack, not a loose traffic pattern. Good patterns build good approaches, and good approaches build good landings."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
+                            "text" : "Pattern interval should already be established in the break or upwind. Do not try to invent interval corrections late in the approach turn."
                           },
                           {
-                            "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100)"
-                          },
-                          {
-                            "text" : "Entry - 200 KIAS, 1000’ MSL, ¼ WTD on pattern side of RWY"
-                          },
-                          {
-                            "text" : "Transition no sooner than Abeam the Intended Point of Landing"
+                            "text" : "A normal pattern is built from the break, downwind, approach turn, final, and landing. The goal is to arrive at each checkpoint already trimmed and on-speed."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Pattern mindset:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery must be completed above 6000’ AGL"
+                            "text" : "Enter at 200 KIAS and the briefed break altitude and initial point. Use local SOP or the day-of brief for field-specific altitude, IP, and traffic-flow requirements."
                           },
                           {
-                            "text" : "Recovery must be complete above 6000’ AGL"
+                            "text" : "Use a 30-60 degree AOB break, slow to 120 KIAS, lower the gear below 150 KIAS, and adjust to arrive downwind at about 3\/4 to 1 WTD."
                           },
                           {
-                            "text" : "Checklist - PSSA and Before Landing Checklists"
+                            "text" : "Approaching 120 KIAS, use about 31% torque if staying level, or about 20% and a descending picture if coming down to pattern altitude."
                           },
                           {
-                            "text" : "Clear - TCAS, visual scan, clearing turns"
+                            "text" : "Once on downwind, select the desired flaps setting, level at pattern altitude with the PAT principle, and complete the Before Landing Checklist."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Break and downwind:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "~20% power"
+                            "text" : "Fly downwind at 120 KIAS and a WTD that supports a 25-30 degree AOB approach turn. If more than 45 degrees AOB is required, wave off."
                           },
                           {
-                            "text" : "Descent in 30° AOB turn, trimmed"
+                            "text" : "Initiate transition no sooner than abeam the intended point of landing. Transition power is about 20% for all flap settings; the no-flap pattern delays that power reduction until the 180."
                           },
                           {
-                            "text" : "Airspeed based on flaps (NF\/TO\/LDG) = (120\/115\/110)"
+                            "text" : "At the 180, lower the nose to the 120\/115\/110 KIAS approach picture for NF\/TO\/LDG. Stay balanced and do not allow the aircraft to slow below on-speed AOA."
                           },
                           {
-                            "text" : "Pitch - 5-10° NH"
+                            "text" : "Aim to arrive in the groove about 1200-1500 feet from the threshold and about 200 feet AGL with a fixed aim-point and a stable scan."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Approach turn and final:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Not flying all checkpoints or arriving at the 90 and final off altitude and airspeed."
+                          },
+                          {
+                            "text" : "Poor trim and scan discipline, especially in the approach turn."
+                          },
+                          {
+                            "text" : "Overshooting, spotting the deck, or ignoring wave-off cues until too late."
+                          }
+                        ],
+                        "text" : "Common errors \/ grading traps:"
                       }
                     ],
                     "title" : "Landing Pattern"
@@ -17550,40 +17589,132 @@
                   {
                     "items" : [
                       {
-                        "text" : "No-Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                        "text" : "Landing pattern stalls are pattern-specific stall recoveries. Recover at the first stall cue with minimal altitude loss; do not let the maneuver turn into a full stall or a low-altitude salvage attempt."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "Establish the aircraft in downwind configuration at 120 KIAS, gear down, flaps as required, and complete the PSSA and Before Landing Checklists."
+                          },
+                          {
+                            "text" : "Clear the area, then simulate the abeam transition with about 20% torque and a descending 30-degree AOB turn at 120\/115\/110 KIAS based on flap setting."
+                          },
+                          {
+                            "text" : "Once stabilized in the turn, raise the nose to about 5-10 degrees nose high, retard PCL to idle, maintain 20-45 degrees AOB, and increase back-stick pressure to hold the pitch attitude."
+                          },
+                          {
+                            "text" : "At first indication of stall, recover with RELAX, MAX, LEVEL, BALL and return to a controlled downwind picture with minimal altitude loss."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Approach Turn Stall:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Abeam"
+                            "text" : "Set up a simulated final approach at 5-10 knots above final approach speed for the selected flap setting."
                           },
                           {
-                            "text" : "No-Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                            "text" : "Retard PCL to idle, execute a simulated landing transition, and hold the landing attitude constant until the first indication of stall."
                           },
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
-                          },
-                          {
-                            "text" : "Brief the maneuver in order from setup through recovery, using the same language you will use in the cockpit."
+                            "text" : "Recover at the first cue. If the nose is already within about 5-10 degrees nose high, maintain that attitude to preserve altitude. If it rises above that range, lower it enough to avoid a full stall."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Landing Attitude Stall:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "The usual trap is missing the setup picture, then trying to salvage No-Flap Landing late."
+                            "text" : "The maneuver is complete when the aircraft is wings level with two positive rates of climb and 120 KIAS downwind configuration is regained."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Releasing instead of relaxing back-stick pressure, or delaying power long enough to create needless altitude loss."
+                          },
+                          {
+                            "text" : "Cycling rudder to chase the ball before flying speed is regained."
+                          },
+                          {
+                            "text" : "Lowering the nose too far in a landing-attitude recovery and turning the exercise into a prop-strike or porpoise setup."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Recover at the first indication of stall. Do not intentionally enter a full stall in the landing pattern."
+                          },
+                          {
+                            "text" : "Use maximum recovery AOA, about 14-17.9 units, and keep scanning AOA and BALL throughout the recovery."
+                          },
+                          {
+                            "text" : "If recovery appears unlikely in the pattern, eject."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "Landing Pattern Stalls"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The no-flap landing is the least forgiving landing picture in this event. It stays clean longer, carries more energy, and punishes students who get slow or wait too long to recognize a bad approach."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Fly the normal pattern at 120 KIAS on downwind with the aircraft clean and about 31% torque."
+                          },
+                          {
+                            "text" : "Unlike the flapped patterns, a no-flap approach normally delays the transition power reduction until the 180."
+                          },
+                          {
+                            "text" : "Use a WTD and turn picture that still supports a 25-30 degree AOB final turn without forcing the bank past 45 degrees."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "At the 180, lower the nose to the no-flap approach picture and hold about 120 KIAS in the turn and about 110 KIAS on final."
+                          },
+                          {
+                            "text" : "Expect the flap-up picture to look flatter and to require more precise power reduction and bank management to make the same checkpoints."
+                          },
+                          {
+                            "text" : "Do not allow the aircraft to slow below on-speed AOA. If the green chevron appears, trim nose down and add power as required."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The maneuver is complete when the aircraft lands in the touchdown zone on centerline without an excessive float, late flare, or long landing."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Carrying the no-flap pattern too slow and falling behind the AOA picture."
+                          },
+                          {
+                            "text" : "Using too little bank or too much power in the turn and ending up wide, long, or both."
+                          },
+                          {
+                            "text" : "Trying to salvage a long float instead of waving off."
+                          }
+                        ],
+                        "text" : "Common errors:"
                       }
                     ],
                     "title" : "No-Flap Landing"
@@ -17591,40 +17722,54 @@
                   {
                     "items" : [
                       {
-                        "text" : "Takeoff Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                        "text" : "The takeoff-flap landing is the middle-ground landing picture. It gives more drag and a slower final than no-flap, but it still asks you to manage energy deliberately."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "Set takeoff flaps on downwind, hold 120 KIAS, and expect about 42% torque once stabilized."
+                          },
+                          {
+                            "text" : "This configuration is often a good answer for gusty or moderate crosswind conditions because it preserves control margin without forcing the full landing-flap picture."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Entry setup:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "No-Flap Landing is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                            "text" : "Initiate the transition no sooner than abeam with about 20% torque and lower the nose to the takeoff-flap approach picture."
                           },
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "Fly about 115 KIAS in the approach turn and about 105 KIAS on final, adjusting power early enough to stay on the correct glide path."
                           },
                           {
-                            "text" : "Abeam"
-                          },
-                          {
-                            "text" : "Brief the maneuver in order from setup through recovery, using the same language you will use in the cockpit."
+                            "text" : "In crosswinds or gusts, stay ahead of the wing-low correction and do not wait until the flare to start fixing drift."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Execution:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "The usual trap is missing the setup picture, then trying to salvage No-Flap Landing late."
+                            "text" : "The maneuver is complete when the aircraft touches down in the zone, aligned with the runway, with no unresolved drift or long float."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Flying no-flap airspeeds in a takeoff-flap pattern."
+                          },
+                          {
+                            "text" : "Failing to anticipate the drag change once flaps are set and ending up low or slow."
+                          },
+                          {
+                            "text" : "Waiting too long to wave off a drifting or unstable final."
+                          }
+                        ],
+                        "text" : "Common errors:"
                       }
                     ],
                     "title" : "Takeoff Flap Landing"
@@ -17632,58 +17777,54 @@
                   {
                     "items" : [
                       {
-                        "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
+                        "text" : "The landing-flap landing is the standard landing picture in this event. It offers the easiest slow-speed picture, but only if the pattern is trimmed and stabilized early."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
+                            "text" : "Set landing flaps on downwind, complete the Before Landing Checklist, hold 120 KIAS, and expect about 52% torque once established."
                           },
                           {
-                            "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100)"
-                          },
-                          {
-                            "text" : "Transition back to Normal Cruise (200 KIAS)"
-                          },
-                          {
-                            "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100) = 115\/110\/105"
+                            "text" : "Use the normal 3\/4 to 1 WTD downwind spacing and be ready to trim right rudder as the higher power setting comes in."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Entry setup:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery must be completed above 6000’ AGL"
+                            "text" : "Transition no sooner than abeam with about 20% torque and lower the nose to the landing-flap approach picture."
                           },
                           {
-                            "text" : "Recovery must be complete above 6000’ AGL"
+                            "text" : "Fly about 110 KIAS in the approach turn and about 100 KIAS on final, keeping the aim-point fixed and the aircraft balanced."
                           },
                           {
-                            "text" : "Checklist - PSSA and Before Landing Checklists"
-                          },
-                          {
-                            "text" : "Clear - TCAS, visual scan, clearing turns"
+                            "text" : "In the flare, keep shifting the eyes down the runway, increase back-stick smoothly, and move PCL to idle once the landing is assured."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Execution:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "~20% power"
-                          },
-                          {
-                            "text" : "Descent in 30° AOB turn, trimmed"
-                          },
-                          {
-                            "text" : "Airspeed based on flaps (NF\/TO\/LDG) = (120\/115\/110)"
-                          },
-                          {
-                            "text" : "Pitch - 5-10° NH"
+                            "text" : "The maneuver is complete when the aircraft lands on the main mounts in the touchdown zone, aligned with runway centerline, and the nose is lowered smoothly below 80 KIAS."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Carrying too much power or too much airspeed into the flare."
+                          },
+                          {
+                            "text" : "Flattening the landing attitude and touching nose gear first."
+                          },
+                          {
+                            "text" : "Applying brakes at touchdown instead of waiting for weight on wheels and airspeed below 80 KIAS."
+                          }
+                        ],
+                        "text" : "Common errors:"
                       }
                     ],
                     "title" : "Landing Flap Landing"
@@ -17691,77 +17832,58 @@
                   {
                     "items" : [
                       {
-                        "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
+                        "text" : "A wave-off is a planned discontinuation of the approach, not a stall recovery. The earlier you recognize a bad landing picture, the safer and cleaner the wave-off becomes."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
+                            "text" : "Wave off for any unsafe approach picture: unsafe airspeed or altitude, overshooting final, unresolved drift or crab, a high transition likely to bounce, or traffic conflicts that are not fixing themselves."
                           },
                           {
-                            "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100)"
+                            "text" : "If you roll out in the straightaway before the preceding aircraft has landed, wave off immediately."
                           },
                           {
-                            "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100) = 115\/110\/105"
+                            "text" : "If a stall cue occurs in the pattern, recover the stall first with minimal altitude loss. Once the aircraft is under control and safety permits, reestablish normal wave-off procedures and ground track."
+                          },
+                          {
+                            "text" : "ELP traffic has the right-of-way over normal touch-and-go traffic."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "When required:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery must be completed above 6000’ AGL"
+                            "text" : "Advance PCL as required; MAX power is common, but not every wave-off requires full power if traffic or deconfliction demands otherwise."
                           },
                           {
-                            "text" : "Recovery must be complete above 6000’ AGL"
+                            "text" : "Level the wings if conditions permit, center the ball, raise the nose to climb attitude, and climb at 120 KIAS. Re-trim."
                           },
                           {
-                            "text" : "Checklist - PSSA and Before Landing Checklists"
+                            "text" : "If flaps were lowered, raise them once safely airborne at or above 110 KIAS with two positive rates of climb, then accelerate to 120 KIAS and reduce power to about 60-70%."
                           },
                           {
-                            "text" : "Clear - TCAS, visual scan, clearing turns"
+                            "text" : "Follow the required ground track for traffic deconfliction and make the radio call after the aircraft is under control."
+                          },
+                          {
+                            "text" : "When number one upwind with interval, make the crosswind or departing call."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Procedure:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "~20% power"
+                            "text" : "Initiating too late and then treating the wave-off like an emergency."
                           },
                           {
-                            "text" : "Descent in 30° AOB turn, trimmed"
+                            "text" : "Forgetting to maintain 120 KIAS, raise the flaps, or keep sight of other traffic."
                           },
                           {
-                            "text" : "Airspeed based on flaps (NF\/TO\/LDG) = (120\/115\/110)"
-                          },
-                          {
-                            "text" : "Pitch - 5-10° NH"
+                            "text" : "Making the radio call before the aircraft is actually under control."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
-                      }
-                    ],
-                    "title" : "Landing Irregularities"
-                  },
-                  {
-                    "items" : [
-                      {
-                        "text" : "Late or Rapid Flare"
-                      },
-                      {
-                        "children" : [
-                          {
-                            "text" : "Misjudged altitude"
-                          },
-                          {
-                            "text" : "High descent rate"
-                          },
-                          {
-                            "text" : "Firm\/hard touchdown"
-                          }
-                        ],
-                        "text" : "Key points:"
+                        "text" : "Common errors:"
                       }
                     ],
                     "title" : "Wave-Off"
@@ -17769,51 +17891,101 @@
                   {
                     "items" : [
                       {
-                        "text" : "Tire failures"
+                        "text" : "Landing irregularities are usually recoverable early and ugly late. The rule for this event is simple: correct small errors early, and wave off before a landing error becomes a runway problem."
                       },
                       {
-                        "text" : "aborted takeoff"
+                        "children" : [
+                          {
+                            "text" : "High flare comes from flaring too early or with too much pitch. Ease off a small amount of back-stick and re-establish a normal flare. If the approach is steep or the flare is too high to salvage safely, wave off."
+                          },
+                          {
+                            "text" : "A late or rapid flare creates firm touchdown or an accelerated stall. Hold landing attitude, add power, and wave off rather than forcing the touchdown."
+                          },
+                          {
+                            "text" : "Porpoising comes from a flat landing and nosewheel-first contact. Set takeoff attitude immediately, add power, and wave off. Do not chase each bounce with opposite stick."
+                          }
+                        ],
+                        "text" : "Pitch-related errors:"
                       },
                       {
-                        "text" : "power-on stalls"
+                        "children" : [
+                          {
+                            "text" : "Floating usually comes from late power reduction, excess airspeed, or the wrong flap setting. A slight float may settle out; a long landing should become a wave-off."
+                          },
+                          {
+                            "text" : "Ballooning comes from a rapid flare with too much airspeed. Hold landing attitude through a slight balloon, but wave off a pronounced balloon."
+                          },
+                          {
+                            "text" : "A slight bounce can often be continued with correct landing attitude and direction control. A severe bounce or crosswind bounce should become a wave-off."
+                          }
+                        ],
+                        "text" : "Energy-management errors:"
                       },
                       {
-                        "text" : "landing pattern stalls"
+                        "children" : [
+                          {
+                            "text" : "Landing in a drift or crab creates side loads and can start a swerve. If proper wing-low correction is not established before touchdown, wave off."
+                          },
+                          {
+                            "text" : "If the upwind wing rises after touchdown, keep adding aileron into the wind and use rudder to maintain direction. Do not make an aggressive correction back toward centerline."
+                          },
+                          {
+                            "text" : "In a hard landing, do not raise the gear."
+                          }
+                        ],
+                        "text" : "Directional-control errors:"
+                      }
+                    ],
+                    "title" : "Landing Irregularities"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Tire Failures"
                       },
                       {
-                        "text" : "power-off stalls"
+                        "text" : "Aborted Takeoff"
                       },
                       {
-                        "text" : "landing pattern"
+                        "text" : "Power-On Stalls"
                       },
                       {
-                        "text" : "no-flap landing"
+                        "text" : "Landing Pattern Stalls"
                       },
                       {
-                        "text" : "takeoff flap landing"
+                        "text" : "Power-Off Stalls"
                       },
                       {
-                        "text" : "landing flap landing"
+                        "text" : "Landing Pattern"
                       },
                       {
-                        "text" : "landing irregularities"
+                        "text" : "No-Flap Landing"
                       },
                       {
-                        "text" : "wave-off"
+                        "text" : "Takeoff Flap Landing"
+                      },
+                      {
+                        "text" : "Landing Flap Landing"
+                      },
+                      {
+                        "text" : "Landing Irregularities"
+                      },
+                      {
+                        "text" : "Wave-Off"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Keep Tire Failures and Aborted Takeoff organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
+                "summary" : "Show up ready to fly the pattern by the numbers, recover at the first stall cue, and wave off before a bad landing turns into a runway problem."
               },
-              "summary" : "Tire Failures, Aborted Takeoff, and Power-on Stalls.",
+              "summary" : "Landing pattern execution, stall recovery, and safe landing decisions across flap settings.",
               "tags" : [
                 "contacts",
                 "flights",
                 "fam4102"
               ],
-              "title" : "Tire Failures",
+              "title" : "Stalls and Landing Pattern",
               "videoLinks" : [
 
               ]

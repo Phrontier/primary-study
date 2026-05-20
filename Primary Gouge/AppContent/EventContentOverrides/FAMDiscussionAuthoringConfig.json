@@ -9,7 +9,10 @@
     "FAM3103",
     "FAM3201",
     "FAM3202",
-    "FAM3301"
+    "FAM3301",
+    "FAM3401",
+    "FAM4101",
+    "FAM4102"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -214,6 +217,73 @@
           "displayTitle" : "HUD",
           "manualOnly" : true,
           "presentationStyle" : "systems"
+        }
+      ]
+    },
+    "FAM4102" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "landing",
+        "pattern",
+        "stall"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Tire failures",
+          "displayTitle" : "Tire Failures",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "aborted takeoff",
+          "displayTitle" : "Aborted Takeoff",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "power-on stalls",
+          "displayTitle" : "Power-On Stalls",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "landing pattern stalls",
+          "displayTitle" : "Landing Pattern Stalls",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "power-off stalls",
+          "displayTitle" : "Power-Off Stalls",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "landing pattern",
+          "displayTitle" : "Landing Pattern",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "no-flap landing",
+          "displayTitle" : "No-Flap Landing",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "takeoff flap landing",
+          "displayTitle" : "Takeoff Flap Landing",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "landing flap landing",
+          "displayTitle" : "Landing Flap Landing",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "landing irregularities",
+          "displayTitle" : "Landing Irregularities",
+          "presentationStyle" : "knowledge"
+        },
+        {
+          "discussionItem" : "wave-off",
+          "displayTitle" : "Wave-Off",
+          "presentationStyle" : "procedure"
         }
       ]
     },

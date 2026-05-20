@@ -2119,15 +2119,11 @@ struct ManifestBuilder {
         guard !trimmed.isEmpty else { return trimmed }
 
         var result = trimmed.lowercased().localizedCapitalized
-        result = result.replacingOccurrences(of: #"\bAnd\b"#, with: "and", options: [.regularExpression])
-        result = result.replacingOccurrences(of: #"\bOr\b"#, with: "or", options: [.regularExpression])
-        result = result.replacingOccurrences(of: #"\bOf\b"#, with: "of", options: [.regularExpression])
-        result = result.replacingOccurrences(of: #"\bIn\b"#, with: "in", options: [.regularExpression])
-        result = result.replacingOccurrences(of: #"\bOn\b"#, with: "on", options: [.regularExpression])
-        result = result.replacingOccurrences(of: #"\bTo\b"#, with: "to", options: [.regularExpression])
-        result = result.replacingOccurrences(of: #"\bThe\b"#, with: "the", options: [.regularExpression])
-        result = result.replacingOccurrences(of: #"\bA\b"#, with: "a", options: [.regularExpression])
-        result = result.replacingOccurrences(of: #"\bAn\b"#, with: "an", options: [.regularExpression])
+        let lowercaseJoiners = ["And", "Or", "Of", "In", "On", "To", "The", "A", "An"]
+        for joiner in lowercaseJoiners {
+            let pattern = #"(?<![-/])\b\#(joiner)\b(?![-/])"#
+            result = result.replacingOccurrences(of: pattern, with: joiner.lowercased(), options: [.regularExpression])
+        }
 
         let tokenReplacements: [(pattern: String, replacement: String)] = [
             (#"\bEp\b"#, "EP"),

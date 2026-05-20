@@ -6,12 +6,18 @@ These rules are meant to produce student-facing briefing notes, not mechanical s
 
 1. `Primary Gouge/AppContent/SyllabusEventReference.json`
    This is the canonical source for required discussion-item membership and required-procedure wording.
-2. Local event gouge in `Contents/1. FAM (Contacts)`
-   This is the primary source for event flow, local emphasis, numbers, and maneuver detail.
-3. `Contact FTI.pdf`
-   Use this to fill gaps when local gouge is thin, missing, or obviously incomplete.
+2. `Contact FTI.pdf`
+   This is the technical authority for procedures, definitions, limits, speeds, altitudes, maneuver setup, maneuver-complete criteria, and safety framing across contact events.
+3. Local event gouge in `Contents/1. FAM (Contacts)`
+   This is the readability and event-flow layer. Use it for sortie emphasis, how the event is commonly briefed, and clearer explanations that make technically correct material easier for a student to absorb.
 
-If sources conflict, preserve the syllabus membership and prefer the local event gouge unless it is clearly wrong.
+If sources conflict:
+
+- preserve the syllabus membership from `SyllabusEventReference.json`
+- use the FTI for technical procedure, numbers, and definitions
+- keep the local gouge when it explains the same technically correct idea more clearly
+- keep local sortie-emphasis points when they do not contradict the FTI
+- if the conflict cannot be reconciled cleanly, stop and surface it before authoring the final event note
 
 ## Primary authoring goal
 
@@ -25,7 +31,7 @@ That means:
 - select and condense source detail instead of copying every line
 - treat duplication as a defect
 
-Readable notes beat exhaustive notes once canonical coverage is satisfied.
+Readable notes beat exhaustive notes once canonical coverage is satisfied, but readability does not permit changing technically correct FTI guidance.
 
 The voice should be accurate and textbook-style, not conversational instructor banter.
 
@@ -159,6 +165,7 @@ If a discussion item is an emergency procedure:
 ## Anti-hallucination rule
 
 - Do not invent unsupported numbers, limits, or procedures.
+- Do not replace FTI technical detail with simplified paraphrase if that paraphrase changes the procedure, numbers, or decision logic.
 - If a source is thin, say so conservatively instead of fabricating precision.
 - It is acceptable to add instructional framing, but factual specifics must trace back to a source.
 

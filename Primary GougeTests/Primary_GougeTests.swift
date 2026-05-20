@@ -646,6 +646,67 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4102UsesFTIBackedPatternAndStallSections() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4102"])
+        #expect(event.title == "Stalls and Landing Pattern")
+        #expect(event.summary.lowercased().contains("landing pattern"))
+        #expect(event.summary.lowercased().contains("stall"))
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Aborted Takeoff",
+            "Tire Failures",
+            "Power-On Stalls",
+            "Power-Off Stalls",
+            "Landing Pattern",
+            "Landing Pattern Stalls",
+            "No-Flap Landing",
+            "Takeoff Flap Landing",
+            "Landing Flap Landing",
+            "Wave-Off",
+            "Landing Irregularities",
+            "Required Procedures"
+        ])
+
+        let patternSection = try #require(notes.sections.first(where: { $0.title == "Landing Pattern" }))
+        let patternText = patternSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(patternText.contains("25-30"))
+        #expect(patternText.contains("45"))
+        #expect(patternText.contains("120/115/110"))
+
+        let noFlapSection = try #require(notes.sections.first(where: { $0.title == "No-Flap Landing" }))
+        let noFlapText = noFlapSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        #expect(noFlapText.contains("delay"))
+        #expect(noFlapText.contains("180"))
+
+        let waveoffSection = try #require(notes.sections.first(where: { $0.title == "Wave-Off" }))
+        let waveoffText = waveoffSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        #expect(waveoffText.contains("not a stall recovery"))
+        #expect(waveoffText.contains("120 kias"))
+
+        let stallSection = try #require(notes.sections.first(where: { $0.title == "Landing Pattern Stalls" }))
+        #expect(stallSection.items.contains(where: { $0.text == "Approach Turn Stall:" }))
+        #expect(stallSection.items.contains(where: { $0.text == "Landing Attitude Stall:" }))
+
+        let powerOnSection = try #require(notes.sections.first(where: { $0.title == "Power-On Stalls" }))
+        let powerOnText = powerOnSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(powerOnText.contains("PCL"))
+
+        let irregularitiesSection = try #require(notes.sections.first(where: { $0.title == "Landing Irregularities" }))
+        let irregularitiesText = irregularitiesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(irregularitiesText.contains("Porpoising"))
+        #expect(irregularitiesText.contains("Floating"))
+        #expect(irregularitiesText.contains("Wing Rising After Touchdown"))
+
+        let requiredProcedures = try #require(notes.sections.first(where: { $0.title == "Required Procedures" }))
+        #expect(requiredProcedures.items.contains(where: { $0.text == "Power-On Stalls" }))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

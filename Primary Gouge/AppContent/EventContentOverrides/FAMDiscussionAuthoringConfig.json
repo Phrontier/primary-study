@@ -12,7 +12,8 @@
     "FAM3301",
     "FAM3401",
     "FAM4101",
-    "FAM4102"
+    "FAM4102",
+    "FAM4103"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -425,6 +426,38 @@
             "Any EP"
           ],
           "title" : "Cumulative EP Review"
+        }
+      ]
+    },
+    "FAM4103" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "arrival",
+        "course rules",
+        "OLF"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "OLF operations",
+          "displayTitle" : "OLF Operations",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "local course rules",
+          "displayTitle" : "Local Course Rules",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "home-field arrival",
+          "displayTitle" : "Home-Field Arrival",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "SCATSAFE maneuver",
+          "displayTitle" : "SCATSAFE Maneuver",
+          "presentationStyle" : "procedure"
         }
       ]
     }

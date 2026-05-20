@@ -707,6 +707,52 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4103GeneralizesLocalProceduresWithoutLosingArrivalLogic() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4103"])
+        #expect(event.title == "Course Rules and Arrivals")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(!event.overview.lowercased().contains("shamrock"))
+        #expect(!event.overview.lowercased().contains("corpus"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "OLF Operations",
+            "Local Course Rules",
+            "Home-Field Arrival",
+            "SCATSAFE Maneuver",
+            "Required Procedures"
+        ])
+
+        let olfSection = try #require(notes.sections.first(where: { $0.title == "OLF Operations" }))
+        let olfText = olfSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        #expect(olfText.contains("initial point"))
+        #expect(olfText.contains("two-way communications"))
+
+        let courseRulesSection = try #require(notes.sections.first(where: { $0.title == "Local Course Rules" }))
+        let courseRulesText = courseRulesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        #expect(courseRulesText.contains("published procedure"))
+        #expect(courseRulesText.contains("day-of brief"))
+        #expect(!courseRulesText.contains("waldron"))
+        #expect(!courseRulesText.contains("rusty"))
+
+        let arrivalSection = try #require(notes.sections.first(where: { $0.title == "Home-Field Arrival" }))
+        let arrivalText = arrivalSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        #expect(arrivalText.contains("arrival gate"))
+        #expect(arrivalText.contains("direct recovery"))
+        #expect(!arrivalText.contains("shamrock"))
+
+        let scatsafeSection = try #require(notes.sections.first(where: { $0.title == "SCATSAFE Maneuver" }))
+        let scatsafeText = scatsafeSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(scatsafeText.contains("80 KIAS"))
+        #expect(scatsafeText.contains("45% torque"))
+        #expect(scatsafeText.contains("Adverse Yaw"))
+        #expect(scatsafeText.contains("Flap Retraction"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

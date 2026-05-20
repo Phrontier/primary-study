@@ -2154,7 +2154,9 @@ struct ManifestBuilder {
             (#"\bLop\b"#, "LOP"),
             (#"\bAoa\b"#, "AOA"),
             (#"\bOcf\b"#, "OCF"),
-            (#"\bOdo/Fdo\b"#, "ODO/FDO")
+            (#"\bOdo/Fdo\b"#, "ODO/FDO"),
+            (#"\bOlf\b"#, "OLF"),
+            (#"\bScatsafe\b"#, "SCATSAFE")
         ]
 
         for replacement in tokenReplacements {

@@ -4,7 +4,7 @@
       "OLF Operations"
     ],
     "SCATSAFE maneuver" : [
-      "Scatsafe Maneuver"
+      "SCATSAFE Maneuver"
     ],
     "home-field arrival" : [
       "Home-Field Arrival"
@@ -14,7 +14,7 @@
     ]
   },
   "code" : "FAM4103",
-  "overview" : "This event ties together olf operations, local course rules, and home-field arrival in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+  "overview" : "This sortie is about getting between the working area, outlying fields, and home field without letting radios, checkpoints, or pattern flow get ahead of you. Show up ready to brief how you enter an OLF, stay disciplined on course rules, recover back to home field with a clean plan, and explain what SCATSAFE teaches about low-speed handling.",
   "primaryDocumentTitles" : [
     "FAM4103"
   ],
@@ -24,15 +24,49 @@
       {
         "items" : [
           {
-            "text" : "Goliad"
+            "text" : "OLF work is a standardization problem. Safety comes from every aircraft using the same duty runway, initial point, break interval, and radio flow instead of improvising the pattern."
           },
           {
             "children" : [
               {
-                "text" : "Arrival Procedures"
+                "text" : "Determine the duty runway before arrival and get on the correct field frequency early enough to build the picture before the initial."
+              },
+              {
+                "text" : "Arrive at the published initial point on or parallel to extended centerline, wings level, on runway heading, at the locally briefed break altitude and airspeed."
+              },
+              {
+                "text" : "Visually acquire traffic, confirm wind information, and make the initial call before you commit inbound."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Initial and entry discipline:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not continue inbound for the break without the required two-way communications or pattern acknowledgement."
+              },
+              {
+                "text" : "Establish proper interval before the break, not halfway through it. If the aircraft ahead is not where it should be, fix interval early or discontinue."
+              },
+              {
+                "text" : "If the pattern is saturated, the preceding aircraft is not in sight, or communications are not working by the briefed gate, reset or hold as directed instead of forcing the entry."
+              }
+            ],
+            "text" : "Pattern management:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "After a touch-and-go, stay straight ahead until number one upwind with interval and any required clearance before turning crosswind or departing."
+              },
+              {
+                "text" : "Practice PEL or other nonstandard entries must be coordinated early enough that everyone in the pattern understands your plan."
+              },
+              {
+                "text" : "The exact distances, checkpoints, and holding points are field-specific. Brief the current local SOP and day-of gouge instead of memorizing one field's place names."
+              }
+            ],
+            "text" : "Departures and special entries:"
           }
         ],
         "title" : "OLF Operations"
@@ -40,21 +74,46 @@
       {
         "items" : [
           {
-            "text" : "Waldron"
+            "text" : "Course rules are the deconfliction system that gets you between fields, MOAs, and home field without guesswork. Treat them like a published procedure, not like loose local knowledge."
           },
           {
             "children" : [
               {
-                "text" : "“Corpus Approach, (Call Sign), request High-Key to Waldron.”"
+                "text" : "Know the route you are joining, the controlling agency, the required check-in point, and the altitude and airspeed that keep you separated from other training traffic."
               },
               {
-                "text" : "Request Base, Downwind, or Break entry."
+                "text" : "Hold the assigned side of the route, respect any altitude step-downs or speed changes before entering controlled airspace, and do not assume a direct shortcut is approved just because it looks convenient."
               },
               {
-                "text" : "Make all IFR requests with Waldron Tower who will coordinate with Corpus Approach."
+                "text" : "If weather, traffic, or aircraft configuration makes the standard recovery unrealistic, call early and request a direct recovery or alternate entry rather than drifting off the published flow."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What course rules are really doing:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Brief the departure option, first radio handoff, route checkpoints, expected termination point, and what you will do if communications degrade."
+              },
+              {
+                "text" : "Expect local procedures to define specific reporting points, route names, and runway-dependent turns. Those details change by base and must be confirmed from the current SOP or day-of brief."
+              },
+              {
+                "text" : "What does not change is the logic: stay predictable, stay on altitude and airspeed, make required calls on time, and never let administrative tasks outrun aircraft control."
+              }
+            ],
+            "text" : "How to brief them:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Late frequency changes, climbing or descending before cleared, and showing up fast to the next control point all create avoidable traffic problems."
+              },
+              {
+                "text" : "Do not fixate on route names. What matters is understanding the purpose of the route, the sequence of control agencies, and the conditions that trigger a reroute or reset."
+              }
+            ],
+            "text" : "Common errors / traps:"
           }
         ],
         "title" : "Local Course Rules"
@@ -62,29 +121,32 @@
       {
         "items" : [
           {
-            "text" : "Home-Field Arrival is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+            "text" : "Home-field arrival should feel pre-briefed before you reach the arrival gate. The student mistake is waiting until the checkpoint to decide which entry, runway, or recovery plan makes sense."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Remain on the published arrival route and transit profile until the arrival gate or controlling agency directs something different."
+              },
+              {
+                "text" : "If weather, traffic, or gear/flap configuration prevents the normal recovery, make that call early and request a direct recovery or alternate entry before the airplane gets busy."
+              },
+              {
+                "text" : "Know whether you want an overhead, straight-in, base, or downwind entry before the check-in call so the request sounds deliberate instead of improvised."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Arrival planning:"
           },
           {
             "children" : [
               {
-                "text" : "General Notes"
+                "text" : "At the home-field arrival gate, slow to the published entry speed, contact the proper controlling agency, and state the recovery type you want."
               },
               {
-                "text" : "PT SHAMROCK is the common reporting point for most arrivals."
+                "text" : "For overhead recoveries, be at the published entry altitude and airspeed, slightly offset to the pattern side, and ready to report initial and numbers as required."
               },
               {
-                "text" : "Home-Field Arrival is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              },
-              {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "For straight-ins, be slowed and configured before intercepting final. Gear-down and base/final calls should help tower and other traffic understand exactly what picture you are building."
               }
             ],
             "text" : "Execution priorities:"
@@ -92,16 +154,13 @@
           {
             "children" : [
               {
-                "text" : "Fly 240 KIAS until PT SHAMROCK (unless directed otherwise)."
+                "text" : "If the setup is wrong, ask for a reset to initial or a different entry early instead of trying to salvage a rushed arrival close to the field."
               },
               {
-                "text" : "Contact Corpus Approach on CH 8 UHF unless otherwise directed."
-              },
-              {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Home-Field Arrival late."
+                "text" : "The field-specific arrival gates, landmarks, and runway-dependent turns will vary. The transferable skill is arriving configured, predictable, and ahead of the radio timeline."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Common errors / traps:"
           }
         ],
         "title" : "Home-Field Arrival"
@@ -109,73 +168,88 @@
       {
         "items" : [
           {
-            "text" : "Demonstrates T-6B flight characteristics near stall speed to build awareness of control responsiveness, coordination, and aerodynamic effects at low airspeed."
+            "text" : "SCATSAFE is an instructor demonstration of how the T-6B behaves near stall speed. The point is to build pattern-relevant sight pictures and coordination habits before a student sees them the hard way close to the runway."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Complete the maneuver above 6000 feet AGL."
+              },
+              {
+                "text" : "Slow below 150 KIAS, lower the gear, complete the Before Landing Checklist and the Pre-Stalling, Spinning, and Aerobatic Checklist, and clear the area."
+              },
+              {
+                "text" : "Lower flaps to LDG, continue slowing to about 80 KIAS or 15 units AOA, and set about 45% torque."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Setup:"
           },
           {
             "children" : [
               {
-                "text" : "VFR Straight-In from SHAMROCK"
+                "text" : "Straight and Level: recognize the pitch, torque, and rudder picture required to hold level flight on the back side of the power curve. This is the same slow-flight picture that matters near rotation and just before touchdown."
               },
               {
-                "text" : "Report “Left base\/Final gear down.”"
+                "text" : "Coordination Exercise: use 15-20 degrees of bank and coordinated rudder to keep the ball centered. The airplane needs noticeably more right rudder in right turns than in left turns."
               },
               {
-                "text" : "Report “Right base gear down.”"
+                "text" : "Adverse Yaw: without rudder, the nose initially yaws opposite the turn and overshoots rollout; coordinated rudder makes the nose track and stop where you expect."
               },
               {
-                "text" : "Carrier Break"
+                "text" : "Torque and Turns: a rapid advance to MAX power from slow flight will pitch, yaw, and roll the aircraft left unless you hold proper pitch and coordinated rudder."
+              },
+              {
+                "text" : "Steep Turns: increasing bank toward 60 degrees at slow airspeed rapidly drives AOA up and can push the airplane into an impending stall."
+              },
+              {
+                "text" : "Abrupt Control Movement: a sudden flare-like pull quickly increases AOA without fixing sink rate and can produce the exact hard-landing or stall sequence students create in the pattern."
+              },
+              {
+                "text" : "Flap Retraction: retracting flaps too early removes lift, increases sink, and can stall the airplane; the demonstration shows why flap retraction gates matter."
+              },
+              {
+                "text" : "Effectiveness of Controls: at slow airspeed, rapid small inputs often do very little. Smooth, positive inputs work better than twitchy corrections."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "What each element teaches:"
           },
           {
             "children" : [
               {
-                "text" : "1000' MSL, 200 KIAS, slightly offset (1\/4 WTD) to pattern side."
+                "text" : "The demonstration is complete when all SCATSAFE elements are understood and the aircraft is recovered to a normal, trimmed energy state."
               },
               {
-                "text" : "Slow to 200 KIAS, request visual straight-in."
+                "text" : "Expect the stick shaker to be on through portions of the maneuver."
               },
               {
-                "text" : "800' MSL (South Flow) or 500' MSL (North Flow)."
-              },
-              {
-                "text" : "Slow <150 KIAS, configure (gear\/flaps), complete Before Landing Checklist."
+                "text" : "The usual misses are poor clearing discipline, abrupt controls, weak trim, and altitude control that degrades while the student watches the effect instead of flying the aircraft."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Key takeaways / N/W/C focus:"
           }
         ],
-        "title" : "Scatsafe Maneuver"
+        "title" : "SCATSAFE Maneuver"
       },
       {
         "items" : [
           {
-            "text" : "OLF operations"
+            "text" : "OLF Operations"
           },
           {
-            "text" : "local course rules"
+            "text" : "Local Course Rules"
           },
           {
-            "text" : "home-field arrival"
+            "text" : "Home-Field Arrival"
           },
           {
-            "text" : "SCATSAFE maneuver"
+            "text" : "SCATSAFE Maneuver"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Have OLF Operations and Local Course Rules organized before step so the cockpit workload never outruns the brief."
+    "summary" : "Keep the arrival picture organized before the first call: know the OLF entry, understand the course-rule logic, and arrive home with a clean plan before SCATSAFE shows you what slow-flight mistakes feel like."
   },
-  "summary" : "OLF Operations, Local Course Rules, and Home-Field Arrival.",
-  "title" : "OLF Operations"
+  "summary" : "OLF entries, course rules, home-field arrivals, and the SCATSAFE low-speed demonstration.",
+  "title" : "Course Rules and Arrivals"
 }

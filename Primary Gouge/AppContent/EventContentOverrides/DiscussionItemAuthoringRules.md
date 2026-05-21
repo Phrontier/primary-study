@@ -57,6 +57,12 @@ Every authored override should include:
 - top-level sections that reflect how a student would naturally brief the event
 - a final `Required Procedures` section
 
+For NATOPS-heavy systems content, an authored override may also include:
+
+- `systemsBrief`
+
+Use `systemsBrief` when a system item is dense enough that students benefit from a separate memorization lane. The event discussion item should still cover the decision-useful version of that topic, but the `systemsBrief` can carry the fuller NATOPS-style walk-through.
+
 The `Required Procedures` section must:
 
 - use exact canonical syllabus wording
@@ -100,6 +106,23 @@ Avoid:
 - repeated coaching phrases across many sections
 - restating the same fact in multiple sections unless the repetition adds real clarity
 - consolidating distinct syllabus maneuvers into one catch-all section
+
+## Systems-brief lane
+
+When a systems item is dense enough to become its own graded brief:
+
+- keep the event `Discussion items` section focused on what the student must explain, recognize, and do in the event
+- move the dense subsystem / flow-path / limit memorization into `systemsBrief`
+- use the FTI and NATOPS-style local systems brief as the technical backbone
+- make the `systemsBrief` help the student succeed in the brief, not just restate component names
+
+Good systems-brief structure usually includes:
+
+- how to brief the system successfully
+- system purpose and major subsystems
+- flow path or control logic
+- cockpit indications, limits, and failure cues
+- the traps that change the operational answer
 
 ## Maneuver-event checklist
 
@@ -176,6 +199,8 @@ The build validates FAM overrides for:
 - authored notes present for every canonical FAM event
 - correct `headline`
 - non-empty `studyNotes.summary`
+- `systemsBrief` presence when the event config declares one is required
+- `systemsBrief.headline == "Systems brief"` when used
 - exact `Required Procedures`
 - complete `canonicalCoverage`
 - valid referenced section titles

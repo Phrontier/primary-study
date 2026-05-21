@@ -43,6 +43,7 @@ struct FAMDiscussionAuthoringEventOverride: Decodable {
     let authoringProfile: String?
     let eventEmphasisKeywords: [String]?
     let preserveExistingVisibleContent: Bool?
+    let systemsBriefItems: [String]?
     let itemSections: [FAMDiscussionAuthoringItemSection]?
     let sections: [FAMDiscussionAuthoringSection]?
     let summary: String?
@@ -100,6 +101,7 @@ struct ExistingOverride: Decodable {
     let title: String?
     let summary: String?
     let overview: String?
+    let systemsBrief: ExistingStudyNotes?
     let canonicalCoverage: [String: [String]]?
     let primaryDocumentTitles: [String]?
     let studyNotes: ExistingStudyNotes?
@@ -126,6 +128,7 @@ struct EventContentOverrideOutput: Encodable {
     let title: String
     let summary: String
     let overview: String
+    let systemsBrief: StudyNotesOutput?
     let canonicalCoverage: [String: [String]]
     let primaryDocumentTitles: [String]
     let studyNotes: StudyNotesOutput
@@ -366,6 +369,7 @@ private func buildOverride(
         title: event.shortTitle,
         summary: summary,
         overview: overview,
+        systemsBrief: existingOverride?.systemsBrief.flatMap(convertExistingNotes),
         canonicalCoverage: canonicalCoverage,
         primaryDocumentTitles: context.primaryTitles,
         studyNotes: StudyNotesOutput(
@@ -526,9 +530,23 @@ private func preservedVisibleOverride(
         title: existingOverride.title ?? event.shortTitle,
         summary: summary,
         overview: overview,
+        systemsBrief: existingOverride.systemsBrief.map(convertExistingNotes),
         canonicalCoverage: existingOverride.canonicalCoverage ?? [:],
         primaryDocumentTitles: existingOverride.primaryDocumentTitles ?? context.primaryTitles,
         studyNotes: notes
+    )
+}
+
+private func convertExistingNotes(_ notes: ExistingStudyNotes) -> StudyNotesOutput {
+    StudyNotesOutput(
+        headline: notes.headline,
+        summary: notes.summary ?? "",
+        sections: notes.sections.map { section in
+            StudyNotesSectionOutput(
+                title: section.title,
+                items: section.items.map(convertExistingItem)
+            )
+        }
     )
 }
 

@@ -64,6 +64,7 @@ struct Event: Codable {
     let categoryKind: StudyCategoryKind
     let sourceDocuments: [SourceDocument]
     let studyNotes: EventStudyNotes?
+    let systemsBrief: EventStudyNotes?
     let primaryDocumentIDs: [String]
     let flashcardDecks: [FlashcardDeck]
     let questionBanks: [QuestionBank]
@@ -258,6 +259,7 @@ struct DiscussionItemAuthoringConfigFile: Codable {
 struct DiscussionItemAuthoringEventOverrideConfig: Codable {
     let eventEmphasisKeywords: [String]?
     let itemSections: [DiscussionItemAuthoringItemSectionConfig]?
+    let systemsBriefItems: [String]?
     let standardizeRequiredProcedureDisplay: Bool?
 }
 
@@ -366,6 +368,8 @@ struct DiscussionItemAuthoringIssue: Codable {
     let missingStudyNotes: Bool
     let invalidHeadline: Bool
     let missingSummary: Bool
+    let missingSystemsBriefItems: [String]
+    let invalidSystemsBriefHeadline: Bool
     let boilerplateOverview: Bool
     let boilerplateNotesSummary: Bool
     let colloquialVisiblePhrases: [String]
@@ -438,6 +442,7 @@ struct EventOverride: Codable {
     let summary: String?
     let overview: String?
     let studyNotes: EventStudyNotes?
+    let systemsBrief: EventStudyNotes?
     let canonicalCoverage: [String: [String]]?
     let primaryDocumentTitles: [String]?
     let sharedResources: [EventResourceLink]?
@@ -1175,6 +1180,7 @@ struct ManifestBuilder {
         let studyNotes = override?.studyNotes
             ?? buildStudyNotes(fromSyllabusReferenceFor: code)
             ?? noteText.flatMap { buildStudyNotes(from: $0, code: code, categoryKind: categoryKind) }
+        let systemsBrief = override?.systemsBrief
         let primaryDocumentIDs = resolvePrimaryDocumentIDs(from: sourceDocuments, override: override)
         let flashcardDecks = resolvedFlashcardDecks(for: code, override: override)
 
@@ -1193,6 +1199,7 @@ struct ManifestBuilder {
             categoryKind: categoryKind,
             sourceDocuments: sourceDocuments,
             studyNotes: studyNotes,
+            systemsBrief: systemsBrief,
             primaryDocumentIDs: primaryDocumentIDs,
             flashcardDecks: flashcardDecks,
             questionBanks: questionBanks,
@@ -1503,6 +1510,11 @@ struct ManifestBuilder {
             let missingStudyNotes = studyNotes == nil
             let invalidHeadline = studyNotes?.headline != "Discussion items"
             let missingSummary = studyNotes?.summary?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
+            let configuredSystemsBriefItems = overrideConfig?.systemsBriefItems ?? []
+            let missingSystemsBriefItems = configuredSystemsBriefItems.filter { _ in
+                override?.systemsBrief == nil
+            }
+            let invalidSystemsBriefHeadline = override?.systemsBrief != nil && override?.systemsBrief?.headline != "Systems brief"
             let boilerplateOverview = Self.containsFAMOverviewBoilerplate(override?.overview) ||
                 (usesStrictPerItemSections && Self.containsReusableDiscussionOverviewBoilerplate(override?.overview))
             let boilerplateNotesSummary = Self.containsFAMNotesSummaryBoilerplate(studyNotes?.summary) ||
@@ -1695,6 +1707,8 @@ struct ManifestBuilder {
             guard missingStudyNotes ||
                     invalidHeadline ||
                     missingSummary ||
+                    !missingSystemsBriefItems.isEmpty ||
+                    invalidSystemsBriefHeadline ||
                     boilerplateOverview ||
                     boilerplateNotesSummary ||
                     !colloquialVisiblePhrases.isEmpty ||
@@ -1723,6 +1737,8 @@ struct ManifestBuilder {
                 missingStudyNotes: missingStudyNotes,
                 invalidHeadline: invalidHeadline,
                 missingSummary: missingSummary,
+                missingSystemsBriefItems: missingSystemsBriefItems,
+                invalidSystemsBriefHeadline: invalidSystemsBriefHeadline,
                 boilerplateOverview: boilerplateOverview,
                 boilerplateNotesSummary: boilerplateNotesSummary,
                 colloquialVisiblePhrases: uniqueStrings(colloquialVisiblePhrases),

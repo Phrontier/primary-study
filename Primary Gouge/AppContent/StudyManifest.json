@@ -19486,7 +19486,7 @@
                 }
               ],
               "id" : "contacts-flights-fam4203",
-              "overview" : "This event ties together oil and propeller systems, engine air starts, and ejection and visual straight-in in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+              "overview" : "This sortie is about using systems knowledge to make better recovery decisions. Be ready to brief the oil and propeller system at the event level, choose the correct airstart branch, and decide early whether the safer answer is a visual straight-in, a forced landing, or ejection.",
               "primaryDocumentIDs" : [
 
               ],
@@ -19525,38 +19525,32 @@
                   {
                     "items" : [
                       {
-                        "text" : "Indication"
+                        "text" : "Use the Systems brief tool for the full NATOPS-style walk-through. For this event, connect the oil and propeller system to the cockpit indications and decisions it drives."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Self-contained, dry sump, pressurized oil system with scavenging and breather subsystems."
+                            "text" : "The oil system is protecting engine bearings, the reduction gearbox, and the propeller interface unit, so a bad oil indication is never just a gauge problem until you prove it is."
                           },
                           {
-                            "text" : "Oil Pump"
+                            "text" : "The propeller is constant-speed and feathering, and normal RPM control depends on PMU and PIU control of oil pressure. If that logic degrades, thrust and drag change with it."
                           },
                           {
-                            "text" : "Single-stage, gear-driven, internal to oil tank"
-                          },
-                          {
-                            "text" : "Driven by Accessory Gearbox (AGB)"
+                            "text" : "When PMU is OFF, increased oil pressure and volume can help counter an uncommanded feather, but the trade is higher pilot workload and tighter monitoring."
                           }
                         ],
-                        "text" : "Immediate actions:"
+                        "text" : "What matters in flight:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "If at\/below ADD → service to MAX HOT"
+                            "text" : "A momentary amber OIL PX caution while maneuvering may be nuisance, but a red OIL PX warning, persistent amber caution, oil-temperature problem, or visibly leaking oil should push you toward minimum necessary power and a PEL."
                           },
                           {
-                            "text" : "(W) FUEL PX may indicate oil pump drive failure (same shaft as external scavenge pump) → Continue PEL even if light extinguishes"
+                            "text" : "A CHIP warning means possible metal contamination in the engine or gearbox oil system. Treat it like damage that may get worse with power."
                           },
                           {
-                            "text" : "Possible metal contamination in the engine oil supply. If the contamination is severe, the engine will fail with little or no further warning."
-                          },
-                          {
-                            "text" : "Modulates oil pressure if PMU fails"
+                            "text" : "If FUEL PX also misbehaves, remember the external scavenge pump shares a shaft with the low-pressure fuel pump. That is why a fuel-pressure issue can reinforce the decision to continue the PEL."
                           }
                         ],
                         "text" : "Decision cues:"
@@ -19564,16 +19558,13 @@
                       {
                         "children" : [
                           {
-                            "text" : "Use this procedure for any of the following: red OIL PX annunciator illuminated, amber OIL PX annunciator illuminated, oil pressure fluctuations, oil temperature out of limits, or visibly confirmed leaking oil from the aircraft."
+                            "text" : "If oil pressure looks normal while both red and amber oil indications are on, think SCU failure instead of real low oil pressure."
                           },
                           {
-                            "text" : "If OIL PX warning illuminates and oil pressure indicates <5 psi, check OIL TRX circuit breaker on the battery bus circuit breaker panel (left front console). If the circuit breaker is open, it may be reset."
+                            "text" : "If OIL PX shows less than 5 PSI after a warning, the OIL TRX circuit breaker may be part of the picture, but do not let troubleshooting delay the landing decision."
                           },
                           {
-                            "text" : "Due to the sensitivity of the signal conditioning unit, a single, momentary illumination of the amber OIL PX caution while maneuvering is possible but may not indicate a malfunction."
-                          },
-                          {
-                            "text" : "Illumination of both red and amber OIL PX messages while the oil pressure gauge indicates normal pressure indicates an SCU failure."
+                            "text" : "PCL must be OFF to feather the propeller correctly for an airstart; that detail matters because the propeller and start logic are tied together."
                           }
                         ],
                         "text" : "N\/W\/C focus:"
@@ -19584,21 +19575,49 @@
                   {
                     "items" : [
                       {
-                        "text" : "An airstart is an attempt to restart the engine in-flight after a flameout or shutdown not caused by fire or mechanical failure."
+                        "text" : "All airstarts are starter-assisted and only buy you something if altitude, airspeed, and aircraft condition still support a recovery."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "All airstarts are starter assisted."
+                            "text" : "Primary envelope is 125-200 KIAS from sea level to 15,000 feet and 135-200 KIAS from 15,001-20,000 feet. Starts are only demonstrated up to 20,000 feet MSL."
                           },
                           {
-                            "text" : "PMU switch - OFF"
+                            "text" : "Plan on more than 1200 feet of altitude loss and about 40 seconds to useful power for a normal attempt."
                           },
                           {
-                            "text" : "START, IGN, and BOOST PUMP circuit breakers (left front console) - In"
+                            "text" : "Use PMU NORM unless the PMU FAIL warning is illuminated. If PMU is bad, the PMU OFF airstart becomes a manual fuel-metering problem."
                           }
                         ],
-                        "text" : "Key points:"
+                        "text" : "Airstart framework:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "PCL OFF first, then confirm the starter, ignition, boost pump, firewall shutoff, and bleed-air setup before you introduce fuel."
+                          },
+                          {
+                            "text" : "For PMU NORM or immediate airstarts, move the PCL to IDLE above 13% N1 and do not advance above IDLE until N1 stabilizes at about 67%."
+                          },
+                          {
+                            "text" : "For a PMU OFF airstart, starter stays in MANUAL and the critical pilot task is smooth PCL movement while watching fuel flow, ITT, and N1."
+                          }
+                        ],
+                        "text" : "Execution branches:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If N1 does not rise within 5 seconds, or ITT does not rise within 10 seconds after fuel flow, stop the attempt and go back to OFF."
+                          },
+                          {
+                            "text" : "If the start fails, the next answer is forced landing or ejection, not endless troubleshooting."
+                          },
+                          {
+                            "text" : "Below 2000 feet AGL, do not let the hope of a successful airstart delay the ejection decision."
+                          }
+                        ],
+                        "text" : "Commit logic:"
                       }
                     ],
                     "title" : "Engine Air Starts"
@@ -19606,77 +19625,252 @@
                   {
                     "items" : [
                       {
-                        "text" : "(C) If there is no rise in ITT within 10 seconds after fuel flow indications, place the PCL to OFF and abort the start."
+                        "text" : "Ejection is the correct answer once continued flight is no longer survivable; it is not the backup plan after every other option has already failed."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "(W) PCL must be in OFF to feather the propeller, and ensure proper starter, ignition, boost pump, and PMU operation during airstart."
+                            "text" : "Controlled ejection assumes the aircraft is still flyable long enough to optimize conditions. Recommended minimum is 2000 feet AGL and roughly 125-180 KIAS."
                           },
                           {
-                            "text" : "(C) Ensure PCL is in OFF; otherwise, fuel may be prematurely introduced during start."
+                            "text" : "Uncontrolled ejection means the aircraft is no longer controllable. Recommended minimum is 6000 feet AGL, but if the aircraft is truly unrecoverable you eject immediately."
                           },
                           {
-                            "text" : "START, IGN, BOOST PUMP, and PMU circuit breakers (left front console) - In"
-                          },
-                          {
-                            "text" : "FIREWALL SHUTOFF handle - Down"
+                            "text" : "Make the decision early. The seat can work at very low altitude, but pilot delay, attitude, sink rate, and airspeed are what destroy margins."
                           }
                         ],
-                        "text" : "Immediate actions:"
+                        "text" : "Decision framework:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "(W) PCL must be in OFF to feather the propeller, and stop fuel flow; if start is attempted without the PCL in OFF, fuel is introduced without ignition and a hot start will likely result when ignition begins."
+                            "text" : "If time permits: notify the other crewmember, make a distress call, set 7700, stow loose gear, get visor down, tighten mask and helmet, check leg garters and harness, and set ADU as required."
                           },
                           {
-                            "text" : "Ejection is a life-saving action when continued flight is no longer viable."
+                            "text" : "Release the emergency oxygen hose from the elastic sidewall strap before ejecting or you may lose the emergency oxygen supply."
                           },
                           {
-                            "text" : "ADU mode selector valve - As required (BOTH)"
-                          },
-                          {
-                            "text" : "(N) If ejecting at low speed, one or both sets of risers may remain velcroed together following seat separation. This may create a slight increase in descent rate and\/or an uncommanded turn. Manually separate the risers if time permits. The steering lines (toggles) are located on the backside of each of the front risers. To counter any uncommanded turns, unstow the opposite steering line or use risers for controllability."
+                            "text" : "PCL goes OFF, turn toward an uninhabited area if able, then assume the proper position before pulling."
                           }
                         ],
-                        "text" : "Decision cues:"
+                        "text" : "Setup actions:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for Ejection and Visual Straight-in before the event."
+                            "text" : "Use the ORM 3-2-1 mindset during a forced-landing profile: below 2000 feet AGL you should only keep descending if you are on profile, runway in sight, and in a position to land."
+                          },
+                          {
+                            "text" : "If those criteria are not met by the bottom of the profile, the real-world answer may be ejection. In training, that same decision point becomes a waveoff."
+                          },
+                          {
+                            "text" : "If ejecting over mountainous terrain above 8000 feet MSL, be ready to use the MOR handle for manual seat separation and chute deployment."
                           }
                         ],
                         "text" : "N\/W\/C focus:"
                       }
                     ],
-                    "title" : "Ejection and Visual Straight-in"
+                    "title" : "Ejection Decision and Setup"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "Oil and propeller systems"
+                        "text" : "A visual straight-in is the recovery option when an overhead or break is not practical and you still have enough runway picture to stabilize early."
                       },
                       {
-                        "text" : "engine air starts"
+                        "children" : [
+                          {
+                            "text" : "Establish ATC contact early and position 3-5 NM from the runway on extended centerline, extended base, or a 45-degree intercept that still gives you time to stabilize."
+                          },
+                          {
+                            "text" : "Slow below 150 KIAS for configuration, get the gear down, and finish the Before Landing Checklist no later than the base-to-final setup or 3-5 NM final."
+                          },
+                          {
+                            "text" : "Confirm the local reporting and pattern flow from the current SOP or day-of brief instead of memorizing one field's named checkpoints."
+                          }
+                        ],
+                        "text" : "Setup:"
                       },
                       {
-                        "text" : "ejection and visual straight-in"
+                        "children" : [
+                          {
+                            "text" : "Build a stabilized glideslope of roughly 400-600 feet per NM and fly the normal 110\/105\/100 KIAS picture for the selected flap setting."
+                          },
+                          {
+                            "text" : "Be wings level with adequate straightaway by about 200 feet AGL, with the runway centerline already under control instead of still being chased."
+                          },
+                          {
+                            "text" : "Report gear down, verify landing clearance, and do not let late radio work distract from the landing picture."
+                          }
+                        ],
+                        "text" : "Final picture:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the straight-in is no longer stable, do not force it. In training that means waveoff; in an emergency it may mean forced landing or ejection depending on what margin is left."
+                          },
+                          {
+                            "text" : "Late configuration, low energy, or trying to salvage a drifting final is what turns a planned straight-in into a bad recovery problem."
+                          }
+                        ],
+                        "text" : "Common errors \/ decision traps:"
+                      }
+                    ],
+                    "title" : "Visual Straight-In"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Oil and Propeller Systems"
+                      },
+                      {
+                        "text" : "Engine Air Starts"
+                      },
+                      {
+                        "text" : "Ejection and Visual Straight-In"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Keep Oil and Propeller Systems, plus Engine Air Starts organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
+                "summary" : "Keep the decision tree straight: know what the oil and propeller indications mean, know which airstart branch you are in, and do not let straight-in or ejection criteria become last-second calls."
               },
-              "summary" : "Oil and Propeller Systems, Engine Air Starts, and Ejection and Visual Straight-in.",
+              "summary" : "Oil\/propeller system big picture, airstart branch selection, and the ejection-versus-straight-in decisions that follow a bad engine day.",
+              "systemsBrief" : {
+                "headline" : "Systems brief",
+                "sections" : [
+                  {
+                    "items" : [
+                      {
+                        "text" : "Start with purpose, then walk the flow path, then explain what cockpit indication changes the operational answer. That order keeps the brief from turning into disconnected component trivia."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Purpose: lubricate, cool, and protect the engine, gearbox, and propeller-control components."
+                          },
+                          {
+                            "text" : "Flow: where oil comes from, where it goes under pressure, how it is scavenged and cooled, and how it returns."
+                          },
+                          {
+                            "text" : "Indications and consequences: what OIL PX, oil temperature, CHIP, NP, or feathering behavior should make you say next."
+                          }
+                        ],
+                        "text" : "Briefing flow:"
+                      }
+                    ],
+                    "title" : "How to Brief the System"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The oil system is a self-contained, dry-sump, pressurized system with pressure, scavenge, cooling, and breather subsystems. Tank capacity is 18.5 quarts."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The engine-driven oil pump is a single-stage, gear-driven pump inside the tank and is driven by the accessory gearbox."
+                          },
+                          {
+                            "text" : "Normal flight uses the lower pickup; inverted flight uses the upper pickup so oil supply continues in changing attitudes."
+                          },
+                          {
+                            "text" : "Pressurized oil is delivered to the AGB bearings, gas-generator bearings, power-turbine bearings, RGB, and PIU."
+                          }
+                        ],
+                        "text" : "Pressure system:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Internal and external scavenge pumps return used oil from bearings, turbines, gearbox, and propeller components."
+                          },
+                          {
+                            "text" : "Oil passes through the cooler before returning to the tank. The oil cooler uses outside air from the inlet below the starter-generator inlet."
+                          },
+                          {
+                            "text" : "The breather system vents pressure and oil vapor overboard while spinning residual oil back toward the tank."
+                          }
+                        ],
+                        "text" : "Scavenge, cooling, and breather:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Normal oil-pressure thinking: 15-40 PSI at idle is caution range, less than 15 PSI at idle is warning, and with PCL above idle anything under 40 PSI is a warning."
+                          },
+                          {
+                            "text" : "Normal in-flight oil-temperature range is 10-105°C. Ground operations can transiently use 106-110°C if torque is below 20 percent."
+                          },
+                          {
+                            "text" : "If both red and amber oil indications are on with normal pressure, think SCU failure. If FUEL PX joins the problem, remember the shared shaft with the external scavenge pump."
+                          }
+                        ],
+                        "text" : "Indications and traps:"
+                      }
+                    ],
+                    "title" : "Oil System"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The propeller is a 97-inch, four-bladed, constant-speed, variable-pitch, non-reversing, feathering propeller. Normal speed is 2000 RPM or 100% NP."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The reduction gearbox takes engine RPM down to usable propeller RPM and drives the propeller, PIU, and torque-probe system."
+                          },
+                          {
+                            "text" : "The PIU uses engine oil and PMU commands to change blade pitch and hold 100% NP."
+                          },
+                          {
+                            "text" : "Increasing oil pressure drives the piston forward and moves the blades toward fine pitch; loss of oil pressure lets the counterweights and feathering spring drive the blades toward feather."
+                          }
+                        ],
+                        "text" : "Control logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Normal feathering is commanded with PCL to CUTOFF and PMU in NORM, which drains prop-servo oil pressure."
+                          },
+                          {
+                            "text" : "PCL must be OFF to feather correctly during airstarts. If the PROP SYS circuit breaker is out, feathering may be delayed or incomplete."
+                          },
+                          {
+                            "text" : "With PMU OFF, counterweights dump oil and spring force drives the prop toward coarse pitch, so brief the higher workload and possible transient NP overspeed."
+                          }
+                        ],
+                        "text" : "Feathering and PMU OFF effects:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Avoid sustained ground operation between 62-80% NP because of resonance risk."
+                          },
+                          {
+                            "text" : "Propeller overspeed limit is 110% NP."
+                          },
+                          {
+                            "text" : "If rapid RPM changes trigger a PMU sensor-rate red X, cycling the PMU can clear it only if the issue is not a true sensor failure."
+                          }
+                        ],
+                        "text" : "Limits and brief traps:"
+                      }
+                    ],
+                    "title" : "Propeller System"
+                  }
+                ],
+                "summary" : "Use this tool for the dense NATOPS-style oil and prop brief: purpose, flow path, indications, and the traps that change what you do in the aircraft."
+              },
               "tags" : [
                 "contacts",
                 "flights",
                 "fam4203"
               ],
-              "title" : "Oil and Propeller Systems",
+              "title" : "Oil, Airstarts, and Recovery Decisions",
               "videoLinks" : [
 
               ]

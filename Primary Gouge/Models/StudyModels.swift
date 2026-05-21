@@ -100,6 +100,7 @@ struct Event: Codable, Identifiable, Hashable {
     let categoryKind: StudyCategoryKind
     let sourceDocuments: [SourceDocument]
     let studyNotes: EventStudyNotes?
+    let systemsBrief: EventStudyNotes?
     let primaryDocumentIDs: [String]
     let flashcardDecks: [FlashcardDeck]
     let questionBanks: [QuestionBank]
@@ -111,6 +112,7 @@ struct Event: Codable, Identifiable, Hashable {
     var availableToolCount: Int {
         var count = 0
         if studyNotes != nil { count += 1 }
+        if systemsBrief != nil { count += 1 }
         if !flashcardDecks.isEmpty { count += 1 }
         if !questionBanks.isEmpty { count += 1 }
         if scriptTemplate != nil { count += 1 }

@@ -16,7 +16,8 @@
     "FAM4103",
     "FAM4104",
     "FAM4201",
-    "FAM4202"
+    "FAM4202",
+    "FAM4203"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -583,6 +584,41 @@
           "discussionItem" : "crosswind takeoffs/touch-and-goes/full-stop landings",
           "displayTitle" : "Crosswind Takeoffs/Touch-and-Goes/Full-Stop Landings",
           "presentationStyle" : "procedure"
+        }
+      ]
+    },
+    "FAM4203" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "airstart",
+        "oil",
+        "ejection",
+        "straight-in"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "systemsBriefItems" : [
+        "Oil and propeller systems"
+      ],
+      "itemSections" : [
+        {
+          "discussionItem" : "Oil and propeller systems",
+          "displayTitle" : "Oil and Propeller Systems",
+          "presentationStyle" : "systems"
+        },
+        {
+          "discussionItem" : "engine air starts",
+          "displayTitle" : "Engine Air Starts",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "ejection and visual straight-in",
+          "displayTitle" : "Ejection and Visual Straight-In",
+          "presentationStyle" : "procedure",
+          "splitSectionTitles" : [
+            "Ejection Decision and Setup",
+            "Visual Straight-In"
+          ]
         }
       ]
     }

@@ -13,6 +13,7 @@ Flashcards are no longer authored in these event override files. They now live i
    - `overview`
    - `canonicalCoverage`
    - `studyNotes`
+   - optional `systemsBrief`
    Author the visible notes as a student-facing briefing aid, not a normalized extraction template.
 3. Regenerate the manifest:
 
@@ -32,6 +33,18 @@ For FAM discussion-item generation, grouped section layout and locked baseline b
   "title": "Cockpit Familiarization",
   "summary": "Short event summary shown in cards and lists.",
   "overview": "Longer event overview shown on the event page.",
+  "systemsBrief": {
+    "headline": "Systems brief",
+    "summary": "Optional dedicated NATOPS-style study aid for dense systems briefs.",
+    "sections": [
+      {
+        "title": "How to Brief It",
+        "items": [
+          { "text": "Start with purpose, then walk the flow path, then explain what cockpit indication changes the answer." }
+        ]
+      }
+    ]
+  },
   "canonicalCoverage": {
     "Before Exterior Inspection": ["Before Exterior Inspection"],
     "Engine Start (Auto)": ["Engine Start (Auto)"]
@@ -82,5 +95,6 @@ See [DiscussionItemAuthoringRules.md](/Users/conwaybolt/Library/CloudStorage/One
 - `EventOverrides.json` still exists for legacy compatibility, but new event authoring should go in this folder.
 - Legacy `focusAreas` notes are still supported while older events are being migrated.
 - `canonicalCoverage` is required for FAM event overrides and should map each canonical syllabus discussion item to the authored section title or titles where it is substantively covered.
+- `systemsBrief` is optional and is intended for NATOPS-heavy systems content that deserves its own study lane instead of bloating the event discussion items.
 - Scaffolded or generated output is only a starting point for source harvesting. The final authored note should read like something a student could actually brief from.
 - Flashcard authoring now lives in `FlashcardsByEvent.json`, where cards are grouped by event code and can optionally reference images from `Contents/FlashcardImages/`.

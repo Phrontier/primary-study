@@ -884,6 +884,58 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4203SplitsSystemsBriefFromRecoveryDiscussionItems() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4203"])
+        #expect(event.title == "Oil, Airstarts, and Recovery Decisions")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Oil and Propeller Systems",
+            "Engine Air Starts",
+            "Ejection Decision and Setup",
+            "Visual Straight-In",
+            "Required Procedures"
+        ])
+
+        let systemsBrief = try #require(event.systemsBrief)
+        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.sections.compactMap(\.title) == [
+            "How to Brief the System",
+            "Oil System",
+            "Propeller System"
+        ])
+
+        let systemsText = systemsBrief.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ")
+        #expect(systemsText.contains("18.5 quarts"))
+        #expect(systemsText.contains("2000 RPM"))
+        #expect(systemsText.contains("62-80% NP"))
+
+        let airStartSection = try #require(notes.sections.first(where: { $0.title == "Engine Air Starts" }))
+        let airStartText = airStartSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(airStartText.contains("125-200 KIAS"))
+        #expect(airStartText.contains("67% N1"))
+        #expect(airStartText.contains("2000 feet AGL"))
+
+        let ejectionSection = try #require(notes.sections.first(where: { $0.title == "Ejection Decision and Setup" }))
+        let ejectionText = ejectionSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(ejectionText.contains("6000 feet AGL"))
+        #expect(ejectionText.contains("ORM 3-2-1"))
+
+        let visualSection = try #require(notes.sections.first(where: { $0.title == "Visual Straight-In" }))
+        let visualText = visualSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(visualText.contains("3-5 NM"))
+        #expect(visualText.contains("110/105/100 KIAS"))
+        #expect(!visualText.lowercased().contains("shamrock"))
+        #expect(!visualText.lowercased().contains("kngp"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

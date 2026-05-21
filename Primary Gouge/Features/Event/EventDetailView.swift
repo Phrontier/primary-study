@@ -81,9 +81,31 @@ struct EventDetailView: View {
             VStack(spacing: 12) {
                 if let notes = event.studyNotes {
                     NavigationLink {
-                        NotesDetailView(notes: notes, eventTitle: event.code)
+                        NotesDetailView(
+                            notes: notes,
+                            eventTitle: event.code,
+                            accent: AppTheme.domainColor(.discussionItems)
+                        )
                     } label: {
                         ToolCard(title: "Discussion items", subtitle: nil, icon: "text.alignleft", accent: AppTheme.domainColor(.discussionItems))
+                    }
+                    .buttonStyle(.plain)
+                }
+
+                if let systemsBrief = event.systemsBrief {
+                    NavigationLink {
+                        NotesDetailView(
+                            notes: systemsBrief,
+                            eventTitle: event.code,
+                            accent: AppTheme.domainColor(.resources)
+                        )
+                    } label: {
+                        ToolCard(
+                            title: "Systems brief",
+                            subtitle: nil,
+                            icon: "gearshape.2.fill",
+                            accent: AppTheme.domainColor(.resources)
+                        )
                     }
                     .buttonStyle(.plain)
                 }
@@ -125,7 +147,7 @@ struct EventDetailView: View {
                 }
             }
 
-            if event.studyNotes == nil && event.flashcardDecks.isEmpty && event.questionBanks.isEmpty && appModel.assembledScript(for: event) == nil && appModel.videos(for: event, placement: .primary).isEmpty {
+            if event.studyNotes == nil && event.systemsBrief == nil && event.flashcardDecks.isEmpty && event.questionBanks.isEmpty && appModel.assembledScript(for: event) == nil && appModel.videos(for: event, placement: .primary).isEmpty {
                 EmptyStateCard(
                     icon: "tray",
                     title: "No event tools yet",
@@ -222,6 +244,7 @@ private struct EventOverviewCard: View {
 private struct NotesDetailView: View {
     let notes: EventStudyNotes
     let eventTitle: String
+    let accent: Color
 
     var body: some View {
         AppScrollScreen(bottomPadding: 30) {
@@ -229,12 +252,12 @@ private struct NotesDetailView: View {
                 eyebrow: eventTitle,
                 title: notes.headline,
                 subtitle: nil,
-                accent: AppTheme.domainColor(.discussionItems)
+                accent: accent
             )
 
             VStack(alignment: .leading, spacing: 14) {
                 ForEach(Array(notes.sections.enumerated()), id: \.offset) { _, section in
-                    NotesDiscussionSectionView(section: section)
+                    NotesDiscussionSectionView(section: section, accent: accent)
                 }
             }
         }
@@ -244,9 +267,10 @@ private struct NotesDetailView: View {
 
 private struct NotesDiscussionSectionView: View {
     let section: EventStudyNotesSection
+    let accent: Color
 
     var body: some View {
-        SectionContainer(accent: AppTheme.domainColor(.discussionItems)) {
+        SectionContainer(accent: accent) {
             VStack(alignment: .leading, spacing: 16) {
                 if let title = section.title, !title.isEmpty {
                     Text(title)
@@ -257,7 +281,7 @@ private struct NotesDiscussionSectionView: View {
 
                 VStack(alignment: .leading, spacing: 14) {
                     ForEach(Array(section.items.enumerated()), id: \.offset) { _, item in
-                        NotesDiscussionItemView(item: item, level: 0)
+                        NotesDiscussionItemView(item: item, level: 0, accent: accent)
                     }
                 }
             }
@@ -268,6 +292,7 @@ private struct NotesDiscussionSectionView: View {
 private struct NotesDiscussionItemView: View {
     let item: EventStudyNotesItem
     let level: Int
+    let accent: Color
 
     private var childItems: [EventStudyNotesItem] {
         item.children ?? []
@@ -277,7 +302,7 @@ private struct NotesDiscussionItemView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .top, spacing: 10) {
                 Circle()
-                    .fill(level == 0 ? AppTheme.domainColor(.discussionItems) : AppTheme.cardStroke)
+                    .fill(level == 0 ? accent : AppTheme.cardStroke)
                     .frame(width: level == 0 ? 7 : 5, height: level == 0 ? 7 : 5)
                     .padding(.top, 7)
 
@@ -291,7 +316,7 @@ private struct NotesDiscussionItemView: View {
             if !childItems.isEmpty {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(Array(childItems.enumerated()), id: \.offset) { _, child in
-                        NotesDiscussionItemView(item: child, level: level + 1)
+                        NotesDiscussionItemView(item: child, level: level + 1, accent: accent)
                     }
                 }
                 .padding(.leading, 22)

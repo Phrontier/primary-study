@@ -24,7 +24,8 @@
     "FAM4303",
     "FAM4304",
     "FAM4490",
-    "FAM4501"
+    "FAM4501",
+    "FAM4601"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -378,28 +379,51 @@
     },
     "FAM4601" : {
       "authoringProfile" : "flight",
-      "sections" : [
+      "eventEmphasisKeywords" : [
+        "night",
+        "lighting",
+        "electrical"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "systemsBriefItems" : [
+        "electrical system malfunctions"
+      ],
+      "itemSections" : [
         {
-          "discussionItems" : [
-            "Night flying considerations",
-            "night VFR chart interpretation",
-            "airport night lighting",
-            "aircraft and cockpit lighting"
-          ],
-          "title" : "Night Environment and Lighting Setup"
+          "discussionItem" : "Night flying considerations",
+          "displayTitle" : "Night Flying Considerations",
+          "presentationStyle" : "knowledge"
         },
         {
-          "discussionItems" : [
-            "applicable night emergencies",
-            "electrical system malfunctions"
-          ],
-          "title" : "Night Emergencies and Electrical Degradation"
+          "discussionItem" : "night VFR chart interpretation",
+          "displayTitle" : "Night VFR Chart Interpretation",
+          "presentationStyle" : "knowledge"
         },
         {
-          "discussionItems" : [
-            "local night SOP"
-          ],
-          "title" : "Local Night Procedures"
+          "discussionItem" : "airport night lighting",
+          "displayTitle" : "Airport Night Lighting",
+          "presentationStyle" : "knowledge"
+        },
+        {
+          "discussionItem" : "aircraft and cockpit lighting",
+          "displayTitle" : "Aircraft and Cockpit Lighting",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "applicable night emergencies",
+          "displayTitle" : "Applicable Night Emergencies",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "local night SOP",
+          "displayTitle" : "Local Night SOP",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "electrical system malfunctions",
+          "displayTitle" : "Electrical System Malfunctions",
+          "presentationStyle" : "systems"
         }
       ]
     },

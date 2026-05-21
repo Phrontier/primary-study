@@ -229,6 +229,7 @@ struct Primary_GougeTests {
             "FAM2201": "Takeoff Emergencies",
             "FAM2202": "Systems Emergencies",
             "FAM4304": "Solo Preparation and Boundaries",
+            "FAM4601": "Night Contact Fundamentals",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1342,6 +1343,82 @@ struct Primary_GougeTests {
         for forbidden in ["shamrock", "rusty", "waldron", "kngp", "corpus"] {
             #expect(!soloBriefText.lowercased().contains(forbidden))
         }
+    }
+
+    @MainActor
+    @Test func fam4601CombinesNightTechniqueLightingAndElectricalPriorities() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4601"])
+        #expect(event.title == "Night Contact Fundamentals")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(event.summary.lowercased().contains("night"))
+        #expect(event.summary.lowercased().contains("electrical"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Night Flying Considerations",
+            "Night VFR Chart Interpretation",
+            "Airport Night Lighting",
+            "Aircraft and Cockpit Lighting",
+            "Applicable Night Emergencies",
+            "Local Night SOP",
+            "Electrical System Malfunctions",
+            "Required Procedures"
+        ])
+
+        let nightSection = try #require(notes.sections.first(where: { $0.title == "Night Flying Considerations" }))
+        let nightText = nightSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(nightText.contains("30 minutes"))
+        #expect(nightText.contains("10 seconds"))
+        #expect(nightText.contains("off-center"))
+
+        let chartSection = try #require(notes.sections.first(where: { $0.title == "Night VFR Chart Interpretation" }))
+        let chartText = chartSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(chartText.contains("MEF"))
+        #expect(chartText.contains("pilot-controlled lighting"))
+
+        let lightingSection = try #require(notes.sections.first(where: { $0.title == "Airport Night Lighting" }))
+        let lightingText = lightingSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(lightingText.contains("blue"))
+        #expect(lightingText.contains("green"))
+        #expect(lightingText.contains("REIL"))
+
+        let emergenciesSection = try #require(notes.sections.first(where: { $0.title == "Applicable Night Emergencies" }))
+        let emergenciesText = emergenciesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(emergenciesText.contains("2000 feet AGL"))
+        #expect(emergenciesText.contains("eject"))
+
+        let localSection = try #require(notes.sections.first(where: { $0.title == "Local Night SOP" }))
+        let localText = localSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        #expect(localText.contains("published procedure"))
+        #expect(localText.contains("day-of brief"))
+        for forbidden in ["corpus", "kngp", "waldron", "rusty", "goliad"] {
+            #expect(!localText.contains(forbidden))
+        }
+
+        let electricalSection = try #require(notes.sections.first(where: { $0.title == "Electrical System Malfunctions" }))
+        let electricalText = electricalSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(electricalText.contains("Systems brief"))
+        #expect(electricalText.contains("battery-endurance"))
+
+        let systemsBrief = try #require(event.systemsBrief)
+        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.sections.compactMap(\.title) == [
+            "How to Brief the System",
+            "Power Sources and Backup Paths",
+            "Bus Failures and Night Capability Loss",
+            "Battery Endurance and Recovery Priorities"
+        ])
+
+        let systemsText = systemsBrief.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ")
+        #expect(systemsText.contains("300-amp starter-generator"))
+        #expect(systemsText.contains("42-amp-hour"))
+        #expect(systemsText.contains("5-amp-hour"))
+        #expect(systemsText.contains("30 minutes"))
     }
 
     @MainActor

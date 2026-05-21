@@ -1,29 +1,29 @@
 {
   "canonicalCoverage" : {
     "Night flying considerations" : [
-      "Night Environment and Lighting Setup"
+      "Night Flying Considerations"
     ],
     "aircraft and cockpit lighting" : [
-      "Night Environment and Lighting Setup"
+      "Aircraft and Cockpit Lighting"
     ],
     "airport night lighting" : [
-      "Night Environment and Lighting Setup"
+      "Airport Night Lighting"
     ],
     "applicable night emergencies" : [
-      "Night Emergencies and Electrical Degradation"
+      "Applicable Night Emergencies"
     ],
     "electrical system malfunctions" : [
-      "Night Emergencies and Electrical Degradation"
+      "Electrical System Malfunctions"
     ],
     "local night SOP" : [
-      "Local Night Procedures"
+      "Local Night SOP"
     ],
     "night VFR chart interpretation" : [
-      "Night Environment and Lighting Setup"
+      "Night VFR Chart Interpretation"
     ]
   },
   "code" : "FAM4601",
-  "overview" : "This event ties together night environment and lighting setup, night emergencies and electrical degradation, and local night procedures in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+  "overview" : "This sortie is your introduction to night contact. Be ready to brief what changes after dark before the aircraft even moves, how to interpret airport and chart lighting cues, how night pattern and wave-off judgment gets degraded, and why electrical or weather problems become more urgent once the off-field options disappear.",
   "primaryDocumentTitles" : [
     "FAM4601"
   ],
@@ -33,130 +33,390 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Know the operational purpose, the pilot-visible cues, and the follow-on actions or limits tied to Night Flying Considerations."
-              }
-            ],
-            "text" : "Night Flying Considerations:"
+            "text" : "Night flying is still contact flying, but the visual picture is thinner and easier to misread. Good night performance starts with protecting your vision, trusting the instrument cross-check sooner, and accepting that the normal daytime cues may show up later or not at all."
           },
           {
             "children" : [
               {
-                "text" : "Know the operational purpose, the pilot-visible cues, and the follow-on actions or limits tied to Night VFR Chart Interpretation."
+                "text" : "Eyes need about 30 minutes to become fully night adapted, and only about 10 seconds of bright light can wipe that adaptation out."
+              },
+              {
+                "text" : "Use scanning and off-center viewing instead of staring directly at one light or one dark patch of sky."
+              },
+              {
+                "text" : "Bring the required night gear already sorted, especially a flashlight and a clear visor, so you are not building the solution in the cockpit."
               }
             ],
-            "text" : "Night VFR Chart Interpretation:"
+            "text" : "Vision and preparation:"
           },
           {
             "children" : [
               {
-                "text" : "Must be used whenever the aircraft is in motion at night."
+                "text" : "Spatial disorientation is more likely right after takeoff when you leave a lighted runway and lose the horizon."
               },
               {
-                "text" : "Aerobatics, short breaks, stalls, and formation flights are prohibited at night."
+                "text" : "Relative motion is harder to judge at night, especially when another aircraft is only showing a tail light or strobe."
               },
               {
-                "text" : "Touch and go’s to uncontrolled airfields may be conducted provided they have night lighting and a wildlife mitigation pass is conducted prior to operations."
-              },
-              {
-                "text" : "Runway Centerline Lights (precision instrument runways):"
+                "text" : "If the outside picture becomes questionable, trust the instruments instead of trying to force a weak visual cue to make sense."
               }
             ],
-            "text" : "Airport Night Lighting:"
-          },
-          {
-            "children" : [
-              {
-                "text" : "Runway Centerline Lights (precision instrument runways):"
-              },
-              {
-                "text" : "Taxiway Lighting"
-              },
-              {
-                "text" : "Blue."
-              },
-              {
-                "text" : "Green."
-              }
-            ],
-            "text" : "Aircraft and Cockpit Lighting:"
+            "text" : "Night-specific traps:"
           }
         ],
-        "title" : "Night Environment and Lighting Setup"
+        "title" : "Night Flying Considerations"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Generator Inoperative"
-              },
-              {
-                "text" : "Loss of generator power = no charging of battery."
-              }
-            ],
-            "text" : "Applicable Night Emergencies:"
+            "text" : "Night VFR chart work is about reducing surprises before takeoff. You should already know which lighted checkpoints, airports, obstacle areas, and recovery options matter before the horizon gets sparse."
           },
           {
             "children" : [
               {
-                "text" : "Generator Inoperative"
+                "text" : "Mark the route, expected altitudes, and the big checkpoints before dark instead of trying to interpret the whole chart in the air."
               },
               {
-                "text" : "Loss of generator power = no charging of battery."
+                "text" : "Use prominent lighted features, rotating beacons, and known airport locations as anchors, but remember that unlighted terrain and obstacles can still be the bigger threat."
+              },
+              {
+                "text" : "Cross-check MEF, obstacle clearance, and any published night-route restrictions more aggressively than you would in the daytime."
               }
             ],
-            "text" : "Electrical System Malfunctions:"
+            "text" : "How to study the chart:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know what the chart tells you about pilot-controlled lighting, runway lighting, and airport status before you need those features in a divert."
+              },
+              {
+                "text" : "Do not assume a dark airport, dark road, or sparse town means you are exactly where you think you are."
+              }
+            ],
+            "text" : "What changes at night:"
           }
         ],
-        "title" : "Night Emergencies and Electrical Degradation"
+        "title" : "Night VFR Chart Interpretation"
       },
       {
         "items" : [
           {
-            "text" : "Local Night Sop matters because it changes what you brief, what you look for in the cockpit, or what the next safe decision needs to be."
+            "text" : "Night field lighting is one of your main orientation tools, but only if you can translate what the colors and patterns actually mean. This section is about the cues that help you tell taxiway from runway, threshold from rollout, and on-glidepath from badly aligned."
           },
           {
             "children" : [
               {
-                "text" : "Aircraft must not operate within a SIGMET at night unless equipped with operable radar capable of detecting\/avoiding isolated thunderstorms."
+                "text" : "Taxiway edge lights are blue, runway edge lights are white, and threshold lights show green to the approaching aircraft and red from the departure side."
+              },
+              {
+                "text" : "On instrument runways, edge lights turn yellow in the last 2000 feet or last half of the runway, whichever is less."
+              },
+              {
+                "text" : "REILs, centerline lights, touchdown-zone lights, PAPI, and VASI all help build the landing picture before the flare."
               }
             ],
-            "text" : "Key points:"
+            "text" : "High-value lighting cues:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A military rotating beacon is green and white, with the white split by a small void that can look like two quick flashes."
+              },
+              {
+                "text" : "Pilot-controlled lighting, approach-light systems, stop bars, and clearance bars should be understood before you need to use an unfamiliar field at night."
+              },
+              {
+                "text" : "If the runway picture or glidepath lights do not look right, wave off early instead of trying to fix a weak night picture in the flare."
+              }
+            ],
+            "text" : "How the lights drive decisions:"
           }
         ],
-        "title" : "Local Night Procedures"
+        "title" : "Airport Night Lighting"
       },
       {
         "items" : [
           {
-            "text" : "Night flying considerations"
+            "text" : "Cockpit and exterior lighting management at night is a setup discipline. The goal is to keep the aircraft visible when it needs to be, preserve night vision when it can be preserved, and avoid creating your own disorientation on the ground."
           },
           {
-            "text" : "night VFR chart interpretation"
+            "children" : [
+              {
+                "text" : "Check all interior and exterior lights during preflight with the battery on, and do not launch with a light discrepancy you cannot explain."
+              },
+              {
+                "text" : "Set the cockpit lighting for night use early, keep the brightness low enough to protect dark adaptation, and know where the utility and kneeboard lights are if the workload spikes."
+              },
+              {
+                "text" : "Navigation lights are on for start and remain on until the propeller stops; strobes are used with normal airfield courtesy and may be turned off when they are a hazard to ground crew or other aircraft."
+              }
+            ],
+            "text" : "Setup priorities:"
           },
           {
-            "text" : "airport night lighting"
+            "children" : [
+              {
+                "text" : "Use landing and taxi lights during night taxi when they help orientation, but turn them off when directed by the checklist or when they are blinding other crews."
+              },
+              {
+                "text" : "Taxi only on lighted, authorized surfaces, and if you lose orientation on the field, stop and re-sort instead of guessing."
+              },
+              {
+                "text" : "Remember that landing and taxi lights only illuminate with the gear down and the associated electrical path intact."
+              }
+            ],
+            "text" : "Ground-flow traps:"
+          }
+        ],
+        "title" : "Aircraft and Cockpit Lighting"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Night emergencies are often the same checklists as day emergencies, but the safe branch changes sooner because off-field options and visual cues are worse after dark. Your mindset should bias toward the first reliably lighted runway or the earliest truly survivable alternative."
           },
           {
-            "text" : "aircraft and cockpit lighting"
+            "children" : [
+              {
+                "text" : "If an engine problem happens at or above about 2000 feet AGL, attempt the appropriate air-start only if the aircraft remains controllable and a safe recovery is still realistic."
+              },
+              {
+                "text" : "Below about 2000 feet AGL, do not waste the remaining margin on a restart attempt."
+              },
+              {
+                "text" : "If no lighted runway is assured, set up for the safer escape option early instead of hoping a dark forced landing will improve."
+              }
+            ],
+            "text" : "Engine-failure mindset:"
           },
           {
-            "text" : "applicable night emergencies"
+            "children" : [
+              {
+                "text" : "Wave off if the runway picture is unstable, you cannot touch down in the first one-third, or the aircraft is significantly misaligned."
+              },
+              {
+                "text" : "A forced landing at night is a far less forgiving problem than the daytime version; if a lighted airfield is not assured, the risk picture changes fast."
+              },
+              {
+                "text" : "Lost communications, gear abnormalities, and electrical failures should all be evaluated through the night lens: visibility, lighting, runway availability, and how fast the usable cockpit picture is disappearing."
+              }
+            ],
+            "text" : "What becomes more urgent at night:"
+          }
+        ],
+        "title" : "Applicable Night Emergencies"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Local night SOP items should be studied as generalized decision rules, then confirmed from the current published procedure and day-of brief. The technical standard is to know what your unit restricts at night, what runway or lighting standards apply, and what weather picture stops the sortie from being worth the risk."
           },
           {
-            "text" : "local night SOP"
+            "children" : [
+              {
+                "text" : "Confirm current night weather restrictions, SIGMET or thunderstorm policy, runway suitability, lighting requirements, and any limits on touch-and-go or uncontrolled-field operations."
+              },
+              {
+                "text" : "Many units restrict high-work maneuvers such as aerobatics, stalls, or certain pattern options at night, so verify what is actually authorized for your syllabus event."
+              },
+              {
+                "text" : "Night taxi, arrival, break, wave-off, and recovery geometry must come from the current published procedure rather than memory of one home field."
+              }
+            ],
+            "text" : "What to confirm:"
           },
           {
-            "text" : "electrical system malfunctions"
+            "children" : [
+              {
+                "text" : "If the weather, lighting, or field conditions stop matching the brief, recover early instead of trying to build a local workaround in the cockpit."
+              },
+              {
+                "text" : "The phrase \"local night SOP\" should remind you to verify the current rules, not to memorize one location's names or taxi routes forever."
+              }
+            ],
+            "text" : "Transferable study standard:"
+          }
+        ],
+        "title" : "Local Night SOP"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Use the Systems brief tool for the detailed electrical-bus walk-through. For this event, know what night capability disappears first, how much battery endurance is left, and when the failure has already become a landing-now problem."
+          },
+          {
+            "children" : [
+              {
+                "text" : "A generator failure starts a battery-endurance clock and should immediately make you think about load shedding, remaining radios, lighting, and where you are going to land."
+              },
+              {
+                "text" : "BAT BUS or BUS TIE failures can change trim, lighting, comms, gear, flap, pressurization, and OBOGS availability in ways that matter far more at night than in the daytime."
+              },
+              {
+                "text" : "A total loss of normal electrical power can leave you with only auxiliary-battery endurance and an emergency-gear-extension landing picture."
+              }
+            ],
+            "text" : "What matters in the event:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If cockpit lighting, radios, or the primary display picture are degrading after dark, the safest answer is usually to shorten the problem, not prolong it."
+              },
+              {
+                "text" : "Night electrical failures are not just systems questions; they quickly become orientation, survivability, and runway-availability questions."
+              }
+            ],
+            "text" : "Recovery mindset:"
+          }
+        ],
+        "title" : "Electrical System Malfunctions"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Night Flying Considerations"
+          },
+          {
+            "text" : "Night VFR Chart Interpretation"
+          },
+          {
+            "text" : "Airport Night Lighting"
+          },
+          {
+            "text" : "Aircraft and Cockpit Lighting"
+          },
+          {
+            "text" : "Applicable Night Emergencies"
+          },
+          {
+            "text" : "Local Night SOP"
+          },
+          {
+            "text" : "Electrical System Malfunctions"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Have Night Environment and Lighting Setup, plus Night Emergencies and Electrical Degradation organized before step so the cockpit workload never outruns the brief."
+    "summary" : "Focus on staying oriented after dark: protect night vision, understand the lighting picture, confirm the current night rules, and know how quickly electrical or weather problems change the safe answer."
   },
-  "summary" : "Night Environment and Lighting Setup, Night Emergencies and Electrical Degradation, and Local Night Procedures.",
-  "title" : "Night Flying Considerations"
+  "summary" : "Night physiology, lighting interpretation, electrical-failure priorities, and generalized night-procedure judgment.",
+  "systemsBrief" : {
+    "headline" : "Systems brief",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Lead with the normal power sources, then explain how the buses divide that power, then finish with which night capabilities disappear first when the system starts failing."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Start with the starter-generator, main battery, auxiliary battery, and hot battery bus."
+              },
+              {
+                "text" : "Then explain the generator side, the battery side, and the buses that keep the flight instruments, radios, and fire warning alive when the picture degrades."
+              },
+              {
+                "text" : "Finish with battery endurance, emergency gear-extension implications, and why an electrical problem at night quickly becomes a runway-availability problem."
+              }
+            ],
+            "text" : "Briefing flow:"
+          }
+        ],
+        "title" : "How to Brief the System"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Normal electrical power is 28 VDC from the 300-amp starter-generator once the engine is running. The main battery and auxiliary battery are backups, not long-term substitutes for the generator."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The main battery is a 24 VDC, 42-amp-hour battery that supports the battery side of the system when generation is lost."
+              },
+              {
+                "text" : "The auxiliary battery is a 24 VDC, 5-amp-hour source that protects a small emergency capability set such as the BFI, standby VHF path, and fire-warning logic."
+              },
+              {
+                "text" : "The hot battery bus stays powered directly from the main battery and preserves selected essential functions even when other buses are degrading."
+              }
+            ],
+            "text" : "Power sources:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The generator needs at least 25 volts to charge the batteries."
+              },
+              {
+                "text" : "If generation is gone, the question becomes how much night capability you still have before the battery picture collapses."
+              }
+            ],
+            "text" : "Night takeaway:"
+          }
+        ],
+        "title" : "Power Sources and Backup Paths"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Generator inoperative means the battery is no longer being charged. Bus-tie, generator-bus, and battery-bus failures each remove a different slice of displays, radios, lighting, trim, or gear and flap control."
+          },
+          {
+            "children" : [
+              {
+                "text" : "A GEN BUS problem can leave the battery side healthy while taking away selected avionics and anti-ice capability."
+              },
+              {
+                "text" : "A BAT BUS problem can cost trim, lights, ignition-monitoring support, parts of the display picture, and normal gear or flap control, which matters much more once the field is dark."
+              },
+              {
+                "text" : "A BUS TIE failure separates the generator and battery sides, so battery endurance may become the controlling factor even though some generator-side equipment still looks normal."
+              }
+            ],
+            "text" : "Failure families:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Landing and taxi lights can be unavailable even with the gear down if the associated electrical path is lost."
+              },
+              {
+                "text" : "Loss of battery-side power can also cost OBOGS support and cockpit pressurization as the failure deepens."
+              }
+            ],
+            "text" : "Why night makes it worse:"
+          }
+        ],
+        "title" : "Bus Failures and Night Capability Loss"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The recovery clock matters at night. A failure you might monitor in the daytime can become a land-now problem once cockpit lighting, radios, OBOGS, or the primary display picture are degrading."
+          },
+          {
+            "children" : [
+              {
+                "text" : "A combined battery-and-generator failure can leave roughly 30 minutes of auxiliary-battery support to the protected emergency items."
+              },
+              {
+                "text" : "If battery-side power is lost, plan for emergency gear extension and do not assume your usual flap or gear indications will still be there."
+              },
+              {
+                "text" : "Load shedding is useful only if it buys you a safer landing, not if it delays the decision to get on deck."
+              }
+            ],
+            "text" : "Recovery priorities:"
+          }
+        ],
+        "title" : "Battery Endurance and Recovery Priorities"
+      }
+    ]
+  },
+  "title" : "Night Contact Fundamentals"
 }

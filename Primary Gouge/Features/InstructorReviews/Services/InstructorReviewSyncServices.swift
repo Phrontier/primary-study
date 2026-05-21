@@ -63,7 +63,7 @@ final class ModeratorSessionStore {
     private let account = "supabase-session"
 
     func load() -> ModeratorSession? {
-        var query: [CFString: Any] = [
+        let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
             kSecAttrAccount: account,
@@ -490,8 +490,9 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
             url: url,
             method: "POST",
             body: payload,
-            bearerToken: configuration.anonKey,
-            preferRepresentation: false
+            bearerToken: configuration.publishableKey,
+            preferRepresentation: false,
+            headers: submitterHeaders(clientID: clientID)
         )
         return record.id
     }
@@ -664,15 +665,29 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
         )
     }
 
-    private func fetchReviewRows(table: String, filters: [URLQueryItem], sessionToken: String? = nil) async throws -> [RemoteReviewRow] {
-        try await fetchDecodableRows(table: table, filters: filters, sessionToken: sessionToken)
+    private func fetchReviewRows(
+        table: String,
+        filters: [URLQueryItem],
+        sessionToken: String? = nil,
+        headers: [String: String] = [:]
+    ) async throws -> [RemoteReviewRow] {
+        try await fetchDecodableRows(table: table, filters: filters, sessionToken: sessionToken, headers: headers)
     }
 
-    private func fetchReportRows(filters: [URLQueryItem], sessionToken: String?) async throws -> [RemoteReportRow] {
-        try await fetchDecodableRows(table: "gouge_reports", filters: filters, sessionToken: sessionToken)
+    private func fetchReportRows(
+        filters: [URLQueryItem],
+        sessionToken: String?,
+        headers: [String: String] = [:]
+    ) async throws -> [RemoteReportRow] {
+        try await fetchDecodableRows(table: "gouge_reports", filters: filters, sessionToken: sessionToken, headers: headers)
     }
 
-    private func fetchDecodableRows<T: Decodable>(table: String, filters: [URLQueryItem], sessionToken: String?) async throws -> [T] {
+    private func fetchDecodableRows<T: Decodable>(
+        table: String,
+        filters: [URLQueryItem],
+        sessionToken: String?,
+        headers: [String: String] = [:]
+    ) async throws -> [T] {
         let configuration = try requireConfiguration()
         var components = URLComponents(url: configuration.restBaseURL.appending(path: table), resolvingAgainstBaseURL: false)
         var queryItems = filters
@@ -684,7 +699,8 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
             url: try requireURL(from: components),
             method: "GET",
             body: Optional<Int>.none as Int?,
-            bearerToken: sessionToken ?? configuration.anonKey
+            bearerToken: sessionToken ?? configuration.publishableKey,
+            headers: headers
         )
     }
 
@@ -711,8 +727,9 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
             url: url,
             method: "POST",
             body: payload,
-            bearerToken: configuration.anonKey,
-            preferRepresentation: false
+            bearerToken: configuration.publishableKey,
+            preferRepresentation: false,
+            headers: submitterHeaders(clientID: clientID)
         )
         return payload.id
     }
@@ -742,7 +759,7 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(try requireConfiguration().anonKey, forHTTPHeaderField: "apikey")
+        request.setValue(try requireConfiguration().publishableKey, forHTTPHeaderField: "apikey")
         request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
         headers.forEach { request.setValue($1, forHTTPHeaderField: $0) }
         if let body {
@@ -766,7 +783,7 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(preferRepresentation ? "return=representation" : "return=minimal", forHTTPHeaderField: "Prefer")
-        request.setValue(try requireConfiguration().anonKey, forHTTPHeaderField: "apikey")
+        request.setValue(try requireConfiguration().publishableKey, forHTTPHeaderField: "apikey")
         request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
         headers.forEach { request.setValue($1, forHTTPHeaderField: $0) }
         if let body {
@@ -790,5 +807,9 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
                 userInfo: [NSLocalizedDescriptionKey: message?.isEmpty == false ? message! : "Supabase request failed."]
             )
         }
+    }
+
+    private func submitterHeaders(clientID: String) -> [String: String] {
+        ["x-submitter-client-id": clientID]
     }
 }

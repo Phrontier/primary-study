@@ -594,8 +594,8 @@ struct Primary_GougeTests {
         }
 
         let fam4501 = try #require(manifestEvents["FAM4501"])
-        #expect(fam4501.summary == "Solo-brief risk, weather, support-agency, and execution priorities.")
-        #expect(fam4501.studyNotes?.sections.first?.title == "Solo Brief Focus")
+        #expect(fam4501.summary == "Solo go/no-go, weather, support-agency, and execution priorities.")
+        #expect(fam4501.studyNotes?.sections.first?.title == "Per the ODO/FDO Solo Brief")
     }
 
     @MainActor
@@ -1314,6 +1314,34 @@ struct Primary_GougeTests {
         #expect(emergencyText.contains("PMU OFF air-start"))
         #expect(emergencyText.contains("PEL"))
         #expect(emergencyText.contains("eject"))
+    }
+
+    @MainActor
+    @Test func fam4501KeepsSoloBriefConservativeAndDayOfBriefDriven() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4501"])
+        #expect(event.title == "Familiarization Solo Flight")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(event.summary == "Solo go/no-go, weather, support-agency, and execution priorities.")
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Per the ODO/FDO Solo Brief",
+            "Required Procedures"
+        ])
+
+        let soloBriefSection = try #require(notes.sections.first(where: { $0.title == "Per the ODO/FDO Solo Brief" }))
+        let soloBriefText = soloBriefSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(soloBriefText.contains("go/no-go"))
+        #expect(soloBriefText.contains("current published procedure"))
+        #expect(soloBriefText.contains("day-of ODO/FDO solo brief still remains required"))
+        #expect(soloBriefText.contains("rear-cockpit securing"))
+        #expect(soloBriefText.contains("lose radios"))
+        for forbidden in ["shamrock", "rusty", "waldron", "kngp", "corpus"] {
+            #expect(!soloBriefText.lowercased().contains(forbidden))
+        }
     }
 
     @MainActor

@@ -22274,7 +22274,7 @@
                 }
               ],
               "id" : "contacts-flights-fam4501",
-              "overview" : "This event is about showing up for the solo brief with the major risk, weather, and execution items already organized. Use these notes to walk in ahead of the day-of ODO\/FDO brief instead of trying to build the whole picture on the spot.",
+              "overview" : "This sortie is the actual familiarization solo. The goal of these notes is to make the day-of ODO\/FDO brief a confirmation brief: show up already understanding the rear-cockpit solo setup, the current weather and runway limits, the authorized profile, the emergency support plan, and when to stop training and recover.",
               "primaryDocumentIDs" : [
 
               ],
@@ -22313,40 +22313,51 @@
                   {
                     "items" : [
                       {
-                        "text" : "Treat the solo brief as a go\/no-go gate, not an admin step. You should arrive already knowing the weather, runway, emergency, and support-agency items that will drive the brief."
+                        "text" : "Treat the solo brief as the final go\/no-go gate, not the first time you organize the sortie. These notes should let you walk in already understanding the major risk, weather, profile, and emergency decisions so the day-of ODO\/FDO brief can confirm the current rules instead of teaching them from scratch."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Solo weather, runway, crosswind, BASH, landing, and divert limits."
+                            "text" : "Show up with rear-cockpit securing, unauthorized solo maneuvers, unintentional instrument flight, lost-aircraft logic, and support-agency call expectations already current."
                           },
                           {
-                            "text" : "Rear-cockpit securing items, unauthorized solo maneuver limits, and what will terminate the sortie early."
+                            "text" : "Be ready to confirm the current weather minimums, runway and crosswind limits, launch and recovery windows, authorized operating areas, landing limits, and any bird or field-condition restrictions."
                           },
                           {
-                            "text" : "Emergency, lost-aircraft, and support-agency expectations if the profile does not stay routine."
+                            "text" : "Know what you will do if you divert, full stop away from home field, lose radios, encounter weather you cannot remain VFR in, or find a maintenance discrepancy after landing."
                           }
                         ],
-                        "text" : "Show up ready to cover:"
+                        "text" : "Show up ready to confirm:"
                       },
                       {
-                        "text" : "The day-of ODO\/FDO solo brief still remains required, even if these notes already make the overall picture familiar."
+                        "children" : [
+                          {
+                            "text" : "Fly a conservative profile, keep fuel and time tracked, and discontinue the training objective early if the sortie stops matching the brief."
+                          },
+                          {
+                            "text" : "Use the current published procedure and day-of brief for the local details instead of relying on memory, old gouge, or another student's route names."
+                          },
+                          {
+                            "text" : "The day-of ODO\/FDO solo brief still remains required even if these notes already make the picture familiar."
+                          }
+                        ],
+                        "text" : "Execution mindset:"
                       }
                     ],
-                    "title" : "Solo Brief Focus"
+                    "title" : "Per the ODO\/FDO Solo Brief"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "Per the ODO\/FDO solo brief"
+                        "text" : "Per the ODO\/FDO Solo Brief"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Show up with the solo items already sorted, then use the day-of brief to confirm the go\/no-go details instead of learning them from scratch."
+                "summary" : "Use these notes to arrive at the solo brief already clear on the go\/no-go boundaries, support plan, and conservative decisions that protect a first solo."
               },
-              "summary" : "Solo-brief risk, weather, support-agency, and execution priorities.",
+              "summary" : "Solo go\/no-go, weather, support-agency, and execution priorities.",
               "tags" : [
                 "contacts",
                 "flights",

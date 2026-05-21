@@ -23,7 +23,8 @@
     "FAM4302",
     "FAM4303",
     "FAM4304",
-    "FAM4490"
+    "FAM4490",
+    "FAM4501"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -352,19 +353,26 @@
     },
     "FAM4501" : {
       "authoringProfile" : "solo",
+      "eventEmphasisKeywords" : [
+        "solo",
+        "brief",
+        "go/no-go",
+        "weather"
+      ],
       "fallbackSourceTitles" : [
         "FAM4304",
         "FAM4401"
       ],
-      "notesSummary" : "Show up with the solo items already sorted, then use the day-of brief to confirm the go/no-go details instead of learning them from scratch.",
-      "overview" : "This event is about showing up for the solo brief with the major risk, weather, and execution items already organized. Use these notes to walk in ahead of the day-of ODO/FDO brief instead of trying to build the whole picture on the spot.",
-      "summary" : "Solo-brief risk, weather, support-agency, and execution priorities.",
-      "sections" : [
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "notesSummary" : "Use these notes to arrive at the solo brief already clear on the go/no-go boundaries, support plan, and conservative decisions that protect a first solo.",
+      "overview" : "This sortie is the actual familiarization solo. The goal of these notes is to make the day-of ODO/FDO brief a confirmation brief: show up already understanding the rear-cockpit solo setup, the current weather and runway limits, the authorized profile, the emergency support plan, and when to stop training and recover.",
+      "summary" : "Solo go/no-go, weather, support-agency, and execution priorities.",
+      "itemSections" : [
         {
-          "discussionItems" : [
-            "Per the ODO/FDO solo brief"
-          ],
-          "title" : "Solo Brief Focus"
+          "discussionItem" : "Per the ODO/FDO solo brief",
+          "displayTitle" : "Per the ODO/FDO Solo Brief",
+          "presentationStyle" : "local-generalized"
         }
       ]
     },

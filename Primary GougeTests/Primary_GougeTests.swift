@@ -1259,6 +1259,64 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4490BuildsCumulativeCheckFlightReviewWithoutLocalLeakage() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4490"])
+        #expect(event.title == "Familiarization Check Flight")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(event.overview.lowercased().contains("cumulative"))
+        #expect(event.summary.lowercased().contains("emergency-decision"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Any Previously Discussed Items",
+            "Unauthorized Solo Maneuvers",
+            "Lost Aircraft Procedures",
+            "Unintentional Instrument Flight",
+            "Local Course Rules",
+            "Maneuvers",
+            "Emergency Procedures",
+            "Required Procedures"
+        ])
+
+        let anyItemsSection = try #require(notes.sections.first(where: { $0.title == "Any Previously Discussed Items" }))
+        let anyItemsText = anyItemsSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(anyItemsText.contains("challenge-action-response"))
+        #expect(anyItemsText.contains("FAM2101 through FAM4304"))
+
+        let lostSection = try #require(notes.sections.first(where: { $0.title == "Lost Aircraft Procedures" }))
+        let lostText = lostSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(lostText.contains("Five Cs"))
+        #expect(lostText.contains("125 +/- 8 KIAS"))
+
+        let imcSection = try #require(notes.sections.first(where: { $0.title == "Unintentional Instrument Flight" }))
+        let imcText = imcSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(imcText.contains("MEF + 1000 feet"))
+        #expect(imcText.contains("7700"))
+
+        let courseRulesSection = try #require(notes.sections.first(where: { $0.title == "Local Course Rules" }))
+        let courseRulesText = courseRulesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        #expect(courseRulesText.contains("published procedure"))
+        #expect(courseRulesText.contains("day-of brief"))
+        for forbidden in ["shamrock", "rusty", "waldron", "kngp", "corpus"] {
+            #expect(!courseRulesText.contains(forbidden))
+        }
+
+        let maneuverSection = try #require(notes.sections.first(where: { $0.title == "Maneuvers" }))
+        let maneuverText = maneuverSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(maneuverText.contains("crosswind operations"))
+        #expect(maneuverText.contains("setup numbers"))
+
+        let emergencySection = try #require(notes.sections.first(where: { $0.title == "Emergency Procedures" }))
+        let emergencyText = emergencySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(emergencyText.contains("PMU OFF air-start"))
+        #expect(emergencyText.contains("PEL"))
+        #expect(emergencyText.contains("eject"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

@@ -22,7 +22,8 @@
     "FAM4301",
     "FAM4302",
     "FAM4303",
-    "FAM4304"
+    "FAM4304",
+    "FAM4490"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -299,37 +300,53 @@
     },
     "FAM4490" : {
       "authoringProfile" : "checkFlight",
+      "eventEmphasisKeywords" : [
+        "check flight",
+        "check-flight",
+        "cumulative",
+        "review"
+      ],
       "fallbackSourceTitles" : [
         "FAM4304",
         "FAM4401"
       ],
-      "sections" : [
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
         {
-          "discussionItems" : [
-            "Any previously discussed items",
-            "local course rules"
-          ],
-          "title" : "Check-Flight Knowledge Review"
+          "discussionItem" : "Any previously discussed items",
+          "displayTitle" : "Any Previously Discussed Items",
+          "presentationStyle" : "knowledge"
         },
         {
-          "discussionItems" : [
-            "unauthorized solo maneuvers",
-            "lost aircraft procedures",
-            "unintentional instrument flight"
-          ],
-          "title" : "Solo and Weather Decision Traps"
+          "discussionItem" : "unauthorized solo maneuvers",
+          "displayTitle" : "Unauthorized Solo Maneuvers",
+          "presentationStyle" : "procedure"
         },
         {
-          "discussionItems" : [
-            "maneuvers"
-          ],
-          "title" : "Maneuver Standards Refresh"
+          "discussionItem" : "lost aircraft procedures",
+          "displayTitle" : "Lost Aircraft Procedures",
+          "presentationStyle" : "procedure"
         },
         {
-          "discussionItems" : [
-            "emergency procedures"
-          ],
-          "title" : "Emergency Decision Review"
+          "discussionItem" : "unintentional instrument flight",
+          "displayTitle" : "Unintentional Instrument Flight",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "local course rules",
+          "displayTitle" : "Local Course Rules",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "maneuvers",
+          "displayTitle" : "Maneuvers",
+          "presentationStyle" : "knowledge"
+        },
+        {
+          "discussionItem" : "emergency procedures",
+          "displayTitle" : "Emergency Procedures",
+          "presentationStyle" : "procedure"
         }
       ]
     },

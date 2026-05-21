@@ -1,29 +1,29 @@
 {
   "canonicalCoverage" : {
     "Any previously discussed items" : [
-      "Check-Flight Knowledge Review"
+      "Any Previously Discussed Items"
     ],
     "emergency procedures" : [
-      "Emergency Decision Review"
+      "Emergency Procedures"
     ],
     "local course rules" : [
-      "Check-Flight Knowledge Review"
+      "Local Course Rules"
     ],
     "lost aircraft procedures" : [
-      "Solo and Weather Decision Traps"
+      "Lost Aircraft Procedures"
     ],
     "maneuvers" : [
-      "Maneuver Standards Refresh"
+      "Maneuvers"
     ],
     "unauthorized solo maneuvers" : [
-      "Solo and Weather Decision Traps"
+      "Unauthorized Solo Maneuvers"
     ],
     "unintentional instrument flight" : [
-      "Solo and Weather Decision Traps"
+      "Unintentional Instrument Flight"
     ]
   },
   "code" : "FAM4490",
-  "overview" : "This event is a cumulative familiarization check. You should be ready to brief check-flight knowledge review, solo and weather decision traps, and maneuver standards refresh cleanly, then pivot between systems, procedures, maneuvers, and emergency logic without losing the big picture.",
+  "overview" : "This sortie is the cumulative day-contact check flight. Be ready to pivot between broad aircraft knowledge, solo boundaries, lost-aircraft and inadvertent-IMC logic, generalized course-rule judgment, maneuver setup, and emergency branch decisions without rebuilding the whole picture each time the instructor changes topics.",
   "primaryDocumentTitles" : [
     "FAM4401 (Check Flight)"
   ],
@@ -33,177 +33,216 @@
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "Checklist Challenge-Action Response Format"
-              },
-              {
-                "text" : "Dual Concurrence\/Response CRM"
-              },
-              {
-                "text" : "Memorized Checklists"
-              },
-              {
-                "text" : "Ground Handling Signals"
-              },
-              {
-                "text" : "Safety Check\/Call Prior to Cockpit Entry and Departing Aircraft"
-              }
-            ],
-            "text" : "Any Previously Discussed Items:"
+            "text" : "Treat this item like the non-maneuver, non-EP portion of the check flight. The instructor can reach into anything already taught in the day-contact block and expect a ready-room answer, not a half-remembered headline."
           },
           {
             "children" : [
               {
-                "text" : "Execute SHAMROCK re-entry or join Western Arrival at Point RUSTY"
+                "text" : "Be ready on checklist philosophy, challenge-action-response format, dual concurrence, memorized checklists, ground handling signals, and cockpit safety checks."
               },
               {
-                "text" : "Rock wings at the numbers"
+                "text" : "Expect follow-up questions on landing speeds, configuration changes, limitations, systems cues, and why a procedure is built the way it is."
               },
               {
-                "text" : "Break to inboard runway"
-              },
-              {
-                "text" : "Make voice reports in the blind"
+                "text" : "If a topic was already briefed in FAM2101 through FAM4304, assume it is still fair game here."
               }
             ],
-            "text" : "Local Course Rules:"
+            "text" : "What counts as fair game:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Build quick connections between setup numbers, safety notes, and the next decision point instead of memorizing isolated trivia."
+              },
+              {
+                "text" : "The check-flight version of this item is about showing the material still lives together in your head after the individual events are gone."
+              }
+            ],
+            "text" : "How to use the review:"
           }
         ],
-        "title" : "Check-Flight Knowledge Review"
+        "title" : "Any Previously Discussed Items"
       },
       {
         "items" : [
           {
-            "children" : [
-              {
-                "text" : "No spins, stalls, simulated engine failures, PPELs, or maneuvers not previously introduced."
-              },
-              {
-                "text" : "FAM4100 Block Maneuvers"
-              }
-            ],
-            "text" : "Unauthorized Solo Maneuvers:"
+            "text" : "The check flight uses solo-maneuver restrictions as a judgment check. You should be able to explain not only what is prohibited, but why disciplined boundaries keep a solo from turning into an avoidable emergency."
           },
           {
             "children" : [
               {
-                "text" : "CONFESS"
+                "text" : "No spins, stalls, simulated engine failures, PPELs, or any maneuver not previously introduced."
               },
               {
-                "text" : "Admit you are lost. Do not delay. Seek assistance."
-              },
-              {
-                "text" : "CLIMB"
-              },
-              {
-                "text" : "Conditions permitting, climb to improve radio range and visibility."
+                "text" : "Do not create your own pattern, OLF, or area plan just because the sortie seems routine."
               }
             ],
-            "text" : "Lost Aircraft Procedures:"
+            "text" : "Always unauthorized:"
           },
           {
             "children" : [
               {
-                "text" : "Avoid IMC at all times."
+                "text" : "Weather, runway, crosswind, launch or recovery windows, landing-count limits, and authorized operating areas come from the current solo brief and SOP."
               },
               {
-                "text" : "Maintain control of the aircraft."
-              },
-              {
-                "text" : "Establish instrument scan and check altitude."
-              },
-              {
-                "text" : "a. Maintain control of the aircraft."
+                "text" : "If conditions stop matching the brief, terminate the training objective and recover with a conservative plan."
               }
             ],
-            "text" : "Unintentional Instrument Flight:"
+            "text" : "What changes the answer:"
           }
         ],
-        "title" : "Solo and Weather Decision Traps"
+        "title" : "Unauthorized Solo Maneuvers"
       },
       {
         "items" : [
           {
-            "text" : "Treat this as a cumulative maneuver brief. You should be able to move from setup to recovery without needing a rescue cue once the instructor picks the maneuver."
+            "text" : "Lost-aircraft procedures are a discipline problem before they are a navigation problem. The correct answer is to stabilize the aircraft, work the Five Cs early, and stop wandering before fuel and weather make the situation worse."
           },
           {
             "children" : [
               {
-                "text" : "Safety Check\/Call Prior to Cockpit Entry and Departing Aircraft"
+                "text" : "CONFESS early and ask for help."
               },
               {
-                "text" : "Runaway Trim"
+                "text" : "CLIMB when conditions permit to improve radio range and visibility."
               },
               {
-                "text" : "Normal Takeoff"
+                "text" : "CONSERVE by using maximum-endurance AOA, about 8.8 units or 125 +/- 8 KIAS, in straight-and-level flight."
               },
               {
-                "text" : "Local Area Departure"
-              },
-              {
-                "text" : "Integrated (Vmc) Scan"
-              },
-              {
-                "text" : "Turn Pattern"
-              },
-              {
-                "text" : "Level Speed Change"
-              },
-              {
-                "text" : "Power-on Stalls"
+                "text" : "COMMUNICATE with the instructor aircraft, support agency, approach, or Guard, then COMPLY once help is established."
               }
             ],
-            "text" : "Be ready to brief:"
+            "text" : "Five Cs:"
           },
           {
-            "text" : "Know the entry picture, the recovery picture, and the common grading misses for each maneuver you expect to be fair game."
+            "children" : [
+              {
+                "text" : "Use FMS nearest, landmarks, charts, and a methodical scan to rebuild the picture instead of making random heading changes."
+              },
+              {
+                "text" : "If you still cannot reorient, pick a suitable field and land before the fuel state becomes the next emergency."
+              }
+            ],
+            "text" : "Execution mindset:"
           }
         ],
-        "title" : "Maneuver Standards Refresh"
+        "title" : "Lost Aircraft Procedures"
       },
       {
         "items" : [
           {
-            "text" : "Treat this as a cumulative EP brief. The instructor can move quickly between recognition, memory items, and the branch logic that decides whether you continue, land, or eject."
+            "text" : "Unintentional instrument flight is a control-and-survival problem first. The check-flight standard is to know the altitude logic cold and ask for help before spatial disorientation gets a vote."
           },
           {
             "children" : [
               {
-                "text" : "Fire on Ground"
+                "text" : "Maintain aircraft control and establish an instrument scan."
               },
               {
-                "text" : "Emergency Engine Shutdown on the Ground"
+                "text" : "If below MEF + 1000 feet or OROCA, climb immediately to a safe altitude while turning away from known obstacles."
               },
               {
-                "text" : "Emergency Ground Egress"
+                "text" : "If already above the safe-altitude floor, use smooth coordinated inputs to exit IMC the way you entered it."
+              }
+            ],
+            "text" : "Immediate priorities:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If VMC does not return immediately, contact the nearest ATC facility, declare an emergency, and ask for assistance."
               },
               {
-                "text" : "CFS and Ejection CRM"
+                "text" : "If contact is delayed, squawk 7700 and use Guard instead of trying to solve the problem in silence."
               },
               {
-                "text" : "Abort Takeoff"
+                "text" : "Do not descend below the safe-altitude floor just to chase better visibility."
+              }
+            ],
+            "text" : "Decision traps:"
+          }
+        ],
+        "title" : "Unintentional Instrument Flight"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Local course rules on the check flight are really a judgment item: you should understand what has to be confirmed from the current published procedure and day-of brief, and what must stay predictable once you are airborne."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Confirm departure, area, OLF, arrival, and lost-comms procedures from the current published procedure rather than carrying one field's names or routes into every location."
               },
               {
-                "text" : "Aircraft Departs Prepared Surface"
+                "text" : "Know the current weather minimums, runway requirements, bird or field-condition restrictions, and who is authorizing solo or check-flight recoveries that day."
               },
               {
-                "text" : "Engine Failure Immediately After Takeoff"
+                "text" : "Be ready to explain what you will do if a divert, full-stop away from home field, or support-agency call becomes necessary."
+              }
+            ],
+            "text" : "What to confirm:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Stay oriented, monitor the required frequencies, track fuel and time, and keep the aircraft predictable for other traffic."
               },
               {
-                "text" : "Engine Failure During Flight"
+                "text" : "If the day no longer matches the briefed rule set, recover early instead of improvising a local-only fix."
+              }
+            ],
+            "text" : "What stays universal:"
+          }
+        ],
+        "title" : "Local Course Rules"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Treat the maneuver item like a cumulative check on setup, execution, and recovery cues across the entire day-contact syllabus. The instructor should be able to pick a maneuver and get an organized brief without giving you the first sentence."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Refresh the core contact set: basic transitions, turn pattern, level speed change, slow flight, power-on and power-off stalls, landing-pattern stalls, and landing profiles."
               },
               {
-                "text" : "Immediate Air-Start"
+                "text" : "Refresh the advanced handling set already introduced later in the block: crosswind operations, SCATSAFE, OCF, contact unusual attitudes, and the landing or configuration recoveries that connect to them."
               },
               {
-                "text" : "PMU Norm Air-Start"
+                "text" : "For every maneuver, know the setup numbers, the recovery cue, and the common grading miss that usually starts the debrief."
+              }
+            ],
+            "text" : "What should be current:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not answer with generic descriptions. Give the entry picture, the control flow, and what tells you the maneuver is complete or needs to be terminated."
+              }
+            ],
+            "text" : "Check-flight standard:"
+          }
+        ],
+        "title" : "Maneuvers"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Emergency procedures in the check flight are about recognition, immediate actions, N/W/C meaning, and the branch logic that decides whether you continue, PEL, forced-land, or eject. A fast verbatim start without the follow-on decision is not enough."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be ready for the ground and departure set: fire on the ground, emergency engine shutdown on the ground, emergency ground egress, abort takeoff, aircraft departs prepared surface, and engine failure immediately after takeoff."
               },
               {
-                "text" : "PMU Off Air-Start"
+                "text" : "Be ready for the airborne set: engine failure during flight, immediate air-start, PMU NORM air-start, PMU OFF air-start, and uncommanded power changes or loss of power."
               },
               {
-                "text" : "Uncommanded Power Changes\/LOP"
+                "text" : "Be ready for the landing and recovery branches already introduced in the block, especially gear, flap, orbit, PEL, forced-landing, and airborne-damaged-aircraft decisions."
               }
             ],
             "text" : "Expected review set:"
@@ -211,49 +250,46 @@
           {
             "children" : [
               {
-                "text" : "Be able to state the recognition cue before you recite the steps."
+                "text" : "Lead with the cue, then the memory items, then the N/W/C or note that changes the safe branch."
               },
               {
-                "text" : "Know the associated N\/W\/Cs, not just the memory items."
-              },
-              {
-                "text" : "Have a clear answer for when the EP becomes a PEL, forced-landing, or ejection problem."
+                "text" : "Use the dedicated EP references for verbatim accuracy, but connect them back to the landing, ejection, or recovery plan you would actually brief."
               }
             ],
             "text" : "How to study it:"
           }
         ],
-        "title" : "Emergency Decision Review"
+        "title" : "Emergency Procedures"
       },
       {
         "items" : [
           {
-            "text" : "Any previously discussed items"
+            "text" : "Any Previously Discussed Items"
           },
           {
-            "text" : "unauthorized solo maneuvers"
+            "text" : "Unauthorized Solo Maneuvers"
           },
           {
-            "text" : "lost aircraft procedures"
+            "text" : "Lost Aircraft Procedures"
           },
           {
-            "text" : "unintentional instrument flight"
+            "text" : "Unintentional Instrument Flight"
           },
           {
-            "text" : "local course rules"
+            "text" : "Local Course Rules"
           },
           {
-            "text" : "maneuvers"
+            "text" : "Maneuvers"
           },
           {
-            "text" : "emergency procedures"
+            "text" : "Emergency Procedures"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Keep Check-Flight Knowledge Review, plus Solo and Weather Decision Traps organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
+    "summary" : "Treat the check flight like a cumulative brief: solo limits, weather decisions, course rules, maneuver setup, and EP branch logic should already connect."
   },
-  "summary" : "Check-Flight Knowledge Review, Solo and Weather Decision Traps, and Maneuver Standards Refresh.",
+  "summary" : "Cumulative day-contact maneuver, solo-boundary, weather, and emergency-decision review.",
   "title" : "Familiarization Check Flight"
 }

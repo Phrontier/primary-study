@@ -99,18 +99,6 @@
       "unexpectedPrimaryItems" : [
         "Ejection Decision and Setup"
       ]
-    },
-    {
-      "code" : "FAM4490",
-      "missingCanonicalItems" : [
-
-      ],
-      "unexpectedPrimaryItems" : [
-        "Check-Flight Knowledge Review",
-        "Solo and Weather Decision Traps",
-        "Maneuver Standards Refresh",
-        "Emergency Decision Review"
-      ]
     }
   ],
   "canonicalEventCount" : 88,
@@ -175,7 +163,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-21T21:08:05Z",
+  "generatedAt" : "2026-05-21T21:12:20Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

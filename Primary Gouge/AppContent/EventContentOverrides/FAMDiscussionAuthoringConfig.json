@@ -294,33 +294,6 @@
         }
       ]
     },
-    "FAM4201" : {
-      "authoringProfile" : "flight",
-      "sections" : [
-        {
-          "discussionItems" : [
-            "NATOPS limitations",
-            "engine system",
-            "engine malfunctions"
-          ],
-          "title" : "NATOPS and Engine System Review"
-        },
-        {
-          "discussionItems" : [
-            "ELP",
-            "PEL",
-            "forced landing"
-          ],
-          "title" : "Landing Option Decision Chain"
-        },
-        {
-          "discussionItems" : [
-            "Aldis lamp signals"
-          ],
-          "title" : "Aldis Lamp Signals"
-        }
-      ]
-    },
     "FAM4490" : {
       "authoringProfile" : "checkFlight",
       "fallbackSourceTitles" : [
@@ -514,6 +487,9 @@
       ],
       "preserveExistingVisibleContent" : true,
       "standardizeRequiredProcedureDisplay" : true,
+      "systemsBriefItems" : [
+        "engine system"
+      ],
       "itemSections" : [
         {
           "discussionItem" : "NATOPS limitations",
@@ -561,6 +537,9 @@
       ],
       "preserveExistingVisibleContent" : true,
       "standardizeRequiredProcedureDisplay" : true,
+      "systemsBriefItems" : [
+        "Hydraulic system"
+      ],
       "itemSections" : [
         {
           "discussionItem" : "Hydraulic system",

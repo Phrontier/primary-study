@@ -808,10 +808,28 @@ struct Primary_GougeTests {
             "Required Procedures"
         ])
 
+        let systemsBrief = try #require(event.systemsBrief)
+        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.sections.compactMap(\.title) == [
+            "How to Brief the System",
+            "Engine System",
+            "Air Molecule",
+            "Fuel Molecule"
+        ])
+
         let engineSection = try #require(notes.sections.first(where: { $0.title == "Engine System" }))
         let engineText = engineSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
-        #expect(engineText.contains("free-turbine"))
+        #expect(engineText.contains("Use the Systems brief tool"))
         #expect(engineText.contains("67% N1"))
+        #expect(!engineText.contains("inertial separator"))
+
+        let systemsText = systemsBrief.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ")
+        #expect(systemsText.contains("1100 shaft horsepower"))
+        #expect(systemsText.contains("inertial separator"))
+        #expect(systemsText.contains("flow divider"))
+        #expect(systemsText.contains("2000 RPM"))
 
         let elpSection = try #require(notes.sections.first(where: { $0.title == "ELP" }))
         let elpText = elpSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
@@ -855,10 +873,30 @@ struct Primary_GougeTests {
             "Required Procedures"
         ])
 
+        let systemsBrief = try #require(event.systemsBrief)
+        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.sections.compactMap(\.title) == [
+            "How to Brief the System",
+            "Hydraulic Power Package",
+            "Selector Manifold and Normal Services",
+            "Emergency System and Accumulator Logic",
+            "Indications and Traps"
+        ])
+
         let hydraulicSection = try #require(notes.sections.first(where: { $0.title == "Hydraulic System" }))
         let hydraulicText = hydraulicSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
-        #expect(hydraulicText.contains("3000"))
+        #expect(hydraulicText.contains("Use the Systems brief tool"))
+        #expect(hydraulicText.contains("gear, flap, or NWS decisions"))
         #expect(hydraulicText.contains("one-time"))
+        #expect(!hydraulicText.contains("selector manifold routes pressure"))
+
+        let hydraulicSystemsText = systemsBrief.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ")
+        #expect(hydraulicSystemsText.contains("5 quarts"))
+        #expect(hydraulicSystemsText.contains("3000 +/- 120 PSI"))
+        #expect(hydraulicSystemsText.contains("12 degrees"))
+        #expect(hydraulicSystemsText.contains("one-time"))
 
         let spinSection = try #require(notes.sections.first(where: { $0.title == "Spin" }))
         let spinText = spinSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")

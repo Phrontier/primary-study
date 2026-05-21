@@ -2202,6 +2202,7 @@ private func titleCasedDiscussionItemPrompt(_ value: String) -> String {
         (#"\bVfr\b"#, "VFR"),
         (#"\bIfr\b"#, "IFR"),
         (#"\bAim\b"#, "AIM"),
+        (#"\bNatops\b"#, "NATOPS"),
         (#"\bCfs\b"#, "CFS"),
         (#"\bObogs\b"#, "OBOGS"),
         (#"\bPmu\b"#, "PMU"),
@@ -2211,6 +2212,10 @@ private func titleCasedDiscussionItemPrompt(_ value: String) -> String {
         (#"\bLop\b"#, "LOP"),
         (#"\bAoa\b"#, "AOA"),
         (#"\bOcf\b"#, "OCF"),
+        (#"\bNws\b"#, "NWS"),
+        (#"\bEicas\b"#, "EICAS"),
+        (#"\bAgsm\b"#, "AGSM"),
+        (#"\bTcas\b"#, "TCAS"),
         (#"\bOdo/Fdo\b"#, "ODO/FDO")
     ]
 

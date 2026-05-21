@@ -17,7 +17,7 @@
     ]
   },
   "code" : "FAM4202",
-  "overview" : "This event ties hydraulic-system knowledge to the places where students actually feel it in the jet, then pushes that into spin, OCF, and repeated crosswind pattern work. Be ready to explain what the hydraulic system powers, how a spin is entered and recognized, when neutral-controls OCF recovery is correct, and when a true anti-spin recovery is required.",
+  "overview" : "This sortie is about understanding what the hydraulic system buys you before you go spin, OCF, and crosswind work. Be ready to brief the hydraulic system well enough to explain normal versus emergency services, then keep the spin, OCF, anti-spin, and crosswind boundaries straight once the aircraft departs normal flight.",
   "primaryDocumentTitles" : [
     "FAM4202"
   ],
@@ -27,52 +27,35 @@
       {
         "items" : [
           {
-            "text" : "The hydraulic system matters because it powers the landing gear, flaps, speed brake, and nosewheel steering, and it also gives you a one-time emergency backup when the normal system is gone."
+            "text" : "Use the Systems brief tool for the full hydraulic walk-through. For this event, know what hydraulic power you are counting on in normal flight, what changes when the normal system is lost, and which indications change your gear, flap, or NWS decisions."
           },
           {
             "children" : [
               {
-                "text" : "Think of it in three pieces: power package, selector manifold, and emergency system."
+                "text" : "Normal hydraulic power runs the landing gear, TO/LDG flaps, speed brake, and nosewheel steering."
               },
               {
-                "text" : "The engine-driven pump maintains roughly 3000 +/- 120 PSI and feeds the normal system. The reservoir holds 5 quarts and the system uses filters, a pressure transmitter, and relief-valve logic to keep the fluid usable and the pressure controlled."
+                "text" : "The engine-driven pump maintains roughly 3000 +/- 120 PSI from a 5-quart reservoir. That normal-system pressure is what you are relying on anytime you move gear, flaps, or speed brake."
               },
               {
-                "text" : "The selector manifold routes pressure to the system you command, including landing gear, flaps, and speed brake."
+                "text" : "Think normal versus emergency: the power package and selector manifold do the routine work, and the emergency accumulator gives you one backup shot if the main system is gone."
               }
             ],
-            "text" : "Big picture:"
+            "text" : "What matters in flight:"
           },
           {
             "children" : [
               {
-                "text" : "Normal hydraulic power runs the landing gear, TO/LDG flaps, speed brake, and NWS."
+                "text" : "HYDR FL LO points you toward a fluid-quantity, leak, or normal-system problem and should make you stop assuming normal gear or flap operation is guaranteed."
               },
               {
-                "text" : "NWS is for ground steering only and gives about 12 degrees left or right of castor. It should not be combined with differential braking in sharp turns."
+                "text" : "EHYD PX LO after emergency use is expected. EHYD PX LO together with HYDR FL LO suggests a leak or hydraulic-fuse problem and a thinner backup margin."
               },
               {
-                "text" : "The speed brake is hydraulically extended and will auto-retract with PCL to MAX, flap selection to LDG, or switch selection to retract."
+                "text" : "Emergency gear extension leaves the inboard doors extended, and emergency flap extension uses the same flap selector but the flaps cannot be retracted once they are out."
               }
             ],
-            "text" : "What the system is really powering:"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The emergency accumulator is helium-precharged and gives one-time hydraulic help for emergency gear and flap extension."
-              },
-              {
-                "text" : "Pulling the emergency gear extension handle isolates the main system and ports pressure to the gear and inboard-door actuators. The inboard doors remain extended after emergency extension."
-              },
-              {
-                "text" : "Emergency flap extension uses the same flap selector, but once extended the flaps cannot be retracted."
-              },
-              {
-                "text" : "An EHYD PX LO after emergency use is expected. EHYD PX LO together with HYDR FL LO suggests a leak or fuse problem."
-              }
-            ],
-            "text" : "Emergency system logic:"
+            "text" : "Decision cues:"
           },
           {
             "children" : [
@@ -371,5 +354,159 @@
     "summary" : "Keep the boundaries straight: know what hydraulics powers, fly the spin entry cleanly, use neutral-controls OCF recovery until a true steady-state spin exists, and keep crosswind corrections alive all the way through touchdown."
   },
   "summary" : "Hydraulic-system essentials, spin recognition, OCF versus anti-spin recovery, and repeated crosswind pattern application.",
+  "systemsBrief" : {
+    "headline" : "Systems brief",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Start with purpose, then explain how normal hydraulic pressure is created and routed, then finish with what the emergency system does when the main system is gone. That sequence is much easier to brief than listing parts at random."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Purpose: provide hydraulic power for landing gear, flaps, speed brake, and nosewheel steering."
+              },
+              {
+                "text" : "Normal-system flow: power package creates pressure, selector manifold routes it to the commanded service."
+              },
+              {
+                "text" : "Emergency-system flow: accumulator pressure is saved for one-time emergency landing-gear and flap use."
+              }
+            ],
+            "text" : "Briefing flow:"
+          }
+        ],
+        "title" : "How to Brief the System"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The power package is the pressure-producing heart of the hydraulic system. It houses the reservoir, pump, and the components that regulate and protect system pressure."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The reservoir holds 5 quarts of hydraulic fluid, and the engine-driven pump maintains about 3000 +/- 120 PSI for the normal system."
+              },
+              {
+                "text" : "A pressure reducer piston helps bring return pressure down, and the relief valve protects the system from overpressurization."
+              },
+              {
+                "text" : "The pressure transmitter is what feeds the cockpit indication logic, and the filters are there to keep contamination from becoming a hydraulic problem."
+              }
+            ],
+            "text" : "Pressure generation and control:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The slide-valve assembly keeps the emergency system isolated during normal operations so the accumulator stays available for when you actually need it."
+              },
+              {
+                "text" : "Think of 1800 PSI as the rough floor where the system still has enough pressure to do useful work, even though the normal target is much closer to 3000 PSI."
+              }
+            ],
+            "text" : "Emergency-system interface:"
+          }
+        ],
+        "title" : "Hydraulic Power Package"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The selector manifold is the traffic cop. It takes pressure from the power package and sends it to the system you actually command from the cockpit."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Landing gear: the gear selector valve routes pressure to the main gear, nose gear, and inboard-door actuators. Three green lights mean down and locked; no lights mean up; a red light means transit or an associated gear-door condition."
+              },
+              {
+                "text" : "Flaps: separate TO and LDG selector-valve paths let the flap actuator move the torque tube and flap system to the commanded setting."
+              },
+              {
+                "text" : "Speed brake: hydraulic pressure extends it, and it auto-retracts with PCL to MAX, flap selection to LDG, or manual retract selection."
+              }
+            ],
+            "text" : "Normal services:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Nosewheel steering is hydraulically powered and gives about 12 degrees left or right of castor when engaged."
+              },
+              {
+                "text" : "NWS is for ground steering only. If you need a sharper turn, disengage NWS before using differential braking so you are not fighting or damaging the steering system."
+              },
+              {
+                "text" : "A speed brake that droops on the ramp is not automatically a malfunction; with pressure removed, the brake can settle because hydraulic pressure normally holds it up."
+              }
+            ],
+            "text" : "Ground and handling implications:"
+          }
+        ],
+        "title" : "Selector Manifold and Normal Services"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The emergency system is built around a helium-precharged accumulator that stores pressure for one-time emergency extension of the landing gear and flaps."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Pulling the emergency gear-extension handle releases accumulator pressure, isolates the main system, and ports pressure to the landing-gear and inboard-door actuators."
+              },
+              {
+                "text" : "After emergency gear extension, the inboard doors remain extended. That is normal for the emergency configuration."
+              },
+              {
+                "text" : "Emergency flap extension uses the same flap selector, but it is powered through the emergency path and the flaps cannot be retracted once extended."
+              }
+            ],
+            "text" : "One-time extension logic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A hydraulic fuse helps limit fluid loss into the emergency system if a leak develops."
+              },
+              {
+                "text" : "An EHYD PX LO after emergency use is expected. EHYD PX LO together with HYDR FL LO is the combination that should make you think leak or fuse trouble instead of normal accumulator depletion."
+              },
+              {
+                "text" : "If the emergency accumulator was discharged for maintenance, make sure the caution has cleared before flight so you do not launch with the backup already spent."
+              }
+            ],
+            "text" : "Accumulator logic and indications:"
+          }
+        ],
+        "title" : "Emergency System and Accumulator Logic"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Most weak hydraulic briefs come from forgetting to tie indications back to what service you will actually lose next."
+          },
+          {
+            "children" : [
+              {
+                "text" : "HYDR FL LO is a normal-system cue. EHYD PX LO is an emergency-system cue. Seeing both together means more than seeing either one alone."
+              },
+              {
+                "text" : "Do not brief NWS as an isolated taxi feature; in this event it matters because a steering problem can become a takeoff, landing, or crosswind-control problem."
+              },
+              {
+                "text" : "Be explicit that the emergency system is one-time use. Students often remember it exists but forget that you are spending stored pressure, not switching to a second normal system."
+              }
+            ],
+            "text" : "Brief traps:"
+          }
+        ],
+        "title" : "Indications and Traps"
+      }
+    ]
+  },
   "title" : "Hydraulics, Spins, and Crosswinds"
 }

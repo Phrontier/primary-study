@@ -77,49 +77,35 @@
       {
         "items" : [
           {
-            "text" : "The PT6A-68 is a free-turbine engine, which explains a lot of the T-6's behavior during starts, power changes, and propeller problems. The gas generator makes the power, and the power turbine passes it through the reduction gearbox to the propeller without a direct mechanical link."
+            "text" : "Use the Systems brief tool for the full NATOPS-style engine brief. For this event, be able to connect the PT6A-68, PMU, and propeller system to the cues that change whether you continue, PEL, force-land, or eject."
           },
           {
             "children" : [
               {
-                "text" : "Air enters the rear intake, is compressed by the axial and centrifugal compressor stages, mixed with fuel, ignited, and expanded through the turbines."
+                "text" : "The PT6A-68 is a free-turbine engine, so the gas-generator section can still be healthy while the propeller side is the part misbehaving."
               },
               {
-                "text" : "The gas-generator turbine drives the compressor. The two-stage power turbine drives the reduction gearbox and propeller."
+                "text" : "The PMU normally schedules fuel, acceleration, deceleration, and propeller response. Weight-on-wheels logic gives you about 60-61% N1 on the ground and about 67% N1 in flight."
               },
               {
-                "text" : "The reduction gearbox takes roughly 30,000 RPM engine output down to the propeller's 2000 RPM operating speed."
+                "text" : "The reduction gearbox and propeller interface logic are why NP, torque, and thrust can change even when the gas-generator section has not completely failed."
               }
             ],
-            "text" : "Big system picture:"
+            "text" : "What matters in flight:"
           },
           {
             "children" : [
               {
-                "text" : "The PMU schedules fuel and propeller response, controls acceleration and deceleration, manages auto-start protection on the ground, and raises N1 as needed to keep NP above 80% above 10,000 feet pressure altitude."
+                "text" : "Healthy N1 with abnormal NP or torque should make you think propeller or control logic before you call it a total engine failure."
               },
               {
-                "text" : "Ground idle is about 60-61% N1 and flight idle is about 67% N1, driven by weight-on-wheels logic."
+                "text" : "Loss of oil pressure or hydraulic pressure together with rapidly decaying N1, torque, and ITT is a much stronger engine-failure picture."
               },
               {
-                "text" : "The PMU normally protects the start sequence by watching N1, ITT, and fuel flow, but once ST READY extinguishes those protections are gone."
+                "text" : "If the PMU drops offline or is selected OFF, fuel scheduling becomes manual and the workload jumps immediately, especially during landing or restart decisions."
               }
             ],
-            "text" : "PMU logic:"
-          },
-          {
-            "children" : [
-              {
-                "text" : "The four-blade Hartzell prop is constant-speed, feathering, and normally held at 100% NP by the PMU and propeller interface unit, with the overspeed governor as backup."
-              },
-              {
-                "text" : "The prop automatically unfeathers during start as oil pressure builds."
-              },
-              {
-                "text" : "If the PMU is off or fails into manual mode, fuel scheduling becomes much more pilot-intensive and automatic engine protection is gone."
-              }
-            ],
-            "text" : "Propeller and manual-mode implications:"
+            "text" : "Decision cues:"
           },
           {
             "children" : [
@@ -127,10 +113,10 @@
                 "text" : "Do not casually lift the PCL cutoff gate in flight. Mishaps have happened from inadvertent shutdown attempts."
               },
               {
-                "text" : "If the PCL is inadvertently moved to cutoff on the ground and the engine is shutting down, do not relight by simply moving it back to idle."
+                "text" : "Once ST READY extinguishes, the automatic start protections are gone, so any PMU OFF or manual-fuel work demands tighter monitoring."
               },
               {
-                "text" : "Starts with PMU OFF are not recommended because hot-start protection is largely on you."
+                "text" : "Starts with PMU OFF are not recommended, and any event that leaves you in manual mode should immediately change how cautious you are with throttle movement and landing rollout planning."
               }
             ],
             "text" : "N/W/C focus:"
@@ -451,5 +437,140 @@
     "summary" : "Know the limits, understand what the engine and PMU are telling you, and commit early to the right landing-option chain before a manageable malfunction turns into an actual engine-failure problem."
   },
   "summary" : "NATOPS limits, PT6/PMU basics, and the ELP-to-PEL-to-forced-landing decision chain.",
+  "systemsBrief" : {
+    "headline" : "Systems brief",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Start with the big picture, then walk the air path, then the fuel path, and only then talk about cockpit indications. That flow makes the brief sound like you understand the engine instead of reciting disconnected parts."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Purpose: convert fuel and air into shaft horsepower for the propeller while supplying the accessory and lubrication systems that keep the engine alive."
+              },
+              {
+                "text" : "Architecture: free-turbine, reverse-flow engine with separate gas-generation and power sections."
+              },
+              {
+                "text" : "Briefing payoff: once you understand where power is made and how the propeller is controlled, engine-failure indications make a lot more sense."
+              }
+            ],
+            "text" : "Briefing flow:"
+          }
+        ],
+        "title" : "How to Brief the System"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The PT6A-68 is a free-turbine turboprop flat-rated to produce 1100 shaft horsepower. It is a reverse-flow design with two independent sections."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Gas-generation section: four-stage axial compressor, single-stage centrifugal compressor, combustion chamber, and single-stage compressor turbine."
+              },
+              {
+                "text" : "Power section: two-stage axial-flow power turbine, exhaust case, and reduction gearbox."
+              },
+              {
+                "text" : "The power turbine is not mechanically linked to the compressor. That is why the engine can still be producing gas-generator indications even when the propeller side is degrading."
+              }
+            ],
+            "text" : "Major sections:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The reduction gearbox takes turbine speed of roughly 30,000 RPM down to about 2000 RPM at the Hartzell four-blade constant-speed propeller."
+              },
+              {
+                "text" : "The engine is cooled and lubricated by a dedicated oil system, and the engine data manager monitors the operating parameters that drive the EICAS messages you brief."
+              },
+              {
+                "text" : "The accessory-drive section powers the engine-driven components that keep the engine, oil, and propeller-control systems functioning."
+              }
+            ],
+            "text" : "Support systems and outputs:"
+          }
+        ],
+        "title" : "Engine System"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The air molecule brief is the easiest way to explain how the PT6 makes power: trace the air from the intake to the exhaust and explain what each section is doing to it."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Inlet air travels rearward through the intake duct and inertial separator, which helps throw debris and moisture out of the airstream."
+              },
+              {
+                "text" : "The air then moves forward through the four-stage axial compressor and the single-stage centrifugal compressor. The diffuser slows that flow and converts velocity into static pressure."
+              },
+              {
+                "text" : "Diffused air passes through straightening vanes before it mixes with atomized fuel in the combustion chamber."
+              }
+            ],
+            "text" : "Compression and combustion:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The expanding gas first drives the single-stage compressor turbine, which is mechanically linked to the compressor and keeps the gas-generator cycle going."
+              },
+              {
+                "text" : "That same gas then drives the separate two-stage power turbine, which turns the reduction gearbox through its own shaft."
+              },
+              {
+                "text" : "Exhaust gases leave through the stacks and add a small amount of thrust, but the real output the pilot cares about is the shaft power being delivered to the propeller."
+              }
+            ],
+            "text" : "Turbines and exhaust:"
+          }
+        ],
+        "title" : "Air Molecule"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The fuel molecule brief should explain how the engine meters fuel rather than just saying fuel goes to the nozzles."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fuel leaves the tanks and reaches the engine fuel pump and fuel-management unit, where it is metered based on PCL position and system inputs."
+              },
+              {
+                "text" : "Metered fuel is sent through the flow divider to the fuel nozzles, where it is atomized into the compressed air inside the combustion chamber."
+              },
+              {
+                "text" : "During start, the igniters light the mixture. Once the engine is running, combustion becomes self-sustaining."
+              }
+            ],
+            "text" : "Fuel flow path:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The PMU and related control logic are why fuel scheduling, acceleration, deceleration, and propeller response feel coordinated in normal operations."
+              },
+              {
+                "text" : "Mounted around the reduction gearbox are the chip detector, PIU, torque probe, and PMA, which is why a gearbox or propeller-control problem can change what the fuel and power picture looks like from the cockpit."
+              },
+              {
+                "text" : "If you can explain how the FMU, PMU, and propeller-control pieces interact, you are much better prepared to talk through rollback, feather, or PMU-related malfunctions."
+              }
+            ],
+            "text" : "Control and monitoring relationship:"
+          }
+        ],
+        "title" : "Fuel Molecule"
+      }
+    ]
+  },
   "title" : "Engine and Emergency Landing Foundations"
 }

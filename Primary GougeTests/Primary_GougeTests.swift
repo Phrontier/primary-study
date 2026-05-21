@@ -1149,6 +1149,61 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4303GeneralizesLandingAbnormalRecoveryWithoutLocalLeakage() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4303"])
+        #expect(event.title == "Landing and Configuration Emergencies")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Hard Landings",
+            "Gear Emergencies",
+            "Flap Failures",
+            "Emergency Orbit Pattern",
+            "Any Critical Action Emergency Procedures",
+            "Required Procedures"
+        ])
+
+        let hardLandingSection = try #require(notes.sections.first(where: { $0.title == "Hard Landings" }))
+        let hardLandingText = hardLandingSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(hardLandingText.contains("6900 pounds"))
+        #expect(hardLandingText.contains("600 FPM"))
+        #expect(hardLandingText.contains("110 KIAS"))
+        #expect(hardLandingText.contains("do not raise the gear"))
+
+        let gearSection = try #require(notes.sections.first(where: { $0.title == "Gear Emergencies" }))
+        let gearText = gearSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(gearText.contains("150 KIAS"))
+        #expect(gearText.contains("1800 PSI"))
+        #expect(gearText.contains("LDGGR CONT"))
+        #expect(gearText.contains("one-way decision"))
+
+        let flapSection = try #require(notes.sections.first(where: { $0.title == "Flap Failures" }))
+        let flapText = flapSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(flapText.contains("speed brake"))
+        #expect(flapText.contains("straight-in approach"))
+
+        let orbitSection = try #require(notes.sections.first(where: { $0.title == "Emergency Orbit Pattern" }))
+        let orbitText = orbitSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(orbitText.contains("120 KIAS"))
+        #expect(orbitText.contains("gear down and flaps up"))
+        #expect(orbitText.contains("day-of SOP"))
+        #expect(!orbitText.lowercased().contains("kngp"))
+        #expect(!orbitText.lowercased().contains("goliad"))
+        #expect(!orbitText.lowercased().contains("waldron"))
+        #expect(!orbitText.lowercased().contains("cabaniss"))
+
+        let epSection = try #require(notes.sections.first(where: { $0.title == "Any Critical Action Emergency Procedures" }))
+        let epText = epSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(epText.contains("dedicated EP and N/W/C references"))
+        #expect(epText.contains("Abort Takeoff"))
+        #expect(epText.contains("PMU OFF Air-Start"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

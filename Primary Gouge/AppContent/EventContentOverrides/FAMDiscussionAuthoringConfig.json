@@ -712,6 +712,44 @@
           "presentationStyle" : "procedure"
         }
       ]
+    },
+    "FAM4303" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "landing",
+        "gear",
+        "flap",
+        "orbit"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Hard landings",
+          "displayTitle" : "Hard Landings",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "gear emergencies",
+          "displayTitle" : "Gear Emergencies",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "flap failures",
+          "displayTitle" : "Flap Failures",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "emergency orbit pattern",
+          "displayTitle" : "Emergency Orbit Pattern",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "any critical action emergency procedures",
+          "displayTitle" : "Any Critical Action Emergency Procedures",
+          "presentationStyle" : "procedure"
+        }
+      ]
     }
   }
 }

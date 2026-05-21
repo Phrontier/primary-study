@@ -20271,7 +20271,7 @@
                 }
               ],
               "id" : "contacts-flights-fam4301",
-              "overview" : "This event ties together obogs and pressurization system, aborted takeoff, and lost aircraft procedures in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+              "overview" : "This sortie is about recognizing an abnormal situation early enough to stop, recover, or re-enter cleanly before it stacks into something worse. Be ready to brief the OBOGS and pressurization system at the event level, abort decisively on the ground, recover methodically when lost, and know when damaged-aircraft logic or a discontinued entry protects you from creating a second emergency.",
               "primaryDocumentIDs" : [
 
               ],
@@ -20310,38 +20310,32 @@
                   {
                     "items" : [
                       {
-                        "text" : "Failure Indications"
+                        "text" : "Use the Systems brief tool for the dense OBOGS and pressurization walk-through. For this event, know what the system is doing for you, what the cockpit warnings really mean, and when you must treat it like a survival problem instead of a nuisance indication."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Oxygen Source and Generation"
+                            "text" : "OBOGS uses conditioned bleed air and a molecular-sieve concentrator to provide each pilot an essentially unlimited oxygen source, while emergency seat oxygen covers the true failure case."
                           },
                           {
-                            "text" : "Conditioned bleed air is tapped from the engine and routed to the OBOGS concentrator."
+                            "text" : "Pressurization holds cockpit altitude around 8000 feet until the differential-pressure limit is reached, then lets cockpit altitude rise as the aircraft climbs."
                           },
                           {
-                            "text" : "Uses pressure swing adsorption and a molecular sieve to extract oxygen from bleed air and remove nitrogen."
-                          },
-                          {
-                            "text" : "A small tank downstream of the concentrator that holds a short-term oxygen supply in the event of OBOGS failure."
+                            "text" : "Dump and RAM\/DUMP remove pressurization on purpose, so know whether the cockpit is unpressurized because you selected it or because the system is failing."
                           }
                         ],
-                        "text" : "Immediate actions:"
+                        "text" : "What matters in flight:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Illuminates when either regulator is set to MAX."
+                            "text" : "An OBOGS FAIL warning can come from low bleed-air pressure, low oxygen concentration, or internal system trouble; if the engine is gone or electrical power is gone, OBOGS is gone too."
                           },
                           {
-                            "text" : "After max effort braking, if brake overheating is suspected:"
+                            "text" : "A loose mask or mask-off condition can reduce oxygen available to both cockpits and create a misleading OBOGS FAIL."
                           },
                           {
-                            "text" : "If brakes fade or are unresponsive:"
-                          },
-                          {
-                            "text" : "If you become unsure of your location in flight, stay calm and follow the established Five Cs to regain orientation or get help. The priority is always to fly the aircraft, maintain VFR, and communicate."
+                            "text" : "CKPT ALT, CKPT PX, and DUCT TEMP tell you whether the problem is cockpit pressure, differential pressure, or hot bleed air instead of oxygen generation alone."
                           }
                         ],
                         "text" : "Decision cues:"
@@ -20349,7 +20343,13 @@
                       {
                         "children" : [
                           {
-                            "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for OBOGS and Pressurization System before the event."
+                            "text" : "If smoke, fumes, or loss of oxygen jeopardizes aircraft control, emergency oxygen, CFS, or ejection may already be the safer answer."
+                          },
+                          {
+                            "text" : "After power loss or system deactivation, OBOGS has a 4-minute warm-up period before concentration warnings are reliable again."
+                          },
+                          {
+                            "text" : "White zeolite dust from a failed concentrator is a real warning sign; avoid inhaling it, but remember oxygen concentration may still be adequate."
                           }
                         ],
                         "text" : "N\/W\/C focus:"
@@ -20360,37 +20360,43 @@
                   {
                     "items" : [
                       {
-                        "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
+                        "text" : "An abort is the answer for any abnormal or unsafe condition before max abort speed. Decide early, say it clearly, and stop the aircraft before the problem grows teeth."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "PCL - IDLE"
+                            "text" : "Prior to max abort speed, the immediate actions are PCL IDLE and BRAKES AS REQUIRED with smooth, single-application braking."
                           },
                           {
-                            "text" : "BRAKES - AS REQUIRED"
+                            "text" : "Maintain directional control with rudder and nosewheel steering, and make the ICS abort call only after the aircraft is under control."
+                          },
+                          {
+                            "text" : "If you can taxi clear, do it. If not, transition to emergency shutdown and ground egress logic as required."
                           }
                         ],
-                        "text" : "Immediate actions:"
+                        "text" : "Execution:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "executed for any abnormal or unsafe condition prior to max abort speed (1500 ft or 60 KIAS), including:"
+                            "text" : "Max abort speed is the earlier of 1500 feet or 60 KIAS unless performance planning gives you a lower limit."
                           },
                           {
-                            "text" : "(1W)"
+                            "text" : "Above 80 KIAS, braking gets less effective because lift is still unloading the wheels."
+                          },
+                          {
+                            "text" : "Do not brake before full weight is on wheels, and if the aircraft starts to get away laterally, release and reapply instead of staying locked on the brakes."
                           }
                         ],
-                        "text" : "Decision cues:"
+                        "text" : "Decision traps:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "(1W)"
+                            "text" : "After maximum-effort braking, do not set the parking brake and do not taxi into a congested area until you are confident the brakes have cooled."
                           },
                           {
-                            "text" : "W - After a stop which required maximum effort braking and if overheated brakes are suspected, do not taxi into or park in a congested area until brakes have had sufficient time to cool. Do not set parking brake."
+                            "text" : "Most tire blowouts happen early, especially before spin-up or below about 40 KIAS, so do not hold brake pressure mindlessly at the bottom end."
                           }
                         ],
                         "text" : "N\/W\/C focus:"
@@ -20401,21 +20407,41 @@
                   {
                     "items" : [
                       {
-                        "text" : "Flap setting"
+                        "text" : "When you are lost, the fix is disciplined process, not random maneuvering. Fly the aircraft, stay VFR if at all possible, and work the Five Cs early."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "CONFESS"
+                            "text" : "CONFESS early and ask for help."
                           },
                           {
-                            "text" : "Admit you are lost. Do not delay. Seek assistance."
+                            "text" : "CLIMB if conditions permit to improve radio range and visibility."
                           },
                           {
-                            "text" : "CLIMB"
+                            "text" : "CONSERVE by flying maximum-endurance AOA, about 8.8 units or 125 ± 8 KIAS, in straight-and-level flight."
+                          },
+                          {
+                            "text" : "COMMUNICATE with the instructor aircraft, ODO\/FDO, approach, or Guard, and pass fuel, souls, position, and intentions."
+                          },
+                          {
+                            "text" : "COMPLY with vectors or recovery guidance once help is established."
                           }
                         ],
-                        "text" : "Key points:"
+                        "text" : "Five Cs:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use FMS nearest, known landmarks, and a methodical scan to rebuild the picture instead of wandering around hoping something looks familiar."
+                          },
+                          {
+                            "text" : "If you still cannot reorient, pick a suitable airfield, orbit safely to evaluate wind and obstacles, and land full stop rather than running the fuel state down."
+                          },
+                          {
+                            "text" : "Do not descend below your safe altitude floor just to try to regain VMC or recognition."
+                          }
+                        ],
+                        "text" : "Execution mindset:"
                       }
                     ],
                     "title" : "Lost Aircraft Procedures"
@@ -20423,49 +20449,32 @@
                   {
                     "items" : [
                       {
-                        "text" : "Discontinued Entry is a mandatory maneuver to safely depart the pattern entry track when proper separation, RDO communication, or traffic alignment is not established. It prevents conflicts with pattern or emergency traffic (e.g., PPEL\/P)."
+                        "text" : "A discontinued entry is the escape maneuver when pattern entry geometry, traffic separation, or radio coordination is no longer safe enough to continue inbound."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "Execute it when the controlling agency directs it, when traffic separation is not confirmed by the published decision gate, when runway alignment is wrong, or when the interval picture is no longer trustworthy."
+                          },
+                          {
+                            "text" : "Turn away from the inbound runway heading early enough to deconflict, stay at the published entry altitude until clear, and do not overfly the field unless the local procedure explicitly requires it."
+                          },
+                          {
+                            "text" : "Reenter using the current published recovery point and pattern plan from the day-of SOP instead of carrying yesterday's named-route memory into a busy pattern."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Generalized procedure:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Directed by the RDO"
+                            "text" : "If the radio picture is weak or you are NORDO, visual deconfliction and predictability matter even more. When in doubt, discontinue and try again."
                           },
                           {
-                            "text" : "Conflict with PPEL\/P traffic exists or is in doubt"
-                          },
-                          {
-                            "text" : "Lined up on the wrong runway"
-                          },
-                          {
-                            "text" : "Past upwind numbers and interval is in doubt"
+                            "text" : "The aircraft not yet established in the pattern carries the larger deconfliction burden."
                           }
                         ],
-                        "text" : "Execution priorities:"
-                      },
-                      {
-                        "children" : [
-                          {
-                            "text" : "No RDO acknowledgment by 2 NM from runway threshold"
-                          },
-                          {
-                            "text" : "Not visual with PPEL\/P traffic by 2 NM"
-                          },
-                          {
-                            "text" : "Immediately turn ≥90° away from the inbound runway heading"
-                          },
-                          {
-                            "text" : "Maintain break altitude (1300’ MSL) until clear of the airfield"
-                          }
-                        ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Decision traps:"
                       }
                     ],
                     "title" : "Discontinued Entry"
@@ -20473,21 +20482,49 @@
                   {
                     "items" : [
                       {
-                        "text" : "Applies to in-flight aircraft damage from midair collision, bird strike, FOD, canopy\/gear damage, or other structural issues. Priorities: control, evaluate, recover or abandon as needed."
+                        "text" : "Airborne-damaged aircraft handling starts with a simple question: is the aircraft controllable? If not, eject. If yes, buy time, evaluate, and recover with a plan."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Flap setting"
+                            "text" : "Maintain aircraft control, terminate the maneuver, and analyze the situation before you start moving switches."
                           },
                           {
-                            "text" : "control, evaluate, recover or abandon as needed."
+                            "text" : "Use the crew, another aircraft, or the controlling agency to help assess damage extent if the picture is uncertain."
                           },
                           {
-                            "text" : "Climb to ≥ 6500' AGL (if practical)"
+                            "text" : "If the prop arc or engine is involved, or engine indications are abnormal, default toward PEL logic."
                           }
                         ],
-                        "text" : "Key points:"
+                        "text" : "Initial priorities:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the aircraft is controllable and the damage picture is unclear, climb to at least 6500 feet AGL if practical and run a controllability check."
+                          },
+                          {
+                            "text" : "Slow gradually toward landing configuration, but never below 90 KIAS or stick shaker, whichever is higher."
+                          },
+                          {
+                            "text" : "If flap damage is suspected, do not reposition the flaps just to see what happens."
+                          }
+                        ],
+                        "text" : "Controllability check:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Avoid abrupt control inputs with structural damage."
+                          },
+                          {
+                            "text" : "Do not lower gear or flaps until you understand whether the aircraft can tolerate the configuration change."
+                          },
+                          {
+                            "text" : "If the aircraft becomes uncontrollable at any point, eject."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
                     "title" : "Airborne-Damaged Aircraft"
@@ -20495,33 +20532,133 @@
                   {
                     "items" : [
                       {
-                        "text" : "OBOGS and pressurization system"
+                        "text" : "OBOGS and Pressurization System"
                       },
                       {
-                        "text" : "aborted takeoff"
+                        "text" : "Aborted Takeoff"
                       },
                       {
-                        "text" : "lost aircraft procedures"
+                        "text" : "Lost Aircraft Procedures"
                       },
                       {
-                        "text" : "discontinued entry"
+                        "text" : "Discontinued Entry"
                       },
                       {
-                        "text" : "airborne-damaged aircraft"
+                        "text" : "Airborne-Damaged Aircraft"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Keep OBOGS and Pressurization System, plus Aborted Takeoff organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
+                "summary" : "Recognize the abnormal early, then choose the right recovery path: survive the OBOGS problem, abort decisively, recover methodically when lost, and do not let entry or damage confusion create a second emergency."
               },
-              "summary" : "OBOGS and Pressurization System, Aborted Takeoff, and Lost Aircraft Procedures.",
+              "summary" : "OBOGS and pressurization fundamentals, decisive abort logic, and airborne recovery judgment when the normal plan falls apart.",
+              "systemsBrief" : {
+                "headline" : "Systems brief",
+                "sections" : [
+                  {
+                    "items" : [
+                      {
+                        "text" : "Lead with oxygen generation, then explain regulation and backup oxygen, then move to pressurization control and cockpit indications. That order matches how students are usually walked through the brief."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "OBOGS: bleed-air source, concentrator, plenum, regulators, and emergency backup."
+                          },
+                          {
+                            "text" : "Pressurization: control valve, dump logic, delta-P limit, and cockpit-altitude indications."
+                          },
+                          {
+                            "text" : "Finish with the warnings and cautions that change the operational answer."
+                          }
+                        ],
+                        "text" : "Briefing flow:"
+                      }
+                    ],
+                    "title" : "How to Brief the System"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "OBOGS uses conditioned engine bleed air, a heat exchanger, water separator, and a molecular-sieve concentrator to generate breathable oxygen for both cockpits."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The plenum downstream of the concentrator carries a short reserve while the system stabilizes or if concentration dips."
+                          },
+                          {
+                            "text" : "Each regulator has a supply lever, concentration lever, pressure lever, BIT button, and flow indicator."
+                          },
+                          {
+                            "text" : "MAX concentration in one cockpit drives MAX concentration to both cockpits."
+                          }
+                        ],
+                        "text" : "Core components:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "BIT is available manually or during power-up, and the FAIL annunciator behavior is part of the normal check."
+                          },
+                          {
+                            "text" : "The system has a 4-minute warm-up period after activation or power interruption before oxygen-concentration warnings are fully reliable."
+                          },
+                          {
+                            "text" : "Emergency oxygen is independent of OBOGS and is activated from the ejection seat."
+                          }
+                        ],
+                        "text" : "Checks and backup logic:"
+                      }
+                    ],
+                    "title" : "OBOGS"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Pressurization uses engine bleed air and valve logic to hold cockpit altitude near 8000 feet until the differential-pressure limit of about 3.6 ± 0.2 PSI is reached."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The control valve, control-valve regulator, dump solenoid, safety valve, and delta-P regulator are the heart of the system."
+                          },
+                          {
+                            "text" : "The pressurization switch selects NORM, DUMP, or RAM\/DUMP, with RAM\/DUMP also opening the fresh-air path and closing defog."
+                          },
+                          {
+                            "text" : "At about 18,069 feet pressure altitude the system has reached its delta-P limit, so cockpit altitude starts rising from there."
+                          }
+                        ],
+                        "text" : "Pressure control logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "CKPT ALT, CKPT PX, and DUCT TEMP are the key cockpit indications for the pressurization side."
+                          },
+                          {
+                            "text" : "If cockpit pressure readings differ materially from 3.6 ± 0.2 PSI above the crossover altitude, maintenance needs to hear about it."
+                          },
+                          {
+                            "text" : "Air conditioning does not degrade engine or aircraft performance, so do not invent a performance penalty that is not there."
+                          }
+                        ],
+                        "text" : "Indications and traps:"
+                      }
+                    ],
+                    "title" : "Pressurization and ECS"
+                  }
+                ],
+                "summary" : "Use this tool for the dense OBOGS\/pressurization brief: oxygen source, regulation, backup logic, cockpit-pressure control, and the cues that turn a system description into an operational answer."
+              },
               "tags" : [
                 "contacts",
                 "flights",
                 "fam4301"
               ],
-              "title" : "OBOGS and Pressurization System",
+              "title" : "OBOGS, Aborts, and Recovery Decisions",
               "videoLinks" : [
 
               ]

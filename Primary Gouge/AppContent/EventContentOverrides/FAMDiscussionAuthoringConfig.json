@@ -18,7 +18,8 @@
     "FAM4201",
     "FAM4202",
     "FAM4203",
-    "FAM4204"
+    "FAM4204",
+    "FAM4301"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -655,6 +656,46 @@
           "discussionItem" : "local area flight procedures/SOP",
           "displayTitle" : "Local Area Flight Procedures/SOP",
           "presentationStyle" : "local-generalized"
+        }
+      ]
+    },
+    "FAM4301" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "obogs",
+        "abort",
+        "recover"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "systemsBriefItems" : [
+        "OBOGS and pressurization system"
+      ],
+      "itemSections" : [
+        {
+          "discussionItem" : "OBOGS and pressurization system",
+          "displayTitle" : "OBOGS and Pressurization System",
+          "presentationStyle" : "systems"
+        },
+        {
+          "discussionItem" : "aborted takeoff",
+          "displayTitle" : "Aborted Takeoff",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "lost aircraft procedures",
+          "displayTitle" : "Lost Aircraft Procedures",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "discontinued entry",
+          "displayTitle" : "Discontinued Entry",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "airborne-damaged aircraft",
+          "displayTitle" : "Airborne-Damaged Aircraft",
+          "presentationStyle" : "procedure"
         }
       ]
     }

@@ -991,6 +991,65 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4301BalancesSystemsAbortAndRecoveryJudgment() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4301"])
+        #expect(event.title == "OBOGS, Aborts, and Recovery Decisions")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "OBOGS and Pressurization System",
+            "Aborted Takeoff",
+            "Lost Aircraft Procedures",
+            "Discontinued Entry",
+            "Airborne-Damaged Aircraft",
+            "Required Procedures"
+        ])
+
+        let systemsBrief = try #require(event.systemsBrief)
+        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.sections.compactMap(\.title) == [
+            "How to Brief the System",
+            "OBOGS",
+            "Pressurization and ECS"
+        ])
+
+        let systemsText = systemsBrief.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ")
+        #expect(systemsText.contains("molecular-sieve concentrator"))
+        #expect(systemsText.contains("4-minute warm-up"))
+        #expect(systemsText.contains("3.6 ± 0.2 PSI"))
+
+        let abortSection = try #require(notes.sections.first(where: { $0.title == "Aborted Takeoff" }))
+        let abortText = abortSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(abortText.contains("1500 feet or 60 KIAS"))
+        #expect(abortText.contains("80 KIAS"))
+        #expect(abortText.contains("parking brake"))
+
+        let lostSection = try #require(notes.sections.first(where: { $0.title == "Lost Aircraft Procedures" }))
+        let lostText = lostSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(lostText.contains("Five Cs"))
+        #expect(lostText.contains("8.8 units"))
+        #expect(lostText.contains("125 ± 8 KIAS"))
+
+        let discontinuedSection = try #require(notes.sections.first(where: { $0.title == "Discontinued Entry" }))
+        let discontinuedText = discontinuedSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(!discontinuedText.lowercased().contains("goliad"))
+        #expect(!discontinuedText.lowercased().contains("shamrock"))
+        #expect(!discontinuedText.lowercased().contains("ppel/p"))
+
+        let damagedSection = try #require(notes.sections.first(where: { $0.title == "Airborne-Damaged Aircraft" }))
+        let damagedText = damagedSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(damagedText.contains("6500 feet AGL"))
+        #expect(damagedText.contains("90 KIAS"))
+        #expect(damagedText.contains("PEL"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

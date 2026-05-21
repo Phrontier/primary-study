@@ -15,7 +15,8 @@
     "FAM4102",
     "FAM4103",
     "FAM4104",
-    "FAM4201"
+    "FAM4201",
+    "FAM4202"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -544,6 +545,43 @@
         {
           "discussionItem" : "Aldis lamp signals",
           "displayTitle" : "Aldis Lamp Signals",
+          "presentationStyle" : "procedure"
+        }
+      ]
+    },
+    "FAM4202" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "spin",
+        "crosswind",
+        "hydraulic"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Hydraulic system",
+          "displayTitle" : "Hydraulic System",
+          "presentationStyle" : "systems"
+        },
+        {
+          "discussionItem" : "spin",
+          "displayTitle" : "Spin",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "OCF recovery procedures",
+          "displayTitle" : "OCF Recovery Procedures",
+          "presentationStyle" : "recovery"
+        },
+        {
+          "discussionItem" : "anti-spin recovery procedures",
+          "displayTitle" : "Anti-Spin Recovery Procedures",
+          "presentationStyle" : "recovery"
+        },
+        {
+          "discussionItem" : "crosswind takeoffs/touch-and-goes/full-stop landings",
+          "displayTitle" : "Crosswind Takeoffs/Touch-and-Goes/Full-Stop Landings",
           "presentationStyle" : "procedure"
         }
       ]

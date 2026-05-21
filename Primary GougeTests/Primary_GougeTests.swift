@@ -837,6 +837,53 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4202SeparatesSpinHydraulicsAndCrosswindRepetition() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4202"])
+        #expect(event.title == "Hydraulics, Spins, and Crosswinds")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Hydraulic System",
+            "Spin",
+            "OCF Recovery Procedures",
+            "Anti-Spin Recovery Procedures",
+            "Crosswind Takeoffs/Touch-and-Goes/Full-Stop Landings",
+            "Required Procedures"
+        ])
+
+        let hydraulicSection = try #require(notes.sections.first(where: { $0.title == "Hydraulic System" }))
+        let hydraulicText = hydraulicSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(hydraulicText.contains("3000"))
+        #expect(hydraulicText.contains("one-time"))
+
+        let spinSection = try #require(notes.sections.first(where: { $0.title == "Spin" }))
+        let spinText = spinSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(spinText.contains("13,500 feet AGL"))
+        #expect(spinText.contains("150 KIAS"))
+        #expect(spinText.contains("PCL to IDLE") || spinText.contains("PCL to IDLE"))
+
+        let ocfSection = try #require(notes.sections.first(where: { $0.title == "OCF Recovery Procedures" }))
+        let ocfText = ocfSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(ocfText.contains("CONTROLS - NEUTRAL"))
+        #expect(ocfText.contains("6000 feet AGL"))
+
+        let antiSpinSection = try #require(notes.sections.first(where: { $0.title == "Anti-Spin Recovery Procedures" }))
+        let antiSpinText = antiSpinSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(antiSpinText.contains("120-135 KIAS"))
+        #expect(antiSpinText.contains("full rudder opposite"))
+
+        let crosswindSection = try #require(notes.sections.first(where: { $0.title == "Crosswind Takeoffs/Touch-and-Goes/Full-Stop Landings" }))
+        let crosswindText = crosswindSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(crosswindText.contains("45 degrees"))
+        #expect(crosswindText.contains("half the gust factor"))
+        #expect(crosswindText.contains("upwind main"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

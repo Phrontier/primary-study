@@ -9,15 +9,15 @@
     "anti-spin recovery procedures" : [
       "Anti-Spin Recovery Procedures"
     ],
-    "crosswind takeoffs\/touch-and-goes\/full-stop landings" : [
-      "Crosswind Takeoffs\/Touch-and-Goes\/Full-Stop Landings"
+    "crosswind takeoffs/touch-and-goes/full-stop landings" : [
+      "Crosswind Takeoffs/Touch-and-Goes/Full-Stop Landings"
     ],
     "spin" : [
       "Spin"
     ]
   },
   "code" : "FAM4202",
-  "overview" : "This event ties together hydraulic system, spin, and ocf recovery procedures in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+  "overview" : "This event ties hydraulic-system knowledge to the places where students actually feel it in the jet, then pushes that into spin, OCF, and repeated crosswind pattern work. Be ready to explain what the hydraulic system powers, how a spin is entered and recognized, when neutral-controls OCF recovery is correct, and when a true anti-spin recovery is required.",
   "primaryDocumentTitles" : [
     "FAM4202"
   ],
@@ -27,21 +27,66 @@
       {
         "items" : [
           {
-            "text" : "pull to return fluid from em. Accumulator to reservoir"
+            "text" : "The hydraulic system matters because it powers the landing gear, flaps, speed brake, and nosewheel steering, and it also gives you a one-time emergency backup when the normal system is gone."
           },
           {
             "children" : [
               {
-                "text" : "Fluid level must show full AC or full AD"
+                "text" : "Think of it in three pieces: power package, selector manifold, and emergency system."
               },
               {
-                "text" : "Houses the reservoir, pump, and pressure generation\/control elements for the main hydraulic system."
+                "text" : "The engine-driven pump maintains roughly 3000 +/- 120 PSI and feeds the normal system. The reservoir holds 5 quarts and the system uses filters, a pressure transmitter, and relief-valve logic to keep the fluid usable and the pressure controlled."
               },
               {
-                "text" : "Main gear actuators"
+                "text" : "The selector manifold routes pressure to the system you command, including landing gear, flaps, and speed brake."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Big picture:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Normal hydraulic power runs the landing gear, TO/LDG flaps, speed brake, and NWS."
+              },
+              {
+                "text" : "NWS is for ground steering only and gives about 12 degrees left or right of castor. It should not be combined with differential braking in sharp turns."
+              },
+              {
+                "text" : "The speed brake is hydraulically extended and will auto-retract with PCL to MAX, flap selection to LDG, or switch selection to retract."
+              }
+            ],
+            "text" : "What the system is really powering:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The emergency accumulator is helium-precharged and gives one-time hydraulic help for emergency gear and flap extension."
+              },
+              {
+                "text" : "Pulling the emergency gear extension handle isolates the main system and ports pressure to the gear and inboard-door actuators. The inboard doors remain extended after emergency extension."
+              },
+              {
+                "text" : "Emergency flap extension uses the same flap selector, but once extended the flaps cannot be retracted."
+              },
+              {
+                "text" : "An EHYD PX LO after emergency use is expected. EHYD PX LO together with HYDR FL LO suggests a leak or fuse problem."
+              }
+            ],
+            "text" : "Emergency system logic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Disengage NWS before sharp turns that require differential braking."
+              },
+              {
+                "text" : "Do not take off with a known NWS problem; centering issues can create takeoff or landing control problems."
+              },
+              {
+                "text" : "If the emergency accumulator has been discharged for maintenance, the related caution should be out before flight."
+              }
+            ],
+            "text" : "N/W/C focus:"
           }
         ],
         "title" : "Hydraulic System"
@@ -49,49 +94,77 @@
       {
         "items" : [
           {
-            "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
+            "text" : "The spin is not a finesse maneuver. It is a deliberate stalled-yaw entry used to teach recognition, orientation, and disciplined recovery once the aircraft departs normal flight."
           },
           {
             "children" : [
               {
-                "text" : "Configuration - slow cruise (150 KIAS), minimum entry 13500’ AGL"
+                "text" : "Trim the aircraft in slow cruise at 150 KIAS."
+              },
+              {
+                "text" : "Minimum entry altitude is 13,500 feet AGL. Enter below 22,000 feet pressure altitude and recover before 10,000 feet pressure altitude."
+              },
+              {
+                "text" : "The entry is built to begin with PCL going to IDLE before the nose comes up; do not build the pitch picture first and pull power late."
+              },
+              {
+                "text" : "Perform the Pre-Stalling, Spinning, and Aerobatic Checklist and clear the area thoroughly, including TCAS as appropriate."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Entry setup:"
           },
           {
             "children" : [
               {
-                "text" : "Inadvertent Departure from Controlled Flight"
+                "text" : "Check wings level, retard PCL to IDLE, and smoothly raise the nose to about 30 degrees above the horizon."
               },
               {
-                "text" : "Checklist - PSSA"
+                "text" : "At the stick shaker, lead the stall with slight rudder in the desired spin direction."
               },
               {
-                "text" : "Clear - TCAS [Below], visual scan, clearing turns"
+                "text" : "When the aircraft stalls and the nose pitches down, smoothly apply full rudder in the direction of spin and full back stick with ailerons neutral."
               },
               {
-                "text" : "At full stall (nose drop) - full rudder, full aft stick, neutral ailerons"
+                "text" : "Call out altitude, AOA, airspeed, and turn-needle direction so the phase of the spin stays clear."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Entry:"
           },
           {
             "children" : [
               {
-                "text" : "Entered below 22000’ PA and recovered above 10000’ PA"
-              },
-              {
-                "text" : "Do not exceed aircraft limitations; eject if recovery is uncertain"
-              },
-              {
-                "text" : "120-135 KIAS, 18+ units AOA, fully deflected turn needle"
-              },
-              {
-                "text" : "Check Oil pressure (min 90 PSI)"
+                "text" : "The maneuver is complete when the IP-directed recovery is finished, oil pressure is checked and reported normal, and the aircraft is back in controlled flight inside the working area."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Maneuver complete when:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Raising the nose before PCL is fully at IDLE."
+              },
+              {
+                "text" : "Letting disorientation delay recognition or recovery."
+              },
+              {
+                "text" : "Failing to neutralize controls as rotation stops or pulling too aggressively into a secondary stall."
+              }
+            ],
+            "text" : "Common errors:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Spins are flown clean. If gear or flaps are down in an unintentional spin, get them up immediately to avoid airspeed-limit damage."
+              },
+              {
+                "text" : "Ailerons remain neutral throughout intentional spin training."
+              },
+              {
+                "text" : "Silence the gear-warning horn before entry so it does not interfere with recognition calls."
+              }
+            ],
+            "text" : "N/W/C focus:"
           }
         ],
         "title" : "Spin"
@@ -99,49 +172,52 @@
       {
         "items" : [
           {
-            "text" : "OCF Recovery Procedures is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+            "text" : "OCF recovery procedures are for post-stall gyrations and incipient spins where the aircraft has departed normal flight but has not yet stabilized into a true steady-state spin."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Post-stall gyration shows up as uncommanded motion about one or more axes, erratic airspeed, high or stalled AOA, and controls that feel ineffective or wrong."
+              },
+              {
+                "text" : "An incipient spin shows stalled AOA, a fully deflected turn needle, and airspeed changing toward the steady-state value. Expect about the first two turns here."
+              },
+              {
+                "text" : "If you are not yet in a stabilized 120-135 KIAS, 18+ units AOA, steady-state picture, stay with OCF recovery rather than jumping to anti-spin inputs."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Recognition:"
           },
           {
             "children" : [
               {
-                "text" : "OCF Recovery Procedures is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                "text" : "PCL - IDLE."
               },
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "CONTROLS - NEUTRAL, physically not just trimmed neutral."
               },
               {
-                "text" : "Advance PCL to MAX"
+                "text" : "ALTITUDE - CHECK."
               },
               {
-                "text" : "Set flaps from LDG → TO"
+                "text" : "RECOVER FROM UNUSUAL ATTITUDE once the stall breaks and the aircraft begins responding normally."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Recovery:"
           },
           {
             "children" : [
               {
-                "text" : "At ≥110 KIAS, raise flaps"
+                "text" : "If the aircraft is not recovering as expected, it is common for the elevator to still be slightly aft of neutral; feed in forward stick only enough to find true neutral."
               },
               {
-                "text" : "A torque setting above 60% in the stall can induce a left torque roll. Full right rudder and aileron may not prevent departure. Be especially cautious during power-on turning stalls."
+                "text" : "Do not start inventing anti-spin inputs early just because the motion feels dramatic."
               },
               {
-                "text" : "If in a low energy state with AOA <18.0 and airspeed too low to sustain level flight, apply power cautiously. If in an unrecoverable descent, EJECT if below 6000’ AGL."
-              },
-              {
-                "text" : "Stick shaker typically activates at 15.5 units AOA, which corresponds to 5–10 KIAS above stall in unaccelerated flight."
+                "text" : "If the aircraft is in an unrecoverable descent below 6000 feet AGL, eject."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "N/W/C focus:"
           }
         ],
         "title" : "OCF Recovery Procedures"
@@ -149,49 +225,63 @@
       {
         "items" : [
           {
-            "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
+            "text" : "Anti-spin recovery procedures are for a true steady-state spin, not for every out-of-control motion. The key is recognizing when neutral-controls recovery is no longer the right answer."
           },
           {
             "children" : [
               {
-                "text" : "Configuration - slow cruise (150 KIAS), minimum entry 13500’ AGL"
+                "text" : "A steady-state erect spin is identified by 18+ units AOA, airspeed stabilized around 120-135 KIAS, and the turn needle fully deflected in the direction of spin."
+              },
+              {
+                "text" : "At that point the spin has stabilized enough that anti-spin controls, not neutral controls, are required."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "When to use anti-spin:"
           },
           {
             "children" : [
               {
-                "text" : "Inadvertent Departure from Controlled Flight"
+                "text" : "Apply full rudder opposite the turn-needle direction."
               },
               {
-                "text" : "Checklist - PSSA"
+                "text" : "Immediately follow with smooth, positive forward stick to a position forward of neutral."
               },
               {
-                "text" : "Clear - TCAS [Below], visual scan, clearing turns"
+                "text" : "Keep ailerons neutral and hold the controls until rotation stops."
               },
               {
-                "text" : "stalled AOA, airspeed changing, full deflected turn needle"
+                "text" : "Then neutralize the controls, level the wings by horizon reference, make a smooth pullout, check oil pressure, and add power as required."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Erect-spin recovery:"
           },
           {
             "children" : [
               {
-                "text" : "Entered below 22000’ PA and recovered above 10000’ PA"
+                "text" : "Progressive and aggravated spins are not handled by random experimentation; if the motion has not stabilized into a true steady-state picture, default back to OCF recovery logic."
               },
               {
-                "text" : "120-135 KIAS, 18+ units AOA, fully deflected turn needle"
+                "text" : "Intentional inverted departures and inverted spins are prohibited. If an inverted-spin picture develops, the recovery inputs differ from erect-spin recovery and the aircraft requires post-flight scrutiny."
               },
               {
-                "text" : "Check Oil pressure (min 90 PSI)"
-              },
-              {
-                "text" : "(N) Oil pressure may drop below 40 psi during idle-power spins; this is acceptable if no limits are exceeded and normal pressure returns after recovery."
+                "text" : "Power-on or inverted departures/spins place very high loads on the engine and propeller system and may produce low oil pressure or CHIP indications."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Special cases and boundaries:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A spiral can look like a spin, but anti-spin inputs will not stop a spiral and may worsen it."
+              },
+              {
+                "text" : "Do not hold full aft stick turn after turn waiting for the airplane to save you. Once the spin is clearly steady-state, transition to the proper anti-spin inputs."
+              },
+              {
+                "text" : "Forward stick well beyond neutral can create oil-pressure issues and engine damage, and anti-spin logic should never replace proper phase recognition."
+              }
+            ],
+            "text" : "N/W/C focus:"
           }
         ],
         "title" : "Anti-Spin Recovery Procedures"
@@ -199,73 +289,87 @@
       {
         "items" : [
           {
-            "text" : "land into XW using wing-low method, touch down on upwind gear first; waveoff if side motion, drift, or crab occurs"
+            "text" : "This event expects you to apply crosswind technique repeatedly, not just once. The student value is showing that the crosswind picture survives takeoff, touch-and-go, and full-stop landing without drifting back into late or sloppy corrections."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Use up to full aileron into the wind at the start of the takeoff roll, relax it as speed builds, and use rudder to stop weather-vaning."
+              },
+              {
+                "text" : "Rotate firmly at flying speed to avoid skipping, then level the wings and let the aircraft crab into the wind once safely airborne."
+              },
+              {
+                "text" : "On downwind and in the final turn, adjust bank and power for overshooting or undershooting winds and do not exceed 45 degrees of bank to make final."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Takeoff and pattern setup:"
           },
           {
             "children" : [
               {
-                "text" : "Maintain wing-low throughout flare"
+                "text" : "Use the wing-low method on final: aileron into the wind to stop drift, rudder to align the nose with the runway, and extra power as required to offset cross-control drag."
               },
               {
-                "text" : "Keep upwind wing down, do not level wings"
+                "text" : "During gusty conditions, add half the gust factor to final approach speed, up to 10 knots."
               },
               {
-                "text" : "Use rudder to align nose with runway"
-              },
-              {
-                "text" : "Increase aileron input as speed decreases"
+                "text" : "Do not level the wings in the flare. Land on the upwind main first with zero side motion."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Landing picture:"
           },
           {
             "children" : [
               {
-                "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
+                "text" : "On full stops, keep increasing aileron into the wind as the aircraft slows and the controls lose effectiveness."
               },
               {
-                "text" : "PCL - MAX, rotate at 90 KIAS"
+                "text" : "On touch-and-goes, hold the crosswind controls on the deck, use positive rotation, then level the wings and allow the aircraft to crab into the wind after liftoff."
               },
               {
-                "text" : "The usual trap is missing the setup picture, then trying to salvage Crosswind Takeoffs\/Touch-and-Goes\/Full-Stop Landings late."
+                "text" : "If you cannot prevent overshooting final without exceeding 45 degrees of bank, or if drift/crab is not under control before touchdown, wave off."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Touch-and-go and full-stop execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Skipping on takeoff, landing in a crab, and letting the upwind wing rise on rollout all come from losing the wind-correction picture as the aircraft slows or lifts off."
+              },
+              {
+                "text" : "Do not aggressively yank the aircraft back to centerline after an off-center touchdown. Keep the wing under control first."
+              }
+            ],
+            "text" : "Common errors / wave-off cues:"
           }
         ],
-        "title" : "Crosswind Takeoffs\/Touch-and-Goes\/Full-Stop Landings"
+        "title" : "Crosswind Takeoffs/Touch-and-Goes/Full-Stop Landings"
       },
       {
         "items" : [
           {
-            "text" : "Hydraulic system"
+            "text" : "Hydraulic System"
           },
           {
-            "text" : "spin"
+            "text" : "Spin"
           },
           {
-            "text" : "OCF recovery procedures"
+            "text" : "OCF Recovery Procedures"
           },
           {
-            "text" : "anti-spin recovery procedures"
+            "text" : "Anti-Spin Recovery Procedures"
           },
           {
-            "text" : "crosswind takeoffs\/touch-and-goes\/full-stop landings"
+            "text" : "Crosswind Takeoffs/Touch-and-Goes/Full-Stop Landings"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Have Hydraulic System and Spin organized before step so the cockpit workload never outruns the brief."
+    "summary" : "Keep the boundaries straight: know what hydraulics powers, fly the spin entry cleanly, use neutral-controls OCF recovery until a true steady-state spin exists, and keep crosswind corrections alive all the way through touchdown."
   },
-  "summary" : "Hydraulic System, Spin, and OCF Recovery Procedures.",
-  "title" : "Hydraulic System"
+  "summary" : "Hydraulic-system essentials, spin recognition, OCF versus anti-spin recovery, and repeated crosswind pattern application.",
+  "title" : "Hydraulics, Spins, and Crosswinds"
 }

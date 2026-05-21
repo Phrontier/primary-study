@@ -677,6 +677,41 @@
           "presentationStyle" : "procedure"
         }
       ]
+    },
+    "FAM4302" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "fuel",
+        "landing",
+        "emergency"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "systemsBriefItems" : [
+        "Fuel system"
+      ],
+      "itemSections" : [
+        {
+          "discussionItem" : "Fuel system",
+          "displayTitle" : "Fuel System",
+          "presentationStyle" : "systems"
+        },
+        {
+          "discussionItem" : "full-stop landings",
+          "displayTitle" : "Full-Stop Landings",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "heavy-weight landing considerations",
+          "displayTitle" : "Heavy-Weight Landing Considerations",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "any critical action emergency procedure",
+          "displayTitle" : "Any Critical Action Emergency Procedure",
+          "presentationStyle" : "procedure"
+        }
+      ]
     }
   }
 }

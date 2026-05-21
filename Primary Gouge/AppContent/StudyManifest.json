@@ -20938,7 +20938,7 @@
                 }
               ],
               "id" : "contacts-flights-fam4302",
-              "overview" : "This event ties together fuel system, full-stop landings, and heavy-weight landing considerations in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+              "overview" : "This sortie shifts into fuel-system decision making and disciplined full-stop landing execution. Be ready to explain how fuel is stored, balanced, and delivered, then apply that knowledge to heavy-weight landings and to the critical-action EPs that can suddenly turn a normal recovery into a full-stop or emergency problem.",
               "primaryDocumentIDs" : [
 
               ],
@@ -20977,24 +20977,49 @@
                   {
                     "items" : [
                       {
-                        "text" : "Stores and delivers fuel to the engine while ensuring:"
+                        "text" : "Use the Systems brief tool for the full tank, probe, and pump walk-through. For this event, know what fuel-system cues matter in flight and which ones change whether you keep maneuvering, knock off aerobatics, or start working an abnormal recovery."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Continuous feed in all flight attitudes, including inverted"
+                            "text" : "The collector tank is what keeps the engine fed in unusual attitudes, and the flip-flop valve is what gives you limited inverted fuel instead of a magic unlimited supply."
                           },
                           {
-                            "text" : "Wing tanks → transfer jet pumps → collector tank → Flip-flop valve →"
+                            "text" : "Automatic fuel balancing should quietly handle normal imbalances. When it does not, your job is to recognize whether you have a simple imbalance, a probe problem, or a real feed issue."
                           },
                           {
-                            "text" : "Primary Jet Pump (normal feed via motive flow) or"
-                          },
-                          {
-                            "text" : "Boost Pump (backup\/startup\/low pressure activation), then:"
+                            "text" : "Minimum aerobatic fuel is 150 pounds per side, and max imbalance is 50 pounds. Those are event-useful numbers because they change what you can safely keep doing."
                           }
                         ],
-                        "text" : "Key points:"
+                        "text" : "What matters in flight:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "FUEL PX means motive-flow pressure is low and should drive an immediate cross-check of boost-pump status, fuel flow, and engine behavior."
+                          },
+                          {
+                            "text" : "FP FAIL means the quantity-probe logic has failed and automatic balancing is gone, but the independent L\/R FUEL LO lights are still trustworthy."
+                          },
+                          {
+                            "text" : "If boost-pump operation or low-pressure warnings show up during inverted flight or aerobatics, stop the maneuvering and treat it as a maintenance-significant fuel-system cue."
+                          }
+                        ],
+                        "text" : "Decision cues:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not manually balance fuel with FP FAIL active because the quantity picture may be wrong and you can make the imbalance worse."
+                          },
+                          {
+                            "text" : "Fuel flow at or above 800 PPH is not a normal number to ignore; it can be the first sign of a malfunction that becomes an engine problem."
+                          },
+                          {
+                            "text" : "Treat repeated auto-balance resets as a clue that the system is not really healthy, not just as a way to keep the caution light quiet."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
                     "title" : "Fuel System"
@@ -21002,49 +21027,49 @@
                   {
                     "items" : [
                       {
-                        "text" : "Full-Stop Landings is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                        "text" : "A full-stop landing is about disciplined touchdown and rollout, not just arriving over the runway. In this event, show that you can land on the mains, keep the aircraft straight, and manage aerodynamic braking all the way to taxi speed."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "Arrive with the Before Landing Checklist complete, gear down, the correct flap setting, and an on-speed final picture for the selected configuration."
+                          },
+                          {
+                            "text" : "Clear final, confirm winds and runway status early, and have the rollout plan in mind before the flare starts."
+                          },
+                          {
+                            "text" : "If crosswind is present, plan to keep those corrections alive through touchdown and rollout instead of relaxing them once the mains touch."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Setup:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Landing to a full stop with nose-high main gear touchdown, aerodynamic braking, and safe rollout."
+                            "text" : "At about 5-10 feet AGL, smoothly retard the PCL to IDLE once landing is assured and transition to a normal flared landing."
                           },
                           {
-                            "text" : "LDG (typical)"
+                            "text" : "Touch down on the main gear in a controlled nose-high attitude, then keep back-stick in long enough to use aerodynamic braking before lowering the nose wheel."
                           },
                           {
-                            "text" : "Down"
-                          },
-                          {
-                            "text" : "On-speed final per flap setting"
+                            "text" : "Use rudder for directional control during the early rollout and bring brakes in smoothly below 80 KIAS instead of stabbing at them while the aircraft is still light."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Touchdown and rollout:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Verbalize “Airspeed below 80 KIAS” before braking"
+                            "text" : "If the landing picture is no longer stable, if directional control is deteriorating, or if the runway-remaining picture is becoming unsafe, wave off early instead of trying to salvage it."
                           },
                           {
-                            "text" : "60–70 KIAS"
+                            "text" : "Do not rush into NWS. Let the aircraft decelerate into a true taxi-speed regime before you start asking the steering system to help."
                           },
                           {
-                            "text" : "40–50 KIAS"
-                          },
-                          {
-                            "text" : "20–30 KIAS"
+                            "text" : "A heavy touchdown, a nosewheel touchdown above 80 KIAS, or an aggressive brake application can turn a routine full stop into a blown-tire or hard-landing problem quickly."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Common errors \/ decision traps:"
                       }
                     ],
                     "title" : "Full-Stop Landings"
@@ -21052,43 +21077,49 @@
                   {
                     "items" : [
                       {
-                        "text" : "Heavy-Weight Landing Considerations is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                        "text" : "Heavy-weight landings are not a separate technique so much as a tighter version of the normal landing. The aircraft is less forgiving, the sink rate builds faster, and the rollout margin shrinks if you arrive slow, flat, or long."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "When fuel state is above about 700-800 pounds, add roughly 3-5 KIAS in the approach turn as briefed and guard against letting the aircraft get slow."
+                          },
+                          {
+                            "text" : "Cross-check the amber donut with airspeed instead of flying one cue in isolation. Heavy aircraft can still get behind the power curve quickly."
+                          },
+                          {
+                            "text" : "Make sure runway length, braking plan, and crosswind picture are good enough before you commit to the landing."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Approach planning:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Fly no less than on-speed AOA (amber donut)—cross-check with airspeed to avoid going slow."
+                            "text" : "Expect slower pitch and power response, a more deliberate flare, and a longer ground roll."
                           },
                           {
-                            "text" : "Heavier aircraft are less responsive to pitch and power inputs."
+                            "text" : "Touch down on-speed and on aimpoint. Heavy-weight landings become ugly when students float, then force the aircraft on late."
                           },
                           {
-                            "text" : "Sink rates increase faster—anticipate and counteract with coordinated power and trim."
-                          },
-                          {
-                            "text" : "Flare should be more gradual and extended—aircraft will settle faster."
+                            "text" : "Bring braking in smoothly after the nosewheel is firmly on deck and expect more heat and less forgiveness than a lighter aircraft gives you."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "What changes when heavy:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Increase approach turn speeds by 3–5 KIAS when above 700–800 lbs fuel."
+                            "text" : "Brake fade, hot brakes, and blown tires become more believable after a heavy landing, especially if you ride the brakes or arrive fast."
                           },
                           {
-                            "text" : "The usual trap is missing the setup picture, then trying to salvage Heavy-Weight Landing Considerations late."
+                            "text" : "Do not let the heavier feel trick you into flying below on-speed AOA to pin the airplane on early."
+                          },
+                          {
+                            "text" : "Crosswind demands increase with weight because the airplane is slower to respond, so stay ahead of the control inputs rather than reacting late."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Common errors \/ traps:"
                       }
                     ],
                     "title" : "Heavy-Weight Landing Considerations"
@@ -21096,45 +21127,18 @@
                   {
                     "items" : [
                       {
-                        "text" : "Treat this as a cumulative EP brief. The instructor can move quickly between recognition, memory items, and the branch logic that decides whether you continue, land, or eject."
+                        "text" : "Treat this as a cumulative EP review where the instructor may move quickly from recognition to immediate action to the follow-on decision. Use the dedicated EP and N\/W\/C references as the verbatim lane, and use this section to keep the decision tree organized."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Fire on Ground"
+                            "text" : "Be ready for the ground and departure set: Fire on the Ground, Emergency Engine Shutdown on the Ground, Emergency Ground Egress, Abort Takeoff, Aircraft Departs Prepared Surface, and Engine Failure Immediately After Takeoff."
                           },
                           {
-                            "text" : "Emergency Engine Shutdown on the Ground"
+                            "text" : "Be ready for the airborne engine set: Engine Failure During Flight, Immediate Air-Start, PMU NORM Air-Start, PMU OFF Air-Start, and Uncommanded Power Changes\/LOP."
                           },
                           {
-                            "text" : "Emergency Ground Egress"
-                          },
-                          {
-                            "text" : "CFS and Ejection CRM"
-                          },
-                          {
-                            "text" : "Abort Takeoff"
-                          },
-                          {
-                            "text" : "Aircraft Departs Prepared Surface"
-                          },
-                          {
-                            "text" : "Engine Failure Immediately After Takeoff"
-                          },
-                          {
-                            "text" : "Engine Failure During Flight"
-                          },
-                          {
-                            "text" : "Immediate Air-Start"
-                          },
-                          {
-                            "text" : "PMU Norm Air-Start"
-                          },
-                          {
-                            "text" : "PMU Off Air-Start"
-                          },
-                          {
-                            "text" : "Uncommanded Power Changes\/LOP"
+                            "text" : "Know the branch points that turn an EP into a PEL, forced landing, or ejection problem. That is usually where the grading value is, not just whether you can chant the memory items."
                           }
                         ],
                         "text" : "Expected review set:"
@@ -21142,13 +21146,13 @@
                       {
                         "children" : [
                           {
-                            "text" : "Be able to state the recognition cue before you recite the steps."
+                            "text" : "Lead with the recognition cue, then the critical action, then the follow-on landing or eject logic."
                           },
                           {
-                            "text" : "Know the associated N\/W\/Cs, not just the memory items."
+                            "text" : "Do not separate the EP from its N\/W\/Cs. The warning or caution is often the part that changes the safe answer."
                           },
                           {
-                            "text" : "Have a clear answer for when the EP becomes a PEL, forced-landing, or ejection problem."
+                            "text" : "If an EP briefing stalls out because you cannot explain the next safe recovery option, go back and rebuild the decision chain instead of memorizing one more isolated step."
                           }
                         ],
                         "text" : "How to study it:"
@@ -21159,30 +21163,159 @@
                   {
                     "items" : [
                       {
-                        "text" : "Fuel system"
+                        "text" : "Fuel System"
                       },
                       {
-                        "text" : "full-stop landings"
+                        "text" : "Full-Stop Landings"
                       },
                       {
-                        "text" : "heavy-weight landing considerations"
+                        "text" : "Heavy-Weight Landing Considerations"
                       },
                       {
-                        "text" : "any critical action emergency procedure"
+                        "text" : "Any Critical Action Emergency Procedure"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Keep Fuel System and Full-Stop Landings organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
+                "summary" : "Know the fuel cues that matter, land the aircraft all the way to taxi speed, and keep the critical-action EP decision tree organized enough that you do not hesitate when the sortie changes pace."
               },
-              "summary" : "Fuel System, Full-Stop Landings, and Heavy-Weight Landing Considerations.",
+              "summary" : "Fuel-system study, full-stop landing execution, heavy-weight landing traps, and critical-action EP review.",
+              "systemsBrief" : {
+                "headline" : "Systems brief",
+                "sections" : [
+                  {
+                    "items" : [
+                      {
+                        "text" : "Start with tank layout and usable fuel, then explain how the quantity and balance logic works, then walk the engine feed path. That order sounds like a brief instead of a scavenger hunt through component names."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Purpose: store fuel, indicate usable quantity accurately, balance the wings automatically, and keep the engine fed in normal and unusual attitudes."
+                          },
+                          {
+                            "text" : "Big picture: wing tanks feed the collector, the collector feeds the engine, and the system has both motive-flow and electrically assisted backup paths."
+                          },
+                          {
+                            "text" : "Operational payoff: once you understand where the fuel is, how it moves, and what the cautions mean, FUEL PX, BOOST PUMP, FUEL BAL, and FP FAIL are much easier to interpret."
+                          }
+                        ],
+                        "text" : "Briefing flow:"
+                      }
+                    ],
+                    "title" : "How to Brief the System"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The aircraft has three fuel tanks: left wing, right wing, and a collector tank. That layout is the foundation for the whole brief."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Usable fuel is 1100 pounds with single-point refueling and 1200 pounds with over-wing refueling. The collector tank holds about 40 pounds, with the remainder split across the wing tanks."
+                          },
+                          {
+                            "text" : "Single-point refueling is the normal method because it refuels all tanks together. Over-wing refueling adds about 100 pounds total and fills the tanks by gravity."
+                          },
+                          {
+                            "text" : "Fuel approved for use includes the normal JP-series and Jet A family fuels, but the student briefing value is usually in the tank layout and usable-fuel numbers, not in reciting every fuel type."
+                          }
+                        ],
+                        "text" : "Tank layout and usable fuel:"
+                      }
+                    ],
+                    "title" : "Fuel Supply and Tanks"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The fuel-quantity and balancing logic is what keeps a simple tank layout from becoming a bad asymmetry problem."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "There are seven quantity probes total: three in each wing and one in the collector. The probe system feeds the EICAS quantity bars and the balancing logic."
+                          },
+                          {
+                            "text" : "Automatic balancing starts if the system sees more than about 20 pounds of imbalance for more than 30 seconds. It closes the transfer valve to the light tank so the heavy tank keeps feeding until the difference comes back down."
+                          },
+                          {
+                            "text" : "If imbalance stays above about 30 pounds for two minutes, FUEL BAL illuminates. Manual reset buys another timer cycle, but it should also make you ask why the system is not self-correcting."
+                          }
+                        ],
+                        "text" : "Probe and auto-balance logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Max imbalance is 50 pounds, and aerobatics are prohibited below 150 pounds per side."
+                          },
+                          {
+                            "text" : "L\/R FUEL LO comes from independent optical sensors at less than about 110 pounds per wing, which is why it still matters even if FP FAIL has taken out the probe-based logic."
+                          },
+                          {
+                            "text" : "M FUEL BAL means manual balancing is selected. That may be a deliberate pilot action, but it should never become a substitute for understanding why the automatic system gave up."
+                          }
+                        ],
+                        "text" : "Limits and pilot implications:"
+                      }
+                    ],
+                    "title" : "Fuel Quantity and Balancing"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The engine-feed path is the part students most often memorize poorly, so walk it in order and keep the backup paths straight."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Wing tanks feed transfer jet pumps, which move fuel into the collector tank. From the collector, the flip-flop valve selects the pickup point so the engine can keep receiving fuel in unusual attitudes, including about 60 seconds of inverted flight."
+                          },
+                          {
+                            "text" : "From there, fuel reaches the primary jet pump in normal operations or the electric boost pump when backup or startup help is needed, then goes through the manifold valve, fuel filter, engine low-pressure pump, high-pressure pump, FMU, flow divider, and the 14 fuel nozzles."
+                          },
+                          {
+                            "text" : "The electric boost pump comes on for startup, low-pressure backup, and other commanded conditions. The high-pressure pump can suction-feed, but that is a limited mode, not the preferred steady-state answer."
+                          }
+                        ],
+                        "text" : "Normal and backup feed path:"
+                      }
+                    ],
+                    "title" : "Engine Feed and Backup Paths"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The best fuel-system briefs end by tying the cockpit cautions back to what is probably failing and what the pilot should do next."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "FUEL PX means motive-flow pressure is low. BOOST PUMP can be a commanded response to that low-pressure condition, to startup, or to manual selection."
+                          },
+                          {
+                            "text" : "FP FAIL means the probe system failed and automatic balancing is disabled. FUEL BAL means the system tried to correct an imbalance and could not get it back under control in the allotted time."
+                          },
+                          {
+                            "text" : "Do not manually balance with FP FAIL active, and do not shrug off fuel flow above 799 PPH or abnormal boost-pump behavior in aerobatics as just a nuisance indication."
+                          }
+                        ],
+                        "text" : "Indications and brief traps:"
+                      }
+                    ],
+                    "title" : "Indications and Brief Traps"
+                  }
+                ]
+              },
               "tags" : [
                 "contacts",
                 "flights",
                 "fam4302"
               ],
-              "title" : "Fuel System",
+              "title" : "Fuel System and Full-Stop Landings",
               "videoLinks" : [
 
               ]

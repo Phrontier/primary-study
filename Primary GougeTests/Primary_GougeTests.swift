@@ -1088,6 +1088,67 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4302SplitsFuelSystemsFromLandingAndCriticalActionPrep() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4302"])
+        #expect(event.title == "Fuel System and Full-Stop Landings")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Fuel System",
+            "Full-Stop Landings",
+            "Heavy-Weight Landing Considerations",
+            "Any Critical Action Emergency Procedure",
+            "Required Procedures"
+        ])
+
+        let systemsBrief = try #require(event.systemsBrief)
+        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.sections.compactMap(\.title) == [
+            "How to Brief the System",
+            "Fuel Supply and Tanks",
+            "Fuel Quantity and Balancing",
+            "Engine Feed and Backup Paths",
+            "Indications and Brief Traps"
+        ])
+
+        let fuelSection = try #require(notes.sections.first(where: { $0.title == "Fuel System" }))
+        let fuelText = fuelSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(fuelText.contains("Use the Systems brief tool"))
+        #expect(fuelText.contains("150 pounds per side"))
+        #expect(!fuelText.contains("14 fuel nozzles"))
+
+        let systemsText = systemsBrief.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ")
+        #expect(systemsText.contains("1100 pounds"))
+        #expect(systemsText.contains("1200 pounds"))
+        #expect(systemsText.contains("flip-flop valve"))
+        #expect(systemsText.contains("14 fuel nozzles"))
+
+        let fullStopSection = try #require(notes.sections.first(where: { $0.title == "Full-Stop Landings" }))
+        let fullStopText = fullStopSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(fullStopText.contains("5-10 feet AGL"))
+        #expect(fullStopText.contains("below 80 KIAS"))
+        #expect(fullStopText.contains("NWS"))
+
+        let heavySection = try #require(notes.sections.first(where: { $0.title == "Heavy-Weight Landing Considerations" }))
+        let heavyText = heavySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(heavyText.contains("3-5 KIAS"))
+        #expect(heavyText.contains("amber donut"))
+        #expect(heavyText.contains("longer ground roll"))
+
+        let epSection = try #require(notes.sections.first(where: { $0.title == "Any Critical Action Emergency Procedure" }))
+        let epText = epSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(epText.contains("dedicated EP and N/W/C references"))
+        #expect(epText.contains("Engine Failure Immediately After Takeoff"))
+        #expect(epText.contains("PMU OFF Air-Start"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

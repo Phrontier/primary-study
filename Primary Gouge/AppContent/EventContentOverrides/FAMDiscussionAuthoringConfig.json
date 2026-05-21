@@ -19,7 +19,10 @@
     "FAM4202",
     "FAM4203",
     "FAM4204",
-    "FAM4301"
+    "FAM4301",
+    "FAM4302",
+    "FAM4303",
+    "FAM4304"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -748,6 +751,44 @@
           "discussionItem" : "any critical action emergency procedures",
           "displayTitle" : "Any Critical Action Emergency Procedures",
           "presentationStyle" : "procedure"
+        }
+      ]
+    },
+    "FAM4304" : {
+      "authoringProfile" : "solo",
+      "eventEmphasisKeywords" : [
+        "solo",
+        "rear cockpit",
+        "weather",
+        "instrument"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Securing rear cockpit for solo",
+          "displayTitle" : "Securing Rear Cockpit for Solo",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "unauthorized solo maneuvers",
+          "displayTitle" : "Unauthorized Solo Maneuvers",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "unintentional instrument flight",
+          "displayTitle" : "Unintentional Instrument Flight",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "local course rules",
+          "displayTitle" : "Local Course Rules",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "any previously discussed maneuver or procedure",
+          "displayTitle" : "Any Previously Discussed Maneuver or Procedure",
+          "presentationStyle" : "knowledge"
         }
       ]
     }

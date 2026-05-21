@@ -1,7 +1,7 @@
 {
   "canonicalCoverage" : {
     "Securing rear cockpit for solo" : [
-      "Securing Rear Cockpit For Solo"
+      "Securing Rear Cockpit for Solo"
     ],
     "any previously discussed maneuver or procedure" : [
       "Any Previously Discussed Maneuver or Procedure"
@@ -17,7 +17,7 @@
     ]
   },
   "code" : "FAM4304",
-  "overview" : "This event ties together securing rear cockpit for solo, unauthorized solo maneuvers, and unintentional instrument flight in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+  "overview" : "This sortie is the handoff from dual contact flights to solo preparation. Show up ready to brief rear-cockpit solo setup, the hard maneuver and weather boundaries that keep a solo routine, the escape plan for unintentional instrument flight, and the generalized course-rule items you still must confirm from the current published procedure and day-of brief.",
   "primaryDocumentTitles" : [
     "FAM4304"
   ],
@@ -27,40 +27,93 @@
       {
         "items" : [
           {
-            "text" : "Read checklists out loud to reduce omissions."
+            "text" : "Treat solo rear-cockpit setup like a controllability and survivability check, not just a housekeeping task. The goal is to launch with nothing in the back seat that can change ejection sequencing, interfere with controls, or surprise you once the workload goes up."
           },
           {
             "children" : [
               {
-                "text" : "Maintain situational awareness while taxiing—use \"see-and-avoid\" doctrine."
+                "text" : "Secure the rear cockpit per NATOPS before start, and stop for instructor or qualified maintenance help any time the seat, harness, oxygen, or safety-pin picture is not exactly what you expect."
               },
               {
-                "text" : "Monitor radio calls, especially those using your call sign."
+                "text" : "ISS mode selector must be set to SOLO so the ejection sequencing is correct when no rear-seat occupant is present."
               },
               {
-                "text" : "(N) Set aft UFCP HUD switch to DAY mode for solo flight."
+                "text" : "Rear-seat switches, lighting, oxygen, and cockpit hardware should be left in the solo configuration directed by NATOPS and the aircraft checklist, not improvised from memory."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What must be secured:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Lower the rear seat enough to guarantee safety-pin clearance and full aft stick travel."
+              },
+              {
+                "text" : "Route leg garters, hoses, and comm cords so they cannot snag or pull into the control path."
+              },
+              {
+                "text" : "Lock the shoulder harness, tighten the lap straps, and verify the control-stick boot collar is positioned so it does not restrict aft stick."
+              },
+              {
+                "text" : "Close map containers, stow loose gear, and confirm nothing in the rear cockpit can shift during aerobatics, landing, or an emergency."
+              }
+            ],
+            "text" : "Control-interference traps:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Read checklists out loud and do a disciplined controls check instead of assuming a familiar cockpit is still safe."
+              },
+              {
+                "text" : "If something looks wrong during taxi or checks, ask the FDO/ODO for help early rather than trying to salvage the sortie alone."
+              }
+            ],
+            "text" : "Study standard:"
           }
         ],
-        "title" : "Securing Rear Cockpit For Solo"
+        "title" : "Securing Rear Cockpit for Solo"
       },
       {
         "items" : [
           {
-            "text" : "No spins, stalls, simulated engine failures, PPELs, or maneuvers not previously introduced."
+            "text" : "Solo restrictions exist to keep the sortie inside the part of the envelope you have already demonstrated with an instructor. This section is less about memorizing punishments and more about knowing when to stop training and recover."
           },
           {
             "children" : [
               {
-                "text" : "Unauthorized Solo Maneuvers is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                "text" : "Do not practice spins, stalls, simulated engine failures, PPELs, or any maneuver that has not already been introduced and signed off in training."
               },
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Do not invent your own pattern work, OLF profile, or landing plan just because the weather is good or the field looks quiet."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Always unauthorized:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Full-stop landings away from home field are normally only for direction from the controlling agency, weather necessity, or a real emergency."
+              },
+              {
+                "text" : "Launch and recovery windows, crosswind limits, runway suitability, landing-count caps, and authorized operating areas come from the current solo brief and SOP, not from an old gouge sheet."
+              },
+              {
+                "text" : "If you do make a required full stop away from home field, you remain responsible for the aircraft until relieved and you should notify the support agency as soon as the aircraft is safe."
+              }
+            ],
+            "text" : "Operational boundaries:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The solo grading trap is pressing on after the conditions no longer match the brief."
+              },
+              {
+                "text" : "If weather, fuel, traffic, aircraft health, or your own comfort level starts eroding margin, terminate the training objective and recover with a conservative plan."
+              }
+            ],
+            "text" : "Decision mindset:"
           }
         ],
         "title" : "Unauthorized Solo Maneuvers"
@@ -68,21 +121,46 @@
       {
         "items" : [
           {
-            "text" : "Avoid IMC at all times."
+            "text" : "Unintentional instrument flight is a control-and-survival problem first. The safe answer is to get the aircraft stable, get to a safe altitude, and use ATC before the situation turns into spatial disorientation or terrain conflict."
           },
           {
             "children" : [
               {
-                "text" : "a. Maintain control of the aircraft."
+                "text" : "Maintain aircraft control."
               },
               {
-                "text" : "b. Establish instrument scan and check altitude."
+                "text" : "Establish an instrument scan and check altitude."
               },
               {
-                "text" : "c. If below MEF+1000’ or OROCA, climb immediately and turn away from obstacles."
+                "text" : "If below MEF + 1000 feet or OROCA, execute an immediate climb to a safe altitude while turning away from known obstacles."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Immediate actions:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not descend below the safe-altitude floor just to try to see the ground again."
+              },
+              {
+                "text" : "If already above MEF + 1000 feet or OROCA, use smooth coordinated inputs to exit IMC the way you entered it."
+              },
+              {
+                "text" : "Do not rush configuration changes or aggressive turns that trade one emergency for loss of control."
+              }
+            ],
+            "text" : "Safe-altitude logic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If you cannot regain VMC immediately, contact the nearest ATC facility, declare an emergency, and ask for the help you need."
+              },
+              {
+                "text" : "If contact is delayed, squawk 7700 and use Guard so you are not solving the problem alone."
+              }
+            ],
+            "text" : "If VMC does not return:"
           }
         ],
         "title" : "Unintentional Instrument Flight"
@@ -90,21 +168,35 @@
       {
         "items" : [
           {
-            "text" : "NAS Corpus Christi (KNGP)"
+            "text" : "Local course rules are the solo-specific details you must confirm on the day of flight, not a list to memorize once and carry forever. The technical standard is to understand what you must verify before launch, what has to stay current in flight, and what triggers a conservative recovery."
           },
           {
             "children" : [
               {
-                "text" : "General Guidelines"
+                "text" : "Confirm the current published procedure and day-of brief items for callsign or flight-plan format, authorized areas and fields, launch and recovery windows, and any bird, weather, or runway restrictions."
               },
               {
-                "text" : "File ZOMBIE flight plan using callsign"
+                "text" : "Know the weather minimums, crosswind limits, landing-count limits, and runway requirements that actually apply to your solo profile that day."
               },
               {
-                "text" : "Use Zulu time"
+                "text" : "Brief who you will call and what you will do if you divert, full stop at an outlying field, lose radios, or need maintenance help after landing."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What to confirm before launch:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Stay oriented, keep fuel and time tracked, monitor the required frequencies, and maintain a predictable pattern and recovery picture for other aircraft."
+              },
+              {
+                "text" : "Treat area orientation, OLF entry, departure routing, and pattern geometry as published-procedure items that must match the current brief, not yesterday's local lore."
+              },
+              {
+                "text" : "If the day no longer fits the briefed rules, recover early instead of building a new unsupported plan in the cockpit."
+              }
+            ],
+            "text" : "What stays universal:"
           }
         ],
         "title" : "Local Course Rules"
@@ -112,40 +204,37 @@
       {
         "items" : [
           {
-            "text" : "Any Previously Discussed Maneuver or Procedure is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+            "text" : "This is a cumulative review item, not a permission slip for vague answers. Expect the instructor to reach back across the earlier FAM events and make sure you can still connect basic maneuvers, landing profiles, emergency branches, and systems knowledge without a warm-up."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Be ready to walk through the setup, execution, and common errors for the contact maneuvers and landing profiles you have already flown."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "What to refresh:"
           },
           {
             "children" : [
               {
-                "text" : "N\/A"
+                "text" : "Review the branch points for lost-aircraft procedures, discontinued entry, unintentional instrument flight, abnormal starts, aborts, and the landing or configuration emergencies already introduced in the block."
               },
               {
-                "text" : "Any Previously Discussed Maneuver or Procedure is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-              },
-              {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
-              },
-              {
-                "text" : "you can be asked to explain prior FAM procedures, systems, maneuvers, and emergency logic without a warm-up."
+                "text" : "Know the numbers that usually start the grading: entry airspeed, altitude, configuration, final-approach speeds, and the recovery cue that tells you the maneuver is no longer going well."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "How the review is usually used:"
           },
           {
             "children" : [
               {
-                "text" : "Memorize the setup numbers and the recovery numbers for Any Previously Discussed Maneuver or Procedure; that is usually where the grading starts."
+                "text" : "If you can explain a checklist but cannot tell the instructor when you would wave off, discontinue, PEL, or stop the training objective, the review is not complete."
+              },
+              {
+                "text" : "Use this section to tie the whole FAM sequence together so the solo brief feels like confirmation, not the first time you have organized the material."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Study standard:"
           }
         ],
         "title" : "Any Previously Discussed Maneuver or Procedure"
@@ -153,26 +242,26 @@
       {
         "items" : [
           {
-            "text" : "Securing rear cockpit for solo"
+            "text" : "Securing Rear Cockpit For Solo"
           },
           {
-            "text" : "unauthorized solo maneuvers"
+            "text" : "Unauthorized Solo Maneuvers"
           },
           {
-            "text" : "unintentional instrument flight"
+            "text" : "Unintentional Instrument Flight"
           },
           {
-            "text" : "local course rules"
+            "text" : "Local Course Rules"
           },
           {
-            "text" : "any previously discussed maneuver or procedure"
+            "text" : "Any Previously Discussed Maneuver or Procedure"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Have Securing Rear Cockpit For Solo and Unauthorized Solo Maneuvers organized before step so the cockpit workload never outruns the brief."
+    "summary" : "Walk into the solo brief with rear-cockpit setup, solo restrictions, inadvertent-IMC recovery, and course-rule priorities already organized."
   },
-  "summary" : "Securing Rear Cockpit For Solo, Unauthorized Solo Maneuvers, and Unintentional Instrument Flight.",
-  "title" : "Securing Rear Cockpit for Solo"
+  "summary" : "Solo cockpit setup, solo boundaries, inadvertent-IMC recovery, and generalized course-rule prep.",
+  "title" : "Solo Preparation and Boundaries"
 }

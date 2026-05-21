@@ -228,6 +228,7 @@ struct Primary_GougeTests {
             "FAM2102": "Ground Emergencies",
             "FAM2201": "Takeoff Emergencies",
             "FAM2202": "Systems Emergencies",
+            "FAM4304": "Solo Preparation and Boundaries",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1201,6 +1202,60 @@ struct Primary_GougeTests {
         #expect(epText.contains("dedicated EP and N/W/C references"))
         #expect(epText.contains("Abort Takeoff"))
         #expect(epText.contains("PMU OFF Air-Start"))
+    }
+
+    @MainActor
+    @Test func fam4304TurnsSoloPrepIntoTransferableDecisionMaking() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4304"])
+        #expect(event.title == "Solo Preparation and Boundaries")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(event.overview.lowercased().contains("solo preparation"))
+        #expect(event.overview.lowercased().contains("published procedure"))
+        #expect(event.overview.lowercased().contains("day-of brief"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Securing Rear Cockpit for Solo",
+            "Unauthorized Solo Maneuvers",
+            "Unintentional Instrument Flight",
+            "Local Course Rules",
+            "Any Previously Discussed Maneuver or Procedure",
+            "Required Procedures"
+        ])
+
+        let securingSection = try #require(notes.sections.first(where: { $0.title == "Securing Rear Cockpit for Solo" }))
+        let securingText = securingSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(securingText.contains("ISS mode selector"))
+        #expect(securingText.contains("SOLO"))
+        #expect(securingText.contains("full aft stick"))
+
+        let unauthorizedSection = try #require(notes.sections.first(where: { $0.title == "Unauthorized Solo Maneuvers" }))
+        let unauthorizedText = unauthorizedSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(unauthorizedText.contains("spins"))
+        #expect(unauthorizedText.contains("stalls"))
+        #expect(unauthorizedText.contains("PPELs"))
+
+        let imcSection = try #require(notes.sections.first(where: { $0.title == "Unintentional Instrument Flight" }))
+        let imcText = imcSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(imcText.contains("MEF + 1000 feet"))
+        #expect(imcText.contains("7700"))
+
+        let courseRulesSection = try #require(notes.sections.first(where: { $0.title == "Local Course Rules" }))
+        let courseRulesText = courseRulesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
+        #expect(courseRulesText.contains("published procedure"))
+        #expect(courseRulesText.contains("day-of brief"))
+        for forbidden in ["corpus", "kngp", "shamrock", "goliad", "zombie"] {
+            #expect(!courseRulesText.contains(forbidden))
+        }
+
+        let reviewSection = try #require(notes.sections.first(where: { $0.title == "Any Previously Discussed Maneuver or Procedure" }))
+        let reviewText = reviewSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(reviewText.contains("cumulative review"))
+        #expect(reviewText.contains("wave off"))
+        #expect(reviewText.contains("PEL"))
     }
 
     @MainActor

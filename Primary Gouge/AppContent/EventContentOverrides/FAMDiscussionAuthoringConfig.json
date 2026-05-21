@@ -17,7 +17,8 @@
     "FAM4104",
     "FAM4201",
     "FAM4202",
-    "FAM4203"
+    "FAM4203",
+    "FAM4204"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -619,6 +620,41 @@
             "Ejection Decision and Setup",
             "Visual Straight-In"
           ]
+        }
+      ]
+    },
+    "FAM4204" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "electrical",
+        "avionics",
+        "comm"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "systemsBriefItems" : [
+        "Electrical system"
+      ],
+      "itemSections" : [
+        {
+          "discussionItem" : "Electrical system",
+          "displayTitle" : "Electrical System",
+          "presentationStyle" : "systems"
+        },
+        {
+          "discussionItem" : "avionics malfunctions",
+          "displayTitle" : "Avionics Malfunctions",
+          "presentationStyle" : "systems"
+        },
+        {
+          "discussionItem" : "lost communications",
+          "displayTitle" : "Lost Communications",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "local area flight procedures/SOP",
+          "displayTitle" : "Local Area Flight Procedures/SOP",
+          "presentationStyle" : "local-generalized"
         }
       ]
     }

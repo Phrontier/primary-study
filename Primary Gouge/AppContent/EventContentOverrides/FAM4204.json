@@ -6,15 +6,15 @@
     "avionics malfunctions" : [
       "Avionics Malfunctions"
     ],
-    "local area flight procedures\/SOP" : [
-      "Local Area Flight Procedures\/Sop"
+    "local area flight procedures/SOP" : [
+      "Local Area Flight Procedures/SOP"
     ],
     "lost communications" : [
       "Lost Communications"
     ]
   },
   "code" : "FAM4204",
-  "overview" : "This event ties together electrical system, avionics malfunctions, and lost communications in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+  "overview" : "This sortie is about managing an electrical or avionics problem without letting it turn into a navigation or communication-control problem. Be ready to explain the electrical system at the brief level, recognize which avionics failures are survivable with backups, and fly the lost-comms recovery plan in a transferable way.",
   "primaryDocumentTitles" : [
     "FAM4204"
   ],
@@ -24,24 +24,49 @@
       {
         "items" : [
           {
-            "text" : "Loss of airspeed, altimeter, VSI on PFD. Affects gear warning, TAD, transponder Mode C. Use BFI."
+            "text" : "Use the Systems brief tool for the full bus-by-bus NATOPS walk-through. For this event, know what still has power, what is automatically shed, and what that means for your next decision."
           },
           {
             "children" : [
               {
-                "text" : "It uses electrical buses (fused circuit hubs) to isolate and organize electrical loads."
+                "text" : "Normal power comes from the 28 VDC starter-generator, with the main battery, auxiliary battery, and hot battery bus preserving different pieces of capability when generation is lost."
               },
               {
-                "text" : "A bus tie system connects the forward and aft cockpit buses for redundancy and efficiency."
+                "text" : "If the generator fails, only air conditioning is automatically shed at first. A bus-tie problem or deeper electrical failure is what starts changing which cockpit displays, radios, and avionics stay alive."
               },
               {
-                "text" : "Circuit protection is provided by circuit breakers in both cockpits."
-              },
-              {
-                "text" : "Monitoring and fault protection include voltage sensors and annunciator lights."
+                "text" : "If the bus tie opens, the battery side and generator side stop supporting each other, so know which buses and avionics you lose before you start chasing secondary failures."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What matters in flight:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A GEN warning does not mean the whole jet is dark immediately. Think about battery endurance, what the auxiliary battery is protecting, and what the hot battery bus still carries."
+              },
+              {
+                "text" : "A BUS TIE caution can explain why one side of the cockpit picture is still healthy while another is degrading."
+              },
+              {
+                "text" : "Electrical smoke or fumes is a control-and-survival problem first. If aircraft control is jeopardized, CFS or ejection is already on the table."
+              }
+            ],
+            "text" : "Decision cues:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The generator needs at least 25 volts to charge the batteries."
+              },
+              {
+                "text" : "Do not connect external power with battery voltage below 22 volts."
+              },
+              {
+                "text" : "Hot battery bus circuit breakers are not accessible in flight, so do not brief them like normal reset options."
+              }
+            ],
+            "text" : "N/W/C focus:"
           }
         ],
         "title" : "Electrical System"
@@ -49,21 +74,46 @@
       {
         "items" : [
           {
-            "text" : "Not all circuit breakers are accessible in flight (hot bus)"
+            "text" : "Most avionics malfunctions are really cross-check and backup-instrument problems before they become checklist problems."
           },
           {
             "children" : [
               {
-                "text" : "Component"
+                "text" : "If displays disagree or go blank, verify what the other cockpit sees and transition early to the BFI or other surviving instruments instead of waiting for the picture to get worse."
               },
               {
-                "text" : "Function"
+                "text" : "IAC, IRS, ADC, EDM, and UFCP failures all change a different part of the picture, so brief what you lose, what backup instrument replaces it, and whether the right answer is to keep troubleshooting or land as soon as practical."
               },
               {
-                "text" : "Voltage sensors"
+                "text" : "Audio, transponder, ADS-B, and AOA failures are usually survivable, but they change how visible or communicative you are to ATC and how much primary information you can trust."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Big picture:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not select REPEAT in the cockpit with working MFDs when the other side has an IAC failure or erratic displays."
+              },
+              {
+                "text" : "If the ADC fails, expect loss of primary airspeed, altitude, and VSI along with secondary items like gear aural warning and transponder Mode C, so the BFI becomes the reference."
+              },
+              {
+                "text" : "If the EDM fails, you may lose the ability to trust displayed fuel, hydraulic, electrical, and pressurization monitoring even though caution messages can still appear."
+              }
+            ],
+            "text" : "High-payoff failure families:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Check the relevant circuit breaker if it is available, but do not burn the whole event cycling breakers on hot or inaccessible buses."
+              },
+              {
+                "text" : "If the avionics picture does not recover cleanly, the default answer is land as soon as practical."
+              }
+            ],
+            "text" : "Recovery mindset:"
           }
         ],
         "title" : "Avionics Malfunctions"
@@ -71,18 +121,32 @@
       {
         "items" : [
           {
-            "text" : "Planned Ejection"
+            "text" : "Lost communications is a predictability problem first: keep VMC if able, stay separated, and make it easy for ATC and other aircraft to understand what you are doing."
           },
           {
             "children" : [
               {
-                "text" : "Approximately midway between the Waldron Shrimp Ponds and Chapman Ranch"
+                "text" : "Squawk 7600, make all calls in the blind, and if you can receive but not transmit use IDENT to acknowledge instructions."
               },
               {
-                "text" : "Minimizes impact to populated areas and air traffic corridors while maximizing SAR and aircraft reclamation effectiveness."
+                "text" : "Try every practical path back into the radios: UHF, VHF, backup VHF, guard, and manual frequency entry."
+              },
+              {
+                "text" : "Do not let a NORDO situation drift into poor geometry or surprise traffic conflicts just because you are heads-down troubleshooting."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Immediate priorities:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If you recover enough radio capability to coordinate, do it early. If not, keep flying the published lost-comms plan instead of improvising a new one."
+              },
+              {
+                "text" : "If you are receive-only, use the information you can still hear to stay predictable and acknowledge with IDENT when appropriate."
+              }
+            ],
+            "text" : "Execution mindset:"
           }
         ],
         "title" : "Lost Communications"
@@ -90,45 +154,186 @@
       {
         "items" : [
           {
-            "text" : "Make all calls in the blind"
+            "text" : "Know the current home-field and local-area lost-comms recovery plan, but study it as a process rather than a list of Corpus-specific named points."
           },
           {
             "children" : [
               {
-                "text" : "Attempt ATIS"
+                "text" : "If you are already on a local arrival or recovery, continue with the published NORDO reentry from the current SOP instead of inventing a shortcut."
               },
               {
-                "text" : "Try multiple radios\/frequencies (UHF, VHF, Backup, manual entry)"
+                "text" : "Expect to make blind calls, watch for ALDIS or light-gun signals, and be ready to wave off and try the pattern again if you do not have a clear landing signal."
               },
               {
-                "text" : "Execute SHAMROCK Re-Entry"
+                "text" : "Brief the local named entry points, route names, and runway-flow specifics from the day-of SOP; do not rely on yesterday's memory."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Generalized reentry logic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Your job is to arrive where the controlling agency expects you, at the expected altitude and speed, with a predictable plan for another pattern if clearance never becomes obvious."
+              },
+              {
+                "text" : "If the runway picture, signal, or traffic situation is not clear, wave off and re-fly the plan instead of forcing the landing."
+              }
+            ],
+            "text" : "Decision traps:"
           }
         ],
-        "title" : "Local Area Flight Procedures\/Sop"
+        "title" : "Local Area Flight Procedures/SOP"
       },
       {
         "items" : [
           {
-            "text" : "Electrical system"
+            "text" : "Electrical System"
           },
           {
-            "text" : "avionics malfunctions"
+            "text" : "Avionics Malfunctions"
           },
           {
-            "text" : "lost communications"
+            "text" : "Lost Communications"
           },
           {
-            "text" : "local area flight procedures\/SOP"
+            "text" : "Local Area Flight Procedures/SOP"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Have Electrical System and Avionics Malfunctions organized before step so the cockpit workload never outruns the brief."
+    "summary" : "Keep the priorities straight: know what still has power, cross-check with backups early, communicate blind and squawk 7600, then execute the current lost-comms plan instead of guessing."
   },
-  "summary" : "Electrical System, Avionics Malfunctions, and Lost Communications.",
-  "title" : "Electrical System"
+  "summary" : "Electrical-system big picture, avionics-failure triage, and generalized lost-comms recovery planning.",
+  "systemsBrief" : {
+    "headline" : "Systems brief",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Lead with power sources, then explain how the buses distribute that power, then finish with what stays alive when the system starts shedding or separating."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Power source: starter-generator, main battery, auxiliary battery, and external power."
+              },
+              {
+                "text" : "Distribution: battery bus, generator bus, avionics buses, auxiliary battery bus, and hot battery bus."
+              },
+              {
+                "text" : "Failure logic: bus-tie behavior, automatic shedding, and which systems remain powered long enough to matter."
+              }
+            ],
+            "text" : "Briefing flow:"
+          }
+        ],
+        "title" : "How to Brief the System"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Normal electrical power is 28 VDC from a 300-amp starter-generator. The generator becomes the primary source once the engine reaches about 50% N1."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The main battery is a 24 VDC, 42-amp-hour battery in the nose and is the primary backup if generation is lost."
+              },
+              {
+                "text" : "The auxiliary battery is a 24 VDC, 5-amp-hour battery that protects an isolated emergency bus carrying items such as the BFI, backup VHF, and fire-warning logic."
+              },
+              {
+                "text" : "External power is 28 VDC for ground use and requires BAT ON; do not connect it if battery voltage is below 22 volts."
+              }
+            ],
+            "text" : "Power sources:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The generator needs to supply at least 25 volts to charge the batteries."
+              },
+              {
+                "text" : "If the generator fails, only air conditioning is automatically shed immediately."
+              }
+            ],
+            "text" : "Source-level traps:"
+          }
+        ],
+        "title" : "Power Sources"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The split-bus architecture lets the aircraft isolate loads while still giving both cockpits a useful picture under normal conditions."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Battery bus carries items such as ICS, trim, TAD, GPS, and engine instruments."
+              },
+              {
+                "text" : "Generator bus carries items such as EICAS, EFIS, PMU, and radio control."
+              },
+              {
+                "text" : "Avionics Bus #1 and #2 split major avionics loads between the front and aft sides of the airplane."
+              }
+            ],
+            "text" : "Primary buses:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The auxiliary battery bus is isolated from the primary system and protects emergency-use items."
+              },
+              {
+                "text" : "The hot battery bus stays powered directly from the main battery even with BAT OFF and supports items like the RAM air valve, ELT, FDR, OBOGS, and emergency flaps."
+              },
+              {
+                "text" : "Hot battery bus circuit breakers are not accessible in flight."
+              }
+            ],
+            "text" : "Protected buses:"
+          }
+        ],
+        "title" : "Bus Structure and Backup Paths"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The bus tie normally connects the battery and generator sides so the aircraft can share power and recharge correctly."
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the bus tie opens or fails, the battery side only powers the battery bus and Avionics Bus #1, while the generator side only powers the generator bus and Avionics Bus #2."
+              },
+              {
+                "text" : "That split is why one display set or radio stack can remain alive while another part of the cockpit degrades."
+              },
+              {
+                "text" : "Load shedding and clean prioritization matter after a bus-tie failure because you may not get the full airplane back."
+              }
+            ],
+            "text" : "Bus-tie logic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "In smoke-and-fume or electrical-fire situations, OBOGS setup comes first and the next question is whether aircraft control is still assured."
+              },
+              {
+                "text" : "If the source of smoke is clearly identified and accessible, you can secure it or pull the appropriate circuit breaker, but inaccessible hot-bus items remove that option."
+              }
+            ],
+            "text" : "Failure traps:"
+          }
+        ],
+        "title" : "Failure Logic and Load Shedding"
+      }
+    ],
+    "summary" : "Use this tool to learn the electrical brief the way it is usually graded: power source, bus path, backup logic, and what changes when the generator or bus tie is gone."
+  },
+  "title" : "Electrical, Avionics, and Lost-Comms Recovery"
 }

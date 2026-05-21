@@ -936,6 +936,61 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4204UsesSystemsBriefAndGeneralizedLostCommsProcedure() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4204"])
+        #expect(event.title == "Electrical, Avionics, and Lost-Comms Recovery")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Electrical System",
+            "Avionics Malfunctions",
+            "Lost Communications",
+            "Local Area Flight Procedures/SOP",
+            "Required Procedures"
+        ])
+
+        let systemsBrief = try #require(event.systemsBrief)
+        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.sections.compactMap(\.title) == [
+            "How to Brief the System",
+            "Power Sources",
+            "Bus Structure and Backup Paths",
+            "Failure Logic and Load Shedding"
+        ])
+
+        let systemsText = systemsBrief.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ")
+        #expect(systemsText.contains("300-amp starter-generator"))
+        #expect(systemsText.contains("42-amp-hour"))
+        #expect(systemsText.contains("25 volts"))
+        #expect(systemsText.contains("hot battery bus"))
+
+        let avionicsSection = try #require(notes.sections.first(where: { $0.title == "Avionics Malfunctions" }))
+        let avionicsText = avionicsSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(avionicsText.contains("BFI"))
+        #expect(avionicsText.contains("REPEAT"))
+        #expect(avionicsText.contains("land as soon as practical"))
+
+        let lostCommsSection = try #require(notes.sections.first(where: { $0.title == "Lost Communications" }))
+        let lostCommsText = lostCommsSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(lostCommsText.contains("7600"))
+        #expect(lostCommsText.contains("IDENT"))
+
+        let localSection = try #require(notes.sections.first(where: { $0.title == "Local Area Flight Procedures/SOP" }))
+        let localText = localSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(localText.contains("ALDIS"))
+        #expect(!localText.lowercased().contains("shamrock"))
+        #expect(!localText.lowercased().contains("waldron"))
+        #expect(!localText.lowercased().contains("rusty"))
+        #expect(!localText.lowercased().contains("kngp"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

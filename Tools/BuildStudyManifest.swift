@@ -2173,6 +2173,7 @@ struct ManifestBuilder {
             (#"\bOdo/Fdo\b"#, "ODO/FDO"),
             (#"\bOlf\b"#, "OLF"),
             (#"\bScatsafe\b"#, "SCATSAFE"),
+            (#"\bSop\b"#, "SOP"),
             (#"\bTouch-And-Goes\b"#, "Touch-and-Goes")
         ]
 

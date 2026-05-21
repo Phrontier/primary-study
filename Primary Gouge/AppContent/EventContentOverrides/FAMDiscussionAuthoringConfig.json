@@ -13,7 +13,8 @@
     "FAM3401",
     "FAM4101",
     "FAM4102",
-    "FAM4103"
+    "FAM4103",
+    "FAM4104"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -458,6 +459,44 @@
           "discussionItem" : "SCATSAFE maneuver",
           "displayTitle" : "SCATSAFE Maneuver",
           "presentationStyle" : "procedure"
+        }
+      ]
+    },
+    "FAM4104" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "crosswind",
+        "recovery",
+        "OCF"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Crosswind takeoff/approach/landing",
+          "displayTitle" : "Crosswind Takeoff/Approach/Landing",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "OCF",
+          "displayTitle" : "OCF",
+          "presentationStyle" : "recovery"
+        },
+        {
+          "discussionItem" : "contact unusual attitudes",
+          "displayTitle" : "Contact Unusual Attitudes",
+          "presentationStyle" : "recovery",
+          "subsections" : [
+            {
+              "title" : "Nose-High"
+            },
+            {
+              "title" : "Nose-Low"
+            },
+            {
+              "title" : "Inverted"
+            }
+          ]
         }
       ]
     }

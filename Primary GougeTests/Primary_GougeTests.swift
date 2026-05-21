@@ -753,6 +753,41 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4104SeparatesCrosswindTechniqueFromRecoveryLogic() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4104"])
+        #expect(event.title == "Crosswind Operations and Recovery")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Crosswind Takeoff/Approach/Landing",
+            "OCF",
+            "Contact Unusual Attitudes",
+            "Required Procedures"
+        ])
+
+        let crosswindSection = try #require(notes.sections.first(where: { $0.title == "Crosswind Takeoff/Approach/Landing" }))
+        let crosswindText = crosswindSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(crosswindText.contains("45 degrees"))
+        #expect(crosswindText.contains("half the gust factor"))
+        #expect(crosswindText.contains("upwind main"))
+
+        let ocfSection = try #require(notes.sections.first(where: { $0.title == "OCF" }))
+        let ocfText = ocfSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(ocfText.contains("120-135 KIAS"))
+        #expect(ocfText.contains("controls neutral"))
+        #expect(ocfText.contains("6000 feet AGL"))
+
+        let uaSection = try #require(notes.sections.first(where: { $0.title == "Contact Unusual Attitudes" }))
+        #expect(uaSection.items.contains(where: { $0.text == "Nose-High:" }))
+        #expect(uaSection.items.contains(where: { $0.text == "Nose-Low:" }))
+        #expect(uaSection.items.contains(where: { $0.text == "Inverted:" }))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

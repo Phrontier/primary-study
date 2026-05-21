@@ -1,7 +1,7 @@
 {
   "canonicalCoverage" : {
-    "Crosswind takeoff\/approach\/landing" : [
-      "Crosswind Takeoff\/Approach\/Landing"
+    "Crosswind takeoff/approach/landing" : [
+      "Crosswind Takeoff/Approach/Landing"
     ],
     "OCF" : [
       "OCF"
@@ -11,7 +11,7 @@
     ]
   },
   "code" : "FAM4104",
-  "overview" : "This event ties together crosswind takeoff and approach and landing, ocf, and contact unusual attitudes in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+  "overview" : "This sortie is about crosswind control first and recovery discipline second. You should be able to brief how the wind changes the takeoff, approach, and landing picture, then keep normal unusual-attitude recoveries clearly separated from OCF so a bad upset does not get worse.",
   "primaryDocumentTitles" : [
     "FAM4104"
   ],
@@ -21,71 +21,137 @@
       {
         "items" : [
           {
-            "text" : "use crab and wing-low techniques to stay aligned with the runway in crosswind conditions. Adjust bank, power, and control inputs as needed; waveoff if overbanking is required"
+            "text" : "Crosswind work is one continuous control problem from lineup through rollout. The big mistake is treating takeoff, final, and landing as separate moments instead of one uninterrupted wind-correction picture."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Before lineup, note wind direction and gusts from tower and the windsock so the first control input is anticipated instead of reactive."
+              },
+              {
+                "text" : "Hold positive aileron into the wind once in position for takeoff. Use up to full deflection at the start of the roll, then relax aileron as speed builds to keep the wings level at liftoff."
+              },
+              {
+                "text" : "Use rudder to stop weather-vaning and keep the nose on centerline. A left crosswind can add to the aircraft's normal left-yaw tendency, so expect to need even more right rudder."
+              },
+              {
+                "text" : "Rotate firmly at 90 KIAS, or add half the gust factor up to 10 knots in gusty conditions, and let the aircraft fly off instead of forcing it into a skip."
+              },
+              {
+                "text" : "Once safely airborne, level the wings, allow the aircraft to crab into the wind, and confirm the ball is centered."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Crosswind takeoff:"
           },
           {
             "children" : [
               {
-                "text" : "Recovery (Standard OCF\/Incipient Spin):"
+                "text" : "Crab into the wind on downwind to hold the correct track and wingtip distance."
               },
               {
-                "text" : "Failure to reduce aileron as speed builds."
+                "text" : "Overshooting winds increase groundspeed in the final turn and usually require slightly more bank with slightly lower power. Undershooting winds usually require slightly less bank with slightly higher power."
               },
               {
-                "text" : "Improper rudder use leading to drift or weathervaning."
+                "text" : "Start the final turn with about 30 degrees AOB. Do not exceed 45 degrees of bank; if more is required to make final, wave off."
               },
               {
-                "text" : "Skipping due to premature liftoff on upwind wing."
+                "text" : "After rollout on final, use aileron to hold extended centerline, rudder to align the aircraft with the runway, and extra power as required to overcome the drag from cross-controls."
+              },
+              {
+                "text" : "In gusty conditions, add half the gust factor to final approach speed, up to a 10-knot increase."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Crosswind approach:"
           },
           {
             "children" : [
               {
-                "text" : "Max AOB 45°; waveoff if more is required"
+                "text" : "Transition to the wing-low method on final and keep the upwind wing down through the flare. Do not level the wings prior to touchdown."
               },
               {
-                "text" : "+½ gust factor to final approach speed (max +10 kts)"
+                "text" : "Use rudder to align the longitudinal axis with the runway and increase aileron into the wind as airspeed decreases and the controls become less effective."
               },
               {
-                "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
+                "text" : "Touch down on the upwind main first with zero side motion. A crab or drift at touchdown can start a swerve and runway departure."
               },
               {
-                "text" : "PCL - MAX, rotate at 90 KIAS"
+                "text" : "On a full stop, keep feeding aileron into the wind during rollout, maintain directional control with rudder and brakes, and do not aggressively yank the aircraft back to centerline if touchdown started slightly off-center."
+              },
+              {
+                "text" : "On a touch-and-go, hold the crosswind inputs on the deck, apply positive rotation at flying speed, then level the wings and let the aircraft crab into the wind once safely airborne."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Crosswind landing:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Skipping on takeoff usually means the upwind wing started flying early because the aileron picture or rotation was wrong."
+              },
+              {
+                "text" : "If proper crosswind control is not in before touchdown, or if an uncontrollable drift develops in the flare or after touchdown, wave off."
+              },
+              {
+                "text" : "Do not let brake use or centerline fixation distract you from the real priority: keep the airplane aligned and the upwind wing under control."
+              }
+            ],
+            "text" : "Common errors / wave-off cues:"
           }
         ],
-        "title" : "Crosswind Takeoff\/Approach\/Landing"
+        "title" : "Crosswind Takeoff/Approach/Landing"
       },
       {
         "items" : [
           {
-            "text" : "Improper\/aggressive controls near stall, mechanical failure, atmospheric conditions, or combinations."
+            "text" : "Out-of-control flight starts when the aircraft is stalled and no longer responding like normal flight. The recovery only works if you recognize what phase you are in and stop trying to fly it like an unusual attitude."
           },
           {
             "children" : [
               {
-                "text" : "Aircraft moves unpredictably after stall; controls may feel ineffective or reversed."
+                "text" : "Post-stall gyrations show up as uncommanded motion about one or more axes, erratic airspeed, high or stalled AOA, and controls that feel ineffective or reversed."
               },
               {
-                "text" : "Uncommanded rapid motions, controls ineffective; neutral controls + idle power recommended."
+                "text" : "An incipient spin looks like oscillatory spin-like motion with stalled AOA, a fully deflected turn needle, and airspeed moving toward the steady-state value. Expect about two turns in this phase."
               },
               {
-                "text" : "Controls — NEUTRAL"
+                "text" : "A steady-state spin stabilizes around 120-135 KIAS with the turn needle pegged in the spin direction, 18+ units AOA, and roughly 400-500 feet of altitude loss per turn."
+              },
+              {
+                "text" : "Airspeed and nose attitude are poor stall cues here. Better cues are uncommanded pitch-up, nose drop, wing roll-off, or pitch bucking."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Recognition:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For post-stall gyrations and incipient spin, go PCL IDLE, physically confirm controls neutral, check altitude, and recover from the resulting unusual attitude once the stall breaks and the aircraft responds."
+              },
+              {
+                "text" : "Be patient with neutral controls. Starting anti-spin guesses too early can make the departure worse."
+              },
+              {
+                "text" : "If the aircraft is in a steady-state erect spin, use NATOPS erect-spin recovery logic: identify spin direction, apply full opposite rudder, move the stick forward of neutral, keep ailerons neutral, and hold the inputs until rotation stops before recovering from the resulting unusual attitude."
+              },
+              {
+                "text" : "If gear or flaps are down during an unintentional spin, retract them immediately to protect against airspeed-limit damage."
+              }
+            ],
+            "text" : "Recovery:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A normal unusual-attitude recovery does not fix a stalled or departed aircraft. If the aircraft condition is in doubt, go directly to OCF recovery."
+              },
+              {
+                "text" : "Physically neutral stick matters more than trimmed neutral."
+              },
+              {
+                "text" : "If OCF continues into an unrecoverable rapid descent below 6000 feet AGL, eject."
+              }
+            ],
+            "text" : "N/W/C focus:"
           }
         ],
         "title" : "OCF"
@@ -93,24 +159,69 @@
       {
         "items" : [
           {
-            "text" : "recovery from NH, NL, or Inverted attitudes due to disorientation, misflown maneuvers, or external factors. Recovery is visual (VFR) and must be completed above 6000’ AGL"
+            "text" : "Contact unusual attitudes are visual recoveries. The goal is to get back to controlled flight above 6000 feet AGL without creating a stall, accelerated stall, or OCF in the process."
           },
           {
             "children" : [
               {
-                "text" : "PCL - MAX (if low airspeed)"
+                "text" : "Set PCL to MAX as required in low-airspeed situations."
               },
               {
-                "text" : "Use back stick to bring nose to horizon"
+                "text" : "Roll past 90 degrees AOB toward the nearest horizon and use back stick to bring the nose down to it."
               },
               {
-                "text" : "Roll upright as nose approaches horizon"
+                "text" : "Roll upright as the nose approaches the horizon. If the airspeed is very low, allow the nose to fall slightly below the horizon before rolling fully upright so the controls come alive again."
               },
               {
-                "text" : "Roll wings level, raise nose, check oil pressure, power as req."
+                "text" : "Once the aircraft is responding normally, roll wings level, raise the nose to level flight, check oil pressure, and set power as required."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Nose-High:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Roll to the nearest horizon while simultaneously retarding PCL to IDLE."
+              },
+              {
+                "text" : "Use speed brake as required and make a smooth pull to level flight while respecting the 316-KIAS limit and performing AGSM."
+              },
+              {
+                "text" : "If AOA is below 18 units and airspeed is very low, you can advance power. If AOA is above 18 units or the aircraft is not responding normally, transition to OCF recovery."
+              }
+            ],
+            "text" : "Nose-Low:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Roll the shortest way to the horizon."
+              },
+              {
+                "text" : "Use power as required."
+              },
+              {
+                "text" : "As the nose approaches or slightly passes the horizon, check and report oil pressure, then adjust power to maintain level flight."
+              }
+            ],
+            "text" : "Inverted:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Never push the nose over with forward stick in a nose-high recovery. That creates zero or negative G and can deepen the problem."
+              },
+              {
+                "text" : "Avoid stopping the roll at knife-edge. Rolling past 90 degrees and using positive G is the expeditious recovery method."
+              },
+              {
+                "text" : "Stick shaker or buffet means you are near a stall. Reduce back pressure."
+              },
+              {
+                "text" : "If the aircraft is stalled or in OCF, stop trying to fly a normal unusual-attitude recovery and go straight to OCF recovery."
+              }
+            ],
+            "text" : "N/W/C focus:"
           }
         ],
         "title" : "Contact Unusual Attitudes"
@@ -118,20 +229,20 @@
       {
         "items" : [
           {
-            "text" : "Crosswind takeoff\/approach\/landing"
+            "text" : "Crosswind Takeoff/Approach/Landing"
           },
           {
             "text" : "OCF"
           },
           {
-            "text" : "contact unusual attitudes"
+            "text" : "Contact Unusual Attitudes"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Have Crosswind Takeoff and Approach and Landing, plus OCF organized before step so the cockpit workload never outruns the brief."
+    "summary" : "Brief the wind and the recovery logic before the airplane gets busy: crosswind corrections never stop, unusual-attitude recoveries stay clean, and anything stalled or out of control goes straight to OCF recovery."
   },
-  "summary" : "Crosswind Takeoff and Approach and Landing, OCF, and Contact Unusual Attitudes.",
-  "title" : "Crosswind Takeoff\/Approach\/Landing"
+  "summary" : "Crosswind takeoffs and landings, plus the unusual-attitude and OCF recoveries that keep an upset from getting worse.",
+  "title" : "Crosswind Operations and Recovery"
 }

@@ -18592,7 +18592,7 @@
                 }
               ],
               "id" : "contacts-flights-fam4201",
-              "overview" : "This event ties together natops and engine system review, landing option decision chain, and aldis lamp signals in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+              "overview" : "This sortie is the bridge from normal contact flying into engine and emergency-landing decision making. Be ready to brief the limits that matter, the PT6\/PMU logic behind the indications you see, and the differences between an ELP, a PEL, and a forced landing when time and energy are running out.",
               "primaryDocumentIDs" : [
 
               ],
@@ -18631,98 +18631,390 @@
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "Maximum ramp weight - 6950 pounds"
-                          }
-                        ],
-                        "text" : "Natops Limitations:"
+                        "text" : "Know the limits you are most likely to brief, violate, or use to decide whether the aircraft is still being flown normally. This is not a memorization contest for every number in NATOPS; it is about knowing the ones that change your go\/no-go and landing decisions."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "PCL to auto start detent → wait for ST READY."
+                            "text" : "Maximum ramp weight is 6950 pounds. Maximum takeoff and landing weight are 6900 pounds. Maximum zero fuel weight is 5850 pounds."
                           },
                           {
-                            "text" : "Torque surge possible from low power → high power transitions."
+                            "text" : "Maximum baggage-compartment weight is 80 pounds."
                           },
                           {
-                            "text" : "Battery bus inoperative"
-                          },
-                          {
-                            "text" : "Generator bus inoperative"
+                            "text" : "Ground operation is limited to ambient temperatures from -23 C to +43 C."
                           }
                         ],
-                        "text" : "Engine System:"
+                        "text" : "Core aircraft limits:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Torque surge possible from low power → high power transitions."
+                            "text" : "Maximum touchdown rate is 600 FPM when the mains are serviced to 185 +\/- 5 PSI, and 780 FPM when they are serviced to 225 +\/- 5 PSI."
                           },
                           {
-                            "text" : "Battery bus inoperative"
-                          },
-                          {
-                            "text" : "Generator bus inoperative"
-                          },
-                          {
-                            "text" : "PMU failure"
+                            "text" : "Those landing-rate numbers matter because a low-energy ELP or forced landing can tempt you into accepting a sink rate that damages the aircraft."
                           }
                         ],
-                        "text" : "Engine Malfunctions:"
+                        "text" : "Landing limits:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not open the canopy on the ground with surface winds above 40 knots."
+                          },
+                          {
+                            "text" : "Ejection-seat occupant limits are approximately 131.8 to 279.4 pounds including equipment and flight gear."
+                          }
+                        ],
+                        "text" : "Operational reminders:"
                       }
                     ],
-                    "title" : "NATOPS and Engine System Review"
+                    "title" : "NATOPS Limitations"
                   },
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "BOOST PUMP switch - As required"
-                          },
-                          {
-                            "text" : "N\/W\/C focus: NOTE"
-                          }
-                        ],
-                        "text" : "ELP:"
+                        "text" : "The PT6A-68 is a free-turbine engine, which explains a lot of the T-6's behavior during starts, power changes, and propeller problems. The gas generator makes the power, and the power turbine passes it through the reduction gearbox to the propeller without a direct mechanical link."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "PCL - as required"
+                            "text" : "Air enters the rear intake, is compressed by the axial and centrifugal compressor stages, mixed with fuel, ignited, and expanded through the turbines."
                           },
                           {
-                            "text" : "N\/W\/C focus: Review the associated WARNINGs, CAUTIONs, and NOTEs for PEL before the event."
+                            "text" : "The gas-generator turbine drives the compressor. The two-stage power turbine drives the reduction gearbox and propeller."
+                          },
+                          {
+                            "text" : "The reduction gearbox takes roughly 30,000 RPM engine output down to the propeller's 2000 RPM operating speed."
                           }
                         ],
-                        "text" : "PEL:"
+                        "text" : "Big system picture:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "AIRSPEED - 125 KIAS PRIOR TO EXTENDING LANDING GEAR"
+                            "text" : "The PMU schedules fuel and propeller response, controls acceleration and deceleration, manages auto-start protection on the ground, and raises N1 as needed to keep NP above 80% above 10,000 feet pressure altitude."
                           },
                           {
-                            "text" : "EMER LDG GR HANDLE - PULL (AS REQUIRED)"
+                            "text" : "Ground idle is about 60-61% N1 and flight idle is about 67% N1, driven by weight-on-wheels logic."
                           },
                           {
-                            "text" : "AIRSPEED - 120 KIAS MINIMUM UNTIL INTERCEPTING FINAL; 110 KIAS MINIMUM ON FINAL"
-                          },
-                          {
-                            "text" : "N\/W\/C focus: (5W\/2C\/4N)"
+                            "text" : "The PMU normally protects the start sequence by watching N1, ITT, and fuel flow, but once ST READY extinguishes those protections are gone."
                           }
                         ],
-                        "text" : "Forced Landing:"
+                        "text" : "PMU logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The four-blade Hartzell prop is constant-speed, feathering, and normally held at 100% NP by the PMU and propeller interface unit, with the overspeed governor as backup."
+                          },
+                          {
+                            "text" : "The prop automatically unfeathers during start as oil pressure builds."
+                          },
+                          {
+                            "text" : "If the PMU is off or fails into manual mode, fuel scheduling becomes much more pilot-intensive and automatic engine protection is gone."
+                          }
+                        ],
+                        "text" : "Propeller and manual-mode implications:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not casually lift the PCL cutoff gate in flight. Mishaps have happened from inadvertent shutdown attempts."
+                          },
+                          {
+                            "text" : "If the PCL is inadvertently moved to cutoff on the ground and the engine is shutting down, do not relight by simply moving it back to idle."
+                          },
+                          {
+                            "text" : "Starts with PMU OFF are not recommended because hot-start protection is largely on you."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
-                    "title" : "Landing Option Decision Chain"
+                    "title" : "Engine System"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "Aldis Lamp Signals matters because it changes what you brief, what you look for in the cockpit, or what the next safe decision needs to be."
+                        "text" : "Engine malfunctions are easier to manage when you stop chasing a single annunciator and instead build a full picture from power, N1, torque, ITT, NP, oil pressure, and hydraulic pressure."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "A flameout usually gives you rapid loss of power and airspeed, rapidly decaying N1, torque, and ITT, loss of oil and hydraulic pressure, and the propeller moving toward feather."
+                          },
+                          {
+                            "text" : "An engine seizure can look similar, but often drives oil and hydraulic pressure to zero more abruptly and may include a CHIP warning."
+                          },
+                          {
+                            "text" : "A rollback is an uncommanded power reduction, often from PMU scheduling problems. If the PMU stays online, fuel flow and N1 may simply be lower than expected; if it drops offline, you may get a step change in power."
+                          }
+                        ],
+                        "text" : "Major failure patterns:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Uncommanded propeller feather usually shows up as reduced NP, increased torque, more prop noise, less thrust, and sometimes vibration."
+                          },
+                          {
+                            "text" : "A good quick discriminator is whether N1 is still healthy while torque or NP are not. That points you toward prop-system logic rather than a full engine failure."
+                          }
+                        ],
+                        "text" : "Prop-system clues:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "High-value red warnings for this event are PMU FAIL, FUEL PX, OIL PX, CHIP, CHK ENG, GEN BUS, and BATT BUS."
+                          },
+                          {
+                            "text" : "PMU STATUS in flight matters because it can leave you at flight idle on landing and change the rollout picture."
+                          },
+                          {
+                            "text" : "Do not memorize every amber or white advisory for this event. Focus on the engine indications that change whether you continue, PEL, force-land, or eject."
+                          }
+                        ],
+                        "text" : "What deserves your attention first:"
+                      }
+                    ],
+                    "title" : "Engine Malfunctions"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The emergency landing pattern is the geometry you use for both a PEL and a forced landing. The profile is the same; the difference is whether power is still available and how you correct a low-energy state."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Interception is normally at high key, 3000 feet AGL, with 2500 feet AGL as the minimum high-key intercept."
+                          },
+                          {
+                            "text" : "Think of the profile in checkpoints: high key at 3000 feet AGL, low key at 1500 feet AGL, base key at 600-800 feet AGL, and final at 110 KIAS minimum."
+                          },
+                          {
+                            "text" : "Maintain 120 KIAS minimum until intercepting final. Do not trade airspeed away just to hit an altitude number."
+                          }
+                        ],
+                        "text" : "Profile and checkpoints:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Best glide clean is about 125 KIAS with roughly 1350-1500 FPM sink and about 2 nautical miles of glide for every 1000 feet lost."
+                          },
+                          {
+                            "text" : "With the gear down and clean otherwise, best glide is about 105 KIAS and glide ratio drops to about 1.6 nautical miles per 1000 feet lost."
+                          },
+                          {
+                            "text" : "Use winds, runway suitability, field elevation, and actual energy state to decide whether you can reach high key, low key, or need another option."
+                          }
+                        ],
+                        "text" : "Energy management:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "ORM 3-2-1 drives the low-altitude decision chain: do not descend below 2000 feet AGL in an actual forced-landing scenario unless you are on profile, runway in sight, and in a position to maneuver safely to land."
+                          },
+                          {
+                            "text" : "At 300 feet AGL you make the final continue-or-eject decision, at 200 feet the gear should be confirmed down, and at 100 feet the aircraft should be on centerline."
+                          },
+                          {
+                            "text" : "If the profile is falling apart, do not delay the wave-off in training or the eject decision in the real event."
+                          }
+                        ],
+                        "text" : "Decision gates:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "A high-energy state is fixed with methods like 360s, bow ties, S-turns, slips, or early drag, but every choice should still preserve a predictable arrival at high key."
+                          },
+                          {
+                            "text" : "The primary reference in the ELP is the runway. Crosscheck actual position and energy against the next checkpoint early enough to make a smooth correction."
+                          }
+                        ],
+                        "text" : "Common errors \/ traps:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not descend below 2000 feet AGL in an actual forced-landing situation unless the runway is in sight, you are on profile, and you can still maneuver safely to land."
+                          },
+                          {
+                            "text" : "Allowing the aircraft to get slow to hit altitude checkpoints is dangerous; maintain 120 KIAS minimum until intercepting final and 110 KIAS minimum on final."
+                          },
+                          {
+                            "text" : "Treat ORM 3-2-1 and the final continue\/eject gate as hard warning-and-caution discipline, not as flexible guidelines."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "ELP"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A PEL is for an engine problem where power still exists but failure may be imminent. The student trap is treating it like a routine recovery and burning up the engine's remaining time with slow procedures or excessive troubleshooting."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The memory aid is Turn, Climb\/Accelerate, Clean, Check, BIP, Determine, Deliver, Reduce, Lower, Report."
+                          },
+                          {
+                            "text" : "Turn toward the nearest suitable field immediately. Then climb at 140 KIAS to DEGA or accelerate to build energy if a climb is not appropriate."
+                          },
+                          {
+                            "text" : "Clean the aircraft as soon as practical because extra drag kills climb and glide performance."
+                          }
+                        ],
+                        "text" : "Early priorities:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Check for secondary indications and use boost pump and ignition as required."
+                          },
+                          {
+                            "text" : "Do not blindly select boost pump or ignition on if an airstart would not be warranted after a failure, such as oil-system malfunction, chip light, fire light, or FOD."
+                          },
+                          {
+                            "text" : "Determine the runway before intercepting the profile and deliver the ISPI report early enough that everyone else understands your plan."
+                          }
+                        ],
+                        "text" : "Systems check and communication:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Reduce to 4-6% torque no sooner than DEGA."
+                          },
+                          {
+                            "text" : "Lower the gear no later than high key, fly 120 KIAS minimum on profile, lower flaps no sooner than low key, and use power immediately to fix a low-energy state."
+                          },
+                          {
+                            "text" : "Inside base key, use normal power corrections to ensure a safe and controlled landing instead of preserving some imaginary perfect emergency picture."
+                          }
+                        ],
+                        "text" : "Flying the PEL:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Time is the critical resource in many PELs. Do not turn an impending engine failure into an actual one by being slow."
+                          },
+                          {
+                            "text" : "On a PEL, never accept being below profile prior to the actual point on the ground. Power is available, so use it."
+                          },
+                          {
+                            "text" : "If a safe landing becomes unlikely, the answer is not to keep troubleshooting. Commit to the next safe option."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "PEL"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A forced landing is what happens when power is gone or insufficient for continued flight and the airplane has enough energy to reach a suitable hard-surface landing area. If that energy or runway picture is not there, the answer becomes eject, not hope."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The first memory items are Zoom\/Glide 125 KIAS minimum, PCL OFF, intercept the ELP, and attempt an airstart only if warranted."
+                          },
+                          {
+                            "text" : "Do not attempt an airstart if the failure involves oil-system malfunction, chip light, fire light, or FOD."
+                          },
+                          {
+                            "text" : "If an airstart is not warranted, pull the firewall shutoff handle and commit to either the forced landing or ejection decision."
+                          }
+                        ],
+                        "text" : "Immediate actions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the nearest suitable hard-surface field of adequate length and align the aircraft with the landing direction as early as possible."
+                          },
+                          {
+                            "text" : "If you cannot reach high key, intercept the ELP at another point with the proper configuration and airspeed rather than stretching the glide into a bad setup."
+                          },
+                          {
+                            "text" : "At low key, use flaps only if energy supports it. If the airplane is not on profile approaching base key, eject in the real event or wave off in the simulated one."
+                          }
+                        ],
+                        "text" : "Profile decisions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not descend below 2000 feet AGL in an actual engine-failure case unless you are on profile, runway in sight, and in a position to maneuver to land."
+                          },
+                          {
+                            "text" : "Maintain 110 KIAS minimum on final until the landing transition. Anticipate a longer flare with 4-6% torque simulating a feathered prop."
+                          },
+                          {
+                            "text" : "If touchdown will occur past the first one-third of the runway in a simulated event, wave off. In the actual event, do not delay the eject decision once safe landing is unlikely."
+                          }
+                        ],
+                        "text" : "Final commitment logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Air-starts are not recommended below 2000 feet AGL because the primary task there is either safe recovery or ejection."
+                          },
+                          {
+                            "text" : "A flamed-out engine at 125 KIAS typically shows 0% indicated N1, torque near zero, and may still show a small residual oil-pressure indication."
+                          },
+                          {
+                            "text" : "Do not dissipate energy casually in a real forced landing. Use the time you have to build the safest runway plan possible."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "Forced Landing"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Aldis lamp signals matter when the radios are gone and the tower still has to control you. The student value here is not just the colors; it is knowing how to acknowledge them and how they change your immediate action."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "On the ground: steady green means cleared to take off, flashing green means cleared to taxi, steady red means stop, flashing red means taxi clear of runway, flashing white means return to starting point, and alternating red\/green means exercise extreme caution."
+                          },
+                          {
+                            "text" : "In flight: steady green means cleared to land, flashing green means return for landing, steady red means give way and continue circling, flashing red means do not land, and alternating red\/green means exercise extreme caution."
+                          },
+                          {
+                            "text" : "A red pyrotechnic signal in flight means do not land and wave off immediately regardless of previous instructions."
+                          }
+                        ],
+                        "text" : "What the signals mean:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Acknowledge in daytime with aileron or rudder movement on the ground and wing rocking in the air."
+                          },
+                          {
+                            "text" : "At night, acknowledge by flashing aircraft lights."
+                          }
+                        ],
+                        "text" : "Acknowledgement:"
                       }
                     ],
                     "title" : "Aldis Lamp Signals"
@@ -18730,13 +19022,13 @@
                   {
                     "items" : [
                       {
-                        "text" : "NATOPS limitations"
+                        "text" : "NATOPS Limitations"
                       },
                       {
-                        "text" : "engine system"
+                        "text" : "Engine System"
                       },
                       {
-                        "text" : "engine malfunctions"
+                        "text" : "Engine Malfunctions"
                       },
                       {
                         "text" : "ELP"
@@ -18745,24 +19037,24 @@
                         "text" : "PEL"
                       },
                       {
-                        "text" : "forced landing"
+                        "text" : "Forced Landing"
                       },
                       {
-                        "text" : "Aldis lamp signals"
+                        "text" : "Aldis Lamp Signals"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Keep NATOPS and Engine System Review, plus Landing Option Decision Chain organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
+                "summary" : "Know the limits, understand what the engine and PMU are telling you, and commit early to the right landing-option chain before a manageable malfunction turns into an actual engine-failure problem."
               },
-              "summary" : "NATOPS and Engine System Review, Landing Option Decision Chain, and Aldis Lamp Signals.",
+              "summary" : "NATOPS limits, PT6\/PMU basics, and the ELP-to-PEL-to-forced-landing decision chain.",
               "tags" : [
                 "contacts",
                 "flights",
                 "fam4201"
               ],
-              "title" : "NATOPS Limitations",
+              "title" : "Engine and Emergency Landing Foundations",
               "videoLinks" : [
 
               ]

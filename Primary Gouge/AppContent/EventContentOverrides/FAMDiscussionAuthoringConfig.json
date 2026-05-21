@@ -14,7 +14,8 @@
     "FAM4101",
     "FAM4102",
     "FAM4103",
-    "FAM4104"
+    "FAM4104",
+    "FAM4201"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -497,6 +498,53 @@
               "title" : "Inverted"
             }
           ]
+        }
+      ]
+    },
+    "FAM4201" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "engine",
+        "emergency",
+        "landing"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "NATOPS limitations",
+          "displayTitle" : "NATOPS Limitations",
+          "presentationStyle" : "limits"
+        },
+        {
+          "discussionItem" : "engine system",
+          "displayTitle" : "Engine System",
+          "presentationStyle" : "systems"
+        },
+        {
+          "discussionItem" : "engine malfunctions",
+          "displayTitle" : "Engine Malfunctions",
+          "presentationStyle" : "systems"
+        },
+        {
+          "discussionItem" : "ELP",
+          "displayTitle" : "ELP",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "PEL",
+          "displayTitle" : "PEL",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "forced landing",
+          "displayTitle" : "Forced Landing",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "Aldis lamp signals",
+          "displayTitle" : "Aldis Lamp Signals",
+          "presentationStyle" : "procedure"
         }
       ]
     }

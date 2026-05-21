@@ -788,6 +788,55 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func fam4201BuildsEngineAndEmergencyLandingDecisionChain() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4201"])
+        #expect(event.title == "Engine and Emergency Landing Foundations")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "NATOPS Limitations",
+            "Engine System",
+            "Engine Malfunctions",
+            "ELP",
+            "PEL",
+            "Forced Landing",
+            "Aldis Lamp Signals",
+            "Required Procedures"
+        ])
+
+        let engineSection = try #require(notes.sections.first(where: { $0.title == "Engine System" }))
+        let engineText = engineSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(engineText.contains("free-turbine"))
+        #expect(engineText.contains("67% N1"))
+
+        let elpSection = try #require(notes.sections.first(where: { $0.title == "ELP" }))
+        let elpText = elpSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(elpText.contains("3000 feet AGL"))
+        #expect(elpText.contains("120 KIAS minimum"))
+        #expect(elpText.contains("ORM 3-2-1"))
+
+        let pelSection = try #require(notes.sections.first(where: { $0.title == "PEL" }))
+        let pelText = pelSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(pelText.contains("Turn, Climb/Accelerate, Clean"))
+        #expect(pelText.contains("4-6% torque"))
+
+        let forcedLandingSection = try #require(notes.sections.first(where: { $0.title == "Forced Landing" }))
+        let forcedLandingText = forcedLandingSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(forcedLandingText.contains("125 KIAS"))
+        #expect(forcedLandingText.contains("PCL OFF"))
+        #expect(forcedLandingText.contains("2000 feet AGL"))
+
+        let aldisSection = try #require(notes.sections.first(where: { $0.title == "Aldis Lamp Signals" }))
+        let aldisText = aldisSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(aldisText.contains("steady green"))
+        #expect(aldisText.contains("red pyrotechnic"))
+    }
+
+    @MainActor
     @Test func submittingAndDismissingReportUpdatesOpenReports() async throws {
         let repository = MockInstructorReviewRepository()
 

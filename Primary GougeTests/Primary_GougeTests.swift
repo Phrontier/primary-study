@@ -232,6 +232,7 @@ struct Primary_GougeTests {
             "FAM4601": "Night Contact Fundamentals",
             "FAM4701": "Aerobatics and OCF Recovery",
             "FAM4702": "Spins and AOA Approaches",
+            "FAM4703": "Flight Loads and Emergency Review",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1558,6 +1559,60 @@ struct Primary_GougeTests {
             "Progressive Spin",
             "Accelerated Stall",
             "AOA Approach"
+        ])
+    }
+
+    @MainActor
+    @Test func fam4703RebuildsFlightLoadsAndEmergencyReviewFromCleanSource() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4703"])
+        #expect(event.title == "Flight Loads and Emergency Review")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(event.summary.lowercased().contains("vn"))
+        #expect(event.summary.lowercased().contains("emergency"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "T-6B Vn Diagram",
+            "Maneuvering Speed",
+            "Acceleration Limitations",
+            "Any Emergency Procedure",
+            "Required Procedures"
+        ])
+
+        let vnSection = try #require(notes.sections.first(where: { $0.title == "T-6B Vn Diagram" }))
+        let vnText = vnSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(!vnText.contains("Dates of issue"))
+        #expect(!vnText.contains("Page No. Change No."))
+        #expect(vnText.contains("200 KIAS"))
+        #expect(vnText.contains("5 G"))
+
+        let maneuveringSection = try #require(notes.sections.first(where: { $0.title == "Maneuvering Speed" }))
+        let maneuveringText = maneuveringSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(maneuveringText.contains("VO is 227 KIAS"))
+        #expect(maneuveringText.contains("150 KIAS"))
+        #expect(maneuveringText.contains("one axis"))
+
+        let accelerationSection = try #require(notes.sections.first(where: { $0.title == "Acceleration Limitations" }))
+        let accelerationText = accelerationSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(accelerationText.contains("multi-axis"))
+        #expect(accelerationText.contains("nose-low"))
+        #expect(accelerationText.contains("Reduce AOA") == false)
+
+        let epSection = try #require(notes.sections.first(where: { $0.title == "Any Emergency Procedure" }))
+        let epText = epSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(epText.contains("recognition cue"))
+        #expect(epText.contains("PMU OFF Air-Start"))
+        #expect(epText.contains("ejection"))
+
+        let requiredSection = try #require(notes.sections.last)
+        #expect(requiredSection.items.map(\.text) == [
+            "T-6B Vn Diagram",
+            "Maneuvering Speed",
+            "Acceleration Limitations",
+            "Any Emergency Procedure"
         ])
     }
 

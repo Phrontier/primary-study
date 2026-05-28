@@ -27,7 +27,8 @@
     "FAM4501",
     "FAM4601",
     "FAM4701",
-    "FAM4702"
+    "FAM4702",
+    "FAM4703"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -925,6 +926,38 @@
         {
           "discussionItem" : "AOA approach",
           "displayTitle" : "AOA Approach",
+          "presentationStyle" : "procedure"
+        }
+      ]
+    },
+    "FAM4703" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "load factor",
+        "maneuvering speed",
+        "emergency"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "T-6B VN diagram",
+          "displayTitle" : "T-6B Vn Diagram",
+          "presentationStyle" : "knowledge"
+        },
+        {
+          "discussionItem" : "maneuvering speed",
+          "displayTitle" : "Maneuvering Speed",
+          "presentationStyle" : "limits"
+        },
+        {
+          "discussionItem" : "acceleration limitations",
+          "displayTitle" : "Acceleration Limitations",
+          "presentationStyle" : "limits"
+        },
+        {
+          "discussionItem" : "any emergency procedure",
+          "displayTitle" : "Any Emergency Procedure",
           "presentationStyle" : "procedure"
         }
       ]

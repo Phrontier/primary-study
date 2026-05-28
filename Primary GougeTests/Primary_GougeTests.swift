@@ -234,6 +234,7 @@ struct Primary_GougeTests {
             "FAM4702": "Spins and AOA Approaches",
             "FAM4703": "Flight Loads and Emergency Review",
             "FAM6101": "Course Rules, OLF Operations, and Arrival Review",
+            "FAM6102": "Risk Management and VFR Judgment",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1663,6 +1664,63 @@ struct Primary_GougeTests {
         let sectionalText = sectionalSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(sectionalText.contains("MEF"))
         #expect(sectionalText.contains("special-use"))
+    }
+
+    @MainActor
+    @Test func fam6102TurnsIntoRiskManagementAndVfrJudgmentReview() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6102"])
+        #expect(event.title == "Risk Management and VFR Judgment")
+        #expect(!event.overview.lowercased().contains("this event pulls together"))
+        #expect(event.summary.lowercased().contains("imsafe"))
+        #expect(event.summary.lowercased().contains("cloud"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "“IMSAFE” Checklist",
+            "CRM",
+            "See & Avoid Principle",
+            "Cloud Clearances",
+            "Local VFR Sectional Review",
+            "Required Procedures"
+        ])
+
+        let combinedText = notes.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ").lowercased()
+        for forbidden in ["shamrock", "aransas", "waldron", "camel humps", "kngp", "krkp", "pt"] {
+            #expect(!combinedText.contains(forbidden))
+        }
+
+        let imsafeSection = try #require(notes.sections.first(where: { $0.title == "“IMSAFE” Checklist" }))
+        let imsafeText = imsafeSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(imsafeText.contains("Illness"))
+        #expect(imsafeText.contains("duty chain"))
+
+        let crmSection = try #require(notes.sections.first(where: { $0.title == "CRM" }))
+        let crmText = crmSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(crmText.contains("Decision making"))
+        #expect(crmText.contains("Assertiveness"))
+        #expect(crmText.contains("Situational awareness"))
+
+        let seeAvoidSection = try #require(notes.sections.first(where: { $0.title == "See & Avoid Principle" }))
+        let seeAvoidText = seeAvoidSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(seeAvoidText.contains("five miles"))
+        #expect(seeAvoidText.contains("60 degrees"))
+        #expect(seeAvoidText.contains("TCAS"))
+
+        let cloudSection = try #require(notes.sections.first(where: { $0.title == "Cloud Clearances" }))
+        let cloudText = cloudSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(cloudText.contains("VFR weather minimums"))
+        #expect(cloudText.contains("unit restrictions"))
+
+        let sectionalSection = try #require(notes.sections.first(where: { $0.title == "Local VFR Sectional Review" }))
+        let sectionalText = sectionalSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(sectionalText.contains("sectional legend"))
+        #expect(sectionalText.contains("MEF"))
+        #expect(sectionalText.contains("divert"))
     }
 
     @MainActor

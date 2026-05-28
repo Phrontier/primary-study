@@ -2175,6 +2175,7 @@ struct ManifestBuilder {
             (#"\bEicas\b"#, "EICAS"),
             (#"\bAgsm\b"#, "AGSM"),
             (#"\bTcas\b"#, "TCAS"),
+            (#"\bImsafe\b"#, "IMSAFE"),
             (#"\bOdo/Fdo\b"#, "ODO/FDO"),
             (#"\bOlf\b"#, "OLF"),
             (#"\bScatsafe\b"#, "SCATSAFE"),

@@ -13,11 +13,11 @@
       "See & Avoid Principle"
     ],
     "“IMSAFE” checklist" : [
-      "“Imsafe” Checklist"
+      "“IMSAFE” Checklist"
     ]
   },
   "code" : "FAM6102",
-  "overview" : "This event pulls together “imsafe” checklist, crm, and see & avoid principle into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
+  "overview" : "This review sim is about judgment before the airplane ever gets busy. Be ready to brief IMSAFE, CRM, see and avoid discipline, weather and cloud-clearance judgment, and the chart knowledge that keeps those decisions tied to real airspace and terrain instead of habit.",
   "primaryDocumentTitles" : [
     "FAM6102"
   ],
@@ -27,46 +27,68 @@
       {
         "items" : [
           {
-            "text" : "helps IPs and SNAs identify issues that could impact flight safety"
+            "text" : "IMSAFE is the personal go/no-go screen that should happen before every event, not a rescue card you pull after poor planning catches up to you. If one of the categories is red, the right answer is to surface it early and honestly."
           },
           {
             "children" : [
               {
-                "text" : "Illness, Medication, Stress, Alcohol, Fatigue, Eating"
+                "text" : "Illness, Medication, Stress, Alcohol, Fatigue, and Eating all affect judgment, attention, and tolerance for workload."
               },
               {
-                "text" : "does not excuse poor planning or unpreparedness"
+                "text" : "The checklist applies to any training event, not just a flight in the aircraft."
               },
               {
-                "text" : "IP escorts SNA to the ODO"
-              },
-              {
-                "text" : "ODO gives it to the ASO or Safety Officer"
+                "text" : "If you are not fit to train, tell the instructor and duty chain immediately instead of trying to negotiate with yourself in the brief."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What it is really checking:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "IMSAFE is not a loophole for being unprepared or late. It is a safety tool for identifying real human-factor risk."
+              },
+              {
+                "text" : "The follow-on conversation should be professional and honest. The goal is to protect training quality and safety, not to punish someone for speaking up."
+              }
+            ],
+            "text" : "Study standard:"
           }
         ],
-        "title" : "“Imsafe” Checklist"
+        "title" : "“IMSAFE” Checklist"
       },
       {
         "items" : [
           {
-            "text" : "use of defined behavioral skills to:"
+            "text" : "CRM is the use of defined behavioral skills to reduce preventable errors, maximize crew coordination, and improve risk management from before the brief until after the debrief. In primary training that means both the IP and SNA are actively protecting the cockpit, even though the student is still learning to think like a single-seat pilot."
           },
           {
             "children" : [
               {
-                "text" : "Reduce preventable crew errors"
+                "text" : "Decision making: choose a sound course of action based on the actual facts, not pride or momentum."
               },
               {
-                "text" : "Maximize crew coordination"
+                "text" : "Assertiveness: speak up professionally and keep speaking until the concern is understood."
               },
               {
-                "text" : "Optimize risk management"
+                "text" : "Mission analysis: plan the short-term, long-term, and contingency versions of the event."
+              },
+              {
+                "text" : "Communication, leadership, adaptability, and situational awareness all support the same goal: a cockpit where errors are caught early instead of cleaned up late."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Core ideas to brief:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Good CRM does not remove student responsibility. It improves safety while the student is still expected to think ahead and fly the aircraft."
+              },
+              {
+                "text" : "In a fast-developing problem, clear communication and role clarity usually matter more than a perfect explanation."
+              }
+            ],
+            "text" : "How it shows up in primary:"
           }
         ],
         "title" : "CRM"
@@ -74,21 +96,35 @@
       {
         "items" : [
           {
-            "text" : "Primary defense against midair collisions"
+            "text" : "See and avoid is still the primary VFR defense against a midair collision. The lesson is not simply 'look outside more'; it is understanding how human vision fails and building a scan that works before traffic becomes urgent."
           },
           {
             "children" : [
               {
-                "text" : "Relies on vigilant visual scanning and situational awareness"
+                "text" : "Most midair collisions occur in daylight, in VMC, within about five miles of an airport, and often in crossing or overtaking situations."
               },
               {
-                "text" : "In daylight, VMC conditions"
+                "text" : "Accommodation delay means your eyes need time to refocus from the cockpit to outside traffic."
               },
               {
-                "text" : "During crossing\/overtaking maneuvers"
+                "text" : "Empty-field myopia, narrow focus, blossom effect, glare, haze, and cluttered backgrounds all make real traffic harder to see than students expect."
               }
             ],
-            "text" : "Key points:"
+            "text" : "Why pilots still miss traffic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Build a comfortable scan about 60 degrees either side of center and about 10 degrees up and down, while still clearing the rest of the area."
+              },
+              {
+                "text" : "Use TCAS to help point your eyes, but do not replace the VFR visual scan with the display."
+              },
+              {
+                "text" : "If a collision threat is immediate, displace the aircraft from its current flight path first. Collision avoidance outranks overstress concerns in that moment."
+              }
+            ],
+            "text" : "Study standard:"
           }
         ],
         "title" : "See & Avoid Principle"
@@ -96,15 +132,32 @@
       {
         "items" : [
           {
-            "text" : "Cloud Clearances matters because it changes what you brief, what you look for in the cockpit, or what the next safe decision needs to be."
+            "text" : "Cloud clearances are a judgment item, not just a legal trivia item. The point is to know the VMC margin you actually need for the airspace, altitude, and training task you are flying, then apply any unit restrictions that are more conservative than the baseline rules."
           },
           {
             "children" : [
               {
-                "text" : "TW4 SOP Guidance"
+                "text" : "Know the published VFR weather minimums and cloud-clearance requirements that apply to the airspace you expect to use."
+              },
+              {
+                "text" : "Understand that training-command or local SOP restrictions may be tighter than the bare legal minimums, especially for contact work, solo events, or outlying-field operations."
+              },
+              {
+                "text" : "If the visibility or cloud picture is forcing you to invent workarounds, you are already in a judgment problem."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What to brief:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "This item is best answered by explaining how you determine whether a VFR route, altitude, or pattern is still legal and still smart."
+              },
+              {
+                "text" : "Do not answer with one unit's local weather rule and assume that equals the full concept."
+              }
+            ],
+            "text" : "Study standard:"
           }
         ],
         "title" : "Cloud Clearances"
@@ -112,24 +165,32 @@
       {
         "items" : [
           {
-            "text" : "At SHAMROCK, slow to 200 KIAS, request straight-in; descend to 800'\/500' MSL (south\/north flow); configure below 150 KIAS; intercept extended centerline, report gear down on base\/final; descend to land IAW FTI."
+            "text" : "The local VFR sectional review should prove you can read the chart in a way that supports risk management. This is where chart literacy meets weather, traffic, airspace, and diversion planning."
           },
           {
             "children" : [
               {
-                "text" : "Student executes a homefield visual straight in"
+                "text" : "Review the sectional legend, class airspace, prominent visual checkpoints, obstacle and MEF symbology, common frequencies, and likely divert fields."
               },
               {
-                "text" : "\"Navy Corpus Tower, [Call Sign], SHAMROCK, Straight-In\""
+                "text" : "Use the chart to answer practical questions: where can I stay VFR, what airspace am I about to enter, and what is my nearest safe alternate if the weather or traffic picture changes."
               },
               {
-                "text" : "Slow to 200 KIAS"
-              },
-              {
-                "text" : "Descend and level at 800' MSL"
+                "text" : "Treat the chart as a planning and verification tool, not a prop you glance at only after getting lost."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What to review:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A strong answer connects the sectional to actual judgment: airspace, terrain, weather margins, traffic concentration, and route flexibility."
+              },
+              {
+                "text" : "A weak answer turns this into a memorized local arrival instead of a chart-reading discussion item."
+              }
+            ],
+            "text" : "Study standard:"
           }
         ],
         "title" : "Local VFR Sectional Review"
@@ -137,26 +198,26 @@
       {
         "items" : [
           {
-            "text" : "“IMSAFE” checklist"
+            "text" : "“IMSAFE” Checklist"
           },
           {
             "text" : "CRM"
           },
           {
-            "text" : "see & avoid principle"
+            "text" : "See & Avoid Principle"
           },
           {
-            "text" : "cloud clearances"
+            "text" : "Cloud Clearances"
           },
           {
-            "text" : "local VFR sectional review"
+            "text" : "Local VFR Sectional Review"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Treat “Imsafe” Checklist and CRM like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
+    "summary" : "Treat this as a judgment brief: IMSAFE, CRM, see and avoid discipline, weather margins, and chart literacy all need to reinforce each other."
   },
-  "summary" : "“Imsafe” Checklist, CRM, and See & Avoid Principle.",
-  "title" : "Risk Management and Homefield Recovery"
+  "summary" : "IMSAFE, CRM, see and avoid, weather and cloud-clearance judgment, and chart review.",
+  "title" : "Risk Management and VFR Judgment"
 }

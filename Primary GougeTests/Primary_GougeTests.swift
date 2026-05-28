@@ -240,6 +240,7 @@ struct Primary_GougeTests {
             "FAM6203": "Day Block Maneuver Review",
             "FAM6301": "Field-Use Course Rules and OLF Sequencing",
             "FAM6302": "Field-Use Course Rules and Recovery Planning",
+            "FAM6401": "PEL Profile and Emergency Branch Review",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1972,6 +1973,53 @@ struct Primary_GougeTests {
         #expect(recoveryText.contains("3- to 5-mile final"))
         #expect(recoveryText.contains("150 KIAS"))
         #expect(recoveryText.contains("straight-in"))
+    }
+
+    @MainActor
+    @Test func fam6401TurnsIntoPelProfileAndEmergencyBranchReview() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6401"])
+        #expect(event.title == "PEL Profile and Emergency Branch Review")
+        #expect(!event.overview.lowercased().contains("this event pulls together"))
+        #expect(event.summary.lowercased().contains("pel"))
+        #expect(event.summary.lowercased().contains("emergency"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "PEL Profile and Procedures",
+            "Ground, Takeoff, and Egress Emergencies",
+            "Engine Failure, Airstart, and Forced-Landing Branches",
+            "System Malfunctions That Drive a PEL",
+            "OCF, OBOGS, Smoke, and Ejection Boundaries",
+            "Required Procedures"
+        ])
+
+        let pelSection = try #require(notes.sections.first(where: { $0.title == "PEL Profile and Procedures" }))
+        let pelText = pelSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(pelText.contains("Turn, Climb or Accelerate, Clean"))
+        #expect(pelText.contains("ORM 3-2-1"))
+        #expect(pelText.contains("120 KIAS"))
+        #expect(pelText.contains("110 KIAS"))
+
+        let engineSection = try #require(notes.sections.first(where: { $0.title == "Engine Failure, Airstart, and Forced-Landing Branches" }))
+        let engineText = engineSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(engineText.contains("125 KIAS"))
+        #expect(engineText.contains("air-start"))
+        #expect(engineText.contains("forced landing"))
+
+        let systemSection = try #require(notes.sections.first(where: { $0.title == "System Malfunctions That Drive a PEL" }))
+        let systemText = systemSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(systemText.contains("chip detector"))
+        #expect(systemText.contains("boost pump"))
+        #expect(systemText.contains("land as soon as possible"))
+
+        let ejectSection = try #require(notes.sections.first(where: { $0.title == "OCF, OBOGS, Smoke, and Ejection Boundaries" }))
+        let ejectText = ejectSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(ejectText.contains("6000 feet AGL"))
+        #expect(ejectText.contains("pull the handle"))
+        #expect(ejectText.contains("OBOGS"))
     }
 
     @MainActor

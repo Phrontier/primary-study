@@ -35,7 +35,8 @@
     "FAM6202",
     "FAM6203",
     "FAM6301",
-    "FAM6302"
+    "FAM6302",
+    "FAM6401"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -1176,6 +1177,34 @@
             "Uncontrolled-Field Arrival Discipline",
             "PPEL Integration and Pattern Priority",
             "Home-Field Recovery and Straight-In Planning"
+          ]
+        }
+      ]
+    },
+    "FAM6401" : {
+      "authoringProfile" : "reviewSim",
+      "eventEmphasisKeywords" : [
+        "pel",
+        "emergency",
+        "branch"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "PEL profile and procedures",
+          "displayTitle" : "PEL Profile and Procedures",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "any EP",
+          "displayTitle" : "Ground, Takeoff, and Egress Emergencies",
+          "presentationStyle" : "knowledge",
+          "splitSectionTitles" : [
+            "Ground, Takeoff, and Egress Emergencies",
+            "Engine Failure, Airstart, and Forced-Landing Branches",
+            "System Malfunctions That Drive a PEL",
+            "OCF, OBOGS, Smoke, and Ejection Boundaries"
           ]
         }
       ]

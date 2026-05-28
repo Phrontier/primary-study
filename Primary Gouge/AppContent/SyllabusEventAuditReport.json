@@ -152,6 +152,18 @@
         "PPEL Integration and Pattern Priority",
         "Home-Field Recovery and Straight-In Planning"
       ]
+    },
+    {
+      "code" : "FAM6401",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Ground, Takeoff, and Egress Emergencies",
+        "Engine Failure, Airstart, and Forced-Landing Branches",
+        "System Malfunctions That Drive a PEL",
+        "OCF, OBOGS, Smoke, and Ejection Boundaries"
+      ]
     }
   ],
   "canonicalEventCount" : 88,
@@ -216,7 +228,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-28T17:03:06Z",
+  "generatedAt" : "2026-05-28T17:08:14Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

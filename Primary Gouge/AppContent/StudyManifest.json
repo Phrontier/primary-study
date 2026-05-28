@@ -16584,7 +16584,7 @@
                 }
               ],
               "id" : "contacts-sims-fam6401",
-              "overview" : "This event pulls together pel profile and procedures, plus any ep into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
+              "overview" : "This review sim is about flying the PEL profile cleanly while also handling the emergency branches that either feed into that profile or bypass it entirely. Be ready to brief the PEL flow, explain how PEL differs from forced landing, and then move confidently through the engine, system, ground, and ejection decisions that change the safe answer.",
               "primaryDocumentIDs" : [
 
               ],
@@ -16623,43 +16623,91 @@
                   {
                     "items" : [
                       {
-                        "text" : "Check aircraft for further indications"
+                        "text" : "The PEL is the organized recovery for an impending engine failure when power is still available. The event is checking whether you can use that power early enough to get to a paved runway instead of turning a manageable malfunction into a forced landing."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Turn, Climb, Clean, Check, BIP, Determine, Deliver, Reduce, Lower, Report"
+                            "text" : "The memory aid is Turn, Climb or Accelerate, Clean, Check, BIP, Determine, Deliver, Reduce, Lower, Report."
                           },
                           {
-                            "text" : "Initial actions (nearly simultaneous)"
+                            "text" : "Turn, Climb or Accelerate, and Clean happen nearly simultaneously and without delay."
                           },
                           {
-                            "text" : "Turn toward nearest suitable field"
-                          },
-                          {
-                            "text" : "Clean configuration (gear, flaps, speed brake up)"
+                            "text" : "Use power immediately to correct a low-energy state in a PEL. Do not delay configuration just to protect the profile if power is available."
                           }
                         ],
-                        "text" : "Immediate actions:"
+                        "text" : "Core flow:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Boost pump and Ignition - as required (ON unless airstart not warranted)"
+                            "text" : "High key is normally 3000 feet AGL with 2500 feet AGL as the flight-manual minimum intercept."
                           },
                           {
-                            "text" : "Climb or accelerate to intercept DEGA (140 KIAS climb or increase airspeed if unable to climb)"
+                            "text" : "Use ORM 3-2-1: do not descend below 2000 feet AGL in an actual forced-landing situation unless you are on profile, with the runway in sight, and in position to maneuver safely to land."
                           },
                           {
-                            "text" : "Execute PEL at or above 400’ AGL"
+                            "text" : "The final continue-or-eject decision is made by about 300 feet AGL, gear is confirmed by 200 feet AGL, and the aircraft should be on centerline by 100 feet AGL."
+                          },
+                          {
+                            "text" : "Maintain 120 KIAS minimum until intercepting final and 110 KIAS minimum on final."
                           }
                         ],
-                        "text" : "Decision cues:"
+                        "text" : "Profile gates:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Review the associated WARNINGs, CAUTIONs, and NOTEs for PEL Profile and Procedures before the event."
+                            "text" : "At high key, align with the runway and plan the wind-corrected turn toward low key."
+                          },
+                          {
+                            "text" : "At low key, aim for about two-thirds wingtip distance abeam, set torque if on profile, and do not lower flaps before low key."
+                          },
+                          {
+                            "text" : "Base key should arrive around 600 to 800 feet AGL with 120 KIAS minimum, then decelerate toward 110 KIAS minimum on final."
+                          }
+                        ],
+                        "text" : "How to talk the pattern:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "A PEL from the pattern starts at or above 400 feet AGL."
+                          },
+                          {
+                            "text" : "Turn toward the nearest suitable runway, climb at 125 KIAS using power as appropriate, and intercept the ELP at or before low key."
+                          },
+                          {
+                            "text" : "Any time the aircraft is below profile, add power as required. Do not accept a low-energy state inside low key."
+                          }
+                        ],
+                        "text" : "PEL(P) from the pattern:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not waste time troubleshooting while the engine continues to degrade."
+                          },
+                          {
+                            "text" : "Do not delay configuration in a PEL when power can correct the energy problem."
+                          },
+                          {
+                            "text" : "Wind matters more than students expect. Surface wind alone is not enough; winds at high key can change the ground track dramatically."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "WARNING: If a safe landing is unlikely, do not delay the decision to eject in an actual engine failure or wave off in the simulated event."
+                          },
+                          {
+                            "text" : "CAUTION: Pilots must not accept a low-energy state inside low key, because engine spool-up or late correction may not recover the aircraft before a hard landing."
+                          },
+                          {
+                            "text" : "NOTE: In a PEL, use available power early to regain profile rather than delaying gear or flap extension the way you would in a forced landing."
                           }
                         ],
                         "text" : "N\/W\/C focus:"
@@ -16670,87 +16718,179 @@
                   {
                     "items" : [
                       {
-                        "text" : "Treat this as a cumulative EP brief. The instructor can move quickly between recognition, memory items, and the branch logic that decides whether you continue, land, or eject."
+                        "text" : "The ground and takeoff EP set is about recognizing when the airplane is no longer worth keeping on the runway or in the pattern. Delay is usually the real hazard here."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Fire on Ground"
+                            "text" : "Abort start and emergency engine shutdown on the ground are immediate actions that stop the problem first, then transition to ground egress if the situation requires it."
                           },
                           {
-                            "text" : "Emergency Engine Shutdown on the Ground"
+                            "text" : "Emergency ground egress is a choreography problem as much as a memory problem: ISS mode, seat pins, canopy or CFS, then get everyone out in the correct order."
                           },
                           {
-                            "text" : "Emergency Ground Egress"
+                            "text" : "Abort takeoff means PCL to idle and brakes as required, but the real briefing value is recognizing the abnormal cue early enough to avoid a late, high-energy decision."
                           },
                           {
-                            "text" : "CFS and Ejection CRM"
-                          },
-                          {
-                            "text" : "Abort Takeoff"
-                          },
-                          {
-                            "text" : "Aircraft Departs Prepared Surface"
-                          },
-                          {
-                            "text" : "Engine Failure Immediately After Takeoff"
-                          },
-                          {
-                            "text" : "Engine Failure During Flight"
-                          },
-                          {
-                            "text" : "Immediate Air-Start"
-                          },
-                          {
-                            "text" : "PMU Norm Air-Start"
-                          },
-                          {
-                            "text" : "PMU Off Air-Start"
-                          },
-                          {
-                            "text" : "Uncommanded Power Changes\/LOP"
+                            "text" : "Engine failure immediately after takeoff is a branch problem: if runway remains, keep 110 knots minimum, use PCL, gear, and flaps as required, and take the straight-ahead option that preserves control."
                           }
                         ],
-                        "text" : "Expected review set:"
+                        "text" : "What to know:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Be able to state the recognition cue before you recite the steps."
+                            "text" : "During a high-speed ground event, immediate ejection may be appropriate if control is lost and the aircraft is about to overturn."
                           },
                           {
-                            "text" : "Know the associated N\/W\/Cs, not just the memory items."
-                          },
-                          {
-                            "text" : "Have a clear answer for when the EP becomes a PEL, forced-landing, or ejection problem."
+                            "text" : "Once egress or ejection is clearly warranted, do not spend the rest of your life trying to save the aircraft."
                           }
                         ],
-                        "text" : "How to study it:"
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
-                    "title" : "Any EP"
+                    "title" : "Ground, Takeoff, and Egress Emergencies"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "PEL profile and procedures"
+                        "text" : "Engine failures are where the student has to stop thinking in isolated checklist boxes and start thinking in branches: air-start warranted, PEL possible, forced landing required, or eject now."
                       },
                       {
-                        "text" : "any EP"
+                        "children" : [
+                          {
+                            "text" : "For engine failure during flight, get to 125 KIAS minimum, simulate PCL OFF, turn toward the nearest suitable field, and decide quickly whether an air-start is warranted."
+                          },
+                          {
+                            "text" : "Do not attempt an air-start for oil-system problems, chip light, fire, or obvious FOD cases."
+                          },
+                          {
+                            "text" : "If an air-start is successful, the problem becomes a PEL. If it is not, the problem becomes a forced-landing or ejection decision."
+                          }
+                        ],
+                        "text" : "Branch logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The immediate air-start and PMU NORM air-start only help if the engine indications support the attempt and you still have the altitude to use the result."
+                          },
+                          {
+                            "text" : "Uncommanded power changes, loss of power, uncommanded prop feather, and compressor stalls are all evaluated by the same question: is the remaining power sufficient to complete a PEL?"
+                          },
+                          {
+                            "text" : "If power is insufficient, stop pretending it is still a systems inconvenience and move decisively to forced landing or eject."
+                          }
+                        ],
+                        "text" : "What the instructor is checking:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Below 2000 feet AGL, air-start attempts are usually giving up the time you need to land or eject safely."
+                          },
+                          {
+                            "text" : "In a forced landing, do not descend below 2000 feet AGL unless you are on profile, runway in sight, and in position to land safely."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "Engine Failure, Airstart, and Forced-Landing Branches"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Several system malfunctions are really PEL triggers with slightly different cautions attached. The important part is understanding what they change about urgency or power handling."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Chip detector, red or persistent oil-pressure problems, low fuel pressure, and high fuel flow all point you toward a PEL."
+                          },
+                          {
+                            "text" : "For chip detector and oil-system issues, keep PCL at the minimum necessary to intercept the ELP and avoid unnecessary PCL movements."
+                          },
+                          {
+                            "text" : "For low fuel pressure, execute the PEL and turn the boost pump ON."
+                          },
+                          {
+                            "text" : "For amber-only oil indications with normal pressure, the question is whether the oil system is actually failing or just cautioning."
+                          }
+                        ],
+                        "text" : "What to know:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The hazard is false reassurance. These are the cases where students keep troubleshooting while the engine gets worse."
+                          },
+                          {
+                            "text" : "Land as soon as possible means nearest suitable field with the severity of the emergency, weather, lighting, and facilities in mind."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "System Malfunctions That Drive a PEL"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The final family is about situations where aircraft control, breathable air, visibility, or time itself may be the limiting factor. These are the emergencies that punish hesitation."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Inadvertent departure from controlled flight is PCL idle, controls neutral, altitude check, then recover from the unusual attitude. If the aircraft is actually stalled or OCF, normal unusual-attitude logic is no longer enough."
+                          },
+                          {
+                            "text" : "Smoke and fume elimination, electrical-fire response, and OBOGS failure all require you to protect the crew first, then get the aircraft descending or recovering toward a landing plan."
+                          },
+                          {
+                            "text" : "Time-critical ejection is the normal answer when the aircraft is still controllable for a few seconds but safe recovery is no longer likely. Controlled ejection is reserved for the rare case where time and aircraft control are both on your side."
+                          }
+                        ],
+                        "text" : "What to know:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If OCF is unrecoverable and you are approaching 6000 feet AGL, ejection is the answer."
+                          },
+                          {
+                            "text" : "The number one ejection-seat failure mode is pilot failure to pull the handle."
+                          },
+                          {
+                            "text" : "Once ejection has been called, if the initiator does not pull in time, the other aircrew should."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "OCF, OBOGS, Smoke, and Ejection Boundaries"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "PEL Profile and Procedures"
+                      },
+                      {
+                        "text" : "Any EP"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Keep PEL Profile and Procedures, plus Any EP organized early, then know the immediate actions, branch logic, and N\/W\/C details before you start improvising."
+                "summary" : "Treat this as a PEL and emergency-branch review: fly the profile cleanly, know when power keeps you in the game, and know when the answer changes to forced landing or eject."
               },
-              "summary" : "PEL Profile and Procedures, plus Any EP.",
+              "summary" : "PEL profile, PEL(P), forced-landing decisions, and cumulative emergency branches.",
               "tags" : [
                 "contacts",
                 "sims",
                 "fam6401"
               ],
-              "title" : "PEL and Emergency Memory Review",
+              "title" : "PEL Profile and Emergency Branch Review",
               "videoLinks" : [
 
               ]

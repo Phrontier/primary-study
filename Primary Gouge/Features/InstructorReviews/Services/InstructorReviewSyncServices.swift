@@ -2,39 +2,28 @@ import Foundation
 import Network
 import Security
 
-struct InstructorReviewRemoteConfiguration: Hashable {
-    let projectURL: URL
-    let publishableKey: String
+struct InstructorReviewBackendConfiguration: Hashable {
+    let baseURL: URL
 
-    var restBaseURL: URL {
-        projectURL.appendingPathComponent("rest/v1", isDirectory: false)
+    var apiBaseURL: URL {
+        baseURL.appending(path: "v1")
     }
 
-    var authBaseURL: URL {
-        projectURL.appendingPathComponent("auth/v1", isDirectory: false)
-    }
-
-    static func load(bundle: Bundle = .main, defaults: UserDefaults = .standard) -> InstructorReviewRemoteConfiguration? {
-        let urlString = (defaults.string(forKey: "InstructorReviewSupabaseURL")
-            ?? bundle.object(forInfoDictionaryKey: "SUPABASE_URL") as? String)?
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        let publishableKey = (
-            defaults.string(forKey: "InstructorReviewSupabasePublishableKey")
-            ?? bundle.object(forInfoDictionaryKey: "SUPABASE_PUBLISHABLE_KEY") as? String
-            ?? defaults.string(forKey: "InstructorReviewSupabaseAnonKey")
-            ?? bundle.object(forInfoDictionaryKey: "SUPABASE_ANON_KEY") as? String
-        )?
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+    static func load(bundle: Bundle = .main, defaults: UserDefaults = .standard) -> InstructorReviewBackendConfiguration? {
+        let rawURL = (
+            defaults.string(forKey: "InstructorReviewBackendURL")
+            ?? bundle.object(forInfoDictionaryKey: "INSTRUCTOR_REVIEW_BACKEND_URL") as? String
+        )?.trimmingCharacters(in: .whitespacesAndNewlines)
 
         guard
-            let urlString, !urlString.isEmpty,
-            let publishableKey, !publishableKey.isEmpty,
-            let projectURL = URL(string: urlString)
+            let rawURL,
+            !rawURL.isEmpty,
+            let baseURL = URL(string: rawURL)
         else {
             return nil
         }
 
-        return InstructorReviewRemoteConfiguration(projectURL: projectURL, publishableKey: publishableKey)
+        return InstructorReviewBackendConfiguration(baseURL: baseURL)
     }
 }
 
@@ -60,7 +49,7 @@ final class AnonymousInstructorReviewClientIdentityStore {
 
 final class ModeratorSessionStore {
     private let service = "com.primarygouge.instructorreviews.moderator"
-    private let account = "supabase-session"
+    private let account = "cloudflare-backend-session"
 
     func load() -> ModeratorSession? {
         let query: [CFString: Any] = [
@@ -228,26 +217,52 @@ final class InstructorReviewSyncCoordinator {
     }
 }
 
-final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService {
-    private struct AuthResponse: Decodable {
+final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteService {
+    private struct ModeratorCredentialsPayload: Encodable {
+        let email: String
+        let password: String
+    }
+
+    private struct RefreshPayload: Encodable {
+        let refreshToken: String
+    }
+
+    private struct SessionResponse: Decodable {
+        let email: String
         let accessToken: String
         let refreshToken: String
-        let expiresIn: TimeInterval
-        let user: AuthUser
-
-        struct AuthUser: Decodable {
-            let email: String?
-        }
+        let expiresAt: Date
 
         private enum CodingKeys: String, CodingKey {
-            case accessToken = "access_token"
-            case refreshToken = "refresh_token"
-            case expiresIn = "expires_in"
-            case user
+            case email
+            case accessToken = "accessToken"
+            case refreshToken = "refreshToken"
+            case expiresAt = "expiresAt"
         }
     }
 
-    private struct RemoteReviewRow: Codable {
+    private struct ReviewsResponse: Decodable {
+        let reviews: [RemoteReviewRecord]
+    }
+
+    private struct SubmissionStatusesResponse: Decodable {
+        let statuses: [RemoteSubmissionStatusRecord]
+    }
+
+    private struct ReportStatusesResponse: Decodable {
+        let statuses: [RemoteReportStatusRecord]
+    }
+
+    private struct ModerationQueueResponse: Decodable {
+        let pendingReviews: [RemoteReviewRecord]
+        let openReports: [RemoteReportRecord]
+    }
+
+    private struct CreatedRecordResponse: Decodable {
+        let id: String
+    }
+
+    private struct RemoteReviewRecord: Codable {
         let id: String
         let instructorName: String
         let squadronID: String
@@ -263,33 +278,33 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
 
         private enum CodingKeys: String, CodingKey {
             case id
-            case instructorName = "instructor_name"
-            case squadronID = "squadron_id"
-            case eventName = "event_name"
-            case eventKind = "event_kind"
-            case chillScore = "chill_score"
-            case gradingScore = "grading_score"
-            case reviewText = "review_text"
-            case submittedAt = "submitted_at"
+            case instructorName = "instructorName"
+            case squadronID = "squadronID"
+            case eventName = "eventName"
+            case eventKind = "eventKind"
+            case chillScore = "chillScore"
+            case gradingScore = "gradingScore"
+            case reviewText = "reviewText"
+            case submittedAt = "submittedAt"
             case status
-            case submitterClientID = "submitter_client_id"
-            case updatedAt = "updated_at"
+            case submitterClientID = "submitterClientID"
+            case updatedAt = "updatedAt"
         }
     }
 
-    private struct RemoteReviewStatusRow: Decodable {
+    private struct RemoteSubmissionStatusRecord: Decodable {
         let id: String
         let status: ReviewStatus
-        let updatedAt: Date?
+        let updatedAt: Date
 
         private enum CodingKeys: String, CodingKey {
             case id
             case status
-            case updatedAt = "updated_at"
+            case updatedAt = "updatedAt"
         }
     }
 
-    private struct RemoteReportRow: Codable {
+    private struct RemoteReportRecord: Codable {
         let id: String
         let targetKind: InstructorGougeReportTargetKind
         let instructorID: String
@@ -308,168 +323,234 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
 
         private enum CodingKeys: String, CodingKey {
             case id
-            case targetKind = "target_kind"
-            case instructorID = "instructor_id"
-            case reviewID = "review_id"
-            case instructorName = "instructor_name"
-            case squadronID = "squadron_id"
-            case eventName = "event_name"
-            case eventKind = "event_kind"
-            case reviewText = "review_text"
-            case reasonTitle = "reason_title"
+            case targetKind = "targetKind"
+            case instructorID = "instructorID"
+            case reviewID = "reviewID"
+            case instructorName = "instructorName"
+            case squadronID = "squadronID"
+            case eventName = "eventName"
+            case eventKind = "eventKind"
+            case reviewText = "reviewText"
+            case reasonTitle = "reasonTitle"
             case note
-            case submittedAt = "submitted_at"
+            case submittedAt = "submittedAt"
             case status
-            case submitterClientID = "submitter_client_id"
-            case updatedAt = "updated_at"
+            case submitterClientID = "submitterClientID"
+            case updatedAt = "updatedAt"
         }
     }
 
-    private struct RemoteReportStatusRow: Decodable {
+    private struct RemoteReportStatusRecord: Decodable {
         let id: String
         let status: InstructorGougeReportStatus
-        let updatedAt: Date?
+        let updatedAt: Date
 
         private enum CodingKeys: String, CodingKey {
             case id
             case status
-            case updatedAt = "updated_at"
+            case updatedAt = "updatedAt"
         }
     }
 
-    private let configuration: InstructorReviewRemoteConfiguration?
+    private let configuration: InstructorReviewBackendConfiguration?
     private let session: URLSession
 
     var isConfigured: Bool { configuration != nil }
 
-    init(configuration: InstructorReviewRemoteConfiguration? = InstructorReviewRemoteConfiguration.load(), session: URLSession = .shared) {
+    init(configuration: InstructorReviewBackendConfiguration? = InstructorReviewBackendConfiguration.load(), session: URLSession = .shared) {
         self.configuration = configuration
         self.session = session
     }
 
     func signInModerator(email: String, password: String) async throws -> ModeratorSession {
-        let configuration = try requireConfiguration()
-        let url = configuration.authBaseURL.appending(path: "token")
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "grant_type", value: "password")]
-
-        let body = [
-            "email": email,
-            "password": password
-        ]
-
-        let response: AuthResponse = try await send(
-            url: try requireURL(from: components),
+        let response: SessionResponse = try await send(
+            path: "moderator/sign-in",
             method: "POST",
-            body: body,
-            bearerToken: configuration.publishableKey
+            body: ModeratorCredentialsPayload(email: email, password: password),
+            bearerToken: nil
         )
-
         return ModeratorSession(
-            email: response.user.email ?? email,
+            email: response.email,
             accessToken: response.accessToken,
             refreshToken: response.refreshToken,
-            expiresAt: Date().addingTimeInterval(response.expiresIn)
+            expiresAt: response.expiresAt
         )
     }
 
     func refreshModeratorSession(_ session: ModeratorSession) async throws -> ModeratorSession {
-        let configuration = try requireConfiguration()
-        let url = configuration.authBaseURL.appending(path: "token")
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "grant_type", value: "refresh_token")]
-
-        let body = [
-            "refresh_token": session.refreshToken
-        ]
-
-        let response: AuthResponse = try await send(
-            url: try requireURL(from: components),
+        let response: SessionResponse = try await send(
+            path: "moderator/refresh",
             method: "POST",
-            body: body,
-            bearerToken: configuration.publishableKey
+            body: RefreshPayload(refreshToken: session.refreshToken),
+            bearerToken: nil
         )
-
         return ModeratorSession(
-            email: response.user.email ?? session.email,
+            email: response.email,
             accessToken: response.accessToken,
             refreshToken: response.refreshToken,
-            expiresAt: Date().addingTimeInterval(response.expiresIn)
+            expiresAt: response.expiresAt
         )
     }
 
     func fetchPublishedReviews() async throws -> [InstructorReviewRecord] {
-        let rows: [RemoteReviewRow] = try await fetchReviewRows(
-            table: "instructor_reviews",
-            filters: [
-                URLQueryItem(name: "status", value: "eq.approved"),
-                URLQueryItem(name: "order", value: "submitted_at.desc")
-            ]
+        let response: ReviewsResponse = try await send(
+            path: "reviews/published",
+            method: "GET",
+            body: Optional<Int>.none as Int?,
+            bearerToken: nil
         )
-
-        return rows.map {
-            InstructorReviewRecord(
-                id: $0.id,
-                remoteID: $0.id,
-                instructorName: $0.instructorName,
-                squadronID: $0.squadronID,
-                eventName: $0.eventName,
-                eventKind: $0.eventKind,
-                chillScore: $0.chillScore,
-                gradingScore: $0.gradingScore,
-                reviewText: $0.reviewText,
-                submittedAt: $0.submittedAt,
-                status: .approved,
-                origin: .remote,
-                syncState: .synced,
-                lastModifiedAt: $0.updatedAt ?? $0.submittedAt,
-                lastSyncedAt: Date(),
-                submitterClientID: $0.submitterClientID
-            )
-        }
+        return response.reviews.map(mapReviewRecord)
     }
 
     func fetchSubmissionStatuses(for clientID: String) async throws -> [RemoteSubmissionStatusSnapshot] {
-        let rows: [RemoteReviewStatusRow] = try await fetchDecodableRows(
-            table: "review_submissions",
-            filters: [
-                URLQueryItem(name: "submitter_client_id", value: "eq.\(clientID)"),
-                URLQueryItem(name: "select", value: "id,status,updated_at")
-            ],
-            sessionToken: nil,
-            headers: submitterHeaders(clientID: clientID)
+        let response: SubmissionStatusesResponse = try await send(
+            path: "submissions/statuses",
+            method: "GET",
+            body: Optional<Int>.none as Int?,
+            bearerToken: nil,
+            additionalHeaders: submitterHeaders(clientID: clientID)
         )
-        return rows.map {
-            RemoteSubmissionStatusSnapshot(id: $0.id, status: $0.status, updatedAt: $0.updatedAt ?? Date())
-        }
+        return response.statuses.map { RemoteSubmissionStatusSnapshot(id: $0.id, status: $0.status, updatedAt: $0.updatedAt) }
     }
 
     func fetchReportStatuses(for clientID: String) async throws -> [RemoteReportStatusSnapshot] {
-        let rows: [RemoteReportStatusRow] = try await fetchDecodableRows(
-            table: "gouge_reports",
-            filters: [
-                URLQueryItem(name: "submitter_client_id", value: "eq.\(clientID)"),
-                URLQueryItem(name: "select", value: "id,status,updated_at")
-            ],
-            sessionToken: nil,
-            headers: submitterHeaders(clientID: clientID)
+        let response: ReportStatusesResponse = try await send(
+            path: "reports/statuses",
+            method: "GET",
+            body: Optional<Int>.none as Int?,
+            bearerToken: nil,
+            additionalHeaders: submitterHeaders(clientID: clientID)
         )
-        return rows.map {
-            RemoteReportStatusSnapshot(id: $0.id, status: $0.status, updatedAt: $0.updatedAt ?? Date())
-        }
+        return response.statuses.map { RemoteReportStatusSnapshot(id: $0.id, status: $0.status, updatedAt: $0.updatedAt) }
     }
 
     func submitReview(_ record: InstructorReviewRecord, clientID: String) async throws -> String {
-        _ = try await postReviewRow(record, table: "review_submissions", clientID: clientID)
-        return record.id
+        let response: CreatedRecordResponse = try await send(
+            path: "submissions",
+            method: "POST",
+            body: reviewPayload(from: record, clientID: clientID),
+            bearerToken: nil,
+            additionalHeaders: submitterHeaders(clientID: clientID)
+        )
+        return response.id
     }
 
     func submitReport(_ record: InstructorGougeReportRecord, clientID: String) async throws -> String {
-        let configuration = try requireConfiguration()
-        let url = configuration.restBaseURL.appending(path: "gouge_reports")
+        let response: CreatedRecordResponse = try await send(
+            path: "reports",
+            method: "POST",
+            body: reportPayload(from: record, clientID: clientID),
+            bearerToken: nil,
+            additionalHeaders: submitterHeaders(clientID: clientID)
+        )
+        return response.id
+    }
 
-        let payload = RemoteReportRow(
-            id: record.id,
+    func fetchModerationQueue(session: ModeratorSession) async throws -> RemoteModerationQueueSnapshot {
+        let response: ModerationQueueResponse = try await send(
+            path: "moderation/queue",
+            method: "GET",
+            body: Optional<Int>.none as Int?,
+            bearerToken: session.accessToken
+        )
+        return RemoteModerationQueueSnapshot(
+            pendingReviews: response.pendingReviews.map(mapReviewRecord),
+            openReports: response.openReports.map(mapReportRecord)
+        )
+    }
+
+    func approveSubmission(id: String, session: ModeratorSession) async throws {
+        try await sendNoContent(
+            path: "moderation/submissions/\(id)/approve",
+            method: "POST",
+            body: Optional<Int>.none as Int?,
+            bearerToken: session.accessToken
+        )
+    }
+
+    func rejectSubmission(id: String, session: ModeratorSession) async throws {
+        try await sendNoContent(
+            path: "moderation/submissions/\(id)/reject",
+            method: "POST",
+            body: Optional<Int>.none as Int?,
+            bearerToken: session.accessToken
+        )
+    }
+
+    func dismissReport(id: String, session: ModeratorSession) async throws {
+        try await sendNoContent(
+            path: "moderation/reports/\(id)/dismiss",
+            method: "POST",
+            body: Optional<Int>.none as Int?,
+            bearerToken: session.accessToken
+        )
+    }
+
+    private func mapReviewRecord(_ review: RemoteReviewRecord) -> InstructorReviewRecord {
+        InstructorReviewRecord(
+            id: review.id,
+            remoteID: review.id,
+            instructorName: review.instructorName,
+            squadronID: review.squadronID,
+            eventName: review.eventName,
+            eventKind: review.eventKind,
+            chillScore: review.chillScore,
+            gradingScore: review.gradingScore,
+            reviewText: review.reviewText,
+            submittedAt: review.submittedAt,
+            status: review.status,
+            origin: review.status == .approved ? .remote : .localSubmission,
+            syncState: review.status == .pending ? .uploadedPending : .synced,
+            lastModifiedAt: review.updatedAt ?? review.submittedAt,
+            lastSyncedAt: Date(),
+            submitterClientID: review.submitterClientID
+        )
+    }
+
+    private func mapReportRecord(_ report: RemoteReportRecord) -> InstructorGougeReportRecord {
+        InstructorGougeReportRecord(
+            id: report.id,
+            remoteID: report.id,
+            targetKind: report.targetKind,
+            instructorID: report.instructorID,
+            reviewID: report.reviewID,
+            instructorName: report.instructorName,
+            squadronID: report.squadronID,
+            eventName: report.eventName,
+            eventKind: report.eventKind,
+            reviewText: report.reviewText,
+            reasonTitle: report.reasonTitle,
+            note: report.note,
+            submittedAt: report.submittedAt,
+            status: report.status,
+            origin: .remote,
+            syncState: report.status == .open ? .uploadedPending : .synced,
+            lastModifiedAt: report.updatedAt ?? report.submittedAt,
+            lastSyncedAt: Date(),
+            submitterClientID: report.submitterClientID
+        )
+    }
+
+    private func reviewPayload(from record: InstructorReviewRecord, clientID: String) -> RemoteReviewRecord {
+        RemoteReviewRecord(
+            id: record.remoteID ?? record.id,
+            instructorName: record.instructorName,
+            squadronID: record.squadronID,
+            eventName: record.eventName,
+            eventKind: record.eventKind,
+            chillScore: record.chillScore,
+            gradingScore: record.gradingScore,
+            reviewText: record.reviewText,
+            submittedAt: record.submittedAt,
+            status: .pending,
+            submitterClientID: clientID,
+            updatedAt: record.lastModifiedAt
+        )
+    }
+
+    private func reportPayload(from record: InstructorGougeReportRecord, clientID: String) -> RemoteReportRecord {
+        RemoteReportRecord(
+            id: record.remoteID ?? record.id,
             targetKind: record.targetKind,
             instructorID: record.instructorID,
             reviewID: record.reviewID,
@@ -485,283 +566,34 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
             submitterClientID: clientID,
             updatedAt: record.lastModifiedAt
         )
-
-        _ = try await sendNoContent(
-            url: url,
-            method: "POST",
-            body: payload,
-            bearerToken: configuration.publishableKey,
-            preferRepresentation: false,
-            headers: submitterHeaders(clientID: clientID)
-        )
-        return record.id
     }
 
-    func fetchModerationQueue(session: ModeratorSession) async throws -> RemoteModerationQueueSnapshot {
-        let pendingRows: [RemoteReviewRow] = try await fetchReviewRows(
-            table: "review_submissions",
-            filters: [
-                URLQueryItem(name: "status", value: "eq.pending"),
-                URLQueryItem(name: "order", value: "submitted_at.desc")
-            ],
-            sessionToken: session.accessToken
-        )
-
-        let reportRows: [RemoteReportRow] = try await fetchReportRows(
-            filters: [
-                URLQueryItem(name: "status", value: "eq.open"),
-                URLQueryItem(name: "order", value: "submitted_at.desc")
-            ],
-            sessionToken: session.accessToken
-        )
-
-        return RemoteModerationQueueSnapshot(
-            pendingReviews: pendingRows.map {
-                InstructorReviewRecord(
-                    id: $0.id,
-                    remoteID: $0.id,
-                    instructorName: $0.instructorName,
-                    squadronID: $0.squadronID,
-                    eventName: $0.eventName,
-                    eventKind: $0.eventKind,
-                    chillScore: $0.chillScore,
-                    gradingScore: $0.gradingScore,
-                    reviewText: $0.reviewText,
-                    submittedAt: $0.submittedAt,
-                    status: .pending,
-                    origin: .remote,
-                    syncState: .synced,
-                    lastModifiedAt: $0.updatedAt ?? $0.submittedAt,
-                    lastSyncedAt: Date(),
-                    submitterClientID: $0.submitterClientID
-                )
-            },
-            openReports: reportRows.map {
-                InstructorGougeReportRecord(
-                    id: $0.id,
-                    remoteID: $0.id,
-                    targetKind: $0.targetKind,
-                    instructorID: $0.instructorID,
-                    reviewID: $0.reviewID,
-                    instructorName: $0.instructorName,
-                    squadronID: $0.squadronID,
-                    eventName: $0.eventName,
-                    eventKind: $0.eventKind,
-                    reviewText: $0.reviewText,
-                    reasonTitle: $0.reasonTitle,
-                    note: $0.note,
-                    submittedAt: $0.submittedAt,
-                    status: .open,
-                    origin: .remote,
-                    syncState: .synced,
-                    lastModifiedAt: $0.updatedAt ?? $0.submittedAt,
-                    lastSyncedAt: Date(),
-                    submitterClientID: $0.submitterClientID
-                )
-            }
-        )
-    }
-
-    func approveSubmission(id: String, session: ModeratorSession) async throws {
-        guard let submission = try await fetchSubmission(id: id, session: session) else {
-            throw InstructorReviewRepositoryError.reviewNotFound
-        }
-
-        let configuration = try requireConfiguration()
-        let reviewsURL = configuration.restBaseURL.appending(path: "instructor_reviews")
-        let approvedRow = RemoteReviewRow(
-            id: submission.id,
-            instructorName: submission.instructorName,
-            squadronID: submission.squadronID,
-            eventName: submission.eventName,
-            eventKind: submission.eventKind,
-            chillScore: submission.chillScore,
-            gradingScore: submission.gradingScore,
-            reviewText: submission.reviewText,
-            submittedAt: submission.submittedAt,
-            status: .approved,
-            submitterClientID: submission.submitterClientID,
-            updatedAt: Date()
-        )
-
-        _ = try await sendNoContent(
-            url: reviewsURL,
-            method: "POST",
-            body: approvedRow,
-            bearerToken: session.accessToken,
-            preferRepresentation: false,
-            headers: ["Prefer": "resolution=merge-duplicates"]
-        )
-
-        try await patchReviewSubmissionStatus(id: id, status: .approved, session: session)
-    }
-
-    func rejectSubmission(id: String, session: ModeratorSession) async throws {
-        try await patchReviewSubmissionStatus(id: id, status: .rejected, session: session)
-        try await deletePublishedReview(id: id, session: session)
-        try await resolveReports(reviewID: id, session: session)
-    }
-
-    func dismissReport(id: String, session: ModeratorSession) async throws {
-        let configuration = try requireConfiguration()
-        var components = URLComponents(url: configuration.restBaseURL.appending(path: "gouge_reports"), resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "id", value: "eq.\(id)")]
-        try await sendNoContent(
-            url: try requireURL(from: components),
-            method: "PATCH",
-            body: ["status": InstructorGougeReportStatus.dismissed.rawValue, "updated_at": ISO8601DateFormatter().string(from: Date())],
-            bearerToken: session.accessToken
-        )
-    }
-
-    private func fetchSubmission(id: String, session: ModeratorSession) async throws -> RemoteReviewRow? {
-        let rows: [RemoteReviewRow] = try await fetchReviewRows(
-            table: "review_submissions",
-            filters: [
-                URLQueryItem(name: "id", value: "eq.\(id)"),
-                URLQueryItem(name: "limit", value: "1")
-            ],
-            sessionToken: session.accessToken
-        )
-        return rows.first
-    }
-
-    private func patchReviewSubmissionStatus(id: String, status: ReviewStatus, session: ModeratorSession) async throws {
-        let configuration = try requireConfiguration()
-        var components = URLComponents(url: configuration.restBaseURL.appending(path: "review_submissions"), resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "id", value: "eq.\(id)")]
-        try await sendNoContent(
-            url: try requireURL(from: components),
-            method: "PATCH",
-            body: ["status": status.rawValue, "updated_at": ISO8601DateFormatter().string(from: Date())],
-            bearerToken: session.accessToken
-        )
-    }
-
-    private func deletePublishedReview(id: String, session: ModeratorSession) async throws {
-        let configuration = try requireConfiguration()
-        var components = URLComponents(url: configuration.restBaseURL.appending(path: "instructor_reviews"), resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "id", value: "eq.\(id)")]
-        try await sendNoContent(
-            url: try requireURL(from: components),
-            method: "DELETE",
-            body: Optional<Int>.none as Int?,
-            bearerToken: session.accessToken
-        )
-    }
-
-    private func resolveReports(reviewID: String, session: ModeratorSession) async throws {
-        let configuration = try requireConfiguration()
-        var components = URLComponents(url: configuration.restBaseURL.appending(path: "gouge_reports"), resolvingAgainstBaseURL: false)
-        components?.queryItems = [
-            URLQueryItem(name: "review_id", value: "eq.\(reviewID)"),
-            URLQueryItem(name: "status", value: "eq.open")
-        ]
-        try await sendNoContent(
-            url: try requireURL(from: components),
-            method: "PATCH",
-            body: ["status": InstructorGougeReportStatus.resolved.rawValue, "updated_at": ISO8601DateFormatter().string(from: Date())],
-            bearerToken: session.accessToken
-        )
-    }
-
-    private func fetchReviewRows(
-        table: String,
-        filters: [URLQueryItem],
-        sessionToken: String? = nil,
-        headers: [String: String] = [:]
-    ) async throws -> [RemoteReviewRow] {
-        try await fetchDecodableRows(table: table, filters: filters, sessionToken: sessionToken, headers: headers)
-    }
-
-    private func fetchReportRows(
-        filters: [URLQueryItem],
-        sessionToken: String?,
-        headers: [String: String] = [:]
-    ) async throws -> [RemoteReportRow] {
-        try await fetchDecodableRows(table: "gouge_reports", filters: filters, sessionToken: sessionToken, headers: headers)
-    }
-
-    private func fetchDecodableRows<T: Decodable>(
-        table: String,
-        filters: [URLQueryItem],
-        sessionToken: String?,
-        headers: [String: String] = [:]
-    ) async throws -> [T] {
-        let configuration = try requireConfiguration()
-        var components = URLComponents(url: configuration.restBaseURL.appending(path: table), resolvingAgainstBaseURL: false)
-        var queryItems = filters
-        if !queryItems.contains(where: { $0.name == "select" }) {
-            queryItems.insert(URLQueryItem(name: "select", value: "*"), at: 0)
-        }
-        components?.queryItems = queryItems
-        return try await send(
-            url: try requireURL(from: components),
-            method: "GET",
-            body: Optional<Int>.none as Int?,
-            bearerToken: sessionToken ?? configuration.publishableKey,
-            headers: headers
-        )
-    }
-
-    private func postReviewRow(_ record: InstructorReviewRecord, table: String, clientID: String) async throws -> String {
-        let configuration = try requireConfiguration()
-        let url = configuration.restBaseURL.appending(path: table)
-
-        let payload = RemoteReviewRow(
-            id: record.remoteID ?? record.id,
-            instructorName: record.instructorName,
-            squadronID: record.squadronID,
-            eventName: record.eventName,
-            eventKind: record.eventKind,
-            chillScore: record.chillScore,
-            gradingScore: record.gradingScore,
-            reviewText: record.reviewText,
-            submittedAt: record.submittedAt,
-            status: record.status,
-            submitterClientID: clientID,
-            updatedAt: record.lastModifiedAt
-        )
-
-        _ = try await sendNoContent(
-            url: url,
-            method: "POST",
-            body: payload,
-            bearerToken: configuration.publishableKey,
-            preferRepresentation: false,
-            headers: submitterHeaders(clientID: clientID)
-        )
-        return payload.id
-    }
-
-    private func requireConfiguration() throws -> InstructorReviewRemoteConfiguration {
+    private func requireConfiguration() throws -> InstructorReviewBackendConfiguration {
         guard let configuration else {
             throw InstructorReviewRepositoryError.remoteNotConfigured
         }
         return configuration
     }
 
-    private func requireURL(from components: URLComponents?) throws -> URL {
-        guard let url = components?.url else {
-            throw URLError(.badURL)
-        }
-        return url
+    private func endpointURL(for path: String) throws -> URL {
+        try requireConfiguration().apiBaseURL.appending(path: path)
     }
 
     private func send<T: Decodable, Body: Encodable>(
-        url: URL,
+        path: String,
         method: String,
         body: Body?,
-        bearerToken: String,
-        headers: [String: String] = [:]
+        bearerToken: String?,
+        additionalHeaders: [String: String] = [:]
     ) async throws -> T {
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: try endpointURL(for: path))
         request.httpMethod = method
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(try requireConfiguration().publishableKey, forHTTPHeaderField: "apikey")
-        request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-        headers.forEach { request.setValue($1, forHTTPHeaderField: $0) }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let bearerToken {
+            request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        }
+        additionalHeaders.forEach { request.setValue($1, forHTTPHeaderField: $0) }
         if let body {
             request.httpBody = try JSONEncoder.reviewEncoder.encode(body)
         }
@@ -772,20 +604,20 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
     }
 
     private func sendNoContent<Body: Encodable>(
-        url: URL,
+        path: String,
         method: String,
         body: Body?,
-        bearerToken: String,
-        preferRepresentation: Bool = true,
-        headers: [String: String] = [:]
+        bearerToken: String?,
+        additionalHeaders: [String: String] = [:]
     ) async throws {
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: try endpointURL(for: path))
         request.httpMethod = method
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(preferRepresentation ? "return=representation" : "return=minimal", forHTTPHeaderField: "Prefer")
-        request.setValue(try requireConfiguration().publishableKey, forHTTPHeaderField: "apikey")
-        request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-        headers.forEach { request.setValue($1, forHTTPHeaderField: $0) }
+        if let bearerToken {
+            request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        }
+        additionalHeaders.forEach { request.setValue($1, forHTTPHeaderField: $0) }
         if let body {
             request.httpBody = try JSONEncoder.reviewEncoder.encode(body)
         }
@@ -800,11 +632,11 @@ final class SupabaseInstructorReviewRemoteService: InstructorReviewRemoteService
         }
 
         guard (200..<300).contains(httpResponse.statusCode) else {
-            let message = String(data: data, encoding: .utf8)
+            let message = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
             throw NSError(
                 domain: "InstructorReviewRemoteService",
                 code: httpResponse.statusCode,
-                userInfo: [NSLocalizedDescriptionKey: message?.isEmpty == false ? message! : "Supabase request failed."]
+                userInfo: [NSLocalizedDescriptionKey: message?.isEmpty == false ? message! : "Instructor review backend request failed."]
             )
         }
     }

@@ -27,7 +27,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         connectivityMonitor: InstructorReviewConnectivityMonitor? = nil
     ) {
         let resolvedLocalRepository = localRepository ?? LocalInstructorReviewRepository()
-        let resolvedRemoteService = remoteService ?? SupabaseInstructorReviewRemoteService()
+        let resolvedRemoteService = remoteService ?? CloudflareInstructorReviewRemoteService()
         let resolvedSessionStore = sessionStore ?? ModeratorSessionStore()
         let resolvedClientIdentityStore = clientIdentityStore ?? AnonymousInstructorReviewClientIdentityStore()
         let resolvedConnectivityMonitor = connectivityMonitor ?? InstructorReviewConnectivityMonitor()
@@ -171,7 +171,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
             syncStatus = InstructorReviewSyncStatus(
                 phase: .offline,
                 lastSyncedAt: localRepository.lastSuccessfulSyncAt(),
-                errorMessage: "Supabase is not configured."
+                errorMessage: "Instructor review sync backend is not configured."
             )
             return
         }

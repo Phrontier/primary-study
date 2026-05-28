@@ -33,7 +33,8 @@
     "FAM6102",
     "FAM6201",
     "FAM6202",
-    "FAM6203"
+    "FAM6203",
+    "FAM6301"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -1128,6 +1129,29 @@
             "Low-Speed Handling Review",
             "Pattern and Crosswind Review",
             "Energy and Recovery Review"
+          ]
+        }
+      ]
+    },
+    "FAM6301" : {
+      "authoringProfile" : "reviewSim",
+      "eventEmphasisKeywords" : [
+        "course rules",
+        "olf",
+        "sequencing"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "OLF Course rules for field of use",
+          "displayTitle" : "Course-Rule Mindset",
+          "presentationStyle" : "local-generalized",
+          "splitSectionTitles" : [
+            "Course-Rule Mindset",
+            "OLF Entry and Break Sequencing",
+            "Departure and Transition Discipline",
+            "Pattern Saturation, Priority, and PEL Integration"
           ]
         }
       ]

@@ -238,6 +238,7 @@ struct Primary_GougeTests {
             "FAM6201": "Low-Speed Handling and Energy Management",
             "FAM6202": "Outlying Pattern Entries and Crosswind Operations",
             "FAM6203": "Day Block Maneuver Review",
+            "FAM6301": "Field-Use Course Rules and OLF Sequencing",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1868,6 +1869,56 @@ struct Primary_GougeTests {
         let energyText = energySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(energyText.contains("trim"))
         #expect(energyText.contains("reset"))
+    }
+
+    @MainActor
+    @Test func fam6301TurnsIntoFieldUseCourseRulesAndSequencingReview() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6301"])
+        #expect(event.title == "Field-Use Course Rules and OLF Sequencing")
+        #expect(!event.overview.lowercased().contains("use this event as"))
+        #expect(event.summary.lowercased().contains("course rules"))
+        #expect(event.summary.lowercased().contains("olf"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Course-Rule Mindset",
+            "OLF Entry and Break Sequencing",
+            "Departure and Transition Discipline",
+            "Pattern Saturation, Priority, and PEL Integration",
+            "Required Procedures"
+        ])
+
+        let combinedText = notes.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ").lowercased()
+        for forbidden in ["rusty", "goliad", "corpus", "shamrock", "woodsboro", "bayside", "berclair", "high bridge", "kngt", "krkp"] {
+            #expect(!combinedText.contains(forbidden))
+        }
+
+        let courseRulesSection = try #require(notes.sections.first(where: { $0.title == "Course-Rule Mindset" }))
+        let courseRulesText = courseRulesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(courseRulesText.contains("day-of brief"))
+        #expect(courseRulesText.contains("local procedure"))
+
+        let entrySection = try #require(notes.sections.first(where: { $0.title == "OLF Entry and Break Sequencing" }))
+        let entryText = entrySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(entryText.contains("two-way communications"))
+        #expect(entryText.contains("interval"))
+
+        let departureSection = try #require(notes.sections.first(where: { $0.title == "Departure and Transition Discipline" }))
+        let departureText = departureSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(departureText.contains("number one Upwind"))
+        #expect(departureText.contains("120 KIAS"))
+        #expect(departureText.contains("150 KIAS"))
+
+        let prioritySection = try #require(notes.sections.first(where: { $0.title == "Pattern Saturation, Priority, and PEL Integration" }))
+        let priorityText = prioritySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(priorityText.contains("PEL"))
+        #expect(priorityText.contains("priority"))
+        #expect(priorityText.contains("reset"))
     }
 
     @MainActor

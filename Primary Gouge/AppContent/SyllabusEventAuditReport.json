@@ -128,6 +128,18 @@
         "Pattern and Crosswind Review",
         "Energy and Recovery Review"
       ]
+    },
+    {
+      "code" : "FAM6301",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Course-Rule Mindset",
+        "OLF Entry and Break Sequencing",
+        "Departure and Transition Discipline",
+        "Pattern Saturation, Priority, and PEL Integration"
+      ]
     }
   ],
   "canonicalEventCount" : 88,
@@ -192,7 +204,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-28T02:55:57Z",
+  "generatedAt" : "2026-05-28T17:00:19Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

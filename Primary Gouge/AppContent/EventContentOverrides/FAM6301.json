@@ -1,11 +1,14 @@
 {
   "canonicalCoverage" : {
     "OLF Course rules for field of use" : [
-      "OLF Course Rules For Field of Use"
+      "Course-Rule Mindset",
+      "OLF Entry and Break Sequencing",
+      "Departure and Transition Discipline",
+      "Pattern Saturation, Priority, and PEL Integration"
     ]
   },
   "code" : "FAM6301",
-  "overview" : "Use this event as a cumulative review of rusty and goliad course rules. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
+  "overview" : "This review sim is about understanding field-use course rules well enough to enter, sequence, depart, and reset at an outlying field without leaning on memorized local nicknames. Be ready to brief the logic behind the entry, break, departure, and pattern-priority rules, then explain what must always be verified from the current local procedure before flight.",
   "primaryDocumentTitles" : [
     "FAM6301"
   ],
@@ -15,36 +18,130 @@
       {
         "items" : [
           {
-            "text" : "VFR NORTH - state intentions, request FF or terminate"
+            "text" : "Field-use course rules exist to make a busy training pattern predictable. The actual route names, channels, landmarks, and holding points are local, but the study standard is understanding how the system keeps traffic sequenced and deconflicted."
           },
           {
             "children" : [
               {
-                "text" : "Goliad"
+                "text" : "Know what must be briefed before launch: duty runway logic, local altitude and airspeed gates, where the handoff between controlling agencies happens, and what the field uses for entry, break, and departure sequencing."
               },
               {
-                "text" : "Arrival Procedures"
+                "text" : "Treat remote-operator, tower, or CTAF details as field-specific layers to confirm from the current SOP or day-of brief, not as universal aviation rules."
               },
               {
-                "text" : "“(Call Sign), numbers (RWY #).”"
+                "text" : "The point is not to memorize one hometown route forever. The point is to know how to verify the current local procedure and then fly it without improvising."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What stays universal:"
           }
         ],
-        "title" : "OLF Course Rules For Field of Use"
+        "title" : "Course-Rule Mindset"
       },
       {
         "items" : [
           {
-            "text" : "OLF Course rules for field of use"
+            "text" : "A good OLF entry starts long before the break. You should already know the duty runway, the expected initial-point geometry, and what communication must happen before you can keep coming in."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Arrive at the initial point on or parallel to the extended runway centerline, on runway heading, wings level, and at the locally briefed break altitude and airspeed."
+              },
+              {
+                "text" : "Make the appropriate initial call, confirm the traffic and runway picture, and do not continue inbound for the break without two-way communications."
+              },
+              {
+                "text" : "Build break interval early. Once the pattern is busy, trying to solve spacing late usually creates the next traffic problem instead of fixing the first one."
+              }
+            ],
+            "text" : "What good looks like:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the field is saturated, the traffic picture is unclear, or the required call is not acknowledged by the local decision point, discontinue the entry and re-sequence."
+              },
+              {
+                "text" : "Pattern priority belongs to aircraft already established correctly in the break or pattern, not to the aircraft trying to force its way in with a late call."
+              },
+              {
+                "text" : "Local procedures decide the exact reporting points, offsets, and break-call language."
+              }
+            ],
+            "text" : "Study standard:"
+          }
+        ],
+        "title" : "OLF Entry and Break Sequencing"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Departure course rules are about leaving the field in a way that keeps you clear of runway traffic before you start accelerating, climbing, and rejoining the larger local flow."
+          },
+          {
+            "children" : [
+              {
+                "text" : "You are number one for departure only when you are number one Upwind, not simply because interval exists somewhere else in the pattern."
+              },
+              {
+                "text" : "Do not start the departure until safely airborne, past the departure end as defined by the local procedure, and at least 120 KIAS."
+              },
+              {
+                "text" : "Check airspeed below 150 KIAS, raise the gear and flaps, make the departure call, and then comply with the published departure geometry before accelerating or turning farther onto course."
+              }
+            ],
+            "text" : "What to brief:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A common error is acting like departure starts the moment the wheels leave the runway. The field still owns the problem until the airplane is configured, clear, and on the correct departure path."
+              },
+              {
+                "text" : "The exact climb headings, checkpoints, and transition routes are local items to confirm from the current procedure."
+              },
+              {
+                "text" : "If you are not number one Upwind, stay disciplined and let the sequencing picture resolve before you try to leave."
+              }
+            ],
+            "text" : "Study standard:"
+          }
+        ],
+        "title" : "Departure and Transition Discipline"
+      },
+      {
+        "items" : [
+          {
+            "text" : "This part of the brief is really about judgment. Busy patterns only stay safe when pilots know who has priority, when to hold or reset, and when special traffic like PEL work changes the normal answer."
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the pattern is full, use the locally authorized hold, reset, or re-entry procedure instead of improvising a new one."
+              },
+              {
+                "text" : "Practice emergency traffic and descending PEL traffic must be deconflicted positively; normal touch-and-go flow does not outrank aircraft with higher-priority pattern work."
+              },
+              {
+                "text" : "A mature answer explains when you keep the entry, when you discontinue and try again, and when you leave entirely to rebuild the picture with the controlling agency."
+              }
+            ],
+            "text" : "What the instructor is checking:"
+          }
+        ],
+        "title" : "Pattern Saturation, Priority, and PEL Integration"
+      },
+      {
+        "items" : [
+          {
+            "text" : "OLF Course Rules For Field of Use"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Treat Rusty and Goliad Course Rules like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
+    "summary" : "Treat this as a field-use course-rules review: enter with the right picture, build interval early, depart only when the pattern lets you, and reset instead of forcing a bad sequence."
   },
-  "summary" : "OLF Course Rules For Field of Use.",
-  "title" : "Rusty and Goliad Course Rules"
+  "summary" : "Field-use course rules, OLF sequencing, departure discipline, and pattern-priority judgment.",
+  "title" : "Field-Use Course Rules and OLF Sequencing"
 }

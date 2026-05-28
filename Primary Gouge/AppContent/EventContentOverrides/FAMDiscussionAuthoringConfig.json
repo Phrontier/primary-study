@@ -32,7 +32,8 @@
     "FAM6101",
     "FAM6102",
     "FAM6201",
-    "FAM6202"
+    "FAM6202",
+    "FAM6203"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -1105,6 +1106,29 @@
           "discussionItem" : "wave-off",
           "displayTitle" : "Wave-Off",
           "presentationStyle" : "procedure"
+        }
+      ]
+    },
+    "FAM6203" : {
+      "authoringProfile" : "reviewSim",
+      "eventEmphasisKeywords" : [
+        "block",
+        "review",
+        "maneuver"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Any maneuver performed in this block",
+          "displayTitle" : "Review Strategy",
+          "presentationStyle" : "knowledge",
+          "splitSectionTitles" : [
+            "Review Strategy",
+            "Low-Speed Handling Review",
+            "Pattern and Crosswind Review",
+            "Energy and Recovery Review"
+          ]
         }
       ]
     }

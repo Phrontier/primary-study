@@ -237,6 +237,7 @@ struct Primary_GougeTests {
             "FAM6102": "Risk Management and VFR Judgment",
             "FAM6201": "Low-Speed Handling and Energy Management",
             "FAM6202": "Outlying Pattern Entries and Crosswind Operations",
+            "FAM6203": "Day Block Maneuver Review",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1823,6 +1824,50 @@ struct Primary_GougeTests {
         #expect(waveoffText.contains("120 KIAS"))
         #expect(waveoffText.contains("45 degrees of bank"))
         #expect(waveoffText.contains("Do not change your mind"))
+    }
+
+    @MainActor
+    @Test func fam6203TurnsIntoDayBlockManeuverReview() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6203"])
+        #expect(event.title == "Day Block Maneuver Review")
+        #expect(!event.overview.lowercased().contains("this event pulls together"))
+        #expect(event.summary.lowercased().contains("block"))
+        #expect(event.summary.lowercased().contains("energy"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Review Strategy",
+            "Low-Speed Handling Review",
+            "Pattern and Crosswind Review",
+            "Energy and Recovery Review",
+            "Required Procedures"
+        ])
+
+        let combinedText = notes.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ").lowercased()
+        for forbidden in ["goliad", "waldron", "aransas", "ingleside", "corpus", "rusty", "camel humps", "shrimp ponds"] {
+            #expect(!combinedText.contains(forbidden))
+        }
+
+        let lowSpeedSection = try #require(notes.sections.first(where: { $0.title == "Low-Speed Handling Review" }))
+        let lowSpeedText = lowSpeedSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(lowSpeedText.contains("Three Cs"))
+        #expect(lowSpeedText.contains("SCATSAFE"))
+        #expect(lowSpeedText.contains("Slip"))
+
+        let patternSection = try #require(notes.sections.first(where: { $0.title == "Pattern and Crosswind Review" }))
+        let patternText = patternSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(patternText.contains("two-way communications"))
+        #expect(patternText.contains("Wave-off"))
+
+        let energySection = try #require(notes.sections.first(where: { $0.title == "Energy and Recovery Review" }))
+        let energyText = energySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(energyText.contains("trim"))
+        #expect(energyText.contains("reset"))
     }
 
     @MainActor

@@ -1,11 +1,14 @@
 {
   "canonicalCoverage" : {
     "Any maneuver performed in this block" : [
-      "Any Maneuver Performed in This Block"
+      "Review Strategy",
+      "Low-Speed Handling Review",
+      "Pattern and Crosswind Review",
+      "Energy and Recovery Review"
     ]
   },
   "code" : "FAM6203",
-  "overview" : "Use this event as a cumulative review of block maneuver review. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
+  "overview" : "This review sim is about being ready for any core maneuver from the FAM6200 block without needing a restart between topics. Be ready to move between low-speed handling, outlying-pattern work, crosswind corrections, and energy management while keeping the same disciplined setup, scan, and recovery habits every time.",
   "primaryDocumentTitles" : [
     "FAM6203"
   ],
@@ -15,54 +18,105 @@
       {
         "items" : [
           {
-            "text" : "Treat this as a cumulative maneuver brief. You should be able to move from setup to recovery without needing a rescue cue once the instructor picks the maneuver."
+            "text" : "This event is not looking for isolated trivia. It is checking whether you can take any maneuver from the block, build a clean setup, and talk through the execution and recovery without getting lost in your own reset."
           },
           {
             "children" : [
               {
-                "text" : "Safety Check\/Call Prior to Cockpit Entry and Departing Aircraft"
+                "text" : "Start every answer with the purpose of the maneuver, the setup picture, and the key safety boundaries."
               },
               {
-                "text" : "Runaway Trim"
+                "text" : "If the instructor jumps from one maneuver family to another, your discipline should stay the same: configuration, checklist, clear area, entry cues, execution, completion cues, and the likely errors."
               },
               {
-                "text" : "Normal Takeoff"
-              },
-              {
-                "text" : "Local Area Departure"
-              },
-              {
-                "text" : "Integrated (Vmc) Scan"
-              },
-              {
-                "text" : "Turn Pattern"
-              },
-              {
-                "text" : "Level Speed Change"
-              },
-              {
-                "text" : "Power-on Stalls"
+                "text" : "A cumulative review sim rewards organization more than volume. Brief what matters first."
               }
             ],
-            "text" : "Be ready to brief:"
-          },
-          {
-            "text" : "Know the entry picture, the recovery picture, and the common grading misses for each maneuver you expect to be fair game."
+            "text" : "How to study it:"
           }
         ],
-        "title" : "Any Maneuver Performed in This Block"
+        "title" : "Review Strategy"
       },
       {
         "items" : [
           {
-            "text" : "Any maneuver performed in this block"
+            "text" : "The low-speed side of the block is built around the same idea: once the aircraft is slow and close to stall, trim, coordination, and patience matter more than aggressive control movement."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Be able to explain the Three Cs before any stall-series or low-speed maneuver."
+              },
+              {
+                "text" : "Slow Flight and SCATSAFE should sound natural together: configuration discipline, checklist timing, clearing turns, trim use, and recognition of what the airplane is telling you near stall."
+              },
+              {
+                "text" : "A slip is still part of the same family. Know the entry airspeeds, why sink rate builds so quickly, and why smooth recovery with altitude remaining matters."
+              }
+            ],
+            "text" : "What should already be automatic:"
+          }
+        ],
+        "title" : "Low-Speed Handling Review"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The pattern side of the block is about orderly entry, concise radio work, and recognizing when a runway picture is stable enough to keep or bad enough to wave off."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For OLF entry, you should be able to describe the general initial-point picture, the need for two-way communications before the break, and the decision to discontinue an entry that is not coming together safely."
+              },
+              {
+                "text" : "For OLF/RDO communication, know how to make an initial call, what information you are trying to get back, and why the pattern only works when everyone is explicit about position and intention."
+              },
+              {
+                "text" : "For crosswind takeoffs and landings, keep the wing-low logic straight: stop drift, align the nose, and keep adjusting aileron and rudder as the airplane speeds up or slows down."
+              },
+              {
+                "text" : "Wave-off judgment is part of the same review. An unstable, drifting, overshooting, or traffic-conflicted approach should already sound like a take-it-around call."
+              }
+            ],
+            "text" : "What should already be automatic:"
+          }
+        ],
+        "title" : "Pattern and Crosswind Review"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Energy and recovery discipline tie the whole block together. The review sim is usually lost when students stop thinking about total energy and start reacting one control input late."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Know the practical energy picture: what altitude and airspeed buy you, when you should be slowing down deliberately, and when you need to stop throwing away energy you will have to rebuild."
+              },
+              {
+                "text" : "Keep trim and coordination in every answer. Many block maneuvers go bad for simple reasons like poor trim, an uncentered ball, or failure to clear the area before starting."
+              },
+              {
+                "text" : "A mature answer also says when to stop salvaging a bad setup. Discontinue the approach, re-sequence the entry, or reset the maneuver instead of compounding errors."
+              }
+            ],
+            "text" : "What the instructor is really checking:"
+          }
+        ],
+        "title" : "Energy and Recovery Review"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Any Maneuver Performed in This Block"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Treat Block Maneuver Review like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
+    "summary" : "Treat this as a cumulative block review: low-speed handling, pattern work, crosswind control, and energy discipline all need to connect without a reset."
   },
-  "summary" : "Any Maneuver Performed in This Block.",
-  "title" : "Block Maneuver Review"
+  "summary" : "Any maneuver from the FAM6200 block, with emphasis on low-speed handling, pattern work, and energy discipline.",
+  "title" : "Day Block Maneuver Review"
 }

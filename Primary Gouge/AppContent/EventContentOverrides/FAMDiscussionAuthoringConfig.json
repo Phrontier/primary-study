@@ -25,7 +25,8 @@
     "FAM4304",
     "FAM4490",
     "FAM4501",
-    "FAM4601"
+    "FAM4601",
+    "FAM4701"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -838,6 +839,55 @@
           "discussionItem" : "any previously discussed maneuver or procedure",
           "displayTitle" : "Any Previously Discussed Maneuver or Procedure",
           "presentationStyle" : "knowledge"
+        }
+      ]
+    },
+    "FAM4701" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "aerobatic",
+        "ocf",
+        "unusual attitude"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "OCF recovery procedures",
+          "displayTitle" : "OCF Recovery Procedures",
+          "presentationStyle" : "recovery"
+        },
+        {
+          "discussionItem" : "contact unusual attitudes",
+          "displayTitle" : "Contact Unusual Attitudes",
+          "presentationStyle" : "recovery",
+          "subsections" : [
+            {
+              "title" : "Nose-High"
+            },
+            {
+              "title" : "Nose-Low"
+            },
+            {
+              "title" : "Inverted"
+            }
+          ]
+        },
+        {
+          "discussionItem" : "all aerobatic maneuvers",
+          "displayTitle" : "All Aerobatic Maneuvers",
+          "presentationStyle" : "maneuver",
+          "splitSectionTitles" : [
+            "Aileron Roll",
+            "Loop",
+            "Half Cuban Eight",
+            "Immelmann",
+            "Split-S",
+            "Wingover",
+            "Barrel Roll",
+            "Combination Maneuver",
+            "Inverted Flight"
+          ]
         }
       ]
     }

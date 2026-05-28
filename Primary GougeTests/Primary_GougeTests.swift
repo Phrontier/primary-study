@@ -230,6 +230,7 @@ struct Primary_GougeTests {
             "FAM2202": "Systems Emergencies",
             "FAM4304": "Solo Preparation and Boundaries",
             "FAM4601": "Night Contact Fundamentals",
+            "FAM4701": "Aerobatics and OCF Recovery",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1419,6 +1420,79 @@ struct Primary_GougeTests {
         #expect(systemsText.contains("42-amp-hour"))
         #expect(systemsText.contains("5-amp-hour"))
         #expect(systemsText.contains("30 minutes"))
+    }
+
+    @MainActor
+    @Test func fam4701SplitsAerobaticManeuversWithoutLosingOCFLogic() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4701"])
+        #expect(event.title == "Aerobatics and OCF Recovery")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(event.summary.lowercased().contains("aerobatic"))
+        #expect(event.summary.lowercased().contains("ocf"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "OCF Recovery Procedures",
+            "Contact Unusual Attitudes",
+            "Aileron Roll",
+            "Loop",
+            "Half Cuban Eight",
+            "Immelmann",
+            "Split-S",
+            "Wingover",
+            "Barrel Roll",
+            "Combination Maneuver",
+            "Inverted Flight",
+            "Required Procedures"
+        ])
+
+        let ocfSection = try #require(notes.sections.first(where: { $0.title == "OCF Recovery Procedures" }))
+        let ocfText = ocfSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(ocfText.contains("120 to 135 KIAS"))
+        #expect(ocfText.contains("controls physically neutral"))
+        #expect(ocfText.contains("6000 feet AGL"))
+        let ocfRecoveryItem = try #require(ocfSection.items.first(where: { $0.text == "Recovery:" }))
+        let ocfRecoveryText = (ocfRecoveryItem.children ?? []).map(\.text).joined(separator: " ").lowercased()
+        #expect(!ocfRecoveryText.contains("eject"))
+
+        let uaSection = try #require(notes.sections.first(where: { $0.title == "Contact Unusual Attitudes" }))
+        #expect(uaSection.items.contains(where: { $0.text == "Nose-High:" }))
+        #expect(uaSection.items.contains(where: { $0.text == "Nose-Low:" }))
+        #expect(uaSection.items.contains(where: { $0.text == "Inverted:" }))
+
+        for title in ["Aileron Roll", "Loop", "Half Cuban Eight", "Immelmann", "Split-S", "Wingover", "Barrel Roll", "Combination Maneuver", "Inverted Flight"] {
+            let section = try #require(notes.sections.first(where: { $0.title == title }))
+            #expect(section.items.contains(where: { $0.text == "Entry setup:" }))
+            #expect(section.items.contains(where: { $0.text == "Execution:" }))
+            #expect(section.items.contains(where: { $0.text == "Maneuver complete when:" }))
+        }
+
+        let loopSection = try #require(notes.sections.first(where: { $0.title == "Loop" }))
+        let loopText = loopSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(loopText.contains("230 to 250 KIAS"))
+        #expect(loopText.contains("4 G"))
+        #expect(loopText.contains("180 KIAS"))
+
+        let wingoverSection = try #require(notes.sections.first(where: { $0.title == "Wingover" }))
+        let wingoverText = wingoverSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(wingoverText.contains("70 percent PCL"))
+        #expect(wingoverText.contains("45 degrees nose high"))
+        #expect(wingoverText.contains("90 degrees of bank"))
+
+        let invertedSection = try #require(notes.sections.first(where: { $0.title == "Inverted Flight" }))
+        let invertedText = invertedSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(invertedText.contains("60 seconds"))
+        #expect(invertedText.contains("oil pressure"))
+
+        let requiredSection = try #require(notes.sections.last)
+        #expect(requiredSection.items.map(\.text) == [
+            "OCF Recovery Procedures",
+            "Contact Unusual Attitudes",
+            "All Aerobatic Maneuvers"
+        ])
     }
 
     @MainActor

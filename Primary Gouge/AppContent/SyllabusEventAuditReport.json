@@ -99,6 +99,23 @@
       "unexpectedPrimaryItems" : [
         "Ejection Decision and Setup"
       ]
+    },
+    {
+      "code" : "FAM4701",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Aileron Roll",
+        "Loop",
+        "Half Cuban Eight",
+        "Immelmann",
+        "Split-S",
+        "Wingover",
+        "Barrel Roll",
+        "Combination Maneuver",
+        "Inverted Flight"
+      ]
     }
   ],
   "canonicalEventCount" : 88,
@@ -163,7 +180,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-21T21:34:25Z",
+  "generatedAt" : "2026-05-28T02:21:08Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

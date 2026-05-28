@@ -22851,7 +22851,7 @@
                 }
               ],
               "id" : "contacts-flights-fam4701",
-              "overview" : "This event ties together ocf recovery procedures, contact unusual attitudes, and all aerobatic maneuvers in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+              "overview" : "This is the first full aerobatics event, and the safety logic has to be just as automatic as the maneuver setup. Be ready to brief how to tell the difference between a recoverable unusual attitude and true OCF, then talk through each aerobatic maneuver by entry data, outside picture, and completion cues.",
               "primaryDocumentIDs" : [
 
               ],
@@ -22890,49 +22890,99 @@
                   {
                     "items" : [
                       {
-                        "text" : "OCF Recovery Procedures is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                        "text" : "OCF is a stalled or departed condition where normal control inputs may be ineffective or even make the departure worse. The study goal is to recognize it early, stop improvising, and execute the published recovery without chasing sensations."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "Poststall gyrations show rapid uncommanded motions, erratic airspeed, stalled AOA, and a turn needle that may fluctuate instead of staying pegged."
+                          },
+                          {
+                            "text" : "Incipient spin is the transition between gyrations and a steady spin. Expect oscillatory spin-like motion, a fully pegged turn needle, stalled AOA, and airspeed moving toward the steady-spin range."
+                          },
+                          {
+                            "text" : "Steady-state spin usually shows pegged stalled AOA, a pegged turn needle, and about 120 to 135 KIAS with roughly 400 to 500 feet of altitude loss per turn."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Recognition cues:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Aircraft is unresponsive to normal control inputs"
+                            "text" : "AOA helps tell you whether the aircraft is still stalled: about 18 or more units in an erect spin, near 0 units in an inverted spin."
                           },
                           {
-                            "text" : "Caused by a stalled condition where inertial forces exceed aerodynamic control authority"
+                            "text" : "A rapidly increasing airspeed with a pegged turn needle points toward a spiral, not a true spin."
                           },
                           {
-                            "text" : "Controls may feel ineffective or act in reverse"
-                          },
-                          {
-                            "text" : "Failing to reduce power\/deploy speed brake"
+                            "text" : "Use the altimeter to manage time and decide whether there is enough altitude left to finish the recovery."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "What the instruments are really telling you:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Use ~4 Gs to smoothly recover to level flight"
+                            "text" : "Set PCL to IDLE."
                           },
                           {
-                            "text" : "As airspeed\/Gs increase (~4 Gs), perform AGSM"
+                            "text" : "Place the controls physically neutral and visually confirm the stick, rudder, and elevator are centered."
                           },
                           {
-                            "text" : "180-200 KIAS"
+                            "text" : "Check altitude, then recover from the resulting unusual attitude once the aircraft starts flying again."
                           },
                           {
-                            "text" : "Raise nose to ~10° pitch."
+                            "text" : "If the aircraft is not recovering, slowly feed forward stick until the elevator reaches neutral and the nose breaks free."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Recovery:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "A spin stays stalled, normally lives in the 120 to 135 KIAS range, and can often be stabilized by neutral controls."
+                          },
+                          {
+                            "text" : "A spiral is not stalled, the airspeed will keep increasing, and anti-spin inputs are not the fix. Keep PCL at IDLE, stay patient, and wait for normal control response before you recover."
+                          }
+                        ],
+                        "text" : "Spin versus spiral:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Time distortion makes the departure feel much slower than it is. Pilots tend to change inputs too soon or cycle the controls if they do not trust the procedure."
+                          },
+                          {
+                            "text" : "G cues can be misleading, especially in an eyeballs-out condition. Do not fly the recovery by feel."
+                          }
+                        ],
+                        "text" : "Pilot factors:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Holding elevator aft of neutral can stop the recovery entirely."
+                          },
+                          {
+                            "text" : "Premature anti-spin or control cycling only delays recovery."
+                          },
+                          {
+                            "text" : "Power-on or inverted departures can overstress the engine, so even a successful recovery usually drives a land-as-soon-as-practical decision."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Recovery from unusual attitudes and aerobatics is expected by 6000 feet AGL."
+                          },
+                          {
+                            "text" : "If the aircraft is still in an unrecoverable rapid descent below 6000 feet AGL, the answer is uncontrolled ejection."
+                          }
+                        ],
+                        "text" : "Critical altitude reminder:"
                       }
                     ],
                     "title" : "OCF Recovery Procedures"
@@ -22940,24 +22990,66 @@
                   {
                     "items" : [
                       {
-                        "text" : "recovery from NH, NL, or Inverted attitudes due to disorientation, misflown maneuvers, or external factors. Recovery is visual (VFR) and must be completed above 6000’ AGL"
+                        "text" : "Contact unusual-attitude recovery is a visual recovery tool for a controlled aircraft. If the aircraft is stalled, departing, or you are unsure which branch you are in, stop trying to salvage it and transition to OCF recovery."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "PCL - MAX (if low airspeed)"
+                            "text" : "Set PCL to MAX when the airspeed is low."
                           },
                           {
-                            "text" : "Use back stick to bring nose to horizon"
+                            "text" : "Roll past 90 degrees of bank toward the nearest horizon and use positive back-stick to bring the nose down."
                           },
                           {
-                            "text" : "Roll upright as nose approaches horizon"
+                            "text" : "If needed, let the rollout wait until the nose is clearly below the horizon so you can regain enough airspeed to feel the controls again."
                           },
                           {
-                            "text" : "Roll wings level, raise nose, check oil pressure, power as req."
+                            "text" : "Common errors are not taking MAX power when the aircraft is slow, trying to push the nose over with forward stick, or stopping the roll with the nose still high."
                           }
                         ],
-                        "text" : "Key points:"
+                        "text" : "Nose-High:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Roll to the nearest horizon while simultaneously retarding PCL to IDLE."
+                          },
+                          {
+                            "text" : "Use speed brake as required and keep the pull smooth so you do not trade the dive for an accelerated stall."
+                          },
+                          {
+                            "text" : "Do not let the recovery exceed 316 KIAS, and be ready to perform AGSM as the pull builds."
+                          },
+                          {
+                            "text" : "If the aircraft is not responding normally and the AOA picture says you are stalled, execute OCF recovery instead of forcing the pull."
+                          }
+                        ],
+                        "text" : "Nose-Low:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Roll in the shortest direction to place the aircraft upright, then use power as required once the nose is on or slightly above the horizon."
+                          },
+                          {
+                            "text" : "Check and report oil pressure as the aircraft comes back upright."
+                          },
+                          {
+                            "text" : "Common errors are choosing the long way around or adding unnecessary pitch while still inverted."
+                          }
+                        ],
+                        "text" : "Inverted:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Unusual-attitude recovery is expected to be complete by 6000 feet AGL."
+                          },
+                          {
+                            "text" : "Airspeed and nose position alone do not guarantee the wing is unstalled; AOA lag and pitch bucking are why you stay alert for an accelerated stall developing underneath the recovery."
+                          }
+                        ],
+                        "text" : "Study standard:"
                       }
                     ],
                     "title" : "Contact Unusual Attitudes"
@@ -22965,71 +23057,450 @@
                   {
                     "items" : [
                       {
-                        "text" : "All Aerobatic Maneuvers is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+                        "text" : "An aileron roll is a 360-degree roll about the longitudinal axis. The nose traces a small circle around the horizon and the aircraft should finish on the entry heading with the energy picture still under control."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "Set up 180 to 220 KIAS with about 80 percent PCL, complete the Pre-Stalling, Spinning, and Aerobatic Checklist, and clear the area onto a good section line."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Entry setup:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Flown as one continuous evolution."
+                            "text" : "Raise the nose to about 10 degrees nose high, relax the back-stick pressure so the nose stops tracking upward, then apply brisk aileron in the desired direction."
                           },
                           {
-                            "text" : "Thoroughly brief maneuver order and energy management plan with IP before execution."
-                          },
-                          {
-                            "text" : "All Aerobatic Maneuvers is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
-                          },
-                          {
-                            "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                            "text" : "As the aircraft approaches wings level, neutralize the aileron and return to level flight."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Execution:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Choose and sequence up to 4 aerobatic maneuvers (e.g., Loop → Half Cuban Eight → Immelmann → Split-S)."
-                          },
-                          {
-                            "text" : "The usual trap is missing the setup picture, then trying to salvage All Aerobatic Maneuvers late."
+                            "text" : "The aircraft is wings level, near the entry altitude, and back on the original heading without the nose dropping through the inverted portion."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The classic error is holding back-stick during the roll, which turns the maneuver into an arcing barrel-looking roll and drives the nose down rapidly while inverted."
+                          },
+                          {
+                            "text" : "Delaying the roll once the nose-high picture is set lets the airspeed bleed off and makes the roll sluggish."
+                          }
+                        ],
+                        "text" : "Common errors:"
                       }
                     ],
-                    "title" : "All Aerobatic Maneuvers"
+                    "title" : "Aileron Roll"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "OCF recovery procedures"
+                        "text" : "A loop is a 360-degree turn in the vertical plane flown on a constant heading and nose track. It is the foundation for most of the later vertical maneuvers, so the goal is a smooth pitch rate, balanced flight, and a recovery back on the entry line."
                       },
                       {
-                        "text" : "contact unusual attitudes"
+                        "children" : [
+                          {
+                            "text" : "Set up 230 to 250 KIAS with PCL at MAX, complete PSSA, clear the working area, and check and report the entry altitude over ICS before the pull."
+                          }
+                        ],
+                        "text" : "Entry setup:"
                       },
                       {
-                        "text" : "all aerobatic maneuvers"
+                        "children" : [
+                          {
+                            "text" : "Begin AGSM and pull smoothly to about 4 G in 2 to 3 seconds with no aileron input."
+                          },
+                          {
+                            "text" : "As airspeed slows, use increasing right rudder to stay balanced and keep the wings parallel to the horizon with only small aileron corrections."
+                          },
+                          {
+                            "text" : "Expect about 100 to 120 KIAS over the top, then fly the nose back down the section line and recover with about 4 G while resuming AGSM."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "You recover wings level on the original heading and back near the altitude where you started."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the airspeed is below 180 KIAS before the nose reaches vertical in the first quarter, terminate with a nose-high unusual-attitude recovery."
+                          },
+                          {
+                            "text" : "If the aircraft becomes stalled or excessively slow, go straight to OCF recovery, then add power only after oil pressure is normal and AOA is back below 18 units."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "Loop"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A half Cuban eight is the front side of a loop followed by a half roll from a 45-degree nose-low inverted picture. It should finish on the reciprocal heading at the original altitude with the 45-degree down line fully under control before the pullout starts."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Set up 230 to 250 KIAS with PCL at MAX, complete PSSA, clear the area, and start with enough altitude to budget roughly 3000 feet through the maneuver."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Pull like the front half of a loop with about 4 G while keeping the aircraft balanced and the wings parallel to the horizon."
+                          },
+                          {
+                            "text" : "As the nose falls toward the 45-degree nose-low inverted picture, freeze the stick momentarily, execute the coordinated half roll, and use slight forward stick through the roll to hold the down line."
+                          },
+                          {
+                            "text" : "Keep the 45-degree nose-low picture stable and start the pullout around 205 to 210 KIAS."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft recovers level at the original altitude, on reciprocal heading, and near the entry energy."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Most misses come from carrying the front half like a poor loop, then adding aft stick during the half roll or raising the nose too early after the roll is finished."
+                          },
+                          {
+                            "text" : "Use a ground reference or heading aid to keep the 45-degree down line honest instead of guessing at it."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Half Cuban Eight"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "An Immelmann is a half loop followed by a half roll to upright. It trades airspeed for altitude and direction reversal, so the important picture is a smooth climb to the reciprocal horizon and a disciplined roll timing at the top."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Set up 230 to 250 KIAS with PCL at MAX, complete PSSA, clear the area, and report entry altitude before starting the pull."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Start with AGSM and pull about 4 G in 2 to 3 seconds, keeping the stick centered laterally and adding right rudder as the airspeed decays."
+                          },
+                          {
+                            "text" : "As the nose approaches about 10 degrees above the opposite horizon, relax the back-stick, execute the half roll to upright, and use only the small amount of forward stick needed to keep the nose from falling through."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft is wings level on the reciprocal heading, slightly nose high, and still flying with usable energy rather than dropping away from the horizon."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The common misses are poor rudder discipline in the pull, initiating the half roll too early or too late, and letting the nose drop after rolling upright."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Immelmann"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A Split-S combines a half roll to inverted with the back side of a loop. It is a rapid direction reversal that turns altitude into airspeed, so it only works if the inverted setup is clean before the pull starts."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Transition to 150 KIAS, retard PCL to IDLE, maintain altitude while slowing to about 140 KIAS, raise the nose to about 10 degrees, and complete PSSA with a clear section line."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Roll the aircraft to wings-level inverted, verify the wings are actually level against the horizon, then apply back-stick to bring the nose through without stalling."
+                          },
+                          {
+                            "text" : "As airspeed and G build, expect about 4 G in the pullout and perform AGSM."
+                          },
+                          {
+                            "text" : "Once back level, check and report normal oil pressure, then add power as required."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft is back in level flight on the reciprocal heading with normal oil pressure and the pull has stayed controlled instead of becoming an accelerated stall."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the aircraft does not respond normally once the pull starts, stop trying to muscle it through and execute OCF recovery."
+                          },
+                          {
+                            "text" : "Student solos are prohibited from Split-S, Immelmann, Combination Maneuver, and intentional sustained inverted flight."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "Split-S"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A wingover is a 180-degree reversal built from a smooth climbing turn followed by a smooth diving turn. It is a finesse maneuver, not a max-performance pull, and it should be flown in a two-leaf series that returns you to the original heading."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Set up 200 to 220 KIAS with about 70 percent PCL, complete PSSA, clear the area, and place a good reference point directly off a wingtip."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Blend elevator, rudder, and aileron together so the aircraft reaches about 45 degrees nose high and 45 degrees of bank halfway through the turn."
+                          },
+                          {
+                            "text" : "Continue the turn so that the aircraft reaches about 90 degrees of bank with the nose on the horizon at 90 degrees of turn, then let the nose fall and roll out symmetrically."
+                          },
+                          {
+                            "text" : "At about 135 degrees of turn you should see roughly 45 degrees of bank and about 35 degrees nose low before the aircraft comes back to the horizon. Then immediately begin the second leaf in the opposite direction."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The second wingover recovers wings level on the original heading, original altitude, and about the original airspeed."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Rushing the maneuver, missing the 45-up\/45-bank picture, or starting the second leaf off airspeed are the normal ways to make a wingover ugly."
+                          },
+                          {
+                            "text" : "A long road or section line is a great outside reference because the two turns should look like the curved portion of a dollar sign."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Wingover"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A barrel roll is a 360-degree roll around an imaginary point about 45 degrees off the nose. The outside picture should feel like the aircraft is corkscrewing around that point, not simply rolling in place."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Set up 200 to 220 KIAS with about 80 percent PCL, complete PSSA, clear the area, and pick the 45-degree reference point before you move the nose."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Raise the nose smoothly with wings level. As the nose passes about 20 degrees above the horizon, begin the coordinated roll-and-pull."
+                          },
+                          {
+                            "text" : "At about 45 degrees of turn you should see roughly 90 degrees of bank and 55 to 60 degrees nose high, then reach wings-level inverted at the 90-degree checkpoint with about 100 to 120 KIAS and the nose still around 10 degrees above the horizon."
+                          },
+                          {
+                            "text" : "Hold a positive G feel throughout and let the backside mirror the front side so the aircraft finishes on the original heading and altitude."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft recovers on the original heading and altitude with a symmetric arc above and below the horizon."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not exceed about 2.5 G during the maneuver."
+                          },
+                          {
+                            "text" : "The most common misses are failing to raise the nose enough in the first 45 degrees, letting the roll rate accelerate through inverted, or not driving the nose low enough on the backside."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "Barrel Roll"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A combination maneuver is a planned sequence of up to four aerobatic maneuvers flown as one continuous evolution. The grading focus is less about any single maneuver and more about whether you stay ahead of the aircraft while preserving orientation and energy."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Choose the sequence before takeoff, brief the order with the IP, and build the plan around realistic altitude and energy transitions instead of wishful thinking."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Fly the first maneuver cleanly, but start thinking about the next picture before the current one is finished."
+                          },
+                          {
+                            "text" : "Sequence higher-energy maneuvers before lower-energy ones so you are not trying to invent extra airspeed or altitude in the middle of the chain."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The full sequence ends on the planned heading, within the working area, and without an obvious energy or orientation surprise between maneuvers."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Late planning is the usual killer. Students finish one maneuver, realize the next setup is wrong, and then spend the rest of the sequence improvising."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Combination Maneuver"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Inverted flight is intentional, wings-level inverted flight flown for no more than the published time limit. The maneuver is really an exercise in outside references, restraint discipline, and oil-pressure awareness."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Set up 180 to 200 KIAS, complete PSSA, clear the area, and tighten the restraint harness before the roll."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Raise the nose about 10 degrees, relax the back-stick so the nose stops climbing, and roll smoothly to wings-level inverted."
+                          },
+                          {
+                            "text" : "Apply the forward stick needed to hold altitude, note the clock immediately, and check oil pressure as soon as you are stable."
+                          },
+                          {
+                            "text" : "Use the proper outside reference to stay level, then roll upright with coordinated controls before the time or oil-pressure limits are challenged."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft is upright again with normal oil pressure and no more than 60 seconds spent inverted."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The usual misses are poor restraint setup, sloppy level-flight references while inverted, and staying inverted too long because the clock check was late."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Inverted Flight"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "OCF Recovery Procedures"
+                      },
+                      {
+                        "text" : "Contact Unusual Attitudes"
+                      },
+                      {
+                        "text" : "All Aerobatic Maneuvers"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Have OCF Recovery Procedures and Contact Unusual Attitudes organized before step so the cockpit workload never outruns the brief."
+                "summary" : "Know the OCF and unusual-attitude decision tree cold, then brief each aerobatic maneuver by entry setup, outside picture, and completion cues."
               },
-              "summary" : "OCF Recovery Procedures, Contact Unusual Attitudes, and All Aerobatic Maneuvers.",
+              "summary" : "Aerobatic maneuver execution, unusual-attitude recovery, and OCF recognition.",
               "tags" : [
                 "contacts",
                 "flights",
                 "fam4701"
               ],
-              "title" : "OCF Recovery Procedures",
+              "title" : "Aerobatics and OCF Recovery",
               "videoLinks" : [
 
               ]

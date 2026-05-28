@@ -3,8 +3,8 @@
     "OLF entry" : [
       "OLF Entry"
     ],
-    "OLF\/RDO communication" : [
-      "OLF\/RDO Communication"
+    "OLF/RDO communication" : [
+      "OLF/RDO Communication"
     ],
     "crosswind takeoff and landings" : [
       "Crosswind Takeoff and Landings"
@@ -14,7 +14,7 @@
     ]
   },
   "code" : "FAM6202",
-  "overview" : "This event pulls together olf entry, olf and rdo communication, and crosswind takeoff and landings into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
+  "overview" : "This review sim is about entering a busy outlying pattern cleanly, communicating early enough to stay sequenced, and keeping crosswind or wave-off decisions disciplined instead of reactive. Be ready to brief the OLF entry flow, the calls that keep the pattern organized, how crosswind corrections change from takeoff through rollout, and when discontinuing the approach is the only right answer.",
   "primaryDocumentTitles" : [
     "FAM6202"
   ],
@@ -24,49 +24,35 @@
       {
         "items" : [
           {
-            "text" : "OLF Entry is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+            "text" : "OLF entry is about arriving already configured for the pattern instead of trying to build the picture late. The exact initial point, altitude, and airspeed are local-procedure items, but the disciplined flow is universal."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Determine the duty runway before you commit to the entry."
+              },
+              {
+                "text" : "Fly to the appropriate initial point established on or parallel to the extended runway centerline, on runway heading, wings level, and on the locally briefed break altitude and airspeed."
+              },
+              {
+                "text" : "From initial to the runway, maintain altitude and airspeed, visually locate traffic, and update the wind picture before the break."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "What good looks like:"
           },
           {
             "children" : [
               {
-                "text" : "Goliad"
+                "text" : "Do not continue inbound for the break without two-way communications with the RDO or controlling agency."
               },
               {
-                "text" : "Arrival Procedures"
+                "text" : "If the runway, traffic picture, or communications are not coming together by the local decision point, discontinue the entry and re-sequence instead of pressing a bad setup."
               },
               {
-                "text" : "Request PPEL via Corpus Approach."
-              },
-              {
-                "text" : "Before entering the pattern, make a call to the RDO (Runway Duty Officer)."
+                "text" : "Use the local SOP or day-of brief for exact numbers, reporting points, and holding instructions."
               }
             ],
-            "text" : "Execution priorities:"
-          },
-          {
-            "children" : [
-              {
-                "text" : "If no response by 2 NM, execute discontinued entry."
-              },
-              {
-                "text" : "Switch to UHF CH 14 for ASOS."
-              },
-              {
-                "text" : "If no radio contact by Shrimp Ponds, or pattern full, fly south and contact Corpus Approach (CH 8)."
-              },
-              {
-                "text" : "Announce intentions on CTAF (CH 21 VHF) and report \"High-Key\" on KRKP common (CH 21 UHF)."
-              }
-            ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Study standard:"
           }
         ],
         "title" : "OLF Entry"
@@ -74,71 +60,88 @@
       {
         "items" : [
           {
-            "text" : "Goliad"
+            "text" : "OLF/RDO communication is what turns a crowded pattern from guesswork into sequencing. The goal is concise calls, early intentions, and zero ambiguity about who is where."
           },
           {
             "children" : [
               {
-                "text" : "Arrival Procedures"
+                "text" : "Your initial call should identify who you are, where you are, and what pattern or runway you are requesting."
               },
               {
-                "text" : "Aransas County"
+                "text" : "Expect the controlling agency to pass runway, wind, altimeter, traffic, and sequencing information that affects the entry."
               },
               {
-                "text" : "Before entering the pattern, make a call to the RDO (Runway Duty Officer)."
+                "text" : "Report the required key positions for that field, such as initial, numbers, crosswind, or departing, only after you know what the local procedure requires."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What to brief:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "No two-way communications means no break."
+              },
+              {
+                "text" : "If you wave off, make the radio call after the aircraft is under control, not while you are still trying to fly the airplane."
+              },
+              {
+                "text" : "If communications fail, stay VFR and follow the briefed lost-comm and re-sequencing plan."
+              }
+            ],
+            "text" : "Study standard:"
           }
         ],
-        "title" : "OLF\/RDO Communication"
+        "title" : "OLF/RDO Communication"
       },
       {
         "items" : [
           {
-            "text" : "XW takeoff requires aileron into the wind and rudder to counter drift. Rotate positively, maintain wings level at liftoff, and crab into the wind after airborne"
+            "text" : "Crosswind takeoffs and landings are really one continuous control problem: stop drift, keep the nose aligned with the runway, and change the amount of aileron and rudder as the aircraft accelerates or decelerates."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "On takeoff, start with aileron into the wind and enough rudder to stop weathervaning."
+              },
+              {
+                "text" : "Reduce aileron deflection as speed builds, then rotate positively when flying speed is reached so the airplane does not side-slip off the runway."
+              },
+              {
+                "text" : "Once safely airborne, level the wings, allow the aircraft to crab into the wind, and check the ball centered."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Takeoff priorities:"
           },
           {
             "children" : [
               {
-                "text" : "“(AC ID), crosswind (touch & go \/ pattern PEL \/ AOA).”"
+                "text" : "On final, use the wing-low method: aileron into the wind to stop drift and rudder to align the longitudinal axis with the runway."
               },
               {
-                "text" : "“Goliad RDO, (Call Sign), __ miles to the (cardinal direction), (altitude), Practice PEL, (RWY #).”"
+                "text" : "Do not level the wings in the flare. Think about touching down on the upwind main first with zero side motion."
               },
               {
-                "text" : "Waldron"
+                "text" : "As the airplane slows, ailerons become less effective, so increase aileron into the wind through the flare and rollout."
               },
               {
-                "text" : "note wind direction from tower and windsock; anticipate XW corrections"
+                "text" : "Additional power may be required to offset the drag created by cross-controlled flight."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Landing priorities:"
           },
           {
             "children" : [
               {
-                "text" : "Interval established when the preceding aircraft is abeam and through 90 degrees of their turn to downwind."
+                "text" : "On a full stop, maintain directional control with rudder and brakes while increasing aileron into the wind as airspeed decreases."
               },
               {
-                "text" : "Instructors announce intentions 3-5 NM from High-Key:"
+                "text" : "On a touch-and-go, hold crosswind inputs on the deck, then rotate firmly and let the aircraft crab into the wind once safely airborne."
               },
               {
-                "text" : "De-confliction may occur on CH 15 VHF."
-              },
-              {
-                "text" : "Use rudder\/brakes to stay straight; brakes below 80 KIAS"
+                "text" : "Wave off if proper crosswind correction cannot be established before touchdown or if the aircraft becomes uncontrollable after touchdown."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Study standard:"
           }
         ],
         "title" : "Crosswind Takeoff and Landings"
@@ -146,21 +149,49 @@
       {
         "items" : [
           {
-            "text" : "(compliance is mandatory)"
+            "text" : "A wave-off is the correct decision any time the approach is trending unsafe. Good judgment here means recognizing the problem early and never trying to salvage a landing that already looks wrong."
           },
           {
             "children" : [
               {
-                "text" : "Directed externally"
+                "text" : "Common triggers are unsafe airspeed or altitude, overshooting final, drift or crab before touchdown, a high or unstable landing transition, or traffic conflicts that will not resolve in time."
               },
               {
-                "text" : "Stick shakers activated prior to flare"
+                "text" : "If more than 45 degrees of bank is required to complete the final turn, wave off."
               },
               {
-                "text" : "ELP traffic has ROW"
+                "text" : "If a stall indication occurs in the landing pattern, recover first with minimum altitude loss, then reestablish the wave-off once the aircraft is back under control."
               }
             ],
-            "text" : "Key points:"
+            "text" : "When it is mandatory:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Advance PCL as required, level the wings when conditions permit, center the ball, raise the nose to a climbing attitude, and climb at 120 KIAS."
+              },
+              {
+                "text" : "At or above 110 KIAS with two positive rates of climb, raise the flaps as required, reduce power to about 60 to 70 percent, and re-trim."
+              },
+              {
+                "text" : "Continue to follow the safest ground track for traffic deconfliction and local pattern procedures, then make the wave-off radio call once the aircraft is under control."
+              }
+            ],
+            "text" : "What to do:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not delay the decision hoping the picture improves by itself."
+              },
+              {
+                "text" : "Do not change your mind and try to land after the wave-off has started."
+              },
+              {
+                "text" : "Do not let the radio call get ahead of flying the airplane."
+              }
+            ],
+            "text" : "Common errors:"
           }
         ],
         "title" : "Wave-Off"
@@ -168,23 +199,23 @@
       {
         "items" : [
           {
-            "text" : "OLF entry"
+            "text" : "OLF Entry"
           },
           {
-            "text" : "OLF\/RDO communication"
+            "text" : "OLF/RDO Communication"
           },
           {
-            "text" : "crosswind takeoff and landings"
+            "text" : "Crosswind Takeoff and Landings"
           },
           {
-            "text" : "wave-off"
+            "text" : "Wave-Off"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Treat OLF Entry, plus OLF and RDO Communication like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
+    "summary" : "Treat this as an outlying-pattern review: enter cleanly, communicate early, fly the crosswind corrections all the way through rollout, and wave off the moment the approach turns unsafe."
   },
-  "summary" : "OLF Entry, OLF and RDO Communication, and Crosswind Takeoff and Landings.",
-  "title" : "OLF Entries and Crosswind Patterns"
+  "summary" : "OLF entry, RDO communication, crosswind operations, and disciplined wave-off decisions.",
+  "title" : "Outlying Pattern Entries and Crosswind Operations"
 }

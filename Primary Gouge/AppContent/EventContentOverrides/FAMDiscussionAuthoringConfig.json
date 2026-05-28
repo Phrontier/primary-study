@@ -31,7 +31,8 @@
     "FAM4703",
     "FAM6101",
     "FAM6102",
-    "FAM6201"
+    "FAM6201",
+    "FAM6202"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -1071,6 +1072,39 @@
           "discussionItem" : "slip",
           "displayTitle" : "Slip",
           "presentationStyle" : "maneuver"
+        }
+      ]
+    },
+    "FAM6202" : {
+      "authoringProfile" : "reviewSim",
+      "eventEmphasisKeywords" : [
+        "outlying",
+        "pattern",
+        "crosswind",
+        "wave off"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "OLF entry",
+          "displayTitle" : "OLF Entry",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "OLF/RDO communication",
+          "displayTitle" : "OLF/RDO Communication",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "crosswind takeoff and landings",
+          "displayTitle" : "Crosswind Takeoff and Landings",
+          "presentationStyle" : "procedure"
+        },
+        {
+          "discussionItem" : "wave-off",
+          "displayTitle" : "Wave-Off",
+          "presentationStyle" : "procedure"
         }
       ]
     }

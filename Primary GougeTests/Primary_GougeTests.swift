@@ -236,6 +236,7 @@ struct Primary_GougeTests {
             "FAM6101": "Course Rules, OLF Operations, and Arrival Review",
             "FAM6102": "Risk Management and VFR Judgment",
             "FAM6201": "Low-Speed Handling and Energy Management",
+            "FAM6202": "Outlying Pattern Entries and Crosswind Operations",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1772,6 +1773,56 @@ struct Primary_GougeTests {
         #expect(slipText.contains("125 KIAS"))
         #expect(slipText.contains("200 to 300 feet"))
         #expect(slipText.contains("low-fuel light"))
+    }
+
+    @MainActor
+    @Test func fam6202TurnsIntoOutlyingPatternAndCrosswindReview() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6202"])
+        #expect(event.title == "Outlying Pattern Entries and Crosswind Operations")
+        #expect(!event.overview.lowercased().contains("this event pulls together"))
+        #expect(event.summary.lowercased().contains("crosswind"))
+        #expect(event.summary.lowercased().contains("wave-off"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "OLF Entry",
+            "OLF/RDO Communication",
+            "Crosswind Takeoff and Landings",
+            "Wave-Off",
+            "Required Procedures"
+        ])
+
+        let combinedText = notes.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ").lowercased()
+        for forbidden in ["goliad", "waldron", "aransas", "ingleside", "corpus", "shamrock", "shrimp ponds", "camel humps", "woodsboro", "berclair", "port royal", "kngt", "krkp", "ktfp", "kngp"] {
+            #expect(!combinedText.contains(forbidden))
+        }
+
+        let olfEntrySection = try #require(notes.sections.first(where: { $0.title == "OLF Entry" }))
+        let olfEntryText = olfEntrySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(olfEntryText.contains("extended runway centerline"))
+        #expect(olfEntryText.contains("two-way communications"))
+
+        let communicationSection = try #require(notes.sections.first(where: { $0.title == "OLF/RDO Communication" }))
+        let communicationText = communicationSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(communicationText.contains("initial call"))
+        #expect(communicationText.contains("wave-off"))
+
+        let crosswindSection = try #require(notes.sections.first(where: { $0.title == "Crosswind Takeoff and Landings" }))
+        let crosswindText = crosswindSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(crosswindText.contains("wing-low"))
+        #expect(crosswindText.contains("upwind main"))
+        #expect(crosswindText.contains("do not level the wings"))
+
+        let waveoffSection = try #require(notes.sections.first(where: { $0.title == "Wave-Off" }))
+        let waveoffText = waveoffSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(waveoffText.contains("120 KIAS"))
+        #expect(waveoffText.contains("45 degrees of bank"))
+        #expect(waveoffText.contains("Do not change your mind"))
     }
 
     @MainActor

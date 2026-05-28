@@ -164,6 +164,18 @@
         "System Malfunctions That Drive a PEL",
         "OCF, OBOGS, Smoke, and Ejection Boundaries"
       ]
+    },
+    {
+      "code" : "FAM6402",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Ground and Takeoff Emergencies",
+        "Engine Failure and Airstart Branches",
+        "System Malfunctions and PEL Triggers",
+        "OCF, Smoke, OBOGS, and Ejection Mindset"
+      ]
     }
   ],
   "canonicalEventCount" : 88,
@@ -228,7 +240,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-28T17:08:14Z",
+  "generatedAt" : "2026-05-28T17:10:41Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

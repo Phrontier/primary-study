@@ -36,7 +36,8 @@
     "FAM6203",
     "FAM6301",
     "FAM6302",
-    "FAM6401"
+    "FAM6401",
+    "FAM6402"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -1205,6 +1206,29 @@
             "Engine Failure, Airstart, and Forced-Landing Branches",
             "System Malfunctions That Drive a PEL",
             "OCF, OBOGS, Smoke, and Ejection Boundaries"
+          ]
+        }
+      ]
+    },
+    "FAM6402" : {
+      "authoringProfile" : "reviewSim",
+      "eventEmphasisKeywords" : [
+        "emergency",
+        "decision",
+        "ejection"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Any EP",
+          "displayTitle" : "Ground and Takeoff Emergencies",
+          "presentationStyle" : "knowledge",
+          "splitSectionTitles" : [
+            "Ground and Takeoff Emergencies",
+            "Engine Failure and Airstart Branches",
+            "System Malfunctions and PEL Triggers",
+            "OCF, Smoke, OBOGS, and Ejection Mindset"
           ]
         }
       ]

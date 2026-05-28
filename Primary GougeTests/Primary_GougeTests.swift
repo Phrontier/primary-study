@@ -241,6 +241,7 @@ struct Primary_GougeTests {
             "FAM6301": "Field-Use Course Rules and OLF Sequencing",
             "FAM6302": "Field-Use Course Rules and Recovery Planning",
             "FAM6401": "PEL Profile and Emergency Branch Review",
+            "FAM6402": "Emergency Procedure Decision Review",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -2016,6 +2017,51 @@ struct Primary_GougeTests {
         #expect(systemText.contains("land as soon as possible"))
 
         let ejectSection = try #require(notes.sections.first(where: { $0.title == "OCF, OBOGS, Smoke, and Ejection Boundaries" }))
+        let ejectText = ejectSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(ejectText.contains("6000 feet AGL"))
+        #expect(ejectText.contains("pull the handle"))
+        #expect(ejectText.contains("OBOGS"))
+    }
+
+    @MainActor
+    @Test func fam6402TurnsIntoEmergencyProcedureDecisionReview() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6402"])
+        #expect(event.title == "Emergency Procedure Decision Review")
+        #expect(!event.overview.lowercased().contains("use this event to review"))
+        #expect(event.summary.lowercased().contains("emergency"))
+        #expect(event.summary.lowercased().contains("ejection"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Ground and Takeoff Emergencies",
+            "Engine Failure and Airstart Branches",
+            "System Malfunctions and PEL Triggers",
+            "OCF, Smoke, OBOGS, and Ejection Mindset",
+            "Required Procedures"
+        ])
+
+        let groundSection = try #require(notes.sections.first(where: { $0.title == "Ground and Takeoff Emergencies" }))
+        let groundText = groundSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(groundText.contains("Abort"))
+        #expect(groundText.contains("110 knots"))
+        #expect(groundText.contains("ejection"))
+
+        let engineSection = try #require(notes.sections.first(where: { $0.title == "Engine Failure and Airstart Branches" }))
+        let engineText = engineSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(engineText.contains("125 KIAS"))
+        #expect(engineText.contains("air-start"))
+        #expect(engineText.contains("2000 feet AGL"))
+
+        let systemSection = try #require(notes.sections.first(where: { $0.title == "System Malfunctions and PEL Triggers" }))
+        let systemText = systemSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(systemText.contains("chip detector"))
+        #expect(systemText.contains("boost pump"))
+        #expect(systemText.contains("land as soon as possible"))
+
+        let ejectSection = try #require(notes.sections.first(where: { $0.title == "OCF, Smoke, OBOGS, and Ejection Mindset" }))
         let ejectText = ejectSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(ejectText.contains("6000 feet AGL"))
         #expect(ejectText.contains("pull the handle"))

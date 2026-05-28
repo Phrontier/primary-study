@@ -1,11 +1,14 @@
 {
   "canonicalCoverage" : {
     "Any EP" : [
-      "Cumulative EP Review"
+      "Ground and Takeoff Emergencies",
+      "Engine Failure and Airstart Branches",
+      "System Malfunctions and PEL Triggers",
+      "OCF, Smoke, OBOGS, and Ejection Mindset"
     ]
   },
   "code" : "FAM6402",
-  "overview" : "Use this event to review the familiarization EP set as one connected decision tree. You should be ready to move from recognition to memory items to PEL, forced-landing, or ejection logic without stopping to rebuild the picture.",
+  "overview" : "This review sim is the cumulative emergency-procedure decision check for the familiarization phase. Be ready to recognize the cue, state the memory action, explain the N/W/C that changes the answer, and then choose correctly between PEL, forced landing, continued flight, or ejection without rebuilding the picture from scratch.",
   "primaryDocumentTitles" : [
     "FAM6402"
   ],
@@ -15,65 +18,146 @@
       {
         "items" : [
           {
-            "text" : "Treat this as a cumulative EP brief. The instructor can move quickly between recognition, memory items, and the branch logic that decides whether you continue, land, or eject."
+            "text" : "The ground and takeoff EPs are all about recognizing when the airplane is no longer safe to keep rolling or keep on the ground. These are fast decisions, and hesitation is usually what makes them dangerous."
           },
           {
             "children" : [
               {
-                "text" : "Fire on Ground"
+                "text" : "Abort start and emergency engine shutdown on the ground stop the immediate hazard first, then transition to egress if fire, smoke, or canopy considerations require it."
               },
               {
-                "text" : "Emergency Engine Shutdown on the Ground"
+                "text" : "Emergency ground egress should already sound like a sequence you can visualize: pins, canopy or CFS, straps, electrical switches, and get out."
               },
               {
-                "text" : "Emergency Ground Egress"
+                "text" : "Abort takeoff is not just PCL idle and brakes. The real question is whether you recognized the abnormal cue early enough to make the runway option still valid."
               },
               {
-                "text" : "CFS and Ejection CRM"
-              },
-              {
-                "text" : "Abort Takeoff"
-              },
-              {
-                "text" : "Aircraft Departs Prepared Surface"
-              },
-              {
-                "text" : "Engine Failure Immediately After Takeoff"
-              },
-              {
-                "text" : "Engine Failure During Flight"
-              },
-              {
-                "text" : "Immediate Air-Start"
-              },
-              {
-                "text" : "PMU Norm Air-Start"
-              },
-              {
-                "text" : "PMU Off Air-Start"
-              },
-              {
-                "text" : "Uncommanded Power Changes\/LOP"
+                "text" : "Engine failure immediately after takeoff is a runway-and-control problem first. If runway remains straight ahead, preserve 110 knots minimum and use the gear and flaps only as required."
               }
             ],
-            "text" : "Expected review set:"
+            "text" : "What to know:"
           },
           {
             "children" : [
               {
-                "text" : "Be able to state the recognition cue before you recite the steps."
+                "text" : "WARNING: In a high-speed ground-loss-of-control situation, immediate ejection may be the correct answer if the aircraft is about to overturn."
               },
               {
-                "text" : "Know the associated N\/W\/Cs, not just the memory items."
-              },
-              {
-                "text" : "Have a clear answer for when the EP becomes a PEL, forced-landing, or ejection problem."
+                "text" : "NOTE: Once egress or ejection is clearly warranted, stop trying to heroically save the aircraft."
               }
             ],
-            "text" : "How to study it:"
+            "text" : "N/W/C focus:"
           }
         ],
-        "title" : "Cumulative EP Review"
+        "title" : "Ground and Takeoff Emergencies"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Engine-related EPs are where this event becomes a decision tree. The immediate steps matter, but the real grading point is whether you know when the branch changes from recoverable to land-now or eject-now."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Engine failure during flight starts with 125 KIAS minimum, PCL OFF, and an immediate turn toward the nearest suitable field while you decide whether an air-start is warranted."
+              },
+              {
+                "text" : "If an air-start is successful, the problem becomes a PEL. If it is not, the problem becomes forced landing or ejection."
+              },
+              {
+                "text" : "Immediate air-start, PMU NORM air-start, and propulsion malfunctions like uncommanded power changes, prop feather, or compressor stalls are all judged by the same question: is the remaining or restored power enough to complete a PEL?"
+              }
+            ],
+            "text" : "Branch logic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not attempt an air-start for oil-system, chip-light, fire, or obvious FOD cases."
+              },
+              {
+                "text" : "Below 2000 feet AGL, an air-start attempt is usually giving away the time you need for a forced landing or ejection decision."
+              },
+              {
+                "text" : "If power is insufficient to complete the PEL, stop treating the situation like a minor systems nuisance and transition decisively to forced landing or eject."
+              }
+            ],
+            "text" : "N/W/C focus:"
+          }
+        ],
+        "title" : "Engine Failure and Airstart Branches"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The systems EP set matters because several seemingly different cautions and warnings all drive the same operational answer: land as soon as possible via PEL, and do not waste the engine while you troubleshoot."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Chip detector, red or persistent oil-pressure problems, low fuel pressure, and high fuel flow should all sound like PEL triggers with different cautions attached."
+              },
+              {
+                "text" : "For chip detector and serious oil-system problems, use minimum PCL necessary to intercept the ELP and avoid unnecessary PCL movements."
+              },
+              {
+                "text" : "Low fuel pressure adds boost pump ON to the PEL answer."
+              },
+              {
+                "text" : "The amber-only oil case is a judgment branch: if pressure is normal, continue operations only if the indications support that answer."
+              }
+            ],
+            "text" : "What to know:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "CAUTION: The longer the engine runs in a true PEL case, the greater the chance the problem becomes a complete failure."
+              },
+              {
+                "text" : "NOTE: Land as soon as possible and land as soon as practical are not the same urgency level."
+              }
+            ],
+            "text" : "N/W/C focus:"
+          }
+        ],
+        "title" : "System Malfunctions and PEL Triggers"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The final EP family is about the situations where controllability, breathable air, or time are failing faster than a checklist can catch up. These are the emergencies that demand the clearest judgment."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Inadvertent departure from controlled flight is PCL idle, controls neutral, altitude check, then recover from the unusual attitude only if the aircraft is not stalled or already OCF."
+              },
+              {
+                "text" : "Smoke and fumes, electrical-fire logic, and OBOGS failures all start with protecting the crew and getting below the altitude or environment that is making the problem worse."
+              },
+              {
+                "text" : "Ejection mindset matters because students tend to delay it. Immediate, time-critical, and controlled ejection are different situations, but all of them require a clean decision once recovery is no longer the safer answer."
+              }
+            ],
+            "text" : "What to know:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "WARNING: If OCF is unrecoverable and you are approaching 6000 feet AGL, ejection is the answer."
+              },
+              {
+                "text" : "WARNING: The number one failure mode of the ejection seat is pilot failure to pull the handle."
+              },
+              {
+                "text" : "NOTE: Once ejection has been called, if the initiator does not pull in time, the other aircrew should."
+              }
+            ],
+            "text" : "N/W/C focus:"
+          }
+        ],
+        "title" : "OCF, Smoke, OBOGS, and Ejection Mindset"
       },
       {
         "items" : [
@@ -84,8 +168,8 @@
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Treat this like a cumulative EP check: know the cue, the immediate action, and the N\/W\/C that changes the safe answer."
+    "summary" : "Study this as a cumulative emergency decision review: cue, memory item, N/W/C, then the correct branch to continued flight, PEL, forced landing, or eject."
   },
-  "summary" : "Cumulative emergency-procedure recognition, memory items, and N\/W\/C decision logic.",
-  "title" : "Emergency Procedures Review"
+  "summary" : "Cumulative emergency branches, PEL triggers, and ejection-boundary judgment.",
+  "title" : "Emergency Procedure Decision Review"
 }

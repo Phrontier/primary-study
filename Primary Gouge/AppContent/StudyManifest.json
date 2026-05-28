@@ -16412,7 +16412,7 @@
                 }
               ],
               "id" : "contacts-sims-fam6302",
-              "overview" : "Use this event as a cumulative review of beachline and aransas county course rules. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
+              "overview" : "This review sim is about applying field-use course rules when the sortie moves between a published departure route, a self-announced outlying recovery, and a home-field rejoin or straight-in. Be ready to explain how you sequence those transitions safely, what must be confirmed locally, and when recovery or pattern priority changes the normal answer.",
               "primaryDocumentIDs" : [
 
               ],
@@ -16451,43 +16451,120 @@
                   {
                     "items" : [
                       {
-                        "text" : "Arrival Procedures"
+                        "text" : "Published departure routes exist so aircraft leave the pattern on predictable headings, altitudes, and handoff points before they start spreading into the larger local airspace. The local route names are not the lesson; the sequencing logic is."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "“Corpus Approach, (call sign), Over Woodsboro, course rules Aransas County.”"
+                            "text" : "After takeoff, remain on the published departure geometry until clear of the pattern and ready for the next handoff."
                           },
                           {
-                            "text" : "“Aransas County Traffic, (Call Sign), Numbers (RWY #) for left overhead.”"
+                            "text" : "Expect the local procedure to define where you turn, when you climb, how you transition to the next route segment, and when you contact Departure or terminate radar services."
                           },
                           {
-                            "text" : "PPEL Entry"
+                            "text" : "A strong brief explains when the field still owns the problem and when the route becomes an area transition instead of a pattern departure."
                           }
                         ],
-                        "text" : "Key points:"
+                        "text" : "What to brief:"
                       }
                     ],
-                    "title" : "OLF Course Rules For Field of Use"
+                    "title" : "Published Departure Route Logic"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "OLF Course rules for field of use"
+                        "text" : "Recovery to an uncontrolled or self-announced field requires more radio discipline, not less. Without a tower or RDO driving the sequence, you have to build the traffic picture from advisories and visual lookout early."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Get the runway and weather picture before arrival, then self-announce early enough for other traffic to understand your entry plan."
+                          },
+                          {
+                            "text" : "Arrive at the published initial or overhead entry in the correct altitude and airspeed picture instead of improvising a last-second join."
+                          },
+                          {
+                            "text" : "When civilian or mixed traffic is involved, be especially conservative about assumptions. If another aircraft's intentions are unclear, reset or extend rather than squeezing into uncertainty."
+                          }
+                        ],
+                        "text" : "What good looks like:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The exact CTAF phraseology, initial-point geometry, and runway-specific entry options are field-specific items to confirm from the current procedure."
+                          },
+                          {
+                            "text" : "The universal part is early self-announce, visual deconfliction, and predictable entry geometry."
+                          }
+                        ],
+                        "text" : "Study standard:"
+                      }
+                    ],
+                    "title" : "Uncontrolled-Field Arrival Discipline"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Practice PEL work changes the normal pattern answer because descending emergency-pattern traffic can quickly outrank ordinary touch-and-go sequencing."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Know when PPEL is authorized, what side of the pattern or field it should use, and what calls or coordination are required before climbing or descending into high-key."
+                          },
+                          {
+                            "text" : "Aircraft already in the pattern must understand when they are expected to yield to descending PEL traffic."
+                          },
+                          {
+                            "text" : "If other traffic, especially non-training traffic, does not appear to understand the PEL picture, reset and clarify instead of forcing the entry."
+                          }
+                        ],
+                        "text" : "What the instructor is checking:"
+                      }
+                    ],
+                    "title" : "PPEL Integration and Pattern Priority"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The home-field rejoin is where course rules become recovery planning. You should already know whether you are asking for an overhead, a box-pattern style rejoin, or a straight-in before you hit the terminal gate."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Plan the rejoin gate so you can slow to the correct airspeed, meet the local arrival altitude, and still have time to configure before the final approach segment."
+                          },
+                          {
+                            "text" : "For a VFR straight-in, transition below 150 KIAS, lower the gear, and complete the Before Landing Checklist no later than base or a 3- to 5-mile final, then intercept a stabilized glideslope."
+                          },
+                          {
+                            "text" : "If weather, traffic, or configuration makes the overhead impractical, request the straight-in or alternate recovery early enough for the controlling agency to build the correct plan around you."
+                          }
+                        ],
+                        "text" : "What to brief:"
+                      }
+                    ],
+                    "title" : "Home-Field Recovery and Straight-In Planning"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "OLF Course Rules For Field of Use"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Treat Beachline and Aransas County Course Rules like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
+                "summary" : "Treat this as a field-use course-rules review: fly the published departure correctly, self-announce and sequence cleanly at the remote field, and plan the recovery before you hit the gate."
               },
-              "summary" : "OLF Course Rules For Field of Use.",
+              "summary" : "Field-use course rules, published departures, remote-field arrival discipline, and recovery planning.",
               "tags" : [
                 "contacts",
                 "sims",
                 "fam6302"
               ],
-              "title" : "Beachline and Aransas County Course Rules",
+              "title" : "Field-Use Course Rules and Recovery Planning",
               "videoLinks" : [
 
               ]

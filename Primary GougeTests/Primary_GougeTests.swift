@@ -239,6 +239,7 @@ struct Primary_GougeTests {
             "FAM6202": "Outlying Pattern Entries and Crosswind Operations",
             "FAM6203": "Day Block Maneuver Review",
             "FAM6301": "Field-Use Course Rules and OLF Sequencing",
+            "FAM6302": "Field-Use Course Rules and Recovery Planning",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1919,6 +1920,58 @@ struct Primary_GougeTests {
         #expect(priorityText.contains("PEL"))
         #expect(priorityText.contains("priority"))
         #expect(priorityText.contains("reset"))
+    }
+
+    @MainActor
+    @Test func fam6302TurnsIntoFieldUseCourseRulesAndRecoveryPlanning() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6302"])
+        #expect(event.title == "Field-Use Course Rules and Recovery Planning")
+        #expect(!event.overview.lowercased().contains("use this event as"))
+        #expect(event.summary.lowercased().contains("course rules"))
+        #expect(event.summary.lowercased().contains("recovery"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Published Departure Route Logic",
+            "Uncontrolled-Field Arrival Discipline",
+            "PPEL Integration and Pattern Priority",
+            "Home-Field Recovery and Straight-In Planning",
+            "Required Procedures"
+        ])
+
+        let combinedText = notes.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ").lowercased()
+        for forbidden in ["beachline", "aransas", "rockport", "shamrock", "corpus", "woodsboro", "bayside", "lbj causeway", "redfish point", "tamucc", "camel humps", "krkp"] {
+            #expect(!combinedText.contains(forbidden))
+        }
+
+        let departureSection = try #require(notes.sections.first(where: { $0.title == "Published Departure Route Logic" }))
+        let departureText = departureSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(departureText.contains("Departure"))
+        #expect(departureText.contains("pattern"))
+        #expect(departureText.contains("turn"))
+
+        let arrivalSection = try #require(notes.sections.first(where: { $0.title == "Uncontrolled-Field Arrival Discipline" }))
+        let arrivalText = arrivalSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(arrivalText.contains("self-announce"))
+        #expect(arrivalText.contains("civilian"))
+        #expect(arrivalText.contains("runway"))
+
+        let ppelSection = try #require(notes.sections.first(where: { $0.title == "PPEL Integration and Pattern Priority" }))
+        let ppelText = ppelSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(ppelText.contains("PPEL"))
+        #expect(ppelText.contains("yield"))
+        #expect(ppelText.contains("reset"))
+
+        let recoverySection = try #require(notes.sections.first(where: { $0.title == "Home-Field Recovery and Straight-In Planning" }))
+        let recoveryText = recoverySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(recoveryText.contains("3- to 5-mile final"))
+        #expect(recoveryText.contains("150 KIAS"))
+        #expect(recoveryText.contains("straight-in"))
     }
 
     @MainActor

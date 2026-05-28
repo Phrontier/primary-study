@@ -34,7 +34,8 @@
     "FAM6201",
     "FAM6202",
     "FAM6203",
-    "FAM6301"
+    "FAM6301",
+    "FAM6302"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -1152,6 +1153,29 @@
             "OLF Entry and Break Sequencing",
             "Departure and Transition Discipline",
             "Pattern Saturation, Priority, and PEL Integration"
+          ]
+        }
+      ]
+    },
+    "FAM6302" : {
+      "authoringProfile" : "reviewSim",
+      "eventEmphasisKeywords" : [
+        "course rules",
+        "recovery",
+        "arrival"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "OLF Course rules for field of use",
+          "displayTitle" : "Published Departure Route Logic",
+          "presentationStyle" : "local-generalized",
+          "splitSectionTitles" : [
+            "Published Departure Route Logic",
+            "Uncontrolled-Field Arrival Discipline",
+            "PPEL Integration and Pattern Priority",
+            "Home-Field Recovery and Straight-In Planning"
           ]
         }
       ]

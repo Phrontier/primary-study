@@ -140,6 +140,18 @@
         "Departure and Transition Discipline",
         "Pattern Saturation, Priority, and PEL Integration"
       ]
+    },
+    {
+      "code" : "FAM6302",
+      "missingCanonicalItems" : [
+
+      ],
+      "unexpectedPrimaryItems" : [
+        "Published Departure Route Logic",
+        "Uncontrolled-Field Arrival Discipline",
+        "PPEL Integration and Pattern Priority",
+        "Home-Field Recovery and Straight-In Planning"
+      ]
     }
   ],
   "canonicalEventCount" : 88,
@@ -204,7 +216,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-28T17:00:19Z",
+  "generatedAt" : "2026-05-28T17:03:06Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

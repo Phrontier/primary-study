@@ -23523,7 +23523,7 @@
                 }
               ],
               "id" : "contacts-flights-fam4702",
-              "overview" : "This event ties together spin, inverted spin, and progressive spin in a way that should already make sense before you step. You should be ready to brief what changes the plan, what numbers matter, and where the usual errors start once the workload climbs.",
+              "overview" : "This event turns the spin family into distinct problems instead of one big emergency blob. You should be ready to brief a clean erect spin entry and recovery, recognize when an inverted or progressive spin is actually developing, and then switch gears to accelerated-stall cues and a disciplined AOA approach picture.",
               "primaryDocumentIDs" : [
 
               ],
@@ -23562,52 +23562,60 @@
                   {
                     "items" : [
                       {
-                        "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
+                        "text" : "The intentional erect spin teaches you how a fully stalled, yaw-driven departure is entered, recognized, and recovered before altitude discipline becomes the real emergency. The point is not to be dramatic; it is to make the recovery inputs feel procedural instead of surprising."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - slow cruise (150 KIAS), minimum entry 13500’ AGL"
+                            "text" : "Trim the aircraft for about 150 KIAS in straight-and-level flight, complete PSSA, clear the area, and do not enter below 13,500 feet AGL."
                           },
                           {
-                            "text" : "torque roll left → near inverted, nose-level attitude."
+                            "text" : "The overall event guardrails still matter: enter below 22,000 feet PA and be recovered above 10,000 feet PA."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Entry setup:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery"
+                            "text" : "Retard PCL to IDLE first, then raise the nose to about 30 degrees nose high."
                           },
                           {
-                            "text" : "Inadvertent Departure from Controlled Flight"
+                            "text" : "At the first stick shaker, add slight rudder in the desired spin direction."
                           },
                           {
-                            "text" : "Checklist - PSSA"
+                            "text" : "At the full stall and nose drop, apply full rudder in the direction of rotation, full aft stick, and keep the ailerons neutral."
                           },
                           {
-                            "text" : "Clear - TCAS [Below], visual scan, clearing turns"
+                            "text" : "Call out altitude, AOA, airspeed, and turn-needle indications so you stay ahead of what the aircraft is doing."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Entry and recognition:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Entered below 22000’ PA and recovered above 10000’ PA"
+                            "text" : "Recover with the published Inadvertent Departure from Controlled Flight procedure rather than trying to create a private spin technique."
                           },
                           {
-                            "text" : "Do not exceed aircraft limitations; eject if recovery is uncertain"
+                            "text" : "Once the rotation stops, neutralize the rudder and recover from the resulting unusual attitude without pulling so aggressively that you create a secondary stall."
                           },
                           {
-                            "text" : "Inverted spins typically result from control release at high pitch (60–90° nose up), MAX power, ~50 KIAS."
-                          },
-                          {
-                            "text" : "yaw rate ↑, enters right spin, stabilizes ~120°\/sec after 2 turns."
+                            "text" : "After recovery, check and report oil pressure before you add power back in."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Recovery:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Common misses are raising the nose before PCL is at IDLE, letting external fixation delay the recovery, forgetting to neutralize controls as the rotation stops, or pulling too hard in the recovery and stalling it again."
+                          },
+                          {
+                            "text" : "Ailerons stay neutral in the spin, and aft stick held at the wrong time can delay recovery."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
                     "title" : "Spin"
@@ -23615,52 +23623,57 @@
                   {
                     "items" : [
                       {
-                        "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
+                        "text" : "Intentional inverted spins are prohibited. You still need to understand them because a poorly managed inverted departure can flatten into an unusual picture that looks very different from an erect spin."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - slow cruise (150 KIAS), minimum entry 13500’ AGL"
+                            "text" : "The usual setup is a high-pitch, high-power, low-airspeed mistake: roughly 60 to 90 degrees nose high, PCL at MAX, and around 50 KIAS before the aircraft rolls and departs."
                           },
                           {
-                            "text" : "torque roll left → near inverted, nose-level attitude."
+                            "text" : "Torque and aft-CG effects drive the departure more than the clean yaw entry picture you use for an erect spin."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "How it develops:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery"
+                            "text" : "Expect a flatter spin than the erect case, often around 30 degrees nose low with slight pitch oscillations."
                           },
                           {
-                            "text" : "Inadvertent Departure from Controlled Flight"
+                            "text" : "Airspeed is typically around 40 KIAS, AOA trends toward 0 units, and the G cue is negative, around minus 1.5 G."
                           },
                           {
-                            "text" : "Checklist - PSSA"
-                          },
-                          {
-                            "text" : "Clear - TCAS [Below], visual scan, clearing turns"
+                            "text" : "If the nose is steeply down and the airspeed is rapidly increasing, you may actually be looking at an inverted spiral instead."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "What it looks like:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Entered below 22000’ PA and recovered above 10000’ PA"
+                            "text" : "An early reduction of PCL to IDLE is the first high-value move because power helps sustain the inverted spin."
                           },
                           {
-                            "text" : "Do not exceed aircraft limitations; eject if recovery is uncertain"
-                          },
-                          {
-                            "text" : "Inverted spins typically result from control release at high pitch (60–90° nose up), MAX power, ~50 KIAS."
-                          },
-                          {
-                            "text" : "yaw rate ↑, enters right spin, stabilizes ~120°\/sec after 2 turns."
+                            "text" : "With PCL at IDLE and ailerons neutral, some incipient inverted departures will transition out of the spin or become an inverted spiral that you then sort out with the published OCF logic."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Recovery mindset:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not confuse a steep, accelerating inverted spiral with the flatter low-airspeed inverted spin picture."
+                          },
+                          {
+                            "text" : "Leaving power at MAX is exactly how you keep the inverted spin going."
+                          },
+                          {
+                            "text" : "Speed-brake position is not the magic answer here; it is not what decides whether the departure develops or recovers."
+                          }
+                        ],
+                        "text" : "Study standard:"
                       }
                     ],
                     "title" : "Inverted Spin"
@@ -23668,52 +23681,40 @@
                   {
                     "items" : [
                       {
-                        "text" : "intentional stall with yaw inducing autorotation to train recognition\/recovery from post-stall gyrations, incipient spins, and steady-state spins"
+                        "text" : "A progressive spin is not a new maneuver. It is what you create by applying the wrong recovery inputs to a steady-state spin, which is why this brief is really about avoiding self-inflicted escalation."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - slow cruise (150 KIAS), minimum entry 13500’ AGL"
+                            "text" : "The classic cause is reversing rudder while still holding full aft stick during a steady-state spin recovery attempt."
                           },
                           {
-                            "text" : "torque roll left → near inverted, nose-level attitude."
+                            "text" : "That combination drops the nose, keeps the aircraft rotating in the original direction for roughly 1.5 to 2 more turns, and drives the airspeed up hard."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "How it starts:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery"
+                            "text" : "Airspeed can build as high as about 175 KIAS while the aircraft is still rotating, which is one reason the sight picture feels worse than a normal spin."
                           },
                           {
-                            "text" : "Inadvertent Departure from Controlled Flight"
-                          },
-                          {
-                            "text" : "Checklist - PSSA"
-                          },
-                          {
-                            "text" : "Clear - TCAS [Below], visual scan, clearing turns"
+                            "text" : "If the wrong rudder and aft stick are held long enough, the aircraft can settle into a steady-state spin in the opposite direction."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "What it looks like:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Entered below 22000’ PA and recovered above 10000’ PA"
+                            "text" : "Do not try to invent a special progressive-spin technique. Go back to the published OCF\/departure recovery procedure and stop the control-input mistake that caused the problem."
                           },
                           {
-                            "text" : "Do not exceed aircraft limitations; eject if recovery is uncertain"
-                          },
-                          {
-                            "text" : "Inverted spins typically result from control release at high pitch (60–90° nose up), MAX power, ~50 KIAS."
-                          },
-                          {
-                            "text" : "yaw rate ↑, enters right spin, stabilizes ~120°\/sec after 2 turns."
+                            "text" : "The real prevention is procedural discipline: identify the direction of rotation, apply the correct rudder logic once, and do not reverse it because the airplane feels wrong."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Recovery and prevention:"
                       }
                     ],
                     "title" : "Progressive Spin"
@@ -23721,55 +23722,57 @@
                   {
                     "items" : [
                       {
-                        "text" : "Simulates a stall during the approach turn to final, emphasizing early recognition and recovery from approach-to-stall conditions in the landing pattern"
+                        "text" : "An accelerated stall is a stall driven by excessive AOA under load, not by slow indicated airspeed alone. It is the trap that catches pilots who think a fast airplane cannot still be stalled if they are pulling hard enough."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
+                            "text" : "The event emphasis is the approach-turn and abrupt-pull environment, but the core lesson is broader: a wing stalls whenever you demand more lift than it can produce."
                           },
                           {
-                            "text" : "Configuration - simulate final approach at 5-10 knots above final approach speed for flap setting (NF\/TO\/LDG) = (110\/105\/100) = 115\/110\/105"
-                          },
-                          {
-                            "text" : "Configuration - clean, slow cruise (~150 KIAS or IP discretion)"
+                            "text" : "Higher bank angle means higher load factor, which means higher stall speed and less margin if you keep pulling."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "What drives it:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery must be completed above 6000’ AGL"
+                            "text" : "Expect more pronounced buffet once you get above about 2 G, with especially heavy buffet above about 3 G."
                           },
                           {
-                            "text" : "Recovery must be complete above 6000’ AGL"
+                            "text" : "The break is often an abrupt lateral roll-off rather than a gentle nose-drop warning."
                           },
                           {
-                            "text" : "Weak G pull - exit below working area"
-                          },
-                          {
-                            "text" : "Not checking\/reporting oil pressure"
+                            "text" : "At 90 degrees of bank the lift requirement becomes impossible, which is why the aircraft simply falls if you try to hold it there."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Recognition cues:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Forward stick too aggressive post-rotation - <1G recovery"
+                            "text" : "Reduce AOA first by easing the back-stick and unloading the wing."
                           },
                           {
-                            "text" : "Preceded by pronounced buffet (esp. >2 G)."
+                            "text" : "Reduce bank angle as required, then rebuild airspeed instead of trying to hold the same turn and make the buffet go away."
                           },
                           {
-                            "text" : "At 90° AOB → infinite lift required → aircraft falls."
-                          },
-                          {
-                            "text" : "~20% power"
+                            "text" : "Do not sustain heavy buffet in an attempt to salvage the maneuver; that only adds overstress risk."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Recovery:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The common mental trap is focusing on IAS and ignoring that a hard pull at 200 KIAS can still exceed critical AOA."
+                          },
+                          {
+                            "text" : "This is one more reason nose-low unusual-attitude recoveries must stay smooth. An aggressive pull can turn the recovery itself into the stall."
+                          }
+                        ],
+                        "text" : "Study standard:"
                       }
                     ],
                     "title" : "Accelerated Stall"
@@ -23777,49 +23780,66 @@
                   {
                     "items" : [
                       {
-                        "text" : "The AOA approach teaches precise energy and attitude control, using optimum AOA (10-11 units) instead of airspeed for approach guidance. It's a 180° descending turn to final followed by a normal flared landing. This technique is critical for short-field landings and jet\/carrier ops."
+                        "text" : "The AOA approach teaches you to fly the aircraft at the optimum on-speed condition instead of chasing one fixed airspeed. The scan is simple on purpose: keep the aircraft at about 10.5 units AOA, control rate of descent with power, and still transition to a normal flared landing."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Configuration - downwind; gear down, flaps as req, 120 KIAS"
+                            "text" : "After a touch-and-go, climb out at 120 KIAS with flaps up and return to pattern altitude."
+                          },
+                          {
+                            "text" : "On downwind, reduce power to about 15 to 20 percent, configure as briefed, and transition to the amber-donut on-speed picture."
+                          },
+                          {
+                            "text" : "Approximate on-speed references are about 110 KIAS flaps up, 100 KIAS flaps TO, and 95 KIAS flaps LDG, but the real target is 10 to 11 units AOA regardless of weight or flap setting."
+                          },
+                          {
+                            "text" : "Once on speed, use about 25 to 30 percent power to hold pattern altitude and keep 3\/4 to 1 wingtip spacing on downwind."
                           }
                         ],
-                        "text" : "Setup cues:"
+                        "text" : "Downwind transition:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Recovery must be completed above 6000’ AGL"
+                            "text" : "Complete the Before Landing Checklist before abeam."
                           },
                           {
-                            "text" : "Recover (Below)"
+                            "text" : "At the 180, reduce power back toward 15 to 20 percent, lower the nose slightly to hold 10.5 units, and start the turn."
                           },
                           {
-                            "text" : "Raising nose before PCL is idle"
+                            "text" : "Expect less bank than a normal pattern, especially with TO or LDG flaps, so you do not tighten the turn unnecessarily."
                           },
                           {
-                            "text" : "disorientation\/delayed recovery due to external fixation"
+                            "text" : "At the 90, the target is still 10.5 units and about 450 feet AGL."
                           }
                         ],
-                        "text" : "Execution priorities:"
+                        "text" : "Final-turn picture:"
                       },
                       {
                         "children" : [
                           {
-                            "text" : "~–1.5 G."
+                            "text" : "On final, scan the AOA indexer, aim point, and altimeter together. Use pitch to keep the donut and power to manage the glidepath."
                           },
                           {
-                            "text" : "At 90° AOB → infinite lift required → aircraft falls."
+                            "text" : "When established with about 1200 to 1500 feet of straightaway remaining, you want about 200 feet AGL and 10.5 units until you are beyond the runway numbers."
                           },
                           {
-                            "text" : "Climb out at 120 KIAS with flaps up"
-                          },
-                          {
-                            "text" : "Approx. KIAS"
+                            "text" : "This is still an AOA approach to a normal flared landing, not an AOA arrival all the way onto the runway. Expect to add power during the flare transition as the nose lowers."
                           }
                         ],
-                        "text" : "Numbers \/ traps:"
+                        "text" : "Final and flare:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Flaps-up AOA approaches are difficult and can create high descent rates at low power, so flaps LDG is preferred and flaps TO is only a compromise."
+                          },
+                          {
+                            "text" : "The biggest misses are over-correcting nose attitude, forgetting that power changes affect the AOA picture, using normal-pattern bank angles, and failing to transition to a normal flare."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
                     "title" : "AOA Approach"
@@ -23830,30 +23850,30 @@
                         "text" : "Spin"
                       },
                       {
-                        "text" : "inverted spin"
+                        "text" : "Inverted Spin"
                       },
                       {
-                        "text" : "progressive spin"
+                        "text" : "Progressive Spin"
                       },
                       {
-                        "text" : "accelerated stall"
+                        "text" : "Accelerated Stall"
                       },
                       {
-                        "text" : "AOA approach"
+                        "text" : "AOA Approach"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Have Spin and Inverted Spin organized before step so the cockpit workload never outruns the brief."
+                "summary" : "Keep the spin branches separate in your head, then brief the accelerated-stall and AOA patterns with the same level of discipline."
               },
-              "summary" : "Spin, Inverted Spin, and Progressive Spin.",
+              "summary" : "Spin-family recovery logic, accelerated-stall cues, and AOA approach technique.",
               "tags" : [
                 "contacts",
                 "flights",
                 "fam4702"
               ],
-              "title" : "Spin",
+              "title" : "Spins and AOA Approaches",
               "videoLinks" : [
 
               ]

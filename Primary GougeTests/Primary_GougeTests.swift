@@ -231,6 +231,7 @@ struct Primary_GougeTests {
             "FAM4304": "Solo Preparation and Boundaries",
             "FAM4601": "Night Contact Fundamentals",
             "FAM4701": "Aerobatics and OCF Recovery",
+            "FAM4702": "Spins and AOA Approaches",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1492,6 +1493,71 @@ struct Primary_GougeTests {
             "OCF Recovery Procedures",
             "Contact Unusual Attitudes",
             "All Aerobatic Maneuvers"
+        ])
+    }
+
+    @MainActor
+    @Test func fam4702SeparatesSpinBranchesFromAcceleratedStallAndAOAWork() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM4702"])
+        #expect(event.title == "Spins and AOA Approaches")
+        #expect(!event.overview.lowercased().contains("this event ties together"))
+        #expect(event.summary.lowercased().contains("spin"))
+        #expect(event.summary.lowercased().contains("aoa"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Spin",
+            "Inverted Spin",
+            "Progressive Spin",
+            "Accelerated Stall",
+            "AOA Approach",
+            "Required Procedures"
+        ])
+
+        let spinSection = try #require(notes.sections.first(where: { $0.title == "Spin" }))
+        let spinText = spinSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(spinText.contains("13,500 feet AGL") || spinText.contains("13,500"))
+        #expect(spinText.contains("22,000 feet PA") || spinText.contains("22,000"))
+        #expect(spinText.contains("10,000 feet PA") || spinText.contains("10,000"))
+        #expect(spinText.contains("PCL to IDLE"))
+        #expect(spinText.contains("full rudder"))
+        #expect(spinText.contains("oil pressure"))
+
+        let invertedSection = try #require(notes.sections.first(where: { $0.title == "Inverted Spin" }))
+        let invertedText = invertedSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(invertedText.contains("prohibited"))
+        #expect(invertedText.contains("40 KIAS"))
+        #expect(invertedText.contains("minus 1.5 G"))
+
+        let progressiveSection = try #require(notes.sections.first(where: { $0.title == "Progressive Spin" }))
+        let progressiveText = progressiveSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(progressiveText.contains("reversing rudder"))
+        #expect(progressiveText.contains("175 KIAS"))
+
+        let acceleratedSection = try #require(notes.sections.first(where: { $0.title == "Accelerated Stall" }))
+        let acceleratedText = acceleratedSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(acceleratedText.contains("2 G"))
+        #expect(acceleratedText.contains("90 degrees of bank"))
+        #expect(acceleratedText.contains("Reduce AOA"))
+
+        let aoaSection = try #require(notes.sections.first(where: { $0.title == "AOA Approach" }))
+        let aoaText = aoaSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(aoaText.contains("10.5 units"))
+        #expect(aoaText.contains("15 to 20 percent"))
+        #expect(aoaText.contains("25 to 30 percent"))
+        #expect(aoaText.contains("450 feet AGL"))
+        #expect(aoaText.contains("1200 to 1500 feet"))
+
+        let requiredSection = try #require(notes.sections.last)
+        #expect(requiredSection.items.map(\.text) == [
+            "Spin",
+            "Inverted Spin",
+            "Progressive Spin",
+            "Accelerated Stall",
+            "AOA Approach"
         ])
     }
 

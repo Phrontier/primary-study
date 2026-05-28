@@ -26,7 +26,8 @@
     "FAM4490",
     "FAM4501",
     "FAM4601",
-    "FAM4701"
+    "FAM4701",
+    "FAM4702"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -888,6 +889,43 @@
             "Combination Maneuver",
             "Inverted Flight"
           ]
+        }
+      ]
+    },
+    "FAM4702" : {
+      "authoringProfile" : "flight",
+      "eventEmphasisKeywords" : [
+        "spin",
+        "accelerated stall",
+        "aoa"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Spin",
+          "displayTitle" : "Spin",
+          "presentationStyle" : "recovery"
+        },
+        {
+          "discussionItem" : "inverted spin",
+          "displayTitle" : "Inverted Spin",
+          "presentationStyle" : "recovery"
+        },
+        {
+          "discussionItem" : "progressive spin",
+          "displayTitle" : "Progressive Spin",
+          "presentationStyle" : "recovery"
+        },
+        {
+          "discussionItem" : "accelerated stall",
+          "displayTitle" : "Accelerated Stall",
+          "presentationStyle" : "recovery"
+        },
+        {
+          "discussionItem" : "AOA approach",
+          "displayTitle" : "AOA Approach",
+          "presentationStyle" : "procedure"
         }
       ]
     }

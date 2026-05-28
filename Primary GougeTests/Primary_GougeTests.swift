@@ -235,6 +235,7 @@ struct Primary_GougeTests {
             "FAM4703": "Flight Loads and Emergency Review",
             "FAM6101": "Course Rules, OLF Operations, and Arrival Review",
             "FAM6102": "Risk Management and VFR Judgment",
+            "FAM6201": "Low-Speed Handling and Energy Management",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1721,6 +1722,56 @@ struct Primary_GougeTests {
         #expect(sectionalText.contains("sectional legend"))
         #expect(sectionalText.contains("MEF"))
         #expect(sectionalText.contains("divert"))
+    }
+
+    @MainActor
+    @Test func fam6201TurnsIntoLowSpeedHandlingAndEnergyManagementReview() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6201"])
+        #expect(event.title == "Low-Speed Handling and Energy Management")
+        #expect(!event.overview.lowercased().contains("this event pulls together"))
+        #expect(event.summary.lowercased().contains("slow flight"))
+        #expect(event.summary.lowercased().contains("slip"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Three Cs",
+            "Slow Flight",
+            "SCATSAFE Maneuver",
+            "Energy Management",
+            "Slip",
+            "Required Procedures"
+        ])
+
+        let threeCsSection = try #require(notes.sections.first(where: { $0.title == "Three Cs" }))
+        let threeCsText = threeCsSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(threeCsText.contains("Pre-Stalling, Spinning, and Aerobatic Checklist"))
+        #expect(threeCsText.contains("6000 feet AGL"))
+
+        let slowFlightSection = try #require(notes.sections.first(where: { $0.title == "Slow Flight" }))
+        let slowFlightText = slowFlightSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(slowFlightText.contains("85 KIAS"))
+        #expect(slowFlightText.contains("45 percent torque"))
+        #expect(slowFlightText.contains("stick shaker"))
+
+        let scatsafeSection = try #require(notes.sections.first(where: { $0.title == "SCATSAFE Maneuver" }))
+        let scatsafeText = scatsafeSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(scatsafeText.contains("80 KIAS"))
+        #expect(scatsafeText.contains("15 units AOA"))
+        #expect(scatsafeText.contains("adverse yaw"))
+
+        let energySection = try #require(notes.sections.first(where: { $0.title == "Energy Management" }))
+        let energyText = energySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(energyText.contains("1000 feet"))
+        #expect(energyText.contains("180 to 200 KIAS"))
+
+        let slipSection = try #require(notes.sections.first(where: { $0.title == "Slip" }))
+        let slipText = slipSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(slipText.contains("125 KIAS"))
+        #expect(slipText.contains("200 to 300 feet"))
+        #expect(slipText.contains("low-fuel light"))
     }
 
     @MainActor

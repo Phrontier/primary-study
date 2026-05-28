@@ -30,7 +30,8 @@
     "FAM4702",
     "FAM4703",
     "FAM6101",
-    "FAM6102"
+    "FAM6102",
+    "FAM6201"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -1032,6 +1033,44 @@
           "discussionItem" : "local VFR sectional review",
           "displayTitle" : "Local VFR Sectional Review",
           "presentationStyle" : "knowledge"
+        }
+      ]
+    },
+    "FAM6201" : {
+      "authoringProfile" : "reviewSim",
+      "eventEmphasisKeywords" : [
+        "low speed",
+        "slow flight",
+        "energy",
+        "slip"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Three Cs",
+          "displayTitle" : "Three Cs",
+          "presentationStyle" : "knowledge"
+        },
+        {
+          "discussionItem" : "slow flight",
+          "displayTitle" : "Slow Flight",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "SCATSAFE maneuver",
+          "displayTitle" : "SCATSAFE Maneuver",
+          "presentationStyle" : "maneuver"
+        },
+        {
+          "discussionItem" : "energy management",
+          "displayTitle" : "Energy Management",
+          "presentationStyle" : "knowledge"
+        },
+        {
+          "discussionItem" : "slip",
+          "displayTitle" : "Slip",
+          "presentationStyle" : "maneuver"
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "canonicalCoverage" : {
     "SCATSAFE maneuver" : [
-      "Scatsafe Maneuver"
+      "SCATSAFE Maneuver"
     ],
     "Three Cs" : [
       "Three Cs"
@@ -17,7 +17,7 @@
     ]
   },
   "code" : "FAM6201",
-  "overview" : "This event pulls together three cs, slow flight, and scatsafe maneuver into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
+  "overview" : "This review sim is about low-speed aircraft handling and the discipline that keeps you ahead of the airplane when energy is low and stall margin is small. Be ready to brief the Three Cs, talk through Slow Flight and SCATSAFE cleanly, manage total energy between maneuvers, and explain when a slip helps versus hurts.",
   "primaryDocumentTitles" : [
     "FAM6201"
   ],
@@ -27,24 +27,38 @@
       {
         "items" : [
           {
-            "text" : "simulates an ELP stall during power-off descent, typically near High Key"
+            "text" : "The Three Cs are the setup discipline that protects every stall-series or low-speed maneuver. A good brief makes them sound automatic, not optional."
           },
           {
             "children" : [
               {
-                "text" : "Abrupt control inputs"
+                "text" : "Configuration: put the aircraft in the correct setup for the maneuver before you start chasing cues later."
               },
               {
-                "text" : "Failure to clear area"
+                "text" : "Checklist: complete the Pre-Stalling, Spinning, and Aerobatic Checklist over the ICS."
               },
               {
-                "text" : "Poor altitude control"
-              },
-              {
-                "text" : "AOA system may lag behind the wing’s actual AOA during rapid G-onset maneuvers—visually identify stall via uncommanded pitch up, wing drop, or oscillations (pitch bucking)."
+                "text" : "Clear area: use visual scan, TCAS, and clearing turns as required to make sure the working area is safe."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What to brief:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The Three Cs may be accomplished in any order."
+              },
+              {
+                "text" : "If maneuvers are flown in a series, you do not have to repeat them between every setup unless the situation changes."
+              },
+              {
+                "text" : "Use an approximately 180-degree clearing turn with 30 to 60 degrees of bank, with 45 degrees AOB maximum in the landing configuration."
+              },
+              {
+                "text" : "Recover any stall maneuver above 6000 feet AGL."
+              }
+            ],
+            "text" : "Study standard:"
           }
         ],
         "title" : "Three Cs"
@@ -52,49 +66,65 @@
       {
         "items" : [
           {
-            "text" : "Trains pilots to control the aircraft near stall speed, simulating conditions experienced during takeoff and landing."
+            "text" : "Slow Flight is where you prove you can keep the T-6B coordinated, trimmed, and under control in a near-stalled condition instead of just surviving the setup."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Complete the maneuver above 6000 feet AGL."
+              },
+              {
+                "text" : "Slow below 150 KIAS, lower the gear, and complete the Before Landing Checklist plus the Pre-Stalling, Spinning, and Aerobatic Checklist."
+              },
+              {
+                "text" : "Clear the working area, lower flaps to LDG, continue decelerating to about 85 KIAS, and set power at about 45 percent torque."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Entry setup"
           },
           {
             "children" : [
               {
-                "text" : "Lower flaps to LDG"
+                "text" : "Fly a coordinated, level 30-degree AOB turn for about 180 degrees of heading, then reverse with another 30-degree AOB turn back to the original heading."
               },
               {
-                "text" : "Maneuvering"
+                "text" : "Add power and trim as required to hold altitude and airspeed while keeping the ball centered."
               },
               {
-                "text" : "SCATSAFE Elements"
-              },
-              {
-                "text" : "S – Straight and Level"
+                "text" : "Expect the stick shaker to be on throughout the maneuver."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Execution"
           },
           {
             "children" : [
               {
-                "text" : "Reduce airspeed to ~85 KIAS"
+                "text" : "Advance PCL to MAX, confirm below 150 KIAS, raise the gear, move the flaps from LDG to TO, then retract the flaps at 110 KIAS minimum."
               },
               {
-                "text" : "Set power to ~45% torque"
-              },
-              {
-                "text" : "Perform coordinated, level 30° AOB turn for ~180°"
-              },
-              {
-                "text" : "Then turn back 30° AOB for ~180° to original heading"
+                "text" : "Keep trimming during the recovery so the aircraft accelerates cleanly instead of wallowing out of the maneuver."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Recovery"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The maneuver is complete when the aircraft is accelerating back toward cruise, re-trimmed, and balanced instead of still fighting leftover control pressures."
+              }
+            ],
+            "text" : "Maneuver complete when"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Poor trim use usually becomes poor altitude and heading control."
+              },
+              {
+                "text" : "Students also get behind the aircraft by trying to run checklists in the middle of maneuvering instead of before the setup is stabilized."
+              }
+            ],
+            "text" : "Common errors"
           }
         ],
         "title" : "Slow Flight"
@@ -102,53 +132,90 @@
       {
         "items" : [
           {
-            "text" : "Trains pilots to control the aircraft near stall speed, simulating conditions experienced during takeoff and landing."
+            "text" : "SCATSAFE is the instructor-demonstrated low-speed handling lesson. The goal is understanding what the airplane is telling you near stall, not memorizing the acronym without knowing why each piece matters."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "Complete the maneuver above 6000 feet AGL."
+              },
+              {
+                "text" : "Slow below 150 KIAS, lower the gear, and complete the Before Landing Checklist plus the Pre-Stalling, Spinning, and Aerobatic Checklist."
+              },
+              {
+                "text" : "Clear the area, lower flaps to LDG, slow to about 80 KIAS or 15 units AOA, and set power at about 45 percent torque."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Entry setup"
           },
           {
             "children" : [
               {
-                "text" : "Slow Flight"
+                "text" : "Straight and level: recognize the back side of the power curve and the sight picture that matches rotation or just prior to touchdown."
+              },
+              {
+                "text" : "Coordination exercise: use small bank changes with coordinated rudder and feel how much rudder the aircraft really needs at low speed."
+              },
+              {
+                "text" : "Adverse yaw: see how the nose wanders when rudder is missing and how much cleaner the rollout looks when coordination is correct."
+              },
+              {
+                "text" : "Torque and turns, steep turns, abrupt control movement, flap retraction, and effectiveness of controls all reinforce the same lesson: low-speed flight punishes abrupt inputs and poor coordination quickly."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Execution"
           },
           {
             "children" : [
               {
-                "text" : "Slow below 150 KIAS"
+                "text" : "The maneuver is complete when the demo has shown each low-speed effect clearly and the aircraft is recovered to a stable, coordinated flight condition."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Maneuver complete when"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The stick shaker may be on throughout the maneuver."
+              },
+              {
+                "text" : "Common errors are abrupt control movements, failure to clear the area, poor altitude control, and inadequate trim."
+              }
+            ],
+            "text" : "N/W/C focus"
           }
         ],
-        "title" : "Scatsafe Maneuver"
+        "title" : "SCATSAFE Maneuver"
       },
       {
         "items" : [
           {
-            "text" : "Efficient planning and execution of maneuvers using altitude and airspeed to manage aircraft energy—reducing time lost to repositioning and increasing training effectiveness."
+            "text" : "Energy management is what turns a collection of maneuvers into a smooth profile. You should be able to explain total energy, how to gain or lose it, and how that changes what maneuver makes sense next."
           },
           {
             "children" : [
               {
-                "text" : "Understand Energy State"
+                "text" : "Total energy is airspeed plus altitude. A simple rule of thumb is that 1000 feet of altitude is worth about 50 knots with MAX power and the canopy bow on the horizon."
               },
               {
-                "text" : "Energy = Altitude (Potential) + Airspeed (Kinetic)"
+                "text" : "A practical working state for maneuvering is usually 180 to 200 KIAS at a mid-area altitude, because that lets you trade into most briefed entry parameters with only a small adjustment."
               },
               {
-                "text" : "Use power, drag, and G-loading to manage it"
+                "text" : "Lose energy with low power, more drag, or higher AOA. Gain energy with MAX power, low AOA, and climbs in the 140 to 160 KIAS range."
               }
             ],
-            "text" : "Key points:"
+            "text" : "What to know:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A strong answer connects energy planning to sortie flow: sequence maneuvers to minimize repositioning and avoid wasting time rebuilding airspeed or altitude you did not need to throw away."
+              },
+              {
+                "text" : "If you are constantly surprised by your energy state, you are already behind the aircraft."
+              }
+            ],
+            "text" : "Study standard:"
           }
         ],
         "title" : "Energy Management"
@@ -156,49 +223,68 @@
       {
         "items" : [
           {
-            "text" : "Slip is judged by how well you enter it, stay ahead of the aircraft, and recover without needing cleanup coaching."
+            "text" : "A slip is an out-of-balance maneuver used to lose altitude and increase sink rate while holding a desired ground track. You should understand when it is useful and what makes it easy to mishandle."
           },
           {
             "children" : [
               {
-                "text" : "Know the entry airspeed, altitude, configuration, and cockpit setup before you start the maneuver."
+                "text" : "The normal demo setup is a slip to high key at 125 KIAS in the clean configuration."
+              },
+              {
+                "text" : "It may also be demonstrated at 120 KIAS with gear down and flaps as required."
+              },
+              {
+                "text" : "Use power as required to hold the briefed airspeed while the slip is established and unloaded."
+              },
+              {
+                "text" : "Announce the slip clearly: left or right wing down, left or right top rudder."
               }
             ],
-            "text" : "Setup cues:"
+            "text" : "Entry setup"
           },
           {
             "children" : [
               {
-                "text" : "Intentional out-of-balance maneuver used to increase sink rate and lose excess altitude while maintaining constant airspeed and ground track."
+                "text" : "From wings level, lower one wing and apply opposite rudder while adjusting bank and rudder to maintain the desired track."
               },
               {
-                "text" : "“Right\/left wing down, right\/left top rudder”"
+                "text" : "From a turn, lower the inboard wing and increase opposite rudder pressure, then keep adjusting both to hold the ground track."
               },
               {
-                "text" : "Lower one wing + apply opposite rudder"
-              },
-              {
-                "text" : "Maintain track using rudder pressure and bank"
+                "text" : "Monitor airspeed closely, use nose attitude to hold it, and expect a rate of descent that may exceed 2000 feet per minute."
               }
             ],
-            "text" : "Execution priorities:"
+            "text" : "Execution"
           },
           {
             "children" : [
               {
-                "text" : "125 KIAS, clean config"
-              },
-              {
-                "text" : "120 KIAS, gear down\/flaps as required"
-              },
-              {
-                "text" : "Full rudder not required (if used, keep <150 KIAS)"
-              },
-              {
-                "text" : "Observe VSI – descent may exceed 2000 fpm"
+                "text" : "Take out the slip smoothly with 200 to 300 feet remaining so you can arrest the sink rate and ensure positive control before the final part of the maneuver."
               }
             ],
-            "text" : "Numbers \/ traps:"
+            "text" : "Recovery"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The maneuver is complete when the wings are level, rudder pressure is relaxed, the descent is under control, and the aircraft is back on a stable flight path instead of still unloading the slip."
+              }
+            ],
+            "text" : "Maneuver complete when"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Stall speed increases in the slip, and stability is reduced even more with gear down."
+              },
+              {
+                "text" : "If full rudder is used, remain below 150 KIAS."
+              },
+              {
+                "text" : "The low-fuel light for the low-wing tank may illuminate regardless of actual fuel state."
+              }
+            ],
+            "text" : "N/W/C focus"
           }
         ],
         "title" : "Slip"
@@ -209,23 +295,23 @@
             "text" : "Three Cs"
           },
           {
-            "text" : "slow flight"
+            "text" : "Slow Flight"
           },
           {
-            "text" : "SCATSAFE maneuver"
+            "text" : "SCATSAFE Maneuver"
           },
           {
-            "text" : "energy management"
+            "text" : "Energy Management"
           },
           {
-            "text" : "slip"
+            "text" : "Slip"
           }
         ],
         "title" : "Required Procedures"
       }
     ],
-    "summary" : "Treat Three Cs and Slow Flight like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
+    "summary" : "Treat this as a low-speed handling review: configuration discipline, coordinated control inputs, energy awareness, and smooth recoveries all have to connect."
   },
-  "summary" : "Three Cs, Slow Flight, and Scatsafe Maneuver.",
-  "title" : "Slow Flight and Energy Management"
+  "summary" : "Three Cs, Slow Flight, SCATSAFE, Energy Management, and Slip as a low-speed handling review.",
+  "title" : "Low-Speed Handling and Energy Management"
 }

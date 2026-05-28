@@ -14974,7 +14974,7 @@
                 }
               ],
               "id" : "contacts-sims-fam6101",
-              "overview" : "This event pulls together course rules and sectional setup, plus olf and home-field flow into a cumulative review brief. You should be ready to move between sections without a reset and explain the setup cues, decision points, and common misses that usually trigger follow-up questions.",
+              "overview" : "This review sim checks whether you can brief the local-flying framework without leaning on memorized place names. Be ready to explain how to study the sectional, how outlying-field entries and departures are sequenced, and what must always be confirmed from the current published procedure before you launch or recover.",
               "primaryDocumentIDs" : [
 
               ],
@@ -15013,99 +15013,165 @@
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "Waldron"
-                          },
-                          {
-                            "text" : "“Corpus Approach, (Call Sign), request High-Key to Waldron.”"
-                          },
-                          {
-                            "text" : "Request Base, Downwind, or Break entry."
-                          },
-                          {
-                            "text" : "Make all IFR requests with Waldron Tower who will coordinate with Corpus Approach."
-                          }
-                        ],
-                        "text" : "Local Course Rules:"
+                        "text" : "Local course rules are the unit's contract for how traffic is deconflicted, where training aircraft are expected to be, and what altitudes, speeds, and reporting habits keep the area predictable. The goal is not to memorize one field's nickname map forever; it is to know how to brief and verify the current local procedure."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Know the operational purpose, the pilot-visible cues, and the follow-on actions or limits tied to Local VFR Sectional Review."
+                            "text" : "Know the entry gates, altitude blocks, speed expectations, noise-sensitive areas, and any restricted routes or solo limitations that apply to the day's sortie."
+                          },
+                          {
+                            "text" : "Be ready to brief which agency owns the handoff at each phase of arrival or departure and when the route changes from a general course-rule transit into a specific field-recovery procedure."
+                          },
+                          {
+                            "text" : "If weather, gear, flap, or traffic issues make the normal route unrealistic, ask early for the direct recovery or alternate entry that the current procedure allows."
                           }
                         ],
-                        "text" : "Local VFR Sectional Review:"
+                        "text" : "What stays universal:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The current published procedure, day-of brief, and controlling agencies decide the actual route names, gates, and reporting points."
+                          },
+                          {
+                            "text" : "Do not study course rules as a string of local proper nouns with no logic behind them. Study the purpose of each leg and then verify the local labels before flight."
+                          }
+                        ],
+                        "text" : "What must be confirmed locally:"
                       }
                     ],
-                    "title" : "Course Rules and Sectional Setup"
+                    "title" : "Local Course Rules"
                   },
                   {
                     "items" : [
                       {
-                        "children" : [
-                          {
-                            "text" : "Entry via 2 NM initial, PPEL, instrument approach, or as permitted by FAR\/AIM."
-                          },
-                          {
-                            "text" : "Ensure Number 1, Upwind (if not, maintain 800' MSL, 120 KIAS, landing configuration until Number 1)."
-                          },
-                          {
-                            "text" : "Maintain 800' MSL."
-                          },
-                          {
-                            "text" : "Turn 45 degrees away from runway heading (opposite pattern direction)."
-                          }
-                        ],
-                        "text" : "OLF Arrival and Departure:"
+                        "text" : "OLF operations are about disciplined pattern entry, positive communication, and a willingness to discontinue early if the sequencing picture is not clean. The field may be remote, but the expectations should still feel methodical."
                       },
                       {
                         "children" : [
                           {
-                            "text" : "Entry via 2 NM initial, PPEL, instrument approach, or as permitted by FAR\/AIM."
+                            "text" : "Know the authorized entry options for the field of use, the initial point geometry, and which agency or CTAF flow is used to determine runway, pattern traffic, and whether the field is saturated."
                           },
                           {
-                            "text" : "Ensure Number 1, Upwind (if not, maintain 800' MSL, 120 KIAS, landing configuration until Number 1)."
+                            "text" : "If the field does not answer, traffic cannot be sorted, or the runway\/pattern picture is not what you expected by the published decision point, execute the discontinued entry instead of pressing inward to solve it late."
                           },
                           {
-                            "text" : "Maintain 800' MSL."
-                          },
-                          {
-                            "text" : "Turn 45 degrees away from runway heading (opposite pattern direction)."
+                            "text" : "Pattern priority belongs to the aircraft already established correctly in the pattern or break, not to the one trying to force its way in with a late call."
                           }
                         ],
-                        "text" : "Home Field Arrival:"
+                        "text" : "Arrival mindset:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Depart only when you are number one and clear of conflicts, then fly the published departure geometry before accelerating, climbing, or turning farther onto course."
+                          },
+                          {
+                            "text" : "If the field uses a remote operator or crash-crew radio concept, treat that as a field-specific comm layer to verify from the day's brief, not as a universal aviation norm."
+                          },
+                          {
+                            "text" : "The real study standard is being able to explain when you continue a normal pattern, when you reset to initial, and when you leave entirely to rebuild the picture."
+                          }
+                        ],
+                        "text" : "Departure and reset logic:"
                       }
                     ],
-                    "title" : "OLF and Home-Field Flow"
+                    "title" : "OLF Arrival and Departure"
                   },
                   {
                     "items" : [
                       {
-                        "text" : "Local course rules"
+                        "text" : "Home-field arrival is the transition from area navigation back into terminal sequencing. The details are local, but the logic is transferable: arrive at the correct gate, at the correct energy, already knowing what kind of recovery you are asking for."
                       },
                       {
-                        "text" : "OLF arrival and departure"
+                        "children" : [
+                          {
+                            "text" : "Know the authorized arrival families, the expected arrival altitude and airspeed profile, and the common reporting point where you transition from course rules to tower sequencing."
+                          },
+                          {
+                            "text" : "If you are requesting a straight-in or direct recovery because of weather, traffic, or abnormal configuration, say so early enough that Approach and Tower can build the correct plan around you."
+                          },
+                          {
+                            "text" : "Once inside the terminal area, configure below the correct airspeed gates, complete the landing checks on time, and be ready to report the entry or base\/final call the local procedure expects."
+                          }
+                        ],
+                        "text" : "Arrival flow:"
                       },
                       {
-                        "text" : "home field arrival"
+                        "children" : [
+                          {
+                            "text" : "The specific named routes, bridges, shoreline references, and reporting-point labels belong to the current local procedure."
+                          },
+                          {
+                            "text" : "What matters in the brief is understanding the arrival gate, the sequencing point, and the recovery options if the standard arrival stops fitting the actual situation."
+                          }
+                        ],
+                        "text" : "How to study it without local leakage:"
+                      }
+                    ],
+                    "title" : "Home-Field Arrival"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A local VFR sectional review should prove that you can use the chart to build situational awareness before you start flying local nicknames by memory. The sectional is how you verify where the field, checkpoints, obstacles, airspace, and alternate options really are."
                       },
                       {
-                        "text" : "local VFR sectional review"
+                        "children" : [
+                          {
+                            "text" : "Be able to identify the major class airspace boundaries, field elevations, runway orientation, prominent checkpoints, obstacle concentrations, and MEF along the local training routes."
+                          },
+                          {
+                            "text" : "Know which nearby airports are realistic alternates, what special-use or noise-sensitive areas matter, and where the chart warns you that navigation by assumption becomes risky."
+                          },
+                          {
+                            "text" : "Use the chart to cross-check local course-rule descriptions instead of trusting memory when the weather, runway, or traffic picture changes."
+                          }
+                        ],
+                        "text" : "What to review on the chart:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the sectional review cannot answer where you are, what airspace you are entering, or what the nearest safe divert is, then the review is too shallow."
+                          },
+                          {
+                            "text" : "This item is not about owning one hometown map forever. It is about knowing how to extract the right information from the chart at any local training base."
+                          }
+                        ],
+                        "text" : "Study standard:"
+                      }
+                    ],
+                    "title" : "Local VFR Sectional Review"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Local Course Rules"
+                      },
+                      {
+                        "text" : "OLF Arrival and Departure"
+                      },
+                      {
+                        "text" : "Home-Field Arrival"
+                      },
+                      {
+                        "text" : "Local VFR Sectional Review"
                       }
                     ],
                     "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Treat Course Rules and Sectional Setup, plus OLF and Home-Field Flow like a spot check on the whole block: brief it cleanly, know the usual traps, and be ready to move to the next item without a reset."
+                "summary" : "Brief the local-flying framework in a transferable way: chart first, course-rule logic second, then field entry and recovery specifics from the current procedure."
               },
-              "summary" : "Course Rules and Sectional Setup, plus OLF and Home-Field Flow.",
+              "summary" : "Course rules, OLF sequencing, home-field arrival logic, and sectional review.",
               "tags" : [
                 "contacts",
                 "sims",
                 "fam6101"
               ],
-              "title" : "Local Course Rules and OLF Operations",
+              "title" : "Course Rules, OLF Operations, and Arrival Review",
               "videoLinks" : [
 
               ]

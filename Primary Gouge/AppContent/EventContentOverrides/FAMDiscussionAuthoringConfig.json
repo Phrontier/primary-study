@@ -28,7 +28,8 @@
     "FAM4601",
     "FAM4701",
     "FAM4702",
-    "FAM4703"
+    "FAM4703",
+    "FAM6101"
   ],
   "blockDefaults" : {
     "checkFlight" : {
@@ -959,6 +960,38 @@
           "discussionItem" : "any emergency procedure",
           "displayTitle" : "Any Emergency Procedure",
           "presentationStyle" : "procedure"
+        }
+      ]
+    },
+    "FAM6101" : {
+      "authoringProfile" : "reviewSim",
+      "eventEmphasisKeywords" : [
+        "course rules",
+        "arrival",
+        "sectional"
+      ],
+      "preserveExistingVisibleContent" : true,
+      "standardizeRequiredProcedureDisplay" : true,
+      "itemSections" : [
+        {
+          "discussionItem" : "Local course rules",
+          "displayTitle" : "Local Course Rules",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "OLF arrival and departure",
+          "displayTitle" : "OLF Arrival and Departure",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "home field arrival",
+          "displayTitle" : "Home-Field Arrival",
+          "presentationStyle" : "local-generalized"
+        },
+        {
+          "discussionItem" : "local VFR sectional review",
+          "displayTitle" : "Local VFR Sectional Review",
+          "presentationStyle" : "knowledge"
         }
       ]
     }

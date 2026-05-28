@@ -233,6 +233,7 @@ struct Primary_GougeTests {
             "FAM4701": "Aerobatics and OCF Recovery",
             "FAM4702": "Spins and AOA Approaches",
             "FAM4703": "Flight Loads and Emergency Review",
+            "FAM6101": "Course Rules, OLF Operations, and Arrival Review",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
             "F2101": "Formation Departure Procedures",
@@ -1614,6 +1615,54 @@ struct Primary_GougeTests {
             "Acceleration Limitations",
             "Any Emergency Procedure"
         ])
+    }
+
+    @MainActor
+    @Test func fam6101GeneralizesCourseRulesAndArrivalReview() throws {
+        let manifest = try loadStudyManifestFromAppContent()
+        let manifestEvents = manifestEventLookup(from: manifest)
+
+        let event = try #require(manifestEvents["FAM6101"])
+        #expect(event.title == "Course Rules, OLF Operations, and Arrival Review")
+        #expect(!event.overview.lowercased().contains("this event pulls together"))
+        #expect(event.summary.lowercased().contains("course rules"))
+        #expect(event.summary.lowercased().contains("sectional"))
+
+        let notes = try #require(event.studyNotes)
+        #expect(notes.sections.compactMap(\.title) == [
+            "Local Course Rules",
+            "OLF Arrival and Departure",
+            "Home-Field Arrival",
+            "Local VFR Sectional Review",
+            "Required Procedures"
+        ])
+
+        let combinedText = notes.sections.flatMap { section in
+            section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
+        }.joined(separator: " ").lowercased()
+        for forbidden in ["waldron", "goliad", "aransas", "ingleside", "shamrock", "rusty", "camel humps", "berclair", "port royal", "kngp", "kngt", "krkp", "ktfp", "oso", "woodsboro"] {
+            #expect(!combinedText.contains(forbidden))
+        }
+
+        let courseRulesSection = try #require(notes.sections.first(where: { $0.title == "Local Course Rules" }))
+        let courseRulesText = courseRulesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(courseRulesText.contains("published procedure"))
+        #expect(courseRulesText.contains("day-of brief"))
+
+        let olfSection = try #require(notes.sections.first(where: { $0.title == "OLF Arrival and Departure" }))
+        let olfText = olfSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(olfText.contains("discontinued entry"))
+        #expect(olfText.contains("number one"))
+
+        let homeFieldSection = try #require(notes.sections.first(where: { $0.title == "Home-Field Arrival" }))
+        let homeFieldText = homeFieldSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(homeFieldText.contains("arrival gate"))
+        #expect(homeFieldText.contains("direct recovery"))
+
+        let sectionalSection = try #require(notes.sections.first(where: { $0.title == "Local VFR Sectional Review" }))
+        let sectionalText = sectionalSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
+        #expect(sectionalText.contains("MEF"))
+        #expect(sectionalText.contains("special-use"))
     }
 
     @MainActor

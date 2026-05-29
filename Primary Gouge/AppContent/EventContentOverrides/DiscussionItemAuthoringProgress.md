@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I22 Radio Instruments complete through `I2203`
-- Current event: `I3101`
-- Next action: author `I3101` from canonical syllabus items, local event sources, Instrument Navigation FTI clearance/departure material, and applicable local/planning references.
-- Last validated event: `I2203`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I2203.json`
-- Last manifest validation: `I2203` authored; no `I2203` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I2203`
+- Status: I31 Radio Instruments complete through `I3101`
+- Current event: `I3102`
+- Next action: author `I3102` from canonical syllabus items, local event sources, Instrument Navigation FTI holding/HILO material, and NATOPS oil-system malfunction guidance.
+- Last validated event: `I3101`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I3101.json`
+- Last manifest validation: `I3101` authored; no `I3101` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I3101`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -61,7 +61,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I2201 | HSI Orientation | UTD | sim | I22 Radio Instruments | 6 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, and Instrument Navigation FTI; no `systemsBrief`; manifest/audit/build passed. |
 | I2202 | Arcing and Radial Intercepts | UTD | sim | I22 Radio Instruments | 6 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI, NATOPS OBOGS material, and EP/N/W/C XML; no `systemsBrief`; manifest/audit/build passed. |
 | I2203 | Holding Entry | UTD | sim | I22 Radio Instruments | 4 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI holding material, and NATOPS battery/generator failure guidance; no `systemsBrief`; manifest/audit/build passed. |
-| I3101 | Clearance and Departure Procedures | OFT | sim | I31 Radio Instruments | 6 | pending | - | - |
+| I3101 | Clearance and Departure Procedures | OFT | sim | I31 Radio Instruments | 6 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI departure/enroute/approach material, and CNAF takeoff/approach minimums; no `systemsBrief`; manifest/audit/build passed. |
 | I3102 | HILO Approaches | OFT | sim | I31 Radio Instruments | 5 | pending | - | - |
 | I3103 | PAR | OFT | sim | I31 Radio Instruments | 6 | pending | - | - |
 | I3104 | Night Cockpit Setup | OFT | sim | I31 Radio Instruments | 6 | pending | - | - |

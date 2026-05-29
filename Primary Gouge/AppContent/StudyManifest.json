@@ -28421,9 +28421,10 @@
                 }
               ],
               "id" : "instruments-sims-i3101",
-              "overview" : "I3101 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I3101 moves from basic radio navigation into full instrument approach sequencing. The event standard is to copy and fly the clearance, transition cleanly from takeoff to instruments, stay ahead of en route setup, and execute procedure-turn, teardrop, arcing, and missed-approach procedures without losing the aircraft.",
               "primaryDocumentIDs" : [
-                "contents-2-instruments-2-sims-i3100-block-i3101-briefing-guide-1542-166d-pdf"
+                "contents-2-instruments-2-sims-i3100-block-i3101-briefing-guide-1542-166d-pdf",
+                "contents-2-instruments-2-sims-scenarios-i3101-1542-166d-pdf"
               ],
               "questionBanks" : [
 
@@ -28473,30 +28474,287 @@
                   {
                     "items" : [
                       {
-                        "text" : "Clearance and departure procedures"
+                        "text" : "Clearance and departure procedures connect the IFR clearance, the departure method, and the instrument takeoff scan into one plan before the aircraft moves."
                       },
                       {
-                        "text" : "en route procedures"
+                        "children" : [
+                          {
+                            "text" : "Copy the clearance deliberately: aircraft identification, clearance limit, departure type, route, altitude, departure frequency, transponder code, and any additional restrictions or holding instructions."
+                          },
+                          {
+                            "text" : "Before takeoff, review terrain, hazards, climb gradients, and the assigned departure type; set NAVAIDs and displays so the first navigation task is ready before brake release."
+                          },
+                          {
+                            "text" : "Keep the most likely emergency return approach available. Departure setup should answer where you will point the aircraft if the climb does not go normally."
+                          }
+                        ],
+                        "text" : "Clearance and setup:"
                       },
                       {
-                        "text" : "procedure turn"
+                        "children" : [
+                          {
+                            "text" : "Fly a normal takeoff, use outside references and the attitude indicator at liftoff, then transition fully to the instrument scan as visual cues diminish."
+                          },
+                          {
+                            "text" : "Set about 8 to 10 degrees nose high, trim, verify the climb on the altimeter and VSI, then raise the gear and flaps."
+                          },
+                          {
+                            "text" : "Maintain the initial attitude until about 180 KIAS unless the departure or aircraft performance requires a different climb profile."
+                          },
+                          {
+                            "text" : "For best-rate climb, use about 140 KIAS and 15 degrees nose high."
+                          }
+                        ],
+                        "text" : "Instrument takeoff:"
                       },
                       {
-                        "text" : "tear drop"
-                      },
-                      {
-                        "text" : "arcing approaches"
-                      },
-                      {
-                        "text" : "missed approach procedures"
+                        "children" : [
+                          {
+                            "text" : "Lead level-offs with roughly 10 percent of the climb rate; for example, start adjusting about 200 feet early during a 2000 FPM climb."
+                          },
+                          {
+                            "text" : "If below climb speed, reduce power as the pitch comes down. If above climb speed, maintain power long enough to accelerate, then stabilize and trim."
+                          },
+                          {
+                            "text" : "Know the departure families: ODP, SID, radar departure, diverse departure, and VCOA."
+                          },
+                          {
+                            "text" : "For a diverse departure, climb to 400 feet AGL before turning and plan on at least 200 feet per NM, which is about 600 FPM at 180 KIAS."
+                          }
+                        ],
+                        "text" : "Departure execution:"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "Clearance and Departure Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "En route procedures are the discipline that keeps the aircraft ahead of the next clearance, fix, approach setup, and descent requirement."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the assigned airway, radial, DME, or point-to-point clearance as the controlling navigation task; FMS shortcuts do not replace the radio-navigation procedure being trained."
+                          },
+                          {
+                            "text" : "For point-to-point navigation, tune and identify the NAVAID, set the desired radial, visualize the present and desired radial\/DME positions, then split the bearing-pointer and course-pointer heads for the initial no-wind heading."
+                          },
+                          {
+                            "text" : "Update the point-to-point solution as DME and bearing change. If DME will arrive first, split the needle to slow DME change; if the radial arrives first, track inbound or outbound to the fix."
+                          }
+                        ],
+                        "text" : "Navigation control:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the ABCDs early enough to matter: ATIS, brief the approach and minimums, cockpit setup, and descent checklist before the IAF."
+                          },
+                          {
+                            "text" : "Plan NAVAID changeover at the published changeover point, halfway between facilities if no point is shown, or about 10 NM before an intersection when required."
+                          },
+                          {
+                            "text" : "Keep fuel, weather, recovery options, and approach request timing in the scan instead of waiting for the terminal area to force the workload."
+                          }
+                        ],
+                        "text" : "Task management:"
+                      }
+                    ],
+                    "title" : "En Route Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A procedure turn reverses course inside protected airspace so the aircraft can intercept the final approach course from the proper side and altitude."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not fly a procedure turn when SNERT applies: straight-in clearance, NoPT routing, established in aligned holding and cleared for the approach, radar vectors to final, or a timed approach."
+                          },
+                          {
+                            "text" : "About 5 NM before the IAF, slow to 150 KIAS and prepare the six Ts."
+                          },
+                          {
+                            "text" : "At station passage, turn the shortest direction to parallel the outbound course. If that turn would exceed 90 degrees, use a 45-degree intercept."
+                          },
+                          {
+                            "text" : "Start 1 minute outbound when wings level or abeam, whichever occurs later; descend if required with about 15 percent torque at 150 KIAS."
+                          }
+                        ],
+                        "text" : "Outbound:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Level at the procedure-turn altitude, normally adding power near 33 percent torque and re-trimming."
+                          },
+                          {
+                            "text" : "At 1 minute outbound, turn 45 degrees toward the protected side, start another 1-minute clock, and twist the inbound course."
+                          },
+                          {
+                            "text" : "At the end of the barb leg, turn 180 degrees opposite. If the bearing-pointer head is within 5 degrees of the inbound course, continue the turn with double-the-angle intercept; otherwise roll out on the barb heading for a 45-degree intercept."
+                          },
+                          {
+                            "text" : "Within 5 NM of the FAF, transition to before-approach configuration and maintain altitude until slowing permits the descent."
+                          }
+                        ],
+                        "text" : "Inbound:"
+                      }
+                    ],
+                    "title" : "Procedure Turn"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A teardrop approach is another course-reversal option that uses an offset outbound leg toward the protected side before turning inbound."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "A non-depicted teardrop may be used as a substitute for a depicted procedure turn when cleared for the approach; offset about 20 degrees from the final approach course toward the barb or protected side."
+                          },
+                          {
+                            "text" : "Remain within the published distance, typically 10 NM, and adjust the outbound leg for wind so the turn back inbound stays inside protected airspace."
+                          },
+                          {
+                            "text" : "About 5 NM before the IAF, slow to 150 KIAS."
+                          }
+                        ],
+                        "text" : "Setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "At station passage, turn toward the outbound teardrop course, start 2 minutes outbound when wings level or abeam, and descend if required with about 15 percent torque at 150 KIAS."
+                          },
+                          {
+                            "text" : "Level at the procedure-turn altitude, add power near 33 percent torque, and twist the inbound course at about 1.5 minutes outbound."
+                          },
+                          {
+                            "text" : "At 2 minutes outbound, turn in the depicted direction. Use double-the-angle if the bearing-pointer head is within 5 degrees of inbound; otherwise use a 45-degree intercept."
+                          },
+                          {
+                            "text" : "Transition to before-approach configuration within 5 NM of the FAF and continue with the published approach."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      }
+                    ],
+                    "title" : "Tear Drop"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Arcing approaches use DME to move around a facility until a lead radial or turn point places the aircraft on the final approach course."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Confirm DME is required by the approach title or equipment notes, such as VOR\/DME or TACAN."
+                          },
+                          {
+                            "text" : "At the IAF, turn to place the bearing pointer on the 90-degree benchmark, comply with segment altitudes, and set the inbound course in the CDI."
+                          },
+                          {
+                            "text" : "Use radial-to-arc and arc-to-radial intercept techniques rather than chasing the needle after the turn point has passed."
+                          }
+                        ],
+                        "text" : "Arc setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For radial-to-arc intercepts, standard-rate lead DME is about 0.5 percent of groundspeed; half-standard-rate lead DME is about 1 percent of groundspeed."
+                          },
+                          {
+                            "text" : "For arc-to-radial intercepts, estimate radials per NM as 60 divided by arc DME, then multiply by turn radius to find the lead radial."
+                          },
+                          {
+                            "text" : "Published lead radials are normally based on 200 KTAS and half-standard-rate turns; at 150 KIAS, compute a standard-rate lead and adjust for wind."
+                          },
+                          {
+                            "text" : "Within 5 NM of the FAF, transition to before-approach configuration and continue inbound on the published approach."
+                          }
+                        ],
+                        "text" : "Lead planning:"
+                      }
+                    ],
+                    "title" : "Arcing Approaches"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Missed approach procedures protect the climb after an approach can no longer be continued visually, safely, or within course guidance."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Execute the missed approach at the MAP or DA\/DH when the runway environment is not in sight, required visibility is not available, or the aircraft is not in position for a normal landing."
+                          },
+                          {
+                            "text" : "If full-scale CDI deflection occurs before the FAF, attempt to re-intercept, do not descend, and notify ATC."
+                          },
+                          {
+                            "text" : "If full-scale CDI deflection occurs between the FAF and MAP, climb toward the missed-approach altitude and notify ATC. Obstacle protection is only assured along published or assigned segments."
+                          },
+                          {
+                            "text" : "In training, distinguish the published missed approach from an assigned climbout; fly the clearance you were given unless safety requires otherwise."
+                          }
+                        ],
+                        "text" : "Decision points:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "At the MAP, set PCL MAX, pitch 10 to 15 degrees nose high, verify two positive rates, then raise the gear."
+                          },
+                          {
+                            "text" : "Above 110 KIAS, raise the flaps, accelerate toward 180 KIAS, and adjust toward an 8 to 10 degree nose-high climb attitude."
+                          },
+                          {
+                            "text" : "Start a standard-rate turn as required to the missed-approach course or assigned heading, then report missed approach with the reason."
+                          },
+                          {
+                            "text" : "Once climbing and navigating, pass DRAFT as required: destination, route, altitude, fuel, and time en route."
+                          },
+                          {
+                            "text" : "Standard obstacle-clearance planning uses 200 feet per NM; the T-6B normally exceeds that at about 180 KIAS and roughly 2000 FPM, but higher published gradients still require performance planning."
+                          }
+                        ],
+                        "text" : "Climb flow:"
+                      }
+                    ],
+                    "title" : "Missed Approach Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Clearance and Departure Procedures"
+                      },
+                      {
+                        "text" : "En Route Procedures"
+                      },
+                      {
+                        "text" : "Procedure Turn"
+                      },
+                      {
+                        "text" : "Tear Drop"
+                      },
+                      {
+                        "text" : "Arcing Approaches"
+                      },
+                      {
+                        "text" : "Missed Approach Procedures"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Copy and fly the IFR clearance, transition from takeoff to instruments, manage en route setup, and execute PT, teardrop, arcing, and missed-approach procedures with disciplined task flow."
               },
-              "summary" : "I3101 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "IFR clearance, departure setup, en route management, course reversals, arcing approaches, and missed-approach execution.",
               "tags" : [
                 "instruments",
                 "sims",

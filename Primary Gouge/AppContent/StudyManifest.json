@@ -29108,9 +29108,10 @@
                 }
               ],
               "id" : "instruments-sims-i3103",
-              "overview" : "I3103 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I3103 is the radar-approach event: precision PAR, nonprecision radar approaches, recommended-altitude control, and emergency decision making while under vectors. The standard is to follow controller instructions promptly without surrendering aircraft control, orientation, minimums discipline, or the propeller-malfunction branch logic.",
               "primaryDocumentIDs" : [
-                "contents-2-instruments-2-sims-i3100-block-i3103-briefing-guide-1542-166d-pdf"
+                "contents-2-instruments-2-sims-i3100-block-i3103-briefing-guide-1542-166d-pdf",
+                "contents-2-instruments-2-sims-scenarios-i3103-1542-166d-pdf"
               ],
               "questionBanks" : [
 
@@ -29160,6 +29161,260 @@
                   {
                     "items" : [
                       {
+                        "text" : "PAR is a precision radar approach in which the final controller gives azimuth and glideslope corrections to guide the aircraft to DA\/DH."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Expect surveillance radar vectors toward final, normally with standard-rate turns not exceeding 30 degrees AOB and prompt compliance with assigned headings and altitudes."
+                          },
+                          {
+                            "text" : "Complete landing checks, review minimums, lost-communication instructions, missed-approach or climbout instructions, and keep position orientation with available NAVAIDs."
+                          },
+                          {
+                            "text" : "PAR equipment provides precise runway centerline guidance, elevation guidance, and range; typical training limits are about 10 NM range, 20 degrees azimuth, and 7 degrees elevation."
+                          }
+                        ],
+                        "text" : "Transition to final:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "When transferred to final controller, include gear status if required and be in before-approach configuration before glideslope intercept."
+                          },
+                          {
+                            "text" : "Begin descent only when told \"on glideslope,\" not when told \"approaching glidepath.\""
+                          },
+                          {
+                            "text" : "At glideslope intercept, use about 24 percent torque, 120 KIAS, and roughly 600 FPM. Pitch controls airspeed and power controls glideslope, with small prompt corrections."
+                          },
+                          {
+                            "text" : "At DA\/DH, continue only if the runway environment is in sight and the landing is safe; do not level at DA\/DH."
+                          }
+                        ],
+                        "text" : "Precision final:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If communication is lost for more than 1 minute on vectors to final, more than 15 seconds on ASR or PAR without glideslope final, or more than 5 seconds on PAR final with glideslope, attempt secondary or tower frequency."
+                          },
+                          {
+                            "text" : "Proceed VFR if able, or execute the approved non-radar approach or published radar lost-communication procedure."
+                          },
+                          {
+                            "text" : "Miss immediately if directed by controller, tower, RDO, or wheels watch; if unsafe; or at DA\/DH without required visual references."
+                          }
+                        ],
+                        "text" : "Lost comm and missed:"
+                      }
+                    ],
+                    "title" : "PAR"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "PAR W\/O GS is a nonprecision radar approach: the final controller gives precise azimuth and range, but no glideslope."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The approach may start with surveillance radar vectors and then transfer to PAR final for azimuth-only final guidance."
+                          },
+                          {
+                            "text" : "Because no glideslope is provided, the controller states the MAP location and mile markers and may direct descent to MDA or step-down fixes."
+                          },
+                          {
+                            "text" : "The more precise PAR azimuth and range may support a lower MDA than an ASR approach, but it remains a nonprecision approach."
+                          }
+                        ],
+                        "text" : "What changes:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use about 200 KIAS on downwind and 150 KIAS on base; if extended on final or dogleg, maintain 200 KIAS until within about 15 NM."
+                          },
+                          {
+                            "text" : "Transition to before-approach configuration and complete landing checks on final or dogleg no later than 15 NM."
+                          },
+                          {
+                            "text" : "With recommended altitudes, use about 24 percent torque and 120 KIAS, adjusting descent to meet the altitude gates."
+                          },
+                          {
+                            "text" : "Without recommended altitudes, use about 20 percent torque, 120 KIAS, and no more than 1000 FPM to MDA."
+                          },
+                          {
+                            "text" : "Lead the level-off about 100 feet before MDA, maintain MDA and assigned heading to the MAP, then land only if visual and safe."
+                          }
+                        ],
+                        "text" : "Nonprecision final:"
+                      }
+                    ],
+                    "title" : "PAR W\/O GS"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "ASR is a nonprecision radar approach using airport surveillance radar for course guidance throughout the approach."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Expect heading corrections, range calls, the MAP location, and descent instructions to MDA or step-down fixes."
+                          },
+                          {
+                            "text" : "Because the controller is not providing glideslope, you are responsible for a stable descent profile, MDA level-off, and timing the decision at the MAP."
+                          },
+                          {
+                            "text" : "If circling is planned, provide the aircraft approach category when needed so the correct circling MDA is used."
+                          }
+                        ],
+                        "text" : "Approach setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Acknowledge controller instructions unless told not to acknowledge; slow or missed readbacks are a major radar-approach error."
+                          },
+                          {
+                            "text" : "Do not descend to MDA early just to get level. Heavy precipitation and low altitude can increase ground clutter and degrade radar contact."
+                          },
+                          {
+                            "text" : "If radar contact is lost and the runway environment is not in sight, execute the missed approach or assigned climbout."
+                          },
+                          {
+                            "text" : "At the MAP, guidance terminates; if the runway environment is not in sight or landing is unsafe, go missed."
+                          }
+                        ],
+                        "text" : "Decision discipline:"
+                      }
+                    ],
+                    "title" : "ASR"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Recommended altitudes are pilot-requested altitude gates on final that help stabilize a nonprecision radar approach to MDA."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "They are based on the procedure descent gradient and are normally issued at each mile on final down to the last mile at or above MDA."
+                          },
+                          {
+                            "text" : "Use them as a rate-control aid, not permission to descend below published step-down restrictions or below MDA."
+                          },
+                          {
+                            "text" : "With recommended altitudes, adjust descent rate to meet each gate while keeping 120 KIAS and a stable configuration."
+                          },
+                          {
+                            "text" : "Without recommended altitudes, manage your own descent rate, level 100 feet prior to MDA, and maintain MDA until the MAP."
+                          }
+                        ],
+                        "text" : "How to use them:"
+                      }
+                    ],
+                    "title" : "Recommended Altitudes"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "IMC emergency discussion starts with aircraft control, terrain clearance, ATC coordination, and crew coordination before checklist detail."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "NATOPS procedures are the best available procedures, but they do not replace judgment when weather, terrain, multiple emergencies, or aircraft state change the problem."
+                          },
+                          {
+                            "text" : "Use the basic order: maintain aircraft control, analyze the situation, take proper action, and land as soon as conditions permit."
+                          },
+                          {
+                            "text" : "Inadvertent IMC, spatial disorientation, malfunction, or IMC abort requires a stable instrument scan before troubleshooting expands."
+                          }
+                        ],
+                        "text" : "Emergency framing:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Maintain aircraft control, transition fully to instruments, and climb immediately toward the applicable ERAA or local safe-altitude guidance as conditions permit; squawk as required and tell ATC your intentions."
+                          },
+                          {
+                            "text" : "On an IFR clearance, coordinate deviations with ATC unless the emergency requires immediate action."
+                          },
+                          {
+                            "text" : "A declared emergency and radar vectors to a suitable recovery field may be the safest option; brief what you need from ATC before task saturation takes over."
+                          },
+                          {
+                            "text" : "The pilot at the controls executes critical action memory items and PIC-directed actions while preserving the scan."
+                          }
+                        ],
+                        "text" : "IMC-specific priorities:"
+                      }
+                    ],
+                    "title" : "IMC Emergencies"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Propeller malfunctions include uncommanded power change, failure to produce expected power, and uncommanded propeller feathering; the branch point is whether enough usable power remains for a PEL."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Engine rollback may show decreasing power or thrust, decreasing fuel flow and N1 with PMU on, or a step change in power with PMU off."
+                          },
+                          {
+                            "text" : "Uncommanded propeller feathering may show rapid NP decrease, torque increase, increased propeller noise, thrust loss, vibration, and degraded glide performance."
+                          },
+                          {
+                            "text" : "Prop-sleeve touchdown may cause NP fluctuations, torque increase, thrust decrease, vibration, and possible CHIP indication."
+                          }
+                        ],
+                        "text" : "Recognition:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Set PCL to mid range, physically halfway between IDLE and MAX, then set the PMU switch OFF."
+                          },
+                          {
+                            "text" : "If NP is stable below 40 percent, pull the PROP SYS circuit breaker. Stable means below 40 percent with no upward change for 3 seconds at constant airspeed and torque."
+                          },
+                          {
+                            "text" : "Expect the propeller to unfeather in roughly 15 to 20 seconds if the procedure is effective."
+                          },
+                          {
+                            "text" : "Use PCL as required after the initial actions, monitoring torque, ITT, NP, and rate of descent."
+                          }
+                        ],
+                        "text" : "Immediate response:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If sufficient power is available, execute a PEL."
+                          },
+                          {
+                            "text" : "If power is insufficient, consider leaving the engine operating at mid-range PCL only when uncommanded feather is suspected and engine limits remain acceptable; otherwise transition toward engine shutdown, forced landing, or ejection as directed by the checklist and aircraft state."
+                          },
+                          {
+                            "text" : "With the PROP SYS circuit breaker pulled and PMU OFF, the feather dump solenoid is unpowered; the propeller feathers more slowly as oil pressure decreases, and glide performance may be considerably reduced."
+                          },
+                          {
+                            "text" : "If VSI remains greater than 1500 FPM at 125 KIAS with gear, flaps, and speed brake retracted and only 4 to 6 percent torque, increase torque as needed up to limits. If unable to reduce descent rate, set PCL OFF."
+                          }
+                        ],
+                        "text" : "Branch logic:"
+                      }
+                    ],
+                    "title" : "Propeller Malfunctions"
+                  },
+                  {
+                    "items" : [
+                      {
                         "text" : "PAR"
                       },
                       {
@@ -29169,21 +29424,21 @@
                         "text" : "ASR"
                       },
                       {
-                        "text" : "recommended altitudes"
+                        "text" : "Recommended Altitudes"
                       },
                       {
-                        "text" : "IMC emergencies"
+                        "text" : "IMC Emergencies"
                       },
                       {
-                        "text" : "propeller malfunctions"
+                        "text" : "Propeller Malfunctions"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Fly radar approaches through controller instructions without losing minimums discipline, IMC emergency priorities, or the propeller-malfunction decision tree."
               },
-              "summary" : "I3103 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "PAR, PAR without glideslope, ASR, recommended altitudes, IMC emergencies, and propeller-malfunction branch logic.",
               "tags" : [
                 "instruments",
                 "sims",

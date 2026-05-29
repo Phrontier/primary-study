@@ -1,0 +1,291 @@
+{
+  "canonicalCoverage" : {
+    "HSI orientation" : [
+      "HSI Orientation"
+    ],
+    "direct to a VOR" : [
+      "Direct to a VOR"
+    ],
+    "over-the-station intercepts" : [
+      "Over-the-Station Intercepts"
+    ],
+    "radial intercept procedures" : [
+      "Radial Intercept Procedures"
+    ],
+    "station passage" : [
+      "Station Passage"
+    ],
+    "tracking" : [
+      "Tracking"
+    ]
+  },
+  "code" : "I2201",
+  "overview" : "I2201 turns the HSI into a usable position picture. The event standard is to know where the station, aircraft, bearing pointer, and CDI are telling you to go, then use that picture to go direct, track, identify station passage, and intercept radials without chasing the display.",
+  "primaryDocumentTitles" : [
+    "I2201",
+    "I2201 Briefing guide 1542.166D",
+    "I2201 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "HSI orientation starts with a mental model: the NAVAID is at the center of the compass card, and the aircraft is on the tail of the bearing pointer."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The compass rose rotates with aircraft heading; the aircraft symbol stays fixed at the top of the display."
+              },
+              {
+                "text" : "Bearing pointer #1 is the green single-line pointer and bearing pointer #2 is the cyan double-line pointer; the head points toward the selected source and the tail shows the radial you are on."
+              },
+              {
+                "text" : "The CDI course arrow shows the selected VOR course or FMS track, the deviation bar shows lateral displacement, and the TO/FROM arrow tells whether that selected course is taking you to or from the station."
+              },
+              {
+                "text" : "Unless you are tracking directly to or from the NAVAID, forward motion makes heads fall and tails rise."
+              }
+            ],
+            "text" : "Display picture:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Tie every answer back to present position: station in the center, aircraft on the tail, desired course in the CDI, and turn direction from the relationship between them."
+              },
+              {
+                "text" : "The event may remove CDI help and require bearing-pointer/heading-bug work, so brief the bearing-pointer logic instead of memorizing one display setup."
+              },
+              {
+                "text" : "Common errors are reading the head as aircraft position, forgetting the TO/FROM meaning, and treating bearing-pointer motion as a command instead of an orientation cue."
+              }
+            ],
+            "text" : "Study standard:"
+          }
+        ],
+        "title" : "HSI Orientation"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Going direct to a VOR is a setup-and-track procedure: tune the correct station, point at it, center a TO course, then keep the course centered with wind correction."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Tune, identify, and monitor the desired VOR before trusting the display."
+              },
+              {
+                "text" : "Select PFD source to VOR and select bearing pointer #1 to VOR."
+              },
+              {
+                "text" : "Turn the shortest direction to place the head of bearing pointer #1 under the heading index."
+              },
+              {
+                "text" : "Set a CDI course that centers the CDI with a TO indication; the PFD press-and-hold function can do this quickly."
+              },
+              {
+                "text" : "Track the new course by flying a heading that keeps the CDI centered."
+              }
+            ],
+            "text" : "FTI sequence:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not skip station identification or fly to the wrong source just because a pointer is displayed."
+              },
+              {
+                "text" : "A centered CDI is not the finish line; the next task is tracking, because wind will move the aircraft off the direct course unless you correct."
+              }
+            ],
+            "text" : "Common traps:"
+          }
+        ],
+        "title" : "Direct to a VOR"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Tracking is not homing. Homing keeps turning toward the station; tracking corrects for wind so the ground track stays on the selected course."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Once established on course, hold heading equal to course until CDI or bearing-pointer movement shows drift."
+              },
+              {
+                "text" : "Use tail-radial-wind: draw from the bearing-pointer tail toward the desired radial to visualize where the wind is coming from."
+              },
+              {
+                "text" : "Use tail-radial-turn or the CDI bar to decide the turn back toward course; the aircraft symbol is where you are, and the deviation bar is where you need to go."
+              },
+              {
+                "text" : "Use an intercept angle suited to distance and closure; other than extreme cases, 45 degrees should be the maximum needed."
+              }
+            ],
+            "text" : "Course control:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "After re-intercepting, crab into the wind to hold the course. If unsure, start with about 5 degrees and watch whether the CDI drifts the same way, reverses, or stays centered."
+              },
+              {
+                "text" : "Near the station, CDI and bearing-pointer sensitivity increase because radial spacing tightens; keep corrections within about 10 degrees of wind-corrected heading to avoid chasing needles."
+              },
+              {
+                "text" : "The event specifically values bearing-pointer-only orientation, so be ready to explain the same correction without a CDI."
+              }
+            ],
+            "text" : "Wind correction:"
+          }
+        ],
+        "title" : "Tracking"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Station passage is primarily recognized by the first positive TO-to-FROM change on the CDI as the aircraft passes directly over or abeam the radio facility."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Expect bearing-pointer and CDI sensitivity to increase close to a conventional NAVAID; do not treat every jump in the cone of confusion as a heading command."
+              },
+              {
+                "text" : "Hold the planned wind-corrected heading through the unreliable portion instead of chasing rapid pointer movement."
+              },
+              {
+                "text" : "After passage, let the bearing pointer stabilize before building the outbound intercept picture."
+              }
+            ],
+            "text" : "How to brief it:"
+          }
+        ],
+        "title" : "Station Passage"
+      },
+      {
+        "items" : [
+          {
+            "text" : "An over-the-station intercept is used to intercept and fly outbound on a specified radial immediately after station passage."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use the six Ts one at a time: time as required, turn, time as required, transition, twist/intercept, and talk."
+              },
+              {
+                "text" : "Turn the shortest direction to parallel or intercept the outbound course. For small course changes, parallel while the bearing pointer stabilizes; for course changes greater than 90 degrees, turn to an intercept heading."
+              },
+              {
+                "text" : "Do not turn more than 45 degrees beyond the heading needed to parallel the new course."
+              },
+              {
+                "text" : "Set the new outbound course in the CDI, confirm FROM, then use double-the-angle up to 45 degrees once the bearing pointer is stable."
+              },
+              {
+                "text" : "Maintain the intercept heading until able to make a standard-rate turn onto the new course, then make required voice reports."
+              }
+            ],
+            "text" : "Execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The goal is not to spin knobs perfectly while task-saturated; it is to keep the airplane controlled, start the correct outbound geometry, and establish the new course without delay."
+              },
+              {
+                "text" : "Common errors are too much intercept, too little intercept, delaying the intercept setup, and trying to solve the whole six-T sequence at once."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Over-the-Station Intercepts"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Radial intercept procedures position the aircraft on a nearby radial or course without passing over the station."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Tune, identify, and monitor the NAVAID."
+              },
+              {
+                "text" : "Set the new course in the CDI: outbound uses the radial itself, while inbound uses the reciprocal."
+              },
+              {
+                "text" : "Turn toward the CDI deviation bar so the head of the course arrow ends up in the top half of the HSI, and use tail-radial-turn to verify turn direction."
+              },
+              {
+                "text" : "Use an intercept angle greater than the number of radials off course, but do not exceed 90 degrees."
+              }
+            ],
+            "text" : "Setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A 45-degree intercept is normally sufficient for inbound and outbound intercepts."
+              },
+              {
+                "text" : "If you are within about 10 radials and the CDI or bearing pointer is rapidly moving toward course, use double-the-angle instead of forcing the full 45-degree intercept."
+              },
+              {
+                "text" : "For outbound double-the-angle, count from the bearing-pointer tail to the new course; for inbound, count from the bearing-pointer head to the new course."
+              },
+              {
+                "text" : "Maintain the intercept heading until you can make a standard-rate turn onto the course, then track the radial or course with wind correction."
+              }
+            ],
+            "text" : "Intercept choice:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Close to the station, pointer movement accelerates; plan the intercept early enough that sensitivity does not make you chase."
+              },
+              {
+                "text" : "Common errors are setting the reciprocal wrong, turning away from the needed intercept, using the wrong pointer end, and joining with too much or too little intercept."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Radial Intercept Procedures"
+      },
+      {
+        "items" : [
+          {
+            "text" : "HSI Orientation"
+          },
+          {
+            "text" : "Direct to a VOR"
+          },
+          {
+            "text" : "Tracking"
+          },
+          {
+            "text" : "Station Passage"
+          },
+          {
+            "text" : "Over-the-Station Intercepts"
+          },
+          {
+            "text" : "Radial Intercept Procedures"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Build the HSI picture first, then use bearing-pointer and CDI movement to go direct, track, identify station passage, and intercept radials without chasing needles."
+  },
+  "summary" : "HSI orientation, VOR tracking, station passage, and radial intercept work.",
+  "title" : "HSI Orientation"
+}

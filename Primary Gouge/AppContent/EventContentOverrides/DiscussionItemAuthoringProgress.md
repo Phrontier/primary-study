@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I31 Radio Instruments complete through `I3104`
-- Current event: `I3201`
-- Next action: author `I3201` from canonical syllabus items, local event sources, Instrument Navigation FTI GPS procedure material, and applicable planning/aircraft references.
-- Last validated event: `I3104`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I3104.json`
-- Last manifest validation: `I3104` authored; no `I3104` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I3104`
+- Status: I32 Radio Instruments complete through `I3201`
+- Current event: `I3202`
+- Next action: author `I3202` from canonical syllabus items, local event sources, Instrument Navigation FTI STAR/departure/RNAV material, and applicable clearance-planning references.
+- Last validated event: `I3201`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I3201.json`
+- Last manifest validation: `I3201` authored; no `I3201` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I3201`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -65,7 +65,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I3102 | HILO Approaches | OFT | sim | I31 Radio Instruments | 5 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI HILO/holding/intersection material, and NATOPS/EP oil-system malfunction guidance; no `systemsBrief`; manifest/audit/build passed. |
 | I3103 | PAR | OFT | sim | I31 Radio Instruments | 6 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI radar-approach material, prior IMC-emergency wording decision, and NATOPS propeller malfunction guidance; no `systemsBrief`; manifest/audit/build passed. |
 | I3104 | Night Cockpit Setup | OFT | sim | I31 Radio Instruments | 6 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI SID/RVFAC/ILS/LOC/PTP material, night cockpit setup references, and EP/N/W/C fuel-system malfunction guidance; no `systemsBrief`; manifest/audit/build passed. |
-| I3201 | GPS Procedures | UTD | sim | I32 Radio Instruments | 5 | pending | - | - |
+| I3201 | GPS Procedures | UTD | sim | I32 Radio Instruments | 5 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, and Instrument Navigation FTI GPS/RNAV/TAA material; no `systemsBrief`; manifest/audit/build passed. |
 | I3202 | STAR | UTD | sim | I32 Radio Instruments | 5 | pending | - | - |
 | I3203 | No-Gyro Approach | OFT | sim | I32 Radio Instruments | 1 | pending | - | - |
 | I3204 | High-Altitude Approach | OFT | sim | I32 Radio Instruments | 1 | pending | - | - |

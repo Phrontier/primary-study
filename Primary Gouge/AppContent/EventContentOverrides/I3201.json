@@ -1,0 +1,258 @@
+{
+  "canonicalCoverage" : {
+    "GPS allowable operations (GPS waypoints in lieu of NDB, VOR, TACAN fixes)" : [
+      "GPS Allowable Operations"
+    ],
+    "GPS approaches" : [
+      "GPS Approaches"
+    ],
+    "GPS flight modes" : [
+      "GPS Flight Modes"
+    ],
+    "GPS holding" : [
+      "GPS Holding"
+    ],
+    "GPS procedures" : [
+      "GPS Procedures"
+    ]
+  },
+  "code" : "I3201",
+  "overview" : "I3201 shifts radio-instrument procedures into FMS/GPS execution. The standard is to load the correct database procedure, understand when GPS is authorized, manage TAA and approach-mode cues, and preserve the missed-approach branch when automatic sequencing stops.",
+  "primaryDocumentTitles" : [
+    "I3201",
+    "I3201 Briefing guide 1542.166D",
+    "I3201 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "GPS procedures begin with database and display discipline: the FMS can reduce workload only when the active waypoint, CDI source, and bearing-pointer picture are correct."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For direct-to navigation, load the desired waypoint, make it active, select FMS as the PFD source, and use the FMS bearing pointer to orient before tracking the CDI."
+              },
+              {
+                "text" : "For GPS intersections, confirm the next waypoint is loaded on the LEGS page before the aircraft reaches the fix."
+              },
+              {
+                "text" : "Approaching a waypoint, the NAV page cue changes from magenta to white over a magenta background, and along-track distance counts down toward 0.0 when crossing directly over the waypoint."
+              }
+            ],
+            "text" : "Direct-to and waypoint setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A fly-over waypoint is annotated with /O and must be crossed before turning; after passage, the pointer sequences to the next waypoint."
+              },
+              {
+                "text" : "A fly-by waypoint gives turn anticipation. When the CDI deviation bar flashes, begin a standard-rate turn and intercept or roll out on the new course."
+              },
+              {
+                "text" : "For timing or reporting at a fly-by waypoint, note the time when wings are level and the aircraft is on course or established on an intercept."
+              }
+            ],
+            "text" : "Fly-over versus fly-by:"
+          }
+        ],
+        "title" : "GPS Procedures"
+      },
+      {
+        "items" : [
+          {
+            "text" : "GPS allowable operations are limited by the published procedure, current database, approach title, and whether the underlying NAVAID must still be monitored."
+          },
+          {
+            "children" : [
+              {
+                "text" : "A published IAP, DP, or STAR must be retrieved by name from a current navigation database; do not manually build an IFR procedure waypoint by waypoint."
+              },
+              {
+                "text" : "Suitable RNAV/GPS may be used to determine position or distance from VOR, VOR/DME, VORTAC, TACAN, NDB, compass locator, DME fixes, and named fixes."
+              },
+              {
+                "text" : "GPS may be used to navigate to or from VOR, TACAN, NDB, compass locator, or DME fixes, and may be used for holding or DME arcs when the rules allow."
+              }
+            ],
+            "text" : "Authorized uses:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not use GPS as lateral guidance on a localizer-based final segment unless GPS is in the approach title or the procedure is otherwise specifically authorized."
+              },
+              {
+                "text" : "GPS cannot substitute for the NAVAID providing final approach course guidance, except for procedures titled with GPS or \"or GPS\" authorization."
+              },
+              {
+                "text" : "If flying the final segment of a VOR, TACAN, or NDB approach with GPS substitution, the underlying NAVAID must be operational and monitored for course alignment."
+              },
+              {
+                "text" : "An alternate airport used for planning must have at least one available non-GPS approach; do not build the alternate plan solely on GPS substitution."
+              },
+              {
+                "text" : "The published chart takes precedence over the GPS display when magnetic variation or database presentation creates a disagreement."
+              }
+            ],
+            "text" : "Limits and traps:"
+          }
+        ],
+        "title" : "GPS Allowable Operations"
+      },
+      {
+        "items" : [
+          {
+            "text" : "GPS approaches require correct loading, TAA altitude discipline, approach-mode verification, and a deliberate missed-approach sequence."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use LDDHA: load the approach with the correct transition, direct to the IAWP or build the vector-to-final leg as cleared, display FMS, verify any hold or HILO, and confirm APR mode."
+              },
+              {
+                "text" : "A Terminal Arrival Area transitions aircraft from the RNAV en route structure to the terminal area while providing obstacle clearance."
+              },
+              {
+                "text" : "Being cleared direct to an IAF or IF/IAF without an approach clearance does not authorize descent to the lower TAA altitude."
+              },
+              {
+                "text" : "Once cleared for the approach, descend only as authorized by the depicted TAA sector, feeder route, ATC clearance, and published restrictions."
+              }
+            ],
+            "text" : "Loading and arrival:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Slow to 150 KIAS within 5 NM of the IAWP when not on radar vectors, then transition to before-approach configuration within 5 NM of the FAWP."
+              },
+              {
+                "text" : "Expect HSI scale-change advisory about 3 NM before the FAWP and verify APR annunciation about 2 NM before the FAWP."
+              },
+              {
+                "text" : "At the FAWP, use the six Ts and descend with about 15 to 20 percent torque, 120 KIAS, and no more than 1000 FPM to LNAV MDA."
+              },
+              {
+                "text" : "The T-6B is certified for RNAV (GPS) approaches to LNAV MDA minimums; do not use VNAV, LNAV/VNAV, or LPV-style vertical minimums."
+              }
+            ],
+            "text" : "Final segment:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Level at MDA and continue to the MAWP. If the runway environment is not in sight or landing is unsafe at the MAWP, execute the missed approach."
+              },
+              {
+                "text" : "The FMS will not automatically sequence the missed approach at the MAWP; select MISS APR and execute when the missed approach is required."
+              },
+              {
+                "text" : "If APR mode is not active by 2 NM from the FAWP or GPS integrity is lost before the FAWP, use a backup approach if authorized; otherwise continue at FAWP altitude to the MAWP and go missed."
+              },
+              {
+                "text" : "If GPS integrity is lost inside the FAWP, transition to a backup if authorized, climb to missed-approach altitude, track to the MAWP, execute the missed, and tell ATC as soon as practical."
+              }
+            ],
+            "text" : "Missed approach and integrity:"
+          }
+        ],
+        "title" : "GPS Approaches"
+      },
+      {
+        "items" : [
+          {
+            "text" : "GPS holding uses the same holding logic as radio holding, but waypoint passage and abeam cues come from FMS sequencing and along-track distance."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Confirm the holding waypoint, inbound course, turn direction, leg length or timing, altitude, and EFC before the fix."
+              },
+              {
+                "text" : "When holding at a GPS waypoint, abeam occurs when along-track distance reaches its minimum and begins increasing."
+              },
+              {
+                "text" : "If abeam cannot be determined, start outbound timing when wings are level after the outbound turn."
+              },
+              {
+                "text" : "Use normal holding corrections: track inbound, apply outbound wind correction, and keep speed, altitude, EFC, and fuel in the scan."
+              }
+            ],
+            "text" : "Waypoint holding:"
+          }
+        ],
+        "title" : "GPS Holding"
+      },
+      {
+        "items" : [
+          {
+            "text" : "GPS flight modes change CDI sensitivity and required navigation performance, so mode awareness is part of the instrument scan."
+          },
+          {
+            "children" : [
+              {
+                "text" : "ENR mode uses 2 NM full-scale deflection, or 1 NM per dot."
+              },
+              {
+                "text" : "TERM mode uses 1 NM full-scale deflection, or 0.5 NM per dot."
+              },
+              {
+                "text" : "APR mode uses 0.3 NM full-scale deflection, or 0.15 NM per dot, and displays APR plus the green NPA annunciator."
+              }
+            ],
+            "text" : "Sensitivity:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Departure starts in TERM and normally changes to ENR either more than 33 NM from the origin or above 16,000 feet AGL from origin elevation."
+              },
+              {
+                "text" : "ENR changes to TERM when within 30 NM of the destination and below 15,000 feet AGL from destination elevation."
+              },
+              {
+                "text" : "TERM changes to APR about 2 NM before the FAWP when a valid GPS approach is loaded and integrity is available at the current position, FAWP, and MAP."
+              },
+              {
+                "text" : "APR returns to TERM once MISS APR is selected, with HSI scale returning to 1 NM full scale and RNP returning to 1.0 NM."
+              },
+              {
+                "text" : "At the MAP, the bearing pointer flips and distance-to-go increases, but guidance remains along extended final until MISS APR is manually initiated."
+              }
+            ],
+            "text" : "Automatic mode changes:"
+          }
+        ],
+        "title" : "GPS Flight Modes"
+      },
+      {
+        "items" : [
+          {
+            "text" : "GPS Procedures"
+          },
+          {
+            "text" : "GPS Allowable Operations"
+          },
+          {
+            "text" : "GPS Approaches"
+          },
+          {
+            "text" : "GPS Holding"
+          },
+          {
+            "text" : "GPS Flight Modes"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use the FMS deliberately: load only current database procedures, verify GPS authorization, manage TAA and APR-mode cues, and manually command missed-approach sequencing when required."
+  },
+  "summary" : "GPS procedures, allowable operations, RNAV approach execution, GPS holding, and GPS flight-mode awareness.",
+  "title" : "GPS Procedures"
+}

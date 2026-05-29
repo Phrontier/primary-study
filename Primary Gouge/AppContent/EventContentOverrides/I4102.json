@@ -1,0 +1,217 @@
+{
+  "canonicalCoverage" : {
+    "ILS/LOC approach procedures" : [
+      "ILS/LOC Approach Procedures"
+    ],
+    "RVFAC" : [
+      "RVFAC"
+    ],
+    "icing considerations" : [
+      "Icing Considerations"
+    ]
+  },
+  "code" : "I4102",
+  "overview" : "I4102 moves the radio-instrument flight sequence from VOR work into localizer precision and non-precision recoveries, radar vectors to final, and weather limits that can change the recovery plan. The event standard is to set D LIDS early, correct localizer and glideslope errors before they grow, preserve terrain awareness on vectors, and exit icing at the first indication.",
+  "primaryDocumentTitles" : [
+    "I4102",
+    "DK Gouge I4102"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "ILS provides localizer azimuth and glideslope vertical guidance; a LOC approach uses the localizer component for lateral guidance as a non-precision approach."
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the localizer is inoperative, the ILS is not authorized. If the glideslope is inoperative or not used, fly the LOC non-precision procedure and minimums."
+              },
+              {
+                "text" : "The localizer signal is much more sensitive than VOR guidance. Set the published front course, confirm no flags or red Xs, receive the correct identifier, and make small heading corrections near the wind-corrected heading."
+              },
+              {
+                "text" : "Use D LIDS before the final workload builds: DME hold if required, localizer tuned and identified, inbound course set, display source set to LOC, and speed appropriate for the transition."
+              }
+            ],
+            "text" : "Setup and signal discipline:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Transition to before-approach configuration within 5 NM of the FAF with no more than a 90-degree intercept, or when the glideslope comes alive at the published intercept altitude."
+              },
+              {
+                "text" : "At glideslope intercept, set about 24% torque, descend on localizer and glideslope at 120 KIAS, and use power primarily for glideslope or descent-rate correction while pitch controls airspeed."
+              },
+              {
+                "text" : "DA or DH is a decision point, not a level-off altitude. Continue only with the runway environment in sight and a safe landing possible; otherwise execute the missed approach."
+              },
+              {
+                "text" : "Start backup timing at the non-precision FAF when timing is available, even during an ILS, so a glideslope failure can be handled without improvising."
+              }
+            ],
+            "text" : "ILS final segment:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "At the LOC FAF, execute the 6 Ts, start backup timing if available, transition to descent, and use roughly 20% torque for a 120 KIAS descent not greater than 1000 FPM."
+              },
+              {
+                "text" : "Begin arresting the descent about 100 feet before MDA, level at or above MDA, and continue tracking to the MAP."
+              },
+              {
+                "text" : "The missed approach decision on a LOC is made at the MAP, not when the aircraft first levels at MDA."
+              }
+            ],
+            "text" : "LOC final segment:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If full-scale CDI deflection occurs before the FAF, reintercept and do not descend below the FAF or glideslope-intercept altitude until the guidance is usable."
+              },
+              {
+                "text" : "If more than one dot below glideslope, descend no lower than LOC MDA until the glideslope is reestablished or the aircraft reaches the non-precision MAP."
+              },
+              {
+                "text" : "If more than two dots above glideslope, continue as a LOC-only non-precision approach instead of diving to recapture the glideslope."
+              },
+              {
+                "text" : "If CDI becomes full-scale between the FAF and DA/DH or MAP, turn to reestablish and track the localizer while climbing to missed-approach altitude, then fly the published or assigned missed approach at the MAP."
+              }
+            ],
+            "text" : "Deviation gates:"
+          }
+        ],
+        "title" : "ILS/LOC Approach Procedures"
+      },
+      {
+        "items" : [
+          {
+            "text" : "RVFAC uses ATC radar vectors to place the aircraft on final approach course without flying the full published transition."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Approach control owns obstacle clearance through its minimum vectoring altitude while vectoring, but the pilot still maintains terrain and position awareness with the chart, NAVAIDs, and assigned altitudes."
+              },
+              {
+                "text" : "Do not blindly follow vectors into uncertainty. If the vector, altitude, clearance, or terrain picture does not make sense, query ATC early."
+              },
+              {
+                "text" : "Because there are no published segment minimums until joining a published approach segment, keep the last assigned altitude until established and cleared lower or cleared for the approach."
+              }
+            ],
+            "text" : "Clearance meaning:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Set up the approach while on vectors: tune and identify the NAVAID, confirm the correct PFD source, set the final approach course, brief the final segment, and monitor how the vector geometry is developing."
+              },
+              {
+                "text" : "Normal vector speeds are 200 KIAS on downwind, 150 KIAS on base, and 200 KIAS on extended final or dogleg until within 15 NM of the airport unless directed otherwise."
+              },
+              {
+                "text" : "When cleared for the approach, maintain the last assigned heading and altitude until established on the final approach course or until ATC issues a lower altitude."
+              },
+              {
+                "text" : "Lead the final turn as the CDI centers, then transition into the published low-altitude approach procedure."
+              }
+            ],
+            "text" : "Vector execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Configure to before-approach condition within 5 NM of the FAF and with no more than a 90-degree intercept."
+              },
+              {
+                "text" : "If the approach has no FAF, transition to before-approach condition once established on final approach course and cleared for the approach."
+              },
+              {
+                "text" : "Common errors are late NAV-source changes, flying through final, losing terrain SA, and waiting until the final turn to build the approach picture."
+              }
+            ],
+            "text" : "BAC timing:"
+          }
+        ],
+        "title" : "RVFAC"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The T-6B is approved only for transit through a limited band of light rime icing; prolonged or sustained flight in known icing conditions is prohibited."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Expect possible icing any time the aircraft is in visible moisture with OAT at or below 5 degrees C."
+              },
+              {
+                "text" : "The first visible indication may be ice near the forward canopy bow or windshield base, and the rear cockpit may not detect accumulation as early as the front cockpit."
+              },
+              {
+                "text" : "Rime ice is usually rough, milky or opaque, and forms when supercooled droplets freeze rapidly on impact."
+              }
+            ],
+            "text" : "Recognition:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "At the first indication of icing, exit by climbing, descending, or changing direction instead of waiting to see whether accumulation worsens."
+              },
+              {
+                "text" : "Verify PROBES ANTI-ICE ON, temperature controller MANUAL, DEFOG ON, and EVAP BLOWER HI, then manage temperature to avoid a DUCT TEMP caution."
+              },
+              {
+                "text" : "Once clear of icing conditions, expect accumulated ice to melt or sublimate over several minutes, but continue to evaluate aircraft performance and visibility."
+              }
+            ],
+            "text" : "Immediate response:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "After an icing encounter, aerobatics are prohibited until ice has melted or sublimated."
+              },
+              {
+                "text" : "With ice still present, limit maneuvering to 30 degrees of bank and 0 to 2 G up to stall warning."
+              },
+              {
+                "text" : "If landing with ice accumulation, increase approach speed by 10 KIAS and ensure either cockpit has enough forward visibility to land safely."
+              },
+              {
+                "text" : "Plan around freezing levels, visible moisture, and thunderstorm/icing forecasts before flight, and report hazardous weather such as icing to ATC or FSS."
+              }
+            ],
+            "text" : "Limitations and planning:"
+          }
+        ],
+        "title" : "Icing Considerations"
+      },
+      {
+        "items" : [
+          {
+            "text" : "ILS/LOC Approach Procedures"
+          },
+          {
+            "text" : "RVFAC"
+          },
+          {
+            "text" : "Icing Considerations"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Set D LIDS early, fly localizer/glideslope corrections inside published deviation gates, preserve terrain SA on radar vectors, and leave icing conditions as soon as they are detected."
+  },
+  "summary" : "ILS/LOC final-approach discipline, RVFAC setup, and icing limitation/escape planning.",
+  "title" : "ILS and LOC Approaches"
+}

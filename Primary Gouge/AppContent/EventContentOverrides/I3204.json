@@ -1,0 +1,137 @@
+{
+  "canonicalCoverage" : {
+    "High-altitude approach and non-radar environment communications" : [
+      "High-Altitude Approach",
+      "Non-Radar Environment Communications"
+    ]
+  },
+  "code" : "I3204",
+  "overview" : "I3204 ties high-altitude approach energy management to the communication discipline needed when radar services are limited. The standard is to fly the penetration without chasing the chart and keep ATC informed with the reports that protect IFR separation.",
+  "primaryDocumentTitles" : [
+    "I3204",
+    "I3204 Briefing guide 1542.166D",
+    "I3204 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "A high-altitude approach transitions the aircraft from high-altitude structure to the final approach course by combining a penetration descent with an instrument approach."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Complete the Descent Checklist before terminal entry and review the chart for printed penetration instructions, altitude restrictions, DME restrictions, and the final approach transition."
+              },
+              {
+                "text" : "At the IAF, execute the 6 Ts. Time only when required, turn as published or in the shortest direction to parallel the penetration course, transition into the descent, twist the appropriate course, and talk when a report is required."
+              },
+              {
+                "text" : "Use the published high-altitude chart, not memory of a local example, to decide whether the penetration is teardrop, arcing, or straight-in."
+              }
+            ],
+            "text" : "IAF setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fly 200-250 KIAS during the penetration and set power and speed brake as required for about 2000-4000 FPM until approaching the level-off."
+              },
+              {
+                "text" : "About 1000 feet before level-off, reduce the descent rate to 500-1500 FPM so the aircraft does not arrive low, fast, or task-saturated."
+              },
+              {
+                "text" : "Level segments of the penetration may be flown at normal cruise, then transition to low-altitude approach procedures once established inbound and configured to before-approach condition."
+              },
+              {
+                "text" : "T-6B high-altitude charts use Category C minimums; do not look for Category B minimums on those charts."
+              }
+            ],
+            "text" : "Energy management:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For a teardrop penetration, begin the penetration turn at one-half the initial altitude or the published penetration turn, as applicable, and use 30 degrees AOB."
+              },
+              {
+                "text" : "During the last half of the teardrop turn, if the bearing pointer is not within 5 degrees of the inbound course, stop the turn with a 45-degree intercept."
+              },
+              {
+                "text" : "If the bearing pointer is within 5 degrees of the inbound course, continue the turn and roll out with a double-the-angle intercept."
+              },
+              {
+                "text" : "For an arcing penetration, use about 1 percent of groundspeed for lead computations when intercepting an arc or a radial from an arc, and do not exceed 30 degrees AOB."
+              }
+            ],
+            "text" : "Penetration geometry:"
+          }
+        ],
+        "title" : "High-Altitude Approach"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Non-radar communications replace radar monitoring with pilot position, altitude, and time reports that let ATC maintain IFR separation."
+          },
+          {
+            "children" : [
+              {
+                "text" : "In both radar and non-radar environments, report vacating an assigned altitude, VFR-on-top altitude changes, inability to climb or descend at least 500 FPM, missed approach, and a true-airspeed change of 5 percent or 10 knots from the filed value."
+              },
+              {
+                "text" : "Also report reaching or leaving a holding fix unless the military training/radar exception applies, any loss of IFR navigation or communications capability, safety-of-flight information, and unforecast or hazardous weather."
+              },
+              {
+                "text" : "When reporting equipment loss, include the aircraft identification, equipment affected, and the effect on IFR capability."
+              }
+            ],
+            "text" : "Mandatory reports:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "In a non-radar environment, also report leaving the FAF inbound on a non-precision approach or leaving the outer marker or substitute fix inbound on a precision approach."
+              },
+              {
+                "text" : "Send a corrected estimate any time a previously submitted ETA is more than 3 minutes in error."
+              },
+              {
+                "text" : "On initial non-radar contact, include present position, altitude, and the estimate for the next reporting point; in radar service, altitude and terminal information are normally the focus."
+              }
+            ],
+            "text" : "Non-radar additions:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Report over compulsory reporting points shown by solid triangles, and over every point used to define direct-route legs when operating non-radar."
+              },
+              {
+                "text" : "Use a courtesy call before a long report, then give the PTAPTP sequence: current position, time, altitude; next position and ETA; next succeeding position."
+              },
+              {
+                "text" : "When ATC advises radar contact, discontinue normal position reports; resume them if radar contact is lost or radar service is terminated."
+              }
+            ],
+            "text" : "Position reports:"
+          }
+        ],
+        "title" : "Non-Radar Environment Communications"
+      },
+      {
+        "items" : [
+          {
+            "text" : "High-Altitude Approach and Non-Radar Environment Communications"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Fly the penetration with chart-backed energy control, then use mandatory reports and PTAPTP position reports to preserve IFR separation when radar is limited."
+  },
+  "summary" : "High-altitude penetration execution and non-radar IFR communication discipline.",
+  "title" : "High-Altitude Approach"
+}

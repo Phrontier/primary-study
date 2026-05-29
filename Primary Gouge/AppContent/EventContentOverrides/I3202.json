@@ -1,0 +1,252 @@
+{
+  "canonicalCoverage" : {
+    "RVFAC for RNAV approaches" : [
+      "RVFAC for RNAV Approaches"
+    ],
+    "STAR" : [
+      "STAR"
+    ],
+    "Trouble T" : [
+      "Trouble T"
+    ],
+    "obtaining IFR clearance from uncontrolled airports" : [
+      "Obtaining IFR Clearance from Uncontrolled Airports"
+    ],
+    "obstacle departure procedures" : [
+      "Obstacle Departure Procedures"
+    ]
+  },
+  "code" : "I3202",
+  "overview" : "I3202 is the arrival-and-departure planning bridge between GPS procedures and instrument navigation. The event standard is to understand STAR clearances, identify Trouble T and ODP requirements, get an IFR clearance when no tower is available, and build an RNAV vector-to-final setup correctly.",
+  "primaryDocumentTitles" : [
+    "I3202",
+    "I3202 Briefing guide 1542.166D",
+    "I3202 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "A STAR is an ATC-coded IFR arrival route that simplifies clearance delivery and transitions the aircraft from en route structure toward an instrument approach."
+          },
+          {
+            "children" : [
+              {
+                "text" : "You must have the STAR chart available to accept the clearance."
+              },
+              {
+                "text" : "RNAV STARs require an FMS-equipped aircraft and a current database procedure."
+              },
+              {
+                "text" : "Mandatory crossing altitudes and speeds are binding when included in the clearance; \"expect\" altitudes and speeds are planning information until ATC assigns them."
+              },
+              {
+                "text" : "MEAs are not STAR restrictions, but you must still remain above required en route minimum altitudes."
+              }
+            ],
+            "text" : "Chart and restriction basics:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "\"Cleared the arrival\" normally means fly the published lateral route and published speeds while maintaining the last assigned altitude until ATC authorizes descent."
+              },
+              {
+                "text" : "\"Descend via\" authorizes lateral and vertical navigation on the arrival to comply with published altitude and speed restrictions, but not below the published bottom altitude."
+              },
+              {
+                "text" : "When checking in on a new frequency while descending via, include the phrase \"descending via\" so the next controller knows your vertical clearance."
+              },
+              {
+                "text" : "Do not use \"expect\" altitudes or speeds for lost-communication planning unless ATC specifically issued them as part of a further clearance."
+              }
+            ],
+            "text" : "Clearance meaning:"
+          }
+        ],
+        "title" : "STAR"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The Trouble T symbol tells you non-standard takeoff minimums, obstacle information, or special departure procedures may apply."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The symbol appears on IAP, DP, ODP, or SID charts and points you to the takeoff minimums and obstacle-departure information for that airport."
+              },
+              {
+                "text" : "The details are grouped by airport in the front section of the approach-plate or TPP booklet, usually alphabetically."
+              },
+              {
+                "text" : "Trouble T is an obstacle-clearance alert; Navy takeoff weather minimums are related planning data but come from CNAF/OPNAV rules."
+              }
+            ],
+            "text" : "What it means:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Read the actual text before departure. The symbol alone does not tell you the climb gradient, runway-specific restriction, or required route."
+              },
+              {
+                "text" : "Some departures may still be legal with standard minimums if the aircraft meets a specific climb or routing requirement."
+              },
+              {
+                "text" : "Convert any climb gradient in feet per NM into a required climb rate using groundspeed in NM per minute times the required feet per NM."
+              }
+            ],
+            "text" : "How to use it:"
+          }
+        ],
+        "title" : "Trouble T"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Obstacle Departure Procedures provide obstacle clearance from the terminal area to the en route structure when obstacles require something more specific than a diverse departure."
+          },
+          {
+            "children" : [
+              {
+                "text" : "ODPs are labeled with \"OBSTACLE\" in the title on DoD/FAA charts."
+              },
+              {
+                "text" : "They are developed when obstacles penetrate the departure obstacle-clearance surface and may be textual, graphical, or RNAV."
+              },
+              {
+                "text" : "There is normally one ODP per runway, designed to provide the least restrictive obstacle-clearance route."
+              },
+              {
+                "text" : "ODPs are not usually assigned by ATC unless needed for separation; the pilot must determine whether one exists and whether it should be flown."
+              }
+            ],
+            "text" : "Purpose and charting:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Plan for higher-than-standard climb gradients, initial headings away from the intended course, special altitude restrictions, and close-in obstacles."
+              },
+              {
+                "text" : "Check whether aircraft performance can meet the required gradient under expected conditions, including any emergency or degraded-performance plan."
+              },
+              {
+                "text" : "If using an ODP, file or tell ATC clearly enough that the first controller understands the intended departure path."
+              }
+            ],
+            "text" : "Planning standard:"
+          }
+        ],
+        "title" : "Obstacle Departure Procedures"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Obtaining an IFR clearance from an uncontrolled airport is a preflight planning item, not a radio scramble at the hold-short line."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common options include telephone clearance through FSS or ATC, published radio frequencies, RCO, UNICOM relay, direct ATC phone number, GCO, or a VFR departure to pick up IFR in the air when weather and rules allow."
+              },
+              {
+                "text" : "A GCO is a remote ground-to-ground link used from the ground; four microphone clicks normally connects to ATC and six to AFSS when configured that way."
+              },
+              {
+                "text" : "Plan the method before startup and have the backup method ready if the first contact path is saturated or unavailable."
+              }
+            ],
+            "text" : "Clearance methods:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If ATC issues a clearance void time, be airborne before the void time or contact ATC with intentions."
+              },
+              {
+                "text" : "ATC also issues a notification time, no more than 30 minutes after the void time; failure to contact by that time can trigger overdue-aircraft action."
+              },
+              {
+                "text" : "Once the void time passes, the IFR slot is released. Do not depart IFR on an expired clearance."
+              },
+              {
+                "text" : "If departing VFR to pick up IFR, maintain VFR until the IFR clearance is received and accepted."
+              }
+            ],
+            "text" : "Void-time discipline:"
+          }
+        ],
+        "title" : "Obtaining IFR Clearance from Uncontrolled Airports"
+      },
+      {
+        "items" : [
+          {
+            "text" : "RVFAC for RNAV approaches uses radar vectors to establish the aircraft on an RNAV final approach course while the FMS is configured for the correct leg and approach mode."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Load the RNAV approach from the current database with the correct runway and transition or vectors-to-final setup."
+              },
+              {
+                "text" : "For a vector to final, build the final approach waypoint as the active leg, extend the intercept as required by the FMS, execute the modification, and set the PFD source to FMS."
+              },
+              {
+                "text" : "Maintain ATC-assigned heading and altitude until established on the final approach course and cleared for the approach or otherwise cleared lower."
+              },
+              {
+                "text" : "Keep the chart ahead of the FMS: the published procedure, not the magenta line alone, controls altitude, course, and missed-approach requirements."
+              }
+            ],
+            "text" : "FMS and clearance setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use RVFAC speed discipline from the radio-instrument pattern: 200 KIAS on downwind or extended final outside about 15 NM, and 150 KIAS on base unless directed otherwise."
+              },
+              {
+                "text" : "Transition to before-approach configuration within 5 NM of the FAWP when established or being established on final."
+              },
+              {
+                "text" : "Verify the HSI scale-change cue near 3 NM from the FAWP and APR annunciation near 2 NM from the FAWP."
+              },
+              {
+                "text" : "If APR does not arm or GPS integrity is not available, use the authorized backup plan or continue at the appropriate altitude to the missed-approach point and execute the missed."
+              }
+            ],
+            "text" : "Final setup and integrity:"
+          }
+        ],
+        "title" : "RVFAC for RNAV Approaches"
+      },
+      {
+        "items" : [
+          {
+            "text" : "STAR"
+          },
+          {
+            "text" : "Trouble T"
+          },
+          {
+            "text" : "Obstacle Departure Procedures"
+          },
+          {
+            "text" : "Obtaining IFR Clearance from Uncontrolled Airports"
+          },
+          {
+            "text" : "RVFAC for RNAV Approaches"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Read arrivals and departures as clearances with consequences: know what ATC has authorized, what the chart requires, and how the FMS/RNAV setup supports the procedure."
+  },
+  "summary" : "STAR clearances, Trouble T, obstacle departures, uncontrolled-field IFR clearance pickup, and RNAV vector-to-final setup.",
+  "title" : "STAR"
+}

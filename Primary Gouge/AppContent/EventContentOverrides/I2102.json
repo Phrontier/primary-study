@@ -44,7 +44,7 @@
                 "text": "Brief how the answer changes between VMC and IMC. In IMC, altitude, terrain clearance, ATC coordination, and spatial-disorientation risk usually matter before local troubleshooting convenience."
               },
               {
-                "text": "For inadvertent IMC, spatial disorientation, malfunction, or an IMC abort, establish a safe instrument climb first, use the applicable emergency route altitude or local safe-altitude guidance, squawk as required, and tell ATC your intentions."
+                "text": "For inadvertent IMC, spatial disorientation, malfunction, or an IMC abort, maintain aircraft control, transition fully to instruments, and climb immediately toward the applicable ERAA or local safe-altitude guidance as conditions permit; squawk as required and tell ATC your intentions."
               },
               {
                 "text": "Do not rush into switches or a full emergency procedure while the aircraft is still not stabilized on instruments."

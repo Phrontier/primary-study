@@ -30854,9 +30854,10 @@
                 }
               ],
               "id" : "instruments-sims-i3205",
-              "overview" : "I3205 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I3205 combines degraded-avionics decision making with departure obstacle planning and a full-procedure ILS setup. The event standard is to keep the aircraft controlled on reliable instruments, plan obstacle clearance before takeoff, and fly the procedure turn inside protected airspace.",
               "primaryDocumentIDs" : [
-                "contents-2-instruments-2-sims-i3200-block-i3205-briefing-guide-1542-166d-pdf"
+                "contents-2-instruments-2-sims-i3200-block-i3205-briefing-guide-1542-166d-pdf",
+                "contents-2-instruments-2-sims-scenarios-i3205-1542-166d-pdf"
               ],
               "questionBanks" : [
 
@@ -30920,21 +30921,226 @@
                   {
                     "items" : [
                       {
-                        "text" : "Avionics failures"
+                        "text" : "Treat avionics failures as an aircraft-control problem first, then a checklist and systems-management problem."
                       },
                       {
-                        "text" : "obstacle departure procedures"
+                        "children" : [
+                          {
+                            "text" : "For electronic display failures, confirm indications in both cockpits if occupied, crosscheck alternate data sources, and reference the BFI or other backup instruments as required."
+                          },
+                          {
+                            "text" : "Use the applicable NATOPS procedure for the actual failure. In these procedures, \"reset\" means resetting a circuit breaker that is already open; assess severity and equipment lost before opening or resetting any CB."
+                          },
+                          {
+                            "text" : "If the failure affects IFR navigation, communications, altitude reporting, or aircraft monitoring, tell ATC what equipment is affected and how IFR capability is degraded."
+                          }
+                        ],
+                        "text" : "Immediate mindset:"
                       },
                       {
-                        "text" : "ILS full procedure turn"
+                        "children" : [
+                          {
+                            "text" : "Dual IAC failure can remove the HUD, UFCP, and MFD displays in both cockpits; single IAC failure may show erratic or lost MFDs and cockpit synchronization errors."
+                          },
+                          {
+                            "text" : "Reference the BFI as required, place NORM\/REPEAT switches to NORM in both cockpits, and check\/reset IAC circuit breakers if open."
+                          },
+                          {
+                            "text" : "Do not select REPEAT in a cockpit with working MFDs when IAC synchronization errors are present, because that can cost usable display information in both cockpits."
+                          },
+                          {
+                            "text" : "With IAC XTALK, expect REPEAT functionality and shared settings such as baro, heading bugs, minimums, mag\/true selection, bingo, clock, and G reset to operate independently; confirm altimeter settings in each cockpit."
+                          }
+                        ],
+                        "text" : "IAC and crosstalk failures:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "IRS failure removes attitude or heading on the HUD\/MFD; use the BFI, place the aircraft in straight-and-level unaccelerated flight, check\/reset the IRS CB if open, monitor alignment, and plan to land as soon as practical."
+                          },
+                          {
+                            "text" : "MFD-only failure may be handled with REPEAT in the failed cockpit and MFD CB checks; MFD failure with other avionics failures points to the FWD\/AFT AVI buses and requires BFI crosscheck."
+                          },
+                          {
+                            "text" : "UFCP failure removes cockpit access to functions such as FMS execute, mag\/true heading toggle, HUD speed-source toggle, and UFCP radio tuning."
+                          },
+                          {
+                            "text" : "BFI display failure is its own emergency: stabilize straight and level, check the STBY INST and AFT STBY CBs as applicable, and land as soon as practical if the display does not return."
+                          }
+                        ],
+                        "text" : "Flight-display and control-panel failures:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "EDM failure can remove direct monitoring of engine, fuel, electrical, hydraulic, and pressurization data; if engine instruments do not return on EICAS, land as soon as practical."
+                          },
+                          {
+                            "text" : "ADC failure makes primary airspeed, altitude, and VSI unreliable or unavailable; reference the BFI and AOA as necessary, and expect TAD, aural gear warning, and transponder Mode C effects."
+                          },
+                          {
+                            "text" : "Loss of ICS\/audio may require the affected cockpit auxiliary cord, AUDIO CB check\/reset if open, and EMR\/NRM selection; EMR gives unamplified VHF audio and no UHF audio."
+                          },
+                          {
+                            "text" : "ADS-B or transponder failures are coordination events with ATC. If the aircraft is transmitting erroneous data, setting the transponder to standby removes Mode C, Mode S, TCAS, and ADS-B functions."
+                          },
+                          {
+                            "text" : "AOA computer failure is most recognizable by loss of HUD AOA and gear-down indexer information; check\/reset the AOA CB if open and land as soon as practical."
+                          }
+                        ],
+                        "text" : "Data, communication, and surveillance failures:"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "Avionics Failures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Obstacle Departure Procedures provide obstruction clearance from the terminal area to the en route structure when a simple diverse departure is not enough."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "ODPs are a type of departure procedure and are labeled with \"OBSTACLE\" in the title on DoD\/FAA charts."
+                          },
+                          {
+                            "text" : "The Trouble T symbol points to nonstandard takeoff minimums, obstacle information, or specific climbout requirements that must be read before departure."
+                          },
+                          {
+                            "text" : "Complex or RNAV ODPs may be graphical; textual ODPs are normally found with takeoff minimums and obstacle-departure information in the front section of the chart booklet."
+                          }
+                        ],
+                        "text" : "What to find:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Research the departure before leaving the planning space, including terrain, hazards, climb gradients, required headings, and any special routing."
+                          },
+                          {
+                            "text" : "ODPs are not normally assigned by ATC unless required for separation, so the pilot must determine whether one exists and how it affects the departure plan."
+                          },
+                          {
+                            "text" : "If using an ODP, file or tell ATC clearly enough that the first controller understands the intended departure path."
+                          },
+                          {
+                            "text" : "Have the immediate-return approach ready, because an avionics or aircraft emergency after takeoff can collide with the same terrain and obstacle problem the ODP was built to solve."
+                          }
+                        ],
+                        "text" : "Planning standard:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Convert a published climb gradient to cockpit climb rate with: required FPM equals groundspeed in NM per minute times required feet per NM."
+                          },
+                          {
+                            "text" : "A diverse departure normally assumes climb to 400 feet AGL before turning and at least 200 feet per NM until reaching the minimum IFR altitude, unless the procedure says otherwise."
+                          },
+                          {
+                            "text" : "If aircraft performance, weather, or emergency planning cannot support the required climb or route, solve that before takeoff rather than accepting an unsafe IFR departure."
+                          }
+                        ],
+                        "text" : "Performance check:"
+                      }
+                    ],
+                    "title" : "Obstacle Departure Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "An ILS full procedure turn is a protected-airspace course reversal used to align the aircraft with the localizer final approach course before flying the precision approach."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not fly the procedure turn when SNERT applies: straight-in clearance, NoPT routing, established in holding aligned with the course and cleared for the approach, radar vectors to final, or a timed approach."
+                          },
+                          {
+                            "text" : "Tune and identify the localizer, select LOC as the PFD source when appropriate, and brief both the ILS and localizer-only plan in case the glideslope becomes unavailable."
+                          },
+                          {
+                            "text" : "Remember localizer sensitivity: CDI indications are much tighter than VOR, about 1.25 degrees per dot and 2.5 degrees full-scale."
+                          }
+                        ],
+                        "text" : "When and how to set it up:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "About 5 NM before the IAF, slow to 150 KIAS."
+                          },
+                          {
+                            "text" : "At station passage, execute the 6 Ts: turn the shortest direction to parallel the outbound course, start one minute outbound when wings level or abeam, descend if required at about 15% torque and 150 KIAS, set the outbound CDI course, and report when required."
+                          },
+                          {
+                            "text" : "If the outbound course is more than 90 degrees from the inbound course to the IAF, use an intercept heading not greater than 45 degrees."
+                          },
+                          {
+                            "text" : "Level at procedure-turn altitude with about 33% torque, re-trim, and maintain that altitude until established inbound."
+                          }
+                        ],
+                        "text" : "Outbound procedure:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "At the end of outbound timing, turn 45 degrees toward the protected side shown by the barb, start a one-minute clock when wings level, and twist the inbound course."
+                          },
+                          {
+                            "text" : "At the end of the barb leg, turn 180 degrees opposite the first turn."
+                          },
+                          {
+                            "text" : "If the bearing pointer is not within 5 degrees of the inbound course approaching the barb heading, stop the turn on the barb heading and intercept."
+                          },
+                          {
+                            "text" : "If the bearing pointer is within 5 degrees of the inbound course, continue the turn and roll out with a double-the-angle intercept."
+                          },
+                          {
+                            "text" : "Stay within the published remain-within distance, normally 10 NM unless the chart says otherwise."
+                          }
+                        ],
+                        "text" : "Course reversal:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft is established on course when the bearing pointer is within five radials of the inbound course and, with the CDI set correctly, the course deviation bar is between one dot and centered."
+                          },
+                          {
+                            "text" : "Once established inbound and within 5 NM of the FAF when DME is available, configure to before-approach condition."
+                          },
+                          {
+                            "text" : "Maintain altitude until reaching 120 KIAS, then descend as required: slow down, then go down."
+                          },
+                          {
+                            "text" : "Continue with normal low-altitude final approach, glideslope intercept, missed-approach, and required communication procedures."
+                          }
+                        ],
+                        "text" : "Inbound and final:"
+                      }
+                    ],
+                    "title" : "ILS Full Procedure Turn"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Avionics Failures"
+                      },
+                      {
+                        "text" : "Obstacle Departure Procedures"
+                      },
+                      {
+                        "text" : "ILS Full Procedure Turn"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Control the aircraft on reliable instruments, make obstacle-clearance decisions before takeoff, and fly the ILS procedure turn with chart-backed timing, altitude, and localizer discipline."
               },
-              "summary" : "I3205 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "Avionics-failure priorities, ODP planning, and ILS full-procedure-turn execution.",
               "tags" : [
                 "instruments",
                 "sims",

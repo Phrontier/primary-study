@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I32 Radio Instruments complete through `I3204`
-- Current event: `I3205`
-- Next action: author `I3205` from canonical syllabus items, local event sources, Instrument Navigation FTI avionics-failure and approach-procedure material, and NATOPS/EP references where applicable.
-- Last validated event: `I3204`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I3204.json`
-- Last manifest validation: `I3204` authored; no `I3204` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I3204`
+- Status: I32 Radio Instruments complete through `I3205`
+- Current event: `I3206`
+- Next action: author `I3206` from canonical syllabus items, local event sources, Instrument Navigation FTI fuel-management, feeder-fix, feeder-route, and reverse-sensing material.
+- Last validated event: `I3205`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I3205.json`
+- Last manifest validation: `I3205` authored; no `I3205` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I3205`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -69,7 +69,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I3202 | STAR | UTD | sim | I32 Radio Instruments | 5 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI STAR/departure/RNAV material, and clearance-planning references; no `systemsBrief`; manifest/audit/build passed. |
 | I3203 | No-Gyro Approach | OFT | sim | I32 Radio Instruments | 1 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI no-gyro approach material, and BFI/avionics failure references; no `systemsBrief`; manifest/audit/build passed. |
 | I3204 | High-Altitude Approach | OFT | sim | I32 Radio Instruments | 1 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, and Instrument Navigation FTI high-altitude approach/non-radar communication material; no `systemsBrief`; manifest/audit/build passed. |
-| I3205 | Avionics Failures | OFT | sim | I32 Radio Instruments | 3 | pending | - | - |
+| I3205 | Avionics Failures | OFT | sim | I32 Radio Instruments | 3 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI ODP/procedure-turn/ILS material, and NATOPS avionics-failure references; no `systemsBrief`; manifest/audit/build passed. |
 | I3206 | En Route Fuel Management | OFT | sim | I32 Radio Instruments | 4 | pending | - | - |
 | I4101 | CRM and Holding | T-6B | flight | I41 Radio Instruments | 3 | pending | - | - |
 | I4102 | ILS and LOC Approaches | T-6B | flight | I41 Radio Instruments | 3 | pending | - | - |

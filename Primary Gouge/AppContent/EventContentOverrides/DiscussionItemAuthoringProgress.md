@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I32 Radio Instruments complete through `I3205`
-- Current event: `I3206`
-- Next action: author `I3206` from canonical syllabus items, local event sources, Instrument Navigation FTI fuel-management, feeder-fix, feeder-route, and reverse-sensing material.
-- Last validated event: `I3205`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I3205.json`
-- Last manifest validation: `I3205` authored; no `I3205` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I3205`
+- Status: I32 Radio Instruments complete through `I3206`
+- Current event: `I4101`
+- Next action: author `I4101` from canonical syllabus items, local flight-event sources, Instrument Navigation FTI CRM/holding material, and applicable flight planning references.
+- Last validated event: `I3206`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I3206.json`
+- Last manifest validation: `I3206` authored; no `I3206` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I3206`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -45,7 +45,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- `I2101` through `I2203` now have authored Instrument event content overrides.
+- `I2101` through `I3206` now have authored Instrument event content overrides.
 - Remaining pending Instrument events still use generic manifest scaffold notes until authored.
 - Some flight `.docx` files are hidden from app source-document cards but remain valid authoring sources via `textutil`.
 - Treat local field names, routes, frequencies, and scenario-specific details as day-of/local verification material unless the item is inherently local.
@@ -70,7 +70,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I3203 | No-Gyro Approach | OFT | sim | I32 Radio Instruments | 1 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI no-gyro approach material, and BFI/avionics failure references; no `systemsBrief`; manifest/audit/build passed. |
 | I3204 | High-Altitude Approach | OFT | sim | I32 Radio Instruments | 1 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, and Instrument Navigation FTI high-altitude approach/non-radar communication material; no `systemsBrief`; manifest/audit/build passed. |
 | I3205 | Avionics Failures | OFT | sim | I32 Radio Instruments | 3 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI ODP/procedure-turn/ILS material, and NATOPS avionics-failure references; no `systemsBrief`; manifest/audit/build passed. |
-| I3206 | En Route Fuel Management | OFT | sim | I32 Radio Instruments | 4 | pending | - | - |
+| I3206 | En Route Fuel Management | OFT | sim | I32 Radio Instruments | 4 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI feeder/reverse-sensing material, and Instrument Flight Planning Workbook fuel-management material; no `systemsBrief`; manifest/audit/build passed. |
 | I4101 | CRM and Holding | T-6B | flight | I41 Radio Instruments | 3 | pending | - | - |
 | I4102 | ILS and LOC Approaches | T-6B | flight | I41 Radio Instruments | 3 | pending | - | - |
 | I4103 | PAR, ASR, and No-Gyro | T-6B | flight | I41 Radio Instruments | 4 | pending | - | - |

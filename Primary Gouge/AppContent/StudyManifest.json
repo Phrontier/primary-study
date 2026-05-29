@@ -31168,9 +31168,10 @@
                 }
               ],
               "id" : "instruments-sims-i3206",
-              "overview" : "I3206 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I3206 closes the I32 block by connecting fuel accountability, approach-entry routing, and localizer sensing discipline. The event standard is to know when fuel burn has drifted from the plan, when a feeder segment authorizes descent, and how to prevent reverse-sensing traps.",
               "primaryDocumentIDs" : [
-                "contents-2-instruments-2-sims-i3200-block-i3206-briefing-guide-1542-166d-pdf"
+                "contents-2-instruments-2-sims-i3200-block-i3206-briefing-guide-1542-166d-pdf",
+                "contents-2-instruments-2-sims-scenarios-i3206-1542-166d-pdf"
               ],
               "questionBanks" : [
 
@@ -31234,24 +31235,202 @@
                   {
                     "items" : [
                       {
-                        "text" : "En route fuel management"
+                        "text" : "En route fuel management uses the planned Estimated Fuel Remaining for each leg as a benchmark against the Actual Fuel Remaining in the aircraft."
                       },
                       {
-                        "text" : "feeder fixes"
+                        "children" : [
+                          {
+                            "text" : "Verify the actual fuel load before flight; a normal T-6B single-point refuel planning load is 1100 pounds, but the gauges are the aircraft truth source."
+                          },
+                          {
+                            "text" : "Build EFR during planning by subtracting start, taxi, takeoff fuel and then each leg's planned fuel from the remaining fuel line above it."
+                          },
+                          {
+                            "text" : "At the end of each leg, compare AFR to EFR. AFR greater than or equal to EFR means the plan is still supported; AFR less than EFR requires immediate investigation."
+                          },
+                          {
+                            "text" : "Make the fuel comparison part of the OPS Check so it happens before the aircraft is already boxed into a low-fuel decision."
+                          }
+                        ],
+                        "text" : "EFR versus AFR:"
                       },
                       {
-                        "text" : "feeder routes"
+                        "children" : [
+                          {
+                            "text" : "Common reasons for AFR shortfall are less fuel onboard at takeoff than planned, higher climb or cruise fuel flow, slower groundspeed, flight-log math error, or a fuel leak."
+                          },
+                          {
+                            "text" : "The earlier the cause is identified, the more useful the options are: adjust power or routing, request priority handling, divert, or transition to a fuel-conservation profile as appropriate."
+                          },
+                          {
+                            "text" : "If fuel endurance becomes the controlling factor, use NATOPS max-endurance guidance rather than guessing at a low-burn technique."
+                          }
+                        ],
+                        "text" : "Shortfall logic:"
                       },
                       {
-                        "text" : "CDI reverse sensing precautions"
+                        "children" : [
+                          {
+                            "text" : "The DRAFT report organizes a divert request: Destination, Route, Altitude, Fuel remaining in hours plus minutes, and Time en route to the alternate."
+                          },
+                          {
+                            "text" : "The workbook builds that data from the flight log so the divert call can be read instead of improvised under pressure."
+                          },
+                          {
+                            "text" : "For DD Form 1801 endurance, use the planned profile: time from takeoff to destination fix plus fuel remaining at that fix converted to hours and minutes."
+                          }
+                        ],
+                        "text" : "Divert readiness:"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "En Route Fuel Management"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A feeder fix is the fix that begins a feeder route from en route structure toward an IAF or other approach-entry point."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Feeder fixes are often shown with thin arrows rather than the thick NoPT track used for a straight-in entry."
+                          },
+                          {
+                            "text" : "A feeder fix that is not labeled NoPT or IAF is not itself the approach entry; it is the start of the published route to the IAF."
+                          },
+                          {
+                            "text" : "Use the chart language and symbology to decide whether you are cleared onto a feeder route, direct to an IAF, or onto a NoPT transition."
+                          }
+                        ],
+                        "text" : "Chart recognition:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If cleared for the approach while tracking inbound from a feeder fix, descend only to the higher of the feeder-route altitude or the IAF crossing altitude."
+                          },
+                          {
+                            "text" : "At the IAF, execute the published approach procedures for that entry instead of carrying feeder-route habits into the terminal segment."
+                          },
+                          {
+                            "text" : "The feeder fix solves route transition; it does not automatically cancel altitude assignments or authorize a procedure turn unless the approach clearance and chart support it."
+                          }
+                        ],
+                        "text" : "Altitude discipline:"
+                      }
+                    ],
+                    "title" : "Feeder Fixes"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Feeder routes connect en route structure to an IAF, IF, or other published approach segment and become part of the approach clearance when assigned or accepted."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Follow the published course and altitude along the feeder route to the IAF or IF."
+                          },
+                          {
+                            "text" : "If cleared direct or vectored to join an approach, maintain the last assigned ATC altitude until established on a published segment and cleared for the approach or cleared lower."
+                          },
+                          {
+                            "text" : "Once established on the published segment, descend no lower than the minimum altitude published for that segment."
+                          }
+                        ],
+                        "text" : "Clearance meaning:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "At least one feeder route may exist, but multiple feeder routes or transitions can feed the same approach; choose the one that matches the clearance."
+                          },
+                          {
+                            "text" : "Do not treat a feeder route as an informal shortcut. It carries charted course, altitude, and entry consequences."
+                          },
+                          {
+                            "text" : "When the chart uses NoPT on a thick track, the no-procedure-turn entry is explicit; when that label is absent, confirm whether the route only feeds an IAF."
+                          }
+                        ],
+                        "text" : "Common traps:"
+                      }
+                    ],
+                    "title" : "Feeder Routes"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "CDI reverse sensing is a localizer setup error: the needle appears to command the opposite correction when the CDI course is set to the wrong side of the localizer."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For normal ILS or LOC approaches, set the front course depicted for the final approach course."
+                          },
+                          {
+                            "text" : "For LOC BC approaches, identify and set the true front course, which is the reciprocal of the depicted back-course final approach course."
+                          },
+                          {
+                            "text" : "In the T-6B, selecting the correct front course prevents reverse sensing whether flying a back course or outbound on a front course."
+                          },
+                          {
+                            "text" : "If the back course itself is set into the CDI on a LOC BC, expect reverse sensing."
+                          }
+                        ],
+                        "text" : "Course selection:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Tune, identify, and monitor the localizer as soon as practical during the transition, then set PFD source to LOC when ready for localizer tracking."
+                          },
+                          {
+                            "text" : "Course and glideslope indications are reliable only when warning flags or red Xs are absent, the localizer identifier is received, and the aircraft is within usable range."
+                          },
+                          {
+                            "text" : "Expect localizer sensitivity to increase near the transmitter; inside the FAF, use small heading corrections near the wind-corrected heading instead of chasing the needle."
+                          }
+                        ],
+                        "text" : "Signal discipline:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For a LOC BC final, disregard glideslope indications and fly the non-precision profile to the published MDA and MAP."
+                          },
+                          {
+                            "text" : "If full-scale CDI deflection occurs between the FAF and MAP, turn to reestablish and track the localizer while climbing to the missed-approach altitude, unless a published maximum altitude restricts the climb before the MAP."
+                          },
+                          {
+                            "text" : "Common errors are setting the back course in the CDI, flying through final, overcorrecting, continuing with full-scale deflection inside the FAF, and executing the missed at MDA instead of at the MAP."
+                          }
+                        ],
+                        "text" : "Back-course final:"
+                      }
+                    ],
+                    "title" : "CDI Reverse Sensing Precautions"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "En Route Fuel Management"
+                      },
+                      {
+                        "text" : "Feeder Fixes"
+                      },
+                      {
+                        "text" : "Feeder Routes"
+                      },
+                      {
+                        "text" : "CDI Reverse Sensing Precautions"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Use EFR versus AFR to catch fuel drift early, read feeder fixes and routes as charted clearance structure, and set the correct front course before trusting localizer CDI sensing."
               },
-              "summary" : "I3206 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "Fuel checks, feeder-route approach entries, and localizer reverse-sensing prevention.",
               "tags" : [
                 "instruments",
                 "sims",

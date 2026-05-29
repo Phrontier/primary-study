@@ -1,0 +1,182 @@
+{
+  "canonicalCoverage" : {
+    "CNAF M-3710.7 takeoff and approach minimums and alternate filing minimums" : [
+      "Takeoff Minimums",
+      "Approach Minimums",
+      "Alternate Filing Minimums"
+    ]
+  },
+  "code" : "I4204",
+  "overview" : "I4204 turns the weather-minimum matrix into a go/no-go planning tool. The event standard is to know which runway approach supports takeoff, whether an approach may be commenced or continued, and when destination weather forces an alternate that is legal and usable in the T-6B.",
+  "primaryDocumentTitles" : [
+    "I4204",
+    "DK Gouge I4204"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "CNAF takeoff minimums start with instrument-rating authority and emergency-return capability, not with the weather you hope to have after departure."
+          },
+          {
+            "children" : [
+              {
+                "text" : "A special instrument rating has no takeoff ceiling or visibility minimums; the departure depends on pilot judgment and flight urgency."
+              },
+              {
+                "text" : "Only an aircraft commander with a special instrument rating, and on the flight controls, may depart below the applicable minimums."
+              },
+              {
+                "text" : "For normal student planning, brief the standard instrument-rating rules unless current orders or the aircraft commander direct otherwise."
+              }
+            ],
+            "text" : "Special instrument rating:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the available emergency-return approach is non-precision, takeoff requires the published minimums for that approach, but not less than a 300-foot ceiling and 1 SM visibility."
+              },
+              {
+                "text" : "If a compatible precision approach is available and usable for the landing runway, takeoff may use those precision minimums when they are lower than 300/1."
+              },
+              {
+                "text" : "The precision-supported floor is still 200-foot ceiling and 1/2 SM visibility or 2400 RVR."
+              },
+              {
+                "text" : "Before using a number, verify the landing runway, available approach, NOTAMs, installed and operable equipment, Trouble T data, and departure procedure."
+              }
+            ],
+            "text" : "Standard instrument rating:"
+          }
+        ],
+        "title" : "Takeoff Minimums"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Approach minimums answer two separate questions: may the approach be started, and may the aircraft continue below MDA or DH."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use approved DoD FLIP or equivalent published procedures. For straight-in approaches, RVR governs when available; for circling approaches, prevailing visibility governs."
+              },
+              {
+                "text" : "The pilot is responsible for determining that weather and visibility are adequate for the approach and landing."
+              },
+              {
+                "text" : "A single-piloted aircraft shall not commence an instrument approach if the reported weather is below the published minimums for the type of approach being conducted."
+              },
+              {
+                "text" : "Once commenced, the pilot may continue to the approved published landing minimums, but the fixed-wing single-pilot absolute floor is 200-foot ceiling or HAT and 1/2 SM visibility or 2400 RVR."
+              }
+            ],
+            "text" : "Starting the approach:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not descend below MDA or continue below DH unless the runway environment is in sight and a safe landing can be made."
+              },
+              {
+                "text" : "On a precision approach, execute the missed approach at DH if the runway environment is not in sight or a safe landing cannot be made."
+              },
+              {
+                "text" : "On a non-precision approach, execute the missed approach at the MAP if visual reference is not established or the landing cannot be accomplished."
+              },
+              {
+                "text" : "If visual reference is lost while circling, fly the published missed approach; begin with a climbing turn toward the landing runway, then maneuver the shortest direction to join the missed-approach course."
+              }
+            ],
+            "text" : "Continuing or going missed:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "During radar approaches, expect missed-approach or climbout instructions if safe limits are exceeded, aircraft position or identification is in doubt, radar contact is lost, radar malfunction is suspected, or tower-observed conditions make approach completion unsafe."
+              },
+              {
+                "text" : "The missed approach remains available at pilot discretion at any time; do not wait for the controller if the aircraft is unstable, unqualified to continue, or not in a safe landing position."
+              }
+            ],
+            "text" : "Radar-approach abnormalities:"
+          }
+        ],
+        "title" : "Approach Minimums"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Alternate filing minimums convert the destination forecast into a required alternate plan during the period 1 hour before ETA until 1 hour after ETA."
+          },
+          {
+            "children" : [
+              {
+                "text" : "File using the actual weather at departure, existing and forecast weather along the route, and the destination and alternate forecasts for ETA plus or minus 1 hour."
+              },
+              {
+                "text" : "If destination weather is forecast below 3000-foot ceiling and 3 SM visibility, an alternate is required."
+              },
+              {
+                "text" : "If the destination is forecast from 0-0 up to, but not including, published minimums, the alternate must be forecast at 3000-3 or better."
+              },
+              {
+                "text" : "If the destination is forecast from published minimums up to, but not including, 3000-3, the alternate must be at least published minimums plus 300-1 for a non-precision approach, or plus 200-1/2 for a precision approach."
+              },
+              {
+                "text" : "If destination weather is forecast 3000-3 or better, CNAF does not require an alternate for that reason, though local training rules or fuel planning may still require one."
+              }
+            ],
+            "text" : "The CNAF matrix:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "When an alternate is required, it must have a published approach compatible with installed and operable navigation equipment."
+              },
+              {
+                "text" : "If the destination lacks that kind of approach, or if the alternate forecast is below 3000-3, the alternate approach must also be flyable without two-way radio communication."
+              },
+              {
+                "text" : "For single-piloted aircraft, or any aircraft with only one operable UHF/VHF transceiver, PAR or ASR minimums may not be used as the basis for selecting an alternate."
+              },
+              {
+                "text" : "For T-6B planning, do not base a required alternate on a GPS-only approach or GPS substitution for an out-of-service NAVAID; the required alternate needs an available approach that does not require GPS."
+              }
+            ],
+            "text" : "Usable-alternate checks:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The workbook flow is practical: check destination and alternate weather, NOTAMs, approach availability, NAVAID compatibility, airfield status, and fuel before deciding the alternate is viable."
+              },
+              {
+                "text" : "Record the decision on the flight-planning matrix so the plan survives reroutes, holding, missed approaches, or a lost-communications branch."
+              },
+              {
+                "text" : "If proceeding to the alternate in flight, format the request with DRAFT: destination, route, altitude, fuel remaining, and time en route."
+              }
+            ],
+            "text" : "Planning habit:"
+          }
+        ],
+        "title" : "Alternate Filing Minimums"
+      },
+      {
+        "items" : [
+          {
+            "text" : "CNAF M-3710.7 Takeoff and Approach Minimums and Alternate Filing Minimums"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use CNAF minimums as a planning matrix: confirm takeoff authority, approach-commencement legality, landing-continuation criteria, and a usable alternate before the weather drives the decision for you."
+  },
+  "summary" : "CNAF takeoff, approach, and alternate-filing weather rules for IFR planning.",
+  "title" : "Takeoff and Alternate Minimums"
+}

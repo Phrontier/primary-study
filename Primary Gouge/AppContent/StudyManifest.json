@@ -32904,9 +32904,9 @@
                 }
               ],
               "id" : "instruments-flights-i4201",
-              "overview" : "I4201 prepares the student to plan and fly the assigned instrument profile with the required procedures, comm flow, and standards.",
+              "overview" : "I4201 starts the I42 aircraft block by tying IFR departure planning, coded-route clearance handling, airway navigation, and lost-communication rules into one en route mindset. The event standard is to copy and brief the clearance before brake release, fly the departure with a stable instrument scan, stay on the protected route structure, and already know the local\/FIH lost-comm branch before radios get busy.",
               "primaryDocumentIDs" : [
-                "contents-2-instruments-3-flights-i4200-block-i4201-1801-pdf"
+                "contents-2-instruments-3-flights-i4200-block-i4201-1-1801"
               ],
               "questionBanks" : [
 
@@ -32970,24 +32970,263 @@
                   {
                     "items" : [
                       {
-                        "text" : "Clearance and departure procedures"
+                        "text" : "Clearance and departure procedures connect the IFR clearance, takeoff minimums, departure method, and initial instrument scan before the aircraft moves."
                       },
                       {
-                        "text" : "stereo routes (canned flight plans)"
+                        "children" : [
+                          {
+                            "text" : "File early enough to prevent a clearance delay; the local notes use at least 30 minutes before ETD, or 4 hours when operating above FL230."
+                          },
+                          {
+                            "text" : "Copy the clearance in the CRAFT flow plus local additions: aircraft identification, clearance limit, departure type, route, altitude, departure frequency, beacon code, and any holding, delay, or restriction."
+                          },
+                          {
+                            "text" : "At towered fields, expect clearance delivery or ground to issue the clearance; at non-towered fields, expect a phone or remote-frequency clearance with a void time."
+                          },
+                          {
+                            "text" : "On initial departure contact, know whether you are in radar or non-radar service. Radar contact normally changes what ATC expects; non-radar work may require position, altitude, and estimate reports."
+                          }
+                        ],
+                        "text" : "Clearance and filing:"
                       },
                       {
-                        "text" : "airway navigation"
+                        "children" : [
+                          {
+                            "text" : "Fly a normal takeoff, use outside references and the attitude indicator at liftoff, then transition fully to instruments as visual cues reduce."
+                          },
+                          {
+                            "text" : "Set about 8 to 10 degrees nose high, trim, verify climb on the altimeter and VSI, then raise gear and flaps."
+                          },
+                          {
+                            "text" : "Maintain the initial climb attitude until about 180 KIAS unless the departure or climb-gradient requirement demands a different profile."
+                          },
+                          {
+                            "text" : "For best-rate climb, use about 140 KIAS and 15 degrees nose high."
+                          },
+                          {
+                            "text" : "Lead level-offs with about 10% of vertical speed; for example, begin about 200 feet early during a 2000 FPM climb."
+                          }
+                        ],
+                        "text" : "Instrument takeoff and climb:"
                       },
                       {
-                        "text" : "lost communications (local\/FIH)"
+                        "children" : [
+                          {
+                            "text" : "Brief the assigned departure type: ODP, SID, radar departure, diverse departure, or VCOA."
+                          },
+                          {
+                            "text" : "ODPs provide obstacle clearance and are labeled OBSTACLE in the FLIP approach book; SIDs are ATC procedures printed graphically for pilot use and transition the aircraft toward en route structure."
+                          },
+                          {
+                            "text" : "Radar departures use ATC vectors when no DP is published, when assigned, or when requested."
+                          },
+                          {
+                            "text" : "Diverse departures require climbing to 400 feet AGL before the first turn and maintaining at least 200 feet per NM until reaching the minimum IFR altitude; at 180 KIAS, that is about 600 FPM."
+                          },
+                          {
+                            "text" : "A VCOA keeps the pilot in VFR conditions over the airport until reaching a published altitude before proceeding outbound IFR."
+                          }
+                        ],
+                        "text" : "Departure methods:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Before takeoff, review terrain, hazards, climb gradients, the first altitude\/heading restriction, and the emergency-return approach."
+                          },
+                          {
+                            "text" : "Set required NAVAIDs, courses, displays, and FMS procedure data before takeoff; if the FMS is used, verify the loaded procedure matches the clearance."
+                          },
+                          {
+                            "text" : "Confirm current CNAF\/local takeoff minimums for the departure. The training notes use at least 300-foot ceiling and 1 SM for non-precision support, and at least 200-foot ceiling and 1\/2 SM or 2400 RVR for precision support."
+                          }
+                        ],
+                        "text" : "Preflight setup:"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "Clearance and Departure Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Stereo routes, or canned flight plans, are pre-coordinated local IFR routes published in the current IFG or local SOP to reduce clearance length and routine ATC coordination."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Treat the route code as shorthand, not as the clearance itself. Decode the route, altitude, departure, NAVAIDs\/fixes, expected handoffs, and recovery implication before accepting it."
+                          },
+                          {
+                            "text" : "File or request the coded route through the local process, such as Base Ops or the controlling facility, and verify the current code in the current IFG."
+                          },
+                          {
+                            "text" : "Coded departures may include runway-dependent heading, altitude, frequency, and transponder expectations. Fly the clearance issued today, not a memorized example from an old guide."
+                          },
+                          {
+                            "text" : "If departing a field away from home base, confirm whether a return-route code is valid and how it should be filed or requested from that field."
+                          }
+                        ],
+                        "text" : "How to use the code:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Before takeoff, brief how lost comm, divert, and weather decisions change if you are on a local coded flight plan."
+                          },
+                          {
+                            "text" : "If ATC amends the route or altitude, the actual clearance replaces the route-code expectation."
+                          },
+                          {
+                            "text" : "The common error is knowing the route name but not the first heading, first altitude, NAVAID sequence, or lost-comm trigger."
+                          }
+                        ],
+                        "text" : "Student trap:"
+                      }
+                    ],
+                    "title" : "Stereo Routes (Canned Flight Plans)"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Airway navigation keeps IFR aircraft on the protected route structure: along the airway centerline on ATS routes, or along the direct course between the fixes or NAVAIDs defining the route."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Victor airways and T routes are low-altitude routes from 1200 feet AGL up to, but not including, FL180; Jet routes and Q routes are high-altitude routes from FL180 through FL450."
+                          },
+                          {
+                            "text" : "Federal airways are normally 4 NM either side of centerline, for 8 NM total width, with 1000 feet of obstacle clearance in non-mountainous areas and 2000 feet in mountainous areas."
+                          },
+                          {
+                            "text" : "Past 51 DME from a station, the protected area expands by about 2 NM on each side for each additional 13 NM."
+                          },
+                          {
+                            "text" : "Lead turns as required to stay inside protected airspace. Flyover waypoints are exceptions and are depicted with the flyover symbol."
+                          }
+                        ],
+                        "text" : "Protected-route basics:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "MEA is the lowest altitude that assures obstacle clearance and navigation signal coverage for the segment."
+                          },
+                          {
+                            "text" : "MOCA is the lowest altitude with obstacle clearance and NAVAID reception within 22 NM of the facility."
+                          },
+                          {
+                            "text" : "MAA limits altitude to prevent conflicting NAVAID reception; MRA is the minimum altitude for reliable VOR reception at an intersection; MCA is the minimum altitude required when crossing a fix."
+                          },
+                          {
+                            "text" : "OROCA gives off-route obstacle clearance in a chart grid, but it is not a substitute for being on the cleared route."
+                          }
+                        ],
+                        "text" : "En route altitudes:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For over-the-station intercepts, run the 6 Ts at station passage: time, turn, time, transition, twist\/intercept, and talk."
+                          },
+                          {
+                            "text" : "Turn the shortest direction to parallel or intercept the outbound course. If the course change is more than 90 degrees, use up to a 45-degree intercept."
+                          },
+                          {
+                            "text" : "For VOR\/DME intersections, track the primary course to the fix, use DME for fix identification, lead any required turn, and note time if needed."
+                          },
+                          {
+                            "text" : "For VOR-only intersections, tune the secondary NAVAID about 3 minutes before ETA, monitor within about 10 radials, identify the fix, then return to the primary navigation task."
+                          },
+                          {
+                            "text" : "Filled compulsory-reporting symbols require position reports when not in radar contact or when ATC requires them."
+                          }
+                        ],
+                        "text" : "Fix and intersection work:"
+                      }
+                    ],
+                    "title" : "Airway Navigation"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Lost-communication discussion has two layers: the local IFG procedure for the departure\/recovery environment and the FIH\/FAR route-altitude-clearance-limit logic for IFR flight."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Squawk 7600, keep flying the airplane, and try to reestablish contact on assigned, secondary, tower, FSS, guard, or NAVAID voice frequencies as appropriate."
+                          },
+                          {
+                            "text" : "Local lost-comm procedures may specify exact headings, altitudes, timers, aids, approaches, or tower light-signal flows. Brief those from the current IFG before launch instead of relying on memory."
+                          },
+                          {
+                            "text" : "For radar approaches, lost comm timing remains: more than 1 minute on vectors to final, more than 15 seconds on ASR or PAR W\/O GS final, or more than 5 seconds on PAR final with glideslope."
+                          },
+                          {
+                            "text" : "Do not confuse lost-communication instructions, missed-approach instructions, and climbout instructions. They may all be issued during radar approach work, but they answer different problems."
+                          }
+                        ],
+                        "text" : "Immediate cockpit actions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the failure occurs in VFR conditions, or VFR conditions are encountered after the failure, continue under VFR and land as soon as practicable at a safe, suitable field."
+                          },
+                          {
+                            "text" : "If VFR cannot be maintained, apply the route priority: assigned, vectored, expected, filed."
+                          },
+                          {
+                            "text" : "Apply the altitude priority for each route segment: highest of last assigned altitude, minimum IFR altitude, or altitude ATC advised to expect."
+                          },
+                          {
+                            "text" : "If the clearance limit is a fix from which an approach begins, start descent and approach as close as possible to EFC, or ETA if no EFC was received."
+                          },
+                          {
+                            "text" : "If the clearance limit is not an approach fix, leave it at EFC, or on arrival if no EFC, proceed to a fix from which an approach begins, and start descent\/approach as close as possible to ETA."
+                          }
+                        ],
+                        "text" : "FIH\/FAR logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For local IFR lost comm after takeoff or on a coded flight plan, expect the IFG to tell you how long to remain on the last assigned heading or route, what altitude to maintain or climb to, and what aid or approach to use."
+                          },
+                          {
+                            "text" : "For local VFR lost comm, maintain VMC, squawk 7600, make blind calls if able, observe tower light or ALDIS signals, and avoid entering a controlled pattern until the traffic flow is understood."
+                          },
+                          {
+                            "text" : "The student standard is not to recite one base's numbers from memory; it is to brief the current local lost-comm page, then connect it to the FIH\/FAR decision tree."
+                          }
+                        ],
+                        "text" : "Local application:"
+                      }
+                    ],
+                    "title" : "Lost Communications (Local\/FIH)"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Clearance and Departure Procedures"
+                      },
+                      {
+                        "text" : "Stereo Routes (Canned Flight Plans)"
+                      },
+                      {
+                        "text" : "Airway Navigation"
+                      },
+                      {
+                        "text" : "Lost Communications (Local\/FIH)"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Copy the clearance cleanly, brief the coded-route and departure picture, fly protected airway structure, and connect local lost-comm procedures to the FIH\/FAR decision tree."
               },
-              "summary" : "I4201 prepares the student to plan and fly the assigned instrument profile with the required procedures, comm flow, a...",
+              "summary" : "IFR clearance\/departure setup, coded-route use, airway navigation, and local plus FIH lost-communication logic.",
               "tags" : [
                 "instruments",
                 "flights",

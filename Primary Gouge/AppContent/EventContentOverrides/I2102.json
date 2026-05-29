@@ -1,0 +1,244 @@
+{
+  "canonicalCoverage": {
+    "GCA pattern": [
+      "GCA Pattern"
+    ],
+    "IMC emergencies": [
+      "IMC Emergencies"
+    ],
+    "S-1 pattern": [
+      "S-1 Pattern"
+    ]
+  },
+  "code": "I2102",
+  "overview": "I2102 turns the basic scan from I2101 into emergency and approach-pattern work. The event standard is to keep the aircraft under control in IMC, then use disciplined power, attitude, trim, timing, and configuration changes through the GCA and S-1 patterns.",
+  "primaryDocumentTitles": [
+    "I2102",
+    "I2102 Briefing guide 1542.166D"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "IMC emergency discussion starts with control and judgment, not checklist recitation. Stabilize the aircraft, build the instrument scan, then solve the emergency."
+          },
+          {
+            "children": [
+              {
+                "text": "NATOPS emergency procedures are the best available procedures, but they do not replace pilot judgment when weather, terrain, multiple malfunctions, or crew status change the problem."
+              },
+              {
+                "text": "The basic emergency order is maintain aircraft control, analyze the situation, take proper action, and land as soon as conditions permit."
+              },
+              {
+                "text": "Critical action or memory items come first when required; time permitting, back them up with the checklist to ensure completeness."
+              }
+            ],
+            "text": "NATOPS framing:"
+          },
+          {
+            "children": [
+              {
+                "text": "Brief how the answer changes between VMC and IMC. In IMC, altitude, terrain clearance, ATC coordination, and spatial-disorientation risk usually matter before local troubleshooting convenience."
+              },
+              {
+                "text": "For inadvertent IMC, spatial disorientation, malfunction, or an IMC abort, establish a safe instrument climb first, use the applicable emergency route altitude or local safe-altitude guidance, squawk as required, and tell ATC your intentions."
+              },
+              {
+                "text": "Do not rush into switches or a full emergency procedure while the aircraft is still not stabilized on instruments."
+              }
+            ],
+            "text": "IMC-specific priorities:"
+          },
+          {
+            "children": [
+              {
+                "text": "The pilot at the controls maintains aircraft control and executes critical action memory items and any actions directed by the PIC."
+              },
+              {
+                "text": "Use CRM early: verbalize the aircraft state, the altitude plan, the emergency, and what help you need from ATC or the other cockpit."
+              },
+              {
+                "text": "A good brief explains the first safe altitude, the transponder or radio call, and what would make the event a land-as-soon-as-practical or more urgent problem."
+              }
+            ],
+            "text": "Crew coordination:"
+          }
+        ],
+        "title": "IMC Emergencies"
+      },
+      {
+        "items": [
+          {
+            "text": "The GCA pattern packages radar-approach skills into one airwork profile: downwind, turns, BAC transition, controlled descent, heading corrections, missed approach, and level-off."
+          },
+          {
+            "children": [
+              {
+                "text": "Start at 200 KIAS, clean, on a cardinal heading and base altitude to simulate radar downwind."
+              },
+              {
+                "text": "Turn standard rate, not to exceed 30 degrees AOB, for 90 degrees of heading change; maintain altitude and use the one-third rollout rule."
+              },
+              {
+                "text": "Slow toward 150 KIAS with about 15% torque, anticipate left rudder, trim through the deceleration, and stabilize near 33% torque at 150 KIAS."
+              },
+              {
+                "text": "Make the second same-direction 90-degree standard-rate turn, again preserving altitude and leading rollout with the one-third rule."
+              }
+            ],
+            "text": "Entry and downwind turns:"
+          },
+          {
+            "children": [
+              {
+                "text": "Maintain heading and altitude while transitioning to BAC: reduce power to about 15%, check below 150 KIAS, lower gear and set flaps to T/O."
+              },
+              {
+                "text": "Expect added lift with flaps; use slight nose-low pressure to hold altitude and trim right rudder plus up elevator as the aircraft slows."
+              },
+              {
+                "text": "Execute the Before Landing Checklist and stabilize at 120 KIAS with about 42% torque."
+              }
+            ],
+            "text": "BAC transition:"
+          },
+          {
+            "children": [
+              {
+                "text": "After stabilizing, set about 24% torque, let the nose fall enough to hold 120 KIAS, and establish roughly 600 FPM for a 2000-foot simulated GCA descent."
+              },
+              {
+                "text": "The instructor may give 3- to 10-degree heading changes during the descent; do not let the corrections disrupt airspeed or rate."
+              },
+              {
+                "text": "Remember the FTI control split: nose controls airspeed and power controls rate of descent, but each input affects the other."
+              }
+            ],
+            "text": "Descent:"
+          },
+          {
+            "children": [
+              {
+                "text": "After the 2000-foot descent, execute the missed approach: max power, right rudder, and 10 to 15 degrees nose high."
+              },
+              {
+                "text": "Check VSI and altimeter for positive climb, call two positive rates and raise the gear."
+              },
+              {
+                "text": "Above 110 KIAS, raise the flaps; report gear and flaps up before 150 KIAS, then set 8 to 10 degrees nose high and accelerate toward 180 KIAS."
+              },
+              {
+                "text": "Climb for 2000 feet on the last assigned heading, then start the 200 KIAS cruise transition about 200 feet before level-off."
+              }
+            ],
+            "text": "Missed approach and completion:"
+          },
+          {
+            "children": [
+              {
+                "text": "The maneuver is complete at the original altitude, 200 KIAS, and the last assigned heading."
+              },
+              {
+                "text": "Common errors are poor power/nose coordination in the descent, over-rotating on the missed approach, late gear or flap cleanup, and weak rudder trim that lets heading drift."
+              }
+            ],
+            "text": "Study standard:"
+          }
+        ],
+        "title": "GCA Pattern"
+      },
+      {
+        "items": [
+          {
+            "text": "The S-1 pattern is a timing and scan drill: hold 150 KIAS and heading while flying two 1000-foot descents and two 1000-foot climbs at about 1000 FPM."
+          },
+          {
+            "children": [
+              {
+                "text": "Start clean at 150 KIAS on any numbered or cardinal heading."
+              },
+              {
+                "text": "Use timing checkpoints every 250 feet; at 1000 FPM each 250-foot altitude change should take about 15 seconds."
+              },
+              {
+                "text": "Lead the clock by 3 seconds before 00 or 30 seconds so the new power and attitude picture is established on time."
+              }
+            ],
+            "text": "Entry setup:"
+          },
+          {
+            "children": [
+              {
+                "text": "For the descent, reduce power to about 15%, lower the nose to about 0 degrees, anticipate left rudder, and re-trim."
+              },
+              {
+                "text": "Maintain 150 KIAS with nose attitude and adjust power as required for rate."
+              },
+              {
+                "text": "At each 250 feet, check the clock for 15 seconds elapsed and decide whether you are ahead or behind."
+              }
+            ],
+            "text": "Descent:"
+          },
+          {
+            "children": [
+              {
+                "text": "Three seconds before the end of one minute or 50 feet before the end of the 1000-foot descent, whichever occurs first, add power to about 55% and raise the nose to about 6 degrees nose high."
+              },
+              {
+                "text": "Anticipate right rudder, re-trim, then continue to hold 150 KIAS with pitch and use power to correct the climb rate."
+              },
+              {
+                "text": "At the next transition, repeat the descent and climb using the same 3-second lead and 50-foot level-off cue."
+              }
+            ],
+            "text": "Climb and second cycle:"
+          },
+          {
+            "children": [
+              {
+                "text": "About 50 feet before the final altitude, transition to level flight at 150 KIAS on the original altitude regardless of rate."
+              },
+              {
+                "text": "The maneuver is complete when heading, altitude, airspeed, and trim are stable after the second climb."
+              }
+            ],
+            "text": "Maneuver complete when:"
+          },
+          {
+            "children": [
+              {
+                "text": "Pitch primarily controls airspeed and power primarily controls vertical rate, but changing one will still affect the other."
+              },
+              {
+                "text": "Common errors are weak rudder trim, late or incorrect power settings, swapping pitch and power roles, and confusing ahead versus behind timing corrections."
+              }
+            ],
+            "text": "Common errors:"
+          }
+        ],
+        "title": "S-1 Pattern"
+      },
+      {
+        "items": [
+          {
+            "text": "IMC Emergencies"
+          },
+          {
+            "text": "GCA Pattern"
+          },
+          {
+            "text": "S-1 Pattern"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "Prioritize aircraft control and safe-altitude decision making first, then fly the GCA and S-1 patterns with disciplined power, attitude, trim, timing, and configuration calls."
+  },
+  "summary": "IMC emergency priorities, GCA pattern execution, and S-1 timing discipline.",
+  "title": "IMC Emergencies"
+}

@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: `I2101` complete; awaiting review before continuing to `I2102`
-- Current event: `I2102`
-- Next action: review the `I2101` test output, then author `I2102` only if approved.
-- Last validated event: `I2101`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I2101.json`
-- Last manifest validation: `I2101` authored; no `I2101` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I2101`
+- Status: `I2102` complete; continuing through the I21 Basic Instruments group
+- Current event: `I2103`
+- Next action: author `I2103` from canonical syllabus items, local event sources, Instrument Navigation FTI, NATOPS, and BFI/IAC references.
+- Last validated event: `I2102`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I2102.json`
+- Last manifest validation: `I2102` authored; no `I2102` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I2102`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -45,8 +45,8 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- Instruments currently have no `I*.json` event content overrides.
-- All 33 Instrument events currently use generic manifest scaffold notes, so every event in this tracker is pending actual authoring.
+- `I2101` and `I2102` now have authored Instrument event content overrides.
+- Remaining pending Instrument events still use generic manifest scaffold notes until authored.
 - Some flight `.docx` files are hidden from app source-document cards but remain valid authoring sources via `textutil`.
 - Treat local field names, routes, frequencies, and scenario-specific details as day-of/local verification material unless the item is inherently local.
 - For cumulative `any emergency procedure` items, do not invent an exhaustive EP list without source support; frame the study method and decision tree from canonical EP/N/W/C sources.
@@ -56,7 +56,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | Event | Title | Media | Kind | Block | Items | Status | Commit | Notes |
 | --- | --- | --- | --- | --- | ---: | --- | --- | --- |
 | I2101 | Instrument Scan Patterns | UTD | sim | I21 Basic Instruments | 6 | complete | use git log | Authored from syllabus membership, local event docs, briefing guide, and Instrument Navigation FTI; no `systemsBrief`; manifest/audit/build passed. |
-| I2102 | IMC Emergencies | UTD | sim | I21 Basic Instruments | 3 | pending | - | - |
+| I2102 | IMC Emergencies | UTD | sim | I21 Basic Instruments | 3 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, Instrument Navigation FTI, and NATOPS emergency guidance; no `systemsBrief`; manifest/audit/build passed. |
 | I2103 | Approach Maneuver | UTD | sim | I21 Basic Instruments | 5 | pending | - | - |
 | I2201 | HSI Orientation | UTD | sim | I22 Radio Instruments | 6 | pending | - | - |
 | I2202 | Arcing and Radial Intercepts | UTD | sim | I22 Radio Instruments | 6 | pending | - | - |

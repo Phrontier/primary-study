@@ -34427,9 +34427,11 @@
                 }
               ],
               "id" : "capstone-flights-cs4101",
-              "overview" : "CS4101 centers on cs4101 and the key procedures students need to explain and execute.",
+              "overview" : "CS4101 is the first Capstone maneuver-and-EP flight. The discussion should show that the student can brief prior maneuvers by setup, contract, and discontinue criteria, then apply emergency procedures with N\/W\/C judgment and a practical recovery plan.",
               "primaryDocumentIDs" : [
-                "contents-5-capstone-3-flights-cs4101-1801-ifr--2-pdf"
+                "contents-5-capstone-3-flights-cs4101-1801-ifr--2-pdf",
+                "contents-5-capstone-3-flights-cs4101-1801-ifr-pdf",
+                "contents-5-capstone-3-flights-cs4101-1801-vfr-pdf"
               ],
               "questionBanks" : [
 
@@ -34486,15 +34488,118 @@
                   {
                     "items" : [
                       {
-                        "text" : "Any previously discussed maneuver and any emergency procedure"
+                        "text" : "Any previously discussed maneuver means the instructor can sample across FAM, Formation, Instrument, and VNAV-style skills; answer with an organized method instead of trying to recite the whole syllabus."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Start with the maneuver purpose, entry setup, configuration, airspeed, altitude or area requirement, and clear-area or formation contract."
+                          },
+                          {
+                            "text" : "State the execution flow, maneuver-complete cue, and the reason you would discontinue, terminate, or knock-it-off."
+                          },
+                          {
+                            "text" : "Connect the maneuver to the capstone profile: formation work, high work, instrument approach, missed approach, holding, divert, or recovery."
+                          }
+                        ],
+                        "text" : "Answer format:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For FAM maneuvers, keep trim, coordination, stall\/OCF awareness, energy state, and recovery altitude in the answer."
+                          },
+                          {
+                            "text" : "For formation maneuvers, brief who owns deconfliction, what visual reference matters, and when Wing must call lost sight, blind, terminate, or knock-it-off."
+                          },
+                          {
+                            "text" : "For instrument work, brief setup, clearance or route logic, scan priorities, configuration timing, missed-approach plan, and lost-comm assumptions."
+                          },
+                          {
+                            "text" : "For navigation or VNAV-style tasks, brief route verification, fuel\/time awareness, weather, airspace, and how the plan changes if the profile no longer matches the day."
+                          }
+                        ],
+                        "text" : "Review buckets:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not memorize local profile names as the procedure. Use current 1801, SOP, IFG, weather, fuel, and day-of brief to decide which procedure applies."
+                          },
+                          {
+                            "text" : "If a maneuver answer depends on local routing, frequency, runway flow, or holding fix, say that it must be verified from the current local source."
+                          }
+                        ],
+                        "text" : "Local-source discipline:"
                       }
                     ],
-                    "title" : "Capstone"
+                    "title" : "Any Previously Discussed Maneuver"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Any emergency procedure means the student must show a repeatable decision flow: cue, aircraft control, memory item, checklist or N\/W\/C, and recovery choice."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Aviate first: maintain control, establish the correct attitude and airspeed, and protect altitude, terrain clearance, and formation separation."
+                          },
+                          {
+                            "text" : "Analyze the cue and execute any required critical action memory items."
+                          },
+                          {
+                            "text" : "Use the checklist and N\/W\/Cs to decide whether the branch is continue, recover, PEL, forced landing, section support, divert, or eject."
+                          },
+                          {
+                            "text" : "Communicate intentions to the other aircraft, ATC, or support agency when the aircraft is stable enough."
+                          }
+                        ],
+                        "text" : "Review method:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For single-ship EPs, brief recognition, immediate actions, minimum controllable or glide numbers, and the field or ejection decision point."
+                          },
+                          {
+                            "text" : "For formation EPs, brief lead transfer, perch, detach, lost sight or blind separation, and who coordinates with ATC."
+                          },
+                          {
+                            "text" : "For IMC EPs, prioritize instrument scan, safe altitude, clearance or emergency authority, and lost-comm plan."
+                          },
+                          {
+                            "text" : "For divert or damaged-aircraft cases, brief suitable field selection, fuel, weather, runway, crash crew, and whether the flight should remain joined."
+                          }
+                        ],
+                        "text" : "Expected branches:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not invent an exhaustive EP list for the event. Use the published EP\/N\/W\/C source for verbatim items and be ready to apply them to the profile."
+                          },
+                          {
+                            "text" : "When the emergency conflicts with the original mission plan, the recovery plan wins."
+                          }
+                        ],
+                        "text" : "Capstone standard:"
+                      }
+                    ],
+                    "title" : "Any Emergency Procedure"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Any Previously Discussed Maneuver and Any Emergency Procedure"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "CS4101 should be studied as a cumulative flight brief: use a consistent maneuver answer format and a disciplined EP decision flow instead of trying to memorize every possible prompt."
               },
-              "summary" : "CS4101 centers on cs4101 and the key procedures students need to explain and execute.",
+              "summary" : "CS4101 covers cumulative maneuver review and emergency-procedure decision flow for the first Capstone flight.",
               "tags" : [
                 "capstone",
                 "flights",

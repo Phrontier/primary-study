@@ -1,0 +1,275 @@
+{
+  "canonicalCoverage" : {
+    "HILO approaches" : [
+      "HILO Approaches"
+    ],
+    "holding" : [
+      "Holding"
+    ],
+    "intersections" : [
+      "Intersections"
+    ],
+    "oil system malfunctions" : [
+      "Oil System Malfunctions"
+    ],
+    "shuttle descent" : [
+      "Shuttle Descent"
+    ]
+  },
+  "code" : "I3102",
+  "overview" : "I3102 builds the instrument approach workload around holding-pattern geometry. The event standard is to fly holding in lieu of a procedure turn, manage shuttle descents and intersection tasks without losing protected airspace, and connect oil-system indications to the correct PEL decision.",
+  "primaryDocumentTitles" : [
+    "I3102",
+    "I3102 Briefing guide 1542.166D",
+    "I3102 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "HILO approaches use a published holding pattern in lieu of a procedure turn to reverse direction and establish the aircraft inbound on the intermediate or final approach course."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The pattern is printed like holding, but it is treated like a course reversal. Only one turn in holding is authorized unless ATC clears additional turns."
+              },
+              {
+                "text" : "A HILO approach always has a depicted FAF."
+              },
+              {
+                "text" : "Case I permits descent to the holding altitude, then no lower until crossing the FAF."
+              },
+              {
+                "text" : "Case II permits further descent once established inbound."
+              }
+            ],
+            "text" : "What makes it different:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "About 5 NM before the IAF, slow to 150 KIAS and prepare for a normal holding entry."
+              },
+              {
+                "text" : "At the IAF, use the six Ts: no timing requirement at station passage, turn using the proper entry, start outbound timing when wings level or abeam, transition if descent is required, twist the inbound course, and talk as required."
+              },
+              {
+                "text" : "If descending, use about 15 percent torque and 150 KIAS, then level at the required altitude before the next descent point."
+              },
+              {
+                "text" : "Use tail-radial-turn and, if needed, double-the-angle intercept to establish inbound before crossing the holding fix."
+              },
+              {
+                "text" : "Within 5 NM of the FAF, transition to before-approach configuration and continue with the published approach."
+              }
+            ],
+            "text" : "Execution:"
+          }
+        ],
+        "title" : "HILO Approaches"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Holding is protected-airspace management: enter correctly, keep the inbound leg under control, and leave the pattern exactly as cleared."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Copy and read back the clearance, determine the holding side and turn direction, and slow to 150 KIAS within 3 minutes or 5 NM when required."
+              },
+              {
+                "text" : "A standard pattern uses right turns; a non-standard pattern uses left turns."
+              },
+              {
+                "text" : "Use the aircraft heading and the reciprocal of the holding course to choose direct, parallel, or teardrop entry."
+              },
+              {
+                "text" : "If the reciprocal falls within 5 degrees of an entry boundary, either adjacent entry is acceptable."
+              }
+            ],
+            "text" : "Entry setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Direct entry turns outbound in the pattern direction after fix passage."
+              },
+              {
+                "text" : "Parallel entry flies outbound parallel to the inbound course, then turns opposite the pattern direction to intercept inbound."
+              },
+              {
+                "text" : "Teardrop entry turns 30 degrees toward the holding side from the reciprocal of the holding course."
+              },
+              {
+                "text" : "Use the six Ts at the fix and on each turn so timing, turns, configuration, CDI setting, and required reports stay in order."
+              }
+            ],
+            "text" : "Entry types:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use tail-radial-turn to decide the inbound turn direction when tracking back toward the holding radial."
+              },
+              {
+                "text" : "Triple the inbound drift correction on the outbound leg for up to 1 minute, then transition to single drift if the outbound leg continues."
+              },
+              {
+                "text" : "Adjust outbound time by the inbound timing error: if inbound was 10 seconds short, add 10 seconds outbound; if it was long, subtract time."
+              },
+              {
+                "text" : "Report position, time, and altitude when required, and confirm EFC at least 5 minutes prior if needed."
+              }
+            ],
+            "text" : "Corrections and communication:"
+          }
+        ],
+        "title" : "Holding"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A shuttle descent is an ATC-directed descent inside holding that preserves the stack while moving the aircraft to a lower altitude."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Report leaving the current altitude for the assigned altitude."
+              },
+              {
+                "text" : "Set about 15 percent torque, lower the nose to maintain 150 KIAS, and re-trim without letting the holding pattern unravel."
+              },
+              {
+                "text" : "Lead the level-off by about 50 feet, add power near 33 percent torque, raise the nose to level flight, and re-trim."
+              },
+              {
+                "text" : "The common trap is fixation: watching altitude so hard that the pattern drifts, or watching the pattern so hard that the level-off is missed."
+              }
+            ],
+            "text" : "Shuttle descent flow:"
+          }
+        ],
+        "title" : "Shuttle Descent"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Intersections are fixes that drive airway changes, timing reports, holding entries, approach transitions, missed approaches, and configuration or altitude tasks."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use the primary NAVAID for the course being flown and the secondary NAVAID only as the crosscut used to identify the fix."
+              },
+              {
+                "text" : "For VOR/DME intersections, track the primary course to the fix DME, note the time if required, then either continue outbound or start the standard-rate turn to the new course."
+              },
+              {
+                "text" : "When turning to a new course, set up the next course within about 10 NM, maintain the wind-corrected heading until the turn lead, then intercept promptly if early or late."
+              }
+            ],
+            "text" : "VOR/DME intersections:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For VOR-only intersections, estimate the fix time, tune the secondary NAVAID about 3 minutes prior, and watch the crosscut bearing-pointer tail."
+              },
+              {
+                "text" : "If the tail is still more than 10 radials from the fix, retune the primary, wait briefly, and recheck."
+              },
+              {
+                "text" : "When within 10 radials, hold heading until the tail rises to the crossing radial, then note time and continue or turn as cleared."
+              },
+              {
+                "text" : "Late secondary setup, wrong turn lead, and trying to force the aircraft exactly over the fix when that is not required are the common errors."
+              }
+            ],
+            "text" : "VOR-only intersections:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For GPS fly-over waypoints, confirm the waypoint is next in sequence, cross it, then update course after the active leg changes."
+              },
+              {
+                "text" : "For GPS fly-by waypoints, the system anticipates the turn; start the standard-rate turn when the CDI flashes and re-intercept promptly if the timing is off."
+              }
+            ],
+            "text" : "GPS waypoint awareness:"
+          }
+        ],
+        "title" : "Intersections"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Oil system malfunctions are PEL-driving problems unless the indication is clearly limited to a brief amber caution with normal oil pressure."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use this procedure for a red OIL PX warning, amber OIL PX caution, oil-pressure fluctuations, oil temperature out of limits, or visible oil leak."
+              },
+              {
+                "text" : "If only the amber OIL PX caution illuminates, terminate maneuvering and check oil pressure. If oil pressure is normal, continued operation may be appropriate."
+              },
+              {
+                "text" : "A momentary amber OIL PX during maneuvering may not indicate a malfunction, and simultaneous red and amber OIL PX with normal oil pressure indicates an SCU failure."
+              },
+              {
+                "text" : "If an OIL PX warning occurs with oil pressure below 5 psi, the OIL TRX circuit breaker may be checked and reset if open, but troubleshooting must not delay aircraft control or the landing decision."
+              }
+            ],
+            "text" : "Recognition:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For red OIL PX, amber OIL PX lasting more than 5 seconds, oil-pressure fluctuations, or oil temperature out of limits, set PCL to the minimum necessary to intercept the ELP and avoid unnecessary PCL movement."
+              },
+              {
+                "text" : "Execute a PEL. Higher power may aggravate the condition, so use only what the profile requires."
+              },
+              {
+                "text" : "Normal steady-state oil pressure is 90 to 120 psi; oil pressure less than 90 psi at flight idle or above is indicative of a malfunction."
+              },
+              {
+                "text" : "Normal flight oil temperature is 10 to 105 degrees C, with 106 to 110 degrees C limited to 10 minutes."
+              }
+            ],
+            "text" : "Response:"
+          }
+        ],
+        "title" : "Oil System Malfunctions"
+      },
+      {
+        "items" : [
+          {
+            "text" : "HILO Approaches"
+          },
+          {
+            "text" : "Holding"
+          },
+          {
+            "text" : "Shuttle Descent"
+          },
+          {
+            "text" : "Intersections"
+          },
+          {
+            "text" : "Oil System Malfunctions"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Fly the HILO as protected course-reversal holding, keep holding corrections and shuttle descents organized, identify intersections on time, and treat oil-system indications as PEL decision points."
+  },
+  "summary" : "HILO approaches, holding, shuttle descents, intersections, and oil-system malfunction response.",
+  "title" : "HILO Approaches"
+}

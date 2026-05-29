@@ -32498,7 +32498,7 @@
                 }
               ],
               "id" : "instruments-flights-i4103",
-              "overview" : "I4103 prepares the student to plan and fly the assigned instrument profile with the required procedures, comm flow, and standards.",
+              "overview" : "I4103 closes the I41 aircraft block with radar approaches, no-gyro recovery, oxygen-system and physiological decision making, and adverse-weather emergency judgment. The event standard is to fly controller-directed final segments promptly without surrendering aircraft control, minimums discipline, oxygen priority, or the EP branch logic.",
               "primaryDocumentIDs" : [
 
               ],
@@ -32537,24 +32537,346 @@
                   {
                     "items" : [
                       {
+                        "text" : "PAR is a precision radar approach: the final controller gives azimuth and glideslope corrections to guide the aircraft to DA\/DH."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Expect surveillance radar vectors toward final, then a handoff to the final controller once the aircraft is within precision-radar coverage."
+                          },
+                          {
+                            "text" : "Precision radar approach limits are about 10 NM range, 20 degrees azimuth, and 7 degrees elevation."
+                          },
+                          {
+                            "text" : "Review minimums, lost-communication instructions, missed approach or climbout instructions, and keep position orientation with available NAVAIDs during the vector sequence."
+                          },
+                          {
+                            "text" : "Single-pilot T-6B minimums may raise very low published PAR minimums; do not brief below the applicable 200-foot HAT and 1\/2 SM or 2400 RVR floor."
+                          }
+                        ],
+                        "text" : "Approach meaning and setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Fly 200 KIAS on downwind and 150 KIAS on base; if held on an extended final or dogleg, maintain 200 KIAS until within about 15 NM unless directed otherwise."
+                          },
+                          {
+                            "text" : "Transition to before-approach configuration and complete landing checks before glideslope intercept."
+                          },
+                          {
+                            "text" : "The initial call to final controller should include gear status and any locally required altitude or heading status."
+                          },
+                          {
+                            "text" : "Do not begin descending on the 'approaching glidepath' advisory. Begin descent only when told the aircraft is on glidepath."
+                          }
+                        ],
+                        "text" : "Transition to final:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "At glideslope intercept, use about 24% torque, 120 KIAS, and roughly 600 FPM, then make small prompt corrections."
+                          },
+                          {
+                            "text" : "Use pitch primarily for airspeed and power primarily for glideslope or descent-rate control; avoid large PCL movements."
+                          },
+                          {
+                            "text" : "At DA\/DH, continue only with the runway environment in sight and a safe landing possible; otherwise execute the missed approach or assigned climbout."
+                          },
+                          {
+                            "text" : "Execute a missed approach if directed by controller, tower, runway duty officer, or wheels watch, or whenever a safe landing cannot be made."
+                          }
+                        ],
+                        "text" : "Precision final:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lost communications are defined as more than 1 minute on vectors to final, more than 15 seconds on ASR or PAR without glideslope final, or more than 5 seconds on PAR final with glideslope."
+                          },
+                          {
+                            "text" : "If lost comm occurs, attempt secondary or tower frequency, proceed VFR if able, or execute the approved non-radar approach or published radar lost-communication procedure."
+                          },
+                          {
+                            "text" : "Keep missed approach, climbout, and lost-communication instructions separate; they solve different problems."
+                          }
+                        ],
+                        "text" : "Lost comm and instruction discipline:"
+                      }
+                    ],
+                    "title" : "PAR"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "ASR is a non-precision radar approach using airport surveillance radar for course and range guidance; PAR W\/O GS is also non-precision, but uses precision-radar azimuth and range on final."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Because no glideslope is provided or used, the pilot owns the descent profile, MDA level-off, and MAP decision."
+                          },
+                          {
+                            "text" : "PAR W\/O GS may publish a lower MDA than ASR because its course and range information are more precise, but it is still non-precision."
+                          },
+                          {
+                            "text" : "The controller will advise the MAP location, range updates, and descent to MDA or step-down fixes."
+                          },
+                          {
+                            "text" : "If circling is planned, provide the aircraft category when needed so ATC issues or confirms the correct circling MDA."
+                          }
+                        ],
+                        "text" : "What the approach provides:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Promptly comply with vectors and altitudes, maintain SA, and acknowledge all transmissions until instructed otherwise."
+                          },
+                          {
+                            "text" : "Use 200 KIAS on downwind and 150 KIAS on base; on extended final or dogleg, remain at 200 KIAS until within about 15 NM unless directed otherwise."
+                          },
+                          {
+                            "text" : "Transition to before-approach configuration and complete landing checks on final or dogleg within 15 NM."
+                          },
+                          {
+                            "text" : "With recommended altitudes, set about 24% torque, establish 120 KIAS, and adjust descent to meet the mile-by-mile altitude gates."
+                          },
+                          {
+                            "text" : "Without recommended altitudes, set about 20% torque, trim for 120 KIAS, and maintain a stabilized descent not greater than 1000 FPM."
+                          }
+                        ],
+                        "text" : "Final segment:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Recommended altitudes are a pilot-requested stabilization aid; they do not authorize descent below step-down fixes or below MDA."
+                          },
+                          {
+                            "text" : "Begin level-off about 100 feet before MDA, maintain MDA and assigned heading to the MAP, and go missed at the MAP if the runway environment is not in sight or landing is unsafe."
+                          },
+                          {
+                            "text" : "Do not drop to MDA early just to get level. Heavy rain and low altitude can increase ground clutter and contribute to loss of radar contact."
+                          },
+                          {
+                            "text" : "If told 'radar contact lost' and the runway environment is not in sight, execute the missed approach or assigned climbout."
+                          }
+                        ],
+                        "text" : "MDA and MAP discipline:"
+                      }
+                    ],
+                    "title" : "ASR"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A no-gyro approach is available under radar control when the directional gyro or stabilized compass information is inoperative or inaccurate."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Tell ATC the heading system is unreliable and request a no-gyro PAR, ASR, PAR W\/O GS, or vectors to a visual approach if VMC supports it."
+                          },
+                          {
+                            "text" : "Comply with the normal PAR, ASR, or PAR W\/O GS procedure; no-gyro changes turn commands, not configuration, minimums, lost-communication, or missed-approach requirements."
+                          },
+                          {
+                            "text" : "ATC may also initiate no-gyro vectors if they observe incorrect directional responses or suspect directional awareness is lost."
+                          }
+                        ],
+                        "text" : "When to request it:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Before final, turn immediately at standard rate, not more than 30 degrees AOB, when told 'turn left' or 'turn right.'"
+                          },
+                          {
+                            "text" : "Roll out immediately when told 'stop turn.'"
+                          },
+                          {
+                            "text" : "On final, use half-standard-rate turns unless the controller directs another rate."
+                          },
+                          {
+                            "text" : "Acknowledge instructions unless ATC states no further acknowledgements are required."
+                          },
+                          {
+                            "text" : "Common errors are slow compliance, wrong turn rate, late before-approach configuration, and confusing missed approach, climbout, and lost-communication instructions."
+                          }
+                        ],
+                        "text" : "Controller-commanded turns:"
+                      }
+                    ],
+                    "title" : "No-Gyro Approaches"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Hypoxia and hyperventilation can look similar early, so protect oxygen first, then normalize breathing once oxygen source and aircraft control are secure."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Hypoxia is oxygen deficiency in body tissues. Early signs can include poor judgment, euphoria, fatigue, tunnel vision, dizziness, headache, feeling hot, confusion, or slower\/slurred speech."
+                          },
+                          {
+                            "text" : "Noticeable physiological degradation begins above about 10,000 feet MSL as oxygen partial pressure decreases, and supplemental oxygen is required when cockpit altitude exceeds 10,000 feet."
+                          },
+                          {
+                            "text" : "Risk increases with fatigue, dehydration, illness, alcohol, medications, smoking, carbon monoxide exposure, temperature stress, and exertion."
+                          }
+                        ],
+                        "text" : "Hypoxia:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Hyperventilation is excessive breathing that lowers blood carbon dioxide and can lead to lightheadedness, tingling, drowsiness, muscle spasms, a feeling of suffocation, or unconsciousness."
+                          },
+                          {
+                            "text" : "When breathing oxygen under increased pressure, breathe at a rate and depth slightly less than normal to avoid inducing hyperventilation."
+                          },
+                          {
+                            "text" : "If symptoms could be either hypoxia or hyperventilation, secure oxygen, verify flow, communicate the problem, descend as required, and then consciously slow and normalize breathing."
+                          }
+                        ],
+                        "text" : "Hyperventilation:"
+                      }
+                    ],
+                    "title" : "Hypoxia and Hyperventilation"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "OBOGS malfunctions are survival problems before they are system-analysis problems: keep flying, get a secure oxygen source, descend when required, and back up the memory items with the checklist."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "An OBOGS FAIL message is positive indication of a system malfunction and may reflect heat-exchanger, concentrator, bleed-air supply, electrical-interface, or leakage problems."
+                          },
+                          {
+                            "text" : "OBOGS TEMP indicates a heat-exchanger failure and is treated as an OBOGS failure."
+                          },
+                          {
+                            "text" : "The system can fail without a useful warning if the engine is not running, the battery fails, or the concentrator releases zeolite dust; respiratory irritation, coughing, or white dust in the mask still demand action."
+                          },
+                          {
+                            "text" : "Physiological symptoms at any point mean transition immediately to the OBOGS Failure\/Overtemp\/Physiological Symptoms procedure."
+                          }
+                        ],
+                        "text" : "Recognition:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For an OBOGS FAIL message, check both cockpits: supply ON, concentration MAX, pressure EMERGENCY, flow indicator, hose\/CRU-60\/P connection, and mask seal."
+                          },
+                          {
+                            "text" : "If the warning clears because a supply lever was off or a leak was corrected, continue only if the checklist allows."
+                          },
+                          {
+                            "text" : "Otherwise execute OBOGS Failure\/Overtemp\/Physiological Symptoms: pull the green ring as required, initiate descent below 10,000 feet MSL, and secure OBOGS supply OFF."
+                          },
+                          {
+                            "text" : "Emergency oxygen lasts about 10 minutes. Above 10,000 feet cockpit altitude, descend below 10,000 before the bottle is depleted or hypoxia may incapacitate the crew."
+                          },
+                          {
+                            "text" : "At or below 10,000 feet, pulling the green ring may be optional for oxygen pressure, but symptoms, cockpit workload, and checklist direction still drive the decision."
+                          }
+                        ],
+                        "text" : "Response:"
+                      }
+                    ],
+                    "title" : "OBOGS Malfunctions"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Thunderstorms and extreme turbulence should be avoided because they can produce flameout, structural damage, hail, lightning, and violent updrafts or downdrafts."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use forecasts, radar, ATC, and route changes to avoid thunderstorms; do not accept IMC in an area where thunderstorms are known to be present unless there is no safer alternative."
+                          },
+                          {
+                            "text" : "If penetration becomes unavoidable, set PROBES ANTI-ICE ON, tighten the lap strap, lock the shoulder harness reel, stow loose items, and set instrument lighting high before lightning starts destroying night adaptation."
+                          },
+                          {
+                            "text" : "Plan the shortest practical path through the activity and avoid unnecessary turns inside the storm."
+                          }
+                        ],
+                        "text" : "Avoidance and preparation:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Recommended penetration airspeed is 180 KIAS; do not exceed turbulent-air penetration speed of 207 KIAS."
+                          },
+                          {
+                            "text" : "Trim for level flight at the penetration speed, then control by attitude reference. Do not chase rapid indicated-airspeed swings."
+                          },
+                          {
+                            "text" : "Use smooth, moderate aileron and elevator inputs, maintain the power setting that supports the desired speed and altitude, and avoid large or abrupt attitude changes."
+                          },
+                          {
+                            "text" : "Allow altitude to vary in severe vertical gusts. Sacrifice altitude before sacrificing attitude control."
+                          }
+                        ],
+                        "text" : "Penetration technique:"
+                      }
+                    ],
+                    "title" : "Inadvertent Thunderstorm Penetration"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Treat 'any emergency procedure' as a cumulative oral spot check: the answer needs the cue, immediate action, checklist backup, N\/W\/C that changes the plan, and the recovery branch."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Start with aircraft control, crew oxygen and survival, terrain clearance, and ATC coordination before diving into low-priority troubleshooting."
+                          },
+                          {
+                            "text" : "Use NATOPS memory items when required, then back them up with the checklist as time and aircraft state permit."
+                          },
+                          {
+                            "text" : "Explain the branch point: continue, divert, PEL, forced landing, or eject, and what cue would move you to the next branch."
+                          },
+                          {
+                            "text" : "In IMC, brief the first safe altitude, who flies, who talks, what you need from ATC, and how the selected approach or vectors protect workload."
+                          }
+                        ],
+                        "text" : "Briefing standard:"
+                      }
+                    ],
+                    "title" : "Any Emergency Procedure"
+                  },
+                  {
+                    "items" : [
+                      {
                         "text" : "PAR"
                       },
                       {
                         "text" : "ASR"
                       },
                       {
-                        "text" : "no-gyro approaches; hypoxia\/hyperventilation; and OBOGS malfunctions"
+                        "text" : "No-Gyro Approaches; Hypoxia\/Hyperventilation; and OBOGS Malfunctions"
                       },
                       {
-                        "text" : "inadvertent thunderstorm penetration and any emergency procedure"
+                        "text" : "Inadvertent Thunderstorm Penetration and Any Emergency Procedure"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Fly radar-approach instructions promptly, keep no-gyro turn rates and minimums straight, protect oxygen first, and brief weather or EP problems as control-and-recovery decisions."
               },
-              "summary" : "I4103 prepares the student to plan and fly the assigned instrument profile with the required procedures, comm flow, a...",
+              "summary" : "Radar approaches, no-gyro recovery, oxygen-system\/physiological problems, thunderstorm penetration, and cumulative EP judgment.",
               "tags" : [
                 "instruments",
                 "flights",

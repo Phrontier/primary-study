@@ -1,0 +1,210 @@
+{
+  "canonicalCoverage" : {
+    "No-gyro approach" : [
+      "No-Gyro Approach"
+    ],
+    "emergency field selection" : [
+      "Emergency Field Selection"
+    ],
+    "fuel management" : [
+      "Fuel Management"
+    ]
+  },
+  "code" : "I4203",
+  "overview" : "I4203 ties degraded-heading recovery, emergency field selection, and fuel accountability into one decision loop. The event standard is to use ATC to reduce heading workload when needed, keep a suitable recovery field in mind before the emergency, and compare planned fuel to actual fuel early enough that fuel never becomes a surprise.",
+  "primaryDocumentTitles" : [
+    "I4203",
+    "DK Gouge I4203"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "A no-gyro approach is available under radar control when directional gyro or stabilized compass information is inoperative, inaccurate, or no longer trusted."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Tell ATC the heading system is unreliable and request a no-gyro PAR, ASR, PAR W/O GS, or vectors to a visual approach if VMC supports it."
+              },
+              {
+                "text" : "Comply with the normal PAR, ASR, or PAR W/O GS procedure; no-gyro only changes how ATC commands turns."
+              },
+              {
+                "text" : "Configuration, minimums, lost-communication, missed-approach, and climbout discipline still come from the underlying approach."
+              },
+              {
+                "text" : "ATC may initiate no-gyro vectors if the controller sees incorrect directional responses or suspects the pilot has lost directional awareness."
+              }
+            ],
+            "text" : "When to request it:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Before final, start the turn immediately when told 'turn left' or 'turn right' and use standard rate, not more than 30 degrees AOB, unless directed otherwise."
+              },
+              {
+                "text" : "Stop the turn immediately when told 'stop turn.'"
+              },
+              {
+                "text" : "On final, use half-standard-rate turns unless the controller directs another rate."
+              },
+              {
+                "text" : "Acknowledge instructions until ATC says no further acknowledgements are required."
+              },
+              {
+                "text" : "Common errors are slow compliance, wrong turn rate, late before-approach configuration, poor DA/MDA transition, and mixing up missed approach, climbout, and lost-communication instructions."
+              }
+            ],
+            "text" : "Controller-commanded turns:"
+          }
+        ],
+        "title" : "No-Gyro Approach"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Emergency field selection is a continuous habit: every OPS Check should update the nearest suitable recovery option based on fuel, engine/system state, weather, terrain, lighting, and airspace."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Preflight chart study should identify diverts along the route, not just at the destination. Note runway length, orientation, elevation, lighting, surface, approaches, and communications."
+              },
+              {
+                "text" : "Local SOPs may set specific runway-size, surface, lighting, solo, or night requirements. Verify current local standards instead of relying on memory."
+              },
+              {
+                "text" : "Use the FMS NRST page, charts, NAVAIDs, ATC, and visual references together; no single tool decides suitability by itself."
+              },
+              {
+                "text" : "For a precautionary emergency landing, communicate if able without delaying the emergency procedure. The useful call is who you are, where you are, and what you need."
+              }
+            ],
+            "text" : "Suitable-field scan:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If an engine fails at night at or above 2000 feet AGL and a lighted runway is not immediately available, ejection is highly recommended if restart is not attempted or is unsuccessful."
+              },
+              {
+                "text" : "If an engine fails below 2000 feet AGL, attempting a restart is not recommended; if a lighted runway is not immediately available, first priority is setting up to eject."
+              },
+              {
+                "text" : "In a low-level engine malfunction, climb to cope. Airfields within an arc circumscribed by the wingtips may be reachable with an immediate turn and climb, but a suitable field much beyond about 3 NM is unlikely from low level."
+              },
+              {
+                "text" : "A zoom from about 240 knots groundspeed can gain roughly 1300 feet; consider whether that altitude buys restart, field selection, or ejection margin."
+              }
+            ],
+            "text" : "Engine and energy branch:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Route abort triggers include insufficient fuel, aircraft malfunction, bird hazard, and weather."
+              },
+              {
+                "text" : "In VMC, maintain terrain clearance and VFR altitude rules if possible, set the appropriate transponder code, maintain VMC, and coordinate with the controlling agency."
+              },
+              {
+                "text" : "An abort into IMC is an emergency: climb immediately to at least ERAA, squawk 7700, contact ATC, and do not let route-finding distract from aircraft control."
+              },
+              {
+                "text" : "If communications cannot be established at an unfamiliar field, observe traffic, runway markings, segmented circle, wind indicators, and pattern direction from a safe altitude if time permits."
+              }
+            ],
+            "text" : "Route abort and arrival:"
+          }
+        ],
+        "title" : "Emergency Field Selection"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Fuel management compares the fuel plan to the aircraft reality before a low-fuel decision is forced. The basic cockpit comparison is Estimated Fuel Remaining versus Actual Fuel Remaining."
+          },
+          {
+            "children" : [
+              {
+                "text" : "During planning, calculate EFR by verifying actual fuel load, subtracting start/taxi/takeoff fuel, then subtracting each leg's estimated fuel burn."
+              },
+              {
+                "text" : "At the end of each leg, compare AFR to EFR. AFR greater than or equal to EFR supports the plan; AFR less than EFR requires immediate investigation."
+              },
+              {
+                "text" : "Likely causes include less fuel onboard at takeoff, higher climb or cruise fuel flow, slower groundspeed, math or flight-log error, unplanned routing, or fuel leak."
+              },
+              {
+                "text" : "Make the comparison part of the OPS Check so the decision happens while there are still route, altitude, divert, and ATC options."
+              }
+            ],
+            "text" : "EFR versus AFR:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "CNAF fuel planning requires sufficient usable fuel for meteorological factors and mission requirements."
+              },
+              {
+                "text" : "If no alternate is required, plan fuel from takeoff to destination plus a 10% reserve. If an alternate is required, plan takeoff to the destination approach fix, then to the alternate, plus a 10% reserve."
+              },
+              {
+                "text" : "The planned reserve after final landing may not be less than 20 minutes of flight; for turbine fixed-wing aircraft, compute that at maximum endurance at 10,000 feet."
+              },
+              {
+                "text" : "The workbook uses the T-6B NATOPS/PCL maximum-endurance value of 333 PPH at 10,000 feet on a standard day, yielding about 111 pounds for 20 minutes and a rounded planning reserve of 115 pounds."
+              },
+              {
+                "text" : "Local training minimums may be higher than the regulatory planning reserve; confirm current squadron/CNATRA minimum fuel and emergency fuel numbers before relying on them."
+              }
+            ],
+            "text" : "Planning reserves:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "When fuel endurance becomes the controlling factor, use NATOPS maximum-endurance data instead of inventing a low-burn technique."
+              },
+              {
+                "text" : "Maximum endurance AOA is 8.8 units; maximum range AOA is 4.4 units."
+              },
+              {
+                "text" : "Recommended clean holding speed is 125 to 150 KIAS, but no slower than maximum endurance speed of 125 KIAS."
+              },
+              {
+                "text" : "Use DRAFT for a divert request: destination, route, altitude, fuel remaining in hours plus minutes, and time en route."
+              },
+              {
+                "text" : "Minimum fuel tells ATC no undue delay can be accepted; it is not itself an emergency. If traffic priority is needed to ensure a safe landing, declare emergency fuel and report fuel remaining in minutes."
+              }
+            ],
+            "text" : "In-flight decision points:"
+          }
+        ],
+        "title" : "Fuel Management"
+      },
+      {
+        "items" : [
+          {
+            "text" : "No-Gyro Approach"
+          },
+          {
+            "text" : "Emergency Field Selection"
+          },
+          {
+            "text" : "Fuel Management"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use no-gyro vectors to reduce heading-reference workload, keep emergency recovery fields updated before the problem, and compare EFR to AFR early enough to protect divert options."
+  },
+  "summary" : "No-gyro approach execution, emergency recovery-field selection, and fuel-management decision points.",
+  "title" : "No-Gyro and Fuel Management"
+}

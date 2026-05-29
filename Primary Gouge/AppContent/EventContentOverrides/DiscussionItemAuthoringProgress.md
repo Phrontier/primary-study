@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I42 Radio Instruments complete through `I4202`
-- Current event: `I4203`
-- Next action: author `I4203` from canonical syllabus items, local flight-event sources, Instrument Navigation FTI no-gyro material, EP/N/W/C field-selection references, and Instrument Flight Planning Workbook fuel-management material.
-- Last validated event: `I4202`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I4202.json`
-- Last manifest validation: `I4202` authored; no `I4202` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I4202`
+- Status: I42 Radio Instruments complete through `I4203`
+- Current event: `I4204`
+- Next action: author `I4204` from canonical syllabus items, local flight-event sources, CNAF M-3710.7 takeoff/approach/alternate filing minimums, and Instrument Flight Planning Workbook alternate-planning material.
+- Last validated event: `I4203`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I4203.json`
+- Last manifest validation: `I4203` authored; no `I4203` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I4203`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -45,7 +45,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- `I2101` through `I4202` now have authored Instrument event content overrides.
+- `I2101` through `I4203` now have authored Instrument event content overrides.
 - Remaining pending Instrument events still use generic manifest scaffold notes until authored.
 - Some flight `.docx` files are hidden from app source-document cards but remain valid authoring sources via `textutil`.
 - Treat local field names, routes, frequencies, and scenario-specific details as day-of/local verification material unless the item is inherently local.
@@ -76,7 +76,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I4103 | PAR, ASR, and No-Gyro | T-6B | flight | I41 Radio Instruments | 4 | complete | use git log | Authored from syllabus membership, local flight event docs, Instrument Navigation FTI radar/no-gyro material, NATOPS thunderstorm and OBOGS references, and EP/N/W/C XML; no `systemsBrief`; manifest/audit/build passed. |
 | I4201 | Departure Procedures and Airway Navigation | T-6B | flight | I42 Radio Instruments | 4 | complete | use git log | Authored from syllabus membership, local flight event docs, Instrument Navigation FTI departure/en route/radar lost-comm material, KNGP IFG coded-route/local lost-comm references, and current eCFR 91.181/91.185 cross-check; no `systemsBrief`; manifest/audit/build passed. |
 | I4202 | FMS Arrivals | T-6B | flight | I42 Radio Instruments | 1 | complete | use git log | Authored from syllabus membership, local flight event docs, NATOPS FMS route/procedure management material, and Instrument Navigation FTI RNAV/TAA/GPS approach material; no `systemsBrief`; manifest/audit/build passed. |
-| I4203 | No-Gyro and Fuel Management | T-6B | flight | I42 Radio Instruments | 3 | pending | - | - |
+| I4203 | No-Gyro and Fuel Management | T-6B | flight | I42 Radio Instruments | 3 | complete | use git log | Authored from syllabus membership, local flight event docs, Instrument Navigation FTI no-gyro material, Navigation FTI emergency field/route-abort guidance, CNAF fuel planning requirements, Instrument Flight Planning Workbook fuel-management material, and NATOPS endurance data; no `systemsBrief`; manifest/audit/build passed. |
 | I4204 | Takeoff and Alternate Minimums | T-6B | flight | I42 Radio Instruments | 1 | pending | - | - |
 | I4301 | Flight Planning and Jet Logs | T-6B | flight | I43 Instrument Navigation | 8 | pending | - | - |
 | I4302 | En Route Weather and Circling | T-6B | flight | I43 Instrument Navigation | 6 | pending | - | - |

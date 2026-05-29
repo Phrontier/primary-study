@@ -40,7 +40,7 @@ Work exactly one event at a time.
 3. Author the override.
    - Create or update `Primary Gouge/AppContent/EventContentOverrides/<EVENTCODE>.json`.
    - Include `title`, `summary`, `overview`, `primaryDocumentTitles`, `canonicalCoverage`, and `studyNotes`.
-   - Add a final `Required Procedures` section with exact canonical syllabus membership in syllabus order.
+   - Add a final `Required Procedures` section with canonical syllabus membership in syllabus order and standardized display capitalization.
    - Add `systemsBrief` only for allowed FAM flight events with dense NATOPS/system content.
    - Do not add `systemsBrief` for Instruments, VNAV, Formation, Capstone, FAM sims, or any non-FAM-flight event.
 4. Rebuild and inspect.

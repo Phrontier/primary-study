@@ -373,7 +373,7 @@ private func buildOverride(
         canonicalCoverage: canonicalCoverage,
         primaryDocumentTitles: context.primaryTitles,
         studyNotes: StudyNotesOutput(
-            headline: "Discussion items",
+            headline: "Discussion Items",
             summary: notesSummary,
             sections: sections
         )
@@ -509,7 +509,7 @@ private func preservedVisibleOverride(
         : (existingNotes?.summary ?? buildStudyNotesSummary(for: event, authoringProfile: authoringProfile, sections: sectionDefinitions)))
 
     let notes = StudyNotesOutput(
-        headline: existingNotes?.headline ?? "Discussion items",
+        headline: existingNotes?.headline ?? "Discussion Items",
         summary: notesSummary,
         sections: (existingNotes?.sections ?? []).map { section in
             let standardizedRequiredProcedures = (authoringOverride?.standardizeRequiredProcedureDisplay ?? false) &&

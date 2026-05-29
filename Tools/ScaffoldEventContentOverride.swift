@@ -38,6 +38,47 @@ struct SyllabusEventReferenceEventRecord: Codable {
     let discussionItems: [String]
 }
 
+func titleCasedDiscussionItemPrompt(_ value: String) -> String {
+    let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard !trimmed.isEmpty else { return trimmed }
+
+    var result = trimmed
+        .replacingOccurrences(of: #"(?<=[a-z])-(?=[a-z])"#, with: " ", options: .regularExpression)
+        .lowercased()
+        .localizedCapitalized
+
+    for joiner in ["And", "Or", "Of", "In", "On", "To", "The", "A", "An"] {
+        let pattern = #"(?<![-/])\b\#(joiner)\b(?![-/])"#
+        result = result.replacingOccurrences(of: pattern, with: joiner.lowercased(), options: .regularExpression)
+    }
+
+    let tokenReplacements: [(pattern: String, replacement: String)] = [
+        (#"\bEp\b"#, "EP"),
+        (#"\bN/W/Cs\b"#, "N/W/Cs"),
+        (#"\bN/W/C\b"#, "N/W/C"),
+        (#"\bCrm\b"#, "CRM"),
+        (#"\bT-6b\b"#, "T-6B"),
+        (#"\bSid\b"#, "SID"),
+        (#"\bStar\b"#, "STAR"),
+        (#"\bIls\b"#, "ILS"),
+        (#"\bVfr\b"#, "VFR"),
+        (#"\bIfr\b"#, "IFR"),
+        (#"\bNatops\b"#, "NATOPS"),
+        (#"\bAoa\b"#, "AOA"),
+        (#"\bOcf\b"#, "OCF")
+    ]
+
+    for replacement in tokenReplacements {
+        result = result.replacingOccurrences(of: replacement.pattern, with: replacement.replacement, options: .regularExpression)
+    }
+
+    if let firstCharacter = result.first {
+        result.replaceSubrange(result.startIndex...result.startIndex, with: String(firstCharacter).uppercased())
+    }
+
+    return result
+}
+
 let arguments = CommandLine.arguments.dropFirst()
 guard let rawCode = arguments.first, !rawCode.isEmpty else {
     fputs("Usage: swift Tools/ScaffoldEventContentOverride.swift <EVENTCODE>\n", stderr)
@@ -74,7 +115,7 @@ if let data = try? Data(contentsOf: syllabusReferenceURL) {
 let requiredProcedureItems = referenceEvent?.discussionItems ?? ["Primary discussion item"]
 let requiredProcedureSection = StudyNotesSectionScaffold(
     title: "Required Procedures",
-    items: requiredProcedureItems.map { StudyNotesItemScaffold(text: $0, children: nil) }
+    items: requiredProcedureItems.map { StudyNotesItemScaffold(text: titleCasedDiscussionItemPrompt($0), children: nil) }
 )
 let canonicalCoverage = Dictionary(uniqueKeysWithValues: requiredProcedureItems.map { ($0, [$0]) })
 let generatedTitle = referenceEvent?.shortTitle
@@ -87,7 +128,7 @@ let scaffold = EventContentOverrideScaffold(
     canonicalCoverage: canonicalCoverage,
     primaryDocumentTitles: [],
     studyNotes: StudyNotesScaffold(
-        headline: "Discussion items",
+        headline: "Discussion Items",
         summary: nil,
         sections: [
             StudyNotesSectionScaffold(

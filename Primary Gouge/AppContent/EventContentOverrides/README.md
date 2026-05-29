@@ -40,7 +40,7 @@ For FAM discussion-item generation, grouped section layout and locked baseline b
   "summary": "Short event summary shown in cards and lists.",
   "overview": "Longer event overview shown on the event page.",
   "systemsBrief": {
-    "headline": "Systems brief",
+    "headline": "Systems Brief",
     "summary": "Optional dedicated FAM-flight-only NATOPS-style study aid for dense systems briefs.",
     "sections": [
       {
@@ -59,7 +59,7 @@ For FAM discussion-item generation, grouped section layout and locked baseline b
     "FAM4301"
   ],
   "studyNotes": {
-    "headline": "Discussion items",
+    "headline": "Discussion Items",
     "summary": "Optional short paragraph introducing the notes.",
     "sections": [
       {
@@ -77,8 +77,8 @@ For FAM discussion-item generation, grouped section layout and locked baseline b
       {
         "title": "Required Procedures",
         "items": [
-          { "text": "OBOGS and pressurization system" },
-          { "text": "aborted takeoff" }
+          { "text": "OBOGS and Pressurization System" },
+          { "text": "Aborted Takeoff" }
         ]
       }
     ]
@@ -94,6 +94,7 @@ Omit `systemsBrief` entirely for Instruments, VNAV, Formation, Capstone, FAM sim
 - `EventOverrides.json` still exists for legacy compatibility, but new event authoring should go in this folder.
 - Legacy `focusAreas` notes are still supported while older events are being migrated.
 - `canonicalCoverage` is required for every authored discussion-item event override and should map each canonical syllabus discussion item to the authored section title or titles where it is substantively covered.
+- Use display title case for visible note headlines, section titles, and final `Required Procedures` item text. Keep raw syllabus wording in `canonicalCoverage` keys.
 - `systemsBrief` is restricted to FAM flight events with dense NATOPS/system content. Do not add it anywhere else.
 - Scaffolded or generated output is only a starting point for source harvesting. The final authored note should read like something a student could actually brief from.
 - Flashcard authoring now lives in `FlashcardsByEvent.json`, where cards are grouped by event code and can optionally reference images from `Contents/FlashcardImages/`.

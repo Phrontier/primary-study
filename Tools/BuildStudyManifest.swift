@@ -1268,7 +1268,7 @@ struct ManifestBuilder {
         }
 
         return EventStudyNotes(
-            headline: "Discussion items",
+            headline: "Discussion Items",
             summary: summary,
             sections: [
                 EventStudyNotesSection(
@@ -1286,7 +1286,7 @@ struct ManifestBuilder {
 
         let summary = "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
         return EventStudyNotes(
-            headline: "Discussion items",
+            headline: "Discussion Items",
             summary: summary,
             sections: [
                 EventStudyNotesSection(
@@ -1508,13 +1508,14 @@ struct ManifestBuilder {
             let overrideConfig = discussionAuthoringConfig.eventOverrides[code]
 
             let missingStudyNotes = studyNotes == nil
-            let invalidHeadline = studyNotes?.headline != "Discussion items"
+            let invalidHeadline = !Self.isValidDiscussionItemsHeadline(studyNotes?.headline)
             let missingSummary = studyNotes?.summary?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
             let configuredSystemsBriefItems = overrideConfig?.systemsBriefItems ?? []
             let missingSystemsBriefItems = configuredSystemsBriefItems.filter { _ in
                 override?.systemsBrief == nil
             }
-            let invalidSystemsBriefHeadline = override?.systemsBrief != nil && override?.systemsBrief?.headline != "Systems brief"
+            let invalidSystemsBriefHeadline = override?.systemsBrief != nil &&
+                !Self.isValidSystemsBriefHeadline(override?.systemsBrief?.headline)
             let boilerplateOverview = Self.containsFAMOverviewBoilerplate(override?.overview) ||
                 (usesStrictPerItemSections && Self.containsReusableDiscussionOverviewBoilerplate(override?.overview))
             let boilerplateNotesSummary = Self.containsFAMNotesSummaryBoilerplate(studyNotes?.summary) ||
@@ -2462,6 +2463,16 @@ struct ManifestBuilder {
             filename.contains("study guide") ||
             filename.contains("tlos") ||
             eventCode(from: file.lastPathComponent) != nil
+    }
+
+    private static func isValidDiscussionItemsHeadline(_ value: String?) -> Bool {
+        guard let value else { return false }
+        return value == "Discussion Items" || value == "Discussion items"
+    }
+
+    private static func isValidSystemsBriefHeadline(_ value: String?) -> Bool {
+        guard let value else { return false }
+        return value == "Systems Brief" || value == "Systems brief"
     }
 
     private func contentLines(from text: String) -> [String] {

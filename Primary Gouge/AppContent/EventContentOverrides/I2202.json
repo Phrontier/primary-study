@@ -1,0 +1,336 @@
+{
+  "canonicalCoverage" : {
+    "Arcing" : [
+      "Arcing"
+    ],
+    "OBOGS malfunctions" : [
+      "OBOGS Malfunctions"
+    ],
+    "arc-radial intercepts" : [
+      "Arc-Radial Intercepts"
+    ],
+    "hyperventilation/hypoxia" : [
+      "Hyperventilation/Hypoxia"
+    ],
+    "point-to-point" : [
+      "Point-to-Point"
+    ],
+    "radial-arc intercepts" : [
+      "Radial-Arc Intercepts"
+    ]
+  },
+  "code" : "I2202",
+  "overview" : "I2202 builds the geometry that makes radio navigation usable when the clearance is not simply direct-to or radial tracking. Be ready to compute arc lead points, leave an arc on time, solve point-to-point headings, and handle oxygen-system or physiological problems without losing the instrument scan.",
+  "primaryDocumentTitles" : [
+    "I2202",
+    "I2202 Briefing guide 1542.166D",
+    "I2202 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Arcing is flying at a constant DME from a NAVAID. You approximate the arc with small heading and bank changes; you are not trying to draw a perfect circle."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Proceed direct to the arc entry point defined by radial and DME."
+              },
+              {
+                "text" : "Calculate the lead point, determine the turn direction, and begin a standard-rate turn at the lead point."
+              },
+              {
+                "text" : "Continue the turn until the bearing-pointer head is on the 90-degree benchmark for the arc direction."
+              },
+              {
+                "text" : "Check DME immediately after rollout and correct early instead of waiting for a large displacement."
+              }
+            ],
+            "text" : "Entry flow:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "In no wind, bearing-pointer head on the 90-degree benchmark means DME is constant."
+              },
+              {
+                "text" : "Bearing-pointer head below the 90-degree benchmark means DME is increasing."
+              },
+              {
+                "text" : "Bearing-pointer head above the 90-degree benchmark means DME is decreasing."
+              },
+              {
+                "text" : "If inside the arc, maintain heading or place the bearing-pointer head up to 15 degrees below the benchmark; if outside, place it up to 15 degrees above the benchmark."
+              }
+            ],
+            "text" : "DME corrections:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Common errors are late lead-point planning, turning the wrong direction, and overcorrecting DME instead of making small benchmark changes."
+              }
+            ],
+            "text" : "Common errors:"
+          }
+        ],
+        "title" : "Arcing"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A radial-arc intercept transitions from tracking a radial to joining an arc at a specified DME."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For a standard-rate 90-degree turn, turn radius is 0.5% of groundspeed in NM; for example, 150 knots is about 0.75 NM."
+              },
+              {
+                "text" : "If groundspeed is not available in time, KIAS may be used as a no-wind approximation."
+              },
+              {
+                "text" : "When a full standard-rate turn is not appropriate, use 1.0% of groundspeed for a half-standard-rate lead point."
+              },
+              {
+                "text" : "Apply the turn radius so the aircraft begins turning before the arc DME, then adjust for known wind."
+              }
+            ],
+            "text" : "Lead-point math:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Start the turn at the computed DME and roll toward the 90-degree bearing-pointer benchmark."
+              },
+              {
+                "text" : "Check whether the first DME trend puts you inside or outside the arc, then correct with the arcing benchmark logic."
+              },
+              {
+                "text" : "The briefing-guide emphasis is to know turn direction from the assigned arc direction before reaching the lead point."
+              }
+            ],
+            "text" : "Execution:"
+          }
+        ],
+        "title" : "Radial-Arc Intercepts"
+      },
+      {
+        "items" : [
+          {
+            "text" : "An arc-radial intercept leaves an arc and joins an inbound or outbound radial. The key is calculating the lead radial early enough that the turn finishes on course."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Find radials per NM with the 60-to-1 rule: 60 divided by arc DME."
+              },
+              {
+                "text" : "Find turn radius: 0.5% of groundspeed for standard-rate, or 1.0% for half-standard-rate."
+              },
+              {
+                "text" : "Multiply turn radius by radials per NM; that product is the no-wind lead radial."
+              },
+              {
+                "text" : "Set the CDI for the course you will intercept before reaching the lead radial, then begin the turn at the lead radial."
+              }
+            ],
+            "text" : "Lead-radial math:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Greater arc DME means fewer lead radials because radials are farther apart."
+              },
+              {
+                "text" : "Half-standard-rate turns need more lead radials than standard-rate turns because the turn takes longer."
+              },
+              {
+                "text" : "Adjust the no-wind lead for known wind, then track the new radial or course after rollout."
+              }
+            ],
+            "text" : "Execution cues:"
+          }
+        ],
+        "title" : "Arc-Radial Intercepts"
+      },
+      {
+        "items" : [
+          {
+            "text" : "An OBOGS malfunction is a crew-survival problem before it is a system-analysis problem. Keep flying, get a secure oxygen source, descend when required, and use the checklist."
+          },
+          {
+            "children" : [
+              {
+                "text" : "An OBOGS FAIL warning can indicate low bleed-air pressure, low oxygen concentration, or an internal failure detected by the system."
+              },
+              {
+                "text" : "OBOGS TEMP indicates a heat-exchanger failure and is treated as an OBOGS failure."
+              },
+              {
+                "text" : "Physiological symptoms or zeolite-dust indications can occur without a warning light; coughing, respiratory irritation, or white dust in the mask still demand immediate action."
+              },
+              {
+                "text" : "Engine failure, total electrical failure, main battery depletion, or battery failure removes OBOGS support."
+              }
+            ],
+            "text" : "Recognition:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Check both cockpits: supply ON, concentration MAX, pressure EMERGENCY, flow indication, hose/CRU-60/P connection, and mask seal."
+              },
+              {
+                "text" : "If symptoms are recognized, immediately execute the OBOGS Failure/Overtemp/Physiological Symptoms procedure instead of troubleshooting first."
+              },
+              {
+                "text" : "Emergency oxygen provides about 10 minutes; above 10,000 feet cockpit altitude, pulling the green ring is required before depletion risk becomes incapacitating."
+              },
+              {
+                "text" : "Initiate descent below 10,000 feet MSL, secure OBOGS supply OFF as directed, and land as soon as practical."
+              }
+            ],
+            "text" : "Response:"
+          }
+        ],
+        "title" : "OBOGS Malfunctions"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Hypoxia and hyperventilation can feel similar early, so the safe cockpit answer is to protect oxygen first, then normalize breathing once the oxygen source is secure."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Hypoxia is oxygen deficiency in body tissues; early signs can include poor judgment, euphoria, fatigue, tunnel vision, dizziness, or headache."
+              },
+              {
+                "text" : "Advanced hypoxia can progress to cyanosis, confusion, loss of coordination, unconsciousness, and incapacitation."
+              },
+              {
+                "text" : "Susceptibility increases with factors such as fatigue, dehydration, illness, alcohol, medication, smoking, carbon monoxide exposure, temperature stress, and exertion."
+              }
+            ],
+            "text" : "Hypoxia:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Hyperventilation is abnormally rapid or deep breathing that lowers carbon dioxide."
+              },
+              {
+                "text" : "Symptoms can include lightheadedness, tingling, drowsiness, muscle spasms, a feeling of suffocation, and in severe cases unconsciousness."
+              },
+              {
+                "text" : "When breathing oxygen under increased pressure, breathe slightly slower and shallower than normal to avoid inducing hyperventilation."
+              }
+            ],
+            "text" : "Hyperventilation:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If unsure which one you have, treat it like hypoxia first: secure oxygen, verify flow, descend as required, tell the other cockpit, then consciously slow and normalize breathing."
+              },
+              {
+                "text" : "Do not let symptom analysis pull both pilots heads-down; keep one pilot flying and scanning."
+              }
+            ],
+            "text" : "Cockpit priority:"
+          }
+        ],
+        "title" : "Hyperventilation/Hypoxia"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Point-to-point navigation uses a VOR/DME or VORTAC to fly directly from present position to a radial/DME fix without waiting for radar vectors."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Tune, identify, and monitor the NAVAID."
+              },
+              {
+                "text" : "Set the desired radial in the CDI; this helps build the picture even when it is not the heading you will fly."
+              },
+              {
+                "text" : "Visualize the station at the center of the HSI compass card."
+              },
+              {
+                "text" : "Plot the fix with the greater DME on the edge of the compass card and the smaller-DME fix proportionally closer to center."
+              }
+            ],
+            "text" : "Setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Turn initially to a heading between the bearing-pointer head and the course-pointer head: split the heads."
+              },
+              {
+                "text" : "Favor the bearing-pointer head when going to a smaller DME; favor the course-pointer head when going to a larger DME."
+              },
+              {
+                "text" : "Use the pencil method to draw the present-position-to-desired-fix line, move that line to the center of the card, and read the updated no-wind heading."
+              },
+              {
+                "text" : "Keep updating en route. If the line tilts right, turn right; if it tilts left, turn left."
+              }
+            ],
+            "text" : "Heading solution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "As you near the fix, compare DME rate to radial-crossing rate."
+              },
+              {
+                "text" : "If arriving at DME first, use the 90-degree benchmark to split the bearing pointer and desired radial; do not arc to the radial."
+              },
+              {
+                "text" : "If arriving at the radial first, turn to track inbound or outbound as required toward the fix."
+              },
+              {
+                "text" : "Common errors are delaying the initial turn, splitting the wrong heads, using the reciprocal radial, failing to update the pencil solution, and trying to arc to the fix."
+              }
+            ],
+            "text" : "Endgame:"
+          }
+        ],
+        "title" : "Point-to-Point"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Arcing"
+          },
+          {
+            "text" : "Radial-Arc Intercepts"
+          },
+          {
+            "text" : "Arc-Radial Intercepts"
+          },
+          {
+            "text" : "OBOGS Malfunctions"
+          },
+          {
+            "text" : "Hyperventilation/Hypoxia"
+          },
+          {
+            "text" : "Point-to-Point"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Lead the arc, manage DME with bearing-pointer benchmarks, solve point-to-point geometry early, and treat oxygen or physiological symptoms as immediate crew-survival problems."
+  },
+  "summary" : "Arcing, arc intercept math, point-to-point navigation, and oxygen/physiology emergency priorities.",
+  "title" : "Arcing and Radial Intercepts"
+}

@@ -180,7 +180,6 @@
   ],
   "canonicalEventCount" : 88,
   "canonicalEventsMissingAuthoredNotes" : [
-    "CS4102",
     "CS4290",
     "I2201",
     "I2202",
@@ -225,7 +224,7 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-29T22:49:06Z",
+  "generatedAt" : "2026-05-29T22:50:24Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

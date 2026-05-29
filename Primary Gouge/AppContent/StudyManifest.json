@@ -34624,7 +34624,7 @@
                 }
               ],
               "id" : "capstone-flights-cs4102",
-              "overview" : "CS4102 centers on cs4102 and the key procedures students need to explain and execute.",
+              "overview" : "CS4102 is the second Capstone maneuver-and-EP flight. The brief should sound less like a first exposure and more like mission management: select the right prior maneuver method, adapt to weather or routing changes, and apply emergency procedures without losing fuel, clearance, or recovery awareness.",
               "primaryDocumentIDs" : [
                 "contents-5-capstone-3-flights-cs-4102-1801-pdf"
               ],
@@ -34669,15 +34669,118 @@
                   {
                     "items" : [
                       {
-                        "text" : "Any previously discussed maneuver and any emergency procedure"
+                        "text" : "Any previously discussed maneuver on CS4102 is a readiness check across the whole primary syllabus, with the added expectation that the student can adapt when the plan changes."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Brief the planned maneuver by purpose, entry setup, execution, completion cue, and discontinue or reset criteria."
+                          },
+                          {
+                            "text" : "Add the operational context: current area, airspace, weather, fuel, formation status, clearance, and recovery plan."
+                          },
+                          {
+                            "text" : "If the instructor changes the profile, rebuild the setup deliberately instead of carrying old altitude, airspeed, configuration, or clearance assumptions forward."
+                          }
+                        ],
+                        "text" : "Answer format:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For contact work, focus on energy management, trim, coordination, stall or OCF cues, ELP judgment, and recovery altitude."
+                          },
+                          {
+                            "text" : "For formation work, focus on sight, step-down, deconfliction, lead transfer, section approach, flight split, rejoin, and stop-training calls."
+                          },
+                          {
+                            "text" : "For instrument work, focus on clearance limits, approach setup, missed approach, holding, lost-comm logic, and backup navigation."
+                          },
+                          {
+                            "text" : "For navigation work, focus on route verification, fuel, weather, airspace, divert suitability, and whether the plan still meets the sortie objective."
+                          }
+                        ],
+                        "text" : "Review buckets:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "A capstone answer should say what changes the decision: deteriorating weather, lower fuel, a different approach, a lost display, a section emergency, or an unplanned hold."
+                          },
+                          {
+                            "text" : "Use current 1801, SOP, IFG, route packet, weather, and day-of brief for local details; keep the reusable note focused on the decision method."
+                          }
+                        ],
+                        "text" : "Adaptation standard:"
                       }
                     ],
-                    "title" : "Capstone"
+                    "title" : "Any Previously Discussed Maneuver"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Any emergency procedure on CS4102 should be briefed as a mission-management branch: stabilize the aircraft, execute the correct EP, then decide whether to continue, recover, divert, support the section, or eject."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Identify the cue and protect aircraft control before troubleshooting."
+                          },
+                          {
+                            "text" : "Execute memory items and then back them up with the checklist when time permits."
+                          },
+                          {
+                            "text" : "Apply the N\/W\/Cs that change the branch, especially altitude, airspeed, configuration, weather, and formation-separation limits."
+                          },
+                          {
+                            "text" : "Communicate the plan once the aircraft is stable enough: other aircraft, ATC, tower, or support agency as appropriate."
+                          }
+                        ],
+                        "text" : "Review method:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the EP affects controllability or engine reliability, brief the PEL, forced-landing, or ejection boundary instead of trying to preserve the original profile."
+                          },
+                          {
+                            "text" : "If the EP occurs in formation, brief lead transfer, perch, detach, section support, lost sight or blind separation, and whether the flight should remain joined."
+                          },
+                          {
+                            "text" : "If the EP occurs in IMC, brief safe altitude, clearance or emergency authority, lost-comm implications, and nearest suitable recovery."
+                          },
+                          {
+                            "text" : "If the EP drives a divert, brief field suitability, runway, weather, fuel, crash crew, and whether a formation or individual recovery is safer."
+                          }
+                        ],
+                        "text" : "Decision branches:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not turn 'any EP' into a guessed list. Use the applicable EP and N\/W\/C source for verbatim items, then show the decision tree that follows."
+                          },
+                          {
+                            "text" : "A mature answer states when the original mission is over and the emergency recovery plan has priority."
+                          }
+                        ],
+                        "text" : "Capstone standard:"
+                      }
+                    ],
+                    "title" : "Any Emergency Procedure"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Any Previously Discussed Maneuver and Any Emergency Procedure"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "CS4102 should be studied as the second cumulative flight: use the same maneuver and EP methods as CS4101, but expect profile changes, weather, fuel, routing, and recovery decisions to matter."
               },
-              "summary" : "CS4102 centers on cs4102 and the key procedures students need to explain and execute.",
+              "summary" : "CS4102 covers cumulative maneuver review and emergency-procedure decision making for the second Capstone flight.",
               "tags" : [
                 "capstone",
                 "flights",

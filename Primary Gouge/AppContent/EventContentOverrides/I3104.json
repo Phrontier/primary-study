@@ -1,0 +1,311 @@
+{
+  "canonicalCoverage" : {
+    "ILS/LOV approaches" : [
+      "ILS/LOC Approaches"
+    ],
+    "Night cockpit setup" : [
+      "Night Cockpit Setup"
+    ],
+    "PTP" : [
+      "PTP"
+    ],
+    "RVFAC" : [
+      "RVFAC"
+    ],
+    "SID" : [
+      "SID"
+    ],
+    "any emergency procedure" : [
+      "Any Emergency Procedure"
+    ]
+  },
+  "code" : "I3104",
+  "overview" : "I3104 ties night instrument cockpit setup to terminal instrument procedures. The event standard is to brief and fly SID, RVFAC, ILS/LOC, and point-to-point tasks while keeping night setup, minimums discipline, and emergency-procedure branch logic ahead of the aircraft.",
+  "primaryDocumentTitles" : [
+    "I3104",
+    "I3104 Briefing guide 1542.166D",
+    "I3104 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Night cockpit setup is about preserving the scan, protecting night adaptation, and making every needed chart, light, and control usable before workload rises."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Set interior lighting early enough to read instruments and charts without washing out dark adaptation or making the display picture harder to interpret."
+              },
+              {
+                "text" : "Know where utility, map, and kneeboard lighting are before the approach sequence; do not discover the lighting plan during a frequency change or missed approach."
+              },
+              {
+                "text" : "Dim bright displays gradually and keep the standby instruments and backup lighting in the scan."
+              },
+              {
+                "text" : "At night, a cockpit lighting, display, radio, or electrical problem can become a recovery-timing problem faster than it would in daylight."
+              }
+            ],
+            "text" : "Setup priorities:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use exterior lighting with airfield courtesy and local procedures, especially around ground crews, other aircraft, and low-visibility taxi conditions."
+              },
+              {
+                "text" : "If field orientation becomes uncertain, stop or stabilize the aircraft and re-sort the picture instead of continuing while unsure."
+              }
+            ],
+            "text" : "Night operating mindset:"
+          }
+        ],
+        "title" : "Night Cockpit Setup"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A SID is a published IFR departure procedure that provides obstacle clearance and transitions the aircraft from the terminal area toward the en route structure."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Before takeoff, review the entire SID, terrain, hazards, climb gradient, crossing restrictions, transition, and lost-communication or emergency-return implications."
+              },
+              {
+                "text" : "Set NAVAIDs, displays, and courses required for the first turns and altitude restrictions. If FMS use is authorized, confirm the loaded procedure matches the clearance."
+              },
+              {
+                "text" : "Keep the primary recovery approach available in case the departure must become an emergency return."
+              }
+            ],
+            "text" : "Preflight and setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fly the cleared procedure, not just the chart title. Understand whether the clearance includes climb-via language, radar vectors, or a named transition."
+              },
+              {
+                "text" : "If the SID requires a climb gradient above standard, confirm aircraft performance before accepting the plan."
+              },
+              {
+                "text" : "Common errors are briefing only the first heading, missing an altitude or crossing restriction, and launching with the wrong NAVAID or display source selected."
+              }
+            ],
+            "text" : "Execution standard:"
+          }
+        ],
+        "title" : "SID"
+      },
+      {
+        "items" : [
+          {
+            "text" : "RVFAC uses radar vectors to place the aircraft on the final approach course, which can reduce terminal workload only if orientation and setup stay ahead."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Approach control vectors using minimum vectoring altitude charts, but the pilot still keeps terrain and procedure SA."
+              },
+              {
+                "text" : "Crosscheck assigned altitudes against the approach, NAVAIDs, and chart picture; query ATC if the vector or altitude does not make sense."
+              },
+              {
+                "text" : "Maintain the last assigned heading and altitude until established on the approach or cleared otherwise."
+              }
+            ],
+            "text" : "Vectoring mindset:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use 200 KIAS on downwind, 150 KIAS on base, and 200 KIAS on extended final or dogleg until within about 15 NM unless directed otherwise."
+              },
+              {
+                "text" : "Tune and identify the appropriate NAVAID, verify PFD source/configuration, and set the final approach course in the CDI."
+              },
+              {
+                "text" : "If a FAF is depicted, transition to before-approach configuration within 5 NM of the FAF when heading is within 90 degrees of the final approach course."
+              },
+              {
+                "text" : "If no FAF is depicted, transition once established on the final approach course and cleared for the approach."
+              }
+            ],
+            "text" : "Setup and BAC timing:"
+          }
+        ],
+        "title" : "RVFAC"
+      },
+      {
+        "items" : [
+          {
+            "text" : "ILS/LOC approaches use localizer guidance for precise lateral control; ILS adds glideslope for a precision approach, while LOC-only is nonprecision."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The localizer is much more sensitive than VOR guidance, about 1.25 degrees per dot, so course corrections must be small and prompt."
+              },
+              {
+                "text" : "Set the published front course to avoid reverse-sensing errors and confirm the PFD source changes to LOC."
+              },
+              {
+                "text" : "If the localizer is inoperative, the ILS is not authorized. If the glideslope is unavailable, fly the LOC procedure using nonprecision rules and minimums."
+              },
+              {
+                "text" : "For a single-piloted T-6B, do not plan below the applicable absolute single-pilot minimums even if the charted ILS minimums are lower."
+              }
+            ],
+            "text" : "System and minimums:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use D LIDS: DME hold if required, localizer tune/identify/monitor, inbound course set, display source to LOC, and speed appropriate to the transition."
+              },
+              {
+                "text" : "Transition to before-approach configuration within 5 NM of the FAF with an intercept angle at or below 90 degrees, or when the glideslope comes alive if that occurs first."
+              },
+              {
+                "text" : "At glideslope intercept, use about 24 percent torque, descend on course and glideslope to DA/DH, and remember that pitch primarily controls airspeed while power controls glideslope."
+              },
+              {
+                "text" : "At DA/DH, decide: land if the runway environment is in sight and landing is safe; otherwise execute the missed approach. Do not level at DA/DH."
+              }
+            ],
+            "text" : "ILS flow:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For LOC-only, start backup timing at the nonprecision FAF if timing is available, then descend with about 20 percent torque, 120 KIAS, and no more than 1000 FPM."
+              },
+              {
+                "text" : "Lead the MDA level-off by about 100 feet, use about 42 percent torque to stabilize, and maintain MDA until the MAP."
+              },
+              {
+                "text" : "If full-scale CDI deflection occurs before the FAF, re-intercept and do not descend below the FAF altitude until on scale."
+              },
+              {
+                "text" : "If full-scale CDI deflection occurs inside the FAF, turn to reestablish, climb to the appropriate MAP altitude while respecting restrictions, and execute the missed approach at the MAP."
+              },
+              {
+                "text" : "If more than 1 dot below glideslope before the MAP, do not descend below LOC MDA until reestablished; if more than 2 dots above glideslope, continue as LOC-only."
+              }
+            ],
+            "text" : "LOC and deviation logic:"
+          }
+        ],
+        "title" : "ILS/LOC Approaches"
+      },
+      {
+        "items" : [
+          {
+            "text" : "PTP is a VOR/DME or VORTAC technique for navigating directly from present position to a radial/DME fix without radar vectors."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Tune, identify, and monitor the NAVAID, then set the desired radial in the CDI even if that is not the heading you will fly."
+              },
+              {
+                "text" : "Visualize the station at the center of the compass card. Put the larger DME on the outer edge at its radial and the smaller DME proportionally closer to the center."
+              },
+              {
+                "text" : "Split the bearing-pointer and course-pointer heads for the initial heading, favoring the bearing pointer when going to smaller DME and the course pointer when going to larger DME."
+              },
+              {
+                "text" : "Use the pencil method or compass-card picture to update heading as the line to the fix changes."
+              }
+            ],
+            "text" : "Setup and heading:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If DME will arrive first, use the 90-degree benchmark to slow DME change; do not turn the maneuver into an arc."
+              },
+              {
+                "text" : "If the radial arrives first, track inbound or outbound on the radial to the fix."
+              },
+              {
+                "text" : "A bearing-pointer head above the 90-degree benchmark means DME is decreasing; below the benchmark means DME is increasing."
+              },
+              {
+                "text" : "Common errors are delaying the initial turn, plotting the reciprocal radial, failing to update heading, or tracking the radial too early."
+              }
+            ],
+            "text" : "Approaching the fix:"
+          }
+        ],
+        "title" : "PTP"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Any emergency procedure in this event should be briefed as a decision process: maintain control, execute memory items when required, back up with the checklist, coordinate with ATC, and choose the correct recovery branch."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For fuel-system emphasis, low fuel pressure and high fuel flow both point toward a PEL rather than extended troubleshooting."
+              },
+              {
+                "text" : "For low fuel pressure, execute the PEL and place the boost pump ON. If the FUEL PX warning remains illuminated, the high-pressure fuel pump is suction feeding and engine operation is time-limited."
+              },
+              {
+                "text" : "Unless a greater emergency exists, do not reset an open BOOST PUMP circuit breaker."
+              },
+              {
+                "text" : "For high fuel flow, execute a PEL. Reducing power when ITT remains within limits may risk flameout, while high power with high ITT may aggravate the malfunction."
+              }
+            ],
+            "text" : "Fuel-system example:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "At night or in IMC, declare early when needed and tell ATC what recovery you need before radio, lighting, or display workload steals the scan."
+              },
+              {
+                "text" : "A strong EP brief explains the cue, the immediate action, the N/W/C that changes the answer, and the follow-on branch: continue, PEL, force-land, or eject."
+              }
+            ],
+            "text" : "Briefing standard:"
+          }
+        ],
+        "title" : "Any Emergency Procedure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Night Cockpit Setup"
+          },
+          {
+            "text" : "SID"
+          },
+          {
+            "text" : "RVFAC"
+          },
+          {
+            "text" : "ILS/LOC Approaches"
+          },
+          {
+            "text" : "PTP"
+          },
+          {
+            "text" : "Any Emergency Procedure"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Set the night cockpit before workload rises, then fly SID, RVFAC, ILS/LOC, and PTP tasks while keeping emergency-procedure branch logic close at hand."
+  },
+  "summary" : "Night cockpit setup, SID, RVFAC, ILS/LOC approaches, point-to-point navigation, and emergency-procedure decision making.",
+  "title" : "Night Cockpit Setup"
+}

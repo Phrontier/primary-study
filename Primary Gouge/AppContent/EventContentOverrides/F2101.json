@@ -1,0 +1,281 @@
+{
+  "canonicalCoverage": {
+    "Formation arrival and departure procedures": [
+      "Formation Arrival and Departure Procedures"
+    ],
+    "formation communications": [
+      "Formation Communications"
+    ],
+    "formation position corrections": [
+      "Formation Position Corrections"
+    ],
+    "wingman/flight leader responsibilities": [
+      "Wingman/Flight Leader Responsibilities"
+    ]
+  },
+  "code": "F2101",
+  "overview": "F2101 introduces the formation mindset before the airplane work becomes dense: Lead must provide a predictable platform, Wing must preserve sight and spacing, and both aircraft must use disciplined communications and small position corrections during departure, recovery, and basic formation maneuvering.",
+  "primaryDocumentTitles": [
+    "F2101 MR"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "Formation departures and arrivals are built around predictable Lead actions, runway-side discipline, and enough spacing for Wing to correct without rushing."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead normally lines up on the downwind side so wake turbulence and prop wash move away from Wing."
+              },
+              {
+                "text": "Both aircraft complete the Lineup Checklist while crossing the hold-short line and center themselves on their assigned runway side."
+              },
+              {
+                "text": "Wing confirms Lead's runway side, then taxis forward until Wing's leading edge aligns with Lead's horizontal stabilizer trailing edge."
+              }
+            ],
+            "text": "Lineup:"
+          },
+          {
+            "children": [
+              {
+                "text": "The runway must be at least 100 ft wide for an interval takeoff."
+              },
+              {
+                "text": "Lead passes the run-up signal; both aircraft set about 30% torque and check safety-of-flight items and engine instruments."
+              },
+              {
+                "text": "Wing visually inspects Lead and holds the thumbs-up until Lead acknowledges."
+              },
+              {
+                "text": "Lead gives the kiss-off and begins a maximum-power takeoff on the assigned side; Wing starts the takeoff roll 5 seconds later, creating about 1000 ft of spacing."
+              }
+            ],
+            "text": "Interval takeoff:"
+          },
+          {
+            "children": [
+              {
+                "text": "After takeoff, Lead flies the briefed departure and gives Wing a stable, predictable rejoin platform."
+              },
+              {
+                "text": "Local formation guidance uses about 80% torque and 160 KIAS until Wing joins; if a turn is required before join, keep the bank shallow enough for Wing to close safely."
+              },
+              {
+                "text": "Wing keeps Lead slightly above the horizon, manages closure, and moves inside a departure turn when that helps the rendezvous."
+              },
+              {
+                "text": "During a running rendezvous, keep closure controlled; the local event source limits closure to no more than 40 KIAS until joined."
+              }
+            ],
+            "text": "Initial rendezvous and climbout:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead normally directs Wing to cruise for checks and weather, then brings Wing back to parade before entering tower or pattern airspace."
+              },
+              {
+                "text": "Use only the current SOP, course rules, and day-of brief for local routing, frequencies, and field-specific reporting points."
+              },
+              {
+                "text": "During recovery descents, Lead should remain stable and normally keep at least 15% torque; Wing may need idle power and speed brake to maintain position."
+              },
+              {
+                "text": "For the break or section approach, Lead plans the spacing problem early and gives Wing clear detach, break, or speed-brake direction."
+              }
+            ],
+            "text": "Arrival and recovery:"
+          }
+        ],
+        "title": "Formation Arrival and Departure Procedures"
+      },
+      {
+        "items": [
+          {
+            "text": "Formation is a shared task, but responsibilities are different: Lead owns the platform and plan; Wing owns sight, position, and deconfliction."
+          },
+          {
+            "children": [
+              {
+                "text": "The Designated Flight Lead is the administrative lead assigned for mission objectives and safe, orderly conduct."
+              },
+              {
+                "text": "The Formation Lead is the aircraft physically flying lead at that moment."
+              },
+              {
+                "text": "Formation Lead must make smooth, stable, predictable changes in power, heading, and altitude."
+              },
+              {
+                "text": "Lead keeps the flight in the assigned area, clear of clouds unless on an IFR clearance, and clear of other aircraft."
+              },
+              {
+                "text": "Lead must always know where Wing is and must execute the briefed sequence with proper visual or radio communications."
+              }
+            ],
+            "text": "Lead responsibilities:"
+          },
+          {
+            "children": [
+              {
+                "text": "Keep Lead in sight and maintain flight-path deconfliction."
+              },
+              {
+                "text": "Maintain proper formation position and make small, timely corrections."
+              },
+              {
+                "text": "Comply with Lead's signals and give timely responses."
+              },
+              {
+                "text": "Provide mutual support by backing up navigation, communications, fuel awareness, and safety-of-flight decisions."
+              }
+            ],
+            "text": "Wing responsibilities:"
+          },
+          {
+            "children": [
+              {
+                "text": "Everything takes longer in formation, especially frequency changes, checklist work, turns, and rejoins."
+              },
+              {
+                "text": "Lead must plan ahead for area boundaries, wind drift, sun angle, Wing workload, and how each maneuver sets up the next one."
+              }
+            ],
+            "text": "Planning mindset:"
+          }
+        ],
+        "title": "Wingman/Flight Leader Responsibilities"
+      },
+      {
+        "items": [
+          {
+            "text": "Clear communications prevent confusion before it becomes a spacing problem."
+          },
+          {
+            "children": [
+              {
+                "text": "Use the ATC call sign with outside agencies and the tactical call sign for inter-flight communication."
+              },
+              {
+                "text": "Brief primary and secondary UHF and VHF tactical frequencies before flight."
+              },
+              {
+                "text": "Lead handles outside-agency communications; Wing monitors and backs up Lead."
+              },
+              {
+                "text": "Wing is responsible for staying on the correct frequency and querying Lead if unsure."
+              }
+            ],
+            "text": "Call signs and frequencies:"
+          },
+          {
+            "children": [
+              {
+                "text": "Do not conduct formation check-ins on ATC frequencies unless directed; use tactical frequency to get well."
+              },
+              {
+                "text": "Lead must give Wing enough time to change frequencies before transmitting to the controlling agency."
+              },
+              {
+                "text": "Use positive check-ins after directed switches so both aircraft know the flight is together."
+              }
+            ],
+            "text": "Frequency discipline:"
+          },
+          {
+            "children": [
+              {
+                "text": "Use visual signals when they are clear and briefed."
+              },
+              {
+                "text": "Use radio calls in IMC, when there is confusion, or whenever a visual signal may be missed."
+              },
+              {
+                "text": "Lead should provide a stable platform during any radio or visual communication task."
+              }
+            ],
+            "text": "Visual versus radio:"
+          }
+        ],
+        "title": "Formation Communications"
+      },
+      {
+        "items": [
+          {
+            "text": "Position corrections start with relative motion: Lead is the reference, and Wing fixes altitude, bearing, then closure in that order."
+          },
+          {
+            "children": [
+              {
+                "text": "Altitude is the first correction because step-down protects separation."
+              },
+              {
+                "text": "Bearing line is second; acute means forward of the bearing line, sucked means aft of it."
+              },
+              {
+                "text": "Closure or separation is last; do not close distance until altitude and bearing are under control."
+              }
+            ],
+            "text": "A-B-C priority:"
+          },
+          {
+            "children": [
+              {
+                "text": "Vertical movement is primarily controlled with elevator."
+              },
+              {
+                "text": "Fore and aft movement is controlled with power."
+              },
+              {
+                "text": "Left and right movement is controlled with aileron."
+              },
+              {
+                "text": "Every correction needs a re-correction: add the input, stop the movement, then reset a middle value."
+              }
+            ],
+            "text": "Control logic:"
+          },
+          {
+            "children": [
+              {
+                "text": "When Lead turns into Wing, Wing is on a smaller radius and must reduce power early or become acute."
+              },
+              {
+                "text": "When Lead turns away from Wing, Wing is on a larger radius and must add power early or become sucked."
+              },
+              {
+                "text": "Lead every turn with the required power change, then scan the whole aircraft instead of fixating on one checkpoint."
+              }
+            ],
+            "text": "Radius-of-turn traps:"
+          }
+        ],
+        "title": "Formation Position Corrections"
+      },
+      {
+        "items": [
+          {
+            "text": "Formation Arrival and Departure Procedures"
+          },
+          {
+            "text": "Wingman/Flight Leader Responsibilities"
+          },
+          {
+            "text": "Formation Communications"
+          },
+          {
+            "text": "Formation Position Corrections"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "F2101 is the first formation simulator event, so the study focus is the basic contract: predictable Lead, disciplined Wing, clear communications, and small A-B-C position corrections."
+  },
+  "summary": "F2101 introduces formation departure, arrival, communication, responsibility, and position-correction fundamentals for the first linked formation simulator event.",
+  "title": "Formation Arrival and Departure Procedures"
+}

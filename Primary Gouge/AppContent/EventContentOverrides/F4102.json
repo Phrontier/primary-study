@@ -1,0 +1,261 @@
+{
+  "canonicalCoverage": {
+    "Airborne damaged aircraft": [
+      "Airborne Damaged Aircraft"
+    ],
+    "area/sun management": [
+      "Area/Sun Management"
+    ],
+    "lost communication procedures": [
+      "Lost Communication Procedures"
+    ],
+    "speed brake use as a section": [
+      "Speed Brake Use As a Section"
+    ]
+  },
+  "code": "F4102",
+  "overview": "F4102 shifts attention from basic position keeping to section problem solving. Students should brief how the section separates and supports an airborne damaged aircraft, how speed brake use is coordinated, how Lead manages area and sun exposure, and how lost communications are handled without losing formation discipline.",
+  "primaryDocumentTitles": [
+    "F4102"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "Airborne damage is first an aircraft-control and deconfliction problem. The section does not rejoin just because both aircraft remain flyable."
+          },
+          {
+            "children": [
+              {
+                "text": "Follow NATOPS procedures for the actual malfunction or damage."
+              },
+              {
+                "text": "If severe damage causes or may cause OCF, do not delay ejection beyond the safe envelope."
+              },
+              {
+                "text": "If damage is minimal, communicate, separate, maintain visual contact, and establish a deconfliction plan."
+              },
+              {
+                "text": "Use lateral, altitude, ground-reference, DME, or working-block separation as appropriate."
+              }
+            ],
+            "text": "Midair or section damage:"
+          },
+          {
+            "children": [
+              {
+                "text": "Do not rejoin the damaged aircraft as a flight."
+              },
+              {
+                "text": "Complete appropriate emergency checklists."
+              },
+              {
+                "text": "Consider assigning a chase or inspection aircraft if it can be done without adding risk."
+              },
+              {
+                "text": "Develop a recovery plan for both aircraft; if runway damage or FOD risk exists, consider separate airfields."
+              }
+            ],
+            "text": "Recovery plan:"
+          },
+          {
+            "children": [
+              {
+                "text": "The damaged aircraft communicates if able, climbs to a safe altitude, and assumes Lead as necessary to assess the damage."
+              },
+              {
+                "text": "If forward visibility is lost or aircraft control is doubtful, controlled ejection may be required."
+              },
+              {
+                "text": "The good aircraft moves to perch and assists as required."
+              }
+            ],
+            "text": "Single aircraft damage:"
+          }
+        ],
+        "title": "Airborne Damaged Aircraft"
+      },
+      {
+        "items": [
+          {
+            "text": "Speed brake use as a section must be predictable because extension, retraction, pitch change, and closure all affect Wing at once."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead may use speed brake to increase descent rate or decelerate the formation."
+              },
+              {
+                "text": "During recovery descents, Lead should normally use at least 15% torque."
+              },
+              {
+                "text": "Wing may need idle power and speed brake to maintain position."
+              },
+              {
+                "text": "Speed brake effectiveness decreases at lower airspeeds, and extension or retraction creates pitch changes that must be countered."
+              }
+            ],
+            "text": "Use:"
+          },
+          {
+            "children": [
+              {
+                "text": "If Wing is in parade, Lead may direct speed brake with the visual signal and a head-nod acknowledgment."
+              },
+              {
+                "text": "If Wing is in cruise, Lead should use clear radio calls such as standby speed brake and speed brake now."
+              },
+              {
+                "text": "Lead must remain stable and avoid ambiguous timing."
+              }
+            ],
+            "text": "Coordination:"
+          },
+          {
+            "children": [
+              {
+                "text": "In cruise, Wing may combine power, pursuit curves, and speed brake to move between parade and cruise or hold position."
+              },
+              {
+                "text": "During the fan break, Wing may use idle power and speed brake at maneuver start to create spacing."
+              },
+              {
+                "text": "If Lead is turning and Wing has excessive closure, Wing may need idle power and speed brake to avoid passing ahead."
+              }
+            ],
+            "text": "Common applications:"
+          }
+        ],
+        "title": "Speed Brake Use As a Section"
+      },
+      {
+        "items": [
+          {
+            "text": "Area and sun management are Lead responsibilities, but Wing should understand the plan so corrections and calls make sense."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead must know the assigned area boundaries and visualize how maneuver combinations will keep the flight inside them."
+              },
+              {
+                "text": "Wind affects ground track; Lead should plan turn direction and rollout timing before the edge of the area becomes urgent."
+              },
+              {
+                "text": "Formation tasks take longer than single-ship tasks, including radio changes, maneuvers, rejoins, and checklist work."
+              }
+            ],
+            "text": "Area management:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead should avoid prolonged straight-and-level or turn-into setups that force Wing to look into the sun."
+              },
+              {
+                "text": "Plan rollouts, crossunders, and maneuver sequencing to reduce Wing's sun exposure when practical."
+              },
+              {
+                "text": "Wing should call blind sun if Lead is temporarily lost in sun glare and then lag Lead's last known position."
+              }
+            ],
+            "text": "Sun management:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead must be predictable and give Wing enough time to stabilize before the next maneuver."
+              },
+              {
+                "text": "If area, sun, or Wing position makes the next maneuver unsafe, use terminate or knock-it-off early."
+              }
+            ],
+            "text": "Decision standard:"
+          }
+        ],
+        "title": "Area/Sun Management"
+      },
+      {
+        "items": [
+          {
+            "text": "Lost communication procedures keep the section VMC, deconflicted, and predictable while the affected aircraft troubleshoots."
+          },
+          {
+            "children": [
+              {
+                "text": "Maintain VMC if able."
+              },
+              {
+                "text": "Gain the other aircraft's attention with visual signals."
+              },
+              {
+                "text": "If Wing is NORDO, Wing moves acute with lateral separation and passes the appropriate down-transmitter or down-receiver signal."
+              },
+              {
+                "text": "Offer the lead position to the NORDO aircraft so troubleshooting can be completed with less formation workload."
+              }
+            ],
+            "text": "Initial plan:"
+          },
+          {
+            "children": [
+              {
+                "text": "Check helmet and seat connections."
+              },
+              {
+                "text": "Verify frequency or channel selection."
+              },
+              {
+                "text": "Check audio-panel volume and radio selections."
+              },
+              {
+                "text": "Try available UHF, VHF, backup, and guard options as appropriate."
+              }
+            ],
+            "text": "Troubleshooting:"
+          },
+          {
+            "children": [
+              {
+                "text": "If radios cannot be restored, the good-radio aircraft should take or keep Lead for recovery coordination."
+              },
+              {
+                "text": "The good-radio aircraft informs ATC or tower of the NORDO aircraft and coordinates visual landing signals as required."
+              },
+              {
+                "text": "If an emergency occurs while NORDO, use HEFOE signals after gaining attention."
+              },
+              {
+                "text": "Use current local SOP and day-of brief for field-specific NORDO recovery details."
+              }
+            ],
+            "text": "Recovery:"
+          }
+        ],
+        "title": "Lost Communication Procedures"
+      },
+      {
+        "items": [
+          {
+            "text": "Airborne Damaged Aircraft"
+          },
+          {
+            "text": "Speed Brake Use As a Section"
+          },
+          {
+            "text": "Area/Sun Management"
+          },
+          {
+            "text": "Lost Communication Procedures"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "F4102 is about keeping the section predictable while solving abnormal situations: damage, speed-brake coordination, area and sun management, and NORDO recovery."
+  },
+  "summary": "F4102 covers airborne-damage response, speed-brake coordination, lead area and sun management, and lost-communication procedures.",
+  "title": "Airborne Damaged Aircraft"
+}

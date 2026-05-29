@@ -1,0 +1,261 @@
+{
+  "canonicalCoverage": {
+    "Section PEL": [
+      "Section PEL"
+    ],
+    "emergency field selection": [
+      "Emergency Field Selection"
+    ],
+    "inadvertent instrument flight": [
+      "Inadvertent Instrument Flight"
+    ],
+    "section takeoff": [
+      "Section Takeoff"
+    ]
+  },
+  "code": "F4103",
+  "overview": "F4103 emphasizes the emergency side of formation: how to pass lead to the emergency aircraft, how Wing supports from perch, how section takeoff is flown and aborted, how emergency fields are selected, and how the section exits inadvertent instrument conditions without sacrificing separation.",
+  "primaryDocumentTitles": [
+    "F4103"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "A Section PEL starts by giving the emergency aircraft the maneuvering room and authority it needs while preserving mutual support."
+          },
+          {
+            "children": [
+              {
+                "text": "If Lead has the emergency, Lead should make a quick radio call so Wing can get separation."
+              },
+              {
+                "text": "If Wing has the emergency, Wing requests lead left or right."
+              },
+              {
+                "text": "Lead transfers lead verbally only after visual contact and separation make the transfer safe."
+              }
+            ],
+            "text": "Lead transfer:"
+          },
+          {
+            "children": [
+              {
+                "text": "The new Wing transitions to perch."
+              },
+              {
+                "text": "New Wing clears the flight path, provides divert or field information, assists with procedures if requested, and monitors altitude, airspeed, VSI, and configuration."
+              },
+              {
+                "text": "Wing matches the emergency aircraft's configuration when remaining through the profile."
+              }
+            ],
+            "text": "Wing support:"
+          },
+          {
+            "children": [
+              {
+                "text": "The emergency aircraft maneuvers and configures for high key."
+              },
+              {
+                "text": "Lead may kiss off Wing at any time."
+              },
+              {
+                "text": "If Wing remains through the ELP, Wing stays outside Lead's turn and waves off when directed, no lower than 300 ft AGL."
+              },
+              {
+                "text": "Normally, Wing can safely detach and monitor at high key."
+              }
+            ],
+            "text": "PEL profile:"
+          }
+        ],
+        "title": "Section PEL"
+      },
+      {
+        "items": [
+          {
+            "text": "A section takeoff keeps both aircraft in formation from brake release through liftoff, so the brief must cover runway criteria, power timing, rotation, and abort responsibilities."
+          },
+          {
+            "children": [
+              {
+                "text": "Runway must be at least 150 ft wide."
+              },
+              {
+                "text": "Maximum crosswind is 10 knots dry or 5 knots wet."
+              },
+              {
+                "text": "Weather must meet circling minimums, or 1000 ft ceiling and 3 SM visibility if circling minimums are not available."
+              },
+              {
+                "text": "Do not conduct a section takeoff with standing water on the runway."
+              }
+            ],
+            "text": "Restrictions:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead lines up on the downwind side unless calm winds or other briefed factors drive a different side."
+              },
+              {
+                "text": "Lead passes the run-up signal; both aircraft set about 30% torque."
+              },
+              {
+                "text": "Wing inspects Lead and holds thumbs-up until Lead acknowledges."
+              },
+              {
+                "text": "Lead's arm chop sets the power-advance rate; when the arm reaches the canopy rail, both aircraft release brakes."
+              },
+              {
+                "text": "Lead smoothly sets about 90% torque over roughly 5 seconds."
+              }
+            ],
+            "text": "Lineup and brake release:"
+          },
+          {
+            "children": [
+              {
+                "text": "Wing maintains takeoff bearing with PCL and rudder; avoid riding the brakes, though one light tap may be used immediately after brake release if acute."
+              },
+              {
+                "text": "Lead rotates smoothly about 5 to 10 knots below normal rotation speed; local formation study material commonly uses 85 KIAS as the basic reference."
+              },
+              {
+                "text": "Wing matches Lead's attitude, remains briefly stepped up after liftoff, then waits for Lead's climb to establish safe step-down."
+              },
+              {
+                "text": "Lead signals or calls gear and flaps retraction at or above 110 KIAS; Wing retracts only after Lead."
+              }
+            ],
+            "text": "Takeoff and cleanup:"
+          },
+          {
+            "children": [
+              {
+                "text": "If either aircraft aborts after brake release, maintain lateral control and do not cross the runway centerline."
+              },
+              {
+                "text": "The non-aborting aircraft normally selects maximum power and continues as an individual takeoff unless safe separation cannot be maintained or it has its own emergency."
+              },
+              {
+                "text": "Wing should always remain dirtier than Lead during cleanup; retract only after Lead is in transit."
+              }
+            ],
+            "text": "Abort and N/W/C focus:"
+          }
+        ],
+        "title": "Section Takeoff"
+      },
+      {
+        "items": [
+          {
+            "text": "Emergency field selection is a suitability and energy problem: choose a field the aircraft can reach and land on, then keep updating the plan as energy changes."
+          },
+          {
+            "children": [
+              {
+                "text": "Prefer the closest suitable hard-surface runway at least 3000 ft long."
+              },
+              {
+                "text": "If multiple fields are available, consider crash crew, medical support, runway surface, wind, obstacles, and recovery complexity."
+              },
+              {
+                "text": "Use charts, NAVAIDs, FMS NAV/TSD, and nearest-airport tools to judge distance."
+              }
+            ],
+            "text": "Field suitability:"
+          },
+          {
+            "children": [
+              {
+                "text": "Use the DME method to judge one field: one-half DME plus key altitude plus field elevation equals the approximate MSL altitude required."
+              },
+              {
+                "text": "Add 3000 ft for high key or 1500 ft for low key when deciding if current energy is sufficient."
+              },
+              {
+                "text": "Use the altitude method to compare several fields: subtract 3000 ft for high key or 1500 ft for low key from AGL altitude, then multiply by 2 for maximum glide distance in NM."
+              },
+              {
+                "text": "Best-glide planning from the Contact FTI is about 125 KIAS clean, with roughly 2 NM per 1000 ft of altitude in no-wind conditions."
+              }
+            ],
+            "text": "Energy checks:"
+          },
+          {
+            "children": [
+              {
+                "text": "A zoom from high energy can increase altitude; local source material cites about 1300 ft gained from 240 KGS."
+              },
+              {
+                "text": "If no suitable landing area exists, NATOPS and Contact FTI guidance favor ejection when possible rather than pressing an unsuitable off-field landing."
+              },
+              {
+                "text": "If ejection is not possible or malfunctions, an ELP to an unprepared surface or ditching may be the remaining option, with higher injury and egress risk."
+              }
+            ],
+            "text": "Low-level and no-field considerations:"
+          }
+        ],
+        "title": "Emergency Field Selection"
+      },
+      {
+        "items": [
+          {
+            "text": "Inadvertent instrument flight in formation requires Lead to fly instruments while Wing maintains parade and prepares for lost-sight execution if visual references fail."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead transitions to an instrument scan and determines the safest way to exit IMC."
+              },
+              {
+                "text": "Wing maintains parade position and scans Lead."
+              },
+              {
+                "text": "If unable to regain VMC, Lead ensures terrain clearance and coordinates an IFR clearance for the flight or individual clearances at Flight Lead discretion."
+              }
+            ],
+            "text": "Flight response:"
+          },
+          {
+            "children": [
+              {
+                "text": "If Wing loses sight of Lead, Wing immediately executes lost sight procedures."
+              },
+              {
+                "text": "Lead must stay directive and predictable so ATC coordination and separation do not conflict."
+              }
+            ],
+            "text": "Separation trigger:"
+          }
+        ],
+        "title": "Inadvertent Instrument Flight"
+      },
+      {
+        "items": [
+          {
+            "text": "Section PEL"
+          },
+          {
+            "text": "Section Takeoff"
+          },
+          {
+            "text": "Emergency Field Selection"
+          },
+          {
+            "text": "Inadvertent Instrument Flight"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "F4103 is a formation emergency-management event: transfer lead when needed, support from perch, preserve runway-side discipline, select emergency fields, and keep the section separated in IMC."
+  },
+  "summary": "F4103 covers section PEL roles, section takeoff execution, emergency field selection, and inadvertent instrument flight procedures.",
+  "title": "Section PEL"
+}

@@ -31223,7 +31223,7 @@
                 }
               ],
               "id" : "formation-sims-f2101",
-              "overview" : "F2101 centers on f2101 and the key procedures students need to explain and execute.",
+              "overview" : "F2101 introduces the formation mindset before the airplane work becomes dense: Lead must provide a predictable platform, Wing must preserve sight and spacing, and both aircraft must use disciplined communications and small position corrections during departure, recovery, and basic formation maneuvering.",
               "primaryDocumentIDs" : [
                 "contents-4-forms-2-sims-f2101-mr-pdf"
               ],
@@ -31268,24 +31268,259 @@
                   {
                     "items" : [
                       {
-                        "text" : "Formation arrival and departure procedures"
+                        "text" : "Formation departures and arrivals are built around predictable Lead actions, runway-side discipline, and enough spacing for Wing to correct without rushing."
                       },
                       {
-                        "text" : "wingman\/flight leader responsibilities"
+                        "children" : [
+                          {
+                            "text" : "Lead normally lines up on the downwind side so wake turbulence and prop wash move away from Wing."
+                          },
+                          {
+                            "text" : "Both aircraft complete the Lineup Checklist while crossing the hold-short line and center themselves on their assigned runway side."
+                          },
+                          {
+                            "text" : "Wing confirms Lead's runway side, then taxis forward until Wing's leading edge aligns with Lead's horizontal stabilizer trailing edge."
+                          }
+                        ],
+                        "text" : "Lineup:"
                       },
                       {
-                        "text" : "formation communications"
+                        "children" : [
+                          {
+                            "text" : "The runway must be at least 100 ft wide for an interval takeoff."
+                          },
+                          {
+                            "text" : "Lead passes the run-up signal; both aircraft set about 30% torque and check safety-of-flight items and engine instruments."
+                          },
+                          {
+                            "text" : "Wing visually inspects Lead and holds the thumbs-up until Lead acknowledges."
+                          },
+                          {
+                            "text" : "Lead gives the kiss-off and begins a maximum-power takeoff on the assigned side; Wing starts the takeoff roll 5 seconds later, creating about 1000 ft of spacing."
+                          }
+                        ],
+                        "text" : "Interval takeoff:"
                       },
                       {
-                        "text" : "formation position corrections"
+                        "children" : [
+                          {
+                            "text" : "After takeoff, Lead flies the briefed departure and gives Wing a stable, predictable rejoin platform."
+                          },
+                          {
+                            "text" : "Local formation guidance uses about 80% torque and 160 KIAS until Wing joins; if a turn is required before join, keep the bank shallow enough for Wing to close safely."
+                          },
+                          {
+                            "text" : "Wing keeps Lead slightly above the horizon, manages closure, and moves inside a departure turn when that helps the rendezvous."
+                          },
+                          {
+                            "text" : "During a running rendezvous, keep closure controlled; the local event source limits closure to no more than 40 KIAS until joined."
+                          }
+                        ],
+                        "text" : "Initial rendezvous and climbout:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead normally directs Wing to cruise for checks and weather, then brings Wing back to parade before entering tower or pattern airspace."
+                          },
+                          {
+                            "text" : "Use only the current SOP, course rules, and day-of brief for local routing, frequencies, and field-specific reporting points."
+                          },
+                          {
+                            "text" : "During recovery descents, Lead should remain stable and normally keep at least 15% torque; Wing may need idle power and speed brake to maintain position."
+                          },
+                          {
+                            "text" : "For the break or section approach, Lead plans the spacing problem early and gives Wing clear detach, break, or speed-brake direction."
+                          }
+                        ],
+                        "text" : "Arrival and recovery:"
                       }
                     ],
-                    "title" : "Formation"
+                    "title" : "Formation Arrival and Departure Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Formation is a shared task, but responsibilities are different: Lead owns the platform and plan; Wing owns sight, position, and deconfliction."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The Designated Flight Lead is the administrative lead assigned for mission objectives and safe, orderly conduct."
+                          },
+                          {
+                            "text" : "The Formation Lead is the aircraft physically flying lead at that moment."
+                          },
+                          {
+                            "text" : "Formation Lead must make smooth, stable, predictable changes in power, heading, and altitude."
+                          },
+                          {
+                            "text" : "Lead keeps the flight in the assigned area, clear of clouds unless on an IFR clearance, and clear of other aircraft."
+                          },
+                          {
+                            "text" : "Lead must always know where Wing is and must execute the briefed sequence with proper visual or radio communications."
+                          }
+                        ],
+                        "text" : "Lead responsibilities:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Keep Lead in sight and maintain flight-path deconfliction."
+                          },
+                          {
+                            "text" : "Maintain proper formation position and make small, timely corrections."
+                          },
+                          {
+                            "text" : "Comply with Lead's signals and give timely responses."
+                          },
+                          {
+                            "text" : "Provide mutual support by backing up navigation, communications, fuel awareness, and safety-of-flight decisions."
+                          }
+                        ],
+                        "text" : "Wing responsibilities:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Everything takes longer in formation, especially frequency changes, checklist work, turns, and rejoins."
+                          },
+                          {
+                            "text" : "Lead must plan ahead for area boundaries, wind drift, sun angle, Wing workload, and how each maneuver sets up the next one."
+                          }
+                        ],
+                        "text" : "Planning mindset:"
+                      }
+                    ],
+                    "title" : "Wingman\/Flight Leader Responsibilities"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Clear communications prevent confusion before it becomes a spacing problem."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the ATC call sign with outside agencies and the tactical call sign for inter-flight communication."
+                          },
+                          {
+                            "text" : "Brief primary and secondary UHF and VHF tactical frequencies before flight."
+                          },
+                          {
+                            "text" : "Lead handles outside-agency communications; Wing monitors and backs up Lead."
+                          },
+                          {
+                            "text" : "Wing is responsible for staying on the correct frequency and querying Lead if unsure."
+                          }
+                        ],
+                        "text" : "Call signs and frequencies:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not conduct formation check-ins on ATC frequencies unless directed; use tactical frequency to get well."
+                          },
+                          {
+                            "text" : "Lead must give Wing enough time to change frequencies before transmitting to the controlling agency."
+                          },
+                          {
+                            "text" : "Use positive check-ins after directed switches so both aircraft know the flight is together."
+                          }
+                        ],
+                        "text" : "Frequency discipline:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use visual signals when they are clear and briefed."
+                          },
+                          {
+                            "text" : "Use radio calls in IMC, when there is confusion, or whenever a visual signal may be missed."
+                          },
+                          {
+                            "text" : "Lead should provide a stable platform during any radio or visual communication task."
+                          }
+                        ],
+                        "text" : "Visual versus radio:"
+                      }
+                    ],
+                    "title" : "Formation Communications"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Position corrections start with relative motion: Lead is the reference, and Wing fixes altitude, bearing, then closure in that order."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Altitude is the first correction because step-down protects separation."
+                          },
+                          {
+                            "text" : "Bearing line is second; acute means forward of the bearing line, sucked means aft of it."
+                          },
+                          {
+                            "text" : "Closure or separation is last; do not close distance until altitude and bearing are under control."
+                          }
+                        ],
+                        "text" : "A-B-C priority:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Vertical movement is primarily controlled with elevator."
+                          },
+                          {
+                            "text" : "Fore and aft movement is controlled with power."
+                          },
+                          {
+                            "text" : "Left and right movement is controlled with aileron."
+                          },
+                          {
+                            "text" : "Every correction needs a re-correction: add the input, stop the movement, then reset a middle value."
+                          }
+                        ],
+                        "text" : "Control logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "When Lead turns into Wing, Wing is on a smaller radius and must reduce power early or become acute."
+                          },
+                          {
+                            "text" : "When Lead turns away from Wing, Wing is on a larger radius and must add power early or become sucked."
+                          },
+                          {
+                            "text" : "Lead every turn with the required power change, then scan the whole aircraft instead of fixating on one checkpoint."
+                          }
+                        ],
+                        "text" : "Radius-of-turn traps:"
+                      }
+                    ],
+                    "title" : "Formation Position Corrections"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Formation Arrival and Departure Procedures"
+                      },
+                      {
+                        "text" : "Wingman\/Flight Leader Responsibilities"
+                      },
+                      {
+                        "text" : "Formation Communications"
+                      },
+                      {
+                        "text" : "Formation Position Corrections"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "F2101 is the first formation simulator event, so the study focus is the basic contract: predictable Lead, disciplined Wing, clear communications, and small A-B-C position corrections."
               },
-              "summary" : "F2101 centers on f2101 and the key procedures students need to explain and execute.",
+              "summary" : "F2101 introduces formation departure, arrival, communication, responsibility, and position-correction fundamentals for the first linked formation simulator event.",
               "tags" : [
                 "formation",
                 "sims",
@@ -31310,7 +31545,7 @@
                 }
               ],
               "id" : "formation-sims-f3101",
-              "overview" : "F3101 centers on f3101 and the key procedures students need to explain and execute.",
+              "overview" : "F3101 connects the signals to the maneuver sequence. Students should be able to brief how Lead passes a signal, how Wing acknowledges it, and how each basic formation maneuver is entered, flown, corrected, and discontinued if spacing becomes unsafe.",
               "primaryDocumentIDs" : [
                 "contents-4-forms-2-sims-f3101-pdf"
               ],
@@ -31355,15 +31590,138 @@
                   {
                     "items" : [
                       {
-                        "text" : "Visual signals and Formation maneuvers"
+                        "text" : "Visual signals only work when Lead is predictable, Wing is in position, and both aircraft understand exactly when the signal is acknowledged and executed."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead first verbalizes the signal over ICS during training, confirms Wing is in position, clears the area, then passes the signal high and visible above the canopy rail."
+                          },
+                          {
+                            "text" : "Most signals are passed for about 3 seconds; the cruise signal uses a longer cadence."
+                          },
+                          {
+                            "text" : "Lead stops the signal, looks to Wing, confirms the head-nod acknowledgment, then executes smoothly."
+                          },
+                          {
+                            "text" : "If Wing gives a no-head-shake or there is confusion, Lead repeats the signal or clarifies by radio."
+                          }
+                        ],
+                        "text" : "Cadence:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Run-up directs both aircraft to set the briefed run-up power and check safety-of-flight items."
+                          },
+                          {
+                            "text" : "Kiss-off releases Wing to separate for takeoff, breakup, detach, or landing as briefed."
+                          },
+                          {
+                            "text" : "Cruise directs Wing to move from parade to cruise; Wing acknowledges, slides to the 60-degree bearing line, sets the directed power, and calls ready."
+                          },
+                          {
+                            "text" : "Crossunder directs Wing to cross behind and below Lead after stabilizing aft with proper step-down."
+                          },
+                          {
+                            "text" : "Breakup and rendezvous starts the break sequence only after Wing acknowledges and Lead gives the kiss-off."
+                          }
+                        ],
+                        "text" : "Core signals:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead change uses a distinct signal: Lead taps the helmet on the side away from Wing, then deliberately points to Wing."
+                          },
+                          {
+                            "text" : "The new Lead acknowledges, looks forward, and flies a stable platform."
+                          },
+                          {
+                            "text" : "The new Wing keeps eyes on the new Lead and preserves separation during the transition."
+                          }
+                        ],
+                        "text" : "Lead-change signal:"
                       }
                     ],
-                    "title" : "Formation"
+                    "title" : "Visual Signals"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The formation maneuver set is a progression: establish spacing on departure, stabilize in parade, correct errors early, then use planned geometry for turns, crossunders, breakup and rendezvous, and underruns."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Line up with runway-side discipline and complete the Lineup Checklist before takeoff."
+                          },
+                          {
+                            "text" : "For interval takeoff, Wing delays 5 seconds after Lead begins the takeoff roll, then rejoins using controlled closure."
+                          },
+                          {
+                            "text" : "During running rendezvous, Wing keeps Lead slightly above the horizon, arrives on bearing line, and limits closure to a safe, briefed value."
+                          }
+                        ],
+                        "text" : "Departure and rendezvous:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Parade is built on the 45-degree bearing line, wingtip clearance, and step-down."
+                          },
+                          {
+                            "text" : "Wing corrects in A-B-C order: altitude, bearing, closure\/separation."
+                          },
+                          {
+                            "text" : "In turns, Wing anticipates radius-of-turn effects: reduce power when Lead turns into Wing and add power when Lead turns away."
+                          }
+                        ],
+                        "text" : "Parade and parade turns:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For a crossunder, Wing first moves aft and slightly down, verifies nose-to-tail clearance, then crosses behind Lead at a walking pace."
+                          },
+                          {
+                            "text" : "Wing never passes directly under Lead."
+                          },
+                          {
+                            "text" : "After crossing, reestablish bearing, separation, and step-down before moving back into normal parade."
+                          }
+                        ],
+                        "text" : "Crossunder:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For breakup and rendezvous, Lead starts from 200 KIAS, level flight, Wing in position, and clear airspace."
+                          },
+                          {
+                            "text" : "Wing breaks at Lead's 3\/9 line, keeps Lead in sight, stabilizes in trail, then rejoins with Lead on the horizon."
+                          },
+                          {
+                            "text" : "If closure, aspect, or step-down becomes unsafe, underrun early instead of pressing a bad rendezvous."
+                          }
+                        ],
+                        "text" : "Breakup, rendezvous, and underrun:"
+                      }
+                    ],
+                    "title" : "Formation Maneuvers"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Visual Signals and Formation Maneuvers"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "F3101 should be studied as a signal-to-maneuver event: know the visual signal cadence, then brief the formation maneuver flow that follows each signal."
               },
-              "summary" : "F3101 centers on f3101 and the key procedures students need to explain and execute.",
+              "summary" : "F3101 ties visual-signal discipline to basic formation maneuver execution in the OFT.",
               "tags" : [
                 "formation",
                 "sims",
@@ -31401,7 +31759,7 @@
                 }
               ],
               "id" : "formation-flights-f4101",
-              "overview" : "F4101 centers on f4101 and the key procedures students need to explain and execute.",
+              "overview" : "F4101 brings formation fundamentals into the aircraft. The brief should cover signal discipline, lead and wing responsibilities, abort contracts, lost-sight and blind procedures, and the HEFOE system so the section can preserve separation when normal visual or radio communication breaks down.",
               "primaryDocumentIDs" : [
 
               ],
@@ -31440,30 +31798,303 @@
                   {
                     "items" : [
                       {
-                        "text" : "Hand signals"
+                        "text" : "Hand signals are formation commands. They must be passed where Wing can see them, acknowledged clearly, and backed up by radio when the situation is unclear."
                       },
                       {
-                        "text" : "wingman\/flight leader responsibilities"
+                        "children" : [
+                          {
+                            "text" : "Lead confirms Wing is in position, clears the area, passes the signal high and visible, then looks back for Wing's acknowledgment."
+                          },
+                          {
+                            "text" : "Wing acknowledges with a deliberate head nod or gives a no-head-shake if the signal is missed or unclear."
+                          },
+                          {
+                            "text" : "Lead executes only after acknowledgment unless the signal itself is an immediate safety-of-flight command."
+                          }
+                        ],
+                        "text" : "Signal discipline:"
                       },
                       {
-                        "text" : "aborted takeoff"
+                        "children" : [
+                          {
+                            "text" : "Use radio calls in IMC, when a visual signal could be missed, or anytime confusion exists."
+                          },
+                          {
+                            "text" : "Do not force a visual-signal answer if aircraft control, spacing, or weather makes a radio call safer."
+                          }
+                        ],
+                        "text" : "When to use radio:"
+                      }
+                    ],
+                    "title" : "Hand Signals"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Lead and Wing share the sortie, but they do not share the same immediate job."
                       },
                       {
-                        "text" : "lost sight procedures"
+                        "children" : [
+                          {
+                            "text" : "The Designated Flight Lead is administratively responsible for mission objectives and safe, orderly conduct."
+                          },
+                          {
+                            "text" : "The Formation Lead is the aircraft physically flying lead at the moment."
+                          },
+                          {
+                            "text" : "Lead must be smooth, stable, predictable, and directive."
+                          },
+                          {
+                            "text" : "Lead must keep the flight clear of clouds unless on an IFR clearance, clear of other aircraft, and within the assigned area or route."
+                          }
+                        ],
+                        "text" : "Lead:"
                       },
                       {
-                        "text" : "blind procedures"
+                        "children" : [
+                          {
+                            "text" : "Keep Lead in sight and maintain deconfliction."
+                          },
+                          {
+                            "text" : "Maintain proper position and correct early with small inputs."
+                          },
+                          {
+                            "text" : "Comply with Lead's signals and respond promptly."
+                          },
+                          {
+                            "text" : "Back up navigation, communications, fuel awareness, and safety decisions."
+                          }
+                        ],
+                        "text" : "Wing:"
+                      }
+                    ],
+                    "title" : "Wingman\/Flight Leader Responsibilities"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "An aborted takeoff in formation is a separation problem as much as an aircraft problem. Decide, stay on your side, and communicate as soon as aircraft control permits."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Brief abort contingencies before takeoff."
+                          },
+                          {
+                            "text" : "If aborting, execute the NATOPS abort procedure, maintain directional control, remain on the assigned runway side, and transmit intentions."
+                          },
+                          {
+                            "text" : "If Lead aborts during an interval takeoff, Wing normally aborts behind Lead while maintaining Wing's side; the 5-second interval should provide spacing."
+                          },
+                          {
+                            "text" : "If Wing aborts during an interval takeoff, Wing aborts on Wing's side and transmits once Lead is airborne and Wing is under control."
+                          }
+                        ],
+                        "text" : "Interval abort:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If either aircraft aborts after brake release, the aborting aircraft stays on its side and executes the abort."
+                          },
+                          {
+                            "text" : "The non-aborting aircraft recognizes the rapid line-of-sight change, selects maximum power, maintains side-of-runway discipline, and executes an individual takeoff unless separation cannot be maintained or it has its own emergency."
+                          },
+                          {
+                            "text" : "Wing must be prepared to avoid Lead if Lead loses directional control, including changing sides or leaving the prepared surface if required to prevent collision."
+                          }
+                        ],
+                        "text" : "Section abort:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Aviate: control the aircraft."
+                          },
+                          {
+                            "text" : "Navigate: preserve runway-side separation and avoid the other aircraft."
+                          },
+                          {
+                            "text" : "Communicate: state intentions to the flight and tower when able."
+                          }
+                        ],
+                        "text" : "Priority:"
+                      }
+                    ],
+                    "title" : "Aborted Takeoff"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Lost sight is an IMC procedure. Wing immediately transitions from formation references to instruments and creates predictable separation."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Transition to instrument scan and maintain aircraft control."
+                          },
+                          {
+                            "text" : "Call \"lost sight\" on the tactical frequency."
+                          },
+                          {
+                            "text" : "Smoothly reduce power about 10% to reduce closure risk."
+                          }
+                        ],
+                        "text" : "Initial actions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Straight and level: Wing turns away for a 30-degree heading change, times for 30 seconds, then parallels Lead's heading."
+                          },
+                          {
+                            "text" : "Turns: the outside aircraft rolls wings level and transmits heading and altitude; the inside aircraft continues the turn for at least 30 degrees, then the outside aircraft turns to the assigned heading after 30 seconds."
+                          },
+                          {
+                            "text" : "Climbs or descents: Wing levels off, states altitude, and executes the applicable straight or turning lost-sight procedure while Lead continues to assigned altitude with at least 500 ft separation."
+                          }
+                        ],
+                        "text" : "Geometry:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Inside the FAF, Wing turns away expeditiously, transitions to instruments, and calls lost sight."
+                          },
+                          {
+                            "text" : "Lead informs ATC and continues the approach."
+                          },
+                          {
+                            "text" : "Wing climbs to FAF or glideslope intercept altitude, proceeds to the MAP, and flies the missed approach unless ATC issues a new clearance."
+                          }
+                        ],
+                        "text" : "Inside the FAF:"
+                      }
+                    ],
+                    "title" : "Lost Sight Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Blind procedures are VMC procedures. The visual aircraft has deconfliction responsibility while the blind aircraft reports altitude and keeps looking."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Wing calls \"blind\" with altitude."
+                          },
+                          {
+                            "text" : "If Lead is visual, Lead directs Wing's eyes using clock position and high, level, or low references."
+                          },
+                          {
+                            "text" : "Wing continues to call \"blind\" or \"visual\" until Lead is reacquired."
+                          },
+                          {
+                            "text" : "If Wing calls visual, Lead directs the rejoin or continuation of training."
+                          }
+                        ],
+                        "text" : "One aircraft blind:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead transmits altitude, maneuvers predictably, and ensures at least 500 ft altitude separation without crossing altitudes."
+                          },
+                          {
+                            "text" : "Lead directs a rejoin at the briefed or alternate location."
+                          },
+                          {
+                            "text" : "Wing lags Lead's last known position, clears the flight path, follows directive instructions, and maintains altitude separation until visual."
+                          },
+                          {
+                            "text" : "TCAS may assist SA but is not the primary rejoin method."
+                          }
+                        ],
+                        "text" : "Both aircraft blind:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If Wing is blind due to sun, Wing calls \"blind sun\" and lags Lead's last known position."
+                          },
+                          {
+                            "text" : "Lead calls continue only if deconfliction can be maintained; otherwise Lead calls knock-it-off."
+                          }
+                        ],
+                        "text" : "Blind sun:"
+                      }
+                    ],
+                    "title" : "Blind Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "HEFOE lets a NORDO aircraft communicate the affected system using visual signals."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Gain the other aircraft's attention first; the formation source uses a weeping signal before passing the affected system."
+                          },
+                          {
+                            "text" : "Use hand signals during day and flashlight signals at night if required."
+                          },
+                          {
+                            "text" : "The good-radio aircraft coordinates with ATC or tower and keeps the NORDO aircraft supported."
+                          }
+                        ],
+                        "text" : "Use:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "H: Hydraulics."
+                          },
+                          {
+                            "text" : "E: Electrical."
+                          },
+                          {
+                            "text" : "F: Fuel."
+                          },
+                          {
+                            "text" : "O: Oxygen."
+                          },
+                          {
+                            "text" : "E: Engine."
+                          }
+                        ],
+                        "text" : "Meaning:"
+                      }
+                    ],
+                    "title" : "HEFOE"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Hand Signals"
+                      },
+                      {
+                        "text" : "Wingman\/Flight Leader Responsibilities"
+                      },
+                      {
+                        "text" : "Aborted Takeoff"
+                      },
+                      {
+                        "text" : "Lost Sight Procedures"
+                      },
+                      {
+                        "text" : "Blind Procedures"
                       },
                       {
                         "text" : "HEFOE"
                       }
                     ],
-                    "title" : "Formation"
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "F4101 is the first aircraft formation event, so the priority is preserving sight, spacing, and communication when the section is still learning the basic contract."
               },
-              "summary" : "F4101 centers on f4101 and the key procedures students need to explain and execute.",
+              "summary" : "F4101 focuses on formation hand signals, lead and wing responsibilities, abort contracts, lost-sight and blind procedures, and HEFOE.",
               "tags" : [
                 "formation",
                 "flights",
@@ -31491,7 +32122,7 @@
                 }
               ],
               "id" : "formation-flights-f4102",
-              "overview" : "F4102 centers on f4102 and the key procedures students need to explain and execute.",
+              "overview" : "F4102 shifts attention from basic position keeping to section problem solving. Students should brief how the section separates and supports an airborne damaged aircraft, how speed brake use is coordinated, how Lead manages area and sun exposure, and how lost communications are handled without losing formation discipline.",
               "primaryDocumentIDs" : [
 
               ],
@@ -31530,24 +32161,239 @@
                   {
                     "items" : [
                       {
-                        "text" : "Airborne damaged aircraft"
+                        "text" : "Airborne damage is first an aircraft-control and deconfliction problem. The section does not rejoin just because both aircraft remain flyable."
                       },
                       {
-                        "text" : "speed brake use as a section"
+                        "children" : [
+                          {
+                            "text" : "Follow NATOPS procedures for the actual malfunction or damage."
+                          },
+                          {
+                            "text" : "If severe damage causes or may cause OCF, do not delay ejection beyond the safe envelope."
+                          },
+                          {
+                            "text" : "If damage is minimal, communicate, separate, maintain visual contact, and establish a deconfliction plan."
+                          },
+                          {
+                            "text" : "Use lateral, altitude, ground-reference, DME, or working-block separation as appropriate."
+                          }
+                        ],
+                        "text" : "Midair or section damage:"
                       },
                       {
-                        "text" : "area\/sun management"
+                        "children" : [
+                          {
+                            "text" : "Do not rejoin the damaged aircraft as a flight."
+                          },
+                          {
+                            "text" : "Complete appropriate emergency checklists."
+                          },
+                          {
+                            "text" : "Consider assigning a chase or inspection aircraft if it can be done without adding risk."
+                          },
+                          {
+                            "text" : "Develop a recovery plan for both aircraft; if runway damage or FOD risk exists, consider separate airfields."
+                          }
+                        ],
+                        "text" : "Recovery plan:"
                       },
                       {
-                        "text" : "lost communication procedures"
+                        "children" : [
+                          {
+                            "text" : "The damaged aircraft communicates if able, climbs to a safe altitude, and assumes Lead as necessary to assess the damage."
+                          },
+                          {
+                            "text" : "If forward visibility is lost or aircraft control is doubtful, controlled ejection may be required."
+                          },
+                          {
+                            "text" : "The good aircraft moves to perch and assists as required."
+                          }
+                        ],
+                        "text" : "Single aircraft damage:"
                       }
                     ],
-                    "title" : "Formation"
+                    "title" : "Airborne Damaged Aircraft"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Speed brake use as a section must be predictable because extension, retraction, pitch change, and closure all affect Wing at once."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead may use speed brake to increase descent rate or decelerate the formation."
+                          },
+                          {
+                            "text" : "During recovery descents, Lead should normally use at least 15% torque."
+                          },
+                          {
+                            "text" : "Wing may need idle power and speed brake to maintain position."
+                          },
+                          {
+                            "text" : "Speed brake effectiveness decreases at lower airspeeds, and extension or retraction creates pitch changes that must be countered."
+                          }
+                        ],
+                        "text" : "Use:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If Wing is in parade, Lead may direct speed brake with the visual signal and a head-nod acknowledgment."
+                          },
+                          {
+                            "text" : "If Wing is in cruise, Lead should use clear radio calls such as standby speed brake and speed brake now."
+                          },
+                          {
+                            "text" : "Lead must remain stable and avoid ambiguous timing."
+                          }
+                        ],
+                        "text" : "Coordination:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "In cruise, Wing may combine power, pursuit curves, and speed brake to move between parade and cruise or hold position."
+                          },
+                          {
+                            "text" : "During the fan break, Wing may use idle power and speed brake at maneuver start to create spacing."
+                          },
+                          {
+                            "text" : "If Lead is turning and Wing has excessive closure, Wing may need idle power and speed brake to avoid passing ahead."
+                          }
+                        ],
+                        "text" : "Common applications:"
+                      }
+                    ],
+                    "title" : "Speed Brake Use As a Section"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Area and sun management are Lead responsibilities, but Wing should understand the plan so corrections and calls make sense."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead must know the assigned area boundaries and visualize how maneuver combinations will keep the flight inside them."
+                          },
+                          {
+                            "text" : "Wind affects ground track; Lead should plan turn direction and rollout timing before the edge of the area becomes urgent."
+                          },
+                          {
+                            "text" : "Formation tasks take longer than single-ship tasks, including radio changes, maneuvers, rejoins, and checklist work."
+                          }
+                        ],
+                        "text" : "Area management:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead should avoid prolonged straight-and-level or turn-into setups that force Wing to look into the sun."
+                          },
+                          {
+                            "text" : "Plan rollouts, crossunders, and maneuver sequencing to reduce Wing's sun exposure when practical."
+                          },
+                          {
+                            "text" : "Wing should call blind sun if Lead is temporarily lost in sun glare and then lag Lead's last known position."
+                          }
+                        ],
+                        "text" : "Sun management:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead must be predictable and give Wing enough time to stabilize before the next maneuver."
+                          },
+                          {
+                            "text" : "If area, sun, or Wing position makes the next maneuver unsafe, use terminate or knock-it-off early."
+                          }
+                        ],
+                        "text" : "Decision standard:"
+                      }
+                    ],
+                    "title" : "Area\/Sun Management"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Lost communication procedures keep the section VMC, deconflicted, and predictable while the affected aircraft troubleshoots."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Maintain VMC if able."
+                          },
+                          {
+                            "text" : "Gain the other aircraft's attention with visual signals."
+                          },
+                          {
+                            "text" : "If Wing is NORDO, Wing moves acute with lateral separation and passes the appropriate down-transmitter or down-receiver signal."
+                          },
+                          {
+                            "text" : "Offer the lead position to the NORDO aircraft so troubleshooting can be completed with less formation workload."
+                          }
+                        ],
+                        "text" : "Initial plan:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Check helmet and seat connections."
+                          },
+                          {
+                            "text" : "Verify frequency or channel selection."
+                          },
+                          {
+                            "text" : "Check audio-panel volume and radio selections."
+                          },
+                          {
+                            "text" : "Try available UHF, VHF, backup, and guard options as appropriate."
+                          }
+                        ],
+                        "text" : "Troubleshooting:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If radios cannot be restored, the good-radio aircraft should take or keep Lead for recovery coordination."
+                          },
+                          {
+                            "text" : "The good-radio aircraft informs ATC or tower of the NORDO aircraft and coordinates visual landing signals as required."
+                          },
+                          {
+                            "text" : "If an emergency occurs while NORDO, use HEFOE signals after gaining attention."
+                          },
+                          {
+                            "text" : "Use current local SOP and day-of brief for field-specific NORDO recovery details."
+                          }
+                        ],
+                        "text" : "Recovery:"
+                      }
+                    ],
+                    "title" : "Lost Communication Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Airborne Damaged Aircraft"
+                      },
+                      {
+                        "text" : "Speed Brake Use As a Section"
+                      },
+                      {
+                        "text" : "Area\/Sun Management"
+                      },
+                      {
+                        "text" : "Lost Communication Procedures"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "F4102 is about keeping the section predictable while solving abnormal situations: damage, speed-brake coordination, area and sun management, and NORDO recovery."
               },
-              "summary" : "F4102 centers on f4102 and the key procedures students need to explain and execute.",
+              "summary" : "F4102 covers airborne-damage response, speed-brake coordination, lead area and sun management, and lost-communication procedures.",
               "tags" : [
                 "formation",
                 "flights",
@@ -31575,7 +32421,7 @@
                 }
               ],
               "id" : "formation-flights-f4103",
-              "overview" : "F4103 centers on f4103 and the key procedures students need to explain and execute.",
+              "overview" : "F4103 emphasizes the emergency side of formation: how to pass lead to the emergency aircraft, how Wing supports from perch, how section takeoff is flown and aborted, how emergency fields are selected, and how the section exits inadvertent instrument conditions without sacrificing separation.",
               "primaryDocumentIDs" : [
 
               ],
@@ -31614,24 +32460,239 @@
                   {
                     "items" : [
                       {
+                        "text" : "A Section PEL starts by giving the emergency aircraft the maneuvering room and authority it needs while preserving mutual support."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If Lead has the emergency, Lead should make a quick radio call so Wing can get separation."
+                          },
+                          {
+                            "text" : "If Wing has the emergency, Wing requests lead left or right."
+                          },
+                          {
+                            "text" : "Lead transfers lead verbally only after visual contact and separation make the transfer safe."
+                          }
+                        ],
+                        "text" : "Lead transfer:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The new Wing transitions to perch."
+                          },
+                          {
+                            "text" : "New Wing clears the flight path, provides divert or field information, assists with procedures if requested, and monitors altitude, airspeed, VSI, and configuration."
+                          },
+                          {
+                            "text" : "Wing matches the emergency aircraft's configuration when remaining through the profile."
+                          }
+                        ],
+                        "text" : "Wing support:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The emergency aircraft maneuvers and configures for high key."
+                          },
+                          {
+                            "text" : "Lead may kiss off Wing at any time."
+                          },
+                          {
+                            "text" : "If Wing remains through the ELP, Wing stays outside Lead's turn and waves off when directed, no lower than 300 ft AGL."
+                          },
+                          {
+                            "text" : "Normally, Wing can safely detach and monitor at high key."
+                          }
+                        ],
+                        "text" : "PEL profile:"
+                      }
+                    ],
+                    "title" : "Section PEL"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A section takeoff keeps both aircraft in formation from brake release through liftoff, so the brief must cover runway criteria, power timing, rotation, and abort responsibilities."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Runway must be at least 150 ft wide."
+                          },
+                          {
+                            "text" : "Maximum crosswind is 10 knots dry or 5 knots wet."
+                          },
+                          {
+                            "text" : "Weather must meet circling minimums, or 1000 ft ceiling and 3 SM visibility if circling minimums are not available."
+                          },
+                          {
+                            "text" : "Do not conduct a section takeoff with standing water on the runway."
+                          }
+                        ],
+                        "text" : "Restrictions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead lines up on the downwind side unless calm winds or other briefed factors drive a different side."
+                          },
+                          {
+                            "text" : "Lead passes the run-up signal; both aircraft set about 30% torque."
+                          },
+                          {
+                            "text" : "Wing inspects Lead and holds thumbs-up until Lead acknowledges."
+                          },
+                          {
+                            "text" : "Lead's arm chop sets the power-advance rate; when the arm reaches the canopy rail, both aircraft release brakes."
+                          },
+                          {
+                            "text" : "Lead smoothly sets about 90% torque over roughly 5 seconds."
+                          }
+                        ],
+                        "text" : "Lineup and brake release:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Wing maintains takeoff bearing with PCL and rudder; avoid riding the brakes, though one light tap may be used immediately after brake release if acute."
+                          },
+                          {
+                            "text" : "Lead rotates smoothly about 5 to 10 knots below normal rotation speed; local formation study material commonly uses 85 KIAS as the basic reference."
+                          },
+                          {
+                            "text" : "Wing matches Lead's attitude, remains briefly stepped up after liftoff, then waits for Lead's climb to establish safe step-down."
+                          },
+                          {
+                            "text" : "Lead signals or calls gear and flaps retraction at or above 110 KIAS; Wing retracts only after Lead."
+                          }
+                        ],
+                        "text" : "Takeoff and cleanup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If either aircraft aborts after brake release, maintain lateral control and do not cross the runway centerline."
+                          },
+                          {
+                            "text" : "The non-aborting aircraft normally selects maximum power and continues as an individual takeoff unless safe separation cannot be maintained or it has its own emergency."
+                          },
+                          {
+                            "text" : "Wing should always remain dirtier than Lead during cleanup; retract only after Lead is in transit."
+                          }
+                        ],
+                        "text" : "Abort and N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "Section Takeoff"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Emergency field selection is a suitability and energy problem: choose a field the aircraft can reach and land on, then keep updating the plan as energy changes."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Prefer the closest suitable hard-surface runway at least 3000 ft long."
+                          },
+                          {
+                            "text" : "If multiple fields are available, consider crash crew, medical support, runway surface, wind, obstacles, and recovery complexity."
+                          },
+                          {
+                            "text" : "Use charts, NAVAIDs, FMS NAV\/TSD, and nearest-airport tools to judge distance."
+                          }
+                        ],
+                        "text" : "Field suitability:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the DME method to judge one field: one-half DME plus key altitude plus field elevation equals the approximate MSL altitude required."
+                          },
+                          {
+                            "text" : "Add 3000 ft for high key or 1500 ft for low key when deciding if current energy is sufficient."
+                          },
+                          {
+                            "text" : "Use the altitude method to compare several fields: subtract 3000 ft for high key or 1500 ft for low key from AGL altitude, then multiply by 2 for maximum glide distance in NM."
+                          },
+                          {
+                            "text" : "Best-glide planning from the Contact FTI is about 125 KIAS clean, with roughly 2 NM per 1000 ft of altitude in no-wind conditions."
+                          }
+                        ],
+                        "text" : "Energy checks:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "A zoom from high energy can increase altitude; local source material cites about 1300 ft gained from 240 KGS."
+                          },
+                          {
+                            "text" : "If no suitable landing area exists, NATOPS and Contact FTI guidance favor ejection when possible rather than pressing an unsuitable off-field landing."
+                          },
+                          {
+                            "text" : "If ejection is not possible or malfunctions, an ELP to an unprepared surface or ditching may be the remaining option, with higher injury and egress risk."
+                          }
+                        ],
+                        "text" : "Low-level and no-field considerations:"
+                      }
+                    ],
+                    "title" : "Emergency Field Selection"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Inadvertent instrument flight in formation requires Lead to fly instruments while Wing maintains parade and prepares for lost-sight execution if visual references fail."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead transitions to an instrument scan and determines the safest way to exit IMC."
+                          },
+                          {
+                            "text" : "Wing maintains parade position and scans Lead."
+                          },
+                          {
+                            "text" : "If unable to regain VMC, Lead ensures terrain clearance and coordinates an IFR clearance for the flight or individual clearances at Flight Lead discretion."
+                          }
+                        ],
+                        "text" : "Flight response:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If Wing loses sight of Lead, Wing immediately executes lost sight procedures."
+                          },
+                          {
+                            "text" : "Lead must stay directive and predictable so ATC coordination and separation do not conflict."
+                          }
+                        ],
+                        "text" : "Separation trigger:"
+                      }
+                    ],
+                    "title" : "Inadvertent Instrument Flight"
+                  },
+                  {
+                    "items" : [
+                      {
                         "text" : "Section PEL"
                       },
                       {
-                        "text" : "section takeoff"
+                        "text" : "Section Takeoff"
                       },
                       {
-                        "text" : "emergency field selection"
+                        "text" : "Emergency Field Selection"
                       },
                       {
-                        "text" : "inadvertent instrument flight"
+                        "text" : "Inadvertent Instrument Flight"
                       }
                     ],
-                    "title" : "Formation"
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "F4103 is a formation emergency-management event: transfer lead when needed, support from perch, preserve runway-side discipline, select emergency fields, and keep the section separated in IMC."
               },
-              "summary" : "F4103 centers on f4103 and the key procedures students need to explain and execute.",
+              "summary" : "F4103 covers section PEL roles, section takeoff execution, emergency field selection, and inadvertent instrument flight procedures.",
               "tags" : [
                 "formation",
                 "flights",
@@ -31661,7 +32722,7 @@
                 }
               ],
               "id" : "formation-flights-f4104",
-              "overview" : "F4104 centers on f4104 and the key procedures students need to explain and execute.",
+              "overview" : "F4104 combines formation emergency support with dynamic maneuvering. Students should be able to brief an airborne landing gear inspection, distinguish knock-it-off from terminate, execute cruise maneuvering with pursuit geometry, and explain the lead principles that keep Wing predictable and safe.",
               "primaryDocumentIDs" : [
 
               ],
@@ -31700,30 +32761,295 @@
                   {
                     "items" : [
                       {
-                        "text" : "Landing gear inspection"
+                        "text" : "A landing gear inspection is an emergency-support task, not a formation proficiency stunt. The inspection is flown only when it can be done without adding risk."
                       },
                       {
-                        "text" : "knock-it-off"
+                        "children" : [
+                          {
+                            "text" : "The aircraft with the unsafe indication notifies the other aircraft and ATC."
+                          },
+                          {
+                            "text" : "Climb to the published emergency orbit, delta pattern, or other local procedure before troubleshooting."
+                          },
+                          {
+                            "text" : "Request an airborne gear inspection if it will help the decision and can be done safely."
+                          },
+                          {
+                            "text" : "Wing follows the distressed aircraft and assists as directed."
+                          }
+                        ],
+                        "text" : "Unsafe gear indication:"
                       },
                       {
-                        "text" : "terminate"
+                        "children" : [
+                          {
+                            "text" : "Conduct the inspection at a minimum of 2000 ft AGL."
+                          },
+                          {
+                            "text" : "Use a discrete frequency when practical to reduce chatter and confusion."
+                          },
+                          {
+                            "text" : "The emergency aircraft communicates configuration, airspeed, altitude, and planned changes."
+                          },
+                          {
+                            "text" : "The inspecting aircraft reports position and intentions and avoids undue risk."
+                          },
+                          {
+                            "text" : "Use caution if visible damage could allow gear parts to depart the aircraft."
+                          }
+                        ],
+                        "text" : "Inspection conduct:"
                       },
                       {
-                        "text" : "cruise maneuvering"
-                      },
-                      {
-                        "text" : "principles of lead"
-                      },
-                      {
-                        "text" : "lag and pure pursuit"
+                        "children" : [
+                          {
+                            "text" : "Student solos shall not join up to inspect landing gear."
+                          },
+                          {
+                            "text" : "Students shall not be at the controls during the landing gear inspection."
+                          },
+                          {
+                            "text" : "The emergency aircraft may ask Wing, chase, base, or RDO to help read checklists and troubleshoot."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
                       }
                     ],
-                    "title" : "Formation"
+                    "title" : "Landing Gear Inspection"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Knock-it-off stops the maneuvering because safety is compromised or could be compromised."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Any flight member may initiate knock-it-off."
+                          },
+                          {
+                            "text" : "Use it for emergencies, traffic conflicts, blind situations, G-LOC or AGSM failure, area boundary concerns, or any developing unsafe condition."
+                          },
+                          {
+                            "text" : "The pilot calling knock-it-off should state the reason if able."
+                          }
+                        ],
+                        "text" : "When to use:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead maneuvers predictably, normally straight-and-level or with shallow bank."
+                          },
+                          {
+                            "text" : "Lead gives directive intentions and may state altitude and a reference heading for the flight."
+                          },
+                          {
+                            "text" : "Both aircraft prioritize separation and aircraft control before resuming any training objective."
+                          }
+                        ],
+                        "text" : "After the call:"
+                      }
+                    ],
+                    "title" : "Knock-It-Off"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Terminate stops an exercise or maneuvering for an expected or administrative reason; it is not the same as knock-it-off."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead normally initiates terminate, but Wing may request or initiate it."
+                          },
+                          {
+                            "text" : "Use terminate when the training objective is complete, the exercise is ending, or continuing would not be useful."
+                          },
+                          {
+                            "text" : "If the reason is safety-of-flight, call knock-it-off instead."
+                          }
+                        ],
+                        "text" : "When to use:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead remains predictable and transitions to a safe attitude."
+                          },
+                          {
+                            "text" : "Lead directs follow-on intentions, such as cleared to parade, continue, repeat, or recover."
+                          },
+                          {
+                            "text" : "Wing maintains deconfliction and does not rush the rejoin."
+                          }
+                        ],
+                        "text" : "Post-terminate:"
+                      }
+                    ],
+                    "title" : "Terminate"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Cruise maneuvering teaches Wing to maintain position with pursuit geometry and lift-vector placement, not constant power chasing."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead signals cruise and holds a stable platform until Wing is established."
+                          },
+                          {
+                            "text" : "Wing acknowledges, slides to the 60-degree bearing line, sets the directed power, and calls ready."
+                          },
+                          {
+                            "text" : "Formation FTI references use about 80% torque above 10,000 ft and 70% torque below 10,000 ft before maneuvering; hold the PCL position rather than chasing torque changes with altitude."
+                          }
+                        ],
+                        "text" : "Transition to cruise:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Cruise position is about 60 degrees bearing, about 20 ft step-down, and 3 to 6 plane widths of spacing."
+                          },
+                          {
+                            "text" : "Lead is limited to no more than 120 degrees AOB and no less than 1G."
+                          },
+                          {
+                            "text" : "Wing uses lead, lag, and pure pursuit plus lift-vector placement to stay in the cruise cone."
+                          },
+                          {
+                            "text" : "Minor turns may need small power corrections; aggressive turns should be solved primarily with pursuit geometry."
+                          }
+                        ],
+                        "text" : "Maneuvering:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead or Wing calls terminate."
+                          },
+                          {
+                            "text" : "Lead rolls level or establishes a predictable 30-degree AOB turn, stabilizes near 200 KIAS, and clears Wing to parade."
+                          },
+                          {
+                            "text" : "Wing maintains cruise spacing, anticipates acceleration or deceleration, and rejoins without losing step-down."
+                          }
+                        ],
+                        "text" : "Cruise back to parade:"
+                      }
+                    ],
+                    "title" : "Cruise Maneuvering"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The principle of lead is to create a safe, predictable training platform while still meeting mission and area requirements."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead makes smooth, stable, predictable changes in power, heading, and altitude."
+                          },
+                          {
+                            "text" : "Lead keeps the flight within the assigned area and complies with current course rules or clearances."
+                          },
+                          {
+                            "text" : "Lead maintains cloud and traffic clearance unless operating on an IFR clearance."
+                          },
+                          {
+                            "text" : "Lead always knows Wing's position and monitors Wing's energy, aspect, range, closure, heading crossing angle, and line of sight."
+                          }
+                        ],
+                        "text" : "Lead responsibilities:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Formation tasks take longer than single-ship tasks, so Lead must plan turns, radio changes, checks, and rejoins early."
+                          },
+                          {
+                            "text" : "Lead must understand area boundaries, wind effects, and how maneuver combinations affect ground track."
+                          },
+                          {
+                            "text" : "Lead should manage sun position and avoid forcing Wing to stare through Lead into the sun when practical."
+                          },
+                          {
+                            "text" : "A tight, abrupt maneuver has little training value if Wing cannot safely maintain position."
+                          }
+                        ],
+                        "text" : "Wingman consideration:"
+                      }
+                    ],
+                    "title" : "Principles of Lead"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Lag and pure pursuit describe where Wing points the nose relative to Lead's flight path, which controls spacing and closure."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead pursuit points the nose ahead of Lead's flight path and decreases nose-to-tail separation."
+                          },
+                          {
+                            "text" : "Pure pursuit points the nose at Lead and shows little or no line-of-sight movement; closure initially exists but reduces as fuselages align."
+                          },
+                          {
+                            "text" : "Lag pursuit points the nose behind Lead's flight path and maintains or increases nose-to-tail separation."
+                          }
+                        ],
+                        "text" : "Definitions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "In cruise maneuvering, Wing uses short lead or lag corrections, then returns toward the 60-degree bearing line."
+                          },
+                          {
+                            "text" : "Do not camp at Lead's 6 o'clock; closure is difficult to judge there."
+                          },
+                          {
+                            "text" : "In vertical maneuvering, standard cruise checkpoints may disappear, so preserving step-down is critical."
+                          },
+                          {
+                            "text" : "Supplement technique: compare the inboard horizontal-stabilizer tip to the fuselage star; stab tip on star is pure, stab tip forward of star is lag, and star forward of stab is lead."
+                          }
+                        ],
+                        "text" : "Application:"
+                      }
+                    ],
+                    "title" : "Lag and Pure Pursuit"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Landing Gear Inspection"
+                      },
+                      {
+                        "text" : "Knock-It-Off"
+                      },
+                      {
+                        "text" : "Terminate"
+                      },
+                      {
+                        "text" : "Cruise Maneuvering"
+                      },
+                      {
+                        "text" : "Principles of Lead"
+                      },
+                      {
+                        "text" : "Lag and Pure Pursuit"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "F4104 is a formation support and maneuvering event: inspect gear only with disciplined risk control, stop training correctly, and use pursuit geometry to manage cruise maneuvering."
               },
-              "summary" : "F4104 centers on f4104 and the key procedures students need to explain and execute.",
+              "summary" : "F4104 covers landing gear inspection support, knock-it-off and terminate calls, cruise maneuvering, lead principles, and pursuit geometry.",
               "tags" : [
                 "formation",
                 "flights",
@@ -31749,7 +33075,7 @@
                 }
               ],
               "id" : "formation-flights-f4290",
-              "overview" : "F4290 centers on f4290 and the key procedures students need to explain and execute.",
+              "overview" : "F4290 is the formation check event, so the discussion should be cumulative without becoming a memory dump. Be ready to brief the maneuver contracts, safety stop criteria, formation emergency roles, and the method used to review applicable emergency procedures and N\/W\/Cs.",
               "primaryDocumentIDs" : [
 
               ],
@@ -31788,18 +33114,99 @@
                   {
                     "items" : [
                       {
-                        "text" : "Any previously discussed maneuver"
+                        "text" : "Treat any previously discussed maneuver as a review of contracts, checkpoints, and discontinue criteria rather than a list of isolated steps."
                       },
                       {
-                        "text" : "any emergency procedure"
+                        "children" : [
+                          {
+                            "text" : "For departure work, review lineup, interval takeoff, section takeoff, initial rendezvous, and abort responsibilities."
+                          },
+                          {
+                            "text" : "For parade work, review A-B-C corrections, parade turns into and away, crossunder, breakup and rendezvous, underrun, and lead change."
+                          },
+                          {
+                            "text" : "For recovery work, review cruise-to-parade transition, speed brake coordination, section approaches, break spacing, NORDO recovery, and section missed approach."
+                          },
+                          {
+                            "text" : "For cruise maneuvering, review 60-degree bearing, step-down, lead\/lag\/pure pursuit, terminate, and knock-it-off criteria."
+                          }
+                        ],
+                        "text" : "Study buckets:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Brief the setup, the visual references, the correction priority, and the common unsafe trend for each maneuver."
+                          },
+                          {
+                            "text" : "Know which aircraft owns deconfliction at each point and when Lead must be directive."
+                          },
+                          {
+                            "text" : "Use terminate for expected training stops, knock-it-off for safety concerns, and underrun when a rendezvous geometry is unsafe."
+                          }
+                        ],
+                        "text" : "Check-flight answer format:"
                       }
                     ],
-                    "title" : "Formation Check Flight"
+                    "title" : "Any Previously Discussed Maneuver"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Any emergency procedure means the student must show a repeatable review method, not invent an exhaustive list during the brief."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Start with aircraft control and the applicable NATOPS critical action or checklist."
+                          },
+                          {
+                            "text" : "Add the N\/W\/Cs that change the decision, timing, or crew coordination."
+                          },
+                          {
+                            "text" : "State whether the emergency is handled as individual aircraft, section support, lost sight, blind, NORDO, Section PEL, airborne damaged aircraft, or down-aircraft response."
+                          },
+                          {
+                            "text" : "Preserve formation separation before trying to preserve flight integrity."
+                          }
+                        ],
+                        "text" : "Review method:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Aviate: maintain aircraft control and execute the correct emergency procedure."
+                          },
+                          {
+                            "text" : "Communicate: use the correct aircraft call sign when one aircraft has the emergency, then be directive on tactical and ATC frequencies."
+                          },
+                          {
+                            "text" : "Separate: transfer lead, move to perch, detach, climb, turn away, or establish altitude separation as the emergency requires."
+                          },
+                          {
+                            "text" : "Recover: choose a suitable field or pattern, coordinate support, and avoid rejoining damaged aircraft unless specifically directed and safe."
+                          }
+                        ],
+                        "text" : "Formation emergency priorities:"
+                      }
+                    ],
+                    "title" : "Any Emergency Procedure"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Any Previously Discussed Maneuver"
+                      },
+                      {
+                        "text" : "Any Emergency Procedure"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "F4290 should be studied as a cumulative formation check: know the maneuver contracts, know the stop criteria, and use a disciplined emergency review method with N\/W\/Cs."
               },
-              "summary" : "F4290 centers on f4290 and the key procedures students need to explain and execute.",
+              "summary" : "F4290 is the formation check-flight discussion set for cumulative maneuver review and emergency-procedure review method.",
               "tags" : [
                 "formation",
                 "flights",

@@ -1,0 +1,331 @@
+{
+  "canonicalCoverage": {
+    "HEFOE": [
+      "HEFOE"
+    ],
+    "Hand signals": [
+      "Hand Signals"
+    ],
+    "aborted takeoff": [
+      "Aborted Takeoff"
+    ],
+    "blind procedures": [
+      "Blind Procedures"
+    ],
+    "lost sight procedures": [
+      "Lost Sight Procedures"
+    ],
+    "wingman/flight leader responsibilities": [
+      "Wingman/Flight Leader Responsibilities"
+    ]
+  },
+  "code": "F4101",
+  "overview": "F4101 brings formation fundamentals into the aircraft. The brief should cover signal discipline, lead and wing responsibilities, abort contracts, lost-sight and blind procedures, and the HEFOE system so the section can preserve separation when normal visual or radio communication breaks down.",
+  "primaryDocumentTitles": [
+    "F4101"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "Hand signals are formation commands. They must be passed where Wing can see them, acknowledged clearly, and backed up by radio when the situation is unclear."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead confirms Wing is in position, clears the area, passes the signal high and visible, then looks back for Wing's acknowledgment."
+              },
+              {
+                "text": "Wing acknowledges with a deliberate head nod or gives a no-head-shake if the signal is missed or unclear."
+              },
+              {
+                "text": "Lead executes only after acknowledgment unless the signal itself is an immediate safety-of-flight command."
+              }
+            ],
+            "text": "Signal discipline:"
+          },
+          {
+            "children": [
+              {
+                "text": "Use radio calls in IMC, when a visual signal could be missed, or anytime confusion exists."
+              },
+              {
+                "text": "Do not force a visual-signal answer if aircraft control, spacing, or weather makes a radio call safer."
+              }
+            ],
+            "text": "When to use radio:"
+          }
+        ],
+        "title": "Hand Signals"
+      },
+      {
+        "items": [
+          {
+            "text": "Lead and Wing share the sortie, but they do not share the same immediate job."
+          },
+          {
+            "children": [
+              {
+                "text": "The Designated Flight Lead is administratively responsible for mission objectives and safe, orderly conduct."
+              },
+              {
+                "text": "The Formation Lead is the aircraft physically flying lead at the moment."
+              },
+              {
+                "text": "Lead must be smooth, stable, predictable, and directive."
+              },
+              {
+                "text": "Lead must keep the flight clear of clouds unless on an IFR clearance, clear of other aircraft, and within the assigned area or route."
+              }
+            ],
+            "text": "Lead:"
+          },
+          {
+            "children": [
+              {
+                "text": "Keep Lead in sight and maintain deconfliction."
+              },
+              {
+                "text": "Maintain proper position and correct early with small inputs."
+              },
+              {
+                "text": "Comply with Lead's signals and respond promptly."
+              },
+              {
+                "text": "Back up navigation, communications, fuel awareness, and safety decisions."
+              }
+            ],
+            "text": "Wing:"
+          }
+        ],
+        "title": "Wingman/Flight Leader Responsibilities"
+      },
+      {
+        "items": [
+          {
+            "text": "An aborted takeoff in formation is a separation problem as much as an aircraft problem. Decide, stay on your side, and communicate as soon as aircraft control permits."
+          },
+          {
+            "children": [
+              {
+                "text": "Brief abort contingencies before takeoff."
+              },
+              {
+                "text": "If aborting, execute the NATOPS abort procedure, maintain directional control, remain on the assigned runway side, and transmit intentions."
+              },
+              {
+                "text": "If Lead aborts during an interval takeoff, Wing normally aborts behind Lead while maintaining Wing's side; the 5-second interval should provide spacing."
+              },
+              {
+                "text": "If Wing aborts during an interval takeoff, Wing aborts on Wing's side and transmits once Lead is airborne and Wing is under control."
+              }
+            ],
+            "text": "Interval abort:"
+          },
+          {
+            "children": [
+              {
+                "text": "If either aircraft aborts after brake release, the aborting aircraft stays on its side and executes the abort."
+              },
+              {
+                "text": "The non-aborting aircraft recognizes the rapid line-of-sight change, selects maximum power, maintains side-of-runway discipline, and executes an individual takeoff unless separation cannot be maintained or it has its own emergency."
+              },
+              {
+                "text": "Wing must be prepared to avoid Lead if Lead loses directional control, including changing sides or leaving the prepared surface if required to prevent collision."
+              }
+            ],
+            "text": "Section abort:"
+          },
+          {
+            "children": [
+              {
+                "text": "Aviate: control the aircraft."
+              },
+              {
+                "text": "Navigate: preserve runway-side separation and avoid the other aircraft."
+              },
+              {
+                "text": "Communicate: state intentions to the flight and tower when able."
+              }
+            ],
+            "text": "Priority:"
+          }
+        ],
+        "title": "Aborted Takeoff"
+      },
+      {
+        "items": [
+          {
+            "text": "Lost sight is an IMC procedure. Wing immediately transitions from formation references to instruments and creates predictable separation."
+          },
+          {
+            "children": [
+              {
+                "text": "Transition to instrument scan and maintain aircraft control."
+              },
+              {
+                "text": "Call \"lost sight\" on the tactical frequency."
+              },
+              {
+                "text": "Smoothly reduce power about 10% to reduce closure risk."
+              }
+            ],
+            "text": "Initial actions:"
+          },
+          {
+            "children": [
+              {
+                "text": "Straight and level: Wing turns away for a 30-degree heading change, times for 30 seconds, then parallels Lead's heading."
+              },
+              {
+                "text": "Turns: the outside aircraft rolls wings level and transmits heading and altitude; the inside aircraft continues the turn for at least 30 degrees, then the outside aircraft turns to the assigned heading after 30 seconds."
+              },
+              {
+                "text": "Climbs or descents: Wing levels off, states altitude, and executes the applicable straight or turning lost-sight procedure while Lead continues to assigned altitude with at least 500 ft separation."
+              }
+            ],
+            "text": "Geometry:"
+          },
+          {
+            "children": [
+              {
+                "text": "Inside the FAF, Wing turns away expeditiously, transitions to instruments, and calls lost sight."
+              },
+              {
+                "text": "Lead informs ATC and continues the approach."
+              },
+              {
+                "text": "Wing climbs to FAF or glideslope intercept altitude, proceeds to the MAP, and flies the missed approach unless ATC issues a new clearance."
+              }
+            ],
+            "text": "Inside the FAF:"
+          }
+        ],
+        "title": "Lost Sight Procedures"
+      },
+      {
+        "items": [
+          {
+            "text": "Blind procedures are VMC procedures. The visual aircraft has deconfliction responsibility while the blind aircraft reports altitude and keeps looking."
+          },
+          {
+            "children": [
+              {
+                "text": "Wing calls \"blind\" with altitude."
+              },
+              {
+                "text": "If Lead is visual, Lead directs Wing's eyes using clock position and high, level, or low references."
+              },
+              {
+                "text": "Wing continues to call \"blind\" or \"visual\" until Lead is reacquired."
+              },
+              {
+                "text": "If Wing calls visual, Lead directs the rejoin or continuation of training."
+              }
+            ],
+            "text": "One aircraft blind:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead transmits altitude, maneuvers predictably, and ensures at least 500 ft altitude separation without crossing altitudes."
+              },
+              {
+                "text": "Lead directs a rejoin at the briefed or alternate location."
+              },
+              {
+                "text": "Wing lags Lead's last known position, clears the flight path, follows directive instructions, and maintains altitude separation until visual."
+              },
+              {
+                "text": "TCAS may assist SA but is not the primary rejoin method."
+              }
+            ],
+            "text": "Both aircraft blind:"
+          },
+          {
+            "children": [
+              {
+                "text": "If Wing is blind due to sun, Wing calls \"blind sun\" and lags Lead's last known position."
+              },
+              {
+                "text": "Lead calls continue only if deconfliction can be maintained; otherwise Lead calls knock-it-off."
+              }
+            ],
+            "text": "Blind sun:"
+          }
+        ],
+        "title": "Blind Procedures"
+      },
+      {
+        "items": [
+          {
+            "text": "HEFOE lets a NORDO aircraft communicate the affected system using visual signals."
+          },
+          {
+            "children": [
+              {
+                "text": "Gain the other aircraft's attention first; the formation source uses a weeping signal before passing the affected system."
+              },
+              {
+                "text": "Use hand signals during day and flashlight signals at night if required."
+              },
+              {
+                "text": "The good-radio aircraft coordinates with ATC or tower and keeps the NORDO aircraft supported."
+              }
+            ],
+            "text": "Use:"
+          },
+          {
+            "children": [
+              {
+                "text": "H: Hydraulics."
+              },
+              {
+                "text": "E: Electrical."
+              },
+              {
+                "text": "F: Fuel."
+              },
+              {
+                "text": "O: Oxygen."
+              },
+              {
+                "text": "E: Engine."
+              }
+            ],
+            "text": "Meaning:"
+          }
+        ],
+        "title": "HEFOE"
+      },
+      {
+        "items": [
+          {
+            "text": "Hand Signals"
+          },
+          {
+            "text": "Wingman/Flight Leader Responsibilities"
+          },
+          {
+            "text": "Aborted Takeoff"
+          },
+          {
+            "text": "Lost Sight Procedures"
+          },
+          {
+            "text": "Blind Procedures"
+          },
+          {
+            "text": "HEFOE"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "F4101 is the first aircraft formation event, so the priority is preserving sight, spacing, and communication when the section is still learning the basic contract."
+  },
+  "summary": "F4101 focuses on formation hand signals, lead and wing responsibilities, abort contracts, lost-sight and blind procedures, and HEFOE.",
+  "title": "Hand Signals"
+}

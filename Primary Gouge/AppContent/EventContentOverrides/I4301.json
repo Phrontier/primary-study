@@ -1,0 +1,431 @@
+{
+  "canonicalCoverage" : {
+    "CNAF M-3710.7 takeoff and approach minimums" : [
+      "CNAF M-3710.7 Takeoff and Approach Minimums"
+    ],
+    "DD-175-1 weather brief" : [
+      "DD-175-1 Weather Brief"
+    ],
+    "DD-1801" : [
+      "DD-1801"
+    ],
+    "FSS" : [
+      "FSS"
+    ],
+    "Flight planning" : [
+      "Flight Planning"
+    ],
+    "Strange Field operations" : [
+      "Strange Field Operations"
+    ],
+    "alternate filing minimums" : [
+      "Alternate Filing Minimums"
+    ],
+    "jet log" : [
+      "Jet Log"
+    ]
+  },
+  "code" : "I4301",
+  "overview" : "I4301 starts the instrument navigation block by making the student prove the plan before flying it. The event standard is to connect the route, weather, DD-1801, jet log, alternate, fuel, FSS support, and strange-field plan into one cross-country decision loop.",
+  "primaryDocumentTitles" : [
+    "I4301",
+    "DK Gouge I4301"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Flight planning is the PIC's proof that the route, weather, fuel, airfields, procedures, and risk picture support the intended operation."
+          },
+          {
+            "children" : [
+              {
+                "text" : "CNAF requires the PIC to be familiar with available weather reports and forecasts, NOTAMs, TFRs, fuel requirements, terminal instrument procedures, alternatives if the flight cannot be completed, and anticipated traffic delays."
+              },
+              {
+                "text" : "The PIC and mission commander, when one is designated, must conduct a risk assessment before flight."
+              },
+              {
+                "text" : "Plan the route around preferred IFR routes, SIDs, STARs, published airways, restricted-area avoidance, terrain, weather, and fuel, not just the shortest line between airports."
+              }
+            ],
+            "text" : "Planning scope:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "DoD and joint civil-military airfields are generally authorized, but PPR may be required when they are not home, local training, alternate, or emergency-divert fields."
+              },
+              {
+                "text" : "Civilian airfields must support mission value, training value, or government interest; before planning one, verify local procedures, runway length and load-bearing capability, services, and security."
+              },
+              {
+                "text" : "Closed-tower operations require the proper command authorization; closed airfields are takeoff/landing prohibited except for emergencies."
+              }
+            ],
+            "text" : "Airfield suitability:"
+          }
+        ],
+        "title" : "Flight Planning"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The jet log turns a route into flyable numbers: headings, distances, groundspeeds, ETEs, fuel burns, EFRs, and the DRAFT data needed if the plan changes."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Create a new leg at each NAVAID, for course changes greater than 6 degrees, at each compulsory reporting point, and at both ends of a direct leg."
+              },
+              {
+                "text" : "The first leg is STTO: use 1 minute and 50 pounds unless extended ground time or local conditions require more."
+              },
+              {
+                "text" : "Use climb data, cruise data, winds, route distance, and split-leg entries when the aircraft reaches cruise altitude during a leg."
+              },
+              {
+                "text" : "Round distance and time to the nearest whole number; round any fuel fraction over a 5-pound increment up to the next 5 pounds."
+              }
+            ],
+            "text" : "Leg construction:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Verify actual fuel load, subtract STTO, subtract each leg's planned burn, and carry EFR forward checkpoint by checkpoint."
+              },
+              {
+                "text" : "At the destination, convert fuel remaining to hours plus minutes using cruise fuel flow, then carry that into the alternate line and DRAFT report."
+              },
+              {
+                "text" : "The fuel plan includes climb/route to destination, route to alternate, planned approaches, reserve, start/taxi, total required, total fuel aboard, and spare fuel."
+              },
+              {
+                "text" : "The workbook uses 50 pounds per planned approach, 50 pounds for normal start/taxi, and 115 pounds as the T-6B planning reserve for CNAF's 20-minute maximum-endurance requirement."
+              }
+            ],
+            "text" : "Fuel accountability:"
+          }
+        ],
+        "title" : "Jet Log"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The DD-1801 is the formal DoD flight plan; for IFR, it tells ATC what route, equipment, altitude, timing, and alternates the aircraft is requesting."
+          },
+          {
+            "children" : [
+              {
+                "text" : "CNAF requires the PIC or formation leader to submit a flight plan unless a daily flight schedule is authorized in lieu of the form."
+              },
+              {
+                "text" : "The workbook recommends filing IFR at least 30 minutes before ETD to avoid clearance delay; IFR operations above FL230 should be filed at least 4 hours before ETD when practicable."
+              },
+              {
+                "text" : "Use DD-1801 for domestic or international DoD flight planning, and follow current FLIP General Planning block instructions rather than memorized old examples."
+              }
+            ],
+            "text" : "Why it matters:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Item 7 aircraft identification must match the Mode S Flight ID; mismatches can prevent correlation with the stored flight plan."
+              },
+              {
+                "text" : "Item 8 declares IFR/VFR and type of flight; U.S. domestic ATC systems do not accept a flight plan that begins VFR and later changes to IFR."
+              },
+              {
+                "text" : "Item 9 identifies the aircraft type and wake category; T-6B planning uses the published type designator from current planning guidance."
+              },
+              {
+                "text" : "Item 10 and Item 18 describe equipment, surveillance, PBN, and remarks. For T-6B PBN, verify the current template and do not claim WAAS navigation capability from ADS-B-only WAAS."
+              }
+            ],
+            "text" : "Identity and equipment:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Item 13 uses departure airport and UTC off-block time."
+              },
+              {
+                "text" : "Item 15 carries true airspeed, cruising level, and route. File SIDs, airways, DCT legs, change points, and STARs in the order the aircraft will fly them."
+              },
+              {
+                "text" : "Item 16 includes destination, total EET, and up to two alternate airports."
+              },
+              {
+                "text" : "Item 18 clarifies details such as date of flight, registration, operating agency, delay, destination or alternate names when ZZZZ is used, and plain-language remarks."
+              }
+            ],
+            "text" : "Route and timing:"
+          }
+        ],
+        "title" : "DD-1801"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The DD-175-1 is the military flight weather brief; it feeds the go/no-go decision, the jet log, TOLD, alternate selection, and en route weather plan."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For any intended route forecast to include IMC, obtain a flight-route weather brief from a DoD-qualified forecaster or approved forecasting service."
+              },
+              {
+                "text" : "The primary ashore method is FWB; if FWB is unavailable, approved support may come from NAFC, FSS, Air Force Weather, Marine Corps services, or an approved commercial service."
+              },
+              {
+                "text" : "When filing a DD-175 or DD-1801, request a DD-175-1 from a DoD-qualified forecaster; request it at least 1 hour before the proposed brief time when possible."
+              }
+            ],
+            "text" : "Source and timing:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The brief void time may not exceed the weather-briefed time by more than 3 hours, and may not exceed ETD by more than 30 minutes."
+              },
+              {
+                "text" : "If the brief is outside that window, get an extension or rebrief before takeoff."
+              },
+              {
+                "text" : "All times are Zulu; heights are AGL or MSL as annotated; winds and temperatures support both weather judgment and the jet-log/TOLD calculations."
+              }
+            ],
+            "text" : "Validity:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Part I covers takeoff data: departure, runway temperature, dewpoint, pressure/density altitude, surface and climb winds, local watches or warnings, RSC/RCR, and takeoff-alternate remarks."
+              },
+              {
+                "text" : "Part II covers en route and mission data such as flight-level winds, clouds, obscurations, freezing levels, thunderstorms, turbulence, icing, and precipitation."
+              },
+              {
+                "text" : "Part III covers destination and alternate forecasts; visibility and ceilings are the controlling values for approach minimums and alternate requirements."
+              },
+              {
+                "text" : "Part IV and V preserve comments, hazards, PMSV/PIREP notes, briefing number, briefer identity, void time, and rebrief/extension record."
+              }
+            ],
+            "text" : "What to brief from it:"
+          }
+        ],
+        "title" : "DD-175-1 Weather Brief"
+      },
+      {
+        "items" : [
+          {
+            "text" : "CNAF takeoff and approach minimums are the weather gates that keep an IFR departure, approach commencement, and approach continuation legal and sensible."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For a standard instrument rating, non-precision-supported takeoff requires the published minimums for the available approach, but not less than 300-foot ceiling and 1 SM visibility."
+              },
+              {
+                "text" : "If a compatible precision approach is available and usable for the landing runway, takeoff may use those precision minimums, but never below 200-foot ceiling and 1/2 SM visibility or 2400 RVR."
+              },
+              {
+                "text" : "Before using either number, verify the runway in use, emergency-return approach, NOTAMs, installed equipment, Trouble T data, and departure procedure."
+              }
+            ],
+            "text" : "Takeoff:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A single-piloted aircraft shall not commence an approach if reported weather is below published minimums for the type of approach being flown."
+              },
+              {
+                "text" : "The fixed-wing single-pilot absolute floor is 200-foot ceiling or HAT and 1/2 SM visibility or 2400 RVR."
+              },
+              {
+                "text" : "Do not descend below MDA or continue below DH unless the runway environment is in sight and a safe landing can be made."
+              },
+              {
+                "text" : "Execute the missed approach at DH for a precision approach or at the MAP for a non-precision approach when visual reference or safe landing position is not there."
+              }
+            ],
+            "text" : "Approach:"
+          }
+        ],
+        "title" : "CNAF M-3710.7 Takeoff and Approach Minimums"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Alternate filing minimums decide whether a destination forecast is enough by itself or whether a usable backup field must be filed and fueled."
+          },
+          {
+            "children" : [
+              {
+                "text" : "File using actual departure weather, route weather, and destination/alternate forecasts for 1 hour before ETA until 1 hour after ETA."
+              },
+              {
+                "text" : "If destination weather is forecast below 3000-foot ceiling and 3 SM visibility, an alternate is required."
+              },
+              {
+                "text" : "If destination weather is forecast from 0-0 up to but not including published minimums, the alternate must be forecast 3000-3 or better."
+              },
+              {
+                "text" : "If destination weather is forecast from published minimums up to but not including 3000-3, the alternate must meet published minimums plus 300-1 for a non-precision approach or plus 200-1/2 for a precision approach."
+              }
+            ],
+            "text" : "Filing matrix:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A required alternate must have a published approach compatible with installed and operable navigation equipment."
+              },
+              {
+                "text" : "If the destination lacks that kind of approach, or if the alternate forecast is below 3000-3, the alternate approach must be flyable without two-way radio communication."
+              },
+              {
+                "text" : "Do not use PAR or ASR minimums as the basis for a single-piloted alternate, or when the aircraft has only one operable UHF/VHF transceiver."
+              },
+              {
+                "text" : "For T-6B planning, the required alternate needs an available approach that does not require GPS; do not rely on GPS substitution for an out-of-service NAVAID."
+              }
+            ],
+            "text" : "Usability checks:"
+          }
+        ],
+        "title" : "Alternate Filing Minimums"
+      },
+      {
+        "items" : [
+          {
+            "text" : "FSS is a weather, flight-plan, NOTAM, inflight advisory, emergency, and search-and-rescue support path; use it for flight-service work, not as a substitute for ATC clearance discipline."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Flight Service Specialists are FAA-certified pilot weather briefers. They may translate and interpret available forecasts and reports, but they do not create original forecasts."
+              },
+              {
+                "text" : "FSS briefings may be standard, abbreviated, outlook, or inflight; ask for the kind of brief you actually need."
+              },
+              {
+                "text" : "Common access methods include 1-800-WX-BRIEF, 1800wxbrief.com, published discrete frequencies, and common inflight frequencies such as 122.2 VHF or 255.4 UHF."
+              }
+            ],
+            "text" : "Briefing support:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "When DAIP is unavailable, FSS can support NOTAM review, but request special notices or domestic/international notices explicitly if you need them."
+              },
+              {
+                "text" : "At nonmilitary installations, closing the flight plan is the PIC's responsibility and must be done with flight service or another proper agency."
+              },
+              {
+                "text" : "Canceling an IFR clearance is not the same as closing the flight plan; make sure the landing report is delivered."
+              },
+              {
+                "text" : "If no communication link exists before departure, CNAF permits filing by phone or, when legal, by radio after takeoff, but never use that path to justify unauthorized IMC flight in controlled airspace."
+              }
+            ],
+            "text" : "Flight-plan support:"
+          }
+        ],
+        "title" : "FSS"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Strange field operations start when the aircraft is away from normal support and the PIC must make sure the aircraft is inspected, serviced, secured, and ready for the next launch."
+          },
+          {
+            "children" : [
+              {
+                "text" : "If mission requirements dictate an overnight stay and ground support equipment or personnel are not available, NATOPS makes the PIC responsible for postflight and preflight inspections."
+              },
+              {
+                "text" : "Postflight starts with parking brake set, interior checked, gust lock engaged, and ejection-seat/CFS safety pins installed in both cockpits."
+              },
+              {
+                "text" : "The exterior check looks for leaks, flap and speed-brake condition, gear and door condition, tire damage, brake-wear indicators, loose panels, covers, restraints, chocks, tie-downs, and static grounding as required."
+              }
+            ],
+            "text" : "NATOPS ownership:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Check oil with the dipstick 15 to 20 minutes after shutdown for the most accurate result."
+              },
+              {
+                "text" : "Oil must be serviced within 30 minutes of shutdown; normal level is between ADD and MAX HOT, and oil at or below ADD must be serviced to MAX HOT."
+              },
+              {
+                "text" : "Use the dipstick, not the sight glass, for the correct oil-level indication."
+              }
+            ],
+            "text" : "Oil and servicing:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Secure the aircraft before leaving: canopy locked, external CFS doors closed and locked, baggage door latched and locked, avionics doors latched, and sun shields installed as required."
+              },
+              {
+                "text" : "The wing and tail tie-down points are sufficient in normal conditions; secure the nose gear as well when windy or extreme conditions are anticipated."
+              },
+              {
+                "text" : "If high winds are expected and time permits, move the aircraft to a hangar; NATOPS warns that winds above 80 knots can cause structural damage."
+              },
+              {
+                "text" : "Before planning a strange field, confirm fuel, servicing, security, parking, hangar or tie-down support, and who can move the aircraft if the parking brake must be released for towing."
+              }
+            ],
+            "text" : "Securing the aircraft:"
+          }
+        ],
+        "title" : "Strange Field Operations"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Flight Planning"
+          },
+          {
+            "text" : "Jet Log"
+          },
+          {
+            "text" : "DD-1801"
+          },
+          {
+            "text" : "DD-175-1 Weather Brief"
+          },
+          {
+            "text" : "CNAF M-3710.7 Takeoff and Approach Minimums"
+          },
+          {
+            "text" : "Alternate Filing Minimums"
+          },
+          {
+            "text" : "FSS"
+          },
+          {
+            "text" : "Strange Field Operations"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Build the sortie as one connected package: route, weather, DD-1801, jet log, alternate, fuel, FSS support, and strange-field security all have to agree before launch."
+  },
+  "summary" : "Cross-country planning products, weather and filing rules, alternate logic, FSS support, and strange-field aircraft care.",
+  "title" : "Flight Planning and Jet Logs"
+}

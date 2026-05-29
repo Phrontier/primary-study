@@ -26263,7 +26263,7 @@
                 }
               ],
               "id" : "instruments-sims-i2101",
-              "overview" : "I2101 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I2101 is the first basic-instrument event, so the priority is building a disciplined PAT-to-SCAN loop before the simulator adds more procedure work. Be ready to explain which instrument detects each error, what control fixes it, and how the same scan supports airspeed changes, steep turns, timed turns, climbs, descents, and enroute descent.",
               "primaryDocumentIDs" : [
                 "contents-2-instruments-2-sims-i2100-block-i2101-briefing-guide-1542-166d-2-pdf"
               ],
@@ -26308,6 +26308,340 @@
                   {
                     "items" : [
                       {
+                        "text" : "Instrument scan starts with attitude flying: set power and attitude for the desired performance, then scan to detect error early enough that the correction stays small."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "PAT means Power, Attitude, Trim. Power and attitude establish the performance; trim removes the pressure so the scan can stay ahead of the aircraft."
+                          },
+                          {
+                            "text" : "The power\/control instruments are the ADI and torque gauge. Use them to set the initial pitch, bank, and power picture."
+                          },
+                          {
+                            "text" : "The crosscheck\/performance instruments include altimeter, VSI, airspeed, AOB or roll pointer, turn needle, HSI, and sideslip indicator."
+                          }
+                        ],
+                        "text" : "PAT and scan roles:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the ADI as the hub and the performance instruments as the spokes."
+                          },
+                          {
+                            "text" : "A basic scan sequence is gyro, nose, gyro, wing, gyro, performance or progress, gyro, then additional yaw and power fine-tuning."
+                          },
+                          {
+                            "text" : "Expect the ADI to take about half of the scan. It gives the big picture while the spokes tell you what needs fine tuning."
+                          }
+                        ],
+                        "text" : "Hub-and-spoke method:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For straight and level, use altimeter and VSI for nose, HSI for wing, airspeed for performance, and sideslip plus torque for additional checks."
+                          },
+                          {
+                            "text" : "For constant airspeed climbs and descents, airspeed is the nose crosscheck, HSI is the wing crosscheck, and altimeter is the progress instrument."
+                          },
+                          {
+                            "text" : "If the scan only finds large errors, it is too slow. The goal is early error detection and timely correction."
+                          }
+                        ],
+                        "text" : "Study standard:"
+                      }
+                    ],
+                    "title" : "Instrument Scan Patterns"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Airspeed changes teach smooth power changes while holding heading and altitude. The control loop is simple, but the rudder, pitch, and trim changes happen quickly enough to expose a weak scan."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Practice airspeed changes normally between 150 and 200 KIAS in straight-and-level flight."
+                          },
+                          {
+                            "text" : "Before changing speed, stabilize heading and altitude, then use PAT instead of chasing the airspeed with pitch alone."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For acceleration, advance power to maximum allowable, anticipate right rudder with the power addition, hold altitude with pitch, and trim as pressure builds."
+                          },
+                          {
+                            "text" : "As the aircraft approaches the target airspeed, reduce power as required to hold the new speed and anticipate left rudder with the power reduction."
+                          },
+                          {
+                            "text" : "For deceleration, reduce power to about 15% torque, anticipate left rudder, maintain altitude with pitch, and trim through the change."
+                          },
+                          {
+                            "text" : "Approaching the slower target airspeed, add power as required to maintain the new speed and anticipate right rudder."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft is back in trimmed, level flight at the assigned heading, altitude, and target airspeed."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The speed brake can help with rapid deceleration, but late retraction can overshoot the target airspeed."
+                          },
+                          {
+                            "text" : "Common errors are heading drift from weak rudder or rudder trim and altitude deviations from a slow crosscheck."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Airspeed Changes"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Steep turns are still instrument turns: set the attitude on the ADI, then use scan discipline to hold altitude, AOB, airspeed, and rollout heading."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Practice steep turns normally at 45 or 60 degrees AOB and about 150 KIAS."
+                          },
+                          {
+                            "text" : "For 150 KIAS, expect about 45% torque and 3 degrees nose high for 45 degrees AOB, and about 60% torque and 4 degrees nose high for 60 degrees AOB."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Enter like a normal instrument turn, then add power as bank increases to preserve airspeed."
+                          },
+                          {
+                            "text" : "Hold a constant AOB and correct altitude primarily with pitch."
+                          },
+                          {
+                            "text" : "If a 60-degree turn is descending faster than 1000 FPM, momentarily reduce AOB enough to regain the pitch picture."
+                          },
+                          {
+                            "text" : "Use the one-third rollout rule: start rollout about 15 degrees early from 45 degrees AOB and about 20 degrees early from 60 degrees AOB."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft rolls out on assigned heading, altitude, and airspeed without a balloon or late power correction."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Common errors are altitude loss, drifting away from the assigned AOB, and being late to set the power picture."
+                          },
+                          {
+                            "text" : "Do not fixate on the HSI during rollout; missing the ADI picture usually causes ballooning or a sloppy recovery."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Steep Turns"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Timed turns prove whether the scan can hold altitude and airspeed while the aircraft turns at a predictable rate to an assigned heading."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Start practice turns at 150 KIAS on a cardinal heading."
+                          },
+                          {
+                            "text" : "Lead the clock by 3 seconds before 00 or 30 seconds so the target rate is established on time."
+                          },
+                          {
+                            "text" : "Use a standard-rate turn or 30 degrees AOB, whichever occurs first, when flying in IMC."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For half standard rate, start with about 10% of indicated airspeed as AOB and crosscheck one needle-width deflection."
+                          },
+                          {
+                            "text" : "Half standard rate turns 30 degrees in 20 seconds. Check heading and clock at each 30-degree checkpoint."
+                          },
+                          {
+                            "text" : "For standard rate, start with about 20% of indicated airspeed as AOB and crosscheck two needle-width deflection."
+                          },
+                          {
+                            "text" : "Standard rate turns 30 degrees in 10 seconds. Use the same ahead-or-behind analysis, but scan the nose more aggressively because bank is steeper."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft rolls out on the assigned heading, on time, with altitude and airspeed still under control."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For half standard rate, correct between about 10 and 20 degrees AOB."
+                          },
+                          {
+                            "text" : "For standard rate, correct between about 15 and 30 degrees AOB."
+                          },
+                          {
+                            "text" : "Common errors are missing the 3-second lead, confusing ahead versus behind, overcorrecting bank, flying unbalanced, or losing altitude from a poor nose attitude."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Timed Turns"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Constant airspeed climbs and descents build the habit that nose attitude controls airspeed while power primarily changes climb or descent performance."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Set a clean aircraft at 150 KIAS on a numbered or cardinal heading."
+                          },
+                          {
+                            "text" : "Crosscheck airspeed for nose, HSI for wing, altimeter for progress, and sideslip plus torque for additional control."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For descent, reduce power to about 15% and lower the nose to 0 degrees, anticipating left rudder."
+                          },
+                          {
+                            "text" : "Adjust nose attitude to hold 150 KIAS."
+                          },
+                          {
+                            "text" : "About 50 feet before level-off, add power to about 33% and raise the nose to about 3.5 degrees nose high, anticipating right rudder."
+                          },
+                          {
+                            "text" : "For climb, add power to about 55% and raise the nose to about 6 degrees nose high, anticipating right rudder."
+                          },
+                          {
+                            "text" : "About 50 feet before level-off from the climb, reduce power to about 33% and lower the nose to about 3.5 degrees nose high, anticipating left rudder."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft levels at the assigned altitude with 150 KIAS, heading control, and trim stabilized."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Pitch is primarily airspeed control, but pitch changes also affect VSI; power is the main rate-control tool."
+                          },
+                          {
+                            "text" : "Common errors are weak rudder trim, slow power setting, and overcontrolling the nose while correcting airspeed."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Constant Airspeed Climbs and Descents"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Enroute descent is a controlled high-rate descent that still has to look predictable to ATC and stable in the last 1000 feet before level-off."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Confirm the assigned altitude, report leaving the current altitude for the new altitude, and start the descent checklist."
+                          },
+                          {
+                            "text" : "Plan the descent so the final 1000 feet can be reduced to a controlled 500 to 1500 FPM instead of arriving at level-off with excess rate."
+                          }
+                        ],
+                        "text" : "Entry setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Establish and maintain about 200 to 250 KIAS and roughly 4000 FPM, then fine tune power and nose attitude as required."
+                          },
+                          {
+                            "text" : "About 1000 feet before level-off, adjust pitch to slow the descent to 500 to 1500 FPM."
+                          },
+                          {
+                            "text" : "Level at the assigned altitude and transition to the desired cruise speed with power as required."
+                          },
+                          {
+                            "text" : "For the NATOPS enroute descent profile, lower the nose about 10 degrees nose low, set about 10% torque approaching 220 KIAS, and fine tune around 220 KIAS and 4000 FPM."
+                          }
+                        ],
+                        "text" : "Execution:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The aircraft is level at the assigned altitude, back in a cruise-speed plan, and no longer carrying a high descent rate."
+                          }
+                        ],
+                        "text" : "Maneuver complete when:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The speed brake or idle power can create very high descent rates, so use them only with a plan to be stabilized by the last 1000 feet."
+                          },
+                          {
+                            "text" : "Common errors are missing the descent checklist, losing heading with power or airspeed changes, and failing to reduce rate before level-off."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "En Route Descent"
+                  },
+                  {
+                    "items" : [
+                      {
                         "text" : "Instrument scan patterns"
                       },
                       {
@@ -26326,12 +26660,12 @@
                         "text" : "en route descent"
                       }
                     ],
-                    "title" : "Basic Instruments"
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Build the scan first: use PAT to set the performance picture, then use the right crosscheck instrument to catch and correct small errors before they become large deviations."
               },
-              "summary" : "I2101 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "Basic instrument scan, airspeed control, turns, climbs, descents, and enroute descent discipline.",
               "tags" : [
                 "instruments",
                 "sims",

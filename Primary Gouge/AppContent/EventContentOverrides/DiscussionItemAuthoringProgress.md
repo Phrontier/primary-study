@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: not started
-- Current event: `I2101`
-- Next action: author `I2101` discussion-item override from canonical syllabus items, local event sources, and Instrument Navigation FTI.
-- Last validated event: none
-- Last event commit: none
-- Last manifest validation: not run for Instruments authoring
-- Last build-for-testing: not run for Instruments authoring
+- Status: `I2101` complete; awaiting review before continuing to `I2102`
+- Current event: `I2102`
+- Next action: review the `I2101` test output, then author `I2102` only if approved.
+- Last validated event: `I2101`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I2101.json`
+- Last manifest validation: `I2101` authored; no `I2101` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I2101`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -55,7 +55,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 | Event | Title | Media | Kind | Block | Items | Status | Commit | Notes |
 | --- | --- | --- | --- | --- | ---: | --- | --- | --- |
-| I2101 | Instrument Scan Patterns | UTD | sim | I21 Basic Instruments | 6 | pending | - | Start here. |
+| I2101 | Instrument Scan Patterns | UTD | sim | I21 Basic Instruments | 6 | complete | use git log | Authored from syllabus membership, local event docs, briefing guide, and Instrument Navigation FTI; no `systemsBrief`; manifest/audit/build passed. |
 | I2102 | IMC Emergencies | UTD | sim | I21 Basic Instruments | 3 | pending | - | - |
 | I2103 | Approach Maneuver | UTD | sim | I21 Basic Instruments | 5 | pending | - | - |
 | I2201 | HSI Orientation | UTD | sim | I22 Radio Instruments | 6 | pending | - | - |

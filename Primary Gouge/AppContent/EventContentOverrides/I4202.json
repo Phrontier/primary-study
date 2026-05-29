@@ -1,0 +1,205 @@
+{
+  "canonicalCoverage" : {
+    "FMS flight plan usage (SID/STAR, holding, approach) and FMS arrivals" : [
+      "FMS Flight Plan Usage",
+      "FMS Arrivals"
+    ]
+  },
+  "code" : "I4202",
+  "overview" : "I4202 is the FMS arrival event: build and verify the route, load procedures from the current database, manage discontinuities and crew edits, then fly the RNAV arrival or approach with chart discipline instead of blind magenta-line trust. The event standard is to make the FMS support the clearance while the chart, ATC clearance, and aircraft state remain the controlling references.",
+  "primaryDocumentTitles" : [
+    "I4202",
+    "DK Gouge I4202"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "An FMS flight plan is one active route containing an origin airport, destination airport, and at least one waypoint; two routes may be loaded, but only one can be active."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Create or recall the route on the ROUTE page, review and edit the waypoint sequence on the LEGS page, and add SID, STAR, and approach procedures from the DEP/ARR page."
+              },
+              {
+                "text" : "Use the current navigation database for procedures. A SID, STAR, approach, or transition should be retrieved by procedure name and verified against the chart, not hand-built as a loose list of waypoints."
+              },
+              {
+                "text" : "The flight number on MFD ROUTE page 1 is the Flight ID transmitted to ATC through Mode S."
+              },
+              {
+                "text" : "Local habit may reserve RTE 1 for the primary route and RTE 2 for the filed alternate, but the aircraft truth is that only the active route drives navigation."
+              }
+            ],
+            "text" : "Route structure:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "During edits, expect a flashing green EXEC cue on PFD/NAV and an inverse cyan MOD cue on the LEGS page."
+              },
+              {
+                "text" : "Press EXEC on the UFCP to make the modification active, or ERASE before execution to discard the pending modification."
+              },
+              {
+                "text" : "Only one cockpit can edit the flight plan at a time. If the other cockpit tries to edit before EXEC, the FMS can show ENTRY CONFLICT."
+              },
+              {
+                "text" : "The active TO waypoint and active leg are highlighted magenta; inactive-route waypoint names are cyan. Use color as a cue, then verify the actual leg data."
+              }
+            ],
+            "text" : "Edit and execute cues:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Review the LEGS page before EXEC for waypoint order, course, distance, altitude/speed advisory data, and procedure leg type."
+              },
+              {
+                "text" : "Route discontinuities are inserted when the FMS cannot build a continuous path, such as after some direct-to, procedure, or route insertions."
+              },
+              {
+                "text" : "Close discontinuities only after verifying the chart and clearance support the connection. A clean magenta line is not proof that the route is legal."
+              },
+              {
+                "text" : "Any waypoint may be made the current TO waypoint by moving it to the TO position, but doing so removes intervening waypoints and can bypass restrictions."
+              },
+              {
+                "text" : "FMS turn anticipation can roll in or out up to about 4 degrees per second and up to 30 degrees AOB, but the pilot is still responsible for airspace, restrictions, and clearance compliance."
+              }
+            ],
+            "text" : "LEGS-page discipline:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For SID selection, choose the runway, SID, and transition from DEP/ARR, then review the first legs and restrictions before EXEC."
+              },
+              {
+                "text" : "For STAR selection, choose the destination arrival and transition, review all legs and restrictions, close only valid discontinuities, then execute."
+              },
+              {
+                "text" : "For approach selection, choose the approach and transition from DEP/ARR, verify the initial, final, and missed-approach legs, then execute."
+              },
+              {
+                "text" : "For holding, use the HOLD page or the /H scratchpad method on the desired fix, then verify direction, leg length or timing, and the clearance that authorizes the hold."
+              }
+            ],
+            "text" : "Procedures in the route:"
+          }
+        ],
+        "title" : "FMS Flight Plan Usage"
+      },
+      {
+        "items" : [
+          {
+            "text" : "FMS arrivals use the FMS to transition from en route structure to a STAR, TAA, RNAV approach, or vector-to-final setup while the chart and clearance remain controlling."
+          },
+          {
+            "children" : [
+              {
+                "text" : "A STAR clearance authorizes the published lateral route and any assigned restrictions, but published expect altitudes or speeds are planning information until ATC assigns or clears them."
+              },
+              {
+                "text" : "A TAA transitions aircraft from RNAV en route structure into protected terminal airspace and provides at least 1000 feet of obstacle clearance within the depicted sector."
+              },
+              {
+                "text" : "Being cleared direct to an IAF or IF/IAF without an approach clearance does not authorize descent to the lower TAA altitude."
+              },
+              {
+                "text" : "Once cleared for the approach and inside the applicable TAA sector, descend no lower than the depicted minimum altitude for that sector unless ATC assigns something more restrictive."
+              }
+            ],
+            "text" : "Arrival clearance meaning:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The T-6B is certified to fly RNAV (GPS) approaches to LNAV MDA minimums only; do not use LNAV/VNAV, VNAV, or LPV minimums."
+              },
+              {
+                "text" : "GPS stand-alone approaches require the procedure to be loaded from the current database; underlying ground-based NAVAIDs are not required, but may be monitored when available."
+              },
+              {
+                "text" : "GPS overlay of non-precision procedures is limited to authorized overlays retrievable from the current database. Localizer, LDA, and SDF procedures are not authorized as GPS overlays."
+              },
+              {
+                "text" : "For any RNAV DP, STAR, or approach, the loaded FMS procedure must match the charted procedure and clearance."
+              }
+            ],
+            "text" : "GPS/RNAV limits:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use LDDHA: Load the GPS approach, Direct to the IAWP, Display source to FMS, Hold/HILO or missed approach set correctly, and Approach mode verified."
+              },
+              {
+                "text" : "If radar-vectored to final, make the FAWP the active leg and extend the inbound final approach course as required, then comply with vectoring instructions until cleared for the approach."
+              },
+              {
+                "text" : "Slow to 150 KIAS within 5 NM of the IAWP when flying the full published entry."
+              },
+              {
+                "text" : "Transition to before-approach configuration within 5 NM of the FAWP."
+              },
+              {
+                "text" : "Expect the HSI scale-change cue near 3 NM from the FAWP and verify APR annunciation near 2 NM from the FAWP."
+              }
+            ],
+            "text" : "FMS setup flow:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "At the FAWP, execute the 6 Ts as applicable, then descend using about 20% torque, 120 KIAS, and a stabilized rate not greater than 1000 FPM."
+              },
+              {
+                "text" : "Level at MDA and fly to the MAWP; do not let the FMS lead you into an early descent below MDA."
+              },
+              {
+                "text" : "If the runway environment is not in sight or landing is unsafe at the MAWP, execute the missed approach."
+              },
+              {
+                "text" : "The FMS will not automatically sequence the missed approach at the MAWP; once stabilized in the climb and clean, select MISS APR and EXEC as required to sequence the published missed."
+              }
+            ],
+            "text" : "Final and missed approach:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If GPS integrity is lost before the FAWP, transition to an authorized backup approach if available."
+              },
+              {
+                "text" : "If no backup is available before the FAWP, continue on course to the FAWP, maintain the FAWP altitude to the MAWP, then execute the missed approach."
+              },
+              {
+                "text" : "If GPS integrity is lost inside the FAWP, treat it as serious: transition to an authorized backup if available, climb to missed-approach altitude, continue tracking to the MAWP, and inform ATC as soon as practical."
+              },
+              {
+                "text" : "Common errors are loading the wrong approach or transition, misusing TAA/feeder altitudes, late BAC, missing APR mode, and using the wrong minimums."
+              }
+            ],
+            "text" : "Integrity and common errors:"
+          }
+        ],
+        "title" : "FMS Arrivals"
+      },
+      {
+        "items" : [
+          {
+            "text" : "FMS Flight Plan Usage (SID/STAR, Holding, Approach) and FMS Arrivals"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use the FMS deliberately: build and verify the route, execute only chart-supported changes, then fly FMS arrivals with TAA, APR-mode, GPS-integrity, and missed-approach sequencing discipline."
+  },
+  "summary" : "FMS route/procedure management, RNAV arrival setup, GPS approach limits, and missed-approach sequencing.",
+  "title" : "FMS Arrivals"
+}

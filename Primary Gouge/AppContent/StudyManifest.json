@@ -30454,9 +30454,10 @@
                 }
               ],
               "id" : "instruments-sims-i3203",
-              "overview" : "I3203 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I3203 is a degraded-instrument recovery event. The standard is to accept radar turn commands without a reliable heading system, transition to the BFI when primary displays are unreliable, and keep aircraft control ahead of checklist or radio workload.",
               "primaryDocumentIDs" : [
-                "contents-2-instruments-2-sims-i3200-block-i3203-briefing-guide-1542-166d-pdf"
+                "contents-2-instruments-2-sims-i3200-block-i3203-briefing-guide-1542-166d-pdf",
+                "contents-2-instruments-2-sims-scenarios-i3203-1542-166d-pdf"
               ],
               "questionBanks" : [
 
@@ -30520,15 +30521,107 @@
                   {
                     "items" : [
                       {
-                        "text" : "No-gyro approach and BFI approach"
+                        "text" : "A no-gyro approach is available under radar control when the directional gyro or stabilized compass information is inoperative or unreliable."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Tell ATC the heading system is unreliable and request a no-gyro PAR, ASR, PAR without glideslope, or no-gyro vectors to a visual approach if conditions support it."
+                          },
+                          {
+                            "text" : "Comply with normal PAR or ASR configuration, minimums, lost-communication, and missed-approach procedures; no-gyro only changes how turns are commanded."
+                          },
+                          {
+                            "text" : "ATC may also initiate no-gyro vectors if they observe incorrect directional responses."
+                          }
+                        ],
+                        "text" : "When to request it:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Before final, make all turns at standard rate unless the controller directs otherwise, and start the turn immediately when told \"turn left\" or \"turn right.\""
+                          },
+                          {
+                            "text" : "Stop the turn immediately when told \"stop turn.\""
+                          },
+                          {
+                            "text" : "On final, use half-standard-rate turns unless the controller directs another rate."
+                          },
+                          {
+                            "text" : "Acknowledge instructions unless ATC states no further acknowledgements are required."
+                          },
+                          {
+                            "text" : "The common errors are slow turn compliance, using the wrong turn rate, arriving on final late to before-approach configuration, and confusing missed-approach, climbout, and lost-communication instructions."
+                          }
+                        ],
+                        "text" : "Controller-commanded turns:"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "No-Gyro Approach"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A BFI approach is the control plan when the PFD or primary attitude\/air-data picture is unusable because of ADC, IRU, IAC, or display failures."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Transition to the BFI first, then stabilize straight-and-level flight before troubleshooting expands."
+                          },
+                          {
+                            "text" : "Use coordinated rudder and aileron to level the wings, set a known pitch attitude, and crosscheck airspeed, altitude, vertical speed, and performance."
+                          },
+                          {
+                            "text" : "Complete the applicable NATOPS emergency procedure only after the aircraft is under control."
+                          }
+                        ],
+                        "text" : "Control first:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The BFI does not present turn information like the PFD; use attitude, heading trend, and the 10 percent or 20 percent bank-start rules for half-standard-rate or standard-rate turns."
+                          },
+                          {
+                            "text" : "The sideslip indicator is on top of the roll pointer and moves with it, which looks different from the PFD."
+                          },
+                          {
+                            "text" : "The altimeter uses 20-foot increments, the heading display shows only a partial scale, and VSI is a digital readout with up or down trend."
+                          },
+                          {
+                            "text" : "Use small corrections. The BFI workload trap is overcontrolling because the display looks unfamiliar."
+                          }
+                        ],
+                        "text" : "Display differences:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "A BFI recovery may pair naturally with no-gyro vectors or a radar approach because ATC can reduce heading-reference workload while the pilot preserves attitude and performance."
+                          },
+                          {
+                            "text" : "If communications, transponder, or remaining avionics are degraded too, declare the emergency and ask for the simplest recovery that preserves terrain clearance and workload margin."
+                          }
+                        ],
+                        "text" : "Approach mindset:"
+                      }
+                    ],
+                    "title" : "BFI Approach"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "No-Gyro Approach and BFI Approach"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Let radar control reduce the heading workload, transition to the BFI before troubleshooting, and fly the degraded-instrument approach with small corrections and clear missed-approach logic."
               },
-              "summary" : "I3203 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "No-gyro radar approach execution and BFI approach control after primary instrument failures.",
               "tags" : [
                 "instruments",
                 "sims",

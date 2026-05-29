@@ -34172,7 +34172,7 @@
                 }
               ],
               "id" : "capstone-sims-cs3102",
-              "overview" : "CS3102 centers on cs3102 and the key procedures students need to explain and execute.",
+              "overview" : "CS3102 is the advanced IMC emergency capstone sim. It expects the student to connect familiarization review, IMC emergency judgment, and lost-communications rules while still flying the aircraft, managing task saturation, and choosing the safest recovery path.",
               "primaryDocumentIDs" : [
                 "contents-5-capstone-2-sims-cs3102-pdf"
               ],
@@ -34217,21 +34217,185 @@
                   {
                     "items" : [
                       {
-                        "text" : "Any previously discussed familiarization items"
+                        "text" : "Use the familiarization review to prove the basics still hold when the sim adds weather, approaches, emergencies, and communications failure."
                       },
                       {
-                        "text" : "IMC emergencies"
+                        "children" : [
+                          {
+                            "text" : "Be ready for G-warm, aerobatics, stalls, spin, unusual-attitude recovery, landing profiles, waveoff, ELP, and instrument approach transitions."
+                          },
+                          {
+                            "text" : "For each prior FAM item, brief purpose, setup, safety boundary, recovery cue, and the most likely error."
+                          },
+                          {
+                            "text" : "Keep trim, coordination, checklist discipline, and energy management connected to the instrument task that follows."
+                          }
+                        ],
+                        "text" : "Review set:"
                       },
                       {
-                        "text" : "lost communications (FIH)"
+                        "children" : [
+                          {
+                            "text" : "The event source introduces total communications failure during radar vectors to final in IMC, so review FAM maneuvers with enough organization left over for IFR emergency decision making."
+                          },
+                          {
+                            "text" : "Do not answer with a local-only route or canned profile; use current weather, fuel, clearance, approach status, and aircraft condition."
+                          }
+                        ],
+                        "text" : "Capstone emphasis:"
                       }
                     ],
-                    "title" : "Advanced Familiarization\/ Radio Instruments Training"
+                    "title" : "Any Previously Discussed Familiarization Items"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "IMC emergencies are judgment problems first: maintain aircraft control, analyze the situation, take proper action, and land as soon as conditions require."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Maintain aircraft control and establish a reliable instrument scan before troubleshooting."
+                          },
+                          {
+                            "text" : "Execute required critical action memory items immediately, then use the checklist when time and aircraft control permit."
+                          },
+                          {
+                            "text" : "Use CRM inside and outside the cockpit: divide tasks, talk to ATC, and ask for vectors or priority handling when needed."
+                          },
+                          {
+                            "text" : "Modify procedures as required for multiple emergencies, terrain, weather, fuel, or aircraft-control limits."
+                          }
+                        ],
+                        "text" : "Emergency order:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For inadvertent IMC, spatial disorientation, malfunction, or IMC abort, climb immediately to the applicable emergency route altitude or safe altitude."
+                          },
+                          {
+                            "text" : "Squawk 7700 if declaring an emergency or unable to communicate normally."
+                          },
+                          {
+                            "text" : "Notify ATC of intentions when able and request vectors to a suitable field if that is the safest plan."
+                          },
+                          {
+                            "text" : "If already on an IFR clearance, do not deviate from clearance or route without ATC coordination unless emergency authority is required."
+                          }
+                        ],
+                        "text" : "IMC application:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "NATOPS and procedural references support judgment; they do not replace it."
+                          },
+                          {
+                            "text" : "Do not let communications, navigation, or checklist work pull the scan away from attitude, altitude, airspeed, and terrain clearance."
+                          }
+                        ],
+                        "text" : "N\/W\/C focus:"
+                      }
+                    ],
+                    "title" : "IMC Emergencies"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Lost communications in IFR conditions requires a disciplined plan, but pilot judgment still determines whether the situation has become an emergency."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If radio failure occurs in VMC, or VMC is encountered after the failure, continue under VFR and land as soon as practicable at a suitable field."
+                          },
+                          {
+                            "text" : "Land as soon as practicable is not the same as land immediately; do not choose an unsuitable or unauthorized field just to end the radio problem."
+                          }
+                        ],
+                        "text" : "VFR conditions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Fly the last route assigned in an ATC clearance."
+                          },
+                          {
+                            "text" : "If being radar vectored, proceed direct to the fix, route, or airway specified in the vector clearance."
+                          },
+                          {
+                            "text" : "If no assigned route applies, fly the route ATC advised to expect."
+                          },
+                          {
+                            "text" : "If none of those exist, fly the filed flight-plan route."
+                          }
+                        ],
+                        "text" : "Route, AVEF:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For each route segment, fly the highest of assigned altitude, minimum IFR altitude, or expected altitude."
+                          },
+                          {
+                            "text" : "If an expect-further-climb altitude was issued, maintain assigned or minimum altitude until the expected time or fix, then climb as cleared by the lost-comm rule set."
+                          },
+                          {
+                            "text" : "Comply with MEA, MCA, and MRA requirements as the route changes."
+                          }
+                        ],
+                        "text" : "Altitude, AME:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the clearance limit is an IAF, begin descent and approach as close as possible to the EFC time, or ETA if no EFC was received."
+                          },
+                          {
+                            "text" : "If the clearance limit is not an IAF, leave at the EFC time if received, or upon arrival if no EFC was received, then proceed to an IAF and begin descent or approach as close as possible to ETA."
+                          }
+                        ],
+                        "text" : "Clearance limit:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Squawk 7600 for radio failure unless emergency authority requires a different code."
+                          },
+                          {
+                            "text" : "Attempt contact on the last assigned frequency, available FSS or controlling agencies, and 121.5 if available."
+                          },
+                          {
+                            "text" : "When contact is restored, give position, altitude, last assigned frequency, and request further clearance."
+                          },
+                          {
+                            "text" : "ATC may assume lost-comm compliance, but the pilot may deviate under emergency authority when circumstances demand it."
+                          }
+                        ],
+                        "text" : "Squawk and recontact:"
+                      }
+                    ],
+                    "title" : "Lost Communications (FIH)"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Any Previously Discussed Familiarization Items"
+                      },
+                      {
+                        "text" : "IMC Emergencies"
+                      },
+                      {
+                        "text" : "Lost Communications (FIH)"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "CS3102 should be studied as an IMC emergency decision event: keep the aircraft under control, use emergency judgment, and apply lost-communications rules without losing the scan."
               },
-              "summary" : "CS3102 centers on cs3102 and the key procedures students need to explain and execute.",
+              "summary" : "CS3102 covers familiarization review, IMC emergency priorities, and FIH lost-communications logic.",
               "tags" : [
                 "capstone",
                 "sims",

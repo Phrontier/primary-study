@@ -31949,7 +31949,7 @@
                 }
               ],
               "id" : "instruments-flights-i4101",
-              "overview" : "I4101 prepares the student to plan and fly the assigned instrument profile with the required procedures, comm flow, and standards.",
+              "overview" : "I4101 is the first aircraft event in the radio-instrument sequence. The event standard is to turn CRM into cockpit behavior, enter and correct holding without losing SA, and fly a VOR final segment on speed, on course, and above MDA until the approach permits descent.",
               "primaryDocumentIDs" : [
 
               ],
@@ -31988,21 +31988,233 @@
                   {
                     "items" : [
                       {
+                        "text" : "CRM is the use of defined behavioral skills on every flight to reduce crew-preventable errors, improve coordination, and manage risk."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The seven CRM skills are decision making, assertiveness, mission analysis, communication, leadership, adaptability\/flexibility, and situational awareness."
+                          },
+                          {
+                            "text" : "Decision making is not just choosing an option; it includes assessing the situation, verifying information, identifying solutions, anticipating consequences, communicating the decision, and evaluating the result."
+                          },
+                          {
+                            "text" : "Assertiveness is professional participation. Maintain a safety-relevant position until the facts show another option is better."
+                          },
+                          {
+                            "text" : "Communication must transfer and acknowledge the right information at the right time: aircraft control, altitude restrictions, approach clearance, missed-approach plan, fuel, and task saturation."
+                          }
+                        ],
+                        "text" : "Behavioral skills:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Threat and Error Management treats threats, errors, and undesired aircraft states as a continuous loop: identify threats, resist or trap errors, and recover from aircraft states that reduce margins."
+                          },
+                          {
+                            "text" : "CRM skills are the tools; TEM is the framework for using those tools before, during, and after an instrument task."
+                          },
+                          {
+                            "text" : "In this event, likely threats include radio congestion, clearance ambiguity, high cockpit workload entering holding, approach setup errors, weather changes, and task fixation near MDA or MAP."
+                          },
+                          {
+                            "text" : "Procedural compliance is a CRM habit. Use briefed flows, checklists, and positive verbal transfer instead of assuming the other pilot or the automation has it handled."
+                          }
+                        ],
+                        "text" : "TEM application:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Brief who owns aircraft control, radios, FMS\/UFCP work, charts, checklist calls, and approach backup duties before the workload starts."
+                          },
+                          {
+                            "text" : "Transfer aircraft or subsystem control with positive verbal communication over the ICS. If ICS is unavailable, use the NATOPS backup: the pilot requesting control shakes the stick, and the pilot relinquishing control raises both hands."
+                          },
+                          {
+                            "text" : "Avoid sandbag syndrome: the student still owns active monitoring, callouts, and challenge even when the instructor is capable of fixing the situation."
+                          },
+                          {
+                            "text" : "Use the event SSRs as CRM tasks too: front\/rear cockpit differences and the vertigo demonstration need briefed responsibilities, not improvised cockpit choreography."
+                          }
+                        ],
+                        "text" : "Two-seat execution:"
+                      }
+                    ],
+                    "title" : "CRM"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Holding keeps the aircraft inside protected airspace around a fix until ATC issues further clearance."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Start slowing within 3 minutes or 5 NM of a clearance limit if further clearance has not been received."
+                          },
+                          {
+                            "text" : "The normal T-6B holding airspeed is 150 KIAS. Published maximums are 200 KIAS through 6000 feet MSL, 230 KIAS from 6001 to 14,000 feet, and 265 KIAS above 14,000 feet, with chart or field exceptions."
+                          },
+                          {
+                            "text" : "A full uncharted holding clearance includes direction from the fix, holding fix, radial\/course\/bearing\/airway\/route, leg length if distance is used, direction of turns if nonstandard, and EFC."
+                          },
+                          {
+                            "text" : "If no pattern is charted and no holding instructions are issued, ask ATC before reaching the clearance limit."
+                          },
+                          {
+                            "text" : "EFC is not clearance to leave holding or start an approach unless lost-communications rules apply."
+                          }
+                        ],
+                        "text" : "Clearance and speed:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Standard holding uses right turns; nonstandard holding uses left turns."
+                          },
+                          {
+                            "text" : "Determine entry by comparing aircraft heading to the reciprocal of the holding course. Use direct, parallel, or teardrop entry as appropriate for the pattern direction."
+                          },
+                          {
+                            "text" : "If the reciprocal of the holding course is within 5 degrees of an entry boundary, either adjacent entry is acceptable."
+                          },
+                          {
+                            "text" : "During teardrop entries with DME or ATD legs of 4 NM or more, turn to parallel the holding course after 4 NM to avoid excessive displacement."
+                          },
+                          {
+                            "text" : "Use the 6 Ts at the fix and through the pattern: time, turn, time, transition, twist, talk."
+                          }
+                        ],
+                        "text" : "Entry logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Make holding turns at standard rate, not more than 30 degrees AOB."
+                          },
+                          {
+                            "text" : "Fly headings outbound and track the holding course inbound."
+                          },
+                          {
+                            "text" : "Use Tail-Radial-Turn at the end of the outbound leg to decide the direction of the inbound turn toward the holding radial."
+                          },
+                          {
+                            "text" : "Use a no-wind orbit to identify wind direction and timing error, then apply correction orbits."
+                          },
+                          {
+                            "text" : "Triple the inbound crab on the outbound leg for no more than one minute, then continue any remaining outbound time with single-drift correction."
+                          },
+                          {
+                            "text" : "Adjust outbound time by the inbound timing error: if the inbound leg was short, add time outbound; if it was long, subtract time outbound."
+                          }
+                        ],
+                        "text" : "Corrections:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Report entering holding with PTA: position, time, altitude or flight level, unless the radar-training exception applies."
+                          },
+                          {
+                            "text" : "Confirm EFC at least 5 minutes before the EFC time."
+                          },
+                          {
+                            "text" : "Report leaving holding when required; altitude and time are not normally part of the leaving-holding report."
+                          },
+                          {
+                            "text" : "If cleared for the approach while in a published hold, listen for tense. Present-tense clearance may allow immediate turn toward the IAF; future-tense clearance requires waiting for the stated condition."
+                          },
+                          {
+                            "text" : "Keep fuel, EFC, altitude, and next clearance in the scan. In stacked holding, altitude control is as important as lateral geometry."
+                          }
+                        ],
+                        "text" : "Communications and SA:"
+                      }
+                    ],
+                    "title" : "Holding"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A VOR non-precision final segment should be flown on speed, on course, and to a controlled level-off at or before MDA so the aircraft is set up for landing or missed approach."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Arrive at the FAF configured to before-approach condition."
+                          },
+                          {
+                            "text" : "At the FAF, execute the 6 Ts: start timing if required, turn shortest direction to parallel or intercept the final approach course, transition to descent, twist the FAC into the CDI if needed, and talk when a report is required."
+                          },
+                          {
+                            "text" : "Use about 20% torque for a 120 KIAS descent to the next segment altitude or MDA, adjusting pitch for airspeed and power for descent rate."
+                          },
+                          {
+                            "text" : "Keep the descent stabilized and not more than 1000 FPM."
+                          }
+                        ],
+                        "text" : "FAF actions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Begin arresting descent about 100 feet before MDA."
+                          },
+                          {
+                            "text" : "Level at MDA at or before the published or derived VDP, maintain about 120 KIAS, and continue to the MAP."
+                          },
+                          {
+                            "text" : "Do not descend below MDA just because the runway environment is in sight; wait until reaching the VDP and ensure a safe landing can be made."
+                          },
+                          {
+                            "text" : "If no VDP is published, a derived VDP may be computed as HAT divided by 300 for a roughly 3-degree descent path, but absence of a published VDP may indicate obstacle-clearance concerns."
+                          },
+                          {
+                            "text" : "Use radar-altimeter bugging as a backup low-altitude cue when appropriate; it is not the primary method for identifying DA\/DH or MDA."
+                          }
+                        ],
+                        "text" : "MDA and VDP discipline:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "VOR approaches may identify the MAP by timing, DME, DME backed up with timing, or station passage; brief the primary and backup method before the FAF."
+                          },
+                          {
+                            "text" : "If the field is in sight and a safe landing can be made, maneuver to land using the briefed visual segment."
+                          },
+                          {
+                            "text" : "At the MAP, if the field is not in sight or a safe landing cannot be made, execute the missed approach."
+                          },
+                          {
+                            "text" : "Common errors are excessive corrections near the VOR, failing to back up DME with timing, descending below MDA, and late MAP recognition."
+                          }
+                        ],
+                        "text" : "MAP and missed approach:"
+                      }
+                    ],
+                    "title" : "VOR Approach Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
                         "text" : "CRM"
                       },
                       {
-                        "text" : "holding"
+                        "text" : "Holding"
                       },
                       {
-                        "text" : "VOR approach procedures"
+                        "text" : "VOR Approach Procedures"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Make CRM visible in the cockpit, use holding procedures to protect airspace and timing, and fly the VOR final with MDA, VDP, and MAP discipline."
               },
-              "summary" : "I4101 prepares the student to plan and fly the assigned instrument profile with the required procedures, comm flow, a...",
+              "summary" : "CRM\/TEM in the aircraft, holding entry and correction, and VOR non-precision approach execution.",
               "tags" : [
                 "instruments",
                 "flights",

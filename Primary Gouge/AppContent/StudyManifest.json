@@ -33290,7 +33290,7 @@
                 }
               ],
               "id" : "capstone-sims-cs2101",
-              "overview" : "CS2101 centers on cs2101 and the key procedures students need to explain and execute.",
+              "overview" : "CS2101 is the advanced-formation capstone sim for dynamic cruise work and formation contingency support. Be ready to brief pursuit geometry, the stop-training calls, formation abort logic, Section PEL responsibilities, and the section approach contract without turning the event into a tail-chase or local-profile dump.",
               "primaryDocumentIDs" : [
                 "contents-5-capstone-2-sims-cs2101-mr-pdf"
               ],
@@ -33335,30 +33335,297 @@
                   {
                     "items" : [
                       {
-                        "text" : "Cruise position\/maneuvering"
+                        "text" : "Cruise maneuvering teaches Wing to maintain position with pursuit geometry and lift-vector placement while Lead provides a smooth, predictable maneuvering platform."
                       },
                       {
-                        "text" : "lead\/lag and pure pursuit"
+                        "children" : [
+                          {
+                            "text" : "Lead passes the cruise signal and holds a stable platform until Wing is established."
+                          },
+                          {
+                            "text" : "Wing acknowledges, slides to the 60-degree bearing line, sets the directed power, and calls ready."
+                          },
+                          {
+                            "text" : "Formation references use about 80% torque above 10,000 ft and 70% torque below 10,000 ft before maneuvering; hold the PCL position instead of chasing every torque change."
+                          }
+                        ],
+                        "text" : "Transition to cruise:"
                       },
                       {
-                        "text" : "knock-it-off\/terminate procedures"
+                        "children" : [
+                          {
+                            "text" : "Cruise position is built around the 60-degree bearing line, safe step-down, and enough range to maneuver without drifting through Lead's 6 o'clock."
+                          },
+                          {
+                            "text" : "Local Capstone source cues the scan as altitude, bearing, then closure: exhaust stack tangent to Lead's wing leading edge, ventral fin over the inboard aileron cutout, and pitot tube on the prop arc."
+                          },
+                          {
+                            "text" : "Lead may use level turns and vertical wingovers; the local supplement frames the work as basic level turns followed by vertical maneuvering."
+                          },
+                          {
+                            "text" : "Lead remains within safe maneuvering limits, including no more than 120 degrees AOB and no less than 1G."
+                          }
+                        ],
+                        "text" : "Position and maneuvering:"
                       },
                       {
-                        "text" : "aborted takeoff"
-                      },
-                      {
-                        "text" : "section PEL procedures"
-                      },
-                      {
-                        "text" : "section approach procedures"
+                        "children" : [
+                          {
+                            "text" : "Lead should let Wing stabilize before maneuvering and should start with predictable, wingman-considerate turns."
+                          },
+                          {
+                            "text" : "Wing should keep Lead above the canopy rail during vertical work and avoid using PCL as the primary correction for geometry errors."
+                          },
+                          {
+                            "text" : "Terminate or knock-it-off early if closure, step-down, sun, blind geometry, or energy state becomes unsafe."
+                          }
+                        ],
+                        "text" : "Common errors and stop cues:"
                       }
                     ],
-                    "title" : "Advanced Formation Training"
+                    "title" : "Cruise Position\/Maneuvering"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Lead, lag, and pure pursuit describe where Wing points the nose relative to Lead's flight path, which controls closure and nose-to-tail spacing."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead pursuit points ahead of Lead's flight path and decreases nose-to-tail separation."
+                          },
+                          {
+                            "text" : "Pure pursuit points at Lead; line-of-sight movement is minimal, and closure decreases as fuselages align."
+                          },
+                          {
+                            "text" : "Lag pursuit points behind Lead's flight path and maintains or increases separation."
+                          }
+                        ],
+                        "text" : "Definitions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "In level turns into Wing, Wing tends to become acute and usually needs lag pursuit, bank, and G to realign."
+                          },
+                          {
+                            "text" : "In turns away from Wing, Wing tends to become sucked and uses lead pursuit to regain the bearing line."
+                          },
+                          {
+                            "text" : "In vertical maneuvering, preserve step-down first; exaggerated pursuit curves can create heading crossing angle, blind geometry, or excessive closure."
+                          },
+                          {
+                            "text" : "Supplement technique: horizontal-stabilizer tip on the fuselage star is pure, stab tip forward of the star is lag, and star forward of the stab is lead."
+                          }
+                        ],
+                        "text" : "Application:"
+                      }
+                    ],
+                    "title" : "Lead\/Lag and Pure Pursuit"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Knock-it-off and terminate both stop maneuvering, but they communicate different urgency."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Knock-it-off is for safety-of-flight issues such as emergency, traffic conflict, blind situation, G-LOC or AGSM failure, area boundary, or any unsafe trend."
+                          },
+                          {
+                            "text" : "Any flight member may call it and should state the reason if able."
+                          },
+                          {
+                            "text" : "After the call, Lead maneuvers predictably, gives directive intentions, and may add altitude and reference heading."
+                          }
+                        ],
+                        "text" : "Knock-it-off:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Terminate is an expected or administrative stop: learning objective complete, maneuver complete, or Wing needs to stop the exercise without a safety emergency."
+                          },
+                          {
+                            "text" : "Lead normally initiates terminate, but Wing may request or initiate it."
+                          },
+                          {
+                            "text" : "Lead transitions to a safe attitude, directs follow-on intentions, and clears Wing back to parade or another briefed position when stable."
+                          }
+                        ],
+                        "text" : "Terminate:"
+                      }
+                    ],
+                    "title" : "Knock-It-Off\/Terminate Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "An aborted takeoff in formation is a separation problem as much as an aircraft problem. Decide, stay on the assigned side, and communicate when aircraft control permits."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Brief abort contingencies before takeoff."
+                          },
+                          {
+                            "text" : "If aborting, execute the NATOPS abort procedure, maintain directional control, remain on the assigned runway side, and transmit intentions."
+                          },
+                          {
+                            "text" : "If Lead aborts during an interval takeoff, Wing normally aborts behind Lead while maintaining Wing's side; the interval should provide spacing."
+                          },
+                          {
+                            "text" : "If Wing aborts during an interval takeoff, Wing aborts on Wing's side and transmits once Lead is airborne and Wing is under control."
+                          }
+                        ],
+                        "text" : "Interval abort:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If either aircraft aborts after section brake release, the aborting aircraft stays on its side and executes the abort."
+                          },
+                          {
+                            "text" : "The non-aborting aircraft recognizes the rapid line-of-sight change, selects maximum power, maintains runway-side discipline, and continues as an individual takeoff unless separation cannot be maintained or it has its own emergency."
+                          },
+                          {
+                            "text" : "Wing must be prepared to avoid Lead if Lead loses directional control, including changing sides or leaving the prepared surface if required to prevent collision."
+                          }
+                        ],
+                        "text" : "Section abort:"
+                      }
+                    ],
+                    "title" : "Aborted Takeoff"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A Section PEL gives the emergency aircraft the maneuvering room and authority it needs while preserving mutual support."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If Lead has the emergency, Lead should make a quick radio call so Wing can get separation."
+                          },
+                          {
+                            "text" : "If Wing has the emergency, Wing requests lead left or right."
+                          },
+                          {
+                            "text" : "Lead transfers lead verbally only after visual contact and separation make the transfer safe."
+                          }
+                        ],
+                        "text" : "Lead transfer:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The new Wing transitions to perch and supports the emergency aircraft."
+                          },
+                          {
+                            "text" : "Wing clears the flight path, provides divert or field information, assists with procedures if requested, and monitors altitude, airspeed, VSI, and configuration."
+                          },
+                          {
+                            "text" : "The emergency aircraft maneuvers and configures for high key; Wing matches configuration if remaining through the profile."
+                          }
+                        ],
+                        "text" : "Wing support:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Lead may kiss off Wing at any time."
+                          },
+                          {
+                            "text" : "If Wing remains through the ELP, Wing stays outside Lead's turn and waves off when directed, no lower than 300 ft AGL."
+                          },
+                          {
+                            "text" : "Normally, Wing can safely detach and monitor at high key."
+                          }
+                        ],
+                        "text" : "Detach and waveoff:"
+                      }
+                    ],
+                    "title" : "Section PEL Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A section approach is a mutual-support recovery that requires Lead to fly a smooth approach and Wing to maintain visual contact, configuration awareness, and readiness to assume Lead."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Plan the approach, missed approach, configuration timing, and final separation before starting down the approach."
+                          },
+                          {
+                            "text" : "Weather must be at or above circling minimums, or 1000 ft and 3 SM if circling minimums are not published."
+                          },
+                          {
+                            "text" : "Bring Wing to parade, reduce airspeed, and configure the flight no later than the FAF; earlier may be needed in IMC or VFR on top."
+                          }
+                        ],
+                        "text" : "Setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Confirm configuration with a clear visual or radio response."
+                          },
+                          {
+                            "text" : "Lead positions the formation on final and normally flies 120 KIAS with Wing in parade until detached."
+                          },
+                          {
+                            "text" : "Wing mirrors Lead's configuration, maintains visual contact in IMC, and stays ready to assume Lead."
+                          }
+                        ],
+                        "text" : "Final approach:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the section misses approach, execute the published missed approach using normal hand signals or tactical frequency unless otherwise briefed."
+                          },
+                          {
+                            "text" : "If individual approaches are required, Lead coordinates separate squawks and normally sends the lower-fuel aircraft first."
+                          },
+                          {
+                            "text" : "Use current local SOP, IFG, and day-of brief for field-specific detach or landing-flow details."
+                          }
+                        ],
+                        "text" : "Missed approach and detach:"
+                      }
+                    ],
+                    "title" : "Section Approach Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Cruise Position\/Maneuvering"
+                      },
+                      {
+                        "text" : "Lead\/Lag and Pure Pursuit"
+                      },
+                      {
+                        "text" : "Knock-It-Off\/Terminate Procedures"
+                      },
+                      {
+                        "text" : "Aborted Takeoff"
+                      },
+                      {
+                        "text" : "Section PEL Procedures"
+                      },
+                      {
+                        "text" : "Section Approach Procedures"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "CS2101 ties advanced cruise maneuvering to formation contingency support: hold the cruise contract, use pursuit geometry, stop maneuvering correctly, and brief abort, Section PEL, and section approach procedures as a connected formation problem."
               },
-              "summary" : "CS2101 centers on cs2101 and the key procedures students need to explain and execute.",
+              "summary" : "CS2101 covers cruise maneuvering, pursuit geometry, stop-training calls, formation abort logic, Section PEL, and section approach procedures.",
               "tags" : [
                 "capstone",
                 "sims",

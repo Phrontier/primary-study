@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I22 Radio Instruments in progress through `I2202`
-- Current event: `I2203`
-- Next action: author `I2203` from canonical syllabus items, local event sources, Instrument Navigation FTI holding material, and NATOPS battery/generator failure guidance.
-- Last validated event: `I2202`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I2202.json`
-- Last manifest validation: `I2202` authored; no `I2202` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I2202`
+- Status: I22 Radio Instruments complete through `I2203`
+- Current event: `I3101`
+- Next action: author `I3101` from canonical syllabus items, local event sources, Instrument Navigation FTI clearance/departure material, and applicable local/planning references.
+- Last validated event: `I2203`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I2203.json`
+- Last manifest validation: `I2203` authored; no `I2203` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I2203`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -45,7 +45,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- `I2101`, `I2102`, `I2103`, `I2201`, and `I2202` now have authored Instrument event content overrides.
+- `I2101` through `I2203` now have authored Instrument event content overrides.
 - Remaining pending Instrument events still use generic manifest scaffold notes until authored.
 - Some flight `.docx` files are hidden from app source-document cards but remain valid authoring sources via `textutil`.
 - Treat local field names, routes, frequencies, and scenario-specific details as day-of/local verification material unless the item is inherently local.
@@ -60,7 +60,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I2103 | Approach Maneuver | UTD | sim | I21 Basic Instruments | 5 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, Instrument Navigation FTI, NATOPS IAC failure, and BFI references; no `systemsBrief`; manifest/audit/build passed. |
 | I2201 | HSI Orientation | UTD | sim | I22 Radio Instruments | 6 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, and Instrument Navigation FTI; no `systemsBrief`; manifest/audit/build passed. |
 | I2202 | Arcing and Radial Intercepts | UTD | sim | I22 Radio Instruments | 6 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI, NATOPS OBOGS material, and EP/N/W/C XML; no `systemsBrief`; manifest/audit/build passed. |
-| I2203 | Holding Entry | UTD | sim | I22 Radio Instruments | 4 | pending | - | - |
+| I2203 | Holding Entry | UTD | sim | I22 Radio Instruments | 4 | complete | use git log | Authored from syllabus membership, local event doc, briefing guide, scenario guide, Instrument Navigation FTI holding material, and NATOPS battery/generator failure guidance; no `systemsBrief`; manifest/audit/build passed. |
 | I3101 | Clearance and Departure Procedures | OFT | sim | I31 Radio Instruments | 6 | pending | - | - |
 | I3102 | HILO Approaches | OFT | sim | I31 Radio Instruments | 5 | pending | - | - |
 | I3103 | PAR | OFT | sim | I31 Radio Instruments | 6 | pending | - | - |

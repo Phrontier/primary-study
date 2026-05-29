@@ -28112,9 +28112,10 @@
                 }
               ],
               "id" : "instruments-sims-i2203",
-              "overview" : "I2203 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I2203 turns holding from a diagram exercise into an instrument task-management drill. The event standard is to enter protected airspace correctly, measure the no-wind orbit, apply drift and timing corrections, and keep the aircraft recoverable if an electrical failure strips the cockpit down to backup instruments and standby communication.",
               "primaryDocumentIDs" : [
-                "contents-2-instruments-2-sims-i2200-block-i2203-briefing-guide-1542-166d-pdf"
+                "contents-2-instruments-2-sims-i2200-block-i2203-briefing-guide-1542-166d-pdf",
+                "contents-2-instruments-2-sims-scenarios-i2203-1542-166d-pdf"
               ],
               "questionBanks" : [
 
@@ -28164,24 +28165,233 @@
                   {
                     "items" : [
                       {
-                        "text" : "Holding entry"
+                        "text" : "Holding entry begins before the fix: copy the clearance, determine the holding side and pattern direction, slow in time, and know the first outbound heading before crossing."
                       },
                       {
-                        "text" : "no-wind orbit"
+                        "children" : [
+                          {
+                            "text" : "Start the speed reduction within 3 minutes or 5 NM of the holding fix when clearance beyond the fix has not been received."
+                          },
+                          {
+                            "text" : "The normal T-6B holding airspeed is 150 KIAS; published maximum holding speeds still matter for altitude and field-specific restrictions."
+                          },
+                          {
+                            "text" : "A standard pattern uses right turns; a non-standard pattern uses left turns. If turn direction is not stated, right turns are implied."
+                          },
+                          {
+                            "text" : "If timing is used, the inbound leg is normally 1 minute at or below 14,000 feet MSL and 1 1\/2 minutes above 14,000 feet MSL."
+                          }
+                        ],
+                        "text" : "Pre-entry:"
                       },
                       {
-                        "text" : "holding corrections"
+                        "children" : [
+                          {
+                            "text" : "For a standard pattern, parallel entry is used when the reciprocal of the holding course lies between the heading index and 110 degrees left; teardrop is between the heading index and 70 degrees right; otherwise use direct entry."
+                          },
+                          {
+                            "text" : "For a non-standard pattern, mirror the logic: parallel is to the right, teardrop is to the left, and direct is the remaining sector."
+                          },
+                          {
+                            "text" : "Standard teardrop heading is 30 degrees less than the reciprocal of the holding course; non-standard teardrop heading is 30 degrees more."
+                          },
+                          {
+                            "text" : "If the reciprocal is within 5 degrees of an entry boundary, either entry is acceptable."
+                          }
+                        ],
+                        "text" : "Entry choice:"
                       },
                       {
-                        "text" : "battery and generator failure"
+                        "children" : [
+                          {
+                            "text" : "Use the six Ts to keep task order clean: time, turn, time, transition, twist, talk."
+                          },
+                          {
+                            "text" : "Report established in holding with position, time, and altitude when required; confirm EFC at least 5 minutes prior if needed."
+                          },
+                          {
+                            "text" : "At the end of the outbound leg, turn inbound toward the holding radial using tail-radial-turn and intercept the holding course promptly."
+                          }
+                        ],
+                        "text" : "Execution:"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "Holding Entry"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The no-wind orbit begins on the second passage of the holding fix and gives you the information needed to correct both heading and timing."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Cross the fix, reset elapsed time, and turn in the pattern direction to the no-wind outbound heading, which is the reciprocal of the holding course."
+                          },
+                          {
+                            "text" : "Start outbound timing when wings level or abeam the holding fix, whichever occurs last."
+                          },
+                          {
+                            "text" : "If abeam cannot be determined, start timing when wings level."
+                          },
+                          {
+                            "text" : "At the end of the outbound leg, turn inbound toward the holding radial and start inbound timing when wings level on course or with an appropriate intercept established."
+                          }
+                        ],
+                        "text" : "Orbit flow:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "An on-course inbound rollout suggests no crosswind component."
+                          },
+                          {
+                            "text" : "An undershoot suggests crosswind from the non-holding side."
+                          },
+                          {
+                            "text" : "An overshoot suggests crosswind from the holding side."
+                          },
+                          {
+                            "text" : "Once established inbound, use normal tracking procedures to find the wind-corrected heading and note the crab angle."
+                          }
+                        ],
+                        "text" : "What it tells you:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Note inbound time at the fix if timing corrections are required for the next orbit."
+                          },
+                          {
+                            "text" : "Keep basic airwork clean; altitude, heading, and airspeed errors contaminate the wind picture you are trying to measure."
+                          }
+                        ],
+                        "text" : "Study standard:"
+                      }
+                    ],
+                    "title" : "No-Wind Orbit"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Holding corrections apply the no-wind orbit lesson: correct outbound heading for drift, adjust outbound time for inbound timing, then refine on each orbit."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Triple the inbound drift correction for the outbound leg; for example, an 8-degree right crab inbound becomes a 24-degree left correction outbound."
+                          },
+                          {
+                            "text" : "Hold triple drift for no more than 1 minute outbound."
+                          },
+                          {
+                            "text" : "If the outbound leg continues beyond 1 minute, transition to single drift for the remaining time."
+                          },
+                          {
+                            "text" : "If no-wind inbound time exceeded 90 seconds, the first wind-corrected outbound time should be no less than 30 seconds."
+                          }
+                        ],
+                        "text" : "Drift correction:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Adjust outbound time to fix the previous inbound time. If inbound was 10 seconds short, add 10 seconds outbound; if inbound was long, subtract time."
+                          },
+                          {
+                            "text" : "Subsequent orbits are fine-tuning passes, not proof that the first correction was bad."
+                          },
+                          {
+                            "text" : "Inbound legs are tracked on the holding course; outbound legs are flown as headings."
+                          },
+                          {
+                            "text" : "Keep fuel and EFC time in the scan, especially in stacked holding where vertical separation can be as little as 1000 feet."
+                          }
+                        ],
+                        "text" : "Timing and task management:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Common errors are using the drift correction in the wrong direction, forgetting to transition from triple drift to single drift, trying to track outbound, and letting basic airwork or magnetic-variation confusion drive false corrections."
+                          }
+                        ],
+                        "text" : "Common errors:"
+                      }
+                    ],
+                    "title" : "Holding Corrections"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Battery and generator failure assumes the generator has failed and the main battery is depleted. In IMC, the problem is maintaining control with a stripped cockpit while getting below oxygen and pressurization risk."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Only auxiliary-battery-powered essentials remain: backup flight instrument, FIRE 1 detection, IRU, and VHF radio through the standby VHF control head."
+                          },
+                          {
+                            "text" : "Major losses include OBOGS, ICS, all electronic displays, PMU, starter, FIRE 2, landing-gear indicators, normal flap operation and indications, probes anti-ice, interior\/exterior lighting, ECS\/pressurization, UHF, GPS, VHF NAV, DME, transponder, and TCAS."
+                          },
+                          {
+                            "text" : "OBOGS is inoperative once the main battery is depleted or with battery failure, and the cockpit will depressurize when power to the battery bus is lost."
+                          }
+                        ],
+                        "text" : "What remains:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Initiate descent below 10,000 feet MSL as required."
+                          },
+                          {
+                            "text" : "Turn AUX BAT ON to power the backup flight instrument and standby VHF path for about 30 minutes."
+                          },
+                          {
+                            "text" : "Plan to extend the landing gear with the emergency extension system; emergency flaps will not be available if the main battery has failed, and flaps may retract if battery-bus power is lost."
+                          },
+                          {
+                            "text" : "Land as soon as possible."
+                          }
+                        ],
+                        "text" : "NATOPS priorities:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "In an instrument event, immediately transition your scan to the BFI, preserve attitude and airspeed, and use standby VHF\/ATC help before task-saturating on lost displays."
+                          },
+                          {
+                            "text" : "A PAR or ASR\/no-gyro recovery may be feasible if conditions, communication, and remaining instruments support it; brief it as a recovery option, not a guarantee."
+                          }
+                        ],
+                        "text" : "Instrument recovery mindset:"
+                      }
+                    ],
+                    "title" : "Battery and Generator Failure"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Holding Entry"
+                      },
+                      {
+                        "text" : "No-Wind Orbit"
+                      },
+                      {
+                        "text" : "Holding Corrections"
+                      },
+                      {
+                        "text" : "Battery and Generator Failure"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Enter holding deliberately, use the no-wind orbit to measure wind, correct with triple drift and timing, and keep the BFI\/standby-VHF recovery plan ready for battery and generator failure."
               },
-              "summary" : "I2203 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "Holding entries, no-wind and correction orbits, and battery\/generator failure recovery priorities.",
               "tags" : [
                 "instruments",
                 "sims",

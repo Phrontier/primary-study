@@ -1,0 +1,323 @@
+{
+  "canonicalCoverage": {
+    "Landing gear inspection": [
+      "Landing Gear Inspection"
+    ],
+    "cruise maneuvering": [
+      "Cruise Maneuvering"
+    ],
+    "knock-it-off": [
+      "Knock-It-Off"
+    ],
+    "lag and pure pursuit": [
+      "Lag and Pure Pursuit"
+    ],
+    "principles of lead": [
+      "Principles of Lead"
+    ],
+    "terminate": [
+      "Terminate"
+    ]
+  },
+  "code": "F4104",
+  "overview": "F4104 combines formation emergency support with dynamic maneuvering. Students should be able to brief an airborne landing gear inspection, distinguish knock-it-off from terminate, execute cruise maneuvering with pursuit geometry, and explain the lead principles that keep Wing predictable and safe.",
+  "primaryDocumentTitles": [
+    "F4104"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "A landing gear inspection is an emergency-support task, not a formation proficiency stunt. The inspection is flown only when it can be done without adding risk."
+          },
+          {
+            "children": [
+              {
+                "text": "The aircraft with the unsafe indication notifies the other aircraft and ATC."
+              },
+              {
+                "text": "Climb to the published emergency orbit, delta pattern, or other local procedure before troubleshooting."
+              },
+              {
+                "text": "Request an airborne gear inspection if it will help the decision and can be done safely."
+              },
+              {
+                "text": "Wing follows the distressed aircraft and assists as directed."
+              }
+            ],
+            "text": "Unsafe gear indication:"
+          },
+          {
+            "children": [
+              {
+                "text": "Conduct the inspection at a minimum of 2000 ft AGL."
+              },
+              {
+                "text": "Use a discrete frequency when practical to reduce chatter and confusion."
+              },
+              {
+                "text": "The emergency aircraft communicates configuration, airspeed, altitude, and planned changes."
+              },
+              {
+                "text": "The inspecting aircraft reports position and intentions and avoids undue risk."
+              },
+              {
+                "text": "Use caution if visible damage could allow gear parts to depart the aircraft."
+              }
+            ],
+            "text": "Inspection conduct:"
+          },
+          {
+            "children": [
+              {
+                "text": "Student solos shall not join up to inspect landing gear."
+              },
+              {
+                "text": "Students shall not be at the controls during the landing gear inspection."
+              },
+              {
+                "text": "The emergency aircraft may ask Wing, chase, base, or RDO to help read checklists and troubleshoot."
+              }
+            ],
+            "text": "N/W/C focus:"
+          }
+        ],
+        "title": "Landing Gear Inspection"
+      },
+      {
+        "items": [
+          {
+            "text": "Knock-it-off stops the maneuvering because safety is compromised or could be compromised."
+          },
+          {
+            "children": [
+              {
+                "text": "Any flight member may initiate knock-it-off."
+              },
+              {
+                "text": "Use it for emergencies, traffic conflicts, blind situations, G-LOC or AGSM failure, area boundary concerns, or any developing unsafe condition."
+              },
+              {
+                "text": "The pilot calling knock-it-off should state the reason if able."
+              }
+            ],
+            "text": "When to use:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead maneuvers predictably, normally straight-and-level or with shallow bank."
+              },
+              {
+                "text": "Lead gives directive intentions and may state altitude and a reference heading for the flight."
+              },
+              {
+                "text": "Both aircraft prioritize separation and aircraft control before resuming any training objective."
+              }
+            ],
+            "text": "After the call:"
+          }
+        ],
+        "title": "Knock-It-Off"
+      },
+      {
+        "items": [
+          {
+            "text": "Terminate stops an exercise or maneuvering for an expected or administrative reason; it is not the same as knock-it-off."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead normally initiates terminate, but Wing may request or initiate it."
+              },
+              {
+                "text": "Use terminate when the training objective is complete, the exercise is ending, or continuing would not be useful."
+              },
+              {
+                "text": "If the reason is safety-of-flight, call knock-it-off instead."
+              }
+            ],
+            "text": "When to use:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead remains predictable and transitions to a safe attitude."
+              },
+              {
+                "text": "Lead directs follow-on intentions, such as cleared to parade, continue, repeat, or recover."
+              },
+              {
+                "text": "Wing maintains deconfliction and does not rush the rejoin."
+              }
+            ],
+            "text": "Post-terminate:"
+          }
+        ],
+        "title": "Terminate"
+      },
+      {
+        "items": [
+          {
+            "text": "Cruise maneuvering teaches Wing to maintain position with pursuit geometry and lift-vector placement, not constant power chasing."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead signals cruise and holds a stable platform until Wing is established."
+              },
+              {
+                "text": "Wing acknowledges, slides to the 60-degree bearing line, sets the directed power, and calls ready."
+              },
+              {
+                "text": "Formation FTI references use about 80% torque above 10,000 ft and 70% torque below 10,000 ft before maneuvering; hold the PCL position rather than chasing torque changes with altitude."
+              }
+            ],
+            "text": "Transition to cruise:"
+          },
+          {
+            "children": [
+              {
+                "text": "Cruise position is about 60 degrees bearing, about 20 ft step-down, and 3 to 6 plane widths of spacing."
+              },
+              {
+                "text": "Lead is limited to no more than 120 degrees AOB and no less than 1G."
+              },
+              {
+                "text": "Wing uses lead, lag, and pure pursuit plus lift-vector placement to stay in the cruise cone."
+              },
+              {
+                "text": "Minor turns may need small power corrections; aggressive turns should be solved primarily with pursuit geometry."
+              }
+            ],
+            "text": "Maneuvering:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead or Wing calls terminate."
+              },
+              {
+                "text": "Lead rolls level or establishes a predictable 30-degree AOB turn, stabilizes near 200 KIAS, and clears Wing to parade."
+              },
+              {
+                "text": "Wing maintains cruise spacing, anticipates acceleration or deceleration, and rejoins without losing step-down."
+              }
+            ],
+            "text": "Cruise back to parade:"
+          }
+        ],
+        "title": "Cruise Maneuvering"
+      },
+      {
+        "items": [
+          {
+            "text": "The principle of lead is to create a safe, predictable training platform while still meeting mission and area requirements."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead makes smooth, stable, predictable changes in power, heading, and altitude."
+              },
+              {
+                "text": "Lead keeps the flight within the assigned area and complies with current course rules or clearances."
+              },
+              {
+                "text": "Lead maintains cloud and traffic clearance unless operating on an IFR clearance."
+              },
+              {
+                "text": "Lead always knows Wing's position and monitors Wing's energy, aspect, range, closure, heading crossing angle, and line of sight."
+              }
+            ],
+            "text": "Lead responsibilities:"
+          },
+          {
+            "children": [
+              {
+                "text": "Formation tasks take longer than single-ship tasks, so Lead must plan turns, radio changes, checks, and rejoins early."
+              },
+              {
+                "text": "Lead must understand area boundaries, wind effects, and how maneuver combinations affect ground track."
+              },
+              {
+                "text": "Lead should manage sun position and avoid forcing Wing to stare through Lead into the sun when practical."
+              },
+              {
+                "text": "A tight, abrupt maneuver has little training value if Wing cannot safely maintain position."
+              }
+            ],
+            "text": "Wingman consideration:"
+          }
+        ],
+        "title": "Principles of Lead"
+      },
+      {
+        "items": [
+          {
+            "text": "Lag and pure pursuit describe where Wing points the nose relative to Lead's flight path, which controls spacing and closure."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead pursuit points the nose ahead of Lead's flight path and decreases nose-to-tail separation."
+              },
+              {
+                "text": "Pure pursuit points the nose at Lead and shows little or no line-of-sight movement; closure initially exists but reduces as fuselages align."
+              },
+              {
+                "text": "Lag pursuit points the nose behind Lead's flight path and maintains or increases nose-to-tail separation."
+              }
+            ],
+            "text": "Definitions:"
+          },
+          {
+            "children": [
+              {
+                "text": "In cruise maneuvering, Wing uses short lead or lag corrections, then returns toward the 60-degree bearing line."
+              },
+              {
+                "text": "Do not camp at Lead's 6 o'clock; closure is difficult to judge there."
+              },
+              {
+                "text": "In vertical maneuvering, standard cruise checkpoints may disappear, so preserving step-down is critical."
+              },
+              {
+                "text": "Supplement technique: compare the inboard horizontal-stabilizer tip to the fuselage star; stab tip on star is pure, stab tip forward of star is lag, and star forward of stab is lead."
+              }
+            ],
+            "text": "Application:"
+          }
+        ],
+        "title": "Lag and Pure Pursuit"
+      },
+      {
+        "items": [
+          {
+            "text": "Landing Gear Inspection"
+          },
+          {
+            "text": "Knock-It-Off"
+          },
+          {
+            "text": "Terminate"
+          },
+          {
+            "text": "Cruise Maneuvering"
+          },
+          {
+            "text": "Principles of Lead"
+          },
+          {
+            "text": "Lag and Pure Pursuit"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "F4104 is a formation support and maneuvering event: inspect gear only with disciplined risk control, stop training correctly, and use pursuit geometry to manage cruise maneuvering."
+  },
+  "summary": "F4104 covers landing gear inspection support, knock-it-off and terminate calls, cruise maneuvering, lead principles, and pursuit geometry.",
+  "title": "Landing Gear Inspection"
+}

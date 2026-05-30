@@ -1,0 +1,132 @@
+{
+  "canonicalCoverage": {
+    "Any previously discussed maneuver and any emergency procedure": [
+      "Any Previously Discussed Maneuver",
+      "Any Emergency Procedure"
+    ]
+  },
+  "code": "CS4290",
+  "overview": "CS4290 is the Capstone check flight. The discussion should prove the student can brief any prior maneuver and any emergency procedure as an integrated mission problem, then adapt to real-time contingencies without inventing procedures or losing the recovery picture.",
+  "primaryDocumentTitles": [
+    "CS 4290 1801"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "Any previously discussed maneuver on the check flight is not a request to dump every prior event. It is a prompt to show a repeatable brief format and apply the right procedure to the actual scenario."
+          },
+          {
+            "children": [
+              {
+                "text": "State the maneuver purpose, entry setup, airspeed, altitude or area requirement, configuration, and clearance or formation contract."
+              },
+              {
+                "text": "Brief execution, completion cue, common error, and the condition that requires reset, terminate, knock-it-off, missed approach, or recovery."
+              },
+              {
+                "text": "Tie the maneuver to the profile: formation departure or rejoin, high work, instrument approach, missed approach, holding, divert, or recovery."
+              }
+            ],
+            "text": "Check-flight answer format:"
+          },
+          {
+            "children": [
+              {
+                "text": "Formation scenario: depart on separate clearances, rejoin in the working area, conduct radial rendezvous, split or rejoin the flight, or manage a section emergency."
+              },
+              {
+                "text": "Instrument scenario: fly a published missed approach, accept a different approach after ATIS, handle unplanned holding, or navigate point-to-point."
+              },
+              {
+                "text": "Navigation scenario: fly a leg without the TSD when airspace and flight plan permit, using backup navigation and cross-checks."
+              },
+              {
+                "text": "Weather or fuel scenario: recognize when simulated weather, divert suitability, holding, fuel, or approach changes should replace the original plan."
+              }
+            ],
+            "text": "Real-time contingency examples:"
+          },
+          {
+            "children": [
+              {
+                "text": "Use current 1801, route packet, SOP, IFG, weather, fuel, NOTAMs, and day-of brief for local execution details."
+              },
+              {
+                "text": "A strong answer explains how the plan changes, who needs to be told, and what must be verified before continuing."
+              }
+            ],
+            "text": "Mission-management standard:"
+          }
+        ],
+        "title": "Any Previously Discussed Maneuver"
+      },
+      {
+        "items": [
+          {
+            "text": "Any emergency procedure on CS4290 is a check of recognition, memory items, N/W/C interpretation, and recovery judgment, not a challenge to invent a list of emergencies."
+          },
+          {
+            "children": [
+              {
+                "text": "Cue: identify the malfunction or emergency from indications, aircraft behavior, environment, or formation context."
+              },
+              {
+                "text": "Control: protect aircraft attitude, airspeed, altitude, terrain clearance, and formation separation."
+              },
+              {
+                "text": "Action: execute required memory items, then use the checklist and N/W/Cs to choose the correct branch."
+              },
+              {
+                "text": "Recover: decide whether to continue, divert, PEL, forced-land, fly a missed approach, coordinate section support, or eject."
+              }
+            ],
+            "text": "Review method:"
+          },
+          {
+            "children": [
+              {
+                "text": "For a single-aircraft emergency, state the aircraft-control target, memory item, checklist/N/W/C, field or ejection decision, and radio plan."
+              },
+              {
+                "text": "For a section emergency, state lead transfer, perch, detach, lost sight or blind separation, and who coordinates with ATC or tower."
+              },
+              {
+                "text": "For IMC or approach emergencies, state safe altitude, clearance or emergency authority, lost-communications assumptions, missed approach, and suitable recovery field."
+              },
+              {
+                "text": "For weather divert or damaged-aircraft cases, state field suitability, runway, fuel, crash crew, approach options, and whether the flight should remain joined."
+              }
+            ],
+            "text": "Decision branches:"
+          },
+          {
+            "children": [
+              {
+                "text": "Do not brief a scenario-specific contingency as universal procedure unless the controlling source says so."
+              },
+              {
+                "text": "When the emergency creates a conflict with the planned check-flight profile, the emergency recovery plan takes priority."
+              }
+            ],
+            "text": "N/W/C focus:"
+          }
+        ],
+        "title": "Any Emergency Procedure"
+      },
+      {
+        "items": [
+          {
+            "text": "Any Previously Discussed Maneuver and Any Emergency Procedure"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "CS4290 should be studied as the cumulative Capstone check: use a disciplined maneuver brief, apply emergency procedures through N/W/C-driven decision branches, and adapt to real-time contingencies with current source verification."
+  },
+  "summary": "CS4290 covers cumulative maneuver review, emergency-procedure decision flow, and real-time contingency management for the Capstone check flight.",
+  "title": "Capstone Check Flight"
+}

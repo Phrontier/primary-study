@@ -1,0 +1,152 @@
+{
+  "canonicalCoverage": {
+    "Visual signals and Formation maneuvers": [
+      "Visual Signals",
+      "Formation Maneuvers"
+    ]
+  },
+  "code": "F3101",
+  "overview": "F3101 connects the signals to the maneuver sequence. Students should be able to brief how Lead passes a signal, how Wing acknowledges it, and how each basic formation maneuver is entered, flown, corrected, and discontinued if spacing becomes unsafe.",
+  "primaryDocumentTitles": [
+    "F3101"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "Visual signals only work when Lead is predictable, Wing is in position, and both aircraft understand exactly when the signal is acknowledged and executed."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead first verbalizes the signal over ICS during training, confirms Wing is in position, clears the area, then passes the signal high and visible above the canopy rail."
+              },
+              {
+                "text": "Most signals are passed for about 3 seconds; the cruise signal uses a longer cadence."
+              },
+              {
+                "text": "Lead stops the signal, looks to Wing, confirms the head-nod acknowledgment, then executes smoothly."
+              },
+              {
+                "text": "If Wing gives a no-head-shake or there is confusion, Lead repeats the signal or clarifies by radio."
+              }
+            ],
+            "text": "Cadence:"
+          },
+          {
+            "children": [
+              {
+                "text": "Run-up directs both aircraft to set the briefed run-up power and check safety-of-flight items."
+              },
+              {
+                "text": "Kiss-off releases Wing to separate for takeoff, breakup, detach, or landing as briefed."
+              },
+              {
+                "text": "Cruise directs Wing to move from parade to cruise; Wing acknowledges, slides to the 60-degree bearing line, sets the directed power, and calls ready."
+              },
+              {
+                "text": "Crossunder directs Wing to cross behind and below Lead after stabilizing aft with proper step-down."
+              },
+              {
+                "text": "Breakup and rendezvous starts the break sequence only after Wing acknowledges and Lead gives the kiss-off."
+              }
+            ],
+            "text": "Core signals:"
+          },
+          {
+            "children": [
+              {
+                "text": "Lead change uses a distinct signal: Lead taps the helmet on the side away from Wing, then deliberately points to Wing."
+              },
+              {
+                "text": "The new Lead acknowledges, looks forward, and flies a stable platform."
+              },
+              {
+                "text": "The new Wing keeps eyes on the new Lead and preserves separation during the transition."
+              }
+            ],
+            "text": "Lead-change signal:"
+          }
+        ],
+        "title": "Visual Signals"
+      },
+      {
+        "items": [
+          {
+            "text": "The formation maneuver set is a progression: establish spacing on departure, stabilize in parade, correct errors early, then use planned geometry for turns, crossunders, breakup and rendezvous, and underruns."
+          },
+          {
+            "children": [
+              {
+                "text": "Line up with runway-side discipline and complete the Lineup Checklist before takeoff."
+              },
+              {
+                "text": "For interval takeoff, Wing delays 5 seconds after Lead begins the takeoff roll, then rejoins using controlled closure."
+              },
+              {
+                "text": "During running rendezvous, Wing keeps Lead slightly above the horizon, arrives on bearing line, and limits closure to a safe, briefed value."
+              }
+            ],
+            "text": "Departure and rendezvous:"
+          },
+          {
+            "children": [
+              {
+                "text": "Parade is built on the 45-degree bearing line, wingtip clearance, and step-down."
+              },
+              {
+                "text": "Wing corrects in A-B-C order: altitude, bearing, closure/separation."
+              },
+              {
+                "text": "In turns, Wing anticipates radius-of-turn effects: reduce power when Lead turns into Wing and add power when Lead turns away."
+              }
+            ],
+            "text": "Parade and parade turns:"
+          },
+          {
+            "children": [
+              {
+                "text": "For a crossunder, Wing first moves aft and slightly down, verifies nose-to-tail clearance, then crosses behind Lead at a walking pace."
+              },
+              {
+                "text": "Wing never passes directly under Lead."
+              },
+              {
+                "text": "After crossing, reestablish bearing, separation, and step-down before moving back into normal parade."
+              }
+            ],
+            "text": "Crossunder:"
+          },
+          {
+            "children": [
+              {
+                "text": "For breakup and rendezvous, Lead starts from 200 KIAS, level flight, Wing in position, and clear airspace."
+              },
+              {
+                "text": "Wing breaks at Lead's 3/9 line, keeps Lead in sight, stabilizes in trail, then rejoins with Lead on the horizon."
+              },
+              {
+                "text": "If closure, aspect, or step-down becomes unsafe, underrun early instead of pressing a bad rendezvous."
+              }
+            ],
+            "text": "Breakup, rendezvous, and underrun:"
+          }
+        ],
+        "title": "Formation Maneuvers"
+      },
+      {
+        "items": [
+          {
+            "text": "Visual Signals and Formation Maneuvers"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "F3101 should be studied as a signal-to-maneuver event: know the visual signal cadence, then brief the formation maneuver flow that follows each signal."
+  },
+  "summary": "F3101 ties visual-signal discipline to basic formation maneuver execution in the OFT.",
+  "title": "Visual Signals and Formation Maneuvers"
+}

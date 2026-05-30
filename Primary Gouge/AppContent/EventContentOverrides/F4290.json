@@ -1,0 +1,115 @@
+{
+  "canonicalCoverage": {
+    "Any previously discussed maneuver": [
+      "Any Previously Discussed Maneuver"
+    ],
+    "any emergency procedure": [
+      "Any Emergency Procedure"
+    ]
+  },
+  "code": "F4290",
+  "overview": "F4290 is the formation check event, so the discussion should be cumulative without becoming a memory dump. Be ready to brief the maneuver contracts, safety stop criteria, formation emergency roles, and the method used to review applicable emergency procedures and N/W/Cs.",
+  "primaryDocumentTitles": [
+    "F4290"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "Treat any previously discussed maneuver as a review of contracts, checkpoints, and discontinue criteria rather than a list of isolated steps."
+          },
+          {
+            "children": [
+              {
+                "text": "For departure work, review lineup, interval takeoff, section takeoff, initial rendezvous, and abort responsibilities."
+              },
+              {
+                "text": "For parade work, review A-B-C corrections, parade turns into and away, crossunder, breakup and rendezvous, underrun, and lead change."
+              },
+              {
+                "text": "For recovery work, review cruise-to-parade transition, speed brake coordination, section approaches, break spacing, NORDO recovery, and section missed approach."
+              },
+              {
+                "text": "For cruise maneuvering, review 60-degree bearing, step-down, lead/lag/pure pursuit, terminate, and knock-it-off criteria."
+              }
+            ],
+            "text": "Study buckets:"
+          },
+          {
+            "children": [
+              {
+                "text": "Brief the setup, the visual references, the correction priority, and the common unsafe trend for each maneuver."
+              },
+              {
+                "text": "Know which aircraft owns deconfliction at each point and when Lead must be directive."
+              },
+              {
+                "text": "Use terminate for expected training stops, knock-it-off for safety concerns, and underrun when a rendezvous geometry is unsafe."
+              }
+            ],
+            "text": "Check-flight answer format:"
+          }
+        ],
+        "title": "Any Previously Discussed Maneuver"
+      },
+      {
+        "items": [
+          {
+            "text": "Any emergency procedure means the student must show a repeatable review method, not invent an exhaustive list during the brief."
+          },
+          {
+            "children": [
+              {
+                "text": "Start with aircraft control and the applicable NATOPS critical action or checklist."
+              },
+              {
+                "text": "Add the N/W/Cs that change the decision, timing, or crew coordination."
+              },
+              {
+                "text": "State whether the emergency is handled as individual aircraft, section support, lost sight, blind, NORDO, Section PEL, airborne damaged aircraft, or down-aircraft response."
+              },
+              {
+                "text": "Preserve formation separation before trying to preserve flight integrity."
+              }
+            ],
+            "text": "Review method:"
+          },
+          {
+            "children": [
+              {
+                "text": "Aviate: maintain aircraft control and execute the correct emergency procedure."
+              },
+              {
+                "text": "Communicate: use the correct aircraft call sign when one aircraft has the emergency, then be directive on tactical and ATC frequencies."
+              },
+              {
+                "text": "Separate: transfer lead, move to perch, detach, climb, turn away, or establish altitude separation as the emergency requires."
+              },
+              {
+                "text": "Recover: choose a suitable field or pattern, coordinate support, and avoid rejoining damaged aircraft unless specifically directed and safe."
+              }
+            ],
+            "text": "Formation emergency priorities:"
+          }
+        ],
+        "title": "Any Emergency Procedure"
+      },
+      {
+        "items": [
+          {
+            "text": "Any Previously Discussed Maneuver"
+          },
+          {
+            "text": "Any Emergency Procedure"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "F4290 should be studied as a cumulative formation check: know the maneuver contracts, know the stop criteria, and use a disciplined emergency review method with N/W/Cs."
+  },
+  "summary": "F4290 is the formation check-flight discussion set for cumulative maneuver review and emergency-procedure review method.",
+  "title": "Formation Check Flight"
+}

@@ -1,0 +1,188 @@
+{
+  "canonicalCoverage": {
+    "Any previously discussed familiarization items": [
+      "Any Previously Discussed Familiarization Items"
+    ],
+    "GCA pattern": [
+      "GCA Pattern"
+    ],
+    "IFR pick-up": [
+      "IFR Pick-Up"
+    ]
+  },
+  "code": "CS3101",
+  "overview": "CS3101 reintroduces familiarization maneuvers, then moves the student into the IFR environment with an IFR pick-up and GCA pattern. The discussion should show that basic aircraft-control habits, radio discipline, and instrument scan still work when the profile shifts from FAM-style airwork to radar-controlled approaches.",
+  "primaryDocumentTitles": [
+    "CS3101"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "Treat the familiarization review as a scan-and-control refresh, not a complete re-teaching of every prior FAM event."
+          },
+          {
+            "children": [
+              {
+                "text": "Be ready to brief G-warm, aerobatics, stalls, spin, unusual-attitude recovery, landing profiles, waveoff, ELP, and holding or approach setup at the level already learned."
+              },
+              {
+                "text": "For each maneuver, start with purpose, setup, safety boundary, execution, completion cue, and the common error that usually starts the debrief."
+              },
+              {
+                "text": "Keep checklist, clear-area, trim, coordination, and energy management in every answer."
+              }
+            ],
+            "text": "Review set:"
+          },
+          {
+            "children": [
+              {
+                "text": "The sim objective is to rebuild cross-check and aircraft control, then transition smoothly to IFR work."
+              },
+              {
+                "text": "Do not let the FAM maneuver review consume the IFR brief; prioritize the maneuvers most likely to affect instrument transition, approach work, and recovery judgment."
+              }
+            ],
+            "text": "Capstone emphasis:"
+          }
+        ],
+        "title": "Any Previously Discussed Familiarization Items"
+      },
+      {
+        "items": [
+          {
+            "text": "An IFR pick-up converts the flight into the IFR system; the radio call must give ATC enough information to identify the aircraft, build the clearance, and understand fuel and alternate context."
+          },
+          {
+            "children": [
+              {
+                "text": "Aircraft identification."
+              },
+              {
+                "text": "Position and time."
+              },
+              {
+                "text": "Route, altitude, and destination."
+              },
+              {
+                "text": "True airspeed in knots."
+              },
+              {
+                "text": "ETE from the point of change to destination and hours of fuel remaining."
+              },
+              {
+                "text": "Alternate airport."
+              },
+              {
+                "text": "Name, rank, and honors code of VIP aboard if the destination is being changed."
+              }
+            ],
+            "text": "Seven items:"
+          },
+          {
+            "children": [
+              {
+                "text": "Build the call from the current flight state; do not recite a canned local route if the aircraft position, destination, or fuel state has changed."
+              },
+              {
+                "text": "Keep the aircraft under control and trimmed before starting the clearance conversation."
+              },
+              {
+                "text": "Read back the clearance precisely and verify route, altitude, transponder, and lost-comm expectations before leaving VFR assumptions behind."
+              }
+            ],
+            "text": "Execution mindset:"
+          }
+        ],
+        "title": "IFR Pick-Up"
+      },
+      {
+        "items": [
+          {
+            "text": "The GCA pattern is a radar-approach control exercise: fly precise headings, airspeeds, configuration changes, descents, and missed-approach cleanup while the controller or instructor drives small corrections."
+          },
+          {
+            "children": [
+              {
+                "text": "Start clean at 200 KIAS on a cardinal heading at base altitude."
+              },
+              {
+                "text": "Use standard-rate turns, not more than 30 degrees AOB, and lead rollouts with the one-third rule."
+              },
+              {
+                "text": "Slow to 150 KIAS using about 15% torque, then stabilize near 33% torque once level at 150 KIAS."
+              },
+              {
+                "text": "Expect radar-style calls such as standby for the turn, maintain, and clear call when being turned to final approach course."
+              }
+            ],
+            "text": "Entry setup:"
+          },
+          {
+            "children": [
+              {
+                "text": "Transition to BAC by reducing power to about 15%, lowering gear and T/O flaps below 150 KIAS, and executing the Before Landing Checklist."
+              },
+              {
+                "text": "Trim for 120 KIAS; local event gouge uses about 42% torque to stabilize level at 120 KIAS before the descent."
+              },
+              {
+                "text": "For the simulated GCA descent, use about 24% torque and a nose-low attitude to hold 120 KIAS and roughly 600 FPM."
+              },
+              {
+                "text": "Expect small heading corrections, often about 3 to 10 degrees, while maintaining airspeed, descent rate, and assigned headings."
+              }
+            ],
+            "text": "Descent and corrections:"
+          },
+          {
+            "children": [
+              {
+                "text": "After the planned descent segment, execute the missed approach: maximum power, right rudder, and about 10 to 15 degrees nose high."
+              },
+              {
+                "text": "Confirm two positive rates with VSI and altimeter before raising the gear."
+              },
+              {
+                "text": "Above 110 KIAS, raise flaps; report gear and flaps up before 150 KIAS."
+              },
+              {
+                "text": "Set about 8 to 10 degrees nose high, climb at 180 KIAS for the assigned climb segment, then transition back to 200 KIAS cruise before level-off."
+              }
+            ],
+            "text": "Missed approach:"
+          },
+          {
+            "children": [
+              {
+                "text": "Common errors are poor nose-power coordination in descent, over-rotating during the missed approach, delayed gear or flap retraction, and poor rudder trim causing heading drift."
+              }
+            ],
+            "text": "N/W/C focus:"
+          }
+        ],
+        "title": "GCA Pattern"
+      },
+      {
+        "items": [
+          {
+            "text": "Any Previously Discussed Familiarization Items"
+          },
+          {
+            "text": "IFR Pick-Up"
+          },
+          {
+            "text": "GCA Pattern"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "CS3101 should be studied as a bridge event: refresh FAM maneuver discipline, then use the same aircraft-control habits to execute an IFR pick-up and precise GCA pattern."
+  },
+  "summary": "CS3101 covers familiarization review, IFR pick-up information, and the GCA pattern profile.",
+  "title": "IFR Pick-Up"
+}

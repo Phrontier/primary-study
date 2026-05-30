@@ -1,0 +1,241 @@
+{
+  "canonicalCoverage": {
+    "Aborted takeoff": [
+      "Aborted Takeoff"
+    ],
+    "dissolving the flight (flight split)": [
+      "Dissolving the Flight (Flight Split)"
+    ],
+    "fan break": [
+      "Fan Break"
+    ],
+    "radial rendezvous": [
+      "Radial Rendezvous"
+    ]
+  },
+  "code": "CS2102",
+  "overview": "CS2102 completes the advanced-formation sim pair by focusing on separation and rejoin contracts: formation aborts, dissolving the flight, radial rendezvous, and fan-break recovery. The student should brief each procedure as a deconfliction problem first and a formation technique second.",
+  "primaryDocumentTitles": [
+    "CS2102 MR"
+  ],
+  "studyNotes": {
+    "headline": "Discussion Items",
+    "sections": [
+      {
+        "items": [
+          {
+            "text": "An aborted takeoff in formation is first about maintaining aircraft control and preserving lateral separation."
+          },
+          {
+            "children": [
+              {
+                "text": "Brief abort responsibilities before takeoff; do not let the first discussion happen after brake release."
+              },
+              {
+                "text": "If aborting, execute the NATOPS abort procedure, maintain directional control, stay on the assigned runway side, and transmit intentions when able."
+              },
+              {
+                "text": "If Lead aborts during an interval takeoff, Wing normally aborts behind Lead while maintaining Wing's runway side."
+              },
+              {
+                "text": "If Wing aborts during an interval takeoff, Wing aborts on Wing's side and transmits once Lead is safely airborne and Wing is under control."
+              }
+            ],
+            "text": "Interval abort:"
+          },
+          {
+            "children": [
+              {
+                "text": "If either aircraft aborts after section brake release, the aborting aircraft remains on its side and executes the abort."
+              },
+              {
+                "text": "The non-aborting aircraft recognizes the rapid line-of-sight rate, selects maximum power, maintains its runway side, and executes an individual takeoff unless separation cannot be maintained or it has its own emergency."
+              },
+              {
+                "text": "Wing must be ready to avoid Lead if Lead loses directional control, including changing runway sides or leaving the prepared surface if that is required to prevent collision."
+              }
+            ],
+            "text": "Section abort:"
+          }
+        ],
+        "title": "Aborted Takeoff"
+      },
+      {
+        "items": [
+          {
+            "text": "Dissolving the flight turns a formation into individual aircraft while preserving positive separation, ATC coordination, and clear responsibility."
+          },
+          {
+            "children": [
+              {
+                "text": "Complete required formation training and any needed lead change before the split."
+              },
+              {
+                "text": "Lead assigns heading and altitude separation; local event source uses at least 30 degrees of heading separation and normally 500 ft of altitude separation."
+              },
+              {
+                "text": "Wing normally turns away and descends to the assigned heading and altitude."
+              },
+              {
+                "text": "Lead maintains the original altitude until Wing reports established."
+              }
+            ],
+            "text": "Split setup:"
+          },
+          {
+            "children": [
+              {
+                "text": "Use clear readbacks for heading, altitude, area, and detach clearance."
+              },
+              {
+                "text": "Wing sets the appropriate transponder or TCAS configuration per the brief and current local procedure."
+              },
+              {
+                "text": "Lead coordinates with ATC when the flight is splitting and dissolves the formation only after aircraft are established in their assigned blocks or areas."
+              }
+            ],
+            "text": "Execution:"
+          },
+          {
+            "children": [
+              {
+                "text": "For later rejoin, Wing reports ready on the tactical frequency and Lead coordinates the join clearance."
+              },
+              {
+                "text": "Keep local area names, frequencies, and route-specific calls tied to the day-of brief, not memorized as universal procedure."
+              }
+            ],
+            "text": "Rejoin planning:"
+          }
+        ],
+        "title": "Dissolving the Flight (Flight Split)"
+      },
+      {
+        "items": [
+          {
+            "text": "Radial rendezvous is a structured blind or visual circular rendezvous that lets a separated flight rejoin using a known fix, altitude block, airspeed, and turn direction."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead establishes the rendezvous circle tangent to the briefed fix and flies the briefed direction."
+              },
+              {
+                "text": "Lead uses about 30 degrees AOB, maintains altitude and 200 KIAS, and calls position points at each 90-degree interval until Wing reports visual."
+              },
+              {
+                "text": "Lead adjusts for wind so point one remains tied to the fix."
+              }
+            ],
+            "text": "Lead actions:"
+          },
+          {
+            "children": [
+              {
+                "text": "Wing proceeds toward the point-one fix 500 ft below the briefed rendezvous altitude."
+              },
+              {
+                "text": "Wing remains 500 ft low until established on Lead's bearing line with fuselage alignment."
+              },
+              {
+                "text": "At point one, or another known circle point, Wing initiates the briefed turn direction even if Lead is not yet in sight."
+              },
+              {
+                "text": "Wing responds to Lead's position calls with DME or other briefed position awareness until visual."
+              }
+            ],
+            "text": "Wing actions:"
+          },
+          {
+            "children": [
+              {
+                "text": "After visual, Wing calls visual, climbs to Lead's altitude by placing Lead on the horizon, and completes the standard join-up."
+              },
+              {
+                "text": "If sight picture or situational awareness supports it, Wing may use the center of the circle as a control zone before beginning lead/lag maneuvering."
+              },
+              {
+                "text": "Do not rush from blind geometry into a high-closure join; preserve altitude separation until the visual rejoin is stable."
+              }
+            ],
+            "text": "Join-up:"
+          }
+        ],
+        "title": "Radial Rendezvous"
+      },
+      {
+        "items": [
+          {
+            "text": "The fan break is a formation pattern-entry tool that creates interval through matched roll rate plus predictable power and speed-brake differences."
+          },
+          {
+            "children": [
+              {
+                "text": "Lead initiates with the follow-me signal."
+              },
+              {
+                "text": "Lead smoothly rolls to about 45 degrees AOB at a rate Wing can match."
+              },
+              {
+                "text": "Lead normally holds power through about 90 degrees of turn, then retards the PCL to idle."
+              },
+              {
+                "text": "Lead makes required landing-pattern calls for the flight."
+              }
+            ],
+            "text": "Lead actions:"
+          },
+          {
+            "children": [
+              {
+                "text": "Wing matches Lead's roll rate."
+              },
+              {
+                "text": "Wing retards the PCL to idle and extends speed brake at maneuver start to build spacing."
+              },
+              {
+                "text": "Wing reports gear-down status after Lead's clearance-to-land call according to current SOP or course rules."
+              },
+              {
+                "text": "After landing, rejoin as a flight only after crossing the hold-short line and taxiing back together as briefed."
+              }
+            ],
+            "text": "Wing actions:"
+          },
+          {
+            "children": [
+              {
+                "text": "The maneuver depends on predictable timing; abrupt roll, late speed brake, or mismatched power can collapse spacing."
+              },
+              {
+                "text": "Use current local course rules for field-specific pattern calls and runway flow."
+              }
+            ],
+            "text": "Common traps:"
+          }
+        ],
+        "title": "Fan Break"
+      },
+      {
+        "items": [
+          {
+            "text": "Aborted Takeoff"
+          },
+          {
+            "text": "Dissolving the Flight (Flight Split)"
+          },
+          {
+            "text": "Radial Rendezvous"
+          },
+          {
+            "text": "Fan Break"
+          }
+        ],
+        "title": "Required Procedures"
+      }
+    ],
+    "summary": "CS2102 should be studied as a formation separation-and-rejoin event: abort safely, split the flight deliberately, rejoin with a structured radial rendezvous, and use fan-break spacing without improvising local calls."
+  },
+  "summary": "CS2102 covers formation aborts, flight split, radial rendezvous, and fan-break recovery.",
+  "title": "Aborted Takeoff"
+}

@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I43 Instrument Navigation complete through `I4304`
-- Current event: `I4490`
-- Next action: author `I4490` from canonical syllabus items, check-flight local sources, prior instrument-event discussion-item coverage, Instrument Navigation FTI, Instrument Flight Planning Workbook, CNAF/NATOPS references, and local IFG material only where transferable.
-- Last validated event: `I4304`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I4304.json`
-- Last manifest validation: `I4304` authored; no `I4304` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I4304`
+- Status: I44 Instrument Check Flight complete through `I4490`
+- Current event: `I6101`
+- Next action: author `I6101` from canonical syllabus items, local VTD/sim sources, Instrument Navigation FTI procedure-turn and missed-approach material, NATOPS/EP XML as needed, and prior Instrument check-flight review standards.
+- Last validated event: `I4490`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I4490.json`
+- Last manifest validation: `I4490` authored; no `I4490` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I4490`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -45,7 +45,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- `I2101` through `I4304` now have authored Instrument event content overrides.
+- `I2101` through `I4490` now have authored Instrument event content overrides.
 - Remaining pending Instrument events still use generic manifest scaffold notes until authored.
 - Some flight `.docx` files are hidden from app source-document cards but remain valid authoring sources via `textutil`.
 - Treat local field names, routes, frequencies, and scenario-specific details as day-of/local verification material unless the item is inherently local.
@@ -82,7 +82,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I4302 | En Route Weather and Circling | T-6B | flight | I43 Instrument Navigation | 6 | complete | use git log | Authored from syllabus membership, local flight event docs, Instrument Flight Planning Workbook en route weather and IFR Supplement material, Instrument Navigation FTI circling/VDP/missed-approach and DRAFT guidance, and prior fuel-management consistency; no `systemsBrief`; manifest/audit/build passed. |
 | I4303 | Airspace and Field Selection | T-6B | flight | I43 Instrument Navigation | 5 | complete | use git log | Authored from syllabus membership, local flight event docs, FAA/AIM airspace classification references, Instrument Navigation FTI high-altitude approach material, Navigation FTI route-abort/emergency-field guidance, NATOPS recovery/FMS/endurance data, CNAF minimum-fuel rules, and Instrument Flight Planning Workbook fuel values; no `systemsBrief`; manifest/audit/build passed. |
 | I4304 | Lost Communications and SID/STAR | T-6B | flight | I43 Instrument Navigation | 6 | complete | use git log | Authored from syllabus membership, local flight event docs, current eCFR/AIM lost-communication references, Instrument Navigation FTI lost-communications/SID/STAR/departure guidance, Instrument Flight Planning Workbook STAR/ODP/Trouble T material, and cumulative EP review rules; no `systemsBrief`; manifest/audit/build passed. |
-| I4490 | Instrument Check Flight | T-6B | flight | I44 Instrument Check Flight | 7 | pending | - | - |
+| I4490 | Instrument Check Flight | T-6B | flight | I44 Instrument Check Flight | 7 | complete | use git log | Authored from syllabus membership, local check-flight event docs, DD-1801/DD-1801-C/jet-log source files, current eCFR/AIM lost-communications references, CNAF takeoff/approach/flight-planning rules, Instrument Flight Planning Workbook DD-1801/stopover/NOTAM/weather material, and prior Instrument event coverage; no `systemsBrief`; manifest/audit/build passed. |
 | I6101 | Procedure Turns and Missed Approach | VTD | sim | I61 Radio Instruments | 7 | pending | - | - |
 | I6102 | Arcing and Holding | VTD | sim | I61 Radio Instruments | 6 | pending | - | - |
 | I6201 | CNAF M-3710.7 Minimum Fuel Requirements | VTD | sim | I62 Radio Instruments | 7 | pending | - | - |

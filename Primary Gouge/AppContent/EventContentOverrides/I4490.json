@@ -1,0 +1,371 @@
+{
+  "canonicalCoverage" : {
+    "CNAF M-3710.7 takeoff/approach minimums" : [
+      "CNAF M-3710.7 Takeoff/Approach Minimums"
+    ],
+    "Lost communications (FIH)" : [
+      "Lost Communications (FIH)"
+    ],
+    "NOTAM" : [
+      "NOTAM"
+    ],
+    "any emergency procedure" : [
+      "Any Emergency Procedure"
+    ],
+    "any previously discussed item" : [
+      "Any Previously Discussed Item"
+    ],
+    "en route weather" : [
+      "En Route Weather"
+    ],
+    "flight planning (submit a completed DD-1801 and jet log: Stopover flight plan to include an en route holding delay (1st leg), terminal delay (2nd leg))" : [
+      "Flight Planning, DD-1801, and Jet Log"
+    ]
+  },
+  "code" : "I4490",
+  "overview" : "I4490 is the instrument check-flight preparation event. The standard is to show examiner-ready judgment: the flight plan is complete, current data is checked, lost-communications and weather-minimum decisions are defensible, and prior instrument procedures can be explained without leaning on local gouge.",
+  "primaryDocumentTitles" : [
+    "I4490 - Check Flight",
+    "DK Gouge I4490"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Lost communications should be briefed as a predictable plan that ATC can protect, with PIC emergency authority available when the rule does not fit the actual safety problem."
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the failure occurs in VFR conditions, or VFR conditions are encountered after the failure, continue under VFR and land as soon as practicable."
+              },
+              {
+                "text" : "Land as soon as practicable does not mean land immediately at an unsuitable field, and the VFR branch also applies if the failure occurs in Class A."
+              },
+              {
+                "text" : "Squawk 7600 and attempt recontact on the last assigned frequency, FSS, New York Radio or San Francisco Radio, 121.5 MHz, and NAVAID voice as able."
+              }
+            ],
+            "text" : "VFR and recontact:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For IFR route, use AVE-F: assigned, vectored direct to the specified fix/route/airway, expected, then filed."
+              },
+              {
+                "text" : "For IFR altitude, use AME for each segment: highest of assigned altitude, minimum IFR altitude, or expected altitude."
+              },
+              {
+                "text" : "Make MEA, MCA, MRA, and valid EFC-altitude changes at the appropriate segment, time, or fix; do not apply an expected altitude before it becomes usable."
+              }
+            ],
+            "text" : "IFR route and altitude:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the clearance limit is a fix from which an approach begins, begin descent or approach as close as possible to the EFC time, or ETA if no EFC was received."
+              },
+              {
+                "text" : "If the clearance limit is not an approach fix, leave it at EFC time, or on arrival if no EFC was received, then proceed to a fix from which an approach begins."
+              },
+              {
+                "text" : "For radar approaches, brief the specific lost-communication interval and backup plan: secondary or tower frequency, VFR if possible, approved non-radar approach, or the radar approach's published lost-communication procedure."
+              }
+            ],
+            "text" : "Clearance-limit branch:"
+          }
+        ],
+        "title" : "Lost Communications (FIH)"
+      },
+      {
+        "items" : [
+          {
+            "text" : "CNAF minimums are the check-flight weather gates: can the aircraft legally depart, may the approach be commenced, and may it continue below MDA or DH."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For a standard instrument rating, a non-precision-supported takeoff requires the published minimums for the available approach, but not less than a 300-foot ceiling and 1 SM visibility."
+              },
+              {
+                "text" : "If a compatible precision approach is available and usable for the landing runway, takeoff may use those precision minimums, but never below 200-foot ceiling and 1/2 SM visibility or 2400 RVR."
+              },
+              {
+                "text" : "A special instrument rating has no takeoff ceiling or visibility minimums, but only an aircraft commander with that rating, on the flight controls, may depart below the applicable minimums."
+              }
+            ],
+            "text" : "Takeoff:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use approved DoD FLIP or equivalent procedures. For straight-in approaches, RVR governs when available; for circling, prevailing visibility governs."
+              },
+              {
+                "text" : "A single-piloted aircraft shall not commence an instrument approach if reported weather is below published minimums for the type of approach being conducted."
+              },
+              {
+                "text" : "The fixed-wing single-pilot absolute floor is 200-foot ceiling or HAT and 1/2 SM visibility or 2400 RVR."
+              }
+            ],
+            "text" : "Approach commencement:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not descend below MDA or continue below DH unless the runway environment is in sight and a safe landing can be made."
+              },
+              {
+                "text" : "On a precision approach, execute the missed approach at DH if the runway environment is not in sight or a safe landing cannot be made."
+              },
+              {
+                "text" : "On a non-precision approach, execute the missed at the MAP if visual reference is not established or the landing cannot be accomplished."
+              },
+              {
+                "text" : "If visual reference is lost while circling, start with a climbing turn toward the landing runway, then maneuver the shortest direction to join the published missed-approach course."
+              }
+            ],
+            "text" : "Continuing or going missed:"
+          }
+        ],
+        "title" : "CNAF M-3710.7 Takeoff/Approach Minimums"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The check flight requires a completed DD-1801, DD-1801-C stopover plan, and jet log that agree with each other and with the weather, NOTAM, fuel, alternate, and delay plan."
+          },
+          {
+            "children" : [
+              {
+                "text" : "CNAF preflight planning requires familiarity with weather reports and forecasts, NOTAMs, TFRs, fuel requirements, terminal procedures, alternatives if the flight cannot be completed, anticipated traffic delays, and risk."
+              },
+              {
+                "text" : "The DD-1801 is the formal IFR flight-plan request; the jet log is the cockpit math that proves headings, distances, ETEs, fuel burns, EFRs, alternate fuel, and DRAFT data."
+              },
+              {
+                "text" : "Build the route and fuel story from the same assumptions: fuel aboard, start/taxi/takeoff fuel, climb and cruise profile, approach fuel, alternate fuel, reserve, and spare fuel."
+              }
+            ],
+            "text" : "What the paperwork must prove:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use DD-1801 for the initial leg and DD-1801-C for subsequent legs in a stopover flight plan."
+              },
+              {
+                "text" : "The DD-1801-C uses the same completion guidance as DD-1801, can support three additional legs, and carries new fuel endurance and persons on board in Block 19 for each leg."
+              },
+              {
+                "text" : "Use Block 18 on the DD-1801-C only when information changes from the initial DD-1801."
+              }
+            ],
+            "text" : "Stopover form logic:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For an en route holding delay, use DLE/ with the significant point on the route followed by the delay length in four-digit hours and minutes."
+              },
+              {
+                "text" : "For a terminal delay, show the practice instrument approach delay in the route structure so ATC can see the intended terminal work."
+              },
+              {
+                "text" : "For this event, the first leg should include the en route holding delay and the second leg should include the terminal delay; the jet log must carry the fuel and timing consequences of both."
+              }
+            ],
+            "text" : "Delay entries:"
+          }
+        ],
+        "title" : "Flight Planning, DD-1801, and Jet Log"
+      },
+      {
+        "items" : [
+          {
+            "text" : "NOTAMs are time-critical aeronautical information that can change whether the planned route, procedure, airport, NAVAID, airspace, or GPS plan is usable."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For DoD operations, use DAIP when available; if DAIP is unavailable, get a NOTAM briefing through FSS by phone or other approved means."
+              },
+              {
+                "text" : "Check departure, destination, alternate, route, ARTCCs along the route, TFRs, special-use airspace activity, and any GPS/RAIM issue that affects the planned procedures."
+              },
+              {
+                "text" : "If a location is not covered by the U.S. NOTAM system, use FSS or direct airport contact as needed."
+              }
+            ],
+            "text" : "Where to look:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "NOTAM(D) can cover airport, taxiway, lighting, and facility status that may not change approach criteria but still affects execution."
+              },
+              {
+                "text" : "FDC NOTAMs are regulatory and may amend instrument procedures, published charts, or advertise TFRs."
+              },
+              {
+                "text" : "Pointer NOTAMs point to another NOTAM; SAA NOTAMs activate special-activity airspace; military NOTAMs cover military NAVAIDs and airports in the NAS."
+              },
+              {
+                "text" : "Domestic and International Notices are not included in a standard FSS briefing unless requested, so ask for them if they have not already been reviewed."
+              }
+            ],
+            "text" : "Types to recognize:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "CNAF makes FLIP procedures, special notices, instructions, and NOTAMs mandatory for naval aircraft pilots."
+              },
+              {
+                "text" : "A check-flight NOTAM answer should end with a cockpit effect: procedure unavailable, alternate invalid, NAVAID unusable, airspace unavailable, timing changed, or no factor."
+              }
+            ],
+            "text" : "How to brief it:"
+          }
+        ],
+        "title" : "NOTAM"
+      },
+      {
+        "items" : [
+          {
+            "text" : "En route weather is not a one-time preflight snapshot; it is the in-flight update loop that protects the route, destination, alternate, and fuel plan."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use PMSV/METRO, FSS, ARTCC weather advisories, ATIS, ASOS/AWSS, AWOS, UNICOM/AUNICOM, ATC weather avoidance assistance, and PIREPs as the route develops."
+              },
+              {
+                "text" : "ARTCC may broadcast the availability of severe weather forecast alerts, convective SIGMETs, SIGMETs, AIRMETs, urgent PIREPs, and CWA information affecting their area."
+              },
+              {
+                "text" : "FSS specialists may brief and interpret available reports and forecasts, but they are not original forecasters."
+              },
+              {
+                "text" : "PMSV/METRO can update weather information, help with DD-175-1 updates, and receive PIREPs for rapid dissemination."
+              }
+            ],
+            "text" : "In-flight sources:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Compare each update against approach minimums, alternate requirements, fuel-to-alternate, severe weather watches, SIGMETs, icing, thunderstorms, turbulence, and route delays."
+              },
+              {
+                "text" : "If the DD-175-1 void time, weather briefed time, route, or delay plan no longer supports the flight, update the plan before the check flight becomes a fuel or legality problem."
+              },
+              {
+                "text" : "Use ATC weather avoidance assistance for precipitation information, but remember ATC radar does not detect turbulence and NEXRAD-based products can be delayed."
+              },
+              {
+                "text" : "Give PIREPs for hazardous weather and useful cloud, visibility, icing, turbulence, wind shear, or precipitation observations."
+              }
+            ],
+            "text" : "What to do with it:"
+          }
+        ],
+        "title" : "En Route Weather"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Any emergency procedure in a check-flight event is a cumulative oral evaluation of judgment, not just a memory-item recital."
+          },
+          {
+            "children" : [
+              {
+                "text" : "State the cue, maintain aircraft control, execute required immediate action, back it up with the checklist, and identify the N/W/C that changes the branch."
+              },
+              {
+                "text" : "Tie the procedure to the phase of flight: departure obstacle clearance, en route weather, lost communications, fuel state, approach minimums, alternate selection, or recovery-field suitability."
+              },
+              {
+                "text" : "Finish with the branch: continue, land as soon as practical, land as soon as possible, PEL, forced landing, or eject."
+              },
+              {
+                "text" : "If the emergency affects IFR capability, tell ATC what failed, what capability remains, and what clearance or vectors are needed."
+              }
+            ],
+            "text" : "Answer format:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not invent an exhaustive EP list for the event. Be prepared to apply the same method to whichever NATOPS EP the instructor selects."
+              },
+              {
+                "text" : "Common check-flight misses are treating a warning as a note, troubleshooting below the useful altitude band, delaying ejection past a limit, or forgetting that a systems failure can invalidate the IFR plan."
+              }
+            ],
+            "text" : "Common traps:"
+          }
+        ],
+        "title" : "Any Emergency Procedure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Any previously discussed item means the check flight can reach back across the instrument syllabus; prepare prior events as linked procedures rather than isolated flash facts."
+          },
+          {
+            "children" : [
+              {
+                "text" : "For each prior item, know the purpose, setup, clearance meaning, numbers or gates, execution flow, common error, missed or lost-communication branch, and source."
+              },
+              {
+                "text" : "High-value review lanes are scan and basic instrument maneuvers, holding, course intercepts, PAR/ASR/no-gyro, ILS/LOC, GPS/RNAV/TAA, SID/STAR, ODP/Trouble T, fuel management, DD-1801/jet log, NOTAMs, and weather."
+              },
+              {
+                "text" : "If a question is local or scenario-specific, answer from the current chart, IFG, ATC clearance, or local procedure for that day; do not rely on stale route names or memorized frequencies."
+              },
+              {
+                "text" : "A strong check-flight answer ends in a cockpit action: what you would set, brief, request, fly, verify, or discontinue."
+              }
+            ],
+            "text" : "How to study it:"
+          }
+        ],
+        "title" : "Any Previously Discussed Item"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Lost Communications (FIH)"
+          },
+          {
+            "text" : "CNAF M-3710.7 Takeoff/Approach Minimums"
+          },
+          {
+            "text" : "Flight Planning (Submit a Completed DD-1801 and Jet Log: Stopover Flight Plan to Include an En Route Holding Delay (1st Leg), Terminal Delay (2nd Leg))"
+          },
+          {
+            "text" : "NOTAM"
+          },
+          {
+            "text" : "En Route Weather"
+          },
+          {
+            "text" : "Any Emergency Procedure"
+          },
+          {
+            "text" : "Any Previously Discussed Item"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Brief the check flight as one integrated standard: legal launch, complete DD-1801/jet log, current NOTAM and weather picture, lost-communications plan, EP branch logic, and source-backed review of prior instrument items."
+  },
+  "summary" : "Instrument check-flight planning, lost communications, weather minimums, NOTAMs, en route weather, EPs, and cumulative review.",
+  "title" : "Instrument Check Flight"
+}

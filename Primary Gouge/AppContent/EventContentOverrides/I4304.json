@@ -1,0 +1,319 @@
+{
+  "canonicalCoverage" : {
+    "Lost communications (FIH)" : [
+      "Lost Communications (FIH)"
+    ],
+    "SID/STAR" : [
+      "SID/STAR"
+    ],
+    "Trouble T" : [
+      "Trouble T"
+    ],
+    "any emergency procedure" : [
+      "Any Emergency Procedure"
+    ],
+    "obstacle departure procedures" : [
+      "Obstacle Departure Procedures"
+    ]
+  },
+  "code" : "I4304",
+  "overview" : "I4304 closes the I43 block by tying lost-communication predictability, published departure and arrival procedures, obstacle-clearance planning, and cumulative EP discipline into one cross-country brief. The event standard is to make the next safe action obvious even if radios, weather, or aircraft status stop matching the plan.",
+  "primaryDocumentTitles" : [
+    "I4304",
+    "DK Gouge I4304"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Lost communications is a predictability problem first: keep flying, make the aircraft easy for ATC to protect, and use emergency authority if the published rule no longer produces the safest outcome."
+          },
+          {
+            "children" : [
+              {
+                "text" : "No single rule covers every lost-communications situation; the PIC remains the final authority and may deviate from Part 91 as required by an in-flight emergency."
+              },
+              {
+                "text" : "Unless emergency authority is being used, ATC will protect for the assumption that the aircraft is complying with 14 CFR 91.185."
+              },
+              {
+                "text" : "Squawk 7600 on Mode A/3, but remember the aircraft may not be in radar coverage."
+              }
+            ],
+            "text" : "Initial mindset:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If the failure occurs in VFR conditions, or VFR conditions are encountered after the failure, continue under VFR and land as soon as practicable."
+              },
+              {
+                "text" : "This VFR rule also applies in Class A airspace."
+              },
+              {
+                "text" : "Land as soon as practicable does not mean land immediately at an unsuitable or unauthorized airport; use judgment to reach a safe, suitable landing option."
+              }
+            ],
+            "text" : "VFR branch:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For route, use AVE-F: assigned route, vectored direct to the fix/route/airway in the vector clearance, expected route, then filed route."
+              },
+              {
+                "text" : "For altitude, use AME for each route segment: the highest of assigned altitude, minimum IFR altitude, or expected altitude."
+              },
+              {
+                "text" : "Make altitude changes required by MEA, MCA, MRA, and any valid expected-further-clearance altitude at the specified time or fix."
+              },
+              {
+                "text" : "If cleared to a fix from which an approach begins, begin descent or approach as close as possible to the EFC time, or ETA if no EFC was received."
+              },
+              {
+                "text" : "If the clearance limit is not an approach fix, leave it at EFC time, or on arrival if no EFC was received, then proceed to a fix from which an approach begins and time the descent or approach as close as possible to ETA."
+              }
+            ],
+            "text" : "IFR branch:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Monitor NAVAID voice if available and attempt contact on the last assigned frequency, FSS, New York Radio or San Francisco Radio, and 121.5 MHz as able."
+              },
+              {
+                "text" : "If contact is made through FSS or radio relay, give position, altitude, last assigned frequency, and request further clearance from the controlling facility."
+              },
+              {
+                "text" : "During radar approaches, lost-communication timing may be no more than 1 minute on vectors to final, 15 seconds on ASR or PAR without glideslope final, and 5 seconds on PAR final."
+              },
+              {
+                "text" : "If radar-approach communications are lost, attempt secondary or tower frequency, proceed VFR if possible, or execute the approved non-radar approach or specific lost-communication procedure for that radar approach."
+              }
+            ],
+            "text" : "Recontact and radar approaches:"
+          }
+        ],
+        "title" : "Lost Communications (FIH)"
+      },
+      {
+        "items" : [
+          {
+            "text" : "SID/STAR procedures are published ATC routes with clearance consequences; brief the chart as an executable clearance, not just a name in the flight plan."
+          },
+          {
+            "children" : [
+              {
+                "text" : "A SID provides obstruction clearance and transition from the terminal area to en route structure."
+              },
+              {
+                "text" : "Before takeoff, review the full SID, surrounding terrain, hazards, climb gradient requirements, transition, and lost-communication or emergency-return consequences."
+              },
+              {
+                "text" : "Set NAVAIDs, displays, and FMS procedure as required before departure; if using the FMS, the SID must be retrieved from the database and checked against the clearance."
+              },
+              {
+                "text" : "Keep the primary recovery approach available in case the SID turns into an emergency return."
+              }
+            ],
+            "text" : "SID execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A STAR is an ATC-coded IFR arrival route that simplifies clearance delivery and transitions the aircraft from en route structure toward terminal instrument procedures."
+              },
+              {
+                "text" : "You must have the approved chart to accept a STAR, and RNAV STARs require appropriate FMS equipment and database support."
+              },
+              {
+                "text" : "Published speed restrictions are mandatory unless ATC modifies them; published altitude restrictions become vertically authorized only with the appropriate clearance."
+              },
+              {
+                "text" : "\"Expect\" altitudes and speeds are planning information only unless ATC specifically issues them as part of a further clearance."
+              }
+            ],
+            "text" : "STAR chart discipline:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "\"Cleared the arrival\" normally means fly the lateral route and published speeds while maintaining the last assigned altitude until ATC authorizes descent."
+              },
+              {
+                "text" : "\"Descend via\" authorizes lateral and vertical navigation on the arrival to comply with published altitude and speed restrictions, but not below the published bottom altitude."
+              },
+              {
+                "text" : "When checking in on a new frequency while descending via, include \"descending via\" so the next controller knows the vertical clearance."
+              },
+              {
+                "text" : "MEAs are not STAR restrictions, but the aircraft is still expected to remain above required en route minimum altitudes."
+              }
+            ],
+            "text" : "Arrival clearance meaning:"
+          }
+        ],
+        "title" : "SID/STAR"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Any emergency procedure should be briefed as a decision process: recognize the cue, keep the aircraft controlled, execute memory items when required, back up with the checklist, and choose the correct recovery branch."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Start with aviate, navigate, communicate. An EP answer that skips aircraft control, terrain/airspace, or weather is incomplete even if the checklist words are memorized."
+              },
+              {
+                "text" : "State the cue, the immediate action or memory item if one exists, the checklist backup, and the warning/caution/note that changes the decision."
+              },
+              {
+                "text" : "Tie the procedure to the event environment: departure obstacle clearance, lost communications, high-altitude recovery, fuel state, weather, and nearest suitable field."
+              }
+            ],
+            "text" : "Review method:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For each EP, decide whether the branch is continue, land as soon as practical, land as soon as possible, PEL, forced landing, or eject."
+              },
+              {
+                "text" : "If the procedure affects IFR capability, tell ATC what failed, what capability remains, and what clearance or recovery support is needed."
+              },
+              {
+                "text" : "Use N/W/Cs to protect against the common traps: delaying ejection below limits, resetting or pulling the wrong circuit breaker, troubleshooting while low or task saturated, or continuing into weather with degraded equipment."
+              },
+              {
+                "text" : "Do not invent an exhaustive EP list for the brief; be ready to apply the method to whichever NATOPS EP the instructor selects."
+              }
+            ],
+            "text" : "Decision branch:"
+          }
+        ],
+        "title" : "Any Emergency Procedure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Obstacle Departure Procedures provide obstruction clearance from the terminal area to the en route structure when obstacles require more than a basic diverse departure."
+          },
+          {
+            "children" : [
+              {
+                "text" : "ODPs are a type of departure procedure and are labeled with \"OBSTACLE\" in the title on DoD/FAA charts."
+              },
+              {
+                "text" : "Textual ODPs are normally found with takeoff minimums and obstacle-departure information in the front section of the chart booklet; complex and RNAV ODPs may be graphical."
+              },
+              {
+                "text" : "ODPs are not normally assigned by ATC unless needed for separation, so the pilot must determine whether one exists and how it affects the departure."
+              }
+            ],
+            "text" : "Purpose and charting:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Research the departure before leaving the planning space: terrain, hazards, close-in obstacles, climb gradients, required headings, and special routing."
+              },
+              {
+                "text" : "If using an ODP, file or tell ATC clearly enough that the first controller understands the intended departure path."
+              },
+              {
+                "text" : "If ATC assigns another departure procedure, radar vector, or clearance that changes the plan, confirm obstacle clearance and performance before accepting it."
+              },
+              {
+                "text" : "Keep the immediate-return approach ready because an emergency after takeoff can combine aircraft control, obstacle clearance, and weather minimums in the same moment."
+              }
+            ],
+            "text" : "Planning standard:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A diverse departure normally requires climbing to 400 feet AGL before turning and at least 200 feet per NM until reaching the minimum IFR altitude, unless a procedure says otherwise."
+              },
+              {
+                "text" : "Convert a published climb gradient to cockpit climb rate with: required FPM equals groundspeed in NM per minute times required feet per NM."
+              },
+              {
+                "text" : "At 180 KIAS, groundspeed is about 3 NM per minute; a 200 feet-per-NM gradient is therefore about 600 FPM."
+              },
+              {
+                "text" : "If performance, weather, loading, or emergency planning cannot support the required climb or route, solve that before takeoff."
+              }
+            ],
+            "text" : "Performance check:"
+          }
+        ],
+        "title" : "Obstacle Departure Procedures"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The Trouble T symbol is the chart cue that nonstandard takeoff minimums, obstacle information, or special departure requirements may apply."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The symbol can appear on IAP, DP, ODP, or SID charts and points to the takeoff minimums and obstacle-departure information for that airport."
+              },
+              {
+                "text" : "The controlling details are in the front section of the approach-plate or TPP booklet, normally grouped alphabetically by airport."
+              },
+              {
+                "text" : "The symbol alone does not tell you the runway-specific restriction, obstacle note, climb gradient, or required route; read the text before departure."
+              }
+            ],
+            "text" : "What it tells you:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Some departures may still allow standard takeoff minimums only if the aircraft meets a specific climb or routing requirement."
+              },
+              {
+                "text" : "Trouble T is an obstacle-clearance alert; Navy takeoff weather minimums are related planning data but come from CNAF rules."
+              },
+              {
+                "text" : "When Trouble T, ODP, and CNAF weather minimums all apply, brief them separately: obstacle route and climb, departure weather legality, and emergency-return plan."
+              }
+            ],
+            "text" : "How to brief it:"
+          }
+        ],
+        "title" : "Trouble T"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Lost Communications (FIH)"
+          },
+          {
+            "text" : "SID/STAR"
+          },
+          {
+            "text" : "Any Emergency Procedure"
+          },
+          {
+            "text" : "Obstacle Departure Procedures"
+          },
+          {
+            "text" : "Trouble T"
+          },
+          {
+            "text" : "Any Emergency Procedure"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use lost-communication rules, SID/STAR clearance meaning, obstacle-departure planning, Trouble T details, and EP branch logic to keep the cross-country recoverable when the plan changes."
+  },
+  "summary" : "Lost-communication branches, SID/STAR clearance meaning, obstacle departures, Trouble T, and cumulative EP review.",
+  "title" : "Lost Communications and SID/STAR"
+}

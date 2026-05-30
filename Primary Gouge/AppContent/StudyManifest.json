@@ -37509,7 +37509,7 @@
                 }
               ],
               "id" : "vnav-sims-n3101",
-              "overview" : "N3101 centers on n3101: day navigation and the key procedures students need to explain and execute.",
+              "overview" : "N3101 introduces day visual navigation as a planned route-management problem: prepare a readable chart, fly with dead reckoning and pilotage, correct timing and course early, and keep divert, airspace, HUD, and VFR field-entry decisions ahead of the aircraft.",
               "primaryDocumentIDs" : [
                 "contents-3-vnav-2-sims-scenarios-n3101-1542-166d-pdf"
               ],
@@ -37561,36 +37561,339 @@
                   {
                     "items" : [
                       {
-                        "text" : "VFR chart preparation"
+                        "text" : "VFR chart preparation turns the route into a cockpit tool: current sectional, clean markings, known checkpoint sequence, planned timing, and continuation-fuel gates that support an abort or continue decision."
                       },
                       {
-                        "text" : "emergency field selection"
+                        "children" : [
+                          {
+                            "text" : "Bring current sectionals, dividers, a navigation plotter, pencil, black ballpoint pen, highlighters, and a template for circles, squares, and arrows."
+                          },
+                          {
+                            "text" : "Pick the final checkpoint as the target and assign the Time on Target. Select prominent checkpoints from start to target, normally spaced about 3 to 25 minutes apart."
+                          },
+                          {
+                            "text" : "Avoid congested airspace, OLFs, controlled fields, and alert areas to the maximum practical extent during checkpoint and route selection."
+                          },
+                          {
+                            "text" : "Circle checkpoints about nickel-size, connect them with straight course lines, and stop lines at the circle edge so chart detail stays readable."
+                          }
+                        ],
+                        "text" : "Route layout:"
                       },
                       {
-                        "text" : "airspace classification"
+                        "children" : [
+                          {
+                            "text" : "Measure true course with the plotter, apply average isogonic variation, and compute magnetic course using TC minus easterly variation or TC plus westerly variation."
+                          },
+                          {
+                            "text" : "Measure checkpoint center-to-center distance, round to the nearest 0.5 NM, and record the leg data on the jet log."
+                          },
+                          {
+                            "text" : "Plan visual-navigation timing at 210 KGS, or 3.5 NM per minute, and place 1-minute tick marks perpendicular to the course line."
+                          },
+                          {
+                            "text" : "Compute continuation fuel backwards from the destination or final checkpoint so each checkpoint has a minimum fuel required to continue."
+                          }
+                        ],
+                        "text" : "Course, distance, time, and fuel:"
+                      }
+                    ],
+                    "title" : "VFR Chart Preparation"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Emergency field selection is continuous route monitoring: know the closest suitable divert, update it during ops checks, and make the abort decision while fuel, altitude, and field reachability still leave options."
                       },
                       {
-                        "text" : "VFR field entry\/departure (AIM)"
+                        "children" : [
+                          {
+                            "text" : "During preflight chart study, mark suitable emergency fields near each route segment and note runway length, orientation, elevation, lighting, and any obvious pattern or airspace issue."
+                          },
+                          {
+                            "text" : "In flight, perform ops checks about every 15 to 20 minutes and update the closest divert each time."
+                          },
+                          {
+                            "text" : "For a low-level engine malfunction, the Navigation FTI rule of thumb is that recovery is unlikely unless a suitable field is within about 3 NM; fields inside the wingtip arc may be reachable with an immediate turn and climb."
+                          },
+                          {
+                            "text" : "A zoom from 240 KGS gains about 1300 feet; use that altitude to improve options, but do not let troubleshooting delay the required emergency branch."
+                          }
+                        ],
+                        "text" : "Divert mindset:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Plan an MSA for each leg as 500 feet above the highest obstacle within 10 NM of route centerline, rounded up to the next 100 feet."
+                          },
+                          {
+                            "text" : "Plan an ERAA for the route as 1000 feet, or 2000 feet in mountainous terrain, above the highest obstacle within 10 NM of route centerline, rounded to the nearest 100 feet."
+                          },
+                          {
+                            "text" : "For total disorientation, inadvertent IMC, or aircraft malfunction, climb immediately to at least ERAA. In IMC, squawk 7700, contact ATC, and get an IFR clearance."
+                          }
+                        ],
+                        "text" : "MSA, ERAA, and aborts:"
+                      }
+                    ],
+                    "title" : "Emergency Field Selection"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Airspace classification is a chart-reading and communication requirement: identify the airspace before you get there, know what entry permission or communication is required, and do not assume flight following satisfies the pilot's responsibility."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Class B requires an explicit ATC clearance and is depicted with solid blue boundaries; Class C requires two-way communication and is depicted with solid magenta boundaries."
+                          },
+                          {
+                            "text" : "Class D requires two-way communication with the tower and is depicted with dashed blue boundaries; when the tower is closed, the surface area may revert as published."
+                          },
+                          {
+                            "text" : "Class E is controlled airspace not Class A through D and is shown by charted surface, 700-foot, or 1200-foot transition markings. Class G is uncontrolled airspace outside controlled boundaries."
+                          },
+                          {
+                            "text" : "TRSA service is not a separate airspace class, but CNATRA aircraft treat TRSA participation as mandatory where applicable."
+                          }
+                        ],
+                        "text" : "Classes and TRSA:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Prohibited areas are no-entry without authorization; restricted areas require controlling-agency permission when active; warning areas mark similar hazards offshore."
+                          },
+                          {
+                            "text" : "Alert areas and MOAs require heightened lookout and status awareness; contact Flight Service or the published scheduling\/controlling agency when the route may be affected."
+                          },
+                          {
+                            "text" : "Below 10,000 feet MSL, plan around the 250 KIAS speed limit unless a specific exception applies; below Class B shelves or within 4 NM of a Class C\/D primary airport at or below 2500 feet AGL, expect 200 KIAS limits."
+                          }
+                        ],
+                        "text" : "Special use and speed traps:"
+                      }
+                    ],
+                    "title" : "Airspace Classification"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "VFR field entry and departure are about arriving predictable: get weather, make the right call early enough, meet the airspace communication requirement, and enter the pattern without surprising local traffic."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Before entering Class B, C, or D airspace, the pilot must ensure the required clearance or two-way radio communication exists, even when receiving radar advisories."
+                          },
+                          {
+                            "text" : "For towered VFR arrivals, get ATIS or airport information first, then call with callsign, position, altitude, intentions, and the current information code."
+                          },
+                          {
+                            "text" : "For uncontrolled fields, monitor and self-announce on CTAF from about 10 NM to landing; include who you are, where you are, altitude as useful, runway or pattern intention, and the airport name."
+                          },
+                          {
+                            "text" : "If using FSS or UNICOM airport advisory service, remember the information is advisory; visual lookout and pattern deconfliction remain pilot responsibilities."
+                          }
+                        ],
+                        "text" : "Arrival calls:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For VFR departure, tell tower or ground you are departing VFR, give destination or direction of flight as required, and comply with any heading, altitude, frequency, or transponder instruction."
+                          },
+                          {
+                            "text" : "At civilian fields, confirm how the VFR flight plan will be activated and closed; do not assume a tower automatically performs the same function as a military field."
+                          },
+                          {
+                            "text" : "At non-towered fields, monitor and broadcast from start or taxi until clear of the area, and use the published traffic pattern unless safety, weather, or published procedures require otherwise."
+                          }
+                        ],
+                        "text" : "Departure discipline:"
+                      }
+                    ],
+                    "title" : "VFR Field Entry\/Departure (AIM)"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The HUD is a navigation aid, not a reason to stop looking outside: use it to cross-check flight path, heading, altitude, bank, navigation cues, and system validity while still flying the VNAV scan."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The forward HUD and right-MFD HUD repeater display aircraft flight, navigation, and tactical data. Master modes are NAV, A\/A, and A\/G."
+                          },
+                          {
+                            "text" : "HUD cues include flash for time-critical or field-of-view-limited information and a limit cross when a symbol has exceeded the HUD field of view."
+                          },
+                          {
+                            "text" : "The HUD does not show colors or OFF flags; invalid data may disappear or be replaced with an X."
+                          },
+                          {
+                            "text" : "The waterline pitch reference, flight path marker, climb-dive marker, and climb-dive ladder help interpret aircraft control and flight path, but they do not replace outside references on a VFR navigation route."
+                          }
+                        ],
+                        "text" : "Symbology and validity:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "In NAV master mode, use heading scale, selected heading, active waypoint or course cues, bank scale, and sideslip indicator as cross-checks against the chart and ground."
+                          },
+                          {
+                            "text" : "Use the HUD for trend awareness, then confirm with clock-chart-ground. A clean HUD picture is not proof you are on the right visual checkpoint."
+                          }
+                        ],
+                        "text" : "VNAV use:"
+                      }
+                    ],
+                    "title" : "HUD"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Route management is the VNAV control loop: stabilize on altitude and airspeed, navigate by dead reckoning and pilotage, identify checkpoints early, and update timing, fuel, and divert choices as the route develops."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Before leaving run-up, have charts, jet log, and publications open and accessible. Departure climbout is not the time to unfold charts or hunt for route data."
+                          },
+                          {
+                            "text" : "Stabilize on altitude and airspeed before the first checkpoint, trim the aircraft, and maintain a continuous VFR scan plus engine-instrument cross-check."
+                          },
+                          {
+                            "text" : "Use dead reckoning for time, speed, and heading prediction, and pilotage to confirm position with visual ground references."
+                          },
+                          {
+                            "text" : "Apply clock-chart-ground: check time, find the expected chart feature, then identify it outside. Look 2 to 5 minutes ahead and positively identify each checkpoint by about 1 minute out."
+                          }
+                        ],
+                        "text" : "Route scan:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "At each checkpoint, execute the 6 Ts: Time, Turn, Time, Transition, Twist, Talk."
+                          },
+                          {
+                            "text" : "Write ATA on the jet log, turn to the new heading, restart timing as required, adjust altitude for VFR cruising rules, set the heading bug to the next leg, and give an ops check if required or desired."
+                          },
+                          {
+                            "text" : "If the checkpoint does not appear as expected, avoid wandering. Continue a deliberate plan, verify position with at least two references, and climb to MSA if temporarily disoriented."
+                          }
+                        ],
+                        "text" : "Checkpoint discipline:"
+                      }
+                    ],
+                    "title" : "Route Management"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Standard time corrections adjust groundspeed or distance to protect ETA and TOT. Make the correction early, but do not spend fuel aggressively when continuation fuel is becoming the limiting factor."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Off-course maneuvering changes distance flown. If 1 minute early on a route with suitable geometry, delay a turn by 30 seconds, parallel about 2 NM off course at 210 KGS, and turn abeam to lose about 1 minute."
+                          },
+                          {
+                            "text" : "For the proportional method, change groundspeed 1 knot for every second early or late and hold it for the number of minutes equal to groundspeed in NM per minute. At 210 KGS, that is about 4 minutes."
+                          },
+                          {
+                            "text" : "For the 10 percent method, 10 percent of 210 KGS is 21 knots; holding that increase or decrease for 10 minutes gains or loses 1 minute, or about 6 seconds per minute held."
+                          }
+                        ],
+                        "text" : "Correction methods:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not correct timing blindly. First confirm whether the error came from airspeed, heading, wind, a course correction, or an identification mistake."
+                          },
+                          {
+                            "text" : "If fuel is close to continuation fuel, accepting a small timing error may be smarter than increasing power enough to force an early route abort."
+                          }
+                        ],
+                        "text" : "Fuel and cause:"
+                      }
+                    ],
+                    "title" : "Standard Time Corrections"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Standard course corrections begin with position certainty: know where you are, know where the course is, then choose the smallest correction that gets you back on line without creating an avoidable timing error."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "First, aim for a prominent feature in the distance that lies on course, then recheck heading and update the next on-course feature as you approach."
+                          },
+                          {
+                            "text" : "Second, use funneling features between about 10 and 2 o'clock, such as roads, ridgelines, valleys, or rivers that converge toward the checkpoint."
+                          },
+                          {
+                            "text" : "Before turning, confirm position with at least two references. A correction made from an uncertain position usually increases the error."
+                          }
+                        ],
+                        "text" : "Visual methods:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If no useful visual feature is available, use Standard Closing Angle: 60 divided by groundspeed in NM per minute."
+                          },
+                          {
+                            "text" : "At 210 KGS, the Navigation FTI standard is 15 degrees. Apply the SCA for 1 minute per mile off course, or double the angle for half the time when leg length demands it."
+                          },
+                          {
+                            "text" : "After regaining course, diagnose the cause: heading drift, wind different from forecast, checkpoint misidentification, poor power control, or faulty planning."
+                          }
+                        ],
+                        "text" : "SCA method:"
+                      }
+                    ],
+                    "title" : "Standard Course Corrections"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "VFR Chart Preparation"
+                      },
+                      {
+                        "text" : "Emergency Field Selection"
+                      },
+                      {
+                        "text" : "Airspace Classification"
+                      },
+                      {
+                        "text" : "VFR Field Entry\/Departure (AIM)"
                       },
                       {
                         "text" : "HUD"
                       },
                       {
-                        "text" : "route management"
+                        "text" : "Route Management"
                       },
                       {
-                        "text" : "standard time corrections"
+                        "text" : "Standard Time Corrections"
                       },
                       {
-                        "text" : "standard course corrections"
+                        "text" : "Standard Course Corrections"
                       }
                     ],
-                    "title" : "Day Navigation"
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Prepare a readable VFR chart, fly clock-chart-ground, manage route timing and course, keep divert fields current, and use HUD and airspace cues as cross-checks without replacing the outside scan."
               },
-              "summary" : "N3101 centers on n3101: day navigation and the key procedures students need to explain and execute.",
+              "summary" : "Day VNAV chart preparation, airspace, field entry, HUD use, route management, and timing\/course corrections.",
               "tags" : [
                 "vnav",
                 "sims",

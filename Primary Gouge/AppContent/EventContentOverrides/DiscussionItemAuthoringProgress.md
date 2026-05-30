@@ -4,16 +4,37 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 ## Active pass
 
-- Active category: Instruments
-- Category key in `SyllabusEventReference.json`: `instruments`
-- Status: Instrument discussion-item pass complete through `I6301`
-- Current event: none; all 33 canonical Instrument events are authored
-- Next action: review Instrument output as a complete set, polish older capitalization if desired, or begin the next requested category/tooling pass.
-- Last validated event: `I6301`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I6301.json`
-- Last manifest validation: `I6301` authored; no `I6301` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I6301`
-- Systems brief policy: prohibited for Instruments
+- Active category: VNAV / Navigation
+- Category key in `SyllabusEventReference.json`: `navigation`
+- Status: VNAV discussion-item pass complete through `N3101`
+- Current event: `N4101`
+- Next action: author `N4101` from canonical syllabus items, local flight source, VNAV ground-school source, Navigation FTI, NATOPS/FMS references, and applicable emergency guidance.
+- Last validated event: `N3101`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/N3101.json`
+- Last manifest validation: `N3101` authored; no `N3101` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `N3101`
+- Systems brief policy: prohibited for VNAV / Navigation
+
+## VNAV source profile
+
+- Canonical event source: `Primary Gouge/AppContent/SyllabusEventReference.json`
+- Local source root: `Contents/3. VNAV`
+- Primary technical authority: `Pubs/Navigation FTI.pdf`
+- Supplemental references:
+  - `Contents/3. VNAV/1. Ground School/VNAV 1190 TLOs.docx`
+  - `Contents/3. VNAV/1. Ground School/VNAV 1190.pdf`
+  - `Contents/3. VNAV/2. Sims/Scenarios`
+  - `Contents/3. VNAV/DK VNAV Gouge`
+  - `/Users/conwaybolt/Library/CloudStorage/OneDrive-Personal/Documents/Marine Corps/Flight School/MATSG-22/Pubs/NATOPS A1-T6BAA-NFM-100 CH 2.pdf`
+  - `/Users/conwaybolt/Library/CloudStorage/OneDrive-Personal/Documents/Marine Corps/Flight School/MATSG-22/Pubs/cnaf-3710.7 General NATOPS.pdf`
+  - `Primary Gouge/AppContent/XMLSources/T-6 EP's.xml`
+  - `Primary Gouge/AppContent/XMLSources/EP's N_W_C.xml`
+- Source policy:
+  - `SyllabusEventReference.json` controls exact discussion-item membership and order.
+  - Navigation FTI controls visual-navigation procedures, chart preparation, route management, timing/course corrections, field entry, low-level emergencies, and night VNAV rules.
+  - Local VNAV docs and scenario guides provide event emphasis and student-facing organization.
+  - NATOPS, CNAF, and EP/N/W/C XML control aircraft-system, regulatory, fuel, night, and emergency details where relevant.
+  - Do not author `systemsBrief` for any VNAV / Navigation event.
 
 ## Instruments source profile
 
@@ -45,13 +66,21 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- `I2101` through `I6301` now have authored Instrument event content overrides.
-- No pending Instrument events remain in this tracker.
-- Some flight `.docx` files are hidden from app source-document cards but remain valid authoring sources via `textutil`.
-- Treat local field names, routes, frequencies, and scenario-specific details as day-of/local verification material unless the item is inherently local.
-- For cumulative `any emergency procedure` items, do not invent an exhaustive EP list without source support; frame the study method and decision tree from canonical EP/N/W/C sources.
+- `N3101` now has authored VNAV / Navigation event content; `N4101` and `N6101` remain pending.
+- `I2101` through `I6301` have authored Instrument event content overrides.
+- Treat VNAV local route names, frequencies, and field-specific scenario details as day-of/local verification material unless the canonical item is inherently local.
+- For VNAV emergency items, do not invent an exhaustive EP list without source support; frame route-abort, MSA/ERAA, PEL, night engine-failure, and ATC-coordination branches from Navigation FTI, NATOPS, and EP/N/W/C sources.
+- Existing FAM split-section `unexpectedPrimaryItems` remain known polish candidates unless they create missing canonical coverage or discussion-item authoring issues.
 
-## Event order
+## VNAV event order
+
+| Event | Title | Media | Kind | Block | Items | Status | Commit | Notes |
+| --- | --- | --- | --- | --- | ---: | --- | --- | --- |
+| N3101 | Day Navigation | OFT | sim | N31 Day Navigation | 8 | complete | use git log | Authored from syllabus membership, local sim event doc, scenario guide, VNAV ground-school source, Navigation FTI, NATOPS HUD references, and route-abort/emergency-field guidance; no `systemsBrief`; manifest/audit/build passed. |
+| N4101 | VFR Chart Preparation | T-6B | flight | N41 Day Navigation | 12 | pending | - | - |
+| N6101 | Night Navigation | VTD | sim | N61 Night Navigation | 5 | pending | - | - |
+
+## Instrument event order
 
 | Event | Title | Media | Kind | Block | Items | Status | Commit | Notes |
 | --- | --- | --- | --- | --- | ---: | --- | --- | --- |

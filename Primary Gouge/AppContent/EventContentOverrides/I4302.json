@@ -1,0 +1,327 @@
+{
+  "canonicalCoverage" : {
+    "En route weather" : [
+      "En Route Weather"
+    ],
+    "IFR supplement" : [
+      "IFR Supplement"
+    ],
+    "VDP" : [
+      "VDP"
+    ],
+    "change of flight plan while airborne" : [
+      "Change of Flight Plan While Airborne"
+    ],
+    "circling maneuver" : [
+      "Circling Maneuver"
+    ],
+    "divert to alternate" : [
+      "Divert to Alternate"
+    ]
+  },
+  "code" : "I4302",
+  "overview" : "I4302 adds the in-flight management layer to instrument navigation: weather updates, amended plans, divert requests, IFR Supplement lookup, circling, and VDP discipline. The event standard is to keep the plan flexible without letting radio work, weather, or visual maneuvering pull attention away from aircraft control and protected airspace.",
+  "primaryDocumentTitles" : [
+    "I4302",
+    "DK Gouge I4302"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "En route weather is a continuous reassessment problem: use each source for what it is good at, then decide whether the route, approach, or alternate still makes sense."
+          },
+          {
+            "children" : [
+              {
+                "text" : "ARTCCs broadcast AWWs, Convective SIGMETs, SIGMETs, AIRMETs, urgent PIREPs, and CWA alerts once on all non-emergency frequencies when the hazard area is within 150 NM of their airspace."
+              },
+              {
+                "text" : "Those broadcasts alert you that hazardous weather information exists; contact FSS or another appropriate source for the details."
+              },
+              {
+                "text" : "FSS can provide en route advisories by radio, commonly on 122.2 VHF, 255.4 UHF, or published discrete frequencies. FSS briefers interpret available forecasts and reports, but do not create original forecasts."
+              },
+              {
+                "text" : "PMSV, radio call 'METRO,' can pass weather information, update or extend DD-175-1 data, and receive significant or hazardous PIREPs."
+              }
+            ],
+            "text" : "Broadcast and briefing sources:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "ATIS usually provides airport name, code letter, UTC time, winds, visibility, obstructions, weather, sky condition, temperature, dew point, altimeter, density-altitude advisory when applicable, approach, and runway in use."
+              },
+              {
+                "text" : "ATIS service volume is normally 20 to 60 NM from the site and up to 25,000 feet AGL."
+              },
+              {
+                "text" : "ASOS/AWOS provides minute-by-minute automated surface observations; discrete-frequency reception is normally engineered to about 25 NM and 10,000 feet AGL."
+              },
+              {
+                "text" : "UNICOM may provide wind, recommended runway, weather, and airport advisory information at public-use airports without tower or FSS."
+              }
+            ],
+            "text" : "Terminal weather sources:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "ATC radar can help with precipitation avoidance, but controllers describe only what their equipment supports: light, moderate, heavy, extreme, or intensity unknown."
+              },
+              {
+                "text" : "ARTCC WARP weather can lag actual conditions by up to about 6 minutes, and ATC radar does not detect turbulence."
+              },
+              {
+                "text" : "Treat thunderstorms as turbulence threats even if the displayed precipitation intensity seems manageable; operations within 20 NM of thunderstorms require great caution."
+              },
+              {
+                "text" : "Report hazardous weather, thunderstorms or lightning, turbulence, icing, wind shear, cloud bases/tops/layers, visibility, precipitation, strong winds, and unexpected conditions by PIREP. Follow up with METRO when practical."
+              }
+            ],
+            "text" : "Weather avoidance and PIREPs:"
+          }
+        ],
+        "title" : "En Route Weather"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A divert to the alternate should sound like a prepared clearance request, not a scramble after the missed approach."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fly the missed approach or assigned climbout first, then tell ATC your intentions once the aircraft is climbing, configured, and under control."
+              },
+              {
+                "text" : "Use DRAFT for the clearance request: destination, route, altitude, fuel remaining, and time en route."
+              },
+              {
+                "text" : "The route uses the same rules as the DD-1801 route section; do not invent a shorthand route that ATC cannot clear."
+              },
+              {
+                "text" : "Altitude should comply with hemispheric or assigned altitude rules, terrain, MEA/MOCA/OROCA, weather, and ATC clearance."
+              }
+            ],
+            "text" : "DRAFT format:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fuel in DRAFT is endurance in hours plus minutes until flameout, normally based on cruise fuel flow, not pounds remaining."
+              },
+              {
+                "text" : "Time is ETE to the alternate in hours plus minutes, built from the jet log or an updated in-flight calculation."
+              },
+              {
+                "text" : "Before committing, update weather, confirm approach availability and minimums, compare actual fuel to the fuel plan, and keep another field or emergency branch in mind."
+              }
+            ],
+            "text" : "Decision gates:"
+          }
+        ],
+        "title" : "Divert to Alternate"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A change of flight plan while airborne formalizes a new destination, route, altitude, or timing picture so ATC and flight service can protect and track the aircraft."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use the change-of-flight-plan format on the inside back cover of the IFR Enroute Supplement."
+              },
+              {
+                "text" : "Be ready with type of flight plan, aircraft identification, type aircraft or TD code, estimated true airspeed, original destination when applicable, departure point, present position and time, new route and altitude or flight level, new destination when applicable, ETE or ETA, fuel endurance, required alternate, and the station where the original flight plan was filed."
+              },
+              {
+                "text" : "Once ATC issues an amended clearance, the amended route, altitude, and clearance limit replace the previous expectation."
+              }
+            ],
+            "text" : "Format items:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Mandatory IFR reports still apply: leaving an assigned altitude, unable to climb or descend at least 500 FPM, missed approach, cruising TAS changes of 5 percent or 10 knots, required holding reports, navigation or communication capability loss, safety-of-flight information, and unforecast or hazardous weather."
+              },
+              {
+                "text" : "If the request is long, use a courtesy call first so the controller is ready to copy."
+              },
+              {
+                "text" : "Do not let the paperwork format delay basic aircraft control, terrain clearance, fuel awareness, or emergency declaration when priority handling is needed."
+              }
+            ],
+            "text" : "Airborne discipline:"
+          }
+        ],
+        "title" : "Change of Flight Plan While Airborne"
+      },
+      {
+        "items" : [
+          {
+            "text" : "The IFR Supplement is both a planning source and an in-flight reference for airports, facilities, communications, NAVAIDs, and theater procedures."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Check the cover effective dates, then update the publication with NOTAMs and AP/1 information during planning."
+              },
+              {
+                "text" : "The inside front cover contains special notices for new requirements or major FLIP changes."
+              },
+              {
+                "text" : "The inside back cover contains FAA formats for position reports, change of flight plan, and filing flight plans in flight; the outside back cover contains ICAO formats."
+              }
+            ],
+            "text" : "How to use it:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Section A is the codebook: sample entries, legend, and abbreviations used to decode facility listings."
+              },
+              {
+                "text" : "Section B is the airport and facility directory, including city/airport cross references, airport listings, ATC centers, FICs, communication stations, and radio navigation aids."
+              },
+              {
+                "text" : "Section C contains theater flight data and procedures such as ADIZ procedures, cruising altitudes, no-NOTAM preventive maintenance, FACSFAC procedures, laser hazards, mandatory frequency airspace, and CTAF information."
+              },
+              {
+                "text" : "For actual planning, use it to confirm field hours, time conversion, runway dimensions, barriers, services, PPR, PMSV, communications, NAVAID data, and unusual field restrictions."
+              }
+            ],
+            "text" : "What it answers:"
+          }
+        ],
+        "title" : "IFR Supplement"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A circling maneuver is a visual maneuver from an instrument approach, but it still lives inside protected circling airspace and published or assigned restrictions."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Before beginning, plan how the circle will work based on wind, runway alignment, terrain, towers, obstacles, and airport environment."
+              },
+              {
+                "text" : "After breaking out, identify the intended runway and remain at or above circling altitude until continuously in a position to descend to landing at a normal rate using normal maneuvers."
+              },
+              {
+                "text" : "Use normal visual checkpoints when possible, but expect 180, 90, and final spacing to look different because circling altitude may be higher or lower than a normal pattern."
+              }
+            ],
+            "text" : "Planning and execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Review circling restrictions on the approach plate, AP/1, IFR Supplement, and NOTAMs; restrictions such as 'Circling NA' in a sector are controlling."
+              },
+              {
+                "text" : "Published circling minimums provide at least 300 feet of obstacle clearance when the aircraft remains inside the protected circling area."
+              },
+              {
+                "text" : "Newer inverse-C circling minima use both approach category and circling MDA to set the protected radius; for Category C, the radius ranges from 2.7 NM at 1000 feet MSL or less to 3.3 NM at 9001 feet MSL and above."
+              },
+              {
+                "text" : "Unless instructed otherwise, maneuver by the shortest path to base or downwind. Passing over the airport or other runways is not prohibited, but traffic, wind, and controller instructions still matter."
+              }
+            ],
+            "text" : "Protected area:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If visual reference is lost while circling, fly the missed approach for that procedure unless ATC has assigned an alternate missed approach."
+              },
+              {
+                "text" : "Begin with an initial climbing turn toward the landing runway, then continue the turn until established on the prescribed missed-approach course."
+              },
+              {
+                "text" : "At a non-towered field, consider overflying to observe wind, traffic, runway condition, and pattern direction before committing to the circle."
+              }
+            ],
+            "text" : "Missed approach from circling:"
+          }
+        ],
+        "title" : "Circling Maneuver"
+      },
+      {
+        "items" : [
+          {
+            "text" : "VDP is the point on a non-precision straight-in final where a normal descent from MDA can begin to the runway, provided the required visual references and safe landing position exist."
+          },
+          {
+            "children" : [
+              {
+                "text" : "If a VDP is published, it appears in the profile view and should be used as the normal descent gate."
+              },
+              {
+                "text" : "Do not descend below MDA before the VDP just because the runway environment is in sight."
+              },
+              {
+                "text" : "Level at MDA at or before the published or derived VDP, then continue to the MAP if the runway environment or safe landing position is not available."
+              },
+              {
+                "text" : "If the runway environment first appears at the MAP, a normal descent may not be possible; a longer landing must be acceptable or a missed approach is the better decision."
+              }
+            ],
+            "text" : "How to use it:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If no VDP is depicted, compute a derived point by dividing HAT by the desired descent gradient."
+              },
+              {
+                "text" : "For an approximate 3-degree path, use 300 feet per NM: HAT / 300 = VDP distance in NM from the runway end."
+              },
+              {
+                "text" : "If DME is available at the runway end, subtract or add the VDP distance as appropriate to derive the VDP DME."
+              },
+              {
+                "text" : "Absence of a published VDP may indicate obstruction-clearance penetration on final. A computed VDP can be useful, but it is not permission to ignore obstacles or published notes."
+              }
+            ],
+            "text" : "Derived VDP:"
+          }
+        ],
+        "title" : "VDP"
+      },
+      {
+        "items" : [
+          {
+            "text" : "En Route Weather"
+          },
+          {
+            "text" : "Divert to Alternate"
+          },
+          {
+            "text" : "Change of Flight Plan While Airborne"
+          },
+          {
+            "text" : "IFR Supplement"
+          },
+          {
+            "text" : "Circling Maneuver"
+          },
+          {
+            "text" : "VDP"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Use en route weather sources, the IFR Supplement, DRAFT, and change-of-flight-plan formats to keep the plan current, then fly circling and VDP gates inside protected airspace."
+  },
+  "summary" : "En route weather updates, divert and amended-plan formats, IFR Supplement use, circling, and VDP discipline.",
+  "title" : "En Route Weather and Circling"
+}

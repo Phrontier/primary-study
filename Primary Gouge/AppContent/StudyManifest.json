@@ -31461,7 +31461,7 @@
                 }
               ],
               "id" : "instruments-sims-i6101",
-              "overview" : "I6101 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I6101 re-centers the radio-instrument scan on VOR course reversals and non-precision final work. The event standard is to stay inside protected airspace, arrive at the FAF configured and timed, use VDP logic correctly, and execute the missed approach without mixing up the published procedure and an assigned climbout.",
               "primaryDocumentIDs" : [
                 "contents-2-instruments-2-sims-scenarios-i6101-1542-166d-pdf"
               ],
@@ -31506,33 +31506,293 @@
                   {
                     "items" : [
                       {
-                        "text" : "Clearance and departure procedures"
+                        "text" : "Clearance and departure procedures begin with copying the clearance accurately, reading it back cleanly, and knowing whether the clearance includes an ODP, SID, radar vector, diverse departure, or visual climb over airport option."
                       },
                       {
-                        "text" : "VOR procedure turn"
+                        "children" : [
+                          {
+                            "text" : "For a normal instrument takeoff, set the climb attitude about 8 to 10 degrees nose high, trim, confirm a positive climb, retract gear and flaps on schedule, and accelerate toward 180 KIAS."
+                          },
+                          {
+                            "text" : "If obstacle clearance or a nonstandard gradient matters, brief the required climb before takeoff; the normal 180 KIAS climb profile is not a substitute for a published requirement."
+                          },
+                          {
+                            "text" : "Use best-rate performance when directed or required: approximately 140 KIAS and 15 degrees nose high."
+                          },
+                          {
+                            "text" : "For level-off, lead by about 10 percent of the vertical speed, reduce power, lower the nose, accelerate, and trim rather than chasing altitude after the fact."
+                          }
+                        ],
+                        "text" : "Departure execution:"
                       },
                       {
-                        "text" : "teardrop"
+                        "children" : [
+                          {
+                            "text" : "Diverse departure assumptions only work when the airport has been assessed for that use and the aircraft can meet the climb performance requirement."
+                          },
+                          {
+                            "text" : "Before launch, identify the approach or recovery plan you would use for an emergency return and keep the missed-approach or climbout clearance separate from the published departure path."
+                          }
+                        ],
+                        "text" : "Planning trap:"
+                      }
+                    ],
+                    "title" : "Clearance and Departure Procedures"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A VOR procedure turn is a protected course reversal that gets the aircraft established inbound at the proper altitude before the final approach segment."
                       },
                       {
-                        "text" : "HILO approach procedure"
+                        "children" : [
+                          {
+                            "text" : "Before the fix, complete SNERT, slow to 150 KIAS about 5 NM prior, identify station passage, and run the 6 Ts."
+                          },
+                          {
+                            "text" : "Fly outbound for one minute, descend with about 15 percent torque as required, and level at procedure-turn altitude using a 33 percent lead."
+                          },
+                          {
+                            "text" : "Turn 45 degrees toward the protected barb side, time for one minute, twist inbound, then turn 180 degrees in the opposite direction to intercept final."
+                          }
+                        ],
+                        "text" : "Basic flow:"
                       },
                       {
-                        "text" : "FAF-to-MAP timing adjustments"
+                        "children" : [
+                          {
+                            "text" : "Use double-the-angle when the bearing pointer is within 5 degrees of the inbound course; otherwise use about a 45-degree intercept."
+                          },
+                          {
+                            "text" : "Established means the bearing pointer is within 5 degrees and the CDI is within one dot or centered."
+                          },
+                          {
+                            "text" : "Be BAC within 5 NM of the FAF, and stay within the published remain-within distance throughout the maneuver."
+                          }
+                        ],
+                        "text" : "Intercept and gates:"
+                      }
+                    ],
+                    "title" : "VOR Procedure Turn"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A non-depicted teardrop can be used as a procedure-turn variant when it keeps the aircraft on the protected side and inside the published remain-within distance."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "At station passage, run the 6 Ts and turn outbound to about a 20-degree offset toward the barb or protected side."
+                          },
+                          {
+                            "text" : "Fly outbound for about two minutes at 150 KIAS, using roughly 15 percent torque for the descent as required."
+                          },
+                          {
+                            "text" : "Adjust outbound timing for wind and protected-airspace limits; the two-minute pattern is not permission to drift outside the remain-within distance."
+                          }
+                        ],
+                        "text" : "Outbound setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Twist the inbound course at about one minute and thirty seconds, then turn inbound at two minutes."
+                          },
+                          {
+                            "text" : "Intercept with double-the-angle when close enough to the inbound course, or about a 45-degree intercept when larger corrections are required."
+                          },
+                          {
+                            "text" : "Be BAC within 5 NM of the FAF; if the intercept is not stabilizing, correct early rather than carrying the error to final."
+                          }
+                        ],
+                        "text" : "Inbound setup:"
+                      }
+                    ],
+                    "title" : "Teardrop"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A HILO is a holding pattern in lieu of a procedure turn; it is both the course reversal and the protected holding structure for the approach."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Fly a normal holding entry, run the 6 Ts at the fix, and remember the tail-radial-turn logic while establishing in the depicted pattern."
+                          },
+                          {
+                            "text" : "Unless ATC clears otherwise, expect one turn in holding before continuing inbound on the approach."
+                          },
+                          {
+                            "text" : "The HILO fix is normally the FAF, so the aircraft must be configured, at altitude, on course, and ready to time or descend as the final segment begins."
+                          }
+                        ],
+                        "text" : "Pattern logic:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the published depiction to determine whether descent is authorized while outbound or only after established inbound."
+                          },
+                          {
+                            "text" : "If the procedure has a holding altitude and a lower FAF crossing altitude, do not descend below the holding altitude until the procedure authorizes it."
+                          },
+                          {
+                            "text" : "Be BAC within 5 NM of the FAF and avoid treating the HILO like an unpublished shortcut to final."
+                          }
+                        ],
+                        "text" : "Descent discipline:"
+                      }
+                    ],
+                    "title" : "HILO Approach Procedure"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "FAF-to-MAP timing protects a non-precision approach when DME, GPS, or another distance reference is unavailable or becomes unreliable."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the timing table on the aerodrome sketch, convert approach airspeed to groundspeed with the forecast or observed wind, and interpolate when the exact groundspeed is not printed."
+                          },
+                          {
+                            "text" : "Start timing at the FAF, not after troubleshooting the descent, and keep the clock running as a backup even when another distance source is primary."
+                          },
+                          {
+                            "text" : "The event expectation is to explain how a headwind or tailwind changes groundspeed and therefore changes the time from FAF to MAP."
+                          }
+                        ],
+                        "text" : "How to set it:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If DME fails after the FAF on a timed approach, use the clock to identify the MAP."
+                          },
+                          {
+                            "text" : "Do not descend early because the timing looks favorable; altitude, MDA, VDP, visual references, and safe-landing criteria still control the descent."
+                          }
+                        ],
+                        "text" : "How to use it:"
+                      }
+                    ],
+                    "title" : "FAF-to-MAP Timing Adjustments"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "The VDP is the point on a non-precision approach from which a normal descent can be made from MDA to the runway touchdown zone."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the published VDP when available; if one is not published, a common planning estimate is HAT divided by 300."
+                          },
+                          {
+                            "text" : "For DME planning, subtract the computed VDP distance from runway DME to identify the approximate VDP DME."
+                          },
+                          {
+                            "text" : "If no VDP is published, treat that as a warning that obstacle clearance or procedure design may not support a normal descent from a simple calculated point."
+                          }
+                        ],
+                        "text" : "Finding it:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not descend below MDA before the VDP just because the runway environment is in sight."
+                          },
+                          {
+                            "text" : "At the VDP, continue only if visual references and aircraft position support a safe descent to landing."
+                          },
+                          {
+                            "text" : "If safe landing criteria are not met by the MAP, execute the missed approach rather than forcing the descent late."
+                          }
+                        ],
+                        "text" : "Using it:"
+                      }
+                    ],
+                    "title" : "VDP"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A missed approach is a disciplined climb and navigation procedure, not a last-second save; brief what triggers it, what path is protected, and what clearance is actually in effect."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Go missed at DA, DH, or the MAP when required visual references are not acquired, a safe landing cannot be made, ATC directs it, or course guidance becomes unusable."
+                          },
+                          {
+                            "text" : "Before the FAF, a full-scale CDI deflection normally calls for reintercepting and not descending; between FAF and MAP, climb as required, reestablish, proceed to the MAP, and execute the missed approach."
+                          },
+                          {
+                            "text" : "Do not execute the published missed early from MDA just because the field is not yet in sight; on a non-precision approach, the MAP still matters unless safety or ATC requires otherwise."
+                          }
+                        ],
+                        "text" : "When to go:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use maximum allowable power, set approximately 10 to 15 degrees nose high, confirm two positive rates, retract the gear, and retract flaps above 110 KIAS."
+                          },
+                          {
+                            "text" : "Accelerate toward 180 KIAS with about 8 to 10 degrees nose high, then turn at standard rate to the assigned heading or published missed-approach course as appropriate."
+                          },
+                          {
+                            "text" : "Run DRAFT once climbing and controlled: destination, route, altitude, fuel, and transponder."
+                          }
+                        ],
+                        "text" : "How to fly it:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Separate an ATC-assigned climbout from the published missed approach. Fly the clearance you have, but know the published missed in case the clearance changes or communications fail."
+                          },
+                          {
+                            "text" : "The standard missed-approach obstacle gradient is 200 feet per NM unless a higher gradient is published; at 180 KIAS the T-6 normally has substantially more climb performance, but verify any published requirement."
+                          }
+                        ],
+                        "text" : "Clearance trap:"
+                      }
+                    ],
+                    "title" : "Missed Approach"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Clearance and Departure Procedures"
+                      },
+                      {
+                        "text" : "VOR Procedure Turn"
+                      },
+                      {
+                        "text" : "Teardrop"
+                      },
+                      {
+                        "text" : "HILO Approach Procedure"
+                      },
+                      {
+                        "text" : "FAF-to-MAP Timing Adjustments"
                       },
                       {
                         "text" : "VDP"
                       },
                       {
-                        "text" : "missed approach"
+                        "text" : "Missed Approach"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Keep the procedure work procedural: copy the clearance, fly the protected course reversal, arrive at the FAF ready to time and descend, honor VDP\/MAP gates, and brief the exact missed-approach path."
               },
-              "summary" : "I6101 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "Procedure turns, teardrops, HILO approaches, FAF-to-MAP timing, VDP logic, and missed approaches.",
               "tags" : [
                 "instruments",
                 "sims",

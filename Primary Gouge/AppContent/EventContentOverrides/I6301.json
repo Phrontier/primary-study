@@ -1,0 +1,85 @@
+{
+  "canonicalCoverage" : {
+    "Any emergency procedure" : [
+      "Any Emergency Procedure"
+    ]
+  },
+  "code" : "I6301",
+  "overview" : "I6301 is the cumulative EP and N/W/C review inside a complete IFR profile. The event standard is to keep flying the route, recognize the NATOPS cue, execute required immediate action, use the checklist, and make the recovery branch clear before the emergency consumes altitude, weather, or ATC options.",
+  "primaryDocumentTitles" : [
+    "I6301",
+    "I6301 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Treat any emergency procedure as a control-and-decision loop, not a memorized paragraph: aviate, navigate, communicate, then state the cue, required immediate action, checklist backup, N/W/C trap, and recovery branch."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Keep the IFR profile alive while you work the EP: maintain aircraft control, preserve terrain and airspace clearance, know where the route or hold is taking you, and decide whether the planned RNAV/GPS recovery still fits the aircraft condition."
+              },
+              {
+                "text" : "If the failure affects navigation, communications, oxygen, electrical power, engine performance, FMS/GPS capability, or approach equipment, tell ATC what failed, what capability remains, and what clearance, vector, altitude, or recovery support is needed."
+              },
+              {
+                "text" : "Use emergency authority early when safety requires it; do not let a perfect clearance or scripted profile delay a safer altitude, weather escape, PEL, forced landing, or ejection decision."
+              }
+            ],
+            "text" : "IFR integration:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "OBOGS and physiological symptoms are time-critical. Emergency oxygen provides about 10 minutes; above 10,000 feet MSL, get to 10,000 feet MSL or lower before emergency oxygen is exhausted."
+              },
+              {
+                "text" : "For engine-failure and forced-landing branches, NATOPS warns not to delay the ejection decision below 2000 feet AGL, and the airstart procedure is not recommended below 2000 feet AGL."
+              },
+              {
+                "text" : "If the engine fails while flying a PEL, transition to the Engine Failure During Flight checklist and the Forced Landing procedure."
+              },
+              {
+                "text" : "For ejection or canopy fracturing, protect exposed skin, keep the mask on and visor down, and remember that mountainous terrain above 8000 feet MSL calls for the MOR handle after ejection."
+              },
+              {
+                "text" : "For departure from controlled flight, the N/W/C source gives a recommended minimum ejection altitude of 6000 feet AGL; do not trade that margin away while attempting low-altitude troubleshooting or airstart work."
+              }
+            ],
+            "text" : "N/W/C anchors:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "End the answer with the branch: continue, land as soon as practical, land as soon as possible, PEL, forced landing, or eject."
+              },
+              {
+                "text" : "If the branch changes the IFR plan, update fuel, destination or alternate suitability, weather, approach availability, and ATC coordination before you continue the scenario."
+              },
+              {
+                "text" : "Common misses are reciting checklist words while the aircraft drifts, skipping the warning or note that changes the decision, troubleshooting below a useful altitude, and continuing toward IMC recovery with degraded equipment."
+              }
+            ],
+            "text" : "Decision finish:"
+          }
+        ],
+        "title" : "Any Emergency Procedure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Any Emergency Procedure"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Apply NATOPS EP logic inside the IFR profile: control the aircraft, identify the cue, execute required immediate action, read the N/W/Cs, coordinate with ATC, and choose the correct recovery branch."
+  },
+  "summary" : "Cumulative EP and N/W/C review during a complete IFR profile.",
+  "title" : "EPs and N/W/Cs"
+}

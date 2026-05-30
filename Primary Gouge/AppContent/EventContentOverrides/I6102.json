@@ -1,0 +1,343 @@
+{
+  "canonicalCoverage" : {
+    "Arcing" : [
+      "Arcing"
+    ],
+    "ILS" : [
+      "ILS"
+    ],
+    "RVFAC" : [
+      "RVFAC"
+    ],
+    "holding" : [
+      "Holding"
+    ],
+    "localizer approach procedure" : [
+      "Localizer Approach Procedure"
+    ],
+    "shuttle descent" : [
+      "Shuttle Descent"
+    ]
+  },
+  "code" : "I6102",
+  "overview" : "I6102 combines the arrival methods that can put a student behind the aircraft quickly: arcing to final, radar vectors to final, localizer precision and non-precision work, and holding descents. The event standard is to compute lead points early, set D LIDS before intercept, transition to BAC on time, and keep holding corrections alive while changing altitude.",
+  "primaryDocumentTitles" : [
+    "I6102",
+    "I6102 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "Arcing is used to position the aircraft inbound on an intermediate or final approach course by flying a constant DME from the NAVAID."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Expect arcing approaches to be identified by VOR/DME or TACAN in the approach margin; DME is required."
+              },
+              {
+                "text" : "About 5 NM prior to the IAF, slow to 150 KIAS and have the arc direction, lead point, segment altitude, inbound course, and voice-report requirement ready."
+              },
+              {
+                "text" : "At the IAF, use the 6 Ts, turn to place the bearing-pointer head on the 90-degree benchmark, comply with segment altitudes, and set the inbound course in the CDI."
+              },
+              {
+                "text" : "Published lead radials marked LR-xxx are advisory and based on 200 KTAS with a half-standard-rate turn; at normal 150 KIAS approach speeds, compute the lead radial for a standard-rate turn."
+              }
+            ],
+            "text" : "Approach setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For a radial-to-arc intercept, lead the arc by turn radius: 0.5 percent of groundspeed for standard-rate, or 1.0 percent of groundspeed for half-standard-rate."
+              },
+              {
+                "text" : "For an arc-to-radial intercept, compute radials per NM as 60 divided by arc DME, then multiply by turn radius to find the no-wind lead radial."
+              },
+              {
+                "text" : "If groundspeed is unavailable in time, KIAS may be used as a no-wind approximation, then adjusted for known wind."
+              }
+            ],
+            "text" : "Lead math:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "On the arc, bearing-pointer head on the 90-degree benchmark holds DME in no wind; below the benchmark increases DME, and above it decreases DME."
+              },
+              {
+                "text" : "If inside the arc, maintain heading or place the bearing-pointer head up to 15 degrees below the benchmark; if outside, place it up to 15 degrees above."
+              },
+              {
+                "text" : "Within 5 NM of the FAF, transition to BAC as required and continue the published low-altitude approach procedure."
+              }
+            ],
+            "text" : "Arc control:"
+          }
+        ],
+        "title" : "Arcing"
+      },
+      {
+        "items" : [
+          {
+            "text" : "RVFAC uses ATC radar vectors to place the aircraft on the final approach course by the most expeditious route consistent with traffic and terrain clearance."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Fly 200 KIAS on downwind, 150 KIAS on base, and 200 KIAS on an extended final or extended dog-leg until within 15 NM of the airport."
+              },
+              {
+                "text" : "Tune and identify the NAVAID, verify the PFD source, set the final approach course in the CDI, and follow assigned headings and altitudes."
+              },
+              {
+                "text" : "ATC uses MVA for terrain clearance while vectoring, but maintain your own situational awareness with available NAVAIDs and charts; query if the vector or altitude does not make sense."
+              }
+            ],
+            "text" : "Vector setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Transition to BAC when within 5 NM of the FAF and the aircraft heading is within 90 degrees of the final approach course."
+              },
+              {
+                "text" : "If no FAF is depicted, transition to BAC once established on the final approach course and cleared for the approach."
+              },
+              {
+                "text" : "After approach clearance, maintain the last assigned heading and altitude until established on the approach, then lead the turn as the CDI centers."
+              }
+            ],
+            "text" : "Final intercept:"
+          }
+        ],
+        "title" : "RVFAC"
+      },
+      {
+        "items" : [
+          {
+            "text" : "ILS is the precision approach in this event: localizer provides azimuth, glideslope provides vertical guidance, and DA/DH replaces the non-precision MDA decision model."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The T-6B is a Category I aircraft, and its single-piloted classification restricts planning to no lower than a 200-foot ceiling and 1/2 SM visibility."
+              },
+              {
+                "text" : "If the localizer is inoperative, the ILS is not authorized; if the glideslope is inoperative, fly the LOC non-precision procedure and minimums."
+              },
+              {
+                "text" : "Set the front course in the CDI, confirm the correct localizer identifier, and remember the localizer is four times more sensitive than VOR guidance."
+              }
+            ],
+            "text" : "System and minimums:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use D LIDS before intercept: DME hold if required, localizer tuned and identified, inbound course set, display source to LOC, and speed appropriate to the transition."
+              },
+              {
+                "text" : "Transition to BAC in accordance with the transition procedure, or use glideslope alive at the published intercept altitude as an alternate cue."
+              },
+              {
+                "text" : "At glideslope intercept, set about 24 percent torque, descend on course and glideslope at 120 KIAS, and adjust power for glideslope while using pitch primarily for airspeed."
+              },
+              {
+                "text" : "Start backup timing at the non-precision FAF if timing is available, even when the ILS is working."
+              }
+            ],
+            "text" : "Final approach:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If full-scale CDI deflection occurs before the FAF, reintercept and do not descend below the glideslope-intercept altitude until on scale."
+              },
+              {
+                "text" : "If more than one dot below glideslope, descend no lower than LOC MDA until reestablished or until the non-precision MAP."
+              },
+              {
+                "text" : "If more than two dots above glideslope, continue as a LOC-only non-precision approach rather than forcing an unstable recapture."
+              },
+              {
+                "text" : "At DA/DH, continue only with the runway environment in sight and a safe landing assured; otherwise execute the missed approach."
+              }
+            ],
+            "text" : "Deviation gates:"
+          }
+        ],
+        "title" : "ILS"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A localizer approach uses the localizer component of the ILS for lateral guidance, but it is a non-precision approach flown to MDA and MAP."
+          },
+          {
+            "children" : [
+              {
+                "text" : "The localizer intercept and D LIDS setup are the same discipline as ILS: DME hold if required, tune and identify localizer, set inbound course, select LOC, and use transition speed."
+              },
+              {
+                "text" : "On an ILS or LOC approach where the glideslope is unavailable or not used, fly non-precision rules and minimums."
+              },
+              {
+                "text" : "If CDI is full-scale before the FAF, reintercept; if not on scale by the FAF, do not descend below FAF altitude."
+              }
+            ],
+            "text" : "Setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "At the non-precision FAF, perform the 6 Ts and start timing as MAP backup if timing is available."
+              },
+              {
+                "text" : "Set about 20 percent torque, trim for a 120 KIAS descent, and keep descent rate stabilized at no more than 1000 fpm."
+              },
+              {
+                "text" : "About 100 feet prior to MDA, set roughly 42 percent torque and transition to level flight at or above MDA."
+              },
+              {
+                "text" : "If full-scale CDI deflection occurs between FAF and MAP, turn to reestablish and track while climbing to missed-approach altitude, then fly the missed at the MAP or as assigned."
+              }
+            ],
+            "text" : "Final segment:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Do not execute the missed just because MDA is reached; continue to the MAP unless safety, ATC, or loss of usable guidance requires otherwise."
+              },
+              {
+                "text" : "Common errors are late D LIDS, flying through final, no backup timing, overcontrolling localizer corrections, using the wrong MDA, and continuing with full-scale CDI inside the FAF."
+              }
+            ],
+            "text" : "Decision trap:"
+          }
+        ],
+        "title" : "Localizer Approach Procedure"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Holding keeps the aircraft inside protected airspace until ATC issues further clearance; the task is geometry, timing, correction, and communication all at once."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Start slowing within 3 minutes or 5 NM of the holding fix when clearance beyond the fix has not been received; normal T-6B holding airspeed is 150 KIAS."
+              },
+              {
+                "text" : "A full uncharted holding clearance includes direction from fix, fix name, radial/course/bearing/route, leg length, turn direction, EFC, and delay information."
+              },
+              {
+                "text" : "If the pattern is charted, hold as published unless ATC issues different instructions; if instructions are missing before an en route clearance limit, request them."
+              }
+            ],
+            "text" : "Clearance setup:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "A standard pattern uses right turns; non-standard uses left turns. Inbound legs track the holding course, and outbound legs fly headings."
+              },
+              {
+                "text" : "For standard entries, use parallel when the reciprocal lies between the heading index and 110 degrees left, teardrop when between the heading index and 70 degrees right, and direct otherwise."
+              },
+              {
+                "text" : "For non-standard entries, reverse the entry-side logic. If the reciprocal is within 5 degrees of a boundary, either adjacent entry is acceptable."
+              },
+              {
+                "text" : "At the end of the outbound leg, use tail-radial-turn to decide the inbound turn and establish on course promptly."
+              }
+            ],
+            "text" : "Entry and turns:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use the no-wind orbit to measure wind: start timing when wings level or abeam, turn inbound toward the holding radial, then note crab angle and inbound time."
+              },
+              {
+                "text" : "On correction orbits, triple the inbound drift correction outbound for no more than one minute, then use single drift if the outbound leg continues."
+              },
+              {
+                "text" : "Adjust outbound timing by the inbound timing error; if inbound was 10 seconds short, add 10 seconds outbound."
+              },
+              {
+                "text" : "Report established in holding with position, time, and altitude when required, and confirm EFC at least 5 minutes prior if it has not been confirmed."
+              }
+            ],
+            "text" : "Corrections and reports:"
+          }
+        ],
+        "title" : "Holding"
+      },
+      {
+        "items" : [
+          {
+            "text" : "A shuttle descent is an ATC-directed descent within holding that moves the aircraft to the next lower stack altitude while preserving protected-airspace control."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Shuttles are normally used after the lower aircraft in the stack has commenced the approach; vertical separation in the stack can be as little as 1000 feet."
+              },
+              {
+                "text" : "Report leaving the current altitude for the assigned altitude, reduce power to about 15 percent torque, lower the nose to maintain 150 KIAS, and re-trim."
+              },
+              {
+                "text" : "Lead the level-off about 50 feet prior, reset power near 33 percent torque, raise the nose to level flight, and re-trim."
+              }
+            ],
+            "text" : "Procedure:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Keep the holding correction alive during the descent; the altitude change does not pause timing, drift correction, or protected-airspace responsibility."
+              },
+              {
+                "text" : "Common errors are fixating on altitude and losing the pattern, fixating on the pattern and missing level-off, or letting airspeed drift away from 150 KIAS."
+              }
+            ],
+            "text" : "Task-management trap:"
+          }
+        ],
+        "title" : "Shuttle Descent"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Arcing"
+          },
+          {
+            "text" : "RVFAC"
+          },
+          {
+            "text" : "ILS"
+          },
+          {
+            "text" : "Localizer Approach Procedure"
+          },
+          {
+            "text" : "Holding"
+          },
+          {
+            "text" : "Shuttle Descent"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Compute arcing leads before the fix, set localizer approaches early with D LIDS, obey ILS/LOC deviation gates, and keep holding/shuttle descent corrections organized."
+  },
+  "summary" : "Arcing approaches, RVFAC ILS/LOC work, holding, and shuttle descents.",
+  "title" : "Arcing and Holding"
+}

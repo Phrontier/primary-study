@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I61 Radio Instruments complete through `I6102`
-- Current event: `I6201`
-- Next action: author `I6201` from canonical syllabus items, local VTD/sim sources, CNAF M-3710.7 fuel-planning rules, Instrument Flight Planning Workbook fuel-planning material, NATOPS fuel/endurance data as needed, and prior Instrument fuel-management standards.
-- Last validated event: `I6102`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I6102.json`
-- Last manifest validation: `I6102` authored; no `I6102` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I6102`
+- Status: I62 Radio Instruments complete through `I6201`
+- Current event: `I6202`
+- Next action: author `I6202` from canonical syllabus items, local VTD/sim sources, Instrument Flight Planning Workbook weather-source material, CNAF weather-briefing rules, Instrument Navigation FTI approach/weather decision material, and prior Instrument weather/NOTAM standards.
+- Last validated event: `I6201`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I6201.json`
+- Last manifest validation: `I6201` authored; no `I6201` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I6201`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -45,7 +45,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- `I2101` through `I6102` now have authored Instrument event content overrides.
+- `I2101` through `I6201` now have authored Instrument event content overrides.
 - Remaining pending Instrument events still use generic manifest scaffold notes until authored.
 - Some flight `.docx` files are hidden from app source-document cards but remain valid authoring sources via `textutil`.
 - Treat local field names, routes, frequencies, and scenario-specific details as day-of/local verification material unless the item is inherently local.
@@ -85,7 +85,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I4490 | Instrument Check Flight | T-6B | flight | I44 Instrument Check Flight | 7 | complete | use git log | Authored from syllabus membership, local check-flight event docs, DD-1801/DD-1801-C/jet-log source files, current eCFR/AIM lost-communications references, CNAF takeoff/approach/flight-planning rules, Instrument Flight Planning Workbook DD-1801/stopover/NOTAM/weather material, and prior Instrument event coverage; no `systemsBrief`; manifest/audit/build passed. |
 | I6101 | Procedure Turns and Missed Approach | VTD | sim | I61 Radio Instruments | 7 | complete | use git log | Authored from syllabus membership, local VTD event doc, scenario guide, Instrument Navigation FTI departure/procedure-turn/teardrop/HILO/final-approach/VDP/missed-approach material, NATOPS instrument-approach airspeed guidance, and prior Instrument procedure standards; no `systemsBrief`; manifest/audit/build passed. |
 | I6102 | Arcing and Holding | VTD | sim | I61 Radio Instruments | 6 | complete | use git log | Authored from syllabus membership, local VTD event doc, scenario guide, Instrument Navigation FTI arcing/RVFAC/ILS/LOC/holding/shuttle-descent material, and prior Instrument radio-instrument standards; no `systemsBrief`; manifest/audit/build passed. |
-| I6201 | CNAF M-3710.7 Minimum Fuel Requirements | VTD | sim | I62 Radio Instruments | 7 | pending | - | - |
+| I6201 | CNAF M-3710.7 Minimum Fuel Requirements | VTD | sim | I62 Radio Instruments | 7 | complete | use git log | Authored from syllabus membership, local VTD event doc, scenario guide, CNAF M-3710.7 fuel/TFR planning rules, Instrument Flight Planning Workbook NOTAM material, Instrument Navigation FTI GPS/RNAV material, NATOPS maximum-endurance data, and prior Instrument fuel/GPS standards; no `systemsBrief`; manifest/audit/build passed. |
 | I6202 | En Route Weather Sources | VTD | sim | I62 Radio Instruments | 6 | pending | - | - |
 | I6301 | EPs and NWCs | VTD | sim | I63 Radio Instruments | 1 | pending | - | - |
 

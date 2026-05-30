@@ -1,0 +1,301 @@
+{
+  "canonicalCoverage" : {
+    "CNAF M-3710.7 minimum fuel requirements" : [
+      "CNAF M-3710.7 Minimum Fuel Requirements"
+    ],
+    "FDC" : [
+      "FDC"
+    ],
+    "GPS" : [
+      "GPS"
+    ],
+    "International/Domestic Notices" : [
+      "International/Domestic Notices"
+    ],
+    "NOTAM to include local" : [
+      "NOTAM to Include Local"
+    ],
+    "center" : [
+      "Center"
+    ],
+    "special notices" : [
+      "Special Notices"
+    ]
+  },
+  "code" : "I6201",
+  "overview" : "I6201 turns a complete IFR profile into a planning and execution check: the fuel reserve must survive weather, routing, delay, and alternate decisions, while NOTAM and GPS limitations decide whether the route and approaches are actually usable.",
+  "primaryDocumentTitles" : [
+    "I6201",
+    "I6201 1542.166D"
+  ],
+  "studyNotes" : {
+    "headline" : "Discussion Items",
+    "sections" : [
+      {
+        "items" : [
+          {
+            "text" : "CNAF minimum fuel planning starts with enough usable fuel for meteorological factors and mission requirements, then applies the reserve rule to the actual route and alternate plan."
+          },
+          {
+            "children" : [
+              {
+                "text" : "If no alternate is required, plan fuel from takeoff to destination plus a 10 percent reserve of planned fuel requirements."
+              },
+              {
+                "text" : "If an alternate is required, plan fuel from takeoff to the approach fix serving destination, then to the alternate, plus a 10 percent reserve."
+              },
+              {
+                "text" : "The planned reserve after final landing at the destination or required alternate may never be less than 20 minutes of flight."
+              },
+              {
+                "text" : "For turbine fixed-wing aircraft, compute the 20-minute reserve at maximum-endurance operation at 10,000 feet; model-specific reserve data comes from NATOPS."
+              }
+            ],
+            "text" : "Planning rule:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "The T-6B maximum-endurance cruise table shows 333 PPH clean at 10,000 feet on a standard day; 20 minutes is about 111 pounds, commonly rounded to 115 pounds for planning."
+              },
+              {
+                "text" : "Known or expected ATC delays count as time en route when computing reserves."
+              },
+              {
+                "text" : "If ATC routing or altitude will make planned reserves inadequate, tell ATC and alter destination if a satisfactory clearance is not available."
+              }
+            ],
+            "text" : "T-6B application:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "Minimum fuel means the aircraft can accept no undue delay; it is advisory and is not itself an emergency."
+              },
+              {
+                "text" : "If priority is required to ensure a safe landing, declare emergency fuel and report fuel remaining in minutes."
+              },
+              {
+                "text" : "Report both minimum fuel advisories and emergency fuel state again whenever control is transferred to a new controller."
+              }
+            ],
+            "text" : "In-flight fuel language:"
+          }
+        ],
+        "title" : "CNAF M-3710.7 Minimum Fuel Requirements"
+      },
+      {
+        "items" : [
+          {
+            "text" : "NOTAM review is part of the legal and tactical plan: it can invalidate a runway, NAVAID, approach, route, TFR assumption, GPS plan, or alternate."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Use DAIP for DoD operations when available; if DAIP is unavailable, use FSS by phone or another approved briefing path."
+              },
+              {
+                "text" : "Check departure, destination, alternate, route of flight, ARTCCs along the route, TFRs, special-use airspace activity, and GPS or RAIM impacts."
+              },
+              {
+                "text" : "Include local-field and local-route effects by asking what the NOTAM changes in the cockpit: runway, lighting, taxi, approach, NAVAID, airspace, or timing."
+              },
+              {
+                "text" : "If an airport identifier is not covered by the U.S. NOTAM system, use FSS or direct airport contact as required."
+              }
+            ],
+            "text" : "What to check:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "CNAF requires the PIC to be familiar with NOTAMs, TFRs, fuel requirements, terminal instrument procedures, available alternatives, and anticipated delays before flight."
+              },
+              {
+                "text" : "CNAF also prohibits operating in a NOTAM-designated TFR area except as permitted by the applicable regulation or authorization."
+              }
+            ],
+            "text" : "Why it matters:"
+          }
+        ],
+        "title" : "NOTAM to Include Local"
+      },
+      {
+        "items" : [
+          {
+            "text" : "FDC NOTAMs are regulatory and can change whether a published procedure or airspace plan may be flown as printed."
+          },
+          {
+            "children" : [
+              {
+                "text" : "They may amend published instrument approach procedures or other aeronautical charts."
+              },
+              {
+                "text" : "They are also used to advertise TFRs for natural disasters, large public events, or other airspace restrictions."
+              },
+              {
+                "text" : "A good FDC review ends with a go/no-go or modification: procedure still usable, procedure amended, procedure unavailable, or route/airspace restriction now controlling."
+              }
+            ],
+            "text" : "How to brief it:"
+          }
+        ],
+        "title" : "FDC"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Center NOTAMs cover ARTCC-level issues along the route, so they belong in the route review rather than only the departure and destination airport checks."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Check each ARTCC along the route for NOTAMs that affect airway usability, ATC services, published routing, special-use airspace, or procedural restrictions."
+              },
+              {
+                "text" : "Tie any center NOTAM back to the clearance: what route segment, altitude, fix, airspace, or delay is affected."
+              },
+              {
+                "text" : "If the center issue changes fuel burn or timing, update the fuel plan instead of treating it as a paperwork note."
+              }
+            ],
+            "text" : "Route impact:"
+          }
+        ],
+        "title" : "Center"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Special notices and related NOTAM products capture operational restrictions that may not be tied neatly to one airport or NAVAID."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Pointer NOTAMs highlight another NOTAM, such as an FDC or NOTAM(D), and must be followed to the referenced item."
+              },
+              {
+                "text" : "SAA NOTAMs advertise special activity airspace activation outside the published schedule or when the schedule requires a NOTAM."
+              },
+              {
+                "text" : "Military NOTAMs cover U.S. Air Force, Army, Marine Corps, and Navy NAVAIDs or airports that are part of the NAS."
+              },
+              {
+                "text" : "Special notices can turn a normal-looking IFR route into a security, special-flight-rules, or special-use-airspace problem."
+              }
+            ],
+            "text" : "What belongs here:"
+          }
+        ],
+        "title" : "Special Notices"
+      },
+      {
+        "items" : [
+          {
+            "text" : "Domestic and International Notices are not included in a standard FSS briefing unless specifically requested, so they must be deliberately checked when they could affect the sortie."
+          },
+          {
+            "children" : [
+              {
+                "text" : "These notices can include airway NOTAMs, procedural NOTAMs, flight advisories, restrictions, open-duration special security instructions, and special flight rules areas."
+              },
+              {
+                "text" : "If the information has not already been reviewed through FNS or DAIP, request it from FSS rather than assuming the standard briefing covered it."
+              },
+              {
+                "text" : "For a cross-country or full IFR profile, the practical question is whether any notice changes the filed route, destination, alternate, holding, approach, or fuel plan."
+              }
+            ],
+            "text" : "Briefing discipline:"
+          }
+        ],
+        "title" : "International/Domestic Notices"
+      },
+      {
+        "items" : [
+          {
+            "text" : "GPS is useful in this event only when the database, approach title, authorization, and backup plan all support the way it is being used."
+          },
+          {
+            "children" : [
+              {
+                "text" : "Published RNAV (GPS) IAPs, DPs, and STARs must be retrieved by procedure name from a current navigation database; do not manually build the procedure from separate waypoints."
+              },
+              {
+                "text" : "Suitable GPS may be used to identify fixes, navigate to or from conventional NAVAIDs, hold, and fly DME arcs when the rules allow."
+              },
+              {
+                "text" : "Do not use GPS for lateral navigation on localizer-based courses without raw localizer reference, and do not use GPS on a procedure made NA by NOTAM."
+              },
+              {
+                "text" : "For alternate planning, the required alternate must have an available approach that does not require GPS."
+              }
+            ],
+            "text" : "Allowable use:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "For RNAV approaches, use LDDHA: load the correct approach and transition, direct to the IAWP or build the vector leg as cleared, display FMS, verify any hold, and confirm approach mode."
+              },
+              {
+                "text" : "Being cleared direct to an IAF does not authorize descent to lower TAA altitude unless cleared for the approach or assigned that altitude."
+              },
+              {
+                "text" : "The T-6B is certified for LNAV MDA only; do not use LNAV/VNAV or VNAV minimums."
+              },
+              {
+                "text" : "At the MAWP, the FMS will not automatically sequence the missed approach; once climbing and clean, manually select MISS APR and execute if the missed is required."
+              }
+            ],
+            "text" : "Approach execution:"
+          },
+          {
+            "children" : [
+              {
+                "text" : "If GPS integrity is lost prior to the FAWP, transition to a backup approach if authorized; otherwise continue to the FAWP, maintain altitude to the MAWP, and go missed."
+              },
+              {
+                "text" : "If integrity is lost inside the FAWP, transition to an authorized backup if available, climb to missed-approach altitude, track to the MAWP, execute the missed, and tell ATC as soon as practical."
+              },
+              {
+                "text" : "Published GPS step-down fixes may not appear as FMS waypoints, and ATD is not the same as DME; use the charted reference before descending."
+              }
+            ],
+            "text" : "Integrity and chart traps:"
+          }
+        ],
+        "title" : "GPS"
+      },
+      {
+        "items" : [
+          {
+            "text" : "CNAF M-3710.7 Minimum Fuel Requirements"
+          },
+          {
+            "text" : "NOTAM to Include Local"
+          },
+          {
+            "text" : "FDC"
+          },
+          {
+            "text" : "Center"
+          },
+          {
+            "text" : "Special Notices"
+          },
+          {
+            "text" : "International/Domestic Notices"
+          },
+          {
+            "text" : "GPS"
+          }
+        ],
+        "title" : "Required Procedures"
+      }
+    ],
+    "summary" : "Protect the IFR profile by proving the fuel reserve, checking every NOTAM layer that can affect the route or approach, and using GPS only inside its database, title, and integrity limits."
+  },
+  "summary" : "CNAF fuel reserves, NOTAM review, FDC and center notices, Domestic/International Notices, and GPS limitations.",
+  "title" : "CNAF M-3710.7 Minimum Fuel Requirements"
+}

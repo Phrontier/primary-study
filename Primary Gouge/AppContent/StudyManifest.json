@@ -32542,7 +32542,7 @@
                 }
               ],
               "id" : "instruments-sims-i6202",
-              "overview" : "I6202 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief confidently.",
+              "overview" : "I6202 is the weather-management and in-flight replanning event for the radio-instrument review block. The standard is to keep the weather picture current, leave icing and convective threats early, amend the IFR plan correctly, apply lost-communication rules predictably, and update groundspeed math when the plan changes.",
               "primaryDocumentIDs" : [
                 "contents-2-instruments-2-sims-scenarios-i6202-1542-166d-pdf"
               ],
@@ -32587,30 +32587,295 @@
                   {
                     "items" : [
                       {
-                        "text" : "En route weather sources"
+                        "text" : "En route weather sources are an in-flight decision loop: gather the update, compare it to route, fuel, destination, and alternate assumptions, then change the plan before weather removes options."
                       },
                       {
-                        "text" : "icing"
+                        "children" : [
+                          {
+                            "text" : "ARTCCs broadcast the availability of AWW or SAW, Convective SIGMET, SIGMET, AIRMET, urgent PIREP, and CWA alerts once on non-emergency frequencies when the hazard area is within 150 NM of their airspace."
+                          },
+                          {
+                            "text" : "Those broadcasts alert you that hazardous weather information exists; contact FSS or another appropriate source for details."
+                          },
+                          {
+                            "text" : "FSS can provide en route advisories, commonly on 122.2 VHF, 255.4 UHF, or published discrete frequencies, and can translate or interpret available forecasts and reports."
+                          },
+                          {
+                            "text" : "PMSV, radio call 'METRO,' can pass weather information, update or extend DD-175-1 data, and receive significant or hazardous PIREPs."
+                          }
+                        ],
+                        "text" : "In-flight advisories:"
                       },
                       {
-                        "text" : "inadvertent thunderstorm penetration"
+                        "children" : [
+                          {
+                            "text" : "ATIS gives the current terminal picture: code letter, time, wind, visibility, obstructions, weather, sky condition, temperature, dew point, altimeter, approach, and runway in use."
+                          },
+                          {
+                            "text" : "ATIS service volume is normally about 20 to 60 NM from the site and up to 25,000 feet AGL."
+                          },
+                          {
+                            "text" : "ASOS\/AWSS and AWOS provide automated surface observations; discrete-frequency reception is normally engineered to about 25 NM and 10,000 feet AGL."
+                          },
+                          {
+                            "text" : "UNICOM or AUNICOM may provide wind, recommended runway, weather, airport advisory information, and limited flight-service relays at public-use airports without tower or FSS."
+                          }
+                        ],
+                        "text" : "Terminal sources:"
                       },
                       {
-                        "text" : "change of route or destination (inflight)"
-                      },
-                      {
-                        "text" : "IMC lost communications"
-                      },
-                      {
-                        "text" : "ground-speed calculations"
+                        "children" : [
+                          {
+                            "text" : "ATC can assist with precipitation avoidance, but radar weather displays may lag actual conditions; ARTCC WARP precipitation data can be up to about 6 minutes old."
+                          },
+                          {
+                            "text" : "Controllers may describe precipitation as light, moderate, heavy, extreme, or intensity unknown, but ATC radar does not detect turbulence."
+                          },
+                          {
+                            "text" : "Give PIREPs for thunderstorms, lightning, turbulence, icing, wind shear, cloud bases, tops, layers, visibility, precipitation, strong winds, or any significant unexpected condition."
+                          }
+                        ],
+                        "text" : "Avoidance and PIREPs:"
                       }
                     ],
-                    "title" : "Radio Instruments"
+                    "title" : "En Route Weather Sources"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Icing is not a place to loiter in the T-6B: sustained operation is prohibited, and the aircraft is approved only for transit through a 5000-foot band of light rime ice."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Plan to avoid forecast atmospheric icing whenever practicable and obtain freezing levels and above-freezing altitudes before launching into IMC."
+                          },
+                          {
+                            "text" : "Expect possible icing in visible moisture when temperatures are near freezing; the workbook frames the common icing band as visible precipitation with temperatures from about +2 C to -10 C."
+                          },
+                          {
+                            "text" : "Rime ice is usually rough, milky, opaque, porous, and brittle because supercooled droplets freeze rapidly on impact."
+                          }
+                        ],
+                        "text" : "Recognition and planning:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "When operating in visible moisture, PROBES ANTI-ICE shall be ON."
+                          },
+                          {
+                            "text" : "At the first indication of icing, ensure PROBES ANTI-ICE is ON and climb, descend, or change course to leave the icing layer as soon as safely possible."
+                          },
+                          {
+                            "text" : "After an icing encounter, aerobatics are prohibited until ice has melted or sublimated; with ice still present, limit maneuvering to 30 degrees bank and 0 to 2 G up to stall warning."
+                          },
+                          {
+                            "text" : "For landing with ice accumulation, increase approach speed by 10 KIAS and ensure sufficient forward visibility exists from either cockpit."
+                          }
+                        ],
+                        "text" : "Aircraft limits:"
+                      }
+                    ],
+                    "title" : "Icing"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Thunderstorms and extreme turbulence should be avoided because they can produce flameout, structural damage, hail, lightning, and violent updrafts or downdrafts."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use forecasts, radar, ATC, and route changes to avoid thunderstorms; do not accept IMC in an area where thunderstorms are known to be present unless no safer alternative exists."
+                          },
+                          {
+                            "text" : "Operation within 20 NM of thunderstorms requires great caution because turbulence severity may be worse than precipitation intensity suggests."
+                          },
+                          {
+                            "text" : "If penetration becomes unavoidable, set PROBES ANTI-ICE ON, tighten the lap strap, lock the shoulder harness reel, stow loose items, and set instrument lighting high before lightning starts degrading night vision."
+                          },
+                          {
+                            "text" : "Plan the shortest practical path through the activity; do not turn around inside the storm unless that is the only safer option."
+                          }
+                        ],
+                        "text" : "Avoidance and preparation:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Recommended penetration airspeed is 180 KIAS; do not exceed turbulent-air penetration speed of 207 KIAS."
+                          },
+                          {
+                            "text" : "Trim for level flight at penetration speed and fly by attitude reference. Do not chase rapid airspeed swings."
+                          },
+                          {
+                            "text" : "Use smooth, moderate aileron and elevator inputs, maintain the power setting that supports the desired penetration speed, and avoid large or abrupt attitude changes."
+                          },
+                          {
+                            "text" : "Allow altitude to vary in severe vertical gusts; preserve attitude control before trying to hold an exact altitude."
+                          }
+                        ],
+                        "text" : "Penetration technique:"
+                      }
+                    ],
+                    "title" : "Inadvertent Thunderstorm Penetration"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A change of route or destination while airborne turns a new plan into a clearance ATC can protect and a flight plan Flight Service can track."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use the change-of-flight-plan format from the inside back cover of the IFR Enroute Supplement."
+                          },
+                          {
+                            "text" : "Be ready with type of flight plan, aircraft identification, type aircraft or TD code, estimated true airspeed, original destination if applicable, departure point, present position and time, new route and altitude or flight level, new destination, ETE or ETA, fuel endurance, required alternate, and original filing station."
+                          },
+                          {
+                            "text" : "If the amendment is long, make a courtesy call first so the controller is ready to copy."
+                          }
+                        ],
+                        "text" : "What to pass:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Before asking for the amended plan, update weather, compare actual fuel to the revised route, confirm destination and alternate approaches remain available, and check whether a minimum-fuel or emergency-fuel call is required."
+                          },
+                          {
+                            "text" : "Once ATC issues the amended clearance, the new route, altitude, and clearance limit replace the old expectation."
+                          },
+                          {
+                            "text" : "Do not let the format delay aircraft control, terrain clearance, weather avoidance, or an emergency declaration when priority handling is needed."
+                          }
+                        ],
+                        "text" : "Decision discipline:"
+                      }
+                    ],
+                    "title" : "Change of Route or Destination (Inflight)"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "IMC lost communications is about predictability: make the aircraft easy for ATC to protect while preserving PIC emergency authority if the rule no longer produces the safest outcome."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Squawk 7600 and try to reestablish contact on the last assigned frequency, secondary or tower frequency, FSS, 121.5 MHz, or NAVAID voice as appropriate."
+                          },
+                          {
+                            "text" : "If the failure occurs in VFR conditions, or VFR conditions are encountered after the failure, continue under VFR and land as soon as practicable at a safe, suitable field."
+                          },
+                          {
+                            "text" : "If relaying through FSS or another aircraft, pass position, altitude, last assigned frequency, and request further clearance from the controlling agency."
+                          }
+                        ],
+                        "text" : "Immediate actions:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For route in IMC, use AVE-F: assigned route, vectored direct to the fix, route, or airway in the vector clearance, expected route, then filed route."
+                          },
+                          {
+                            "text" : "For altitude, use AME on each segment: the highest of assigned altitude, minimum IFR altitude, or expected altitude."
+                          },
+                          {
+                            "text" : "Make MEA, MCA, MRA, and valid expected-altitude changes at the proper fix, time, or segment; do not climb to an expected altitude before it becomes usable."
+                          },
+                          {
+                            "text" : "If cleared to a fix from which an approach begins, start descent or approach as close as possible to EFC, or ETA if no EFC was received. If the clearance limit is not an approach fix, leave it at EFC or on arrival if no EFC was received, then proceed to a fix from which an approach begins."
+                          }
+                        ],
+                        "text" : "Route, altitude, and clearance limit:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For radar approaches, lost-communication timing may be more than 1 minute on vectors to final, more than 15 seconds on ASR or PAR without glideslope final, or more than 5 seconds on PAR final with glideslope."
+                          },
+                          {
+                            "text" : "If radar-approach communications are lost, attempt secondary or tower frequency, proceed VFR if possible, or execute an approved non-radar approach or the specific lost-communication procedure for the radar approach."
+                          }
+                        ],
+                        "text" : "Radar approach branch:"
+                      }
+                    ],
+                    "title" : "IMC Lost Communications"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Ground-speed calculations convert true winds and magnetic course into a flight-log number that drives ETE, fuel burn, and revised in-flight decisions."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Plot climb or cruise winds as true winds, then place the leg magnetic course under the local magnetic-variation mark on the CR-3 to align the geometry."
+                          },
+                          {
+                            "text" : "Read the headwind or tailwind component along the course line, then subtract headwind or add tailwind to the applicable TAS."
+                          },
+                          {
+                            "text" : "Use climb TAS and climb winds for climb segments; use cruise TAS and cruise winds for level segments and alternate legs."
+                          },
+                          {
+                            "text" : "Use en route chart isogonic lines for average variation along the leg, and refine with airport-diagram variation near terminals when useful."
+                          }
+                        ],
+                        "text" : "Wind correction:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If level-off occurs before a fix, split the leg into climb distance\/time and cruise distance\/time."
+                          },
+                          {
+                            "text" : "If level-off occurs at a fix, the next leg is cruise. If level-off occurs after a fix, the first part of the next leg is still climb, then cruise after level-off."
+                          },
+                          {
+                            "text" : "Record climb groundspeed first and cruise groundspeed second for split legs, then use the resulting GS to compute ETE and fuel."
+                          },
+                          {
+                            "text" : "Round distance and time to the nearest whole number, and round fuel fractions over a 5-pound increment up to the next 5 pounds."
+                          }
+                        ],
+                        "text" : "Flight-log use:"
+                      }
+                    ],
+                    "title" : "Ground-Speed Calculations"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "En Route Weather Sources"
+                      },
+                      {
+                        "text" : "Icing"
+                      },
+                      {
+                        "text" : "Inadvertent Thunderstorm Penetration"
+                      },
+                      {
+                        "text" : "Change of Route or Destination (Inflight)"
+                      },
+                      {
+                        "text" : "IMC Lost Communications"
+                      },
+                      {
+                        "text" : "Ground-Speed Calculations"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Use weather broadcasts and terminal sources to keep the plan current, leave icing and convective threats early, amend IFR routing cleanly, and recompute groundspeed when the route or winds change."
               },
-              "summary" : "I6202 focuses on sim execution, instrument setup, approach flow, and the discussion items students need to brief conf...",
+              "summary" : "En route weather sources, icing, thunderstorm penetration, airborne route changes, IMC lost communications, and groundspeed calculations.",
               "tags" : [
                 "instruments",
                 "sims",

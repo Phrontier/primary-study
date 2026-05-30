@@ -37922,7 +37922,7 @@
                 }
               ],
               "id" : "vnav-sims-n6101",
-              "overview" : "N6101 centers on n6101: night navigation and the key procedures students need to explain and execute.",
+              "overview" : "N6101 moves visual navigation into the night environment. The standard is to keep the route, timing, lighting picture, local night restrictions, and emergency branches ahead of the aircraft while using the sim profile to practice mission management rather than GPS-following.",
               "primaryDocumentIDs" : [
                 "contents-3-vnav-2-sims-scenarios-n6101-1542-166d-pdf"
               ],
@@ -37974,27 +37974,237 @@
                   {
                     "items" : [
                       {
-                        "text" : "Night VNAV timing and course corrections"
+                        "text" : "Night VNAV timing and course corrections use the same math as day VNAV, but the margin is thinner: keep the route at or above the night VNAV floor, identify checkpoints earlier, and correct before darkness turns small uncertainty into disorientation."
                       },
                       {
-                        "text" : "night VFR chart interpretation"
+                        "children" : [
+                          {
+                            "text" : "Nighttime visual-navigation routes shall not be flown lower than 2000 feet AGL."
+                          },
+                          {
+                            "text" : "Use 210 KGS, or 3.5 NM per minute, as the standard planning baseline unless the event or instructor directs otherwise."
+                          },
+                          {
+                            "text" : "Look farther ahead than you think you need to. At night, checkpoint confirmation often depends on lighting pattern, relative position, and timing rather than a crisp daylight shape."
+                          },
+                          {
+                            "text" : "Keep continuation fuel and route-abort options visible in the scan; aggressive speed increases can solve timing while creating a fuel problem."
+                          }
+                        ],
+                        "text" : "Night route control:"
                       },
                       {
-                        "text" : "airfield and runway lighting"
-                      },
-                      {
-                        "text" : "local night VNAV SOP"
-                      },
-                      {
-                        "text" : "any applicable night emergency procedure"
+                        "children" : [
+                          {
+                            "text" : "For timing, use the same three methods: off-course maneuvering, proportional groundspeed change, and the 10 percent method."
+                          },
+                          {
+                            "text" : "For proportional corrections, change groundspeed 1 knot for every second early or late and hold it for the number of minutes equal to groundspeed in NM per minute; at 210 KGS, use about 4 minutes."
+                          },
+                          {
+                            "text" : "For the 10 percent method, 21 knots for 10 minutes gains or loses about 1 minute; each minute held is about a 6-second correction."
+                          },
+                          {
+                            "text" : "For course, first aim for an on-course feature, then use funneling features. If neither works, use SCA: at 210 KGS, apply 15 degrees for 1 minute per mile off course, or 30 degrees for half the time."
+                          }
+                        ],
+                        "text" : "Timing and course corrections:"
                       }
                     ],
-                    "title" : "Night Navigation"
+                    "title" : "Night VNAV Timing and Course Corrections"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Night VFR chart interpretation uses the same sectional, but not the same sight picture. Mark the chart for readability and pre-brief which features will still be useful after sunset."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Use bold, dark route lines and larger print for magnetic courses, timing, and fuel data so the chart can be read under cockpit lighting without destroying night adaptation."
+                          },
+                          {
+                            "text" : "Expect lighted roads, towns, towers, airports, and coastlines to be more useful than unlit terrain detail. Some good daytime checkpoints become poor night checkpoints."
+                          },
+                          {
+                            "text" : "Preselect backup cues around each checkpoint: expected light pattern, nearby roads or towns, airfield beacon, runway orientation, and limiting features that tell you when you have gone too far."
+                          },
+                          {
+                            "text" : "Use MEF, MSA, and ERAA deliberately. If night position awareness degrades, climb before the route becomes a terrain-clearance problem."
+                          }
+                        ],
+                        "text" : "Chart-to-ground differences:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The scenario emphasizes mission management, in-flight planning, in-flight computations, communication with ATC, and general VFR procedures. Do not treat own-ship or breadcrumbs as the primary navigation answer."
+                          },
+                          {
+                            "text" : "A complete night VNAV plan includes the plotted route, jet log, flight plan, DD-175-1 weather brief, NOTAMs, and BASH conditions."
+                          }
+                        ],
+                        "text" : "Sim standard:"
+                      }
+                    ],
+                    "title" : "Night VFR Chart Interpretation"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Airfield and runway lighting tells you where the pavement is, what end you are looking at, and whether the taxi route is safe to enter. Brief the lighting before the field becomes the only outside reference."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Runway edge lights are white along the edges; on instrument runways they turn yellow in the last 2000 feet or the last half of the runway, whichever is less."
+                          },
+                          {
+                            "text" : "Runway threshold lights show green toward the approach and red toward departing aircraft."
+                          },
+                          {
+                            "text" : "REILs are flashing white lights on each side of the runway threshold."
+                          },
+                          {
+                            "text" : "Runway centerline lights on precision instrument runways are white until the last 3000 feet, then alternate red and white until the last 1000 feet, then all red."
+                          },
+                          {
+                            "text" : "Touchdown zone lights are two rows of white lights in the touchdown zone, normally the first 3000 feet."
+                          }
+                        ],
+                        "text" : "Runway lighting:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Taxiway edge lights are blue; taxiway centerline lights are green."
+                          },
+                          {
+                            "text" : "Clearance bar lights are three steady yellow lights at holding points."
+                          },
+                          {
+                            "text" : "Stop bar lights are red across a taxiway and must not be crossed unless ATC clears the aircraft and the lights are off."
+                          },
+                          {
+                            "text" : "Approach lighting systems, including sequenced flashers, help align the aircraft with the runway environment before the runway lights dominate the sight picture."
+                          },
+                          {
+                            "text" : "Use VASI or PAPI trend correctly: 2 white and 2 red on a four-light PAPI indicates on glidepath; more white is high and more red is low."
+                          }
+                        ],
+                        "text" : "Taxi, approach, and glidepath lights:"
+                      }
+                    ],
+                    "title" : "Airfield and Runway Lighting"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Local night VNAV SOP is the night go\/no-go filter: confirm current local rules for weather, runway suitability, lighting, flight-plan activation, and cockpit setup before treating the route as executable."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Night VNAV is not flown below 2000 feet AGL, and the scenario starts at a planned altitude before applying VFR semicircular rules."
+                          },
+                          {
+                            "text" : "Students should arrive with the assigned night VNAV route plotted on the VFR sectional and a completed jet log."
+                          },
+                          {
+                            "text" : "Flight planning for the event includes a completed flight plan, DD-175-1 weather brief, NOTAM review, and BASH conditions."
+                          },
+                          {
+                            "text" : "At night, taxi lights must be used whenever the aircraft is in motion."
+                          }
+                        ],
+                        "text" : "Planning and cockpit setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Do not operate within a SIGMET at night unless the aircraft is equipped with operable radar capable of detecting and avoiding isolated thunderstorms."
+                          },
+                          {
+                            "text" : "For wet or night operations at fields at or below 3500 feet MSL, use the local runway suitability gate of at least 5000 feet by 100 feet."
+                          },
+                          {
+                            "text" : "For fields above 3500 feet MSL, use the local gate of at least 6000 feet by 100 feet."
+                          },
+                          {
+                            "text" : "Confirm current local procedures, runway data, lighting status, and route restrictions on the day of the event; the scenario route and frequencies are training setup, not a permanent source."
+                          }
+                        ],
+                        "text" : "Weather and runway gates:"
+                      }
+                    ],
+                    "title" : "Local Night VNAV SOP"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Any applicable night emergency procedure is a branch decision under reduced outside cues: keep aircraft control, climb or turn only with a known purpose, identify whether a lighted runway is immediately available, and coordinate early."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For night engine failure at or above 2000 feet AGL, comply with NATOPS. If a restart is not attempted or is unsuccessful and a lighted runway is not immediately available, ejection is highly recommended."
+                          },
+                          {
+                            "text" : "For night engine failure below 2000 feet AGL, attempting a restart is not recommended. If a lighted runway is not immediately available, the first priority is getting set up to eject."
+                          },
+                          {
+                            "text" : "Airspeed can be exchanged for altitude; use that option to improve survival choices without delaying the required branch."
+                          },
+                          {
+                            "text" : "If the emergency becomes a route abort in IMC, climb immediately to at least ERAA, squawk 7700, contact ATC, and obtain an IFR clearance."
+                          }
+                        ],
+                        "text" : "Night engine and route-abort branches:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For temporary disorientation, climb to MSA until positive position is regained. For total disorientation, inadvertent IMC, or aircraft malfunction, climb to ERAA."
+                          },
+                          {
+                            "text" : "For a night PEL, prioritize a lighted runway, field orientation, and communication that does not delay emergency procedures."
+                          },
+                          {
+                            "text" : "If no radio contact is available at a field, use observed traffic, runway and lighting cues, segmented-circle\/wind information when available, and a conservative pattern plan."
+                          },
+                          {
+                            "text" : "The event scenario may use a simulated EP to drive night PEL and pattern work; brief the decision branch, not just the simulated field name."
+                          }
+                        ],
+                        "text" : "PEL and disorientation:"
+                      }
+                    ],
+                    "title" : "Any Applicable Night Emergency Procedure"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Night VNAV Timing and Course Corrections"
+                      },
+                      {
+                        "text" : "Night VFR Chart Interpretation"
+                      },
+                      {
+                        "text" : "Airfield and Runway Lighting"
+                      },
+                      {
+                        "text" : "Local Night VNAV SOP"
+                      },
+                      {
+                        "text" : "Any Applicable Night Emergency Procedure"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Keep the night route ahead of the aircraft: bolder charting, earlier checkpoint confirmation, source-backed timing\/course corrections, lighting recognition, local night limits, and clear night emergency branches."
               },
-              "summary" : "N6101 centers on n6101: night navigation and the key procedures students need to explain and execute.",
+              "summary" : "Night VNAV timing, chart interpretation, runway lighting, local night SOP, and night-emergency branch logic.",
               "tags" : [
                 "vnav",
                 "sims",

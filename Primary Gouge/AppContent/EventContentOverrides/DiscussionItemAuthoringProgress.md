@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: VNAV / Navigation
 - Category key in `SyllabusEventReference.json`: `navigation`
-- Status: VNAV discussion-item pass complete through `N4101`
-- Current event: `N6101`
-- Next action: author `N6101` from canonical syllabus items, local VTD/sim source, scenario guide, VNAV ground-school source, Navigation FTI night VNAV/emergency guidance, CNAF night/weather references, and applicable NATOPS/EP XML.
-- Last validated event: `N4101`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/N4101.json`
-- Last manifest validation: `N4101` authored; no `N4101` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `N4101`
+- Status: VNAV / Navigation discussion-item pass complete through `N6101`; all 3 canonical VNAV / Navigation events are authored
+- Current event: none
+- Next action: final authored-coverage validation and review of any remaining non-blocking polish candidates.
+- Last validated event: `N6101`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/N6101.json`
+- Last manifest validation: `N6101` authored; no `N6101` coverage issues; `canonicalEventsMissingAuthoredNotes` is empty; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `N6101`
 - Systems brief policy: prohibited for VNAV / Navigation
 
 ## VNAV source profile
@@ -66,7 +66,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- `N3101` and `N4101` now have authored VNAV / Navigation event content; `N6101` remains pending.
+- `N3101`, `N4101`, and `N6101` now have authored VNAV / Navigation event content.
 - `I2101` through `I6301` have authored Instrument event content overrides.
 - Treat VNAV local route names, frequencies, and field-specific scenario details as day-of/local verification material unless the canonical item is inherently local.
 - For VNAV emergency items, do not invent an exhaustive EP list without source support; frame route-abort, MSA/ERAA, PEL, night engine-failure, and ATC-coordination branches from Navigation FTI, NATOPS, and EP/N/W/C sources.
@@ -78,7 +78,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | --- | --- | --- | --- | --- | ---: | --- | --- | --- |
 | N3101 | Day Navigation | OFT | sim | N31 Day Navigation | 8 | complete | use git log | Authored from syllabus membership, local sim event doc, scenario guide, VNAV ground-school source, Navigation FTI, NATOPS HUD references, and route-abort/emergency-field guidance; no `systemsBrief`; manifest/audit/build passed. |
 | N4101 | VFR Chart Preparation | T-6B | flight | N41 Day Navigation | 12 | complete | use git log | Authored from syllabus membership, local flight event doc, VNAV ground-school source, Navigation FTI, NATOPS FMS/strange-field references, and day VNAV emergency guidance; no `systemsBrief`; manifest/audit/build passed. |
-| N6101 | Night Navigation | VTD | sim | N61 Night Navigation | 5 | pending | - | - |
+| N6101 | Night Navigation | VTD | sim | N61 Night Navigation | 5 | complete | use git log | Authored from syllabus membership, local VTD event doc, scenario guide, VNAV ground-school source, Navigation FTI night VNAV and emergency material, CNAF weather/night references, and local night SOP; no `systemsBrief`; manifest/audit/build passed. |
 
 ## Instrument event order
 

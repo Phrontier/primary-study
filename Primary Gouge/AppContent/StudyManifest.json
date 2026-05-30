@@ -34847,7 +34847,7 @@
                 }
               ],
               "id" : "instruments-flights-i4303",
-              "overview" : "I4303 prepares the student to plan and fly the assigned instrument profile with the required procedures, comm flow, and standards.",
+              "overview" : "I4303 makes the cross-country plan survive route changes and abnormal events. The event standard is to know which airspace rules apply, keep a usable recovery field and fuel plan updated, and fly high-altitude approach energy from the published chart instead of memory.",
               "primaryDocumentIDs" : [
 
               ],
@@ -34886,27 +34886,304 @@
                   {
                     "items" : [
                       {
-                        "text" : "Controlled\/uncontrolled airspace"
+                        "text" : "Airspace classification tells you which rule set controls the route, who provides separation, what clearance or communication is required, and how much flexibility you have if the plan changes."
                       },
                       {
-                        "text" : "emergency field selection"
+                        "children" : [
+                          {
+                            "text" : "Controlled airspace includes Class A, B, C, D, and E; ATC service is provided to IFR and VFR flights according to the class."
+                          },
+                          {
+                            "text" : "Class G is uncontrolled airspace: the portion that has not been designated Class A, B, C, D, or E."
+                          },
+                          {
+                            "text" : "When overlapping airspace applies, use the more restrictive rule set; do not let a sectional color or local habit override the actual airspace designation."
+                          }
+                        ],
+                        "text" : "Controlled versus uncontrolled:"
                       },
                       {
-                        "text" : "high altitude approach"
+                        "children" : [
+                          {
+                            "text" : "IFR operations in controlled airspace require an IFR flight plan and an appropriate ATC clearance."
+                          },
+                          {
+                            "text" : "Class A is generally 18,000 feet MSL up to and including FL600, and operations are IFR unless otherwise authorized."
+                          },
+                          {
+                            "text" : "Class B requires an ATC clearance; Class C and D require the appropriate ATC communication\/clearance for the operation; Class E may be controlled without a tower or surface-area feel."
+                          },
+                          {
+                            "text" : "For a divert or route change, ask what clearance, equipment, communication, and weather minimums are needed before pointing the airplane at the new airspace."
+                          }
+                        ],
+                        "text" : "IFR entry habits:"
                       },
                       {
-                        "text" : "CNAF M-3710.7 minimum fuel requirements"
-                      },
-                      {
-                        "text" : "fuel management"
+                        "children" : [
+                          {
+                            "text" : "Prohibited and restricted areas are regulatory special-use airspace; warning areas, MOAs, alert areas, and controlled firing areas are nonregulatory special-use airspace."
+                          },
+                          {
+                            "text" : "If an IFR route would enter active joint-use restricted airspace, ATC either clears the aircraft through when released to FAA control or issues a clearance that avoids it unless the flight has authorization."
+                          },
+                          {
+                            "text" : "MOA activity changes frequently, so use current charts, controlling-agency status, FSS\/ATC, and day-of notices before treating the airspace as available."
+                          }
+                        ],
+                        "text" : "Special-use airspace:"
                       }
                     ],
-                    "title" : "Instrument Navigation"
+                    "title" : "Controlled\/Uncontrolled Airspace"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Emergency field selection is a continuous cross-country habit: every OPS Check should update the nearest suitable recovery option before the aircraft needs it."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "During route study and in flight, screen fields for runway length and width, surface, lighting, approaches, weather, winds, elevation, terrain, services, security, NOTAMs, and airspace."
+                          },
+                          {
+                            "text" : "Local SOPs may set specific runway-size, night, wet-runway, or solo requirements; verify the current local standard instead of baking one local number into the brief."
+                          },
+                          {
+                            "text" : "Use the FMS NRST page, IFR Supplement, charts, NAVAIDs, ATC, and visual references together. The NRST page can limit airport results by runway length and surface, but suitability still requires pilot judgment."
+                          }
+                        ],
+                        "text" : "Suitable-field scan:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Initial reaction to a low-altitude malfunction is to trade excess airspeed for altitude when able; altitude buys terrain clearance, glide range, restart time, and ejection margin."
+                          },
+                          {
+                            "text" : "For engine failure, zoom\/glide at 125 KIAS minimum and turn immediately toward a suitable landing surface if one is available."
+                          },
+                          {
+                            "text" : "Do not delay the decision to eject below 2000 feet AGL; an airstart is not recommended below 2000 feet AGL because primary attention should be to eject or safely recover the aircraft."
+                          },
+                          {
+                            "text" : "At night, if engine failure occurs at or above 2000 feet AGL and a lighted runway is not immediately available, ejection is highly recommended if restart is not attempted or is unsuccessful."
+                          }
+                        ],
+                        "text" : "Emergency and energy branch:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "For a PEL, land-as-soon-as-practical, or land-as-soon-as-possible situation, use ATC vectors and the NRST\/IFR Supplement picture to get pointed at a field while preserving aircraft control and energy."
+                          },
+                          {
+                            "text" : "For route aborts, keep the chart, FMS, NAVAIDs, and ATC in the loop; do not let field selection become a heads-down search while the aircraft drifts away from safe altitude or clearance."
+                          },
+                          {
+                            "text" : "If total disorientation, inadvertent IMC, or malfunction occurs on a route, climb to the planned ERAA, notify the controlling agency, and decide whether to continue, divert, or recover."
+                          }
+                        ],
+                        "text" : "Route-abort mindset:"
+                      }
+                    ],
+                    "title" : "Emergency Field Selection"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "A high-altitude approach transitions from high-altitude structure to the final approach course by combining a penetration descent with an instrument approach."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "High-altitude approaches support efficient fuel consumption, higher true airspeed, and delaying low-altitude weather exposure until closer to the destination."
+                          },
+                          {
+                            "text" : "The approach may use a teardrop, arcing, or straight-in penetration. Once the aircraft is configured to before-approach condition, the low-altitude final-approach procedures are the same."
+                          },
+                          {
+                            "text" : "Use the published chart for penetration course, turn direction, altitude restrictions, DME restrictions, and any profile-view notes; do not fly a local example from memory."
+                          }
+                        ],
+                        "text" : "Purpose and chart setup:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Inbound to the IAF, complete the Descent Checklist."
+                          },
+                          {
+                            "text" : "At the IAF, execute the 6 Ts: time when required, turn to parallel the penetration course, transition into the penetration, twist the CDI course, and talk when a report is required."
+                          },
+                          {
+                            "text" : "If the outbound course is more than 90 degrees from the inbound course to the IAF, turn with an intercept heading not to exceed 45 degrees."
+                          },
+                          {
+                            "text" : "Initiate the penetration by reducing power as required for about 2000-4000 FPM, fly 200-250 KIAS, and use speed brake as required."
+                          }
+                        ],
+                        "text" : "IAF to penetration:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Manage energy to meet every course, altitude, and DME restriction; about 1000 feet before level-off, reduce descent rate to 500-1500 FPM."
+                          },
+                          {
+                            "text" : "Level segments of the penetration may be flown at normal cruise."
+                          },
+                          {
+                            "text" : "For a teardrop penetration, begin at one-half the initial altitude or the published penetration turn, use 30 degrees AOB, then use bearing-pointer position during the last half of the turn to choose a 45-degree or double-angle intercept."
+                          },
+                          {
+                            "text" : "For an arcing penetration, use about 1 percent of groundspeed for lead computations when full standard rate is not practical, and do not exceed 30 degrees AOB."
+                          },
+                          {
+                            "text" : "High-altitude approach charts do not publish Category B landing minimums; T-6Bs use Category C minimums on those charts."
+                          }
+                        ],
+                        "text" : "Energy and geometry:"
+                      }
+                    ],
+                    "title" : "High-Altitude Approach"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "CNAF minimum fuel planning starts with enough usable fuel for meteorological factors and mission requirements, then adds the required reserve logic."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If no alternate is required, plan fuel from takeoff to destination plus a 10% reserve of planned fuel requirements."
+                          },
+                          {
+                            "text" : "If an alternate is required, plan fuel from takeoff to the approach fix serving the destination, then to the alternate, plus a 10% reserve."
+                          },
+                          {
+                            "text" : "In no case may the planned reserve after final landing at the destination or required alternate be less than 20 minutes of flight."
+                          },
+                          {
+                            "text" : "For turbine fixed-wing aircraft, compute that 20-minute reserve using maximum-endurance operation at 10,000 feet; model-specific minimum fuel reserve requirements come from NATOPS."
+                          }
+                        ],
+                        "text" : "Planning rule:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "The workbook uses the T-6B NATOPS\/PCL maximum-endurance fuel flow of 333 PPH at 10,000 feet on a standard day."
+                          },
+                          {
+                            "text" : "Twenty minutes at 333 PPH is about 111 pounds, rounded to 115 pounds using the workbook planning rule."
+                          },
+                          {
+                            "text" : "Local training minimums or SOP reserves may be higher; confirm current local fuel gates before treating a reserve number as sufficient for release."
+                          }
+                        ],
+                        "text" : "T-6B planning value:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If ATC routing, altitude, weather, or delay will make planned reserves inadequate, inform ATC and alter destination as required."
+                          },
+                          {
+                            "text" : "Minimum fuel is an advisory that no undue delay can be accepted; it is not an emergency and should not be expected to produce special handling."
+                          },
+                          {
+                            "text" : "If traffic priority is needed to ensure a safe landing, declare an emergency and report fuel remaining in minutes."
+                          },
+                          {
+                            "text" : "Report both minimum fuel advisories and emergency fuel state each time control is transferred to a new controller."
+                          }
+                        ],
+                        "text" : "In-flight fuel language:"
+                      }
+                    ],
+                    "title" : "CNAF M-3710.7 Minimum Fuel Requirements"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Fuel management turns the jet log into an in-flight decision tool by comparing planned fuel remaining to actual fuel remaining before the divert options disappear."
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "Build Estimated Fuel Remaining during planning from actual fuel load, start\/taxi\/takeoff fuel, route fuel, approach fuel, alternate fuel, and reserve."
+                          },
+                          {
+                            "text" : "At the end of each leg and during OPS Checks, compare Actual Fuel Remaining to EFR."
+                          },
+                          {
+                            "text" : "AFR greater than or equal to EFR supports the plan; AFR less than EFR requires immediate investigation."
+                          },
+                          {
+                            "text" : "Likely causes include less fuel onboard at takeoff than planned, higher fuel flow, slower groundspeed, unplanned routing, math or flight-log error, or a fuel leak."
+                          }
+                        ],
+                        "text" : "EFR versus AFR:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "When endurance becomes the controlling factor, use NATOPS maximum-endurance guidance rather than inventing a low-burn technique."
+                          },
+                          {
+                            "text" : "T-6B maximum-endurance AOA is 8.8 units; maximum-range AOA is 4.4 units."
+                          },
+                          {
+                            "text" : "Recommended clean holding speed is 125-150 KIAS, but not slower than maximum-endurance speed of 125 KIAS."
+                          },
+                          {
+                            "text" : "Use published PCL\/NATOPS data for time, distance, and fuel performance instead of relying on a single cockpit rule of thumb."
+                          }
+                        ],
+                        "text" : "Endurance tools:"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "text" : "If the fuel picture starts moving the wrong way, act while choices remain: adjust altitude or routing, reduce unnecessary delay, request priority if needed, or divert."
+                          },
+                          {
+                            "text" : "Keep DRAFT data ready for a divert request: destination, route, altitude, fuel remaining in hours plus minutes, and time en route."
+                          },
+                          {
+                            "text" : "Do not wait for the planned alternate to become the only option; fuel management is meant to create time, not explain why it ran out."
+                          }
+                        ],
+                        "text" : "Decision points:"
+                      }
+                    ],
+                    "title" : "Fuel Management"
+                  },
+                  {
+                    "items" : [
+                      {
+                        "text" : "Controlled\/Uncontrolled Airspace"
+                      },
+                      {
+                        "text" : "Emergency Field Selection"
+                      },
+                      {
+                        "text" : "High-Altitude Approach"
+                      },
+                      {
+                        "text" : "CNAF M-3710.7 Minimum Fuel Requirements"
+                      },
+                      {
+                        "text" : "Fuel Management"
+                      }
+                    ],
+                    "title" : "Required Procedures"
                   }
                 ],
-                "summary" : "Generated from the canonical syllabus event reference so the app, review workflow, and event detail notes stay aligned."
+                "summary" : "Use airspace classification, field suitability, high-altitude approach gates, and fuel state as one cross-check so the aircraft always has clearance, energy, and a recovery option."
               },
-              "summary" : "I4303 prepares the student to plan and fly the assigned instrument profile with the required procedures, comm flow, a...",
+              "summary" : "Airspace rules, emergency field selection, high-altitude approach execution, and CNAF fuel decision points.",
               "tags" : [
                 "instruments",
                 "flights",

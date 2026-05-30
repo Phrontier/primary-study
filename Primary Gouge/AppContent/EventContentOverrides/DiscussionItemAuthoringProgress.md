@@ -6,13 +6,13 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 
 - Active category: Instruments
 - Category key in `SyllabusEventReference.json`: `instruments`
-- Status: I43 Instrument Navigation complete through `I4302`
-- Current event: `I4303`
-- Next action: author `I4303` from canonical syllabus items, local flight-event sources, Instrument Flight Planning Workbook airspace/field-selection material, CNAF airfield/flight-planning guidance, and Instrument Navigation FTI/IFR Supplement references as needed.
-- Last validated event: `I4302`
-- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I4302.json`
-- Last manifest validation: `I4302` authored; no `I4302` coverage issues; `discussionItemAuthoringIssues` is `0`
-- Last build-for-testing: passed for `I4302`
+- Status: I43 Instrument Navigation complete through `I4303`
+- Current event: `I4304`
+- Next action: author `I4304` from canonical syllabus items, local flight-event sources, Instrument Navigation FTI departure/SID/STAR/lost-communication material, KNGP IFG/local coded-route references where transferable, and current IFR lost-communication regulatory references as needed.
+- Last validated event: `I4303`
+- Last event commit: use `git log --oneline -- Primary\ Gouge/AppContent/EventContentOverrides/I4303.json`
+- Last manifest validation: `I4303` authored; no `I4303` coverage issues; `discussionItemAuthoringIssues` is `0`
+- Last build-for-testing: passed for `I4303`
 - Systems brief policy: prohibited for Instruments
 
 ## Instruments source profile
@@ -45,7 +45,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 ## Known blockers and cautions
 
 - Current build validation is still FAM-oriented in code; apply the shared authoring standard manually until category-wide validation is generalized.
-- `I2101` through `I4302` now have authored Instrument event content overrides.
+- `I2101` through `I4303` now have authored Instrument event content overrides.
 - Remaining pending Instrument events still use generic manifest scaffold notes until authored.
 - Some flight `.docx` files are hidden from app source-document cards but remain valid authoring sources via `textutil`.
 - Treat local field names, routes, frequencies, and scenario-specific details as day-of/local verification material unless the item is inherently local.
@@ -80,7 +80,7 @@ Use this tracker as the durable resume point for category-wide discussion-item a
 | I4204 | Takeoff and Alternate Minimums | T-6B | flight | I42 Radio Instruments | 1 | complete | use git log | Authored from syllabus membership, local flight event docs, CNAF M-3710.7 takeoff/approach/alternate filing minimums, Instrument Flight Planning Workbook weather and alternate-planning material, and Instrument Navigation FTI GPS-alternate restrictions; no `systemsBrief`; manifest/audit/build passed. |
 | I4301 | Flight Planning and Jet Logs | T-6B | flight | I43 Instrument Navigation | 8 | complete | use git log | Authored from syllabus membership, local flight event docs, CNAF preflight/flight-plan/weather/minimums/airfield guidance, Instrument Flight Planning Workbook weather/flight-log/DD-1801 material, Instrument Navigation FTI GPS-alternate restrictions, and NATOPS strange-field servicing/security procedures; no `systemsBrief`; manifest/audit/build passed. |
 | I4302 | En Route Weather and Circling | T-6B | flight | I43 Instrument Navigation | 6 | complete | use git log | Authored from syllabus membership, local flight event docs, Instrument Flight Planning Workbook en route weather and IFR Supplement material, Instrument Navigation FTI circling/VDP/missed-approach and DRAFT guidance, and prior fuel-management consistency; no `systemsBrief`; manifest/audit/build passed. |
-| I4303 | Airspace and Field Selection | T-6B | flight | I43 Instrument Navigation | 5 | pending | - | - |
+| I4303 | Airspace and Field Selection | T-6B | flight | I43 Instrument Navigation | 5 | complete | use git log | Authored from syllabus membership, local flight event docs, FAA/AIM airspace classification references, Instrument Navigation FTI high-altitude approach material, Navigation FTI route-abort/emergency-field guidance, NATOPS recovery/FMS/endurance data, CNAF minimum-fuel rules, and Instrument Flight Planning Workbook fuel values; no `systemsBrief`; manifest/audit/build passed. |
 | I4304 | Lost Communications and SID/STAR | T-6B | flight | I43 Instrument Navigation | 6 | pending | - | - |
 | I4490 | Instrument Check Flight | T-6B | flight | I44 Instrument Check Flight | 7 | pending | - | - |
 | I6101 | Procedure Turns and Missed Approach | VTD | sim | I61 Radio Instruments | 7 | pending | - | - |

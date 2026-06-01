@@ -2,7 +2,7 @@
 
 Use one JSON file per event to hand-author event content without editing generated files.
 
-Flashcards are no longer authored in these event override files. They now live in `Primary Gouge/AppContent/FlashcardsByEvent.json`.
+Flashcards are no longer authored in these event override files. They now live in the flat master source at `Primary Gouge/AppContent/FlashcardLibrary.json`.
 
 ## Workflow
 
@@ -97,4 +97,4 @@ Omit `systemsBrief` entirely for Instruments, VNAV, Formation, Capstone, FAM sim
 - Use display title case for visible note headlines, section titles, and final `Required Procedures` item text. Keep raw syllabus wording in `canonicalCoverage` keys.
 - `systemsBrief` is restricted to FAM flight events with dense NATOPS/system content. Do not add it anywhere else.
 - Scaffolded or generated output is only a starting point for source harvesting. The final authored note should read like something a student could actually brief from.
-- Flashcard authoring now lives in `FlashcardsByEvent.json`, where cards are grouped by event code and can optionally reference images from `Contents/FlashcardImages/`.
+- Flashcard authoring now lives in `Primary Gouge/AppContent/FlashcardLibrary.json`, with durable guidance in `FlashcardAuthoringRules.md`, `FlashcardAuthoringRunbook.md`, and `FlashcardAuthoringProgress.md`.

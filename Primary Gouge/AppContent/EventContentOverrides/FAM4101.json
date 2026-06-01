@@ -73,10 +73,10 @@
                 "text" : "The published escape envelope runs from 0\/0 up to about 35,000 feet and 370 KIAS."
               },
               {
-                "text" : "Controlled ejection minimum altitude is 6000 feet AGL. Break out PCL and complete as many steps as time permits."
+                "text" : "Controlled ejection minimum altitude is 2000 feet AGL. Break out PCL and complete as many steps as time permits."
               },
               {
-                "text" : "Uncontrolled ejection minimum altitude is 2000 feet AGL."
+                "text" : "Uncontrolled ejection minimum altitude is 6000 feet AGL."
               }
             ],
             "text" : "Seat basics and ejection envelope:"

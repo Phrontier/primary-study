@@ -177,7 +177,7 @@ struct FlashcardDetailView: View {
             HeroCard(
                 eyebrow: contextLabel,
                 title: item.card.prompt,
-                subtitle: item.answerPreview
+                subtitle: nil
             ) {
                 HStack(spacing: 8) {
                     Badge(text: item.band.label, color: item.band.displayColor)

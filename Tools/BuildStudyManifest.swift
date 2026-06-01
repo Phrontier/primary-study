@@ -350,6 +350,7 @@ struct SyllabusEventAuditReport: Codable {
     let canonicalEventsMissingFromManifest: [String]
     let canonicalEventsMissingAuthoredNotes: [String]
     let authoredNotesCoverageIssues: [AuthoredNotesCoverageIssue]
+    let flashcardCoverageIssues: [FlashcardCoverageIssue]
     let discussionItemAuthoringIssues: [DiscussionItemAuthoringIssue]
     let legacyAliasAttachmentsInUse: [LegacyAliasAttachmentIssue]
     let unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue]
@@ -361,6 +362,14 @@ struct AuthoredNotesCoverageIssue: Codable {
     let code: String
     let missingCanonicalItems: [String]
     let unexpectedPrimaryItems: [String]
+}
+
+struct FlashcardCoverageIssue: Codable {
+    let code: String
+    let missingDiscussionItems: [String]
+    let coveredDiscussionItems: [String]
+    let authoredCardCount: Int
+    let referenceCardCount: Int
 }
 
 struct DiscussionItemAuthoringIssue: Codable {
@@ -429,8 +438,8 @@ struct CanonicalEmergencyProcedureReferenceDeck {
 }
 
 struct SyllabusFlashcardBuildResult {
-    let generatedDiscussionItemCards: [FlashcardDefinition]
     let deckCardIDsByEvent: [String: [String]]
+    let coveredDiscussionItemsByEvent: [String: Set<String>]
     let referenceCardEventAssignments: [String: Set<String>]
     let unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue]
     let missingEmergencyProcedureCompanions: [EmergencyProcedureAuditIssue]
@@ -456,26 +465,34 @@ struct VideoLibraryFile: Codable {
     let videos: [VideoAsset]
 }
 
-struct GroupedFlashcardFile: Codable {
-    let events: [String: GroupedFlashcardEventSection]
-    let libraryCards: [GroupedFlashcardSourceCard]?
+struct FlatFlashcardLibraryFile: Codable {
+    let flashcards: [FlatFlashcardSourceCard]
 }
 
-struct GroupedFlashcardEventSection: Codable {
-    let deckTitle: String?
-    let deckSummary: String?
-    let cards: [GroupedFlashcardSourceCard]
-}
-
-struct GroupedFlashcardSourceCard: Codable {
+struct FlatFlashcardSourceCard: Codable {
     let id: String?
     let prompt: String
     let answer: String
     let image: String?
+    let imageRelativePath: String?
     let tags: [String]?
     let studyCategories: [StudyCategoryKind]?
-    let alsoIncludeInEvents: [String]?
+    let eventCodes: [String]?
+    let eventCoverage: [FlashcardEventCoverage]?
     let kind: FlashcardKind?
+    let requiresVerbatim: Bool?
+    let companionGroupID: String?
+}
+
+struct FlashcardEventCoverage: Codable {
+    let eventCode: String
+    let discussionItems: [String]
+}
+
+struct AuthoredFlashcardBuildResult {
+    let cards: [FlashcardDefinition]
+    let deckCardIDsByEvent: [String: [String]]
+    let coveredDiscussionItemsByEvent: [String: Set<String>]
 }
 
 struct AuthoredFlashcard: Codable {
@@ -503,8 +520,6 @@ struct ManifestBuilder {
     let fileManager = FileManager.default
     let eventOverrides: [String: EventOverride]
     let videoLibrary: [VideoAsset]
-    let groupedFlashcardSections: [String: GroupedFlashcardEventSection]
-    let groupedLibraryCards: [GroupedFlashcardSourceCard]
     let flashcardLibrary: [FlashcardDefinition]
     let validEventCodes: Set<String>
     let referenceStudyConfig: ReferenceStudyConfigFile
@@ -513,6 +528,8 @@ struct ManifestBuilder {
     let canonicalAttachmentAliases: [String: String]
     let auditReportURL: URL
     let syllabusDeckCardIDsByEvent: [String: [String]]
+    let authoredFlashcardCoverageByEvent: [String: Set<String>]
+    let referenceFlashcardCoverageByEvent: [String: Set<String>]
     let unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue]
     let emergencyProcedureAliasIssues: [EmergencyProcedureAliasIssue]
     let missingEmergencyProcedureCompanions: [EmergencyProcedureAuditIssue]
@@ -530,8 +547,6 @@ struct ManifestBuilder {
         ("2. Sims", .sims, "Scripted simulator events with briefing guides, scenarios, and procedural study tools."),
         ("3. Flights", .flights, "Student-planned flight events with gradesheets, procedures, shared references, and execution aids.")
     ]
-
-    private static let placeholderDiscussionItemAnswer = "Answer pending generation."
 
     private let syllabusCategoryByPhaseID: [String: String] = [
         "contacts": "familiarization",
@@ -555,7 +570,7 @@ struct ManifestBuilder {
         let overridesURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventOverrides.json")
         let eventOverrideDirectoryURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventContentOverrides", isDirectory: true)
         let videosURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/VideoLibrary.json")
-        let groupedFlashcardsURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/FlashcardsByEvent.json")
+        let flashcardLibraryURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/FlashcardLibrary.json")
         let flashcardImagesURL = currentDirectory.appendingPathComponent("Contents/FlashcardImages", isDirectory: true)
         let referenceConfigURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/ReferenceStudyConfig.json")
         let discussionAuthoringConfigURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventContentOverrides/FAMDiscussionAuthoringConfig.json")
@@ -612,13 +627,6 @@ struct ManifestBuilder {
             self.discussionAuthoringConfig = DiscussionItemAuthoringConfigFile(lockedEvents: [], eventOverrides: [:])
         }
 
-        let groupedFlashcardSource = try Self.loadGroupedFlashcardSource(
-            at: groupedFlashcardsURL,
-            validEventCodes: validEventCodes
-        )
-        self.groupedFlashcardSections = groupedFlashcardSource.sections
-        self.groupedLibraryCards = groupedFlashcardSource.libraryCards
-
         let canonicalEmergencyProcedureReferenceDeck = try Self.loadCanonicalEmergencyProcedureReferenceDeck(from: xmlDirectoryURL)
         let emergencyProcedureAliasValidation = Self.validateEmergencyProcedureAliases(
             referenceStudyConfig.discussionItemEmergencyProcedureAliases ?? [:],
@@ -629,12 +637,25 @@ struct ManifestBuilder {
         let syllabusFlashcardBuildResult = try Self.buildSyllabusEventFlashcards(
             from: syllabusReference,
             emergencyProcedureReferenceDeck: canonicalEmergencyProcedureReferenceDeck,
-            emergencyProcedureAliases: referenceStudyConfig.discussionItemEmergencyProcedureAliases ?? [:],
-            placeholderAnswer: Self.placeholderDiscussionItemAnswer
+            emergencyProcedureAliases: referenceStudyConfig.discussionItemEmergencyProcedureAliases ?? [:]
         )
-        self.syllabusDeckCardIDsByEvent = syllabusFlashcardBuildResult.deckCardIDsByEvent
         self.unresolvedEmergencyProcedureItems = syllabusFlashcardBuildResult.unresolvedEmergencyProcedureItems
         self.missingEmergencyProcedureCompanions = syllabusFlashcardBuildResult.missingEmergencyProcedureCompanions
+        self.referenceFlashcardCoverageByEvent = syllabusFlashcardBuildResult.coveredDiscussionItemsByEvent
+
+        let authoredFlashcardBuildResult = try Self.materializeAuthoredFlashcards(
+            at: flashcardLibraryURL,
+            validEventCodes: validEventCodes,
+            canonicalAliases: canonicalAttachmentAliases,
+            syllabusReference: syllabusReference,
+            imageRootURL: flashcardImagesURL
+        )
+        self.authoredFlashcardCoverageByEvent = authoredFlashcardBuildResult.coveredDiscussionItemsByEvent
+
+        self.syllabusDeckCardIDsByEvent = Self.mergeDeckCardIDs(
+            authoredFlashcardBuildResult.deckCardIDsByEvent,
+            syllabusFlashcardBuildResult.deckCardIDsByEvent
+        )
 
         let canonicalReferenceCards = Self.materializeCanonicalReferenceCards(
             from: canonicalEmergencyProcedureReferenceDeck,
@@ -643,12 +664,8 @@ struct ManifestBuilder {
         )
 
         self.flashcardLibrary = Self.dedupeFlashcards(
-            syllabusFlashcardBuildResult.generatedDiscussionItemCards + (try Self.materializeGroupedFlashcards(
-                libraryCards: groupedLibraryCards,
-                validEventCodes: validEventCodes,
-                imageRootURL: flashcardImagesURL
-            )) + canonicalReferenceCards
-            )
+            authoredFlashcardBuildResult.cards + canonicalReferenceCards
+        )
     }
 
     private static func loadEventOverrideDirectory(at url: URL) -> [String: EventOverride] {
@@ -696,38 +713,30 @@ struct ManifestBuilder {
         return result.reversed()
     }
 
-    private static func loadGroupedFlashcardSource(
-        at url: URL,
-        validEventCodes: Set<String>
-    ) throws -> (sections: [String: GroupedFlashcardEventSection], libraryCards: [GroupedFlashcardSourceCard]) {
+    private static func mergeDeckCardIDs(_ sources: [String: [String]]...) -> [String: [String]] {
+        var merged: [String: [String]] = [:]
+
+        for source in sources {
+            for (code, cardIDs) in source {
+                merged[code, default: []].append(contentsOf: cardIDs)
+                merged[code] = uniqueStrings(merged[code] ?? [])
+            }
+        }
+
+        return merged
+    }
+
+    private static func loadFlatFlashcardSource(at url: URL) throws -> FlatFlashcardLibraryFile {
         guard let data = try? Data(contentsOf: url) else {
-            throw ManifestBuildError(message: "Missing grouped flashcard source at \(url.path).")
+            throw ManifestBuildError(message: "Missing flashcard library source at \(url.path).")
         }
 
         let decoder = JSONDecoder()
-        let file: GroupedFlashcardFile
         do {
-            file = try decoder.decode(GroupedFlashcardFile.self, from: data)
+            return try decoder.decode(FlatFlashcardLibraryFile.self, from: data)
         } catch {
-            throw ManifestBuildError(message: "Failed to decode grouped flashcard source \(url.lastPathComponent): \(error.localizedDescription)")
+            throw ManifestBuildError(message: "Failed to decode flashcard library source \(url.lastPathComponent): \(error.localizedDescription)")
         }
-
-        var normalizedSections: [String: GroupedFlashcardEventSection] = [:]
-        for (rawCode, section) in file.events {
-            let normalizedCode = normalizeCode(rawCode)
-            guard !normalizedCode.isEmpty else {
-                throw ManifestBuildError(message: "Flashcard source contains an empty event code section.")
-            }
-            guard validEventCodes.contains(normalizedCode) else {
-                throw ManifestBuildError(message: "Flashcard source references unknown event code '\(rawCode)'.")
-            }
-            if normalizedSections[normalizedCode] != nil {
-                throw ManifestBuildError(message: "Flashcard source contains duplicate event section '\(normalizedCode)'.")
-            }
-            normalizedSections[normalizedCode] = section
-        }
-
-        return (normalizedSections, file.libraryCards ?? [])
     }
 
     private static func buildCanonicalAttachmentAliases(from reference: [String: SyllabusEventReferenceEventRecord]) -> [String: String] {
@@ -756,9 +765,14 @@ struct ManifestBuilder {
             filter: .nwc,
             epGroupIDs: epGroupIDs
         )
+        let limitCards = try parseCanonicalReferenceDeck(
+            fileURL: xmlDirectoryURL.appendingPathComponent("T-6 Limits.xml"),
+            filter: .limits,
+            epGroupIDs: [:]
+        )
 
         return CanonicalEmergencyProcedureReferenceDeck(
-            allCards: epCards + nwcCards,
+            allCards: epCards + limitCards + nwcCards,
             epCardsByNormalizedTitle: Dictionary(uniqueKeysWithValues: epCards.map { ($0.normalizedTitle, $0) }),
             nwcCardsByCompanionGroupID: Dictionary(uniqueKeysWithValues: nwcCards.compactMap { card in
                 guard let companionGroupID = card.companionGroupID else { return nil }
@@ -786,31 +800,30 @@ struct ManifestBuilder {
     private static func buildSyllabusEventFlashcards(
         from reference: [String: SyllabusEventReferenceEventRecord],
         emergencyProcedureReferenceDeck: CanonicalEmergencyProcedureReferenceDeck,
-        emergencyProcedureAliases: [String: String],
-        placeholderAnswer: String
+        emergencyProcedureAliases: [String: String]
     ) throws -> SyllabusFlashcardBuildResult {
         let normalizedAliasMap = Dictionary(
             uniqueKeysWithValues: emergencyProcedureAliases.map { (normalizedText($0.key), normalizeReferenceTitle($0.value)) }
         )
 
-        var generatedDiscussionItemCards: [FlashcardDefinition] = []
         var deckCardIDsByEvent: [String: [String]] = [:]
+        var coveredDiscussionItemsByEvent: [String: Set<String>] = [:]
         var referenceCardEventAssignments: [String: Set<String>] = [:]
         var unresolvedEmergencyProcedureItems: [EmergencyProcedureAuditIssue] = []
         var missingEmergencyProcedureCompanions: [EmergencyProcedureAuditIssue] = []
 
         for event in reference.values.sorted(by: { normalizeCode($0.code) < normalizeCode($1.code) }) {
             let normalizedCode = normalizeCode(event.code)
-            let categoryKind = event.eventKind.lowercased() == "flight" ? StudyCategoryKind.flights : StudyCategoryKind.sims
             var deckCardIDs: [String] = []
 
-            for (index, rawPrompt) in event.discussionItems.enumerated() {
+            for rawPrompt in event.discussionItems {
                 let normalizedDiscussionItem = normalizeReferenceTitle(rawPrompt)
                 let matchedEmergencyProcedure = emergencyProcedureReferenceDeck.epCardsByNormalizedTitle[normalizedDiscussionItem]
                     ?? normalizedAliasMap[normalizedText(rawPrompt)].flatMap { emergencyProcedureReferenceDeck.epCardsByNormalizedTitle[$0] }
 
                 if let emergencyProcedureCard = matchedEmergencyProcedure {
                     deckCardIDs.append(emergencyProcedureCard.id)
+                    coveredDiscussionItemsByEvent[normalizedCode, default: []].insert(rawPrompt)
                     referenceCardEventAssignments[emergencyProcedureCard.id, default: []].insert(normalizedCode)
 
                     guard let companionGroupID = emergencyProcedureCard.companionGroupID,
@@ -841,30 +854,14 @@ struct ManifestBuilder {
                         )
                     )
                 }
-
-                let displayPrompt = titleCasedDiscussionItemPrompt(rawPrompt)
-                let card = FlashcardDefinition(
-                    id: sanitizedIdentifier("flashcard-\(normalizedCode)-discussion-item-\(index + 1)"),
-                    prompt: displayPrompt,
-                    answer: placeholderAnswer,
-                    imageRelativePath: nil,
-                    tags: buildSyllabusFlashcardTags(for: event, prompt: displayPrompt),
-                    studyCategories: [categoryKind],
-                    eventCodes: [normalizedCode],
-                    kind: .standard,
-                    requiresVerbatim: false,
-                    companionGroupID: nil
-                )
-                generatedDiscussionItemCards.append(card)
-                deckCardIDs.append(card.id)
             }
 
             deckCardIDsByEvent[normalizedCode] = deckCardIDs
         }
 
         return SyllabusFlashcardBuildResult(
-            generatedDiscussionItemCards: generatedDiscussionItemCards,
             deckCardIDsByEvent: deckCardIDsByEvent,
+            coveredDiscussionItemsByEvent: coveredDiscussionItemsByEvent,
             referenceCardEventAssignments: referenceCardEventAssignments,
             unresolvedEmergencyProcedureItems: unresolvedEmergencyProcedureItems,
             missingEmergencyProcedureCompanions: missingEmergencyProcedureCompanions
@@ -925,7 +922,7 @@ struct ManifestBuilder {
             let eventCodes = sortedEventCodes(eventAssignments[card.id] ?? [])
             return FlashcardDefinition(
                 id: card.id,
-                prompt: card.prompt,
+                prompt: normalizedReferencePrompt(card.prompt),
                 answer: card.answer,
                 imageRelativePath: nil,
                 tags: card.tags,
@@ -938,20 +935,37 @@ struct ManifestBuilder {
         }
     }
 
-    private static func materializeGroupedFlashcards(
-        libraryCards: [GroupedFlashcardSourceCard],
+    private static func materializeAuthoredFlashcards(
+        at url: URL,
         validEventCodes: Set<String>,
+        canonicalAliases: [String: String],
+        syllabusReference: [String: SyllabusEventReferenceEventRecord],
         imageRootURL: URL
-    ) throws -> [FlashcardDefinition] {
-        var cards: [FlashcardDefinition] = []
+    ) throws -> AuthoredFlashcardBuildResult {
+        let source = try loadFlatFlashcardSource(at: url)
         var seenExplicitIDs = Set<String>()
+        var cards: [FlashcardDefinition] = []
+        var deckCardIDsByEvent: [String: [String]] = [:]
+        var coveredDiscussionItemsByEvent: [String: Set<String>] = [:]
 
-        for (index, card) in libraryCards.enumerated() {
-            if isLegacyEmergencyProcedureReferenceCard(card) {
-                continue
+        for (index, card) in source.flashcards.enumerated() {
+            let prompt = card.prompt.trimmingCharacters(in: .whitespacesAndNewlines)
+            let answer = card.answer.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !prompt.isEmpty else {
+                throw ManifestBuildError(message: "Flashcard source card #\(index + 1) has an empty prompt.")
+            }
+            guard !answer.isEmpty else {
+                throw ManifestBuildError(message: "Flashcard '\(prompt)' has an empty answer.")
+            }
+            guard normalizedText(answer) != normalizedText("Answer pending generation.") else {
+                throw ManifestBuildError(message: "Flashcard '\(prompt)' still has a placeholder answer.")
             }
 
-            let eventCodes = uniqueEventCodes((card.alsoIncludeInEvents ?? []).map(normalizeCode))
+            let coverage = card.eventCoverage ?? []
+            let coverageEventCodes = coverage.map { canonicalEventCode(for: $0.eventCode, aliases: canonicalAliases) }
+            let explicitEventCodes = (card.eventCodes ?? []).map { canonicalEventCode(for: $0, aliases: canonicalAliases) }
+            let eventCodes = uniqueEventCodes(explicitEventCodes + coverageEventCodes)
+
             for mappedCode in eventCodes {
                 guard validEventCodes.contains(mappedCode) else {
                     throw ManifestBuildError(message: "Library flashcard '\(card.prompt)' references unknown event code '\(mappedCode)'.")
@@ -960,36 +974,118 @@ struct ManifestBuilder {
 
             if let explicitID = card.id {
                 guard seenExplicitIDs.insert(explicitID).inserted else {
-                    throw ManifestBuildError(message: "Duplicate flashcard id '\(explicitID)' found in grouped flashcard source.")
+                    throw ManifestBuildError(message: "Duplicate flashcard id '\(explicitID)' found in flashcard library source.")
+                }
+                guard !explicitID.hasPrefix("reference-") else {
+                    throw ManifestBuildError(message: "Authored flashcard id '\(explicitID)' uses the reserved reference-card prefix.")
+                }
+            }
+
+            for coverageEntry in coverage {
+                let eventCode = canonicalEventCode(for: coverageEntry.eventCode, aliases: canonicalAliases)
+                guard let referenceEvent = syllabusReference[eventCode] else {
+                    throw ManifestBuildError(message: "Flashcard '\(prompt)' has eventCoverage for non-canonical event '\(coverageEntry.eventCode)'.")
+                }
+
+                for discussionItem in coverageEntry.discussionItems {
+                    guard let canonicalItem = referenceEvent.discussionItems.first(where: {
+                        normalizedText($0) == normalizedText(discussionItem)
+                    }) else {
+                        throw ManifestBuildError(message: "Flashcard '\(prompt)' covers unknown discussion item '\(discussionItem)' for \(eventCode).")
+                    }
+                    coveredDiscussionItemsByEvent[eventCode, default: []].insert(canonicalItem)
                 }
             }
 
             let fallbackID = sanitizedIdentifier(
-                "flashcard-library-\(String(sanitizedIdentifier(card.prompt).prefix(48)))-\(index + 1)"
+                "flashcard-\(String(sanitizedIdentifier(prompt).prefix(56)))-\(index + 1)"
             )
+            let cardID = card.id ?? fallbackID
+            for eventCode in eventCodes {
+                deckCardIDsByEvent[eventCode, default: []].append(cardID)
+            }
 
             cards.append(
                 FlashcardDefinition(
-                    id: card.id ?? fallbackID,
-                    prompt: card.prompt,
-                    answer: card.answer,
-                    imageRelativePath: try manifestImageRelativePath(for: card.image, imageRootURL: imageRootURL),
-                    tags: card.tags ?? [],
-                    studyCategories: card.studyCategories ?? [],
+                    id: cardID,
+                    prompt: prompt,
+                    answer: answer,
+                    imageRelativePath: try manifestImageRelativePath(
+                        for: card.image,
+                        imageRelativePath: card.imageRelativePath,
+                        imageRootURL: imageRootURL
+                    ),
+                    tags: try authoredFlashcardTags(
+                        rawTags: card.tags ?? [],
+                        eventCodes: eventCodes,
+                        syllabusReference: syllabusReference
+                    ),
+                    studyCategories: card.studyCategories ?? studyCategories(for: eventCodes, syllabusReference: syllabusReference),
                     eventCodes: eventCodes,
                     kind: card.kind ?? .standard,
-                    requiresVerbatim: false,
-                    companionGroupID: nil
+                    requiresVerbatim: card.requiresVerbatim ?? false,
+                    companionGroupID: card.companionGroupID
                 )
             )
         }
 
-        return dedupeFlashcards(cards)
+        return AuthoredFlashcardBuildResult(
+            cards: dedupeFlashcards(cards),
+            deckCardIDsByEvent: deckCardIDsByEvent.mapValues { uniqueStrings($0) },
+            coveredDiscussionItemsByEvent: coveredDiscussionItemsByEvent
+        )
     }
 
-    private static func isLegacyEmergencyProcedureReferenceCard(_ card: GroupedFlashcardSourceCard) -> Bool {
-        let tags = Set(card.tags ?? [])
-        return tags.contains(FlashcardFilterToken.ep.tagValue) || tags.contains(FlashcardFilterToken.nwc.tagValue)
+    private static func canonicalEventCode(for rawCode: String, aliases: [String: String]) -> String {
+        let normalizedCode = normalizeCode(rawCode)
+        return aliases[normalizedCode] ?? normalizedCode
+    }
+
+    private static func authoredFlashcardTags(
+        rawTags: [String],
+        eventCodes: [String],
+        syllabusReference: [String: SyllabusEventReferenceEventRecord]
+    ) throws -> [String] {
+        let allowedAuthorTags: Set<String> = ["maneuvers", "procedures", "systems", "planning"]
+        let normalizedRawTags = rawTags.map(normalizedText).filter { !$0.isEmpty }
+        let reservedReferenceTags = Set(FlashcardFilterToken.allCases.map(\.tagValue))
+
+        for tag in normalizedRawTags {
+            if reservedReferenceTags.contains(tag) {
+                throw ManifestBuildError(message: "Authored flashcards may not use reserved reference tag '\(tag)'; EP, N/W/C, and limits cards come from XML.")
+            }
+            guard allowedAuthorTags.contains(tag) else {
+                throw ManifestBuildError(message: "Authored flashcard tag '\(tag)' is not in the controlled tag set.")
+            }
+        }
+
+        var tags = normalizedRawTags
+        for code in eventCodes {
+            tags.append(code.lowercased())
+            if let event = syllabusReference[code] {
+                tags.append(categoryTag(for: event.category))
+                tags.append(event.eventKind.lowercased())
+                tags.append("discussion-item")
+            }
+        }
+
+        return uniqueStrings(tags)
+    }
+
+    private static func manifestImageRelativePath(for image: String?, imageRelativePath: String?, imageRootURL: URL) throws -> String? {
+        if let image {
+            return try manifestImageRelativePath(for: image, imageRootURL: imageRootURL)
+        }
+
+        guard let rawImage = imageRelativePath?.trimmingCharacters(in: .whitespacesAndNewlines), !rawImage.isEmpty else {
+            return nil
+        }
+
+        let normalizedImage = rawImage.hasPrefix("FlashcardImages/")
+            ? String(rawImage.dropFirst("FlashcardImages/".count))
+            : rawImage
+
+        return try manifestImageRelativePath(for: normalizedImage, imageRootURL: imageRootURL)
     }
 
     private static func manifestImageRelativePath(for image: String?, imageRootURL: URL) throws -> String? {
@@ -1400,7 +1496,7 @@ struct ManifestBuilder {
                 id: sanitizeID("\(normalizedCode)-flashcards"),
                 title: "\(normalizedCode) Discussion Item Flashcards",
                 summary: override?.flashcardDeckSummary
-                    ?? "Canonical syllabus discussion items for \(normalizedCode), ready for answer generation and event-specific study.",
+                    ?? "Authored flashcards for \(normalizedCode), linked to canonical syllabus discussion items and reference procedures.",
                 cardIDs: cardIDs
             )
         ]
@@ -1450,6 +1546,7 @@ struct ManifestBuilder {
             canonicalEventsMissingFromManifest: canonicalCodes.filter { !manifestCodes.contains($0) },
             canonicalEventsMissingAuthoredNotes: canonicalCodes.filter { eventOverrides[normalizeCode($0)]?.studyNotes == nil },
             authoredNotesCoverageIssues: authoredNotesCoverageIssues(),
+            flashcardCoverageIssues: flashcardCoverageIssues(),
             discussionItemAuthoringIssues: discussionItemIssues,
             legacyAliasAttachmentsInUse: legacyAliasAttachmentIssues(),
             unresolvedEmergencyProcedureItems: unresolvedEmergencyProcedureItems,
@@ -1495,6 +1592,41 @@ struct ManifestBuilder {
                 code: code,
                 missingCanonicalItems: missingCanonicalItems,
                 unexpectedPrimaryItems: unexpectedPrimaryItems
+            )
+        }
+    }
+
+    private func flashcardCoverageIssues() -> [FlashcardCoverageIssue] {
+        syllabusReference.keys.sorted().compactMap { code in
+            guard let referenceEvent = syllabusReference[code], !referenceEvent.discussionItems.isEmpty else {
+                return nil
+            }
+
+            let authoredCoverage = authoredFlashcardCoverageByEvent[code] ?? []
+            let referenceCoverage = referenceFlashcardCoverageByEvent[code] ?? []
+            let coveredItems = authoredCoverage.union(referenceCoverage)
+            let normalizedCoveredItems = Set(coveredItems.map(normalizedText))
+            let missingItems = referenceEvent.discussionItems.filter { item in
+                !normalizedCoveredItems.contains(normalizedText(item))
+            }
+
+            guard !missingItems.isEmpty else { return nil }
+
+            let eventCards = flashcardLibrary.filter { card in
+                card.eventCodes.contains { normalizeCode($0) == code }
+            }
+            let referenceTags = Set(FlashcardFilterToken.allCases.map(\.tagValue))
+            let referenceCardCount = eventCards.filter { !Set($0.tags).isDisjoint(with: referenceTags) }.count
+            let authoredCardCount = eventCards.count - referenceCardCount
+
+            return FlashcardCoverageIssue(
+                code: code,
+                missingDiscussionItems: missingItems,
+                coveredDiscussionItems: referenceEvent.discussionItems.filter { item in
+                    normalizedCoveredItems.contains(normalizedText(item))
+                },
+                authoredCardCount: authoredCardCount,
+                referenceCardCount: referenceCardCount
             )
         }
     }
@@ -2080,11 +2212,23 @@ struct ManifestBuilder {
                 answer: answer,
                 tags: [filter.tagValue],
                 kind: filter == .ep ? .ep : .standard,
-                requiresVerbatim: filter == .ep || filter == .nwc,
+                requiresVerbatim: true,
                 companionGroupID: companionGroupID,
                 normalizedTitle: groupID
             )
         }
+    }
+
+    private static func normalizedReferencePrompt(_ value: String) -> String {
+        var result = titleCasedDiscussionItemPrompt(value.replacingOccurrences(of: "\n", with: " "))
+        for joiner in ["For", "With", "At", "By"] {
+            let pattern = #"(?<![-/])\b\#(joiner)\b(?![-/])"#
+            result = result.replacingOccurrences(of: pattern, with: joiner.lowercased(), options: [.regularExpression])
+        }
+        if let firstCharacter = result.first {
+            result.replaceSubrange(result.startIndex...result.startIndex, with: String(firstCharacter).uppercased())
+        }
+        return result
     }
 
     private static func normalizedRichText(from rawXML: String) -> String {
@@ -2136,7 +2280,7 @@ struct ManifestBuilder {
         guard !trimmed.isEmpty else { return trimmed }
 
         var result = trimmed.lowercased().localizedCapitalized
-        let lowercaseJoiners = ["And", "Or", "Of", "In", "On", "To", "The", "A", "An"]
+        let lowercaseJoiners = ["And", "Or", "Of", "In", "On", "To", "The", "A", "An", "From"]
         for joiner in lowercaseJoiners {
             let pattern = #"(?<![-/])\b\#(joiner)\b(?![-/])"#
             result = result.replacingOccurrences(of: pattern, with: joiner.lowercased(), options: [.regularExpression])
@@ -2166,6 +2310,12 @@ struct ManifestBuilder {
             (#"\bCfs\b"#, "CFS"),
             (#"\bObogs\b"#, "OBOGS"),
             (#"\bPmu\b"#, "PMU"),
+            (#"\bItt\b"#, "ITT"),
+            (#"\bKias\b"#, "KIAS"),
+            (#"\bVle\b"#, "VLE"),
+            (#"\bVfe\b"#, "VFE"),
+            (#"\bVmo\b"#, "VMO"),
+            (#"\bMmo\b"#, "MMO"),
             (#"\bBfi\b"#, "BFI"),
             (#"\bHud\b"#, "HUD"),
             (#"\bUfcp\b"#, "UFCP"),

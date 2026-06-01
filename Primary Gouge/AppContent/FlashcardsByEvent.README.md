@@ -1,10 +1,19 @@
-# Flashcards By Event
+# Flashcards By Event Legacy Source
 
-`FlashcardsByEvent.json` is the hand-edited source of truth for flashcards.
+`FlashcardsByEvent.json` is retained as legacy reference material only.
+
+The active source of truth is now the flat master library:
+
+- `Primary Gouge/AppContent/FlashcardLibrary.json`
+- `Primary Gouge/AppContent/FlashcardAuthoringRules.md`
+- `Primary Gouge/AppContent/FlashcardAuthoringRunbook.md`
+- `Primary Gouge/AppContent/FlashcardAuthoringProgress.md`
+
+Do not copy cards from this file forward automatically. Use it only as a historical reference while authoring cards from the completed discussion-item overrides.
 
 ## Workflow
 
-1. Edit `Primary Gouge/AppContent/FlashcardsByEvent.json`
+1. Edit `Primary Gouge/AppContent/FlashcardLibrary.json`
 2. Add any optional image files to `Contents/FlashcardImages/`
 3. Regenerate the manifest:
 
@@ -14,7 +23,7 @@ swift Tools/BuildStudyManifest.swift
 
 4. Build the app
 
-## File Shape
+## Legacy File Shape
 
 ```json
 {
@@ -47,9 +56,6 @@ swift Tools/BuildStudyManifest.swift
 
 ## Notes
 
-- Putting a card under an event section automatically maps it to that event deck.
-- Use `alsoIncludeInEvents` only when one card belongs in more than one event deck.
-- `libraryCards` are optional cards that should live in the general flashcard library without belonging to a specific event deck.
-- `image` paths are relative to `Contents/FlashcardImages/`.
-- Flashcard images render on the answer side only.
-- The build fails for duplicate IDs, unknown event codes, or missing image files.
+- The manifest builder no longer reads this grouped file.
+- Legacy event aliases should map to canonical event codes in the flat source.
+- Flashcard images still render on the answer side only when referenced by the flat source.

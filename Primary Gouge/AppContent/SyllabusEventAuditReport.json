@@ -191,7 +191,10 @@
   "emergencyProcedureAliasIssues" : [
 
   ],
-  "generatedAt" : "2026-05-30T03:16:15Z",
+  "flashcardCoverageIssues" : [
+
+  ],
+  "generatedAt" : "2026-05-31T21:52:55Z",
   "legacyAliasAttachmentsInUse" : [
     {
       "aliasCode" : "FAM4401",

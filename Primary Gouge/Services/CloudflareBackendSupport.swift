@@ -2,15 +2,16 @@ import Foundation
 import Network
 
 struct CloudflareBackendConfiguration: Hashable {
-    static let defaultsKey = "InstructorReviewBackendURL"
-    static let bundleKey = "INSTRUCTOR_REVIEW_BACKEND_URL"
+    nonisolated static let productionBackendURLString = "https://primary-gouge-instructor-reviews.tz4mz7ry42.workers.dev"
+    nonisolated static let defaultsKey = "InstructorReviewBackendURL"
+    nonisolated static let bundleKey = "INSTRUCTOR_REVIEW_BACKEND_URL"
 
-    static let defaultsKeys = [
+    nonisolated static let defaultsKeys = [
         "CloudflareBackendURL",
         "InstructorReviewBackendURL"
     ]
 
-    static let bundleKeys = [
+    nonisolated static let bundleKeys = [
         "CLOUDFLARE_BACKEND_URL",
         "INSTRUCTOR_REVIEW_BACKEND_URL"
     ]
@@ -26,34 +27,56 @@ struct CloudflareBackendConfiguration: Hashable {
         switch source {
         case .bundled:
             return "Using bundled Cloudflare backend."
+        case .productionDefault:
+            return "Using built-in production Cloudflare backend."
         case .userDefaultsOverride:
             return "Using local backend override."
         case .unavailable:
-            return "No backend URL found in local override or bundled settings."
+            return "No valid backend URL found in local override, bundled settings, or production defaults."
         }
     }
 
-    static func load(bundle: Bundle = .main, defaults: UserDefaults = .standard) -> CloudflareBackendConfiguration? {
+    nonisolated static func load(bundle: Bundle = .main, defaults: UserDefaults = .standard) -> CloudflareBackendConfiguration? {
         resolve(
-            overrideURLString: defaultsKeys.lazy.compactMap { defaults.string(forKey: $0) }.first,
-            bundledURLString: bundleKeys.lazy.compactMap { bundle.object(forInfoDictionaryKey: $0) as? String }.first
+            overrideURLStrings: defaultsKeys.map { defaults.string(forKey: $0) },
+            bundledURLStrings: bundleKeys.map { bundle.object(forInfoDictionaryKey: $0) as? String }
         )
     }
 
-    static func resolve(overrideURLString: String?, bundledURLString: String?) -> CloudflareBackendConfiguration? {
-        if let overrideURL = resolvedURL(from: overrideURLString) {
+    nonisolated static func resolve(
+        overrideURLString: String?,
+        bundledURLString: String?,
+        productionURLString: String? = productionBackendURLString
+    ) -> CloudflareBackendConfiguration? {
+        resolve(
+            overrideURLStrings: [overrideURLString],
+            bundledURLStrings: [bundledURLString],
+            productionURLString: productionURLString
+        )
+    }
+
+    nonisolated private static func resolve(
+        overrideURLStrings: [String?],
+        bundledURLStrings: [String?],
+        productionURLString: String? = productionBackendURLString
+    ) -> CloudflareBackendConfiguration? {
+        if let overrideURL = overrideURLStrings.lazy.compactMap(resolvedURL).first {
             return CloudflareBackendConfiguration(baseURL: overrideURL, source: .userDefaultsOverride)
         }
 
-        if let bundledURL = resolvedURL(from: bundledURLString) {
+        if let bundledURL = bundledURLStrings.lazy.compactMap(resolvedURL).first {
             return CloudflareBackendConfiguration(baseURL: bundledURL, source: .bundled)
+        }
+
+        if let productionURL = resolvedURL(from: productionURLString) {
+            return CloudflareBackendConfiguration(baseURL: productionURL, source: .productionDefault)
         }
 
         return nil
     }
 
     @discardableResult
-    static func clearBlankOverrides(defaults: UserDefaults = .standard) -> Bool {
+    nonisolated static func clearBlankOverrides(defaults: UserDefaults = .standard) -> Bool {
         var removedAny = false
 
         for key in defaultsKeys {
@@ -71,24 +94,55 @@ struct CloudflareBackendConfiguration: Hashable {
     }
 
     @discardableResult
-    static func clearBlankOverride(defaults: UserDefaults = .standard) -> Bool {
+    nonisolated static func clearBlankOverride(defaults: UserDefaults = .standard) -> Bool {
         clearBlankOverrides(defaults: defaults)
     }
 
-    private static func resolvedURL(from rawValue: String?) -> URL? {
+    nonisolated private static func resolvedURL(from rawValue: String?) -> URL? {
         guard let rawValue else {
             return nil
         }
 
         let trimmedValue = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedValue.isEmpty else {
+            return nil
+        }
+
         guard
-            !trimmedValue.isEmpty,
-            let baseURL = URL(string: trimmedValue)
+            let components = URLComponents(string: trimmedValue),
+            let scheme = components.scheme?.lowercased(),
+            ["http", "https"].contains(scheme),
+            let host = components.host,
+            !host.isEmpty,
+            let baseURL = components.url
         else {
             return nil
         }
 
         return baseURL
+    }
+}
+
+enum CloudflareBackendErrorClassifier {
+    static func isConnectivityFailure(_ error: Error) -> Bool {
+        let nsError = error as NSError
+        guard nsError.domain == NSURLErrorDomain else {
+            return false
+        }
+
+        switch URLError.Code(rawValue: nsError.code) {
+        case .notConnectedToInternet,
+             .networkConnectionLost,
+             .cannotFindHost,
+             .cannotConnectToHost,
+             .dnsLookupFailed,
+             .timedOut,
+             .internationalRoamingOff,
+             .dataNotAllowed:
+            return true
+        default:
+            return false
+        }
     }
 }
 

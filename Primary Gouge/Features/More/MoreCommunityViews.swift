@@ -77,18 +77,24 @@ struct MoreCommunitySubmissionView: View {
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
             VStack(alignment: .leading, spacing: 18) {
-                HeroCard(
-                    eyebrow: category.eyebrow,
-                    title: category.formTitle,
-                    subtitle: category.formSubtitle,
-                    accent: category.accentColor
-                ) {
-                    StatusBadge(
-                        title: syncStatusTitle,
-                        iconName: category.iconName,
-                        color: syncStatusColor
-                    )
-                } content: {
+                MoreHeaderCard(accent: category.accentColor, supportingSpacing: 14) {
+                    HStack(alignment: .center, spacing: 14) {
+                        MoreHeaderTextBlock(
+                            eyebrow: category.eyebrow,
+                            title: category.formTitle,
+                            subtitle: category.formSubtitle,
+                            accent: category.accentColor
+                        )
+
+                        Spacer(minLength: 12)
+
+                        StatusBadge(
+                            title: syncStatusTitle,
+                            iconName: category.iconName,
+                            color: syncStatusColor
+                        )
+                    }
+                } supportingContent: {
                     Text(syncMessage)
                         .font(.subheadline)
                         .foregroundStyle(AppTheme.textSecondary)

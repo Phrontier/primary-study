@@ -14,41 +14,32 @@ struct MoreProfileView: View {
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
             VStack(alignment: .leading, spacing: 18) {
-                SectionContainer(style: .rootSummary, accent: MoreSectionColor.account, contentPadding: 20) {
-                    VStack(alignment: .leading, spacing: 14) {
-                        HStack(alignment: .center, spacing: 14) {
-                            ZStack {
-                                Circle()
-                                    .fill(AppTheme.badgeFill(MoreSectionColor.account))
-                                    .frame(width: 54, height: 54)
-                                    .overlay(
-                                        Circle()
-                                            .stroke(AppTheme.badgeStroke(MoreSectionColor.account), lineWidth: 1)
-                                    )
+                MoreHeaderCard(accent: MoreSectionColor.account, supportingSpacing: 14) {
+                    HStack(alignment: .center, spacing: 14) {
+                        ZStack {
+                            Circle()
+                                .fill(AppTheme.badgeFill(MoreSectionColor.account))
+                                .frame(width: 54, height: 54)
+                                .overlay(
+                                    Circle()
+                                        .stroke(AppTheme.badgeStroke(MoreSectionColor.account), lineWidth: 1)
+                                )
 
-                                Text(snapshot.avatarInitials)
-                                    .font(.title3.weight(.bold))
-                                    .foregroundStyle(AppTheme.iconTint(MoreSectionColor.account))
-                            }
-
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("ACCOUNT")
-                                    .font(.caption.weight(.semibold))
-                                    .foregroundStyle(MoreSectionColor.account)
-                                    .tracking(0.7)
-
-                                Text(snapshot.identityTitle)
-                                    .font(.title3.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
-
-                                Text(snapshot.currentFocusLine)
-                                    .font(.subheadline)
-                                    .foregroundStyle(AppTheme.textSecondary)
-                            }
-
-                            Spacer(minLength: 0)
+                            Text(snapshot.avatarInitials)
+                                .font(.title3.weight(.bold))
+                                .foregroundStyle(AppTheme.iconTint(MoreSectionColor.account))
                         }
 
+                        MoreHeaderTextBlock(
+                            eyebrow: "Account",
+                            title: snapshot.identityTitle,
+                            subtitle: snapshot.currentFocusLine,
+                            accent: MoreSectionColor.account
+                        )
+
+                        Spacer(minLength: 0)
+                    }
+                } supportingContent: {
                         HStack(spacing: 12) {
                             CompactMetricChip(
                                 label: "Quizzes",
@@ -70,7 +61,6 @@ struct MoreProfileView: View {
                                 color: AppTheme.domainColor(.flashcards),
                                 iconName: "rectangle.stack.fill"
                             )
-                        }
                     }
                 }
 
@@ -228,68 +218,58 @@ struct MoreNotificationsView: View {
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
             VStack(alignment: .leading, spacing: 18) {
-                SectionContainer(style: .rootSummary, accent: MoreSectionColor.account, contentPadding: 18) {
-                    VStack(alignment: .leading, spacing: 14) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("NOTIFICATIONS")
-                                    .font(.caption.weight(.semibold))
-                                    .foregroundStyle(MoreSectionColor.account)
-                                    .tracking(0.7)
+                MoreHeaderCard(accent: MoreSectionColor.account, supportingSpacing: 14) {
+                    HStack(alignment: .center, spacing: 14) {
+                        MoreHeaderTextBlock(
+                            eyebrow: "Notifications",
+                            title: "Daily study reminder",
+                            subtitle: statusDescription,
+                            accent: MoreSectionColor.account
+                        )
 
-                                Text("Daily study reminder")
-                                    .font(.title3.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
+                        Spacer(minLength: 12)
 
-                                Text(statusDescription)
-                                    .font(.subheadline)
-                                    .foregroundStyle(AppTheme.textSecondary)
-                            }
-
-                            Spacer(minLength: 12)
-
-                            StatusBadge(
-                                title: statusTitle,
-                                iconName: statusIconName,
-                                color: statusColor
-                            )
-                        }
-
-                        Toggle(isOn: Binding(
+                        StatusBadge(
+                            title: statusTitle,
+                            iconName: statusIconName,
+                            color: statusColor
+                        )
+                    }
+                } supportingContent: {
+                    Toggle(isOn: Binding(
                             get: { reminderEnabled },
                             set: { newValue in
                                 reminderEnabled = newValue
                                 guard didLoadPreferences else { return }
                                 Task { await saveReminderPreferences(requestingPermission: newValue) }
                             }
-                        )) {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("Enable daily reminder")
-                                    .font(.headline.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
+                    )) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Enable daily reminder")
+                                .font(.headline.weight(.semibold))
+                                .foregroundStyle(AppTheme.textPrimary)
 
-                                Text("Use one local reminder to nudge a quick study check-in each day.")
-                                    .font(.footnote)
-                                    .foregroundStyle(AppTheme.textSecondary)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
+                            Text("Use one local reminder to nudge a quick study check-in each day.")
+                                .font(.footnote)
+                                .foregroundStyle(AppTheme.textSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
-                        .tint(MoreSectionColor.account)
-
-                        DatePicker(
-                            "Reminder time",
-                            selection: Binding(
-                                get: { reminderTime },
-                                set: { newValue in
-                                    reminderTime = newValue
-                                    guard didLoadPreferences else { return }
-                                    Task { await saveReminderPreferences(requestingPermission: false) }
-                                }
-                            ),
-                            displayedComponents: .hourAndMinute
-                        )
-                        .disabled(!reminderEnabled)
                     }
+                    .tint(MoreSectionColor.account)
+
+                    DatePicker(
+                        "Reminder time",
+                        selection: Binding(
+                            get: { reminderTime },
+                            set: { newValue in
+                                reminderTime = newValue
+                                guard didLoadPreferences else { return }
+                                Task { await saveReminderPreferences(requestingPermission: false) }
+                            }
+                        ),
+                        displayedComponents: .hourAndMinute
+                    )
+                    .disabled(!reminderEnabled)
                 }
 
                 if notificationService.authorizationStatus == .denied {
@@ -455,29 +435,18 @@ struct MorePremiumView: View {
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
             VStack(alignment: .leading, spacing: 18) {
-                SectionContainer(style: .rootSummary, accent: AppTheme.warning, contentPadding: 18) {
-                    VStack(alignment: .leading, spacing: 14) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("PREMIUM")
-                                    .font(.caption.weight(.semibold))
-                                    .foregroundStyle(AppTheme.warning)
-                                    .tracking(0.7)
+                MoreHeaderCard(accent: AppTheme.warning) {
+                    HStack(alignment: .center, spacing: 14) {
+                        MoreHeaderTextBlock(
+                            eyebrow: "Premium",
+                            title: "Standard access",
+                            subtitle: "Everything in Primary Gouge is currently available without a paid tier.",
+                            accent: AppTheme.warning
+                        )
 
-                                Text("Standard access")
-                                    .font(.title3.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
+                        Spacer(minLength: 12)
 
-                                Text("Everything in Primary Gouge is currently available without a paid tier.")
-                                    .font(.subheadline)
-                                    .foregroundStyle(AppTheme.textSecondary)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-
-                            Spacer(minLength: 12)
-
-                            StatusBadge(title: "Included", iconName: "checkmark.circle.fill", color: AppTheme.success)
-                        }
+                        StatusBadge(title: "Included", iconName: "checkmark.circle.fill", color: AppTheme.success)
                     }
                 }
 

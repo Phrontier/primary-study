@@ -10,6 +10,10 @@ import Testing
 @testable import Primary_Gouge
 
 struct Primary_GougeTests {
+    private func temporaryPersistenceURL(name: String) -> URL {
+        FileManager.default.temporaryDirectory
+            .appendingPathComponent("PrimaryGougeTests-\(name)-\(UUID().uuidString).json")
+    }
 
     @MainActor
     @Test func instructorReviewCountStringsHandleSingularAndPlural() async throws {
@@ -60,6 +64,40 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func backendConfigurationUsesProductionDefaultWhenBundleURLIsMissing() async throws {
+        let configuration = InstructorReviewBackendConfiguration.resolve(
+            overrideURLString: nil,
+            bundledURLString: nil
+        )
+
+        #expect(configuration?.baseURL.absoluteString == InstructorReviewBackendConfiguration.productionBackendURLString)
+        #expect(configuration?.source == .productionDefault)
+        #expect(configuration?.statusDetail == "Using built-in production Cloudflare backend.")
+    }
+
+    @MainActor
+    @Test func backendConfigurationIgnoresInvalidOverrideAndUsesBundledURL() async throws {
+        let configuration = InstructorReviewBackendConfiguration.resolve(
+            overrideURLString: "localhost:8787",
+            bundledURLString: "https://bundled.example.workers.dev"
+        )
+
+        #expect(configuration?.baseURL.absoluteString == "https://bundled.example.workers.dev")
+        #expect(configuration?.source == .bundled)
+    }
+
+    @MainActor
+    @Test func backendConfigurationIgnoresInvalidBundledURLAndUsesProductionDefault() async throws {
+        let configuration = InstructorReviewBackendConfiguration.resolve(
+            overrideURLString: nil,
+            bundledURLString: "ftp://bundled.example.com"
+        )
+
+        #expect(configuration?.baseURL.absoluteString == InstructorReviewBackendConfiguration.productionBackendURLString)
+        #expect(configuration?.source == .productionDefault)
+    }
+
+    @MainActor
     @Test func backendConfigurationPrefersValidOverrideURL() async throws {
         let configuration = InstructorReviewBackendConfiguration.resolve(
             overrideURLString: "https://override.example.workers.dev",
@@ -79,6 +117,67 @@ struct Primary_GougeTests {
 
         #expect(InstructorReviewBackendConfiguration.clearBlankOverride(defaults: defaults))
         #expect(defaults.string(forKey: InstructorReviewBackendConfiguration.defaultsKey) == nil)
+    }
+
+    @MainActor
+    @Test func communitySubmissionSyncAttemptsRemoteBeforeConnectivityMonitorReportsOnline() async throws {
+        let remoteService = MockCommunitySubmissionRemoteService()
+        let localStore = LocalCommunitySubmissionRepository(persistenceURL: temporaryPersistenceURL(name: "community-sync"))
+        let defaults = try #require(UserDefaults(suiteName: "PrimaryGougeTests.CommunitySubmissionSync.\(UUID().uuidString)"))
+        let clientKey = "client-id"
+        defaults.set("community-client", forKey: clientKey)
+
+        localStore.enqueue(
+            CommunitySubmissionRecord(
+                category: .featureRequest,
+                summary: "Backend sync",
+                message: "Make sure submissions upload without waiting for path monitor state.",
+                contactEmail: nil,
+                targetKind: nil,
+                targetID: nil,
+                targetTitle: nil,
+                targetContext: nil,
+                appVersion: "1.0",
+                buildNumber: "1",
+                submitterClientID: "community-client"
+            )
+        )
+
+        let store = CommunitySubmissionStore(
+            localStore: localStore,
+            remoteService: remoteService,
+            clientIdentityStore: AnonymousCloudflareClientIdentityStore(defaults: defaults, key: clientKey, legacyKeys: []),
+            configurationDefaults: defaults
+        )
+
+        await store.syncIfPossible()
+
+        #expect(remoteService.submitCallCount == 1)
+        #expect(remoteService.fetchStatusesCallCount == 1)
+        #expect(store.syncStatus.phase == .idle)
+        #expect(localStore.fetchQueuedUploads().isEmpty)
+    }
+
+    @MainActor
+    @Test func instructorReviewSyncAttemptsRemoteBeforeConnectivityMonitorReportsOnline() async throws {
+        let remoteService = MockInstructorReviewRemoteService()
+        let localRepository = LocalInstructorReviewRepository(persistenceURL: temporaryPersistenceURL(name: "instructor-sync"))
+        let defaults = try #require(UserDefaults(suiteName: "PrimaryGougeTests.InstructorReviewSync.\(UUID().uuidString)"))
+        let clientKey = "client-id"
+        defaults.set("review-client", forKey: clientKey)
+        let store = InstructorReviewStore(
+            localRepository: localRepository,
+            remoteService: remoteService,
+            clientIdentityStore: AnonymousInstructorReviewClientIdentityStore(defaults: defaults, key: clientKey, legacyKeys: []),
+            configurationDefaults: defaults
+        )
+
+        await store.syncIfPossible()
+
+        #expect(remoteService.fetchPublishedReviewsCallCount == 1)
+        #expect(remoteService.fetchSubmissionStatusesCallCount == 1)
+        #expect(remoteService.fetchReportStatusesCallCount == 1)
+        #expect(store.syncStatus.phase == .idle)
     }
 
     @MainActor
@@ -2320,6 +2419,95 @@ struct Primary_GougeTests {
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
     }
+}
+
+private final class MockCommunitySubmissionRemoteService: CommunitySubmissionRemoteService {
+    var isConfigured = true
+    var configurationSource: InstructorReviewBackendSource = .productionDefault
+    var configurationStatusDetail = "Using built-in production Cloudflare backend."
+
+    private(set) var submitCallCount = 0
+    private(set) var fetchStatusesCallCount = 0
+    var statuses: [CommunitySubmissionStatusSnapshot] = []
+
+    func submit(_ record: CommunitySubmissionRecord, clientID _: String) async throws -> String {
+        submitCallCount += 1
+        return record.id
+    }
+
+    func fetchStatuses(for _: String) async throws -> [CommunitySubmissionStatusSnapshot] {
+        fetchStatusesCallCount += 1
+        return statuses
+    }
+}
+
+private final class MockInstructorReviewRemoteService: InstructorReviewRemoteService {
+    var isConfigured = true
+    var configurationSource: InstructorReviewBackendSource = .productionDefault
+    var configurationStatusDetail = "Using built-in production Cloudflare backend."
+
+    private(set) var fetchPublishedReviewsCallCount = 0
+    private(set) var fetchSubmissionStatusesCallCount = 0
+    private(set) var fetchReportStatusesCallCount = 0
+    private(set) var submitReviewCallCount = 0
+    private(set) var submitReportCallCount = 0
+
+    var publishedReviews: [InstructorReviewRecord] = []
+    var submissionStatuses: [RemoteSubmissionStatusSnapshot] = []
+    var reportStatuses: [RemoteReportStatusSnapshot] = []
+    var moderationSnapshot = RemoteModerationQueueSnapshot(
+        pendingReviews: [],
+        openReports: [],
+        openCommunitySubmissions: []
+    )
+
+    func signInModerator(email: String, password _: String) async throws -> ModeratorSession {
+        ModeratorSession(
+            email: email,
+            accessToken: "access-token",
+            refreshToken: "refresh-token",
+            expiresAt: Date().addingTimeInterval(3600)
+        )
+    }
+
+    func refreshModeratorSession(_ session: ModeratorSession) async throws -> ModeratorSession {
+        session
+    }
+
+    func fetchPublishedReviews() async throws -> [InstructorReviewRecord] {
+        fetchPublishedReviewsCallCount += 1
+        return publishedReviews
+    }
+
+    func fetchSubmissionStatuses(for _: String) async throws -> [RemoteSubmissionStatusSnapshot] {
+        fetchSubmissionStatusesCallCount += 1
+        return submissionStatuses
+    }
+
+    func fetchReportStatuses(for _: String) async throws -> [RemoteReportStatusSnapshot] {
+        fetchReportStatusesCallCount += 1
+        return reportStatuses
+    }
+
+    func submitReview(_ record: InstructorReviewRecord, clientID _: String) async throws -> String {
+        submitReviewCallCount += 1
+        return record.id
+    }
+
+    func submitReport(_ record: InstructorGougeReportRecord, clientID _: String) async throws -> String {
+        submitReportCallCount += 1
+        return record.id
+    }
+
+    func fetchModerationQueue(session _: ModeratorSession) async throws -> RemoteModerationQueueSnapshot {
+        moderationSnapshot
+    }
+
+    func approveSubmission(id _: String, session _: ModeratorSession) async throws {}
+    func rejectSubmission(id _: String, session _: ModeratorSession) async throws {}
+    func dismissReport(id _: String, session _: ModeratorSession) async throws {}
+    func resolveCommunitySubmission(id _: String, session _: ModeratorSession) async throws {}
+    func dismissCommunitySubmission(id _: String, session _: ModeratorSession) async throws {}
 }
 
 @MainActor

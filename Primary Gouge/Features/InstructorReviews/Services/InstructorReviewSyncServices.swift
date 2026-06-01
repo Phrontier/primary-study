@@ -323,7 +323,7 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
 
     var isConfigured: Bool { configuration != nil }
     var configurationSource: InstructorReviewBackendSource { configuration?.source ?? .unavailable }
-    var configurationStatusDetail: String { configuration?.statusDetail ?? "No backend URL found in local override or bundled settings." }
+    var configurationStatusDetail: String { configuration?.statusDetail ?? "No valid backend URL found in local override, bundled settings, or production defaults." }
 
     init(configuration: InstructorReviewBackendConfiguration? = InstructorReviewBackendConfiguration.load(), session: URLSession = .shared) {
         self.configuration = configuration

@@ -5,8 +5,8 @@ struct ModerationQueueView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @StateObject private var viewModel = ModerationQueueViewModel()
-    @State private var email = "test"
-    @State private var password = "test"
+    @State private var email = ""
+    @State private var password = ""
     @State private var authErrorMessage: String?
     @State private var signingIn = false
 
@@ -151,8 +151,8 @@ struct ModerationQueueView: View {
                     .font(.subheadline)
                     .foregroundStyle(AppTheme.textSecondary)
 
-                authField(title: "Email", placeholder: "test", text: $email, secure: false)
-                authField(title: "Password", placeholder: "test", text: $password, secure: true)
+                authField(title: "Email", placeholder: "moderator@example.com", text: $email, secure: false)
+                authField(title: "Password", placeholder: "Password", text: $password, secure: true)
 
                 InstructorPrimaryButton(
                     title: signingIn ? "Signing In…" : "Sign In to Moderate",

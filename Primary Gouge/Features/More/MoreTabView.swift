@@ -315,42 +315,127 @@ private struct MoreHeroCard: View {
     let snapshot: MoreHubSnapshot
 
     var body: some View {
-        SectionContainer(style: .rootSummary, accent: MoreSectionColor.account, contentPadding: 20) {
-            VStack(alignment: .leading, spacing: 12) {
-                HStack(alignment: .top, spacing: 14) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("ACCOUNT")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(MoreSectionColor.account)
-                            .tracking(0.7)
+        MoreHeaderCard(accent: MoreSectionColor.account) {
+            HStack(alignment: .center, spacing: 14) {
+                MoreHeaderTextBlock(
+                    eyebrow: "Account",
+                    title: snapshot.identityTitle,
+                    subtitle: snapshot.currentFocusLine,
+                    accent: MoreSectionColor.account,
+                    subtitleFont: .footnote
+                )
 
-                        Text(snapshot.identityTitle)
-                            .font(.title3.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                            .fixedSize(horizontal: false, vertical: true)
+                Spacer(minLength: 12)
 
-                        Text(snapshot.currentFocusLine)
-                            .font(.footnote)
-                            .foregroundStyle(AppTheme.textSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
+                ZStack {
+                    Circle()
+                        .fill(AppTheme.badgeFill(MoreSectionColor.account))
+                        .frame(width: 46, height: 46)
+                        .overlay(
+                            Circle()
+                                .stroke(AppTheme.badgeStroke(MoreSectionColor.account), lineWidth: 1)
+                        )
 
-                    Spacer(minLength: 12)
-
-                    ZStack {
-                        Circle()
-                            .fill(AppTheme.badgeFill(MoreSectionColor.account))
-                            .frame(width: 46, height: 46)
-                            .overlay(
-                                Circle()
-                                    .stroke(AppTheme.badgeStroke(MoreSectionColor.account), lineWidth: 1)
-                            )
-
-                        Text(snapshot.avatarInitials)
-                            .font(.headline.weight(.bold))
-                            .foregroundStyle(AppTheme.iconTint(MoreSectionColor.account))
-                    }
+                    Text(snapshot.avatarInitials)
+                        .font(.headline.weight(.bold))
+                        .foregroundStyle(AppTheme.iconTint(MoreSectionColor.account))
                 }
+            }
+        }
+    }
+}
+
+struct MoreHeaderCard<Header: View, SupportingContent: View>: View {
+    let accent: Color
+    let contentPadding: CGFloat
+    let supportingSpacing: CGFloat
+    let showsSupportingContent: Bool
+    @ViewBuilder let header: Header
+    @ViewBuilder let supportingContent: SupportingContent
+
+    init(
+        accent: Color,
+        contentPadding: CGFloat = 18,
+        @ViewBuilder header: () -> Header
+    ) where SupportingContent == EmptyView {
+        self.accent = accent
+        self.contentPadding = contentPadding
+        self.supportingSpacing = 0
+        self.showsSupportingContent = false
+        self.header = header()
+        self.supportingContent = EmptyView()
+    }
+
+    init(
+        accent: Color,
+        contentPadding: CGFloat = 18,
+        supportingSpacing: CGFloat = 12,
+        @ViewBuilder header: () -> Header,
+        @ViewBuilder supportingContent: () -> SupportingContent
+    ) {
+        self.accent = accent
+        self.contentPadding = contentPadding
+        self.supportingSpacing = supportingSpacing
+        self.showsSupportingContent = true
+        self.header = header()
+        self.supportingContent = supportingContent()
+    }
+
+    var body: some View {
+        SectionContainer(style: .rootSummary, accent: accent, contentPadding: contentPadding) {
+            VStack(alignment: .leading, spacing: showsSupportingContent ? supportingSpacing : 0) {
+                header
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                if showsSupportingContent {
+                    supportingContent
+                }
+            }
+        }
+    }
+}
+
+struct MoreHeaderTextBlock: View {
+    let eyebrow: String
+    let title: String
+    let subtitle: String?
+    let accent: Color
+    let titleFont: Font
+    let subtitleFont: Font
+
+    init(
+        eyebrow: String,
+        title: String,
+        subtitle: String? = nil,
+        accent: Color,
+        titleFont: Font = .title3.weight(.semibold),
+        subtitleFont: Font = .subheadline
+    ) {
+        self.eyebrow = eyebrow
+        self.title = title
+        self.subtitle = subtitle
+        self.accent = accent
+        self.titleFont = titleFont
+        self.subtitleFont = subtitleFont
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 5) {
+            Text(eyebrow.uppercased())
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(accent)
+                .tracking(0.7)
+
+            Text(title)
+                .font(titleFont)
+                .foregroundStyle(AppTheme.textPrimary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            if let subtitle, !subtitle.isEmpty {
+                Text(subtitle)
+                    .font(subtitleFont)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
     }
@@ -869,42 +954,43 @@ private struct MorePlaceholderDetailView: View {
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
             VStack(alignment: .leading, spacing: 18) {
-                GlassCard(highlighted: true) {
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack(alignment: .top, spacing: 14) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                    .fill(AppTheme.semanticTint(item.accent, opacity: 0.12))
-                                    .frame(width: 50, height: 50)
+                MoreHeaderCard(accent: item.accent) {
+                    HStack(alignment: .center, spacing: 14) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                .fill(AppTheme.semanticTint(item.accent, opacity: 0.12))
+                                .frame(width: 50, height: 50)
 
-                                Image(systemName: item.iconName)
-                                    .font(.system(size: 20, weight: .semibold))
-                                    .foregroundStyle(item.accent)
-                            }
-
-                            VStack(alignment: .leading, spacing: 6) {
-                                HStack(spacing: 8) {
-                                    Text(item.title)
-                                        .font(.system(.title3, design: .rounded, weight: .bold))
-                                        .foregroundStyle(AppTheme.textPrimary)
-
-                                    if let badge = item.badge {
-                                        MoreRowBadge(style: badge)
-                                    }
-                                }
-
-                                if !detailSummary.isEmpty {
-                                    Text(detailSummary)
-                                        .font(.system(.subheadline, design: .rounded, weight: .semibold))
-                                        .foregroundStyle(AppTheme.textSecondary)
-                                }
-                            }
+                            Image(systemName: item.iconName)
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundStyle(item.accent)
                         }
 
-                        Text(message)
-                            .font(.system(.body, design: .rounded))
-                            .foregroundStyle(AppTheme.textSecondary)
+                        VStack(alignment: .leading, spacing: 5) {
+                            HStack(spacing: 8) {
+                                Text(item.title)
+                                    .font(.system(.title3, design: .rounded, weight: .bold))
+                                    .foregroundStyle(AppTheme.textPrimary)
+                                    .fixedSize(horizontal: false, vertical: true)
+
+                                if let badge = item.badge {
+                                    MoreRowBadge(style: badge)
+                                }
+                            }
+
+                            if !detailSummary.isEmpty {
+                                Text(detailSummary)
+                                    .font(.system(.subheadline, design: .rounded, weight: .semibold))
+                                    .foregroundStyle(AppTheme.textSecondary)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
                     }
+                } supportingContent: {
+                    Text(message)
+                        .font(.system(.body, design: .rounded))
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
         }

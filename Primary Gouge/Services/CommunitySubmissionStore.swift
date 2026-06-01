@@ -45,7 +45,6 @@ final class CommunitySubmissionStore: ObservableObject {
     private let connectivityMonitor: CloudflareConnectivityMonitor
     private let configurationDefaults: UserDefaults
 
-    private var isOnline = false
     private var syncTask: Task<Void, Never>?
 
     init(
@@ -72,7 +71,6 @@ final class CommunitySubmissionStore: ObservableObject {
 
         connectivityMonitor.onConnectivityChanged = { [weak self] online in
             guard let self else { return }
-            self.isOnline = online
             if online {
                 self.scheduleSync()
             } else {
@@ -155,11 +153,6 @@ final class CommunitySubmissionStore: ObservableObject {
             return
         }
 
-        guard isOnline else {
-            syncStatus = makeSyncStatus(phase: .offline, errorMessage: nil)
-            return
-        }
-
         syncStatus = makeSyncStatus(phase: .syncing, errorMessage: nil)
 
         let syncedAt = Date()
@@ -183,7 +176,10 @@ final class CommunitySubmissionStore: ObservableObject {
             syncStatus = makeSyncStatus(phase: .idle, lastSyncedAt: syncedAt, errorMessage: nil)
             revision &+= 1
         } catch {
-            syncStatus = makeSyncStatus(phase: .failed, errorMessage: error.localizedDescription)
+            syncStatus = makeSyncStatus(
+                phase: CloudflareBackendErrorClassifier.isConnectivityFailure(error) ? .offline : .failed,
+                errorMessage: error.localizedDescription
+            )
             revision &+= 1
         }
     }
@@ -408,7 +404,7 @@ final class CloudflareCommunitySubmissionRemoteService: CommunitySubmissionRemot
 
     var isConfigured: Bool { configuration != nil }
     var configurationSource: InstructorReviewBackendSource { configuration?.source ?? .unavailable }
-    var configurationStatusDetail: String { configuration?.statusDetail ?? "No backend URL found in local override or bundled settings." }
+    var configurationStatusDetail: String { configuration?.statusDetail ?? "No valid backend URL found in local override, bundled settings, or production defaults." }
 
     init(configuration: CloudflareBackendConfiguration? = CloudflareBackendConfiguration.load(), session: URLSession = .shared) {
         self.configuration = configuration

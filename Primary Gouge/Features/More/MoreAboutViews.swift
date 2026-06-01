@@ -55,39 +55,28 @@ struct MoreArticleView: View {
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
             VStack(alignment: .leading, spacing: 18) {
-                SectionContainer(style: .rootSummary, accent: accent, contentPadding: 20) {
-                    VStack(alignment: .leading, spacing: 14) {
-                        HStack(alignment: .top, spacing: 14) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .fill(AppTheme.badgeFill(accent))
-                                    .frame(width: 46, height: 46)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                            .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
-                                    )
+                MoreHeaderCard(accent: accent) {
+                    HStack(alignment: .center, spacing: 14) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .fill(AppTheme.badgeFill(accent))
+                                .frame(width: 46, height: 46)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .stroke(AppTheme.badgeStroke(accent), lineWidth: 1)
+                                )
 
-                                Image(systemName: iconName)
-                                    .font(.system(size: 18, weight: .semibold))
-                                    .foregroundStyle(AppTheme.iconTint(accent))
-                            }
-
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text(page.eyebrow.uppercased())
-                                    .font(.caption.weight(.semibold))
-                                    .foregroundStyle(accent)
-                                    .tracking(0.7)
-
-                                Text(page.title)
-                                    .font(.title3.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
-
-                                Text(page.summary)
-                                    .font(.subheadline)
-                                    .foregroundStyle(AppTheme.textSecondary)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
+                            Image(systemName: iconName)
+                                .font(.system(size: 18, weight: .semibold))
+                                .foregroundStyle(AppTheme.iconTint(accent))
                         }
+
+                        MoreHeaderTextBlock(
+                            eyebrow: page.eyebrow,
+                            title: page.title,
+                            subtitle: page.summary,
+                            accent: accent
+                        )
                     }
                 }
 
@@ -183,38 +172,28 @@ struct MoreVersionView: View {
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
             VStack(alignment: .leading, spacing: 18) {
-                SectionContainer(style: .rootSummary, accent: MoreSectionColor.about, contentPadding: 20) {
-                    VStack(alignment: .leading, spacing: 14) {
-                        HStack(alignment: .top, spacing: 14) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .fill(AppTheme.badgeFill(MoreSectionColor.about))
-                                    .frame(width: 46, height: 46)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                            .stroke(AppTheme.badgeStroke(MoreSectionColor.about), lineWidth: 1)
-                                    )
+                MoreHeaderCard(accent: MoreSectionColor.about) {
+                    HStack(alignment: .center, spacing: 14) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .fill(AppTheme.badgeFill(MoreSectionColor.about))
+                                .frame(width: 46, height: 46)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .stroke(AppTheme.badgeStroke(MoreSectionColor.about), lineWidth: 1)
+                                )
 
-                                Image(systemName: "number.circle.fill")
-                                    .font(.system(size: 18, weight: .semibold))
-                                    .foregroundStyle(AppTheme.iconTint(MoreSectionColor.about))
-                            }
-
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("ABOUT")
-                                    .font(.caption.weight(.semibold))
-                                    .foregroundStyle(MoreSectionColor.about)
-                                    .tracking(0.7)
-
-                                Text(snapshot.versionSubtitle)
-                                    .font(.title3.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
-
-                                Text("Build \(buildNumber) • iOS")
-                                    .font(.subheadline)
-                                    .foregroundStyle(AppTheme.textSecondary)
-                            }
+                            Image(systemName: "number.circle.fill")
+                                .font(.system(size: 18, weight: .semibold))
+                                .foregroundStyle(AppTheme.iconTint(MoreSectionColor.about))
                         }
+
+                        MoreHeaderTextBlock(
+                            eyebrow: "About",
+                            title: snapshot.versionSubtitle,
+                            subtitle: "Build \(buildNumber) • iOS",
+                            accent: MoreSectionColor.about
+                        )
                     }
                 }
 

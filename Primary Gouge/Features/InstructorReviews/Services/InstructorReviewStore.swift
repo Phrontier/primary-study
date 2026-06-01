@@ -18,7 +18,6 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     private let configurationDefaults: UserDefaults
 
     private var moderatorSession: ModeratorSession?
-    private var isOnline = false
     private var syncTask: Task<Void, Never>?
 
     init(
@@ -57,7 +56,6 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
         connectivityMonitor.onConnectivityChanged = { [weak self] online in
             guard let self else { return }
-            self.isOnline = online
             if online {
                 self.scheduleSync()
             } else {
@@ -127,9 +125,12 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
     func dismissReport(id: String) async throws {
         let session = try await requireModeratorSession()
-        guard isOnline else { throw InstructorReviewRepositoryError.offline }
 
-        try await remoteService.dismissReport(id: id, session: session)
+        do {
+            try await remoteService.dismissReport(id: id, session: session)
+        } catch {
+            throw mappedBackendError(error)
+        }
         try await localRepository.dismissReport(id: id)
         scheduleSync()
         revision &+= 1
@@ -137,9 +138,12 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
     func resolveCommunitySubmission(id: String) async throws {
         let session = try await requireModeratorSession()
-        guard isOnline else { throw InstructorReviewRepositoryError.offline }
 
-        try await remoteService.resolveCommunitySubmission(id: id, session: session)
+        do {
+            try await remoteService.resolveCommunitySubmission(id: id, session: session)
+        } catch {
+            throw mappedBackendError(error)
+        }
         openCommunitySubmissions.removeAll { $0.id == id }
         scheduleSync()
         revision &+= 1
@@ -147,9 +151,12 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
     func dismissCommunitySubmission(id: String) async throws {
         let session = try await requireModeratorSession()
-        guard isOnline else { throw InstructorReviewRepositoryError.offline }
 
-        try await remoteService.dismissCommunitySubmission(id: id, session: session)
+        do {
+            try await remoteService.dismissCommunitySubmission(id: id, session: session)
+        } catch {
+            throw mappedBackendError(error)
+        }
         openCommunitySubmissions.removeAll { $0.id == id }
         scheduleSync()
         revision &+= 1
@@ -157,9 +164,12 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
     func approveReview(id: String) async throws {
         let session = try await requireModeratorSession()
-        guard isOnline else { throw InstructorReviewRepositoryError.offline }
 
-        try await remoteService.approveSubmission(id: id, session: session)
+        do {
+            try await remoteService.approveSubmission(id: id, session: session)
+        } catch {
+            throw mappedBackendError(error)
+        }
         try await localRepository.approveReview(id: id)
         scheduleSync()
         revision &+= 1
@@ -167,9 +177,12 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
     func rejectReview(id: String) async throws {
         let session = try await requireModeratorSession()
-        guard isOnline else { throw InstructorReviewRepositoryError.offline }
 
-        try await remoteService.rejectSubmission(id: id, session: session)
+        do {
+            try await remoteService.rejectSubmission(id: id, session: session)
+        } catch {
+            throw mappedBackendError(error)
+        }
         try await localRepository.rejectReview(id: id)
         scheduleSync()
         revision &+= 1
@@ -202,11 +215,6 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
             return
         }
 
-        guard isOnline else {
-            syncStatus = makeSyncStatus(phase: .offline, errorMessage: nil)
-            return
-        }
-
         syncStatus = makeSyncStatus(phase: .syncing, errorMessage: nil)
 
         do {
@@ -225,6 +233,8 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
             revision &+= 1
         } catch {
             if case InstructorReviewRepositoryError.remoteNotConfigured = error {
+                syncStatus = makeSyncStatus(phase: .offline, errorMessage: error.localizedDescription)
+            } else if CloudflareBackendErrorClassifier.isConnectivityFailure(error) {
                 syncStatus = makeSyncStatus(phase: .offline, errorMessage: error.localizedDescription)
             } else {
                 syncStatus = makeSyncStatus(phase: .failed, errorMessage: error.localizedDescription)
@@ -258,6 +268,10 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
             throw InstructorReviewRepositoryError.unauthorized
         }
         return session
+    }
+
+    private func mappedBackendError(_ error: Error) -> Error {
+        CloudflareBackendErrorClassifier.isConnectivityFailure(error) ? InstructorReviewRepositoryError.offline : error
     }
 
     private func refreshModeratorState() {

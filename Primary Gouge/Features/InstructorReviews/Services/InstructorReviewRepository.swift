@@ -31,12 +31,15 @@ protocol InstructorReviewRepository: AnyObject {
     func fetchPublishedReviews(for instructorID: String) -> [InstructorReview]
     func fetchPendingReviews() -> [InstructorReview]
     func fetchOpenReports() -> [InstructorGougeReport]
+    func fetchOpenCommunitySubmissions() -> [CommunitySubmissionModerationItem]
     func fetchInstructorSuggestions(matching query: String) -> [InstructorNameSuggestion]
     func fetchSquadrons() -> [Squadron]
     func fetchEvents() -> [InstructorReviewEvent]
     func submitReview(_ submission: InstructorReviewSubmission) throws
     func submitReport(_ submission: InstructorGougeReportSubmission) throws
     func dismissReport(id: String) async throws
+    func resolveCommunitySubmission(id: String) async throws
+    func dismissCommunitySubmission(id: String) async throws
     func approveReview(id: String) async throws
     func rejectReview(id: String) async throws
 }

@@ -133,10 +133,6 @@ struct EventDetailView: View {
                     .buttonStyle(.plain)
                 }
 
-                if let script = appModel.assembledScript(for: event) {
-                    PlannedScriptCard(script: script)
-                }
-
                 ForEach(appModel.videos(for: event, placement: .primary)) { video in
                     NavigationLink {
                         VideoDetailView(video: video)
@@ -147,7 +143,7 @@ struct EventDetailView: View {
                 }
             }
 
-            if event.studyNotes == nil && event.systemsBrief == nil && event.flashcardDecks.isEmpty && event.questionBanks.isEmpty && appModel.assembledScript(for: event) == nil && appModel.videos(for: event, placement: .primary).isEmpty {
+            if event.studyNotes == nil && event.systemsBrief == nil && event.flashcardDecks.isEmpty && event.questionBanks.isEmpty && appModel.videos(for: event, placement: .primary).isEmpty {
                 EmptyStateCard(
                     icon: "tray",
                     title: "No event tools yet",
@@ -328,82 +324,5 @@ private struct NotesDiscussionItemView: View {
                 }
             }
         }
-    }
-}
-
-private struct PlannedScriptCard: View {
-    let script: EventScript
-
-    private let accent = AppTheme.domainColor(.scripts)
-
-    var body: some View {
-        InsetListRow(title: "Event script", subtitle: script.title) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(AppTheme.badgeFill(accent))
-                    .frame(width: 42, height: 42)
-
-                Image(systemName: "waveform.path.ecg.rectangle")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppTheme.iconTint(accent))
-            }
-        } trailing: {
-            VStack(alignment: .trailing, spacing: 10) {
-                StatusBadge(title: "Planned", iconName: "sparkles", color: AppTheme.accent)
-
-                Image(systemName: "lock.fill")
-                    .font(.footnote.weight(.bold))
-                    .foregroundStyle(AppTheme.textMuted)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-        }
-    }
-}
-
-private struct ScriptDetailView: View {
-    let script: EventScript
-
-    var body: some View {
-        AppScrollScreen(bottomPadding: 30) {
-            HeroCard(
-                eyebrow: "Event script",
-                title: script.title,
-                subtitle: nil
-            )
-
-            ForEach(script.sections) { section in
-                SectionContainer {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(section.title)
-                            .font(.headline.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
-
-                        Text(section.body)
-                            .font(.body)
-                            .foregroundStyle(AppTheme.textSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-            }
-
-            if !script.notes.isEmpty {
-                SectionContainer {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Script notes")
-                            .font(.headline.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
-
-                        ForEach(script.notes, id: \.self) { note in
-                            InsetListRow(title: note) {
-                                Image(systemName: "waveform.path.ecg")
-                                    .foregroundStyle(AppTheme.accent)
-                                    .frame(width: 20, height: 20)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .detailNavigationChrome(title: "Script")
     }
 }

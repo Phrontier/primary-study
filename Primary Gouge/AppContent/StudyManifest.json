@@ -1,38 +1,4 @@
 {
-  "calloutBlocks" : [
-    {
-      "body" : "Request taxi with location, ATIS, and mission intent. Read back taxi instructions fully and confirm hold shorts, crossings, and runway changes.",
-      "id" : "ground-comm",
-      "tags" : [
-        "comms"
-      ],
-      "title" : "Ground \/ taxi comms"
-    },
-    {
-      "body" : "Use standard ready-for-departure phrasing, read back takeoff clearance, and verbalize immediate post-takeoff actions before the roll.",
-      "id" : "tower-comm",
-      "tags" : [
-        "comms"
-      ],
-      "title" : "Tower \/ takeoff comms"
-    },
-    {
-      "body" : "State callsign, current position, altitude, and request. Read back approach, hold, or vector instructions with the key restrictions intact.",
-      "id" : "approach-comm",
-      "tags" : [
-        "comms"
-      ],
-      "title" : "Approach \/ radar comms"
-    },
-    {
-      "body" : "Use standard pattern entry and landing verbiage. Confirm runway, traffic, touch-and-go or full-stop intent, and go-around plan.",
-      "id" : "pattern-comm",
-      "tags" : [
-        "comms"
-      ],
-      "title" : "Pattern \/ landing comms"
-    }
-  ],
   "flashcards" : [
     {
       "answer" : "Wing maintains cruise position by moving to the 60-degree bearing line, preserving step-down, and using smooth pursuit geometry instead of chasing every small power change.\n- Acknowledge the cruise signal, slide out, set directed power, and call ready.\n- Scan altitude, bearing, then closure while keeping enough range to maneuver safely.\n- Terminate or knock-it-off early if closure, step-down, sun, blind geometry, or energy becomes unsafe.",
@@ -9706,26 +9672,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam2101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM2101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam2100-block-fam-2101-briefing-guide-1542-166d-pdf",
@@ -10061,26 +10007,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam2102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM2102 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam2100-block-fam-2102-briefing-guide-1542-166d-pdf",
@@ -10458,26 +10384,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam2201-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM2201 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam2200-block-fam-2201-briefing-guide-1542-166d-pdf",
@@ -10939,26 +10845,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam2202-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM2202 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam2200-block-fam-2202-briefing-guide-1542-166d-pdf",
@@ -11469,26 +11355,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam3101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM3101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam3100-block-fam-3101-briefing-guide-1542-166d-pdf",
@@ -12293,26 +12159,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam3102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM3102 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam3100-block-fam-3102-briefing-guide-1542-166d-pdf",
@@ -13107,26 +12953,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam3103-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM3103 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam3100-block-fam-3103-briefing-guide-1542-166d-pdf",
@@ -13820,26 +13646,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam3201-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM3201 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam3200-block-fam-3201-briefing-guide-1542-166d-pdf",
@@ -14017,26 +13823,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam3202-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM3202 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam3200-block-fam-3202-briefing-guide-1542-166d-pdf",
@@ -14240,26 +14026,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam3301-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM3301 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam3300-block-fam-3301-briefing-guide-1542-166d-pdf",
@@ -14556,26 +14322,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam3401-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM3401 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-2-sims-fam3400-block-fam-3401-briefing-guide-1542-166d-pdf",
@@ -15417,26 +15163,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6101 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -15637,26 +15363,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6102 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -15897,26 +15603,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6201-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6201 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -16249,26 +15935,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6202-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6202 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -16505,26 +16171,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6203-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6203 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -16668,26 +16314,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6301-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6301 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -16856,26 +16482,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6302-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6302 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -17028,26 +16634,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6401-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6401 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -17353,26 +16939,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-sims-fam6402-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "FAM6402 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -17588,26 +17154,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4101 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -18386,26 +17932,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4102 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -19141,26 +18667,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4103-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4103 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -19433,26 +18939,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4104-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4104 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -19727,26 +19213,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4201-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4201 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -20333,26 +19799,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4202-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4202 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -20880,26 +20326,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4203-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4203 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -21286,26 +20712,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4204-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4204 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -21665,26 +21071,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4301-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4301 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -22074,26 +21460,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4302-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4302 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -22474,26 +21840,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4303-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4303 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -22784,26 +22130,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4304-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4304 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -23089,26 +22415,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4490-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4490 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -23410,26 +22716,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4501-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4501 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -23524,26 +22810,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4601-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4601 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-1-fam-contacts-3-flights-fam4600-block-fam4601-2-1801",
@@ -23995,26 +23261,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4701-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4701 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -24667,26 +23913,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4702-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4702 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -25039,26 +24265,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "contacts-flights-fam4703-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "FAM4703 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -26720,26 +25926,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i2101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I2101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-i2100-block-i2101-briefing-guide-1542-166d-2-pdf",
@@ -27151,26 +26337,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i2102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I2102 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-i2100-block-i2102-briefing-guide-1542-166d-pdf",
@@ -27442,26 +26608,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i2103-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I2103 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-i2100-block-i2103-briefing-guide-1542-166d-pdf",
@@ -27854,26 +27000,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i2201-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I2201 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i2201-1542-166d-pdf",
@@ -28192,26 +27318,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i2202-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I2202 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i2202-1542-166d-pdf",
@@ -28572,26 +27678,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i2203-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I2203 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i2203-1542-166d-pdf",
@@ -28881,26 +27967,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3101-1542-166d-pdf",
@@ -29245,26 +28311,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3102 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3102-1542-166d-pdf",
@@ -29569,26 +28615,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3103-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3103 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3103-1542-166d-pdf",
@@ -29929,26 +28955,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3104-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3104 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3104-1542-166d-pdf",
@@ -30285,26 +29291,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3201-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3201 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3201-1542-166d-pdf",
@@ -30605,26 +29591,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3202-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3202 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3202-1542-166d-pdf",
@@ -30916,26 +29882,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3203-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3203 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3203-1542-166d-pdf",
@@ -31109,26 +30055,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3204-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3204 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3204-1542-166d-pdf",
@@ -31318,26 +30244,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3205-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3205 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3205-1542-166d-pdf",
@@ -31631,26 +30537,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i3206-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I3206 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i3206-1542-166d-pdf",
@@ -31923,26 +30809,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i6101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I6101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i6101-1542-166d-pdf",
@@ -32284,26 +31150,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i6102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I6102 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i6102-1542-166d-pdf",
@@ -32666,26 +31512,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i6201-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I6201 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i6201-1542-166d-pdf",
@@ -33006,26 +31832,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i6202-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I6202 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i6202-1542-166d-pdf",
@@ -33365,26 +32171,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-sims-i6301-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "I6301 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-2-sims-scenarios-i6301-1542-166d-pdf",
@@ -33517,26 +32303,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4101 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -33809,26 +32575,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4102 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -34069,26 +32815,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4103-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4103 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -34478,26 +33204,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4201-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4201 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-3-flights-i4200-block-i4201-1801-pdf",
@@ -34831,26 +33537,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4202-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4202 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -35082,26 +33768,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4203-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4203 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -35331,26 +33997,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4204-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4204 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-3-flights-i4200-block-i4204-1801-pdf",
@@ -35575,26 +34221,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4301-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4301 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-3-flights-i4300-block-i4301-1801-pdf",
@@ -36060,26 +34686,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4302-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4302 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-3-flights-i4300-block-i4302-1801-pdf",
@@ -36433,26 +35039,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4303-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4303 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -36802,26 +35388,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4304-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4304 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -37165,26 +35731,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "instruments-flights-i4490-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "I4490 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-2-instruments-3-flights-i4400-block-i4490-1801-pdf",
@@ -38003,26 +36549,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "vnav-sims-n3101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "N3101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-3-vnav-2-sims-scenarios-n3101-1542-166d-pdf",
@@ -38416,26 +36942,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "vnav-sims-n6101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "N6101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-3-vnav-2-sims-scenarios-n6101-1542-166d-pdf",
@@ -38741,26 +37247,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "vnav-flights-n4101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "N4101 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -39334,26 +37820,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "formation-sims-f2101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "F2101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-4-forms-2-sims-f2101-mr-pdf",
@@ -39657,26 +38123,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "formation-sims-f3101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "F3101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-4-forms-2-sims-f3101-pdf",
@@ -39871,26 +38317,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "formation-flights-f4101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "F4101 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -40234,26 +38660,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "formation-flights-f4102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "F4102 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -40533,26 +38939,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "formation-flights-f4103-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "F4103 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -40833,26 +39219,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "formation-flights-f4104-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "F4104 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -41186,26 +39552,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "formation-flights-f4290-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "F4290 Script"
-              },
               "sourceDocuments" : [
 
               ],
@@ -41402,26 +39748,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "capstone-sims-cs2101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "CS2101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-5-capstone-2-sims-cs2101-mr-pdf",
@@ -41767,26 +40093,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "capstone-sims-cs2102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "CS2102 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-5-capstone-2-sims-cs2102-mr-pdf",
@@ -42053,26 +40359,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "capstone-sims-cs3101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "CS3101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-5-capstone-2-sims-cs3101-pdf",
@@ -42289,26 +40575,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "capstone-sims-cs3102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "approach-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "mission-execution",
-                  "recovery-flow"
-                ],
-                "title" : "CS3102 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-5-capstone-2-sims-cs3102-pdf",
@@ -42547,26 +40813,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "capstone-flights-cs4101-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "CS4101 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-5-capstone-3-flights-cs4101-1801-ifr--2-pdf",
@@ -42743,26 +40989,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "capstone-flights-cs4102-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "CS4102 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-5-capstone-3-flights-cs-4102-1801-pdf",
@@ -42926,26 +41152,6 @@
               "resourceLinks" : [
 
               ],
-              "scriptTemplate" : {
-                "id" : "capstone-flights-cs4290-script",
-                "notes" : [
-                  "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                  "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-                ],
-                "orderedCalloutBlockIDs" : [
-                  "ground-comm",
-                  "tower-comm",
-                  "pattern-comm"
-                ],
-                "orderedProcedureBlockIDs" : [
-                  "mission-brief",
-                  "taxi-flow",
-                  "takeoff-flow",
-                  "maneuver-flow",
-                  "recovery-flow"
-                ],
-                "title" : "CS4290 Script"
-              },
               "sourceDocuments" : [
                 {
                   "id" : "contents-5-capstone-3-flights-cs-4290-1801-pdf",
@@ -43093,56 +41299,6 @@
       "id" : "capstone",
       "summary" : "Capstone check-event prep with integrated planning, procedures, and performance review material.",
       "title" : "Capstone"
-    }
-  ],
-  "procedureBlocks" : [
-    {
-      "body" : "Review weather, NOTAMs, profile objectives, fuel, risks, and contingencies before stepping. Confirm source references and grading emphasis for the event.",
-      "id" : "mission-brief",
-      "tags" : [
-        "brief"
-      ],
-      "title" : "Mission brief flow"
-    },
-    {
-      "body" : "Confirm startup complete, taxi diagram ready, checklists flowing challenge-action-response, and taxi brief aligned before movement.",
-      "id" : "taxi-flow",
-      "tags" : [
-        "taxi"
-      ],
-      "title" : "Taxi flow"
-    },
-    {
-      "body" : "Set lineup items from memory, confirm departure considerations, and brief the initial maneuver or departure routing before brake release.",
-      "id" : "takeoff-flow",
-      "tags" : [
-        "takeoff"
-      ],
-      "title" : "Takeoff flow"
-    },
-    {
-      "body" : "Move event-by-event through the published profile, discussing setup, standards, and likely coaching points before each phase.",
-      "id" : "mission-execution",
-      "tags" : [
-        "mission"
-      ],
-      "title" : "Mission execution"
-    },
-    {
-      "body" : "Use a deterministic setup: clear, configure, brief, execute, assess, and reset. Tie each maneuver back to the standards and common errors.",
-      "id" : "maneuver-flow",
-      "tags" : [
-        "maneuvers"
-      ],
-      "title" : "Maneuver execution"
-    },
-    {
-      "body" : "Transition to the recovery plan, approach, pattern, or overhead as assigned. Re-brief landing considerations and after-landing priorities before shutdown.",
-      "id" : "recovery-flow",
-      "tags" : [
-        "recovery"
-      ],
-      "title" : "Recovery flow"
     }
   ],
   "sharedResources" : [

@@ -154,11 +154,17 @@ struct InstructorReviewsRootView: View {
             if let lastSyncedAt = reviewStore.syncStatus.lastSyncedAt {
                 return "Synced \(lastSyncedAt.formatted(date: .abbreviated, time: .shortened))"
             }
-            return reviewStore.isRemoteConfigured ? "Ready to sync instructor reviews." : "Remote sync is not configured yet."
+            if reviewStore.isRemoteConfigured {
+                return "Ready to sync instructor reviews. \(reviewStore.syncStatus.configurationDetail ?? "")".trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            return reviewStore.syncStatus.errorMessage ?? "Remote sync is not configured yet."
         case .syncing:
             return "Syncing latest instructor reviews…"
         case .offline:
-            return reviewStore.isRemoteConfigured ? "Offline. Reading local reviews and queueing submissions." : "Remote sync is not configured yet."
+            if reviewStore.isRemoteConfigured {
+                return "Offline. Reading local reviews and queueing submissions. \(reviewStore.syncStatus.configurationDetail ?? "")".trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            return reviewStore.syncStatus.errorMessage ?? "Remote sync is not configured yet."
         case .failed:
             return reviewStore.syncStatus.errorMessage ?? "Sync hit an error. Local reviews are still available."
         }

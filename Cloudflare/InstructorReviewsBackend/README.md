@@ -3,7 +3,7 @@
 This Worker replaces the direct Supabase path for instructor reviews with a Cloudflare-native stack:
 
 - `Workers` for the API
-- `D1` for approved reviews, queued submissions, reports, and moderators
+- `D1` for approved reviews, queued submissions, reports, community inbox items, and moderators
 - `Cron Triggers` for scheduled moderation runs
 - optional `Workers AI` screening during the scheduled moderation pass
 
@@ -19,14 +19,18 @@ This Worker replaces the direct Supabase path for instructor reviews with a Clou
 - `GET /v1/reviews/published`
 - `GET /v1/submissions/statuses`
 - `GET /v1/reports/statuses`
+- `GET /v1/community/submissions/statuses`
 - `POST /v1/submissions`
 - `POST /v1/reports`
+- `POST /v1/community/submissions`
 - `POST /v1/moderator/sign-in`
 - `POST /v1/moderator/refresh`
 - `GET /v1/moderation/queue`
 - `POST /v1/moderation/submissions/:id/approve`
 - `POST /v1/moderation/submissions/:id/reject`
 - `POST /v1/moderation/reports/:id/dismiss`
+- `POST /v1/moderation/community-submissions/:id/resolve`
+- `POST /v1/moderation/community-submissions/:id/dismiss`
 
 ## Setup
 
@@ -116,3 +120,14 @@ The Worker runs scheduled moderation weekly by default:
 - clean reviews can be marked `screened_clean`, but they still stay pending until a moderator approves them
 
 That keeps token usage lower than per-submission AI screening, while still reducing junk in the queue.
+
+## Community inbox additions
+
+The same Worker now also accepts private More-tab submissions for:
+
+- feedback
+- feature requests
+- support requests
+- incorrect gouge reports
+
+These items are stored in `community_submissions`, remain private, and show up in the moderator queue under a dedicated inbox section. They are not published back into the app as public content.

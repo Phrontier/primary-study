@@ -48,6 +48,40 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func backendConfigurationFallsBackToBundledURLWhenOverrideIsBlank() async throws {
+        let configuration = InstructorReviewBackendConfiguration.resolve(
+            overrideURLString: "   ",
+            bundledURLString: "https://primary-gouge-instructor-reviews.example.workers.dev"
+        )
+
+        #expect(configuration?.baseURL.absoluteString == "https://primary-gouge-instructor-reviews.example.workers.dev")
+        #expect(configuration?.source == .bundled)
+        #expect(configuration?.statusDetail == "Using bundled Cloudflare backend.")
+    }
+
+    @MainActor
+    @Test func backendConfigurationPrefersValidOverrideURL() async throws {
+        let configuration = InstructorReviewBackendConfiguration.resolve(
+            overrideURLString: "https://override.example.workers.dev",
+            bundledURLString: "https://bundled.example.workers.dev"
+        )
+
+        #expect(configuration?.baseURL.absoluteString == "https://override.example.workers.dev")
+        #expect(configuration?.source == .userDefaultsOverride)
+        #expect(configuration?.statusDetail == "Using local backend override.")
+    }
+
+    @MainActor
+    @Test func backendConfigurationClearsBlankOverrideFromDefaults() async throws {
+        let defaults = try #require(UserDefaults(suiteName: "PrimaryGougeTests.InstructorReviewBackendConfiguration"))
+        defaults.removePersistentDomain(forName: "PrimaryGougeTests.InstructorReviewBackendConfiguration")
+        defaults.set("   ", forKey: InstructorReviewBackendConfiguration.defaultsKey)
+
+        #expect(InstructorReviewBackendConfiguration.clearBlankOverride(defaults: defaults))
+        #expect(defaults.string(forKey: InstructorReviewBackendConfiguration.defaultsKey) == nil)
+    }
+
+    @MainActor
     @Test func submissionModeFiltersSquadronsEventsAndSuggestions() async throws {
         let repository = MockInstructorReviewRepository()
         let viewModel = ReviewSubmissionViewModel()
@@ -2321,6 +2355,7 @@ private final class MockInstructorReviewRepository: InstructorReviewRepository {
     func fetchPublishedReviews(for instructorID: String) -> [InstructorReview] { [] }
     func fetchPendingReviews() -> [InstructorReview] { [] }
     func fetchOpenReports() -> [InstructorGougeReport] { openReports }
+    func fetchOpenCommunitySubmissions() -> [CommunitySubmissionModerationItem] { [] }
 
     func fetchInstructorSuggestions(matching query: String) -> [InstructorNameSuggestion] {
         let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -2361,6 +2396,8 @@ private final class MockInstructorReviewRepository: InstructorReviewRepository {
     func dismissReport(id: String) async throws {
         openReports.removeAll { $0.id == id }
     }
+    func resolveCommunitySubmission(id: String) async throws {}
+    func dismissCommunitySubmission(id: String) async throws {}
     func approveReview(id: String) async throws {}
     func rejectReview(id: String) async throws {
         openReports.removeAll { $0.reviewID == id }

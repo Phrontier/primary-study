@@ -1,51 +1,5 @@
 import Foundation
-import Network
 import Security
-
-struct InstructorReviewBackendConfiguration: Hashable {
-    let baseURL: URL
-
-    var apiBaseURL: URL {
-        baseURL.appending(path: "v1")
-    }
-
-    static func load(bundle: Bundle = .main, defaults: UserDefaults = .standard) -> InstructorReviewBackendConfiguration? {
-        let rawURL = (
-            defaults.string(forKey: "InstructorReviewBackendURL")
-            ?? bundle.object(forInfoDictionaryKey: "INSTRUCTOR_REVIEW_BACKEND_URL") as? String
-        )?.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        guard
-            let rawURL,
-            !rawURL.isEmpty,
-            let baseURL = URL(string: rawURL)
-        else {
-            return nil
-        }
-
-        return InstructorReviewBackendConfiguration(baseURL: baseURL)
-    }
-}
-
-final class AnonymousInstructorReviewClientIdentityStore {
-    private let defaults: UserDefaults
-    private let key: String
-
-    init(defaults: UserDefaults = .standard, key: String = "InstructorReviewAnonymousClientID") {
-        self.defaults = defaults
-        self.key = key
-    }
-
-    func clientID() -> String {
-        if let existing = defaults.string(forKey: key), !existing.isEmpty {
-            return existing
-        }
-
-        let value = UUID().uuidString.lowercased()
-        defaults.set(value, forKey: key)
-        return value
-    }
-}
 
 final class ModeratorSessionStore {
     private let service = "com.primarygouge.instructorreviews.moderator"
@@ -97,28 +51,6 @@ final class ModeratorSessionStore {
     }
 }
 
-final class InstructorReviewConnectivityMonitor {
-    var onConnectivityChanged: (@MainActor (Bool) -> Void)?
-
-    private let monitor = NWPathMonitor()
-    private let queue = DispatchQueue(label: "InstructorReviewConnectivityMonitor")
-
-    init() {
-        monitor.pathUpdateHandler = { [weak self] path in
-            guard let self else { return }
-            let online = path.status == .satisfied
-            Task { @MainActor in
-                self.onConnectivityChanged?(online)
-            }
-        }
-        monitor.start(queue: queue)
-    }
-
-    deinit {
-        monitor.cancel()
-    }
-}
-
 struct RemoteSubmissionStatusSnapshot: Hashable {
     let id: String
     let status: ReviewStatus
@@ -134,10 +66,13 @@ struct RemoteReportStatusSnapshot: Hashable {
 struct RemoteModerationQueueSnapshot: Hashable {
     let pendingReviews: [InstructorReviewRecord]
     let openReports: [InstructorGougeReportRecord]
+    let openCommunitySubmissions: [CommunitySubmissionModerationItem]
 }
 
 protocol InstructorReviewRemoteService {
     var isConfigured: Bool { get }
+    var configurationSource: InstructorReviewBackendSource { get }
+    var configurationStatusDetail: String { get }
     func signInModerator(email: String, password: String) async throws -> ModeratorSession
     func refreshModeratorSession(_ session: ModeratorSession) async throws -> ModeratorSession
     func fetchPublishedReviews() async throws -> [InstructorReviewRecord]
@@ -149,12 +84,15 @@ protocol InstructorReviewRemoteService {
     func approveSubmission(id: String, session: ModeratorSession) async throws
     func rejectSubmission(id: String, session: ModeratorSession) async throws
     func dismissReport(id: String, session: ModeratorSession) async throws
+    func resolveCommunitySubmission(id: String, session: ModeratorSession) async throws
+    func dismissCommunitySubmission(id: String, session: ModeratorSession) async throws
 }
 
 struct InstructorReviewSyncSummary {
     let syncedAt: Date
     let uploadedReviewIDs: [String]
     let uploadedReportIDs: [String]
+    let openCommunitySubmissions: [CommunitySubmissionModerationItem]
 }
 
 @MainActor
@@ -206,13 +144,21 @@ final class InstructorReviewSyncCoordinator {
         if let moderatorSession {
             let queue = try await remoteService.fetchModerationQueue(session: moderatorSession)
             localRepository.mergeModerationSnapshot(queue.pendingReviews, reports: queue.openReports, syncedAt: syncedAt)
+            localRepository.setLastSuccessfulSync(at: syncedAt)
+            return InstructorReviewSyncSummary(
+                syncedAt: syncedAt,
+                uploadedReviewIDs: uploadedReviewIDs,
+                uploadedReportIDs: uploadedReportIDs,
+                openCommunitySubmissions: queue.openCommunitySubmissions
+            )
         }
 
         localRepository.setLastSuccessfulSync(at: syncedAt)
         return InstructorReviewSyncSummary(
             syncedAt: syncedAt,
             uploadedReviewIDs: uploadedReviewIDs,
-            uploadedReportIDs: uploadedReportIDs
+            uploadedReportIDs: uploadedReportIDs,
+            openCommunitySubmissions: []
         )
     }
 }
@@ -256,6 +202,7 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
     private struct ModerationQueueResponse: Decodable {
         let pendingReviews: [RemoteReviewRecord]
         let openReports: [RemoteReportRecord]
+        let openCommunitySubmissions: [RemoteCommunitySubmissionRecord]
     }
 
     private struct CreatedRecordResponse: Decodable {
@@ -352,10 +299,31 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         }
     }
 
+    private struct RemoteCommunitySubmissionRecord: Codable {
+        let id: String
+        let category: CommunitySubmissionCategory
+        let summary: String
+        let message: String
+        let contactEmail: String?
+        let targetKind: CommunitySubmissionTargetKind?
+        let targetID: String?
+        let targetTitle: String?
+        let targetContext: String?
+        let appVersion: String
+        let buildNumber: String?
+        let platform: String
+        let submittedAt: Date
+        let status: CommunitySubmissionStatus
+        let submitterClientID: String?
+        let updatedAt: Date
+    }
+
     private let configuration: InstructorReviewBackendConfiguration?
     private let session: URLSession
 
     var isConfigured: Bool { configuration != nil }
+    var configurationSource: InstructorReviewBackendSource { configuration?.source ?? .unavailable }
+    var configurationStatusDetail: String { configuration?.statusDetail ?? "No backend URL found in local override or bundled settings." }
 
     init(configuration: InstructorReviewBackendConfiguration? = InstructorReviewBackendConfiguration.load(), session: URLSession = .shared) {
         self.configuration = configuration
@@ -455,7 +423,8 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         )
         return RemoteModerationQueueSnapshot(
             pendingReviews: response.pendingReviews.map(mapReviewRecord),
-            openReports: response.openReports.map(mapReportRecord)
+            openReports: response.openReports.map(mapReportRecord),
+            openCommunitySubmissions: response.openCommunitySubmissions.map(mapCommunitySubmissionRecord)
         )
     }
 
@@ -480,6 +449,24 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
     func dismissReport(id: String, session: ModeratorSession) async throws {
         try await sendNoContent(
             path: "moderation/reports/\(id)/dismiss",
+            method: "POST",
+            body: Optional<Int>.none as Int?,
+            bearerToken: session.accessToken
+        )
+    }
+
+    func resolveCommunitySubmission(id: String, session: ModeratorSession) async throws {
+        try await sendNoContent(
+            path: "moderation/community-submissions/\(id)/resolve",
+            method: "POST",
+            body: Optional<Int>.none as Int?,
+            bearerToken: session.accessToken
+        )
+    }
+
+    func dismissCommunitySubmission(id: String, session: ModeratorSession) async throws {
+        try await sendNoContent(
+            path: "moderation/community-submissions/\(id)/dismiss",
             method: "POST",
             body: Optional<Int>.none as Int?,
             bearerToken: session.accessToken
@@ -528,6 +515,27 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
             lastModifiedAt: report.updatedAt ?? report.submittedAt,
             lastSyncedAt: Date(),
             submitterClientID: report.submitterClientID
+        )
+    }
+
+    private func mapCommunitySubmissionRecord(_ record: RemoteCommunitySubmissionRecord) -> CommunitySubmissionModerationItem {
+        CommunitySubmissionModerationItem(
+            id: record.id,
+            category: record.category,
+            summary: record.summary,
+            message: record.message,
+            contactEmail: record.contactEmail,
+            targetKind: record.targetKind,
+            targetID: record.targetID,
+            targetTitle: record.targetTitle,
+            targetContext: record.targetContext,
+            appVersion: record.appVersion,
+            buildNumber: record.buildNumber,
+            platform: record.platform,
+            submittedAt: record.submittedAt,
+            status: record.status,
+            submitterClientID: record.submitterClientID,
+            updatedAt: record.updatedAt
         )
     }
 

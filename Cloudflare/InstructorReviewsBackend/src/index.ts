@@ -15,6 +15,9 @@ type ReviewStatus = "pending" | "approved" | "rejected";
 type EventKind = "sim" | "flight";
 type ReportStatus = "open" | "dismissed" | "resolved";
 type ReportTargetKind = "instructor" | "review";
+type CommunitySubmissionCategory = "feedback" | "feature_request" | "support" | "incorrect_gouge";
+type CommunityTargetKind = "brief" | "flashcardSet" | "event" | "instructorReview" | "generalLibrary" | "other";
+type CommunitySubmissionStatus = "open" | "dismissed" | "resolved";
 type ModerationState = "queued" | "screened_clean" | "needs_human_review" | "auto_rejected";
 type ModeratorAction = "allow" | "review" | "reject";
 
@@ -51,6 +54,25 @@ type ReportRecord = {
   updatedAt: string;
 };
 
+type CommunitySubmissionRecord = {
+  id: string;
+  category: CommunitySubmissionCategory;
+  summary: string;
+  message: string;
+  contactEmail: string | null;
+  targetKind: CommunityTargetKind | null;
+  targetID: string | null;
+  targetTitle: string | null;
+  targetContext: string | null;
+  appVersion: string;
+  buildNumber: string | null;
+  platform: string;
+  submittedAt: string;
+  status: CommunitySubmissionStatus;
+  submitterClientID: string | null;
+  updatedAt: string;
+};
+
 type SubmissionStatusRecord = {
   id: string;
   status: ReviewStatus;
@@ -60,6 +82,12 @@ type SubmissionStatusRecord = {
 type ReportStatusRecord = {
   id: string;
   status: ReportStatus;
+  updatedAt: string;
+};
+
+type CommunitySubmissionStatusRecord = {
+  id: string;
+  status: CommunitySubmissionStatus;
   updatedAt: string;
 };
 
@@ -122,6 +150,11 @@ export default {
         return json({ statuses: await fetchReportStatuses(env, clientID) });
       }
 
+      if (request.method === "GET" && path === "/v1/community/submissions/statuses") {
+        const clientID = requireSubmitterClientID(request);
+        return json({ statuses: await fetchCommunitySubmissionStatuses(env, clientID) });
+      }
+
       if (request.method === "POST" && path === "/v1/submissions") {
         const clientID = requireSubmitterClientID(request);
         const payload = (await request.json()) as ReviewRecord;
@@ -133,6 +166,13 @@ export default {
         const clientID = requireSubmitterClientID(request);
         const payload = (await request.json()) as ReportRecord;
         const created = await createReport(env, payload, clientID);
+        return json({ id: created.id }, 201);
+      }
+
+      if (request.method === "POST" && path === "/v1/community/submissions") {
+        const clientID = requireSubmitterClientID(request);
+        const payload = (await request.json()) as CommunitySubmissionRecord;
+        const created = await createCommunitySubmission(env, payload, clientID);
         return json({ id: created.id }, 201);
       }
 
@@ -171,6 +211,20 @@ export default {
       if (request.method === "POST" && dismissMatch) {
         await requireModerator(env, request);
         await dismissReport(env, decodeURIComponent(dismissMatch[1]));
+        return new Response(null, { status: 204 });
+      }
+
+      const resolveCommunityMatch = path.match(/^\/v1\/moderation\/community-submissions\/([^/]+)\/resolve$/);
+      if (request.method === "POST" && resolveCommunityMatch) {
+        await requireModerator(env, request);
+        await resolveCommunitySubmission(env, decodeURIComponent(resolveCommunityMatch[1]));
+        return new Response(null, { status: 204 });
+      }
+
+      const dismissCommunityMatch = path.match(/^\/v1\/moderation\/community-submissions\/([^/]+)\/dismiss$/);
+      if (request.method === "POST" && dismissCommunityMatch) {
+        await requireModerator(env, request);
+        await dismissCommunitySubmission(env, decodeURIComponent(dismissCommunityMatch[1]));
         return new Response(null, { status: 204 });
       }
 
@@ -234,6 +288,20 @@ async function fetchReportStatuses(env: Env, clientID: string): Promise<ReportSt
     WHERE submitter_client_id = ?
     ORDER BY updated_at DESC
   `).bind(clientID).all<ReportStatusRecord>();
+
+  return result.results ?? [];
+}
+
+async function fetchCommunitySubmissionStatuses(env: Env, clientID: string): Promise<CommunitySubmissionStatusRecord[]> {
+  const result = await env.DB.prepare(`
+    SELECT
+      id,
+      status,
+      updated_at AS updatedAt
+    FROM community_submissions
+    WHERE submitter_client_id = ?
+    ORDER BY updated_at DESC
+  `).bind(clientID).all<CommunitySubmissionStatusRecord>();
 
   return result.results ?? [];
 }
@@ -322,6 +390,52 @@ async function createReport(env: Env, payload: ReportRecord, clientID: string): 
   return { id: payload.id };
 }
 
+async function createCommunitySubmission(env: Env, payload: CommunitySubmissionRecord, clientID: string): Promise<{ id: string }> {
+  validateCommunitySubmissionPayload(payload);
+
+  const now = nowISO();
+  await env.DB.prepare(`
+    INSERT OR REPLACE INTO community_submissions (
+      id,
+      category,
+      summary,
+      message,
+      contact_email,
+      target_kind,
+      target_id,
+      target_title,
+      target_context,
+      app_version,
+      build_number,
+      platform,
+      submitted_at,
+      status,
+      submitter_client_id,
+      created_at,
+      updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'open', ?, ?, ?)
+  `).bind(
+    payload.id,
+    payload.category,
+    sanitizeText(payload.summary),
+    sanitizeText(payload.message),
+    sanitizeNullableText(payload.contactEmail),
+    payload.targetKind,
+    sanitizeNullableText(payload.targetID),
+    sanitizeNullableText(payload.targetTitle),
+    sanitizeNullableText(payload.targetContext),
+    sanitizeText(payload.appVersion),
+    sanitizeNullableText(payload.buildNumber),
+    sanitizeText(payload.platform),
+    payload.submittedAt || now,
+    clientID,
+    now,
+    now,
+  ).run();
+
+  return { id: payload.id };
+}
+
 async function signInModerator(env: Env, email: string, password: string) {
   const normalizedEmail = email.trim().toLowerCase();
   const row = await env.DB.prepare(`
@@ -382,7 +496,7 @@ async function requireModerator(env: Env, request: Request): Promise<SessionClai
 }
 
 async function fetchModerationQueue(env: Env) {
-  const [pendingReviewsResult, openReportsResult] = await Promise.all([
+  const [pendingReviewsResult, openReportsResult, openCommunitySubmissionsResult] = await Promise.all([
     env.DB.prepare(`
       SELECT
         id,
@@ -429,11 +543,34 @@ async function fetchModerationQueue(env: Env) {
       WHERE status = 'open'
       ORDER BY submitted_at DESC
     `).all<ReportRecord>(),
+    env.DB.prepare(`
+      SELECT
+        id,
+        category,
+        summary,
+        message,
+        contact_email AS contactEmail,
+        target_kind AS targetKind,
+        target_id AS targetID,
+        target_title AS targetTitle,
+        target_context AS targetContext,
+        app_version AS appVersion,
+        build_number AS buildNumber,
+        platform,
+        submitted_at AS submittedAt,
+        status,
+        submitter_client_id AS submitterClientID,
+        updated_at AS updatedAt
+      FROM community_submissions
+      WHERE status = 'open'
+      ORDER BY submitted_at DESC
+    `).all<CommunitySubmissionRecord>(),
   ]);
 
   return {
     pendingReviews: pendingReviewsResult.results ?? [],
     openReports: openReportsResult.results ?? [],
+    openCommunitySubmissions: openCommunitySubmissionsResult.results ?? [],
   };
 }
 
@@ -531,6 +668,26 @@ async function dismissReport(env: Env, id: string): Promise<void> {
   const now = nowISO();
   await env.DB.prepare(`
     UPDATE gouge_reports
+    SET status = 'dismissed',
+        updated_at = ?
+    WHERE id = ?
+  `).bind(now, id).run();
+}
+
+async function resolveCommunitySubmission(env: Env, id: string): Promise<void> {
+  const now = nowISO();
+  await env.DB.prepare(`
+    UPDATE community_submissions
+    SET status = 'resolved',
+        updated_at = ?
+    WHERE id = ?
+  `).bind(now, id).run();
+}
+
+async function dismissCommunitySubmission(env: Env, id: string): Promise<void> {
+  const now = nowISO();
+  await env.DB.prepare(`
+    UPDATE community_submissions
     SET status = 'dismissed',
         updated_at = ?
     WHERE id = ?
@@ -684,6 +841,27 @@ function validateReportPayload(payload: ReportRecord) {
   }
 }
 
+function validateCommunitySubmissionPayload(payload: CommunitySubmissionRecord) {
+  if (!payload.id || !payload.summary || !payload.message || !payload.appVersion || !payload.platform) {
+    throw httpError("Incomplete community submission.", 400);
+  }
+
+  if (!["feedback", "feature_request", "support", "incorrect_gouge"].includes(payload.category)) {
+    throw httpError("Invalid community submission category.", 400);
+  }
+
+  if (payload.summary.trim().length < 4 || payload.message.trim().length < 12) {
+    throw httpError("Community submissions need a short summary and a bit more detail.", 400);
+  }
+
+  if (
+    payload.targetKind != null &&
+    !["brief", "flashcardSet", "event", "instructorReview", "generalLibrary", "other"].includes(payload.targetKind)
+  ) {
+    throw httpError("Invalid community submission target.", 400);
+  }
+}
+
 function requireSubmitterClientID(request: Request): string {
   const clientID = request.headers.get("x-submitter-client-id")?.trim();
   if (!clientID) {
@@ -809,7 +987,7 @@ async function verifyPassword(password: string, encodedHash: string): Promise<bo
     {
       name: "PBKDF2",
       hash: "SHA-256",
-      salt,
+      salt: salt as BufferSource,
       iterations,
     },
     key,

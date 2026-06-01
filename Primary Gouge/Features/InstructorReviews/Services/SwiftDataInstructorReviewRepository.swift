@@ -104,6 +104,10 @@ final class LocalInstructorReviewRepository: InstructorReviewRepository {
             .sorted { $0.submittedAt > $1.submittedAt }
     }
 
+    func fetchOpenCommunitySubmissions() -> [CommunitySubmissionModerationItem] {
+        []
+    }
+
     func fetchInstructorSuggestions(matching query: String) -> [InstructorNameSuggestion] {
         let query = query.trimmingCharacters(in: .whitespacesAndNewlines)
         let suggestions = Set(database.reviews.map {
@@ -163,6 +167,14 @@ final class LocalInstructorReviewRepository: InstructorReviewRepository {
         database.reports[index].status = .dismissed
         database.reports[index].lastModifiedAt = .now
         try persist()
+    }
+
+    func resolveCommunitySubmission(id: String) async throws {
+        throw InstructorReviewRepositoryError.unavailable
+    }
+
+    func dismissCommunitySubmission(id: String) async throws {
+        throw InstructorReviewRepositoryError.unavailable
     }
 
     func approveReview(id: String) async throws {

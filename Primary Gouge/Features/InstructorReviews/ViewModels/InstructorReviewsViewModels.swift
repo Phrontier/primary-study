@@ -396,12 +396,14 @@ struct InstructorReviewRatingOption: Identifiable, Hashable {
 final class ModerationQueueViewModel: ObservableObject {
     @Published private(set) var pendingReviews: [InstructorReview] = []
     @Published private(set) var openReports: [InstructorGougeReport] = []
+    @Published private(set) var openCommunitySubmissions: [CommunitySubmissionModerationItem] = []
     @Published private(set) var processingIDs: Set<String> = []
     @Published private(set) var errorMessage: String?
 
     func load(using repository: InstructorReviewRepository) {
         pendingReviews = repository.fetchPendingReviews()
         openReports = repository.fetchOpenReports()
+        openCommunitySubmissions = repository.fetchOpenCommunitySubmissions()
     }
 
     func approve(reviewID: String, using repository: InstructorReviewRepository) {
@@ -422,6 +424,18 @@ final class ModerationQueueViewModel: ObservableObject {
         }
     }
 
+    func resolveCommunitySubmission(submissionID: String, using repository: InstructorReviewRepository) {
+        process(reviewID: submissionID, using: repository) {
+            try await repository.resolveCommunitySubmission(id: submissionID)
+        }
+    }
+
+    func dismissCommunitySubmission(submissionID: String, using repository: InstructorReviewRepository) {
+        process(reviewID: submissionID, using: repository) {
+            try await repository.dismissCommunitySubmission(id: submissionID)
+        }
+    }
+
     private func process(
         reviewID: String,
         using repository: InstructorReviewRepository,
@@ -436,6 +450,7 @@ final class ModerationQueueViewModel: ObservableObject {
                 try await action()
                 pendingReviews = repository.fetchPendingReviews()
                 openReports = repository.fetchOpenReports()
+                openCommunitySubmissions = repository.fetchOpenCommunitySubmissions()
                 errorMessage = nil
             } catch {
                 errorMessage = error.localizedDescription

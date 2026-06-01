@@ -361,10 +361,6 @@ final class StudyAppModel: ObservableObject {
             }
     }
 
-    func assembledScript(for event: Event) -> EventScript? {
-        ScriptAssembler().assembleScript(for: event, using: studyManifest)
-    }
-
     func resources(for hub: LibraryStudyHub) -> [SharedResource] {
         studyManifest.sharedResources
             .filter { hub.resourceIDs.contains($0.id) }

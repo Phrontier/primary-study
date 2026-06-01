@@ -16,28 +16,6 @@ struct HomeScreenView: View {
                 route(to: destination)
             }
 
-            CurrentFocusSection(
-                snapshot: snapshot.currentFocus,
-                onManage: { showingManageFocus = true },
-                onSelect: route(to:)
-            )
-
-            ReviewDueSection(
-                title: "Review due",
-                subtitle: nil,
-                items: snapshot.reviewDue,
-                emptyMessage: "Nothing is aging out right now.",
-                onSelect: route(to:)
-            )
-
-            WeakAreasSection(
-                title: "Weak areas",
-                subtitle: nil,
-                items: snapshot.weakAreas,
-                emptyMessage: "No weak areas are standing out yet.",
-                onSelect: route(to:)
-            )
-
             if let question = snapshot.questionOfDay.question {
                 HomeQuestionOfDayCard(
                     snapshot: snapshot.questionOfDay,
@@ -71,11 +49,11 @@ private struct HomeIntroBlock: View {
     let snapshot: HomeScreenSnapshot
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("\(snapshot.greeting), \(snapshot.personalizedLine.lowercasedFirstLetter)")
+        VStack(alignment: .leading, spacing: 12) {
+            Text(snapshot.greeting)
                 .font(.title2.weight(.bold))
-            .foregroundStyle(AppTheme.textPrimary)
-            .fixedSize(horizontal: false, vertical: true)
+                .foregroundStyle(AppTheme.textPrimary)
+                .fixedSize(horizontal: false, vertical: true)
 
             if snapshot.studyStreak > 0 {
                 HomeSignalPill(
@@ -86,13 +64,6 @@ private struct HomeIntroBlock: View {
                 .fixedSize(horizontal: false, vertical: true)
             }
         }
-    }
-}
-
-private extension String {
-    var lowercasedFirstLetter: String {
-        guard let first else { return self }
-        return first.lowercased() + dropFirst()
     }
 }
 

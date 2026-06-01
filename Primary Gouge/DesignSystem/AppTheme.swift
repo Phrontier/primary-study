@@ -78,7 +78,6 @@ enum AppTheme {
         case flashcards
         case quizzes
         case instructors
-        case scripts
         case videos
         case resources
         case library
@@ -178,8 +177,6 @@ enum AppTheme {
             return color(0x45C7FF)
         case .instructors:
             return color(0x9A86FF)
-        case .scripts:
-            return color(0xF3A84D)
         case .videos:
             return color(0xFF6F91)
         case .library:

@@ -7,17 +7,13 @@ struct StudyManifest: Codable {
     var sharedResources: [SharedResource]
     var libraryStudyHubs: [LibraryStudyHub]
     var videos: [VideoAsset]
-    var procedureBlocks: [ProcedureBlock]
-    var calloutBlocks: [CalloutBlock]
 
     static let placeholder = StudyManifest(
         phases: [],
         flashcards: [],
         sharedResources: [],
         libraryStudyHubs: [],
-        videos: [],
-        procedureBlocks: [],
-        calloutBlocks: []
+        videos: []
     )
 }
 
@@ -104,7 +100,6 @@ struct Event: Codable, Identifiable, Hashable {
     let primaryDocumentIDs: [String]
     let flashcardDecks: [FlashcardDeck]
     let questionBanks: [QuestionBank]
-    let scriptTemplate: ScriptTemplate?
     let resourceLinks: [EventResourceLink]
     let videoLinks: [EventVideoLink]
     let tags: [String]
@@ -115,7 +110,6 @@ struct Event: Codable, Identifiable, Hashable {
         if systemsBrief != nil { count += 1 }
         if !flashcardDecks.isEmpty { count += 1 }
         if !questionBanks.isEmpty { count += 1 }
-        if scriptTemplate != nil { count += 1 }
         if !primaryDocumentIDs.isEmpty { count += 1 }
         if !videoLinks.isEmpty { count += 1 }
         return count
@@ -379,40 +373,6 @@ struct Question: Codable, Identifiable, Hashable {
     let prompt: String
     let answer: String
     let explanation: String?
-}
-
-struct ProcedureBlock: Codable, Identifiable, Hashable {
-    let id: String
-    let title: String
-    let body: String
-    let tags: [String]
-}
-
-struct CalloutBlock: Codable, Identifiable, Hashable {
-    let id: String
-    let title: String
-    let body: String
-    let tags: [String]
-}
-
-struct ScriptTemplate: Codable, Hashable {
-    let id: String
-    let title: String
-    let orderedProcedureBlockIDs: [String]
-    let orderedCalloutBlockIDs: [String]
-    let notes: [String]
-}
-
-struct EventScript: Hashable {
-    let title: String
-    let sections: [EventScriptSection]
-    let notes: [String]
-}
-
-struct EventScriptSection: Hashable, Identifiable {
-    let id = UUID()
-    let title: String
-    let body: String
 }
 
 struct VideoAsset: Codable, Identifiable, Hashable {

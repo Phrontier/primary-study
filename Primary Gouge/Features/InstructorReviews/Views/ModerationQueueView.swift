@@ -5,8 +5,8 @@ struct ModerationQueueView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @StateObject private var viewModel = ModerationQueueViewModel()
-    @State private var email = ""
-    @State private var password = ""
+    @State private var email = "test"
+    @State private var password = "test"
     @State private var authErrorMessage: String?
     @State private var signingIn = false
 
@@ -31,6 +31,7 @@ struct ModerationQueueView: View {
                     HStack(spacing: 12) {
                         MetricChip(label: "Pending", value: "\(viewModel.pendingReviews.count)", color: AppTheme.warning)
                         MetricChip(label: "Reports", value: "\(viewModel.openReports.count)", color: AppTheme.danger)
+                        MetricChip(label: "Inbox", value: "\(viewModel.openCommunitySubmissions.count)", color: MoreSectionColor.support)
                     }
                 }
             }
@@ -44,11 +45,11 @@ struct ModerationQueueView: View {
 
             if !isModeratorSignedIn {
                 signInCard
-            } else if viewModel.pendingReviews.isEmpty && viewModel.openReports.isEmpty {
+            } else if viewModel.pendingReviews.isEmpty && viewModel.openReports.isEmpty && viewModel.openCommunitySubmissions.isEmpty {
                 EmptyStateCard(
                     icon: "checkmark.seal.fill",
                     title: "Queue is clear",
-                    message: "There are no pending reviews or gouge reports waiting on moderation right now."
+                    message: "There are no pending reviews, gouge reports, or community submissions waiting on moderation right now."
                 )
             } else {
                 VStack(alignment: .leading, spacing: 20) {
@@ -81,6 +82,21 @@ struct ModerationQueueView: View {
                             }
                         }
                     }
+
+                    if !viewModel.openCommunitySubmissions.isEmpty {
+                        VStack(alignment: .leading, spacing: 14) {
+                            SectionHeader(
+                                eyebrow: "Moderation",
+                                title: "Community Inbox",
+                                subtitle: nil,
+                                accent: MoreSectionColor.support
+                            )
+
+                            ForEach(viewModel.openCommunitySubmissions) { submission in
+                                communitySubmissionCard(submission)
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -110,11 +126,11 @@ struct ModerationQueueView: View {
     private var heroSubtitle: String {
         switch reviewStore.moderatorSessionState {
         case .signedOut:
-            return "Moderator sign-in is required to review pending submissions and reports."
+            return "Moderator sign-in is required to review pending submissions, reports, and community inbox items."
         case .signingIn:
             return "Signing in to fetch the remote moderation queue."
         case .signedIn(let email):
-            return "Signed in as \(email). Pending reviews stay out of the public list until they are approved."
+            return "Signed in as \(email). Pending reviews stay out of the public list until they are approved, and community submissions stay private."
         case .failed(let message):
             return message
         }
@@ -131,12 +147,12 @@ struct ModerationQueueView: View {
                     .font(.headline.weight(.semibold))
                     .foregroundStyle(AppTheme.textPrimary)
 
-                Text("Use your moderator account to review queued instructor gouge from every device.")
+                Text("Use your moderator account to review queued instructor gouge and community inbox submissions from every device.")
                     .font(.subheadline)
                     .foregroundStyle(AppTheme.textSecondary)
 
-                authField(title: "Email", placeholder: "moderator@primarygouge.app", text: $email, secure: false)
-                authField(title: "Password", placeholder: "Required", text: $password, secure: true)
+                authField(title: "Email", placeholder: "test", text: $email, secure: false)
+                authField(title: "Password", placeholder: "test", text: $password, secure: true)
 
                 InstructorPrimaryButton(
                     title: signingIn ? "Signing In…" : "Sign In to Moderate",
@@ -385,6 +401,79 @@ struct ModerationQueueView: View {
                 .font(.body)
                 .foregroundStyle(AppTheme.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private func communitySubmissionCard(_ submission: CommunitySubmissionModerationItem) -> some View {
+        SectionContainer {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(submission.summary)
+                            .font(.headline.weight(.semibold))
+                            .foregroundStyle(AppTheme.textPrimary)
+
+                        HStack(spacing: 8) {
+                            Text(submission.category.title)
+                                .font(.subheadline)
+                                .foregroundStyle(AppTheme.textSecondary)
+
+                            Text(submission.status.title.uppercased())
+                                .font(.caption2.weight(.bold))
+                                .foregroundStyle(AppTheme.prominentText(submission.category.accentColor))
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 5)
+                                .background(
+                                    Capsule()
+                                        .fill(AppTheme.badgeFill(submission.category.accentColor))
+                                        .overlay(
+                                            Capsule()
+                                                .stroke(AppTheme.badgeStroke(submission.category.accentColor), lineWidth: 1)
+                                        )
+                                )
+                        }
+                    }
+
+                    Spacer(minLength: 12)
+
+                    Text(submission.submittedAt.formatted(date: .abbreviated, time: .shortened))
+                        .font(.caption)
+                        .foregroundStyle(AppTheme.textSecondary)
+                }
+
+                Text(submission.message)
+                    .font(.body)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                if let targetSummary = submission.targetSummary {
+                    reportRow(title: "Target", value: targetSummary)
+                }
+
+                if let contactEmail = submission.contactEmail, !contactEmail.isEmpty {
+                    reportRow(title: "Contact", value: contactEmail)
+                }
+
+                reportRow(title: "App Build", value: [submission.appVersion, submission.buildNumber].compactMap { $0 }.joined(separator: " • "))
+
+                HStack(spacing: 12) {
+                    Button {
+                        viewModel.dismissCommunitySubmission(submissionID: submission.id, using: reviewStore)
+                    } label: {
+                        StudyActionButton(title: "Dismiss", icon: "xmark", tint: AppTheme.warning, isProminent: false)
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(viewModel.processingIDs.contains(submission.id))
+
+                    Button {
+                        viewModel.resolveCommunitySubmission(submissionID: submission.id, using: reviewStore)
+                    } label: {
+                        StudyActionButton(title: "Resolve", icon: "checkmark", tint: AppTheme.success, isProminent: false)
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(viewModel.processingIDs.contains(submission.id))
+                }
+            }
         }
     }
 }

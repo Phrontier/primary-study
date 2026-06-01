@@ -3,6 +3,7 @@ import SwiftUI
 struct MoreTabView: View {
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var reviewStore: InstructorReviewStore
+    @EnvironmentObject private var communityStore: CommunitySubmissionStore
     @EnvironmentObject private var searchChrome: SearchChromeModel
 
     private var snapshot: MoreHubSnapshot {
@@ -148,45 +149,35 @@ struct MoreTabView: View {
                         subtitle: "Share what is working",
                         iconName: "bubble.left.and.text.bubble.right.fill",
                         accent: MoreSectionColor.support,
-                        destination: .placeholder(
-                            message: "Feedback intake will live here once the support workflow is wired up."
-                        )
+                        destination: .community(category: .feedback)
                     ),
                     MoreHubItem(
                         title: "Request a Feature",
                         subtitle: "Tell us what you need next",
                         iconName: "lightbulb.fill",
                         accent: MoreSectionColor.support,
-                        destination: .placeholder(
-                            message: "Feature requests will eventually route into a dedicated product feedback flow."
-                        )
+                        destination: .community(category: .featureRequest)
                     ),
                     MoreHubItem(
                         title: "FAQ",
                         subtitle: "Common answers and guidance",
                         iconName: "questionmark.circle.fill",
                         accent: MoreSectionColor.support,
-                        destination: .placeholder(
-                            message: "An FAQ surface is reserved for common app and study workflow questions."
-                        )
+                        destination: .article(.faq)
                     ),
                     MoreHubItem(
                         title: "Support",
                         subtitle: "Get help with the app",
                         iconName: "lifepreserver.fill",
                         accent: MoreSectionColor.support,
-                        destination: .placeholder(
-                            message: "Support options will land here once a real help channel is connected."
-                        )
+                        destination: .community(category: .support)
                     ),
                     MoreHubItem(
                         title: "Report Incorrect Gouge",
                         subtitle: "Flag outdated or wrong info",
                         iconName: "exclamationmark.bubble.fill",
                         accent: AppTheme.danger,
-                        destination: .placeholder(
-                            message: "Incorrect gouge reporting will route into a dedicated review workflow once it is built."
-                        )
+                        destination: .community(category: .incorrectGouge)
                     )
                 ]
             ),
@@ -199,37 +190,28 @@ struct MoreTabView: View {
                         subtitle: snapshot.versionSubtitle,
                         iconName: "number.circle.fill",
                         accent: MoreSectionColor.about,
-                        destination: .placeholder(
-                            message: "Build metadata is available now, and a fuller release details view can grow here later."
-                        )
+                        destination: .version
                     ),
                     MoreHubItem(
                         title: "Changelog",
                         subtitle: "What changed recently",
                         iconName: "clock.arrow.circlepath",
                         accent: MoreSectionColor.about,
-                        badge: .planned,
-                        destination: .placeholder(
-                            message: "A release log is planned for future app updates."
-                        )
+                        destination: .article(.changelog)
                     ),
                     MoreHubItem(
                         title: "Privacy",
                         subtitle: "How data is handled",
                         iconName: "lock.shield.fill",
                         accent: MoreSectionColor.about,
-                        destination: .placeholder(
-                            message: "Privacy details will live here once the app publishes its policy surface."
-                        )
+                        destination: .article(.privacy)
                     ),
                     MoreHubItem(
                         title: "Terms",
                         subtitle: "Usage and access terms",
                         iconName: "doc.text.fill",
                         accent: MoreSectionColor.about,
-                        destination: .placeholder(
-                            message: "Terms and access details will live here once they are ready to ship."
-                        )
+                        destination: .article(.terms)
                     )
                 ]
             )
@@ -305,6 +287,16 @@ struct MoreTabView: View {
             MoreRecentFlashcardSetsView(snapshot: snapshot)
         case .generalLibrary:
             generalLibraryDestination
+        case let .community(category):
+            MoreCommunitySubmissionView(category: category)
+        case let .article(pageID):
+            MoreArticleView(
+                page: MoreArticleContentLoader.page(pageID),
+                accent: item.accent,
+                iconName: item.iconName
+            )
+        case .version:
+            MoreVersionView(snapshot: snapshot)
         case let .placeholder(message):
             MorePlaceholderDetailView(item: item, message: message, snapshot: snapshot)
         }
@@ -377,7 +369,7 @@ private struct MoreSectionHeader: View {
     }
 }
 
-private struct MoreSectionContainer<Content: View>: View {
+struct MoreSectionContainer<Content: View>: View {
     @ViewBuilder let content: Content
 
     var body: some View {
@@ -974,6 +966,9 @@ private enum MoreHubDestination {
     case recentBriefs
     case recentFlashcardSets
     case generalLibrary
+    case community(category: CommunitySubmissionCategory)
+    case article(MoreArticlePageID)
+    case version
     case placeholder(message: String)
 }
 

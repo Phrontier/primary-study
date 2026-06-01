@@ -233,12 +233,26 @@ enum InstructorReviewSyncPhase: Hashable {
     case failed
 }
 
+enum InstructorReviewBackendSource: Hashable {
+    case bundled
+    case userDefaultsOverride
+    case unavailable
+}
+
 struct InstructorReviewSyncStatus: Hashable {
     var phase: InstructorReviewSyncPhase
     var lastSyncedAt: Date?
     var errorMessage: String?
+    var backendSource: InstructorReviewBackendSource = .unavailable
+    var configurationDetail: String?
 
-    static let idle = InstructorReviewSyncStatus(phase: .idle, lastSyncedAt: nil, errorMessage: nil)
+    static let idle = InstructorReviewSyncStatus(
+        phase: .idle,
+        lastSyncedAt: nil,
+        errorMessage: nil,
+        backendSource: .unavailable,
+        configurationDetail: nil
+    )
 }
 
 struct ModeratorSession: Codable, Hashable {

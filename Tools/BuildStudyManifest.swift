@@ -36,8 +36,6 @@ struct StudyManifest: Codable {
     let sharedResources: [SharedResource]
     let libraryStudyHubs: [LibraryStudyHub]
     let videos: [VideoAsset]
-    let procedureBlocks: [ProcedureBlock]
-    let calloutBlocks: [CalloutBlock]
 }
 
 struct Phase: Codable {
@@ -68,7 +66,6 @@ struct Event: Codable {
     let primaryDocumentIDs: [String]
     let flashcardDecks: [FlashcardDeck]
     let questionBanks: [QuestionBank]
-    let scriptTemplate: ScriptTemplate?
     let resourceLinks: [EventResourceLink]
     let videoLinks: [EventVideoLink]
     let tags: [String]
@@ -283,28 +280,6 @@ struct Question: Codable {
     let prompt: String
     let answer: String
     let explanation: String?
-}
-
-struct ProcedureBlock: Codable {
-    let id: String
-    let title: String
-    let body: String
-    let tags: [String]
-}
-
-struct CalloutBlock: Codable {
-    let id: String
-    let title: String
-    let body: String
-    let tags: [String]
-}
-
-struct ScriptTemplate: Codable {
-    let id: String
-    let title: String
-    let orderedProcedureBlockIDs: [String]
-    let orderedCalloutBlockIDs: [String]
-    let notes: [String]
 }
 
 struct VideoAsset: Codable {
@@ -1173,9 +1148,7 @@ struct ManifestBuilder {
         let sharedResources = buildSharedResources()
         let libraryStudyHubs = buildLibraryStudyHubs()
         let videos = videoLibrary
-        let procedureBlocks = buildProcedureBlocks()
-        let calloutBlocks = buildCalloutBlocks()
-        let manifest = StudyManifest(phases: phases, flashcards: flashcards, sharedResources: sharedResources, libraryStudyHubs: libraryStudyHubs, videos: videos, procedureBlocks: procedureBlocks, calloutBlocks: calloutBlocks)
+        let manifest = StudyManifest(phases: phases, flashcards: flashcards, sharedResources: sharedResources, libraryStudyHubs: libraryStudyHubs, videos: videos)
         try writeAuditReport(for: manifest)
         let discussionItemIssues = discussionItemAuthoringIssues()
         if !discussionItemIssues.isEmpty {
@@ -1280,7 +1253,6 @@ struct ManifestBuilder {
         let primaryDocumentIDs = resolvePrimaryDocumentIDs(from: sourceDocuments, override: override)
         let flashcardDecks = resolvedFlashcardDecks(for: code, override: override)
 
-        let scriptTemplate = buildScriptTemplate(for: code, phaseID: phaseID, categoryKind: categoryKind)
         let resourceLinks = override?.sharedResources ?? defaultResourceLinks(for: phaseID, categoryKind: categoryKind, files: sortedFiles)
         let videoLinks = override?.videos ?? []
         let title = syllabusEvent?.shortTitle ?? override?.title ?? inferTitle(for: code, from: sortedFiles)
@@ -1299,7 +1271,6 @@ struct ManifestBuilder {
             primaryDocumentIDs: primaryDocumentIDs,
             flashcardDecks: flashcardDecks,
             questionBanks: questionBanks,
-            scriptTemplate: scriptTemplate,
             resourceLinks: resourceLinks,
             videoLinks: videoLinks,
             tags: uniqueStrings([phaseID, categoryKind.rawValue, normalizedCode.lowercased()])
@@ -1426,36 +1397,6 @@ struct ManifestBuilder {
         }
 
         return questions
-    }
-
-    private func buildScriptTemplate(for code: String, phaseID: String, categoryKind: StudyCategoryKind) -> ScriptTemplate? {
-        guard categoryKind != .groundSchool else { return nil }
-
-        let procedureBlockIDs: [String]
-        let calloutBlockIDs: [String]
-
-        switch categoryKind {
-        case .sims:
-            procedureBlockIDs = ["mission-brief", "taxi-flow", "takeoff-flow", "mission-execution", "recovery-flow"]
-            calloutBlockIDs = ["ground-comm", "tower-comm", "approach-comm"]
-        case .flights:
-            procedureBlockIDs = ["mission-brief", "taxi-flow", "takeoff-flow", "maneuver-flow", "recovery-flow"]
-            calloutBlockIDs = ["ground-comm", "tower-comm", "pattern-comm"]
-        case .groundSchool:
-            procedureBlockIDs = []
-            calloutBlockIDs = []
-        }
-
-        return ScriptTemplate(
-            id: sanitizeID("\(phaseID)-\(categoryKind.rawValue)-\(code)-script"),
-            title: "\(code) Script",
-            orderedProcedureBlockIDs: procedureBlockIDs,
-            orderedCalloutBlockIDs: calloutBlockIDs,
-            notes: [
-                "Adjust specifics to match the assigned profile, weather, and local procedures.",
-                "Because the blocks are shared, one edit updates every event that references the same procedure or comm call."
-            ]
-        )
     }
 
     private func buildLibraryStudyHubs() -> [LibraryStudyHub] {
@@ -2440,26 +2381,6 @@ struct ManifestBuilder {
             SharedResource(id: "instrument-ifg", title: "KNGP IFG", summary: "Instrument field guide reference that stays relevant across instrument planning and execution.", relativePath: "Contents/6. Admin-iPad Docs/KNGP IFG FY25v1.2.pdf", topicIDs: ["airfield"], phaseIDs: ["instruments"], tags: ["field-guide"], placement: .phaseKnowledge, librarySection: .supplements),
             SharedResource(id: "vnav-routes", title: "VNAV Routes", summary: "Reusable route packet for recurring VNAV planning and execution.", relativePath: "Contents/3. VNAV/VNAV Routes.pdf", topicIDs: ["routes"], phaseIDs: ["vnav"], tags: ["routes"], placement: .phaseKnowledge, librarySection: .supplements),
             SharedResource(id: "formation-supp", title: "Formation Supplement", summary: "Common formation reference for contracts, admin, and recurring procedures.", relativePath: "Contents/4. FORMS/TW4 Form Supp (JUN 24).pdf", topicIDs: ["formation"], phaseIDs: ["formation"], tags: ["supplement"], placement: .phaseKnowledge, librarySection: .supplements)
-        ]
-    }
-
-    private func buildProcedureBlocks() -> [ProcedureBlock] {
-        [
-            ProcedureBlock(id: "mission-brief", title: "Mission brief flow", body: "Review weather, NOTAMs, profile objectives, fuel, risks, and contingencies before stepping. Confirm source references and grading emphasis for the event.", tags: ["brief"]),
-            ProcedureBlock(id: "taxi-flow", title: "Taxi flow", body: "Confirm startup complete, taxi diagram ready, checklists flowing challenge-action-response, and taxi brief aligned before movement.", tags: ["taxi"]),
-            ProcedureBlock(id: "takeoff-flow", title: "Takeoff flow", body: "Set lineup items from memory, confirm departure considerations, and brief the initial maneuver or departure routing before brake release.", tags: ["takeoff"]),
-            ProcedureBlock(id: "mission-execution", title: "Mission execution", body: "Move event-by-event through the published profile, discussing setup, standards, and likely coaching points before each phase.", tags: ["mission"]),
-            ProcedureBlock(id: "maneuver-flow", title: "Maneuver execution", body: "Use a deterministic setup: clear, configure, brief, execute, assess, and reset. Tie each maneuver back to the standards and common errors.", tags: ["maneuvers"]),
-            ProcedureBlock(id: "recovery-flow", title: "Recovery flow", body: "Transition to the recovery plan, approach, pattern, or overhead as assigned. Re-brief landing considerations and after-landing priorities before shutdown.", tags: ["recovery"])
-        ]
-    }
-
-    private func buildCalloutBlocks() -> [CalloutBlock] {
-        [
-            CalloutBlock(id: "ground-comm", title: "Ground / taxi comms", body: "Request taxi with location, ATIS, and mission intent. Read back taxi instructions fully and confirm hold shorts, crossings, and runway changes.", tags: ["comms"]),
-            CalloutBlock(id: "tower-comm", title: "Tower / takeoff comms", body: "Use standard ready-for-departure phrasing, read back takeoff clearance, and verbalize immediate post-takeoff actions before the roll.", tags: ["comms"]),
-            CalloutBlock(id: "approach-comm", title: "Approach / radar comms", body: "State callsign, current position, altitude, and request. Read back approach, hold, or vector instructions with the key restrictions intact.", tags: ["comms"]),
-            CalloutBlock(id: "pattern-comm", title: "Pattern / landing comms", body: "Use standard pattern entry and landing verbiage. Confirm runway, traffic, touch-and-go or full-stop intent, and go-around plan.", tags: ["comms"])
         ]
     }
 

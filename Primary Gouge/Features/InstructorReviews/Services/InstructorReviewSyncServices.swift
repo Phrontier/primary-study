@@ -80,12 +80,12 @@ protocol InstructorReviewRemoteService {
     func fetchReportStatuses(for clientID: String) async throws -> [RemoteReportStatusSnapshot]
     func submitReview(_ record: InstructorReviewRecord, clientID: String) async throws -> String
     func submitReport(_ record: InstructorGougeReportRecord, clientID: String) async throws -> String
-    func fetchModerationQueue(session: ModeratorSession) async throws -> RemoteModerationQueueSnapshot
-    func approveSubmission(id: String, session: ModeratorSession) async throws
-    func rejectSubmission(id: String, session: ModeratorSession) async throws
-    func dismissReport(id: String, session: ModeratorSession) async throws
-    func resolveCommunitySubmission(id: String, session: ModeratorSession) async throws
-    func dismissCommunitySubmission(id: String, session: ModeratorSession) async throws
+    func fetchModerationQueue(session: ModeratorSession?) async throws -> RemoteModerationQueueSnapshot
+    func approveSubmission(id: String, session: ModeratorSession?) async throws
+    func rejectSubmission(id: String, session: ModeratorSession?) async throws
+    func dismissReport(id: String, session: ModeratorSession?) async throws
+    func resolveCommunitySubmission(id: String, session: ModeratorSession?) async throws
+    func dismissCommunitySubmission(id: String, session: ModeratorSession?) async throws
 }
 
 struct InstructorReviewSyncSummary {
@@ -105,7 +105,7 @@ final class InstructorReviewSyncCoordinator {
         self.remoteService = remoteService
     }
 
-    func sync(clientID: String, moderatorSession: ModeratorSession?) async throws -> InstructorReviewSyncSummary {
+    func sync(clientID: String, moderatorSession: ModeratorSession?, canFetchModerationQueue: Bool) async throws -> InstructorReviewSyncSummary {
         let syncedAt = Date()
 
         let published = try await remoteService.fetchPublishedReviews()
@@ -141,7 +141,7 @@ final class InstructorReviewSyncCoordinator {
         let reportStatuses = try await remoteService.fetchReportStatuses(for: clientID)
         localRepository.applyReportStatuses(reportStatuses, syncedAt: syncedAt)
 
-        if let moderatorSession {
+        if moderatorSession != nil || canFetchModerationQueue {
             let queue = try await remoteService.fetchModerationQueue(session: moderatorSession)
             localRepository.mergeModerationSnapshot(queue.pendingReviews, reports: queue.openReports, syncedAt: syncedAt)
             localRepository.setLastSuccessfulSync(at: syncedAt)
@@ -414,12 +414,12 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         return response.id
     }
 
-    func fetchModerationQueue(session: ModeratorSession) async throws -> RemoteModerationQueueSnapshot {
+    func fetchModerationQueue(session: ModeratorSession?) async throws -> RemoteModerationQueueSnapshot {
         let response: ModerationQueueResponse = try await send(
             path: "moderation/queue",
             method: "GET",
             body: Optional<Int>.none as Int?,
-            bearerToken: session.accessToken
+            bearerToken: session?.accessToken
         )
         return RemoteModerationQueueSnapshot(
             pendingReviews: response.pendingReviews.map(mapReviewRecord),
@@ -428,48 +428,48 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         )
     }
 
-    func approveSubmission(id: String, session: ModeratorSession) async throws {
+    func approveSubmission(id: String, session: ModeratorSession?) async throws {
         try await sendNoContent(
             path: "moderation/submissions/\(id)/approve",
             method: "POST",
             body: Optional<Int>.none as Int?,
-            bearerToken: session.accessToken
+            bearerToken: session?.accessToken
         )
     }
 
-    func rejectSubmission(id: String, session: ModeratorSession) async throws {
+    func rejectSubmission(id: String, session: ModeratorSession?) async throws {
         try await sendNoContent(
             path: "moderation/submissions/\(id)/reject",
             method: "POST",
             body: Optional<Int>.none as Int?,
-            bearerToken: session.accessToken
+            bearerToken: session?.accessToken
         )
     }
 
-    func dismissReport(id: String, session: ModeratorSession) async throws {
+    func dismissReport(id: String, session: ModeratorSession?) async throws {
         try await sendNoContent(
             path: "moderation/reports/\(id)/dismiss",
             method: "POST",
             body: Optional<Int>.none as Int?,
-            bearerToken: session.accessToken
+            bearerToken: session?.accessToken
         )
     }
 
-    func resolveCommunitySubmission(id: String, session: ModeratorSession) async throws {
+    func resolveCommunitySubmission(id: String, session: ModeratorSession?) async throws {
         try await sendNoContent(
             path: "moderation/community-submissions/\(id)/resolve",
             method: "POST",
             body: Optional<Int>.none as Int?,
-            bearerToken: session.accessToken
+            bearerToken: session?.accessToken
         )
     }
 
-    func dismissCommunitySubmission(id: String, session: ModeratorSession) async throws {
+    func dismissCommunitySubmission(id: String, session: ModeratorSession?) async throws {
         try await sendNoContent(
             path: "moderation/community-submissions/\(id)/dismiss",
             method: "POST",
             body: Optional<Int>.none as Int?,
-            bearerToken: session.accessToken
+            bearerToken: session?.accessToken
         )
     }
 
@@ -598,8 +598,8 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let bearerToken {
-            request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        if let authorization = await authorizationHeader(explicitBearerToken: bearerToken) {
+            request.setValue(authorization, forHTTPHeaderField: "Authorization")
         }
         additionalHeaders.forEach { request.setValue($1, forHTTPHeaderField: $0) }
         if let body {
@@ -622,8 +622,8 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let bearerToken {
-            request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        if let authorization = await authorizationHeader(explicitBearerToken: bearerToken) {
+            request.setValue(authorization, forHTTPHeaderField: "Authorization")
         }
         additionalHeaders.forEach { request.setValue($1, forHTTPHeaderField: $0) }
         if let body {
@@ -651,5 +651,12 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
 
     private func submitterHeaders(clientID: String) -> [String: String] {
         ["x-submitter-client-id": clientID]
+    }
+
+    private func authorizationHeader(explicitBearerToken: String?) async -> String? {
+        if let explicitBearerToken {
+            return "Bearer \(explicitBearerToken)"
+        }
+        return await CloudflareAuthenticationContext.shared.authorizationHeader()
     }
 }

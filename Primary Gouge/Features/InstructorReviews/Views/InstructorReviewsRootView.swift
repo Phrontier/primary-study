@@ -2,6 +2,7 @@ import SwiftUI
 import Combine
 
 struct InstructorReviewsRootView: View {
+    @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @EnvironmentObject private var searchChrome: SearchChromeModel
     @StateObject private var viewModel = InstructorReviewsRootViewModel()
@@ -75,10 +76,16 @@ struct InstructorReviewsRootView: View {
             .presentationDragIndicator(.visible)
         }
         .task {
+            reviewStore.setModeratorPermission(accountStore.hasPermission(.instructorGougeModerator))
+            viewModel.setSquadronFilter(accountStore.profile?.squadronID)
             viewModel.load(using: reviewStore)
         }
         .onReceive(reviewStore.$revision.dropFirst()) { _ in
             viewModel.load(using: reviewStore)
+        }
+        .onReceive(accountStore.$session) { _ in
+            reviewStore.setModeratorPermission(accountStore.hasPermission(.instructorGougeModerator))
+            viewModel.setSquadronFilter(accountStore.profile?.squadronID)
         }
         .onAppear {
             searchChrome.updateScope(.instructors)
@@ -109,7 +116,9 @@ struct InstructorReviewsRootView: View {
                             showingSubmission = true
                         }
 
-                        moderationBubble
+                        if accountStore.hasPermission(.instructorGougeModerator) {
+                            moderationBubble
+                        }
                     }
 
                     VStack(spacing: 10) {
@@ -117,7 +126,9 @@ struct InstructorReviewsRootView: View {
                             showingSubmission = true
                         }
 
-                        moderationBubble
+                        if accountStore.hasPermission(.instructorGougeModerator) {
+                            moderationBubble
+                        }
                     }
                 }
 

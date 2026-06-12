@@ -216,6 +216,11 @@ final class StudyAppModel: ObservableObject {
         refreshSnapshot()
     }
 
+    func resetLocalAccountData() {
+        progressStore?.resetLocalData()
+        refreshSnapshot()
+    }
+
     func progress(for cardID: String) -> CardProgressSnapshot {
         progressStore?.progress(for: cardID) ?? .unseen
     }

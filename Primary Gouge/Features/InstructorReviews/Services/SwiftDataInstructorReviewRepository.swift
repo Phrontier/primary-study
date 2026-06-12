@@ -471,6 +471,13 @@ final class LocalInstructorReviewRepository: InstructorReviewRepository {
         database.lastSuccessfulSyncAt
     }
 
+    func clearAccountScopedData() {
+        database.lastSuccessfulSyncAt = nil
+        database.reviews.removeAll { $0.origin == .localSubmission || $0.submitterClientID != nil }
+        database.reports.removeAll { $0.origin == .localSubmission || $0.submitterClientID != nil }
+        try? persist()
+    }
+
     private func approvedRecords() -> [InstructorReviewRecord] {
         database.reviews.filter { $0.status == .approved }
     }

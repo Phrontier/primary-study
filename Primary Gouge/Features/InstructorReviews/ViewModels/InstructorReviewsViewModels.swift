@@ -15,6 +15,7 @@ final class InstructorReviewsRootViewModel: ObservableObject {
     @Published private(set) var hasPublishedReviews = false
     private weak var repository: (any InstructorReviewRepository)?
     private var searchedInstructors: [Instructor] = []
+    private var squadronFilterID: String?
 
     func load(using repository: InstructorReviewRepository) {
         self.repository = repository
@@ -22,6 +23,12 @@ final class InstructorReviewsRootViewModel: ObservableObject {
         totalPublishedReviews = allInstructors.reduce(0) { $0 + $1.publishedReviewCount }
         hasPublishedReviews = !allInstructors.isEmpty
         refreshSearch()
+    }
+
+    func setSquadronFilter(_ squadronID: String?) {
+        guard squadronFilterID != squadronID else { return }
+        squadronFilterID = squadronID
+        applyFilters()
     }
 
     private func refreshSearch() {
@@ -36,7 +43,21 @@ final class InstructorReviewsRootViewModel: ObservableObject {
     }
 
     private func applyFilters() {
-        instructors = searchedInstructors.filter(selectedFilter.includes)
+        instructors = searchedInstructors
+            .filter(selectedFilter.includes)
+            .filter(profileSquadronIncludes)
+    }
+
+    private func profileSquadronIncludes(_ instructor: Instructor) -> Bool {
+        guard
+            let squadronFilterID,
+            squadronFilterID != AccountProfile.notSureSquadronID,
+            squadronFilterID.hasPrefix("vt-")
+        else {
+            return true
+        }
+
+        return instructor.squadron.id == squadronFilterID || instructor.squadron.id.hasPrefix("tw-")
     }
 }
 

@@ -229,6 +229,12 @@ final class QuizStore: ObservableObject {
             .map { $0 }
     }
 
+    func resetLocalData() {
+        questionPerformance = [:]
+        sessionHistory = []
+        persist()
+    }
+
     private func persist() {
         let database = QuizDatabase(questionPerformance: questionPerformance, sessionHistory: sessionHistory)
 

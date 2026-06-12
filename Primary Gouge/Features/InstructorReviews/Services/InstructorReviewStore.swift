@@ -8,6 +8,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     @Published private(set) var moderatorSessionState: ModeratorSessionState = .signedOut
     @Published private(set) var isRemoteConfigured = false
     @Published private(set) var openCommunitySubmissions: [CommunitySubmissionModerationItem] = []
+    @Published private(set) var hasModeratorPermission = false
 
     private let localRepository: LocalInstructorReviewRepository
     private let remoteService: InstructorReviewRemoteService
@@ -85,17 +86,17 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     }
 
     func fetchPendingReviews() -> [InstructorReview] {
-        guard moderatorSession != nil else { return [] }
+        guard canModerate else { return [] }
         return localRepository.fetchPendingReviews()
     }
 
     func fetchOpenReports() -> [InstructorGougeReport] {
-        guard moderatorSession != nil else { return [] }
+        guard canModerate else { return [] }
         return localRepository.fetchOpenReports()
     }
 
     func fetchOpenCommunitySubmissions() -> [CommunitySubmissionModerationItem] {
-        guard moderatorSession != nil else { return [] }
+        guard canModerate else { return [] }
         return openCommunitySubmissions
     }
 
@@ -124,7 +125,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     }
 
     func dismissReport(id: String) async throws {
-        let session = try await requireModeratorSession()
+        let session = try await requireModerationSession()
 
         do {
             try await remoteService.dismissReport(id: id, session: session)
@@ -137,7 +138,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     }
 
     func resolveCommunitySubmission(id: String) async throws {
-        let session = try await requireModeratorSession()
+        let session = try await requireModerationSession()
 
         do {
             try await remoteService.resolveCommunitySubmission(id: id, session: session)
@@ -150,7 +151,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     }
 
     func dismissCommunitySubmission(id: String) async throws {
-        let session = try await requireModeratorSession()
+        let session = try await requireModerationSession()
 
         do {
             try await remoteService.dismissCommunitySubmission(id: id, session: session)
@@ -163,7 +164,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     }
 
     func approveReview(id: String) async throws {
-        let session = try await requireModeratorSession()
+        let session = try await requireModerationSession()
 
         do {
             try await remoteService.approveSubmission(id: id, session: session)
@@ -176,7 +177,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     }
 
     func rejectReview(id: String) async throws {
-        let session = try await requireModeratorSession()
+        let session = try await requireModerationSession()
 
         do {
             try await remoteService.rejectSubmission(id: id, session: session)
@@ -206,6 +207,23 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         revision &+= 1
     }
 
+    func setModeratorPermission(_ isAllowed: Bool) {
+        guard hasModeratorPermission != isAllowed else { return }
+        hasModeratorPermission = isAllowed
+        if !isAllowed && moderatorSession == nil {
+            openCommunitySubmissions = []
+        }
+        refreshModeratorState()
+        revision &+= 1
+        scheduleSync()
+    }
+
+    func clearAccountScopedData() {
+        localRepository.clearAccountScopedData()
+        signOutModerator()
+        revision &+= 1
+    }
+
     func syncIfPossible() async {
         guard remoteService.isConfigured else {
             syncStatus = makeSyncStatus(
@@ -221,7 +239,8 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
             let session = try await currentValidModeratorSession()
             let summary = try await syncCoordinator.sync(
                 clientID: clientIdentityStore.clientID(),
-                moderatorSession: session
+                moderatorSession: session,
+                canFetchModerationQueue: hasModeratorPermission
             )
             moderatorSession = session
             if let session {
@@ -270,16 +289,29 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         return session
     }
 
+    private func requireModerationSession() async throws -> ModeratorSession? {
+        if hasModeratorPermission {
+            return nil
+        }
+        return try await requireModeratorSession()
+    }
+
     private func mappedBackendError(_ error: Error) -> Error {
         CloudflareBackendErrorClassifier.isConnectivityFailure(error) ? InstructorReviewRepositoryError.offline : error
     }
 
     private func refreshModeratorState() {
-        if let moderatorSession {
+        if hasModeratorPermission {
+            moderatorSessionState = .signedIn(email: "Account Moderator")
+        } else if let moderatorSession {
             moderatorSessionState = .signedIn(email: moderatorSession.email)
         } else {
             moderatorSessionState = .signedOut
         }
+    }
+
+    private var canModerate: Bool {
+        hasModeratorPermission || moderatorSession != nil
     }
 
     private func makeSyncStatus(

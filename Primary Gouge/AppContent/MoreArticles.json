@@ -77,7 +77,13 @@
         },
         {
           "paragraphs" : [
-            "When you submit instructor reviews, instructor review reports, feedback, feature requests, support requests, or incorrect gouge reports, the app sends the submission data to the configured Cloudflare backend when possible. If the device is offline, supported submission flows may queue locally until a later retry."
+            "A Primary Gouge account is required to use the app. Account profile data, including Account ID, email or Apple sign-in identity, selected squadron, selected syllabus, active sessions, and assigned permissions, is stored on the configured Cloudflare backend."
+          ],
+          "title" : "Cloud account data"
+        },
+        {
+          "paragraphs" : [
+            "When you submit instructor reviews, instructor review reports, feedback, feature requests, support requests, or incorrect gouge reports, the app sends the submission data to the configured Cloudflare backend when possible. If the device is offline, supported submission flows may queue locally until a later retry. Signed-in submissions are associated with the cloud account."
           ],
           "title" : "What the app sends remotely"
         },
@@ -89,9 +95,15 @@
         },
         {
           "paragraphs" : [
-            "Notification permission is used only for the local daily study reminder in this MVP. The app does not need an account or push messaging service to schedule that reminder."
+            "Notification permission is used only for the local daily study reminder in this MVP. The app does not use push messaging for that reminder."
           ],
           "title" : "Notifications"
+        },
+        {
+          "paragraphs" : [
+            "You can sign out or delete your account from More > Profile. Account deletion removes the cloud account, sessions, profile, account roles, and account-associated submitted reviews, reports, and community submissions. The app also clears the local account session and local study progress caches after deletion."
+          ],
+          "title" : "Account deletion"
         },
         {
           "paragraphs" : [
@@ -127,9 +139,15 @@
         },
         {
           "paragraphs" : [
-            "Access to cloud-backed features can change if backend configuration, connectivity, or moderation access is unavailable. Local study features may still work even when network-backed features do not."
+            "Access requires a signed-in account. The app supports Sign in with Apple and verified email sign-in. A cached signed-in session can open offline after the first successful login, but cloud-backed sync, profile edits, sign-out, and deletion need network connectivity."
           ],
-          "title" : "Availability"
+          "title" : "Account access"
+        },
+        {
+          "paragraphs" : [
+            "Moderator features are hidden unless the cloud account has the instructor gouge moderator permission. Moderator permissions are assigned server-side and are used only to review queued instructor gouge, reports, and community submissions."
+          ],
+          "title" : "Moderation access"
         },
         {
           "paragraphs" : [

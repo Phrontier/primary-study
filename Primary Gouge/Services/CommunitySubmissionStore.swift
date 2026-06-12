@@ -184,6 +184,11 @@ final class CommunitySubmissionStore: ObservableObject {
         }
     }
 
+    func clearLocalAccountData() {
+        localStore.clearAll()
+        revision &+= 1
+    }
+
     private func scheduleSync() {
         guard remoteService.isConfigured else { return }
         syncTask?.cancel()
@@ -316,6 +321,11 @@ final class LocalCommunitySubmissionRepository {
 
     func lastSuccessfulSyncAt() -> Date? {
         database.lastSuccessfulSyncAt
+    }
+
+    func clearAll() {
+        database = CommunitySubmissionDatabase()
+        persist()
     }
 
     private func updateRecord(id: String, mutate: (inout CommunitySubmissionRecord) -> Void) {
@@ -472,6 +482,9 @@ final class CloudflareCommunitySubmissionRemoteService: CommunitySubmissionRemot
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let authorization = await CloudflareAuthenticationContext.shared.authorizationHeader() {
+            request.setValue(authorization, forHTTPHeaderField: "Authorization")
+        }
         additionalHeaders.forEach { request.setValue($1, forHTTPHeaderField: $0) }
 
         if let body {

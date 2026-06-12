@@ -1,3 +1,4 @@
+import AuthenticationServices
 import SwiftUI
 import UserNotifications
 import UIKit
@@ -5,7 +6,15 @@ import UIKit
 struct MoreProfileView: View {
     let snapshot: MoreHubSnapshot
 
+    @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var appModel: StudyAppModel
+    @State private var draftDisplayName = ""
+    @State private var draftSquadronID = AccountProfile.notSureSquadronID
+    @State private var draftSyllabus = SyllabusTrack.delta
+    @State private var accountStatusMessage: String?
+    @State private var showingDeleteConfirmation = false
+    @State private var needsAppleDeleteAuthorization = false
+    @State private var didLoadAccountDraft = false
 
     private var pinnedTopics: [HomeFocusTopicSnapshot] {
         appModel.homeScreenSnapshot.currentFocus.pinnedTopics
@@ -64,6 +73,8 @@ struct MoreProfileView: View {
                     }
                 }
 
+                cloudAccountSection
+
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Focus",
@@ -117,6 +128,202 @@ struct MoreProfileView: View {
             }
         }
         .detailNavigationChrome(title: "Profile")
+        .task {
+            loadAccountDraftIfNeeded()
+        }
+        .alert("Delete Account?", isPresented: $showingDeleteConfirmation) {
+            Button("Cancel", role: .cancel) {}
+            Button("Delete", role: .destructive) {
+                beginDeleteAccount()
+            }
+        } message: {
+            Text("This deletes your cloud account, sessions, profile, submitted reviews, reports, and community submissions tied to the account.")
+        }
+    }
+
+    private var cloudAccountSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            SectionHeader(
+                eyebrow: "Cloud Account",
+                title: "Profile and access",
+                subtitle: nil
+            )
+
+            SectionContainer {
+                VStack(alignment: .leading, spacing: 14) {
+                    if let profile = accountStore.profile {
+                        InsetListRow(title: "Account ID", subtitle: profile.id) {
+                            Image(systemName: "number")
+                                .foregroundStyle(AppTheme.accent)
+                                .frame(width: 20, height: 20)
+                        } trailing: {
+                            Button("Copy") {
+                                UIPasteboard.general.string = profile.id
+                                accountStatusMessage = "Account ID copied."
+                            }
+                            .font(.footnote.weight(.bold))
+                            .foregroundStyle(AppTheme.accent)
+                        }
+
+                        InsetListRow(
+                            title: "Email",
+                            subtitle: profile.email ?? "Private relay or Apple-only account",
+                            detail: profile.emailVerified ? "Verified" : "Unverified",
+                            detailColor: profile.emailVerified ? AppTheme.success : AppTheme.warning
+                        ) {
+                            Image(systemName: "envelope.fill")
+                                .foregroundStyle(AppTheme.accent)
+                                .frame(width: 20, height: 20)
+                        }
+
+                        if let authMethods = profile.authMethods, !authMethods.isEmpty {
+                            HStack(spacing: 8) {
+                                ForEach(authMethods) { method in
+                                    StatusBadge(title: method.title, iconName: method == .apple ? "apple.logo" : "envelope.badge.fill", color: AppTheme.accent)
+                                }
+                            }
+                        }
+
+                        if profile.permissions.isEmpty {
+                            StatusBadge(title: "Standard Access", iconName: "checkmark.circle.fill", color: AppTheme.success)
+                        } else {
+                            HStack(spacing: 8) {
+                                ForEach(profile.permissions) { permission in
+                                    StatusBadge(title: permission.title, iconName: "checkmark.shield.fill", color: AppTheme.statusColor(.pending))
+                                }
+                            }
+                        }
+                    }
+
+                    AccountTextField(
+                        title: "Display Name",
+                        placeholder: "Optional",
+                        text: $draftDisplayName,
+                        textContentType: .name,
+                        keyboardType: .default
+                    )
+
+                    AccountSquadronPicker(selection: $draftSquadronID)
+                    AccountSyllabusPicker(selection: $draftSyllabus)
+
+                    if let accountStatusMessage {
+                        Text(accountStatusMessage)
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+
+                    Button {
+                        saveAccountProfile()
+                    } label: {
+                        StudyActionButton(
+                            title: accountStore.isWorking ? "Saving..." : "Save Profile",
+                            icon: "checkmark.circle.fill",
+                            tint: AppTheme.accent,
+                            isProminent: false
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(accountStore.isWorking)
+
+                    Divider()
+
+                    if needsAppleDeleteAuthorization {
+                        Text("Confirm with Apple to finish account deletion.")
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                        appleDeletionButton
+                    }
+
+                    HStack(spacing: 12) {
+                        Button {
+                            accountStore.signOut()
+                        } label: {
+                            StudyActionButton(title: "Sign Out", icon: "rectangle.portrait.and.arrow.right", tint: AppTheme.warning, isProminent: false)
+                        }
+                        .buttonStyle(.plain)
+
+                        Button(role: .destructive) {
+                            showingDeleteConfirmation = true
+                        } label: {
+                            StudyActionButton(title: "Delete", icon: "trash.fill", tint: AppTheme.danger, isProminent: false)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+        }
+    }
+
+    private var appleDeletionButton: some View {
+        SignInWithAppleButton(.continue) { request in
+            request.requestedScopes = []
+        } onCompletion: { result in
+            switch result {
+            case .success(let authorization):
+                guard
+                    let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+                    let codeData = credential.authorizationCode,
+                    let authorizationCode = String(data: codeData, encoding: .utf8)
+                else {
+                    accountStatusMessage = "Apple did not return a deletion authorization code."
+                    return
+                }
+                deleteAccount(appleAuthorizationCode: authorizationCode)
+            case .failure(let error):
+                accountStatusMessage = error.localizedDescription
+            }
+        }
+        .signInWithAppleButtonStyle(.black)
+        .frame(height: 48)
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+    }
+
+    private func loadAccountDraftIfNeeded() {
+        guard !didLoadAccountDraft else { return }
+        didLoadAccountDraft = true
+        let profile = accountStore.profile
+        draftDisplayName = profile?.displayName ?? ""
+        draftSquadronID = profile?.squadronID ?? AccountProfile.notSureSquadronID
+        draftSyllabus = profile?.syllabusID ?? .delta
+    }
+
+    private func saveAccountProfile() {
+        accountStatusMessage = nil
+        Task { @MainActor in
+            do {
+                try await accountStore.updateProfile(
+                    displayName: draftDisplayName.nilIfEmpty,
+                    squadronID: draftSquadronID,
+                    syllabusID: draftSyllabus
+                )
+                accountStatusMessage = "Profile saved."
+            } catch {
+                accountStatusMessage = error.localizedDescription
+            }
+        }
+    }
+
+    private func beginDeleteAccount() {
+        if accountStore.profile?.usesAppleSignIn == true {
+            needsAppleDeleteAuthorization = true
+            accountStatusMessage = "Apple confirmation is required before deletion."
+            return
+        }
+
+        deleteAccount()
+    }
+
+    private func deleteAccount(appleAuthorizationCode: String? = nil) {
+        Task { @MainActor in
+            do {
+                try await accountStore.deleteAccount(appleAuthorizationCode: appleAuthorizationCode)
+            } catch {
+                accountStatusMessage = error.localizedDescription
+            }
+        }
     }
 }
 

@@ -3,6 +3,7 @@ import Combine
 
 struct ModerationQueueView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @StateObject private var viewModel = ModerationQueueViewModel()
     @State private var email = ""
@@ -17,17 +18,12 @@ struct ModerationQueueView: View {
                 title: "Review queue",
                 subtitle: heroSubtitle,
                 accessory: {
-                    if isModeratorSignedIn {
-                        Button("Sign Out") {
-                            reviewStore.signOutModerator()
-                            viewModel.load(using: reviewStore)
-                        }
-                        .font(.system(.footnote, design: .rounded, weight: .bold))
-                        .foregroundStyle(AppTheme.textSecondary)
+                    if accountStore.hasPermission(.instructorGougeModerator) {
+                        StatusBadge(title: "Role Active", iconName: "checkmark.shield.fill", color: AppTheme.success)
                     }
                 }
             ) {
-                if isModeratorSignedIn {
+                if canModerate {
                     HStack(spacing: 12) {
                         MetricChip(label: "Pending", value: "\(viewModel.pendingReviews.count)", color: AppTheme.warning)
                         MetricChip(label: "Reports", value: "\(viewModel.openReports.count)", color: AppTheme.danger)
@@ -43,8 +39,12 @@ struct ModerationQueueView: View {
                     .padding(.horizontal, 6)
             }
 
-            if !isModeratorSignedIn {
-                signInCard
+            if !canModerate {
+                EmptyStateCard(
+                    icon: "lock.shield.fill",
+                    title: "Moderator Permission Required",
+                    message: "This account does not have instructor gouge moderator access."
+                )
             } else if viewModel.pendingReviews.isEmpty && viewModel.openReports.isEmpty && viewModel.openCommunitySubmissions.isEmpty {
                 EmptyStateCard(
                     icon: "checkmark.seal.fill",
@@ -109,6 +109,7 @@ struct ModerationQueueView: View {
             }
         }
         .task {
+            reviewStore.setModeratorPermission(accountStore.hasPermission(.instructorGougeModerator))
             viewModel.load(using: reviewStore)
         }
         .onReceive(reviewStore.$revision.dropFirst()) { _ in
@@ -116,28 +117,19 @@ struct ModerationQueueView: View {
         }
     }
 
-    private var isModeratorSignedIn: Bool {
-        if case .signedIn = reviewStore.moderatorSessionState {
-            return true
-        }
-        return false
+    private var canModerate: Bool {
+        accountStore.hasPermission(.instructorGougeModerator)
     }
 
     private var heroSubtitle: String {
-        switch reviewStore.moderatorSessionState {
-        case .signedOut:
-            return "Moderator sign-in is required to review pending submissions, reports, and community inbox items."
-        case .signingIn:
-            return "Signing in to fetch the remote moderation queue."
-        case .signedIn(let email):
-            return "Signed in as \(email). Pending reviews stay out of the public list until they are approved, and community submissions stay private."
-        case .failed(let message):
-            return message
+        if accountStore.hasPermission(.instructorGougeModerator) {
+            return "Signed in as \(accountStore.profile?.email ?? accountStore.profile?.id ?? "moderator")."
         }
+        return "Moderator access is assigned to a Primary Gouge account in Cloudflare."
     }
 
     private var activeErrorMessage: String? {
-        authErrorMessage ?? viewModel.errorMessage
+        viewModel.errorMessage
     }
 
     private var signInCard: some View {

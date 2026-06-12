@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct Primary_GougeApp: App {
+    @StateObject private var accountStore = AccountStore()
     @StateObject private var appModel = StudyAppModel()
     @StateObject private var quizStore = QuizStore()
     @StateObject private var reviewStore = InstructorReviewStore()
     @StateObject private var communityStore = CommunitySubmissionStore()
     @StateObject private var notificationService = NotificationService()
-    @State private var didBootstrap = false
+    @State private var didConfigureProtectedStores = false
 
     init() {
         AppTheme.configureSystemChrome()
@@ -22,7 +23,10 @@ struct Primary_GougeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
+            AccountGateView {
+                RootView()
+            }
+                .environmentObject(accountStore)
                 .environmentObject(appModel)
                 .environmentObject(quizStore)
                 .environmentObject(reviewStore)
@@ -32,13 +36,43 @@ struct Primary_GougeApp: App {
                 .task {
                     await bootstrapIfNeeded()
                 }
+                .onChange(of: accountStore.phase) { _, phase in
+                    guard phase == .signedIn else { return }
+                    Task {
+                        await configureProtectedStoresIfNeeded()
+                    }
+                }
+                .onChange(of: accountStore.profile?.permissions ?? []) { _, _ in
+                    reviewStore.setModeratorPermission(
+                        accountStore.hasPermission(.instructorGougeModerator)
+                    )
+                }
         }
     }
 
     @MainActor
     private func bootstrapIfNeeded() async {
-        guard !didBootstrap else { return }
-        didBootstrap = true
+        await accountStore.configure()
+        await configureProtectedStoresIfNeeded()
+    }
+
+    @MainActor
+    private func configureProtectedStoresIfNeeded() async {
+        guard accountStore.isSignedIn else { return }
+
+        reviewStore.setModeratorPermission(
+            accountStore.hasPermission(.instructorGougeModerator)
+        )
+
+        accountStore.localDataResetHandler = {
+            appModel.resetLocalAccountData()
+            quizStore.resetLocalData()
+            reviewStore.clearAccountScopedData()
+            communityStore.clearLocalAccountData()
+        }
+
+        guard !didConfigureProtectedStores else { return }
+        didConfigureProtectedStores = true
 
         reviewStore.configure()
         communityStore.configure()

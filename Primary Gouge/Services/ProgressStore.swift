@@ -201,6 +201,11 @@ final class ProgressStore {
         Array(database.dailyQuestionProgress.values)
     }
 
+    func resetLocalData() {
+        database = ProgressDatabase()
+        persist()
+    }
+
     private func persist() {
         do {
             let directory = persistenceURL.deletingLastPathComponent()

@@ -2499,15 +2499,15 @@ private final class MockInstructorReviewRemoteService: InstructorReviewRemoteSer
         return record.id
     }
 
-    func fetchModerationQueue(session _: ModeratorSession) async throws -> RemoteModerationQueueSnapshot {
+    func fetchModerationQueue(session _: ModeratorSession?) async throws -> RemoteModerationQueueSnapshot {
         moderationSnapshot
     }
 
-    func approveSubmission(id _: String, session _: ModeratorSession) async throws {}
-    func rejectSubmission(id _: String, session _: ModeratorSession) async throws {}
-    func dismissReport(id _: String, session _: ModeratorSession) async throws {}
-    func resolveCommunitySubmission(id _: String, session _: ModeratorSession) async throws {}
-    func dismissCommunitySubmission(id _: String, session _: ModeratorSession) async throws {}
+    func approveSubmission(id _: String, session _: ModeratorSession?) async throws {}
+    func rejectSubmission(id _: String, session _: ModeratorSession?) async throws {}
+    func dismissReport(id _: String, session _: ModeratorSession?) async throws {}
+    func resolveCommunitySubmission(id _: String, session _: ModeratorSession?) async throws {}
+    func dismissCommunitySubmission(id _: String, session _: ModeratorSession?) async throws {}
 }
 
 @MainActor

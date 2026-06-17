@@ -408,6 +408,7 @@ struct VideoAsset: Codable, Identifiable, Hashable {
     let id: String
     let title: String
     let remotePath: String
+    let libraryCategory: VideoLibraryCategory
     let phaseIDs: [String]
     let eventCodes: [String]
     let primaryEventCodes: [String]
@@ -420,6 +421,7 @@ struct VideoAsset: Codable, Identifiable, Hashable {
         id: String,
         title: String,
         remotePath: String,
+        libraryCategory: VideoLibraryCategory = .other,
         phaseIDs: [String],
         eventCodes: [String] = [],
         primaryEventCodes: [String] = [],
@@ -431,6 +433,7 @@ struct VideoAsset: Codable, Identifiable, Hashable {
         self.id = id
         self.title = title
         self.remotePath = remotePath
+        self.libraryCategory = libraryCategory
         self.phaseIDs = phaseIDs
         self.eventCodes = eventCodes
         self.primaryEventCodes = primaryEventCodes
@@ -444,6 +447,7 @@ struct VideoAsset: Codable, Identifiable, Hashable {
         case id
         case title
         case remotePath
+        case libraryCategory
         case phaseIDs
         case eventCodes
         case primaryEventCodes
@@ -458,6 +462,7 @@ struct VideoAsset: Codable, Identifiable, Hashable {
         id = try container.decode(String.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
         remotePath = try container.decode(String.self, forKey: .remotePath)
+        libraryCategory = try container.decodeIfPresent(VideoLibraryCategory.self, forKey: .libraryCategory) ?? .other
         phaseIDs = try container.decodeIfPresent([String].self, forKey: .phaseIDs) ?? []
         eventCodes = try container.decodeIfPresent([String].self, forKey: .eventCodes) ?? []
         primaryEventCodes = try container.decodeIfPresent([String].self, forKey: .primaryEventCodes) ?? []
@@ -465,5 +470,63 @@ struct VideoAsset: Codable, Identifiable, Hashable {
         durationSeconds = try container.decodeIfPresent(Double.self, forKey: .durationSeconds)
         summary = try container.decodeIfPresent(String.self, forKey: .summary) ?? ""
         tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
+    }
+}
+
+enum VideoLibraryCategory: String, Codable, Hashable, CaseIterable {
+    case startSequence
+    case groundEmergencies
+    case flightEmergencies
+    case landingPattern
+    case contactManeuvers
+    case aerobatics
+    case instruments
+    case other
+
+    var displayName: String {
+        switch self {
+        case .startSequence: "Start Sequence"
+        case .groundEmergencies: "Ground Emergencies"
+        case .flightEmergencies: "Flight Emergencies"
+        case .landingPattern: "Pattern & Landing"
+        case .contactManeuvers: "Contact Maneuvers"
+        case .aerobatics: "Aerobatics"
+        case .instruments: "Instruments"
+        case .other: "Other Videos"
+        }
+    }
+
+    var iconName: String {
+        switch self {
+        case .startSequence:
+            return "power.circle.fill"
+        case .groundEmergencies:
+            return "exclamationmark.octagon.fill"
+        case .flightEmergencies:
+            return "exclamationmark.triangle.fill"
+        case .landingPattern:
+            return "airplane.arrival"
+        case .contactManeuvers:
+            return "arrow.triangle.2.circlepath"
+        case .aerobatics:
+            return "rotate.3d"
+        case .instruments:
+            return "gauge.with.dots.needle.bottom.50percent"
+        case .other:
+            return "play.rectangle.fill"
+        }
+    }
+
+    var sortRank: Int {
+        switch self {
+        case .startSequence: 0
+        case .groundEmergencies: 1
+        case .flightEmergencies: 2
+        case .landingPattern: 3
+        case .contactManeuvers: 4
+        case .aerobatics: 5
+        case .instruments: 6
+        case .other: 7
+        }
     }
 }

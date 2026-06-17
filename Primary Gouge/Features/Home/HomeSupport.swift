@@ -214,7 +214,7 @@ extension StudyAppModel {
 
     func topicIDs(for video: VideoAsset) -> [String] {
         HomeTopicMatcher.topicIDs(
-            matching: video.tags + video.phaseIDs + video.eventCodes + [video.title, video.summary],
+            matching: video.tags + video.phaseIDs + video.eventCodes + [video.libraryCategory.displayName, video.title, video.summary],
             topics: studyTopics
         )
     }

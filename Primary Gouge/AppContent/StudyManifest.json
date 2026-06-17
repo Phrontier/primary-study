@@ -35851,14 +35851,6 @@
                 },
                 {
                   "placement" : "primary",
-                  "videoID" : "video-contacts-0128-loop-loe-01-225"
-                },
-                {
-                  "placement" : "supplemental",
-                  "videoID" : "video-contacts-0128-splits-loe-01-922"
-                },
-                {
-                  "placement" : "primary",
                   "videoID" : "video-contacts-0129-barrelroll-loe-02-579"
                 },
                 {
@@ -35871,11 +35863,19 @@
                 },
                 {
                   "placement" : "primary",
-                  "videoID" : "video-contacts-aero-wingover-440"
+                  "videoID" : "video-contacts-co108immelmann-loe-01-836"
                 },
                 {
                   "placement" : "primary",
-                  "videoID" : "video-contacts-co108immelmann-loe-01-836"
+                  "videoID" : "video-contacts-0128-loop-loe-01-225"
+                },
+                {
+                  "placement" : "supplemental",
+                  "videoID" : "video-contacts-0128-splits-loe-01-922"
+                },
+                {
+                  "placement" : "primary",
+                  "videoID" : "video-contacts-aero-wingover-440"
                 }
               ]
             },
@@ -39438,16 +39438,16 @@
               "title" : "Stalls and Landing Pattern",
               "videoLinks" : [
                 {
-                  "placement" : "primary",
-                  "videoID" : "video-contacts-t6b-landing-pattern-stalls-337"
-                },
-                {
                   "placement" : "supplemental",
                   "videoID" : "video-contacts-t6b-landing-pattern1a-742"
                 },
                 {
                   "placement" : "supplemental",
                   "videoID" : "video-contacts-t6b-landing-pattern2-450"
+                },
+                {
+                  "placement" : "primary",
+                  "videoID" : "video-contacts-t6b-landing-pattern-stalls-337"
                 },
                 {
                   "placement" : "primary",
@@ -44764,14 +44764,6 @@
                 },
                 {
                   "placement" : "supplemental",
-                  "videoID" : "video-contacts-0128-loop-loe-01-225"
-                },
-                {
-                  "placement" : "primary",
-                  "videoID" : "video-contacts-0128-splits-loe-01-922"
-                },
-                {
-                  "placement" : "supplemental",
                   "videoID" : "video-contacts-0129-barrelroll-loe-02-579"
                 },
                 {
@@ -44784,11 +44776,19 @@
                 },
                 {
                   "placement" : "supplemental",
-                  "videoID" : "video-contacts-aero-wingover-440"
+                  "videoID" : "video-contacts-co108immelmann-loe-01-836"
                 },
                 {
                   "placement" : "supplemental",
-                  "videoID" : "video-contacts-co108immelmann-loe-01-836"
+                  "videoID" : "video-contacts-0128-loop-loe-01-225"
+                },
+                {
+                  "placement" : "primary",
+                  "videoID" : "video-contacts-0128-splits-loe-01-922"
+                },
+                {
+                  "placement" : "supplemental",
+                  "videoID" : "video-contacts-aero-wingover-440"
                 }
               ]
             },
@@ -62442,6 +62442,7 @@
         "FAM4701"
       ],
       "id" : "video-contacts-0128-aileronroll-loe-01-936",
+      "libraryCategory" : "aerobatics",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62460,60 +62461,13 @@
       "title" : "Aileron Roll"
     },
     {
-      "byteSize" : 5119101,
-      "eventCodes" : [
-        "FAM3401",
-        "FAM4701"
-      ],
-      "id" : "video-contacts-0128-loop-loe-01-225",
-      "phaseIDs" : [
-        "contacts"
-      ],
-      "primaryEventCodes" : [
-        "FAM3401"
-      ],
-      "remotePath" : "Videos\/Contacts\/0128_loop_loe_01_225.mp4",
-      "summary" : "Review video for Loop.",
-      "tags" : [
-        "contacts",
-        "0128",
-        "loop",
-        "loe",
-        "01"
-      ],
-      "title" : "Loop"
-    },
-    {
-      "byteSize" : 2708242,
-      "eventCodes" : [
-        "FAM3401",
-        "FAM4701"
-      ],
-      "id" : "video-contacts-0128-splits-loe-01-922",
-      "phaseIDs" : [
-        "contacts"
-      ],
-      "primaryEventCodes" : [
-        "FAM4701"
-      ],
-      "remotePath" : "Videos\/Contacts\/0128_splits_loe_01_922.mp4",
-      "summary" : "Review video for Split-S.",
-      "tags" : [
-        "contacts",
-        "0128",
-        "splits",
-        "loe",
-        "01"
-      ],
-      "title" : "Split-S"
-    },
-    {
       "byteSize" : 5747903,
       "eventCodes" : [
         "FAM3401",
         "FAM4701"
       ],
       "id" : "video-contacts-0129-barrelroll-loe-02-579",
+      "libraryCategory" : "aerobatics",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62538,6 +62492,7 @@
         "FAM4701"
       ],
       "id" : "video-contacts-0129cloverleaf-loe-01-695",
+      "libraryCategory" : "aerobatics",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62555,12 +62510,39 @@
       "title" : "Cloverleaf"
     },
     {
+      "byteSize" : 1485746,
+      "eventCodes" : [
+        "FAM3103",
+        "FAM3301",
+        "FAM4104",
+        "FAM4202",
+        "FAM6202"
+      ],
+      "id" : "video-contacts-crosswind-landing-705",
+      "libraryCategory" : "landingPattern",
+      "phaseIDs" : [
+        "contacts"
+      ],
+      "primaryEventCodes" : [
+        "FAM4104"
+      ],
+      "remotePath" : "Videos\/Contacts\/crosswind_landing_705.mp4",
+      "summary" : "Review video for Crosswind Landing.",
+      "tags" : [
+        "contacts",
+        "crosswind",
+        "landing"
+      ],
+      "title" : "Crosswind Landing"
+    },
+    {
       "byteSize" : 4755624,
       "eventCodes" : [
         "FAM3401",
         "FAM4701"
       ],
       "id" : "video-contacts-0129cuban8-loe-01-962",
+      "libraryCategory" : "aerobatics",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62578,76 +62560,6 @@
       "title" : "Cuban Eight"
     },
     {
-      "byteSize" : 5041420,
-      "eventCodes" : [
-        "FAM3401",
-        "FAM4701"
-      ],
-      "id" : "video-contacts-aero-wingover-440",
-      "phaseIDs" : [
-        "contacts"
-      ],
-      "primaryEventCodes" : [
-        "FAM3401"
-      ],
-      "remotePath" : "Videos\/Contacts\/aero_wingover_440.mp4",
-      "summary" : "Review video for Wingover.",
-      "tags" : [
-        "contacts",
-        "aero",
-        "wingover"
-      ],
-      "title" : "Wingover"
-    },
-    {
-      "byteSize" : 5156063,
-      "eventCodes" : [
-        "FAM3401",
-        "FAM4701"
-      ],
-      "id" : "video-contacts-co108immelmann-loe-01-836",
-      "phaseIDs" : [
-        "contacts"
-      ],
-      "primaryEventCodes" : [
-        "FAM3401"
-      ],
-      "remotePath" : "Videos\/Contacts\/co108immelmann_loe_01_836.mp4",
-      "summary" : "Review video for Immelmann.",
-      "tags" : [
-        "contacts",
-        "co108immelmann",
-        "loe",
-        "01"
-      ],
-      "title" : "Immelmann"
-    },
-    {
-      "byteSize" : 1485746,
-      "eventCodes" : [
-        "FAM3103",
-        "FAM3301",
-        "FAM4104",
-        "FAM4202",
-        "FAM6202"
-      ],
-      "id" : "video-contacts-crosswind-landing-705",
-      "phaseIDs" : [
-        "contacts"
-      ],
-      "primaryEventCodes" : [
-        "FAM4104"
-      ],
-      "remotePath" : "Videos\/Contacts\/crosswind_landing_705.mp4",
-      "summary" : "Review video for Crosswind Landing.",
-      "tags" : [
-        "contacts",
-        "crosswind",
-        "landing"
-      ],
-      "title" : "Crosswind Landing"
-    },
-    {
       "byteSize" : 20032118,
       "eventCodes" : [
         "FAM2202",
@@ -62657,6 +62569,7 @@
         "FAM6402"
       ],
       "id" : "video-contacts-engine-failure-flameout-fuel-starvation-953",
+      "libraryCategory" : "flightEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62684,6 +62597,7 @@
         "FAM6402"
       ],
       "id" : "video-contacts-engine-seizure-387",
+      "libraryCategory" : "flightEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62706,6 +62620,7 @@
         "FAM4101"
       ],
       "id" : "video-contacts-hand-signals-358",
+      "libraryCategory" : "startSequence",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62729,6 +62644,7 @@
         "FAM4301"
       ],
       "id" : "video-contacts-hot-start-auto-abort-748",
+      "libraryCategory" : "groundEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62754,6 +62670,7 @@
         "FAM4301"
       ],
       "id" : "video-contacts-hot-start-manual-abort-647",
+      "libraryCategory" : "groundEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62779,6 +62696,7 @@
         "FAM4301"
       ],
       "id" : "video-contacts-hung-start-663",
+      "libraryCategory" : "groundEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62795,6 +62713,55 @@
       "title" : "Hung Start"
     },
     {
+      "byteSize" : 5156063,
+      "eventCodes" : [
+        "FAM3401",
+        "FAM4701"
+      ],
+      "id" : "video-contacts-co108immelmann-loe-01-836",
+      "libraryCategory" : "aerobatics",
+      "phaseIDs" : [
+        "contacts"
+      ],
+      "primaryEventCodes" : [
+        "FAM3401"
+      ],
+      "remotePath" : "Videos\/Contacts\/co108immelmann_loe_01_836.mp4",
+      "summary" : "Review video for Immelmann.",
+      "tags" : [
+        "contacts",
+        "co108immelmann",
+        "loe",
+        "01"
+      ],
+      "title" : "Immelmann"
+    },
+    {
+      "byteSize" : 5119101,
+      "eventCodes" : [
+        "FAM3401",
+        "FAM4701"
+      ],
+      "id" : "video-contacts-0128-loop-loe-01-225",
+      "libraryCategory" : "aerobatics",
+      "phaseIDs" : [
+        "contacts"
+      ],
+      "primaryEventCodes" : [
+        "FAM3401"
+      ],
+      "remotePath" : "Videos\/Contacts\/0128_loop_loe_01_225.mp4",
+      "summary" : "Review video for Loop.",
+      "tags" : [
+        "contacts",
+        "0128",
+        "loop",
+        "loe",
+        "01"
+      ],
+      "title" : "Loop"
+    },
+    {
       "byteSize" : 6082642,
       "eventCodes" : [
         "FAM2201",
@@ -62803,6 +62770,7 @@
         "FAM6401"
       ],
       "id" : "video-contacts-loss-of-useful-power-253",
+      "libraryCategory" : "flightEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62828,6 +62796,7 @@
         "FAM4301"
       ],
       "id" : "video-contacts-no-start-832",
+      "libraryCategory" : "groundEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62849,6 +62818,7 @@
         "FAM2101"
       ],
       "id" : "video-contacts-normal-start-sequence-with-battery-pwr-775",
+      "libraryCategory" : "startSequence",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62874,6 +62844,7 @@
         "FAM2101"
       ],
       "id" : "video-contacts-normal-start-sequence-with-external-pwr-996",
+      "libraryCategory" : "startSequence",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62899,6 +62870,7 @@
         "FAM4303"
       ],
       "id" : "video-contacts-propeller-sleeve-touchdown-606",
+      "libraryCategory" : "landingPattern",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62916,6 +62888,31 @@
       "title" : "Propeller Sleeve Touchdown"
     },
     {
+      "byteSize" : 2708242,
+      "eventCodes" : [
+        "FAM3401",
+        "FAM4701"
+      ],
+      "id" : "video-contacts-0128-splits-loe-01-922",
+      "libraryCategory" : "aerobatics",
+      "phaseIDs" : [
+        "contacts"
+      ],
+      "primaryEventCodes" : [
+        "FAM4701"
+      ],
+      "remotePath" : "Videos\/Contacts\/0128_splits_loe_01_922.mp4",
+      "summary" : "Review video for Split-S.",
+      "tags" : [
+        "contacts",
+        "0128",
+        "splits",
+        "loe",
+        "01"
+      ],
+      "title" : "Split-S"
+    },
+    {
       "byteSize" : 92447329,
       "eventCodes" : [
         "FAM2102",
@@ -62923,6 +62920,7 @@
         "FAM4301"
       ],
       "id" : "video-contacts-t6b-abnormal-starts3-575",
+      "libraryCategory" : "groundEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62948,6 +62946,7 @@
         "FAM6401"
       ],
       "id" : "video-contacts-t6b-engine-malf-in-flt-426",
+      "libraryCategory" : "flightEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -62967,30 +62966,6 @@
       "title" : "T-6B Engine Malfunction In Flight"
     },
     {
-      "byteSize" : 72767164,
-      "eventCodes" : [
-        "FAM4102",
-        "FAM6201"
-      ],
-      "id" : "video-contacts-t6b-landing-pattern-stalls-337",
-      "phaseIDs" : [
-        "contacts"
-      ],
-      "primaryEventCodes" : [
-        "FAM4102"
-      ],
-      "remotePath" : "Videos\/Contacts\/t6b_landing_pattern_stalls_337.mp4",
-      "summary" : "Review video for T-6B Landing Pattern Stalls.",
-      "tags" : [
-        "contacts",
-        "t6b",
-        "landing",
-        "pattern",
-        "stalls"
-      ],
-      "title" : "T-6B Landing Pattern Stalls"
-    },
-    {
       "byteSize" : 55412187,
       "eventCodes" : [
         "FAM3102",
@@ -62999,6 +62974,7 @@
         "FAM6202"
       ],
       "id" : "video-contacts-t6b-landing-pattern1a-742",
+      "libraryCategory" : "landingPattern",
       "phaseIDs" : [
         "contacts"
       ],
@@ -63024,6 +63000,7 @@
         "FAM6202"
       ],
       "id" : "video-contacts-t6b-landing-pattern2-450",
+      "libraryCategory" : "landingPattern",
       "phaseIDs" : [
         "contacts"
       ],
@@ -63041,12 +63018,38 @@
       "title" : "T-6B Landing Pattern 2"
     },
     {
+      "byteSize" : 72767164,
+      "eventCodes" : [
+        "FAM4102",
+        "FAM6201"
+      ],
+      "id" : "video-contacts-t6b-landing-pattern-stalls-337",
+      "libraryCategory" : "landingPattern",
+      "phaseIDs" : [
+        "contacts"
+      ],
+      "primaryEventCodes" : [
+        "FAM4102"
+      ],
+      "remotePath" : "Videos\/Contacts\/t6b_landing_pattern_stalls_337.mp4",
+      "summary" : "Review video for T-6B Landing Pattern Stalls.",
+      "tags" : [
+        "contacts",
+        "t6b",
+        "landing",
+        "pattern",
+        "stalls"
+      ],
+      "title" : "T-6B Landing Pattern Stalls"
+    },
+    {
       "byteSize" : 61349852,
       "eventCodes" : [
         "FAM4102",
         "FAM6201"
       ],
       "id" : "video-contacts-t6b-poweroffstalls-887",
+      "libraryCategory" : "contactManeuvers",
       "phaseIDs" : [
         "contacts"
       ],
@@ -63069,6 +63072,7 @@
         "FAM6201"
       ],
       "id" : "video-contacts-t6b-poweronstalls-983",
+      "libraryCategory" : "contactManeuvers",
       "phaseIDs" : [
         "contacts"
       ],
@@ -63091,6 +63095,7 @@
         "FAM4101"
       ],
       "id" : "video-contacts-t6b-start-scan-3-588",
+      "libraryCategory" : "startSequence",
       "phaseIDs" : [
         "contacts"
       ],
@@ -63115,6 +63120,7 @@
         "FAM4101"
       ],
       "id" : "video-contacts-t6b-takeoff-111",
+      "libraryCategory" : "landingPattern",
       "phaseIDs" : [
         "contacts"
       ],
@@ -63138,6 +63144,7 @@
         "FAM6203"
       ],
       "id" : "video-contacts-t6b-turns-and-pitch-279",
+      "libraryCategory" : "contactManeuvers",
       "phaseIDs" : [
         "contacts"
       ],
@@ -63163,6 +63170,7 @@
         "FAM6402"
       ],
       "id" : "video-contacts-uncommanded-prop-feather-749",
+      "libraryCategory" : "flightEmergencies",
       "phaseIDs" : [
         "contacts"
       ],
@@ -63180,6 +63188,29 @@
       "title" : "Uncommanded Prop Feather"
     },
     {
+      "byteSize" : 5041420,
+      "eventCodes" : [
+        "FAM3401",
+        "FAM4701"
+      ],
+      "id" : "video-contacts-aero-wingover-440",
+      "libraryCategory" : "aerobatics",
+      "phaseIDs" : [
+        "contacts"
+      ],
+      "primaryEventCodes" : [
+        "FAM3401"
+      ],
+      "remotePath" : "Videos\/Contacts\/aero_wingover_440.mp4",
+      "summary" : "Review video for Wingover.",
+      "tags" : [
+        "contacts",
+        "aero",
+        "wingover"
+      ],
+      "title" : "Wingover"
+    },
+    {
       "byteSize" : 231321796,
       "eventCodes" : [
         "I2103",
@@ -63187,6 +63218,7 @@
         "I4103"
       ],
       "id" : "video-instruments-t6b-bi-gca-maneuver2-100",
+      "libraryCategory" : "instruments",
       "phaseIDs" : [
         "instruments"
       ],
@@ -63211,6 +63243,7 @@
         "I2201"
       ],
       "id" : "video-instruments-t6b-bi-s1-pattern2-147",
+      "libraryCategory" : "instruments",
       "phaseIDs" : [
         "instruments"
       ],
@@ -63234,6 +63267,7 @@
         "I2101"
       ],
       "id" : "video-instruments-t6b-bi-scan-practice480-295",
+      "libraryCategory" : "instruments",
       "phaseIDs" : [
         "instruments"
       ],
@@ -63257,6 +63291,7 @@
         "I2101"
       ],
       "id" : "video-instruments-t6b-bi-steep-turns2-343",
+      "libraryCategory" : "instruments",
       "phaseIDs" : [
         "instruments"
       ],
@@ -63281,6 +63316,7 @@
         "I2201"
       ],
       "id" : "video-instruments-t6b-bi-timed-turns2-105",
+      "libraryCategory" : "instruments",
       "phaseIDs" : [
         "instruments"
       ],
@@ -63304,6 +63340,7 @@
         "I2101"
       ],
       "id" : "video-instruments-t6b-bi-transitions-476",
+      "libraryCategory" : "instruments",
       "phaseIDs" : [
         "instruments"
       ],

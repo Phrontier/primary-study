@@ -92,12 +92,18 @@ private struct ObjectivePracticeTestView: View {
     }
 
     private var setupView: some View {
-        AppScrollScreen(bottomPadding: 48) {
+        let performance = appModel.practiceTestPerformance(for: bank)
+        let questionItems = appModel.practiceTestQuestionListItems(for: bank)
+        let history = appModel.testHistory(for: bank.id)
+
+        return AppScrollScreen(bottomPadding: 48) {
             HeroCard(
                 eyebrow: "\(event.code) • Ground school test",
                 title: bank.title,
                 subtitle: bank.summary
-            )
+            ) {
+                PracticeTestPerformanceBar(snapshot: performance)
+            }
 
             VStack(alignment: .leading, spacing: 12) {
                 SectionHeader(
@@ -122,7 +128,6 @@ private struct ObjectivePracticeTestView: View {
                 }
             }
 
-            let history = appModel.testHistory(for: bank.id)
             if !history.isEmpty {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
@@ -145,6 +150,8 @@ private struct ObjectivePracticeTestView: View {
                     }
                 }
             }
+
+            PracticeQuestionLibrarySection(items: questionItems, bank: bank)
         }
     }
 
@@ -459,6 +466,7 @@ private struct LegacyPracticeTestView: View {
     @EnvironmentObject private var appModel: StudyAppModel
     @Environment(\.dismiss) private var dismiss
 
+    @State private var hasStarted = false
     @State private var currentIndex = 0
     @State private var revealed = false
     @State private var startedAt = Date()
@@ -471,6 +479,111 @@ private struct LegacyPracticeTestView: View {
     }
 
     var body: some View {
+        Group {
+            if hasStarted {
+                sessionView
+            } else {
+                setupView
+            }
+        }
+        .detailNavigationChrome(title: bank.title)
+        .alert("Practice test complete", isPresented: $showingCompletionSheet) {
+            Button("Done") {
+                dismiss()
+            }
+        } message: {
+            Text(resultSummary)
+        }
+        .onDisappear {
+            guard hasStarted, !didRecordSession else { return }
+
+            appModel.recordStudySession(
+                kind: .practiceTest,
+                topicIDs: appModel.topicIDs(for: bank, event: event),
+                startedAt: startedAt,
+                endedAt: .now,
+                completedItems: results.count,
+                totalItems: bank.questions.count,
+                outcome: .abandoned,
+                activity: StudyActivityRecord(
+                    kind: .practiceTest,
+                    destination: practiceDestination,
+                    title: bank.title,
+                    subtitle: event.code,
+                    topicIDs: appModel.topicIDs(for: bank, event: event),
+                    progressContext: "Abandoned"
+                )
+            )
+            didRecordSession = true
+        }
+    }
+
+    private var setupView: some View {
+        let performance = appModel.practiceTestPerformance(for: bank)
+        let questionItems = appModel.practiceTestQuestionListItems(for: bank)
+        let history = appModel.testHistory(for: bank.id)
+
+        return AppScrollScreen(bottomPadding: 48) {
+            HeroCard(
+                eyebrow: "\(event.code) • Practice test",
+                title: bank.title,
+                subtitle: bank.summary
+            ) {
+                PracticeTestPerformanceBar(snapshot: performance)
+            }
+
+            VStack(alignment: .leading, spacing: 12) {
+                SectionHeader(
+                    eyebrow: "Mode",
+                    title: "Choose your run",
+                    subtitle: nil
+                )
+
+                SectionContainer {
+                    Button {
+                        startLegacyRun()
+                    } label: {
+                        PracticeTestModeRow(
+                            title: "Full Test",
+                            summary: "Run the complete bank using reveal and self-score.",
+                            iconName: "checklist.checked",
+                            count: bank.questions.count
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(bank.questions.isEmpty)
+                    .opacity(bank.questions.isEmpty ? 0.55 : 1)
+                }
+            }
+
+            if !history.isEmpty {
+                VStack(alignment: .leading, spacing: 12) {
+                    SectionHeader(
+                        eyebrow: "History",
+                        title: "Recent attempts",
+                        subtitle: "Quick context from your most recent runs."
+                    )
+
+                    SectionContainer {
+                        VStack(alignment: .leading, spacing: 10) {
+                            ForEach(history.prefix(3), id: \.id) { attempt in
+                                ReviewRow(
+                                    title: "\(attempt.score)/\(attempt.total)",
+                                    subtitle: attempt.takenAt.formatted(date: .abbreviated, time: .shortened),
+                                    detail: "\(attempt.total - attempt.score) missed",
+                                    color: attempt.score == attempt.total ? AppTheme.success : AppTheme.warning
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
+            PracticeQuestionLibrarySection(items: questionItems, bank: bank)
+        }
+    }
+
+    private var sessionView: some View {
         AppScrollScreen(bottomPadding: 40) {
             HeroCard(
                 eyebrow: "\(event.code) • Practice test",
@@ -549,63 +662,6 @@ private struct LegacyPracticeTestView: View {
                     }
                 }
             }
-
-            let history = appModel.testHistory(for: bank.id)
-            if !history.isEmpty {
-                VStack(alignment: .leading, spacing: 12) {
-                    SectionHeader(
-                        eyebrow: "History",
-                        title: "Recent attempts",
-                        subtitle: "Quick context from your most recent runs."
-                    )
-
-                    SectionContainer {
-                        VStack(alignment: .leading, spacing: 10) {
-                            ForEach(history.prefix(3), id: \.id) { attempt in
-                                ReviewRow(
-                                    title: "\(attempt.score)/\(attempt.total)",
-                                    subtitle: attempt.takenAt.formatted(date: .abbreviated, time: .shortened),
-                                    detail: "\(attempt.total - attempt.score) missed",
-                                    color: attempt.score == attempt.total ? AppTheme.success : AppTheme.warning
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .detailNavigationChrome(title: bank.title)
-        .alert("Practice test complete", isPresented: $showingCompletionSheet) {
-            Button("Done") {
-                dismiss()
-            }
-        } message: {
-            Text(resultSummary)
-        }
-        .onAppear {
-            startedAt = .now
-        }
-        .onDisappear {
-            guard !didRecordSession else { return }
-
-            appModel.recordStudySession(
-                kind: .practiceTest,
-                topicIDs: appModel.topicIDs(for: bank, event: event),
-                startedAt: startedAt,
-                endedAt: .now,
-                completedItems: results.count,
-                totalItems: bank.questions.count,
-                outcome: .abandoned,
-                activity: StudyActivityRecord(
-                    kind: .practiceTest,
-                    destination: practiceDestination,
-                    title: bank.title,
-                    subtitle: event.code,
-                    topicIDs: appModel.topicIDs(for: bank, event: event),
-                    progressContext: "Abandoned"
-                )
-            )
-            didRecordSession = true
         }
     }
 
@@ -614,8 +670,18 @@ private struct LegacyPracticeTestView: View {
         return "Score: \(score)/\(bank.questions.count). Missed questions stay visible in the test history for targeted review."
     }
 
+    private func startLegacyRun() {
+        hasStarted = true
+        currentIndex = 0
+        revealed = false
+        results = [:]
+        startedAt = .now
+        didRecordSession = false
+    }
+
     private func submit(_ correct: Bool) {
         results[currentQuestion.id] = correct
+        appModel.recordPracticeQuestionAnswer(currentQuestion, in: bank, wasCorrect: correct)
 
         if currentIndex == bank.questions.count - 1 {
             let missed = results.filter { !$0.value }.map(\.key)
@@ -660,5 +726,227 @@ private struct LegacyPracticeTestView: View {
             return .event(phaseID: phase.id, eventID: event.id)
         }
         return .questionOfDay(questionID: bank.id)
+    }
+}
+
+private struct PracticeTestModeRow: View {
+    let title: String
+    let summary: String
+    let iconName: String
+    let count: Int
+
+    var body: some View {
+        HStack(spacing: 14) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(AppTheme.accent.opacity(0.16))
+                    .frame(width: 48, height: 48)
+
+                Image(systemName: iconName)
+                    .font(.system(size: 19, weight: .semibold))
+                    .foregroundStyle(AppTheme.accent)
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(AppTheme.textPrimary)
+
+                Text(summary)
+                    .font(.footnote)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            Spacer()
+
+            Text("\(count)")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(AppTheme.textMuted)
+        }
+        .padding(12)
+        .background(AppTheme.cardBackground(style: .standard))
+    }
+}
+
+private struct PracticeTestPerformanceBar: View {
+    let snapshot: PracticeTestPerformanceSnapshot
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(snapshot.detail)
+                .font(.footnote)
+                .foregroundStyle(AppTheme.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            GeometryReader { proxy in
+                HStack(spacing: 6) {
+                    ForEach(snapshot.segments, id: \.band) { segment in
+                        Capsule(style: .continuous)
+                            .fill(segment.band.displayColor)
+                            .frame(width: segmentWidth(for: segment, totalWidth: proxy.size.width), height: 8)
+                    }
+                }
+            }
+            .frame(height: 8)
+
+            HStack(spacing: 8) {
+                ForEach(snapshot.segments, id: \.band) { segment in
+                    HStack(spacing: 6) {
+                        Circle()
+                            .fill(segment.band.displayColor)
+                            .frame(width: 8, height: 8)
+
+                        Text("\(segment.band.label) \(segment.count)")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.85)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+        }
+    }
+
+    private func segmentWidth(for segment: PracticeTestPerformanceSegment, totalWidth: CGFloat) -> CGFloat {
+        guard snapshot.totalCount > 0 else { return 0 }
+        return totalWidth * (CGFloat(segment.count) / CGFloat(snapshot.totalCount))
+    }
+}
+
+private struct PracticeQuestionLibrarySection: View {
+    let items: [PracticeTestQuestionListItemSnapshot]
+    let bank: QuestionBank
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            SectionHeader(
+                eyebrow: "Library",
+                title: "All questions",
+                subtitle: nil
+            )
+
+            if items.isEmpty {
+                EmptyStateCard(
+                    icon: "tray",
+                    title: "No questions yet",
+                    message: "This test bank does not have any questions to review right now."
+                )
+            } else {
+                LazyVStack(spacing: 12) {
+                    ForEach(Array(items.enumerated()), id: \.element.question.id) { index, item in
+                        PracticeQuestionPreviewCard(
+                            item: item,
+                            ordinal: index + 1,
+                            showsCorrectChoice: bank.supportsObjectiveTesting
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+private struct PracticeQuestionPreviewCard: View {
+    let item: PracticeTestQuestionListItemSnapshot
+    let ordinal: Int
+    let showsCorrectChoice: Bool
+
+    var body: some View {
+        SectionContainer {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(alignment: .center, spacing: 8) {
+                    Text("Q\(ordinal)")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppTheme.textMuted)
+
+                    PracticeQuestionStatusBadge(text: item.band.label, color: item.band.displayColor)
+
+                    if item.isStarred {
+                        PracticeQuestionStatusBadge(text: "Starred", color: AppTheme.warning)
+                    }
+
+                    Spacer(minLength: 0)
+                }
+
+                Text(item.question.prompt)
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(AppTheme.textPrimary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                if showsCorrectChoice, let correctChoiceText = item.correctChoiceText {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Correct choice")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(AppTheme.textMuted)
+
+                        Text(correctChoiceText)
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(AppTheme.textPrimary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Answer")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(AppTheme.textMuted)
+
+                    Text(item.question.answer)
+                        .font(.subheadline)
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                if let explanation = item.question.explanation, !explanation.isEmpty {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Explanation")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(AppTheme.textMuted)
+
+                        Text(explanation)
+                            .font(.footnote)
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+            }
+        }
+    }
+}
+
+private struct PracticeQuestionStatusBadge: View {
+    let text: String
+    let color: Color
+
+    var body: some View {
+        Text(text)
+            .font(.caption2.weight(.semibold))
+            .padding(.horizontal, 8)
+            .padding(.vertical, 5)
+            .background(AppTheme.badgeFill(color), in: Capsule())
+            .overlay(
+                Capsule()
+                    .stroke(AppTheme.badgeStroke(color), lineWidth: 1)
+            )
+            .foregroundStyle(AppTheme.prominentText(color))
+    }
+}
+
+private extension PracticeTestPerformanceBand {
+    var displayColor: Color {
+        switch self {
+        case .new:
+            return AppTheme.textMuted
+        case .missed:
+            return AppTheme.statusColor(.rejected)
+        case .needsReview:
+            return AppTheme.statusColor(.warning)
+        case .solid:
+            return AppTheme.statusColor(.approved)
+        }
     }
 }

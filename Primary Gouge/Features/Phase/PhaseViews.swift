@@ -13,6 +13,10 @@ struct PhaseDetailView: View {
         appModel.phaseKnowledgeVideos(for: phase)
     }
 
+    private var generalLibraryVideoGroups: [VideoLibraryGroupSnapshot] {
+        appModel.phaseKnowledgeVideoGroups(for: phase)
+    }
+
     var body: some View {
         AppScrollScreen {
             HeroCard(
@@ -30,7 +34,7 @@ struct PhaseDetailView: View {
 
             if !generalLibraryResources.isEmpty || !generalLibraryVideos.isEmpty {
                 NavigationLink {
-                    PhaseKnowledgeView(phase: phase, resources: generalLibraryResources, videos: generalLibraryVideos)
+                    PhaseKnowledgeView(phase: phase, resources: generalLibraryResources, videoGroups: generalLibraryVideoGroups)
                 } label: {
                     PhaseDestinationCard(
                         title: "General Library",
@@ -84,7 +88,7 @@ struct PhaseDetailView: View {
 struct PhaseKnowledgeView: View {
     let phase: Phase
     let resources: [SharedResource]
-    let videos: [VideoAsset]
+    let videoGroups: [VideoLibraryGroupSnapshot]
     @EnvironmentObject private var searchChrome: SearchChromeModel
     @EnvironmentObject private var videoDownloadStore: VideoDownloadStore
 
@@ -97,7 +101,7 @@ struct PhaseKnowledgeView: View {
                 accent: AppTheme.domainColor(.library)
             )
 
-            if !videos.isEmpty {
+            if !videoGroups.isEmpty {
                 VStack(alignment: .leading, spacing: 14) {
                     SectionHeader(
                         eyebrow: "Videos",
@@ -105,18 +109,29 @@ struct PhaseKnowledgeView: View {
                         subtitle: nil
                     )
 
-                    ForEach(videos) { video in
-                        NavigationLink {
-                            VideoDetailView(video: video)
-                        } label: {
-                            ToolCard(
-                                title: video.title,
-                                subtitle: videoSubtitle(video),
-                                icon: "play.rectangle.fill",
+                    ForEach(videoGroups) { group in
+                        VStack(alignment: .leading, spacing: 10) {
+                            SectionHeader(
+                                eyebrow: "Category",
+                                title: group.category.displayName,
+                                subtitle: nil,
                                 accent: AppTheme.domainColor(.videos)
                             )
+
+                            ForEach(group.videos) { video in
+                                NavigationLink {
+                                    VideoDetailView(video: video)
+                                } label: {
+                                    ToolCard(
+                                        title: video.title,
+                                        subtitle: videoSubtitle(video),
+                                        icon: group.category.iconName,
+                                        accent: AppTheme.domainColor(.videos)
+                                    )
+                                }
+                                .buttonStyle(.plain)
+                            }
                         }
-                        .buttonStyle(.plain)
                     }
                 }
             }

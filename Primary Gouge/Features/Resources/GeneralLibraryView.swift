@@ -3,7 +3,7 @@ import SwiftUI
 struct GeneralLibraryView: View {
     let hubs: [LibraryStudyHub]
     let resourceGroups: [SharedResourceGroupSnapshot]
-    let videos: [VideoAsset]
+    let videoGroups: [VideoLibraryGroupSnapshot]
 
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
@@ -51,24 +51,35 @@ struct GeneralLibraryView: View {
                 }
             }
 
-            if !videos.isEmpty {
+            if !videoGroups.isEmpty {
                 librarySection(
                     eyebrow: "Videos",
                     title: "Watch and review",
                     subtitle: nil
                 ) {
-                    ForEach(videos) { video in
-                        NavigationLink {
-                            VideoDetailView(video: video)
-                        } label: {
-                            ToolCard(
-                                title: video.title,
-                                subtitle: videoSubtitle(video),
-                                icon: "play.rectangle.fill",
+                    ForEach(videoGroups) { group in
+                        VStack(alignment: .leading, spacing: 10) {
+                            SectionHeader(
+                                eyebrow: "Category",
+                                title: group.category.displayName,
+                                subtitle: nil,
                                 accent: AppTheme.domainColor(.videos)
                             )
+
+                            ForEach(group.videos) { video in
+                                NavigationLink {
+                                    VideoDetailView(video: video)
+                                } label: {
+                                    ToolCard(
+                                        title: video.title,
+                                        subtitle: videoSubtitle(video),
+                                        icon: group.category.iconName,
+                                        accent: AppTheme.domainColor(.videos)
+                                    )
+                                }
+                                .buttonStyle(.plain)
+                            }
                         }
-                        .buttonStyle(.plain)
                     }
                 }
             }

@@ -8,6 +8,7 @@ struct VideoRecord: Codable {
     var id: String
     var title: String
     var remotePath: String
+    var libraryCategory: String
     var phaseIDs: [String]
     var eventCodes: [String]
     var primaryEventCodes: [String]
@@ -20,6 +21,7 @@ struct VideoRecord: Codable {
         case id
         case title
         case remotePath
+        case libraryCategory
         case phaseIDs
         case eventCodes
         case primaryEventCodes
@@ -33,6 +35,7 @@ struct VideoRecord: Codable {
         id: String,
         title: String,
         remotePath: String,
+        libraryCategory: String,
         phaseIDs: [String],
         eventCodes: [String],
         primaryEventCodes: [String],
@@ -44,6 +47,7 @@ struct VideoRecord: Codable {
         self.id = id
         self.title = title
         self.remotePath = remotePath
+        self.libraryCategory = libraryCategory
         self.phaseIDs = phaseIDs
         self.eventCodes = eventCodes
         self.primaryEventCodes = primaryEventCodes
@@ -58,6 +62,7 @@ struct VideoRecord: Codable {
         id = try container.decode(String.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
         remotePath = try container.decode(String.self, forKey: .remotePath)
+        libraryCategory = try container.decodeIfPresent(String.self, forKey: .libraryCategory) ?? "other"
         phaseIDs = try container.decodeIfPresent([String].self, forKey: .phaseIDs) ?? []
         eventCodes = try container.decodeIfPresent([String].self, forKey: .eventCodes) ?? []
         primaryEventCodes = try container.decodeIfPresent([String].self, forKey: .primaryEventCodes) ?? []
@@ -91,11 +96,15 @@ let syncedVideos = discovered.map { fileURL -> VideoRecord in
     let title = existing?.title.nonEmpty ?? inferredTitle(from: fileURL)
     let tags = uniqueStrings(existing?.tags ?? inferredTags(from: fileURL, phaseID: phaseID))
     let byteSize = (try? fileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize).map(Int64.init)
+    let inferredCategory = inferredLibraryCategory(from: fileURL, tags: tags)
+    let existingCategory = existing?.libraryCategory.nonEmpty
+    let libraryCategory = existingCategory.flatMap { $0 == "other" ? nil : $0 } ?? inferredCategory
 
     return VideoRecord(
         id: existing?.id ?? sanitizedID(remotePath),
         title: title,
         remotePath: remotePath,
+        libraryCategory: libraryCategory,
         phaseIDs: uniqueStrings(existing?.phaseIDs.nonEmptyArray ?? [phaseID].compactMap { $0 }),
         eventCodes: existing?.eventCodes ?? [],
         primaryEventCodes: existing?.primaryEventCodes ?? [],
@@ -192,6 +201,41 @@ func inferredTags(from fileURL: URL, phaseID: String?) -> [String] {
         .filter { !$0.isEmpty }
     tags.append(contentsOf: tokens)
     return uniqueStrings(tags)
+}
+
+func inferredLibraryCategory(from fileURL: URL, tags: [String]) -> String {
+    let filename = fileURL.deletingPathExtension().lastPathComponent.lowercased()
+    let haystack = Set(tags.map { $0.lowercased() } + filename.split { !$0.isLetter && !$0.isNumber }.map(String.init))
+
+    if filename.contains("hot_start") || filename.contains("hung_start") || filename.contains("no_start") || filename.contains("abnormal_start") {
+        return "groundEmergencies"
+    }
+
+    if filename.contains("engine") || filename.contains("flameout") || filename.contains("fuel_starvation") || filename.contains("loss_of_useful_power") || filename.contains("uncommanded_prop") {
+        return "flightEmergencies"
+    }
+
+    if filename.contains("normal_start") || filename.contains("start_scan") || filename.contains("hand_signals") {
+        return "startSequence"
+    }
+
+    if haystack.contains("instruments") || haystack.contains("bi") || haystack.contains("gca") || haystack.contains("scan") || haystack.contains("timed") || haystack.contains("transitions") {
+        return "instruments"
+    }
+
+    if filename.contains("landing") || filename.contains("takeoff") || filename.contains("pattern") || filename.contains("propeller_sleeve") || filename.contains("crosswind") {
+        return "landingPattern"
+    }
+
+    if filename.contains("poweronstalls") || filename.contains("poweroffstalls") || filename.contains("turns_and_pitch") {
+        return "contactManeuvers"
+    }
+
+    if filename.contains("loop") || filename.contains("aileronroll") || filename.contains("barrelroll") || filename.contains("cuban8") || filename.contains("cloverleaf") || filename.contains("immelmann") || filename.contains("splits") || filename.contains("wingover") {
+        return "aerobatics"
+    }
+
+    return "other"
 }
 
 func sanitizedID(_ value: String) -> String {

@@ -288,7 +288,7 @@ struct MoreTabView: View {
         GeneralLibraryView(
             hubs: appModel.generalLibraryStudyHubs,
             resourceGroups: appModel.generalLibraryGroupedResources,
-            videos: appModel.generalLibraryVideos
+            videoGroups: appModel.generalLibraryVideoGroups
         )
     }
 }
@@ -776,7 +776,7 @@ private struct MoreRecentBriefsView: View {
             GeneralLibraryView(
                 hubs: appModel.generalLibraryStudyHubs,
                 resourceGroups: appModel.generalLibraryGroupedResources,
-                videos: appModel.generalLibraryVideos
+                videoGroups: appModel.generalLibraryVideoGroups
             )
         } label: {
             StudyActionButton(
@@ -865,7 +865,7 @@ private struct MoreRecentFlashcardSetsView: View {
             GeneralLibraryView(
                 hubs: appModel.generalLibraryStudyHubs,
                 resourceGroups: appModel.generalLibraryGroupedResources,
-                videos: appModel.generalLibraryVideos
+                videoGroups: appModel.generalLibraryVideoGroups
             )
         } label: {
             StudyActionButton(
@@ -951,7 +951,7 @@ private struct MoreRecentEmptyState: View {
                 GeneralLibraryView(
                     hubs: appModel.generalLibraryStudyHubs,
                     resourceGroups: appModel.generalLibraryGroupedResources,
-                    videos: appModel.generalLibraryVideos
+                    videoGroups: appModel.generalLibraryVideoGroups
                 )
             } label: {
                 StudyActionButton(

@@ -309,6 +309,7 @@ struct VideoAsset: Codable {
     let id: String
     let title: String
     let remotePath: String
+    let libraryCategory: String
     let phaseIDs: [String]
     let eventCodes: [String]
     let primaryEventCodes: [String]
@@ -321,6 +322,7 @@ struct VideoAsset: Codable {
         case id
         case title
         case remotePath
+        case libraryCategory
         case phaseIDs
         case eventCodes
         case primaryEventCodes
@@ -335,6 +337,7 @@ struct VideoAsset: Codable {
         id = try container.decode(String.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
         remotePath = try container.decode(String.self, forKey: .remotePath)
+        libraryCategory = try container.decodeIfPresent(String.self, forKey: .libraryCategory) ?? "other"
         phaseIDs = try container.decodeIfPresent([String].self, forKey: .phaseIDs) ?? []
         eventCodes = try container.decodeIfPresent([String].self, forKey: .eventCodes) ?? []
         primaryEventCodes = try container.decodeIfPresent([String].self, forKey: .primaryEventCodes) ?? []
@@ -1437,6 +1440,16 @@ struct ManifestBuilder {
 
     private func validateVideoLibraryReferences(in phases: [Phase]) throws {
         let allowedPhaseIDs = Set(phaseSeeds.map(\.id))
+        let allowedVideoCategories = Set([
+            "startSequence",
+            "groundEmergencies",
+            "flightEmergencies",
+            "landingPattern",
+            "contactManeuvers",
+            "aerobatics",
+            "instruments",
+            "other"
+        ])
         let allowedEventCodes = Set(
             phases
                 .flatMap(\.categories)
@@ -1454,6 +1467,10 @@ struct ManifestBuilder {
 
             if video.remotePath.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 issues.append("\(video.id): missing remotePath")
+            }
+
+            if !allowedVideoCategories.contains(video.libraryCategory) {
+                issues.append("\(video.id): unknown libraryCategory \(video.libraryCategory)")
             }
 
             let unknownPhaseIDs = video.phaseIDs.filter { !allowedPhaseIDs.contains($0) }

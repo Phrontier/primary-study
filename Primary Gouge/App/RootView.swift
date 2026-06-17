@@ -170,7 +170,7 @@ private struct EventsTabView: View {
                     GeneralLibraryView(
                         hubs: appModel.generalLibraryStudyHubs,
                         resourceGroups: appModel.generalLibraryGroupedResources,
-                        videos: appModel.generalLibraryVideos
+                        videoGroups: appModel.generalLibraryVideoGroups
                     )
                 } label: {
                     PhaseDestinationCard(

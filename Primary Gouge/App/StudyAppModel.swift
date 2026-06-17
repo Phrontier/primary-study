@@ -51,6 +51,53 @@ struct DeckPerformanceSnapshot {
     let segments: [DeckPerformanceSegment]
 }
 
+enum PracticeTestPerformanceBand: String, CaseIterable, Hashable {
+    case new
+    case missed
+    case needsReview
+    case solid
+
+    var label: String {
+        switch self {
+        case .new: "New"
+        case .missed: "Missed"
+        case .needsReview: "Needs Review"
+        case .solid: "Solid"
+        }
+    }
+
+    var colorToken: String {
+        switch self {
+        case .new: "muted"
+        case .missed: "danger"
+        case .needsReview: "warning"
+        case .solid: "success"
+        }
+    }
+}
+
+struct PracticeTestPerformanceSegment: Hashable {
+    let band: PracticeTestPerformanceBand
+    let count: Int
+}
+
+struct PracticeTestPerformanceSnapshot {
+    let detail: String
+    let totalCount: Int
+    let segments: [PracticeTestPerformanceSegment]
+}
+
+struct PracticeTestQuestionListItemSnapshot: Hashable {
+    let question: Question
+    let band: PracticeTestPerformanceBand
+    let progress: PracticeQuestionProgressRecord?
+    let correctChoiceText: String?
+
+    var isStarred: Bool {
+        progress?.isStarred ?? false
+    }
+}
+
 struct FlashcardListItemSnapshot: Hashable {
     let card: FlashcardDefinition
     let band: FlashcardPerformanceBand
@@ -63,6 +110,13 @@ struct SharedResourceGroupSnapshot: Identifiable, Hashable {
     let resources: [SharedResource]
 
     var id: String { section.rawValue }
+}
+
+struct VideoLibraryGroupSnapshot: Identifiable, Hashable {
+    let category: VideoLibraryCategory
+    let videos: [VideoAsset]
+
+    var id: String { category.rawValue }
 }
 
 struct GroundSchoolCategorySnapshot: Hashable {
@@ -455,6 +509,70 @@ final class StudyAppModel: ObservableObject {
             }
     }
 
+    func practiceTestPerformance(for bank: QuestionBank) -> PracticeTestPerformanceSnapshot {
+        let items = practiceTestQuestionListItems(for: bank)
+        let segments = PracticeTestPerformanceBand.allCases.map { band in
+            PracticeTestPerformanceSegment(band: band, count: items.filter { $0.band == band }.count)
+        }
+
+        guard !items.isEmpty else {
+            return PracticeTestPerformanceSnapshot(
+                detail: "This test does not have any questions yet.",
+                totalCount: 0,
+                segments: segments
+            )
+        }
+
+        let missedCount = segments.first(where: { $0.band == .missed })?.count ?? 0
+        let needsReviewCount = segments.first(where: { $0.band == .needsReview })?.count ?? 0
+        let newCount = segments.first(where: { $0.band == .new })?.count ?? 0
+
+        let detail: String
+        if missedCount > 0 {
+            detail = missedCount == 1
+                ? "1 question is currently missed."
+                : "\(missedCount) questions are currently missed."
+        } else if needsReviewCount > 0 {
+            detail = needsReviewCount == 1
+                ? "1 question still needs review."
+                : "\(needsReviewCount) questions still need review."
+        } else if newCount == items.count {
+            detail = "Start a run to build question-level progress."
+        } else if newCount > 0 {
+            detail = newCount == 1
+                ? "1 question is still new."
+                : "\(newCount) questions are still new."
+        } else {
+            detail = "Question performance looks solid."
+        }
+
+        return PracticeTestPerformanceSnapshot(
+            detail: detail,
+            totalCount: items.count,
+            segments: segments
+        )
+    }
+
+    func practiceTestQuestionListItems(for bank: QuestionBank) -> [PracticeTestQuestionListItemSnapshot] {
+        bank.questions.map { question in
+            let progress = progressQuestionProgress(for: question, in: bank)
+            let correctChoiceText = question.choices?.first(where: { $0.id == question.correctChoiceID }).map { choice in
+                if let format = question.format,
+                   let badge = QuizChoicePresentation.badgeText(for: choice, format: format) {
+                    return "\(badge) \(choice.text)"
+                }
+                return choice.text
+            }
+
+            return PracticeTestQuestionListItemSnapshot(
+                question: question,
+                band: practiceTestPerformanceBand(for: question, in: bank),
+                progress: progress,
+                correctChoiceText: correctChoiceText
+            )
+        }
+    }
+
     func briefingGuide(for event: Event) -> SourceDocument? {
         event.sourceDocuments.first { document in
             document.kind == .briefingGuide && event.primaryDocumentIDs.contains(document.id)
@@ -606,6 +724,10 @@ final class StudyAppModel: ObservableObject {
         studyManifest.videos.sorted {
             $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending
         }
+    }
+
+    var generalLibraryVideoGroups: [VideoLibraryGroupSnapshot] {
+        Self.videoGroups(from: studyManifest.videos)
     }
 
     var homeTabSnapshot: HomeTabSnapshot {
@@ -784,6 +906,22 @@ final class StudyAppModel: ObservableObject {
             .sorted {
                 $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending
             }
+    }
+
+    func phaseKnowledgeVideoGroups(for phase: Phase) -> [VideoLibraryGroupSnapshot] {
+        Self.videoGroups(from: studyManifest.videos.filter { $0.phaseIDs.contains(phase.id) })
+    }
+
+    static func videoGroups(from videos: [VideoAsset]) -> [VideoLibraryGroupSnapshot] {
+        VideoLibraryCategory.allCases.compactMap { category in
+            let categoryVideos = videos
+                .filter { $0.libraryCategory == category }
+                .sorted {
+                    $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending
+                }
+            guard !categoryVideos.isEmpty else { return nil }
+            return VideoLibraryGroupSnapshot(category: category, videos: categoryVideos)
+        }
     }
 
     func homeSearchSections(query: String, instructors: [Instructor]) -> [SearchResultSectionSnapshot] {
@@ -973,6 +1111,29 @@ final class StudyAppModel: ObservableObject {
         Array(Set(category.events.flatMap(topicIDs(for:)))).sorted()
     }
 
+    private func practiceTestPerformanceBand(for question: Question, in bank: QuestionBank) -> PracticeTestPerformanceBand {
+        guard let progress = progressQuestionProgress(for: question, in: bank),
+              progress.attempts > 0 else {
+            return .new
+        }
+
+        if progress.lastAnswerWasCorrect == false {
+            return .missed
+        }
+
+        if progress.incorrectAttempts > 0 || progress.accuracy < 0.8 {
+            return .needsReview
+        }
+
+        return .solid
+    }
+
+    private func progressQuestionProgress(for question: Question, in bank: QuestionBank) -> PracticeQuestionProgressRecord? {
+        let progress = practiceQuestionProgress(for: question.id)
+        guard progress?.bankID == bank.id else { return nil }
+        return progress
+    }
+
     private func bandRank(_ band: FlashcardPerformanceBand) -> Int {
         switch band {
         case .notStudied: 0
@@ -1137,6 +1298,7 @@ final class StudyAppModel: ObservableObject {
                 let score = max(
                     scoreMatch(query: query, text: video.title, exact: 110, prefix: 90, contains: 70),
                     scoreMatch(query: query, text: video.summary, exact: 0, prefix: 0, contains: 45),
+                    scoreMatch(query: query, text: video.libraryCategory.displayName, exact: 80, prefix: 66, contains: 52),
                     bestTagScore(query: query, tags: video.phaseIDs, matchScore: 60),
                     bestTagScore(query: query, tags: video.eventCodes, matchScore: 64),
                     bestTagScore(query: query, tags: video.tags, matchScore: 58)
@@ -1148,7 +1310,7 @@ final class StudyAppModel: ObservableObject {
                     id: "video-\(video.id)",
                     section: .videos,
                     title: video.title,
-                    subtitle: video.summary,
+                    subtitle: "\(video.libraryCategory.displayName) • \(video.summary)",
                     score: score,
                     destination: .video(id: video.id)
                 )

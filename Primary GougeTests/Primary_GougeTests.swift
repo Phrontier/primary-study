@@ -27,6 +27,7 @@ struct Primary_GougeTests {
             id: id,
             title: "Test Video",
             remotePath: "Videos/Contacts/test_video.mp4",
+            libraryCategory: .other,
             phaseIDs: ["contacts"],
             eventCodes: ["FAM2101"],
             primaryEventCodes: ["FAM2101"],
@@ -109,10 +110,47 @@ struct Primary_GougeTests {
         #expect(video.phaseIDs == ["contacts"])
         #expect(video.eventCodes.isEmpty)
         #expect(video.primaryEventCodes.isEmpty)
+        #expect(video.libraryCategory == .other)
         #expect(video.byteSize == nil)
         #expect(video.durationSeconds == nil)
         #expect(video.summary.isEmpty)
         #expect(video.tags.isEmpty)
+    }
+
+    @MainActor
+    @Test func videoAssetDecodingReadsLibraryCategory() throws {
+        let json = """
+        {
+          "id": "video-start",
+          "title": "Start Video",
+          "remotePath": "Videos/Contacts/start.mp4",
+          "libraryCategory": "startSequence",
+          "phaseIDs": ["contacts"],
+          "summary": "Start sequence."
+        }
+        """
+        let video = try JSONDecoder().decode(VideoAsset.self, from: try #require(json.data(using: .utf8)))
+
+        #expect(video.libraryCategory == .startSequence)
+        #expect(video.libraryCategory.displayName == "Start Sequence")
+    }
+
+    @MainActor
+    @Test func videoGroupsSortByCategoryOrderAndKeepAllVideos() {
+        let videos = [
+            VideoAsset(id: "aero", title: "Aero", remotePath: "Videos/Contacts/aero.mp4", libraryCategory: .aerobatics, phaseIDs: ["contacts"], summary: "Aero."),
+            VideoAsset(id: "start", title: "Start", remotePath: "Videos/Contacts/start.mp4", libraryCategory: .startSequence, phaseIDs: ["contacts"], summary: "Start."),
+            VideoAsset(id: "instrument", title: "Instrument", remotePath: "Videos/Instruments/instrument.mp4", libraryCategory: .instruments, phaseIDs: ["instruments"], summary: "Instrument."),
+            VideoAsset(id: "ground", title: "Ground", remotePath: "Videos/Contacts/ground.mp4", libraryCategory: .groundEmergencies, phaseIDs: ["contacts"], summary: "Ground."),
+            VideoAsset(id: "start-2", title: "After Start", remotePath: "Videos/Contacts/after_start.mp4", libraryCategory: .startSequence, phaseIDs: ["contacts"], summary: "After start.")
+        ]
+
+        let groups = StudyAppModel.videoGroups(from: videos)
+
+        #expect(groups.map(\.category) == [.startSequence, .groundEmergencies, .aerobatics, .instruments])
+        #expect(groups.map { $0.category.displayName } == ["Start Sequence", "Ground Emergencies", "Aerobatics", "Instruments"])
+        #expect(groups.flatMap(\.videos).count == videos.count)
+        #expect(groups.first?.videos.map(\.title) == ["After Start", "Start"])
     }
 
     @MainActor

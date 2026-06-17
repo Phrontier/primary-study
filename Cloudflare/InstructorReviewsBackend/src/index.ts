@@ -11,6 +11,8 @@ export interface Env {
   APPLE_PRIVATE_KEY?: string;
   RESEND_API_KEY?: string;
   AUTH_EMAIL_FROM?: string;
+  SUPABASE_URL?: string;
+  SUPABASE_PUBLISHABLE_KEY?: string;
   ACCESS_TOKEN_TTL_SECONDS?: string;
   REFRESH_TOKEN_TTL_SECONDS?: string;
   EMAIL_CODE_TTL_SECONDS?: string;
@@ -22,6 +24,8 @@ export interface Env {
 
 type ReviewStatus = "pending" | "approved" | "rejected";
 type EventKind = "sim" | "flight";
+type ReviewActionType = "create" | "edit" | "delete";
+type OwnedReviewStatus = "pending_create" | "approved" | "pending_edit" | "pending_delete" | "rejected_create" | "rejected_edit" | "rejected_delete" | "removed";
 type ReportStatus = "open" | "dismissed" | "resolved";
 type ReportTargetKind = "instructor" | "review";
 type CommunitySubmissionCategory = "feedback" | "feature_request" | "support" | "incorrect_gouge";
@@ -52,6 +56,25 @@ type ReviewRecord = {
   submitterClientID: string | null;
   submitterUserID: string | null;
   updatedAt: string;
+  actionType?: ReviewActionType | null;
+  targetReviewID?: string | null;
+  visibilityState?: "public" | "deleted" | null;
+};
+
+type OwnedReviewRecord = {
+  id: string;
+  publicReviewID: string | null;
+  submissionID: string | null;
+  instructorName: string;
+  squadronID: string;
+  eventName: string | null;
+  eventKind: EventKind;
+  chillScore: number;
+  gradingScore: number;
+  reviewText: string;
+  submittedAt: string;
+  updatedAt: string;
+  status: OwnedReviewStatus;
 };
 
 type ReportRecord = {
@@ -127,8 +150,10 @@ type AppSessionClaims = {
 
 type AuthenticatedUser = {
   id: string;
-  sessionID: string;
+  source: "cloudflare" | "supabase";
+  sessionID?: string;
   authTime: number;
+  accessToken?: string;
 };
 
 type UserRow = {
@@ -275,6 +300,11 @@ export default {
         return json({ reviews: await fetchPublishedReviews(env) });
       }
 
+      if (request.method === "GET" && path === "/v1/me/reviews") {
+        const user = await requireAuthenticatedUser(env, request);
+        return json({ reviews: await fetchOwnedReviews(env, user.id) });
+      }
+
       if (request.method === "GET" && path === "/v1/submissions/statuses") {
         const user = await optionalAuthenticatedUser(env, request);
         const clientID = user ? optionalSubmitterClientID(request) : requireSubmitterClientID(request);
@@ -299,6 +329,21 @@ export default {
         const payload = (await request.json()) as ReviewRecord;
         const created = await createSubmission(env, payload, clientID, user?.id ?? null);
         return json({ id: created.id }, 201);
+      }
+
+      const editOwnedReviewMatch = path.match(/^\/v1\/me\/reviews\/([^/]+)\/edit$/);
+      if (request.method === "POST" && editOwnedReviewMatch) {
+        const user = await requireAuthenticatedUser(env, request);
+        const payload = (await request.json()) as ReviewRecord;
+        await submitReviewEdit(env, user.id, decodeURIComponent(editOwnedReviewMatch[1]), payload);
+        return new Response(null, { status: 204 });
+      }
+
+      const deleteOwnedReviewMatch = path.match(/^\/v1\/me\/reviews\/([^/]+)\/delete$/);
+      if (request.method === "POST" && deleteOwnedReviewMatch) {
+        const user = await requireAuthenticatedUser(env, request);
+        await requestReviewDeletion(env, user.id, decodeURIComponent(deleteOwnedReviewMatch[1]));
+        return new Response(null, { status: 204 });
       }
 
       if (request.method === "POST" && path === "/v1/reports") {
@@ -397,7 +442,10 @@ async function fetchPublishedReviews(env: Env): Promise<ReviewRecord[]> {
       status,
       submitter_client_id AS submitterClientID,
       submitter_user_id AS submitterUserID,
-      updated_at AS updatedAt
+      updated_at AS updatedAt,
+      'create' AS actionType,
+      NULL AS targetReviewID,
+      'public' AS visibilityState
     FROM instructor_reviews
     WHERE status = 'approved'
     ORDER BY submitted_at DESC
@@ -948,7 +996,7 @@ async function refreshAppSession(env: Env, request: Request, refreshToken: strin
 
 async function signOutAppSession(env: Env, request: Request): Promise<void> {
   const user = await optionalAuthenticatedUser(env, request);
-  if (!user) return;
+  if (!user || user.source !== "cloudflare" || !user.sessionID) return;
   const now = nowISO();
   await env.DB.prepare(`
     UPDATE user_sessions
@@ -961,7 +1009,7 @@ async function signOutAppSession(env: Env, request: Request): Promise<void> {
 async function requireModeratorOrPermission(env: Env, request: Request): Promise<void> {
   const appUser = await optionalAuthenticatedUser(env, request);
   if (appUser) {
-    await requirePermission(env, appUser.id, "instructor_gouge_moderator");
+    await requirePermission(env, appUser, "instructor_gouge_moderator");
     return;
   }
   await requireModerator(env, request);
@@ -985,6 +1033,18 @@ async function requireAuthenticatedUser(env: Env, request: Request): Promise<Aut
     throw httpError("Sign-in is required.", 401);
   }
   const token = authorization.slice("Bearer ".length).trim();
+
+  try {
+    return await authenticatedCloudflareUser(env, token);
+  } catch {
+    // Supabase JWTs are now the primary app session; the legacy Cloudflare
+    // app-session verifier remains here only for migration compatibility.
+  }
+
+  return authenticatedSupabaseUser(env, token);
+}
+
+async function authenticatedCloudflareUser(env: Env, token: string): Promise<AuthenticatedUser> {
   const claims = await verifyAppAccessToken(env, token);
   const row = await env.DB.prepare(`
     SELECT
@@ -1003,19 +1063,82 @@ async function requireAuthenticatedUser(env: Env, request: Request): Promise<Aut
 
   return {
     id: claims.sub,
+    source: "cloudflare",
     sessionID: claims.sid,
     authTime: claims.authTime,
   };
 }
 
-async function requirePermission(env: Env, userID: string, permission: AccountPermission): Promise<void> {
+async function authenticatedSupabaseUser(env: Env, token: string): Promise<AuthenticatedUser> {
+  const baseURL = normalizedSupabaseURL(env);
+  const response = await fetch(`${baseURL}/auth/v1/user`, {
+    headers: {
+      accept: "application/json",
+      apikey: requiredSupabasePublishableKey(env),
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw httpError("Sign-in is required.", 401);
+  }
+
+  const user = await response.json() as { id?: string };
+  if (!user.id) {
+    throw httpError("Sign-in is required.", 401);
+  }
+
+  return {
+    id: user.id,
+    source: "supabase",
+    authTime: Math.floor(Date.now() / 1000),
+    accessToken: token,
+  };
+}
+
+async function requirePermission(env: Env, user: AuthenticatedUser, permission: AccountPermission): Promise<void> {
+  if (user.source === "supabase") {
+    await requireSupabasePermission(env, user, permission);
+    return;
+  }
+
   const row = await env.DB.prepare(`
     SELECT role
     FROM user_roles
     WHERE user_id = ? AND role = ?
     LIMIT 1
-  `).bind(userID, permission).first<{ role: string }>();
+  `).bind(user.id, permission).first<{ role: string }>();
   if (!row) {
+    throw httpError("Moderator permission is required.", 403);
+  }
+}
+
+async function requireSupabasePermission(env: Env, user: AuthenticatedUser, permission: AccountPermission): Promise<void> {
+  if (!user.accessToken) {
+    throw httpError("Moderator permission is required.", 403);
+  }
+
+  const baseURL = normalizedSupabaseURL(env);
+  const params = new URLSearchParams({
+    user_id: `eq.${user.id}`,
+    permission: `eq.${permission}`,
+    select: "permission",
+    limit: "1",
+  });
+  const response = await fetch(`${baseURL}/rest/v1/account_roles?${params.toString()}`, {
+    headers: {
+      accept: "application/json",
+      apikey: requiredSupabasePublishableKey(env),
+      authorization: `Bearer ${user.accessToken}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw httpError("Moderator permission is required.", response.status === 401 ? 401 : 403);
+  }
+
+  const rows = await response.json() as Array<{ permission?: string }>;
+  if (!rows.some((row) => row.permission === permission)) {
     throw httpError("Moderator permission is required.", 403);
   }
 }
@@ -1198,7 +1321,7 @@ async function fetchModerationQueue(env: Env) {
   ]);
 
   return {
-    pendingReviews: pendingReviewsResult.results ?? [],
+    pendingReviews: (pendingReviewsResult.results ?? []).map(decorateReviewRecord),
     openReports: openReportsResult.results ?? [],
     openCommunitySubmissions: openCommunitySubmissionsResult.results ?? [],
   };
@@ -1218,7 +1341,8 @@ async function approveSubmission(env: Env, id: string): Promise<void> {
       submitted_at AS submittedAt,
       status,
       submitter_client_id AS submitterClientID,
-      submitter_user_id AS submitterUserID
+      submitter_user_id AS submitterUserID,
+      updated_at AS updatedAt
     FROM review_submissions
     WHERE id = ?
     LIMIT 1
@@ -1229,6 +1353,66 @@ async function approveSubmission(env: Env, id: string): Promise<void> {
   }
 
   const now = nowISO();
+  const metadata = reviewActionMetadata(submission.id);
+  const actionType = metadata.actionType;
+
+  if (actionType === "edit") {
+    const targetReview = await requireOwnedReview(env, metadata.targetReviewID ?? "", submission.submitterUserID);
+    await env.DB.batch([
+      env.DB.prepare(`
+        UPDATE instructor_reviews
+        SET instructor_name = ?,
+            squadron_id = ?,
+            event_name = ?,
+            event_kind = ?,
+            chill_score = ?,
+            grading_score = ?,
+            review_text = ?,
+            updated_at = ?,
+            status = 'approved'
+        WHERE id = ?
+      `).bind(
+        submission.instructorName,
+        submission.squadronID,
+        submission.eventName,
+        submission.eventKind,
+        submission.chillScore,
+        submission.gradingScore,
+        submission.reviewText,
+        now,
+        targetReview.id
+      ),
+      env.DB.prepare(`
+        UPDATE review_submissions
+        SET status = 'approved',
+            moderation_state = 'screened_clean',
+            updated_at = ?
+        WHERE id = ?
+      `).bind(now, submission.id),
+    ]);
+    return;
+  }
+
+  if (actionType === "delete") {
+    const targetReview = await requireOwnedReview(env, metadata.targetReviewID ?? "", submission.submitterUserID);
+    await env.DB.batch([
+      env.DB.prepare(`
+        UPDATE instructor_reviews
+        SET status = 'rejected',
+            updated_at = ?
+        WHERE id = ?
+      `).bind(now, targetReview.id),
+      env.DB.prepare(`
+        UPDATE review_submissions
+        SET status = 'approved',
+            moderation_state = 'screened_clean',
+            updated_at = ?
+        WHERE id = ?
+      `).bind(now, submission.id),
+    ]);
+    return;
+  }
+
   await env.DB.batch([
     env.DB.prepare(`
       INSERT OR REPLACE INTO instructor_reviews (
@@ -1275,7 +1459,54 @@ async function approveSubmission(env: Env, id: string): Promise<void> {
 }
 
 async function rejectSubmission(env: Env, id: string): Promise<void> {
+  const submission = await env.DB.prepare(`
+    SELECT
+      id,
+      submitter_user_id AS submitterUserID
+    FROM review_submissions
+    WHERE id = ?
+    LIMIT 1
+  `).bind(id).first<{ id: string; submitterUserID: string | null }>();
+
+  if (!submission) {
+    throw httpError("The selected review could not be found.", 404);
+  }
+
   const now = nowISO();
+  const metadata = reviewActionMetadata(submission.id);
+  const actionType = metadata.actionType;
+
+  if (actionType === "delete") {
+    const targetReview = await requireOwnedReview(env, metadata.targetReviewID ?? "", submission.submitterUserID);
+    await env.DB.batch([
+      env.DB.prepare(`
+        UPDATE review_submissions
+        SET status = 'rejected',
+            moderation_state = 'auto_rejected',
+            updated_at = ?
+        WHERE id = ?
+      `).bind(now, id),
+      env.DB.prepare(`
+        UPDATE instructor_reviews
+        SET status = 'approved',
+            updated_at = ?
+        WHERE id = ?
+      `).bind(now, targetReview.id),
+    ]);
+    return;
+  }
+
+  if (actionType === "edit") {
+    await env.DB.prepare(`
+      UPDATE review_submissions
+      SET status = 'rejected',
+          moderation_state = 'auto_rejected',
+          updated_at = ?
+      WHERE id = ?
+    `).bind(now, id).run();
+    return;
+  }
+
   await env.DB.batch([
     env.DB.prepare(`
       UPDATE review_submissions
@@ -1295,6 +1526,290 @@ async function rejectSubmission(env: Env, id: string): Promise<void> {
       WHERE review_id = ? AND status = 'open'
     `).bind(now, id),
   ]);
+}
+
+async function fetchOwnedReviews(env: Env, userID: string): Promise<OwnedReviewRecord[]> {
+  const [reviewResult, submissionResult] = await Promise.all([
+    env.DB.prepare(`
+      SELECT
+        id,
+        instructor_name AS instructorName,
+        squadron_id AS squadronID,
+        event_name AS eventName,
+        event_kind AS eventKind,
+        chill_score AS chillScore,
+        grading_score AS gradingScore,
+        review_text AS reviewText,
+        submitted_at AS submittedAt,
+        status,
+        submitter_client_id AS submitterClientID,
+        submitter_user_id AS submitterUserID,
+        updated_at AS updatedAt
+      FROM instructor_reviews
+      WHERE submitter_user_id = ?
+      ORDER BY updated_at DESC
+    `).bind(userID).all<ReviewRecord>(),
+    env.DB.prepare(`
+      SELECT
+        id,
+        instructor_name AS instructorName,
+        squadron_id AS squadronID,
+        event_name AS eventName,
+        event_kind AS eventKind,
+        chill_score AS chillScore,
+        grading_score AS gradingScore,
+        review_text AS reviewText,
+        submitted_at AS submittedAt,
+        status,
+        submitter_client_id AS submitterClientID,
+        submitter_user_id AS submitterUserID,
+        updated_at AS updatedAt
+      FROM review_submissions
+      WHERE submitter_user_id = ?
+      ORDER BY updated_at DESC
+    `).bind(userID).all<ReviewRecord>(),
+  ]);
+
+  const reviews = reviewResult.results ?? [];
+  const submissions = submissionResult.results ?? [];
+
+  const latestSubmissionByTarget = new Map<string, ReviewRecord>();
+  const ownedReviewIDs = new Set(reviews.map((review) => review.id));
+  for (const submission of submissions) {
+    const targetReviewID = reviewActionMetadata(submission.id).targetReviewID;
+    if (!targetReviewID || latestSubmissionByTarget.has(targetReviewID)) continue;
+    latestSubmissionByTarget.set(targetReviewID, submission);
+  }
+
+  const ownedReviews: OwnedReviewRecord[] = reviews.map((review) => {
+    const latestSubmission = latestSubmissionByTarget.get(review.id);
+    const latestAction = latestSubmission ? reviewActionMetadata(latestSubmission.id) : null;
+    let status: OwnedReviewStatus = "approved";
+    let contentSource: ReviewRecord = review;
+
+    if (review.status === "rejected") {
+      status = "removed";
+    } else if (latestSubmission?.status === "pending" && latestAction?.actionType === "edit") {
+      status = "pending_edit";
+      contentSource = latestSubmission;
+    } else if (latestSubmission?.status === "pending" && latestAction?.actionType === "delete") {
+      status = "pending_delete";
+    } else if (latestSubmission?.status === "rejected" && latestAction?.actionType === "edit") {
+      status = "rejected_edit";
+      contentSource = latestSubmission;
+    } else if (latestSubmission?.status === "rejected" && latestAction?.actionType === "delete") {
+      status = "rejected_delete";
+    }
+
+    return {
+      id: review.id,
+      publicReviewID: review.id,
+      submissionID: latestSubmission?.id ?? null,
+      instructorName: contentSource.instructorName,
+      squadronID: contentSource.squadronID,
+      eventName: contentSource.eventName ?? null,
+      eventKind: contentSource.eventKind,
+      chillScore: contentSource.chillScore,
+      gradingScore: contentSource.gradingScore,
+      reviewText: contentSource.reviewText,
+      submittedAt: review.submittedAt,
+      updatedAt: (latestSubmission?.updatedAt ?? review.updatedAt) ?? review.submittedAt,
+      status,
+    };
+  });
+
+  const pendingCreateSubmissions = submissions
+    .filter((submission) => reviewActionMetadata(submission.id).actionType === "create" && !ownedReviewIDs.has(submission.id))
+    .map<OwnedReviewRecord>((submission) => ({
+      id: submission.id,
+      publicReviewID: null,
+      submissionID: submission.id,
+      instructorName: submission.instructorName,
+      squadronID: submission.squadronID,
+      eventName: submission.eventName ?? null,
+      eventKind: submission.eventKind,
+      chillScore: submission.chillScore,
+      gradingScore: submission.gradingScore,
+      reviewText: submission.reviewText,
+      submittedAt: submission.submittedAt,
+      updatedAt: submission.updatedAt ?? submission.submittedAt,
+      status: submission.status === "rejected" ? "rejected_create" : "pending_create",
+    }));
+
+  return [...ownedReviews, ...pendingCreateSubmissions].sort((lhs, rhs) => rhs.updatedAt.localeCompare(lhs.updatedAt));
+}
+
+async function submitReviewEdit(env: Env, userID: string, reviewID: string, payload: ReviewRecord): Promise<void> {
+  validateReviewPayload(payload);
+  const review = await requireOwnedReview(env, reviewID, userID);
+  if (review.status !== "approved") {
+    throw httpError("This review can't be edited right now.", 409);
+  }
+  await ensureNoPendingOwnedReviewChange(env, reviewID);
+
+  const now = nowISO();
+  const submissionID = `edit--${reviewID}--${payload.id}`;
+  await env.DB.prepare(`
+    INSERT OR REPLACE INTO review_submissions (
+      id,
+      instructor_name,
+      squadron_id,
+      event_name,
+      event_kind,
+      chill_score,
+      grading_score,
+      review_text,
+      submitted_at,
+      status,
+      moderation_state,
+      moderation_summary,
+      submitter_client_id,
+      submitter_user_id,
+      created_at,
+      updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', 'queued', NULL, ?, ?, ?, ?)
+  `).bind(
+    submissionID,
+    sanitizeText(payload.instructorName),
+    sanitizeText(payload.squadronID),
+    sanitizeNullableText(payload.eventName),
+    payload.eventKind,
+    payload.chillScore,
+    payload.gradingScore,
+    sanitizeText(payload.reviewText),
+    payload.submittedAt || now,
+    review.submitterClientID,
+    userID,
+    reviewID,
+    now,
+    now
+  ).run();
+}
+
+async function requestReviewDeletion(env: Env, userID: string, reviewID: string): Promise<void> {
+  const review = await requireOwnedReview(env, reviewID, userID);
+  if (review.status !== "approved") {
+    throw httpError("This review can't be deleted right now.", 409);
+  }
+  await ensureNoPendingOwnedReviewChange(env, reviewID);
+
+  const now = nowISO();
+  const deleteRequestID = `delete--${reviewID}--${crypto.randomUUID().toLowerCase()}`;
+  await env.DB.batch([
+    env.DB.prepare(`
+      INSERT INTO review_submissions (
+        id,
+        instructor_name,
+        squadron_id,
+        event_name,
+        event_kind,
+        chill_score,
+        grading_score,
+        review_text,
+        submitted_at,
+        status,
+        moderation_state,
+        moderation_summary,
+        submitter_client_id,
+        submitter_user_id,
+        created_at,
+        updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', 'queued', NULL, ?, ?, ?, ?)
+    `).bind(
+      deleteRequestID,
+      review.instructorName,
+      review.squadronID,
+      review.eventName,
+      review.eventKind,
+      review.chillScore,
+      review.gradingScore,
+      review.reviewText,
+      now,
+      review.submitterClientID,
+      userID,
+      reviewID,
+      now,
+      now
+    ),
+    env.DB.prepare(`
+      UPDATE instructor_reviews
+      SET status = 'rejected',
+          updated_at = ?
+      WHERE id = ?
+    `).bind(now, reviewID),
+  ]);
+}
+
+async function requireOwnedReview(env: Env, reviewID: string, userID: string | null): Promise<ReviewRecord> {
+  if (!userID) {
+    throw httpError("Sign in again to continue.", 401);
+  }
+
+  const review = await env.DB.prepare(`
+    SELECT
+      id,
+      instructor_name AS instructorName,
+      squadron_id AS squadronID,
+      event_name AS eventName,
+      event_kind AS eventKind,
+      chill_score AS chillScore,
+      grading_score AS gradingScore,
+      review_text AS reviewText,
+      submitted_at AS submittedAt,
+      status,
+      submitter_client_id AS submitterClientID,
+      submitter_user_id AS submitterUserID,
+      updated_at AS updatedAt
+    FROM instructor_reviews
+    WHERE id = ?
+      AND submitter_user_id = ?
+    LIMIT 1
+  `).bind(reviewID, userID).first<ReviewRecord>();
+
+  if (!review) {
+    throw httpError("The selected review could not be found.", 404);
+  }
+
+  return review;
+}
+
+async function ensureNoPendingOwnedReviewChange(env: Env, reviewID: string): Promise<void> {
+  const pendingChange = await env.DB.prepare(`
+    SELECT id
+    FROM review_submissions
+    WHERE status = 'pending'
+      AND (id LIKE ? OR id LIKE ?)
+    LIMIT 1
+  `).bind(`edit--${reviewID}--%`, `delete--${reviewID}--%`).first<{ id: string }>();
+
+  if (pendingChange) {
+    throw httpError("There is already a change waiting on moderation for this review.", 409);
+  }
+}
+
+function decorateReviewRecord(review: ReviewRecord): ReviewRecord {
+  const metadata = reviewActionMetadata(review.id);
+  return {
+    ...review,
+    actionType: metadata.actionType,
+    targetReviewID: metadata.targetReviewID,
+    visibilityState: "public",
+  };
+}
+
+function reviewActionMetadata(submissionID: string): { actionType: ReviewActionType; targetReviewID: string | null } {
+  const match = submissionID.match(/^(edit|delete)--(.+?)--.+$/);
+  if (match) {
+    return {
+      actionType: match[1] as ReviewActionType,
+      targetReviewID: match[2] ?? null,
+    };
+  }
+
+  return {
+    actionType: "create",
+    targetReviewID: null,
+  };
 }
 
 async function dismissReport(env: Env, id: string): Promise<void> {
@@ -2052,6 +2567,22 @@ function secureRandomToken(): string {
 function requiredSecret(value: string | undefined, name: string): string {
   if (!value) {
     throw httpError(`${name} is not configured.`, 500);
+  }
+  return value;
+}
+
+function normalizedSupabaseURL(env: Env): string {
+  const value = env.SUPABASE_URL?.trim().replace(/\/+$/, "");
+  if (!value) {
+    throw httpError("SUPABASE_URL is not configured.", 500);
+  }
+  return value;
+}
+
+function requiredSupabasePublishableKey(env: Env): string {
+  const value = env.SUPABASE_PUBLISHABLE_KEY?.trim();
+  if (!value) {
+    throw httpError("SUPABASE_PUBLISHABLE_KEY is not configured.", 500);
   }
   return value;
 }

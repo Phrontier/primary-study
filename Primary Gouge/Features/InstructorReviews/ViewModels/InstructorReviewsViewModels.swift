@@ -52,12 +52,12 @@ final class InstructorReviewsRootViewModel: ObservableObject {
         guard
             let squadronFilterID,
             squadronFilterID != AccountProfile.notSureSquadronID,
-            squadronFilterID.hasPrefix("vt-")
+            let parentWingID = TrainingWingID.parentWingID(forSquadronID: squadronFilterID)
         else {
             return true
         }
 
-        return instructor.squadron.id == squadronFilterID || instructor.squadron.id.hasPrefix("tw-")
+        return instructor.squadron.id == squadronFilterID || instructor.squadron.trainingWingID == parentWingID
     }
 }
 
@@ -89,6 +89,17 @@ final class InstructorReviewDetailViewModel: ObservableObject {
 }
 
 @MainActor
+struct InstructorReviewFormSeed {
+    let instructorName: String
+    let squadronID: String
+    let eventName: String?
+    let eventKind: InstructorReviewEventKind
+    let chillScore: Int
+    let gradingScore: Int
+    let reviewText: String
+}
+
+@MainActor
 final class ReviewSubmissionViewModel: ObservableObject {
     @Published var instructorName = ""
     @Published var submissionMode: InstructorSubmissionMode = .both {
@@ -111,8 +122,14 @@ final class ReviewSubmissionViewModel: ObservableObject {
     @Published private(set) var didSubmit = false
     @Published private(set) var hasAttemptedSubmit = false
     private weak var repository: (any InstructorReviewRepository)?
+    private let initialSeed: InstructorReviewFormSeed?
+    private var hasAppliedInitialSeed = false
 
     let minimumCharacterCount = 50
+
+    init(seed: InstructorReviewFormSeed? = nil) {
+        initialSeed = seed
+    }
 
     var trimmedReviewText: String {
         reviewText.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -214,6 +231,7 @@ final class ReviewSubmissionViewModel: ObservableObject {
         self.repository = repository
         squadrons = repository.fetchSquadrons()
         events = repository.fetchEvents()
+        applyInitialSeedIfNeeded()
         refreshSuggestions(using: repository)
     }
 
@@ -256,34 +274,38 @@ final class ReviewSubmissionViewModel: ObservableObject {
     }
 
     func submit(using repository: InstructorReviewRepository) {
-        hasAttemptedSubmit = true
-
-        guard let selectedSquadron, let chillScore, let gradingScore, let event = resolvedEvent() else {
-            errorMessage = validationMessage
-            return
-        }
-
-        guard validationMessage == nil else {
-            errorMessage = validationMessage
-            return
-        }
-
+        guard let submission = composeSubmission(using: repository) else { return }
         do {
-            try repository.submitReview(
-                InstructorReviewSubmission(
-                    instructorName: canonicalInstructorName(using: repository),
-                    squadron: selectedSquadron,
-                    event: event,
-                    chillScore: chillScore,
-                    gradingScore: gradingScore,
-                    reviewText: trimmedReviewText
-                )
-            )
+            try repository.submitReview(submission)
             didSubmit = true
             errorMessage = nil
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+
+    func composeSubmission(using repository: InstructorReviewRepository) -> InstructorReviewSubmission? {
+        hasAttemptedSubmit = true
+
+        guard validationMessage == nil else {
+            errorMessage = validationMessage
+            return nil
+        }
+
+        guard let selectedSquadron, let chillScore, let gradingScore, let event = resolvedEvent() else {
+            errorMessage = validationMessage
+            return nil
+        }
+
+        errorMessage = nil
+        return InstructorReviewSubmission(
+            instructorName: canonicalInstructorName(using: repository),
+            squadron: selectedSquadron,
+            event: event,
+            chillScore: chillScore,
+            gradingScore: gradingScore,
+            reviewText: trimmedReviewText
+        )
     }
 
     func acknowledgeSubmission() {
@@ -305,6 +327,24 @@ final class ReviewSubmissionViewModel: ObservableObject {
         } else {
             suggestions = []
         }
+    }
+
+    private func applyInitialSeedIfNeeded() {
+        guard !hasAppliedInitialSeed, let initialSeed else { return }
+        hasAppliedInitialSeed = true
+
+        instructorName = initialSeed.instructorName
+        submissionMode = initialSeed.eventKind == .sim ? .sims : .flights
+        selectedSquadron = squadrons.first(where: { $0.id == initialSeed.squadronID })
+        eventName = initialSeed.eventName ?? ""
+        if let eventName = initialSeed.eventName {
+            selectedEvent = events.first(where: {
+                $0.kind == initialSeed.eventKind && $0.displayName.caseInsensitiveCompare(eventName) == .orderedSame
+            })
+        }
+        chillScore = initialSeed.chillScore
+        gradingScore = initialSeed.gradingScore
+        reviewText = initialSeed.reviewText
     }
 
     private func handleSquadronChange() {

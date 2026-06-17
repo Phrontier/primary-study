@@ -333,7 +333,7 @@ struct AccountSignInView: View {
         SignInWithAppleButton(.signUp) { request in
             let nonce = AccountAppleNonce.randomNonceString()
             let nonceHash = AccountAppleNonce.sha256(nonce)
-            appleNonce = nonceHash
+            appleNonce = nonce
             request.requestedScopes = [.fullName, .email]
             request.nonce = nonceHash
         } onCompletion: { result in
@@ -396,6 +396,10 @@ struct AccountSignInView: View {
                 )
                 pendingVerificationEmail = trimmedEmail
                 verificationCode = ""
+                guard !accountStore.isSignedIn else {
+                    password = ""
+                    return
+                }
                 route = .emailVerify
                 focusedField = .code
             } catch {
@@ -498,7 +502,7 @@ struct AccountSignInView: View {
 
     private func friendlyAuthMessage(statusCode: Int, message: String) -> String {
         if statusCode == 404 && message.localizedCaseInsensitiveContains("not found") {
-            return "Account service is not updated yet. Try again after the Cloudflare auth deploy finishes."
+            return "Account service is not available yet. Try again in a moment."
         }
         return message
     }

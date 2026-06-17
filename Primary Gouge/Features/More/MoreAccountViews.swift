@@ -41,8 +41,8 @@ struct MoreProfileView: View {
 
                         MoreHeaderTextBlock(
                             eyebrow: "Account",
-                            title: snapshot.identityTitle,
-                            subtitle: snapshot.currentFocusLine,
+                            title: accountStore.profile?.displayTitle ?? snapshot.identityTitle,
+                            subtitle: profileSummaryLine,
                             accent: MoreSectionColor.account
                         )
 
@@ -86,7 +86,7 @@ struct MoreProfileView: View {
                         EmptyStateCard(
                             icon: "pin.slash.fill",
                             title: "No pinned focus topics",
-                            message: "Use Settings to choose a few focus areas and keep Home centered on what matters most."
+                            message: "Pick a few focus areas in Settings to keep Home centered on what matters most."
                         )
                     } else {
                         SectionContainer {
@@ -117,11 +117,6 @@ struct MoreProfileView: View {
                             Text(snapshot.versionSubtitle)
                                 .font(.subheadline.weight(.semibold))
                                 .foregroundStyle(AppTheme.textPrimary)
-
-                            Text("This profile is local to the device right now and reflects your current study preferences and activity.")
-                                .font(.footnote)
-                                .foregroundStyle(AppTheme.textSecondary)
-                                .fixedSize(horizontal: false, vertical: true)
                         }
                     }
                 }
@@ -144,27 +139,14 @@ struct MoreProfileView: View {
     private var cloudAccountSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(
-                eyebrow: "Cloud Account",
-                title: "Profile and access",
+                eyebrow: "Your info",
+                title: "Account details",
                 subtitle: nil
             )
 
             SectionContainer {
                 VStack(alignment: .leading, spacing: 14) {
                     if let profile = accountStore.profile {
-                        InsetListRow(title: "Account ID", subtitle: profile.id) {
-                            Image(systemName: "number")
-                                .foregroundStyle(AppTheme.accent)
-                                .frame(width: 20, height: 20)
-                        } trailing: {
-                            Button("Copy") {
-                                UIPasteboard.general.string = profile.id
-                                accountStatusMessage = "Account ID copied."
-                            }
-                            .font(.footnote.weight(.bold))
-                            .foregroundStyle(AppTheme.accent)
-                        }
-
                         InsetListRow(
                             title: "Email",
                             subtitle: profile.email ?? "Private relay or Apple-only account",
@@ -176,22 +158,8 @@ struct MoreProfileView: View {
                                 .frame(width: 20, height: 20)
                         }
 
-                        if let authMethods = profile.authMethods, !authMethods.isEmpty {
-                            HStack(spacing: 8) {
-                                ForEach(authMethods) { method in
-                                    StatusBadge(title: method.title, iconName: method == .apple ? "apple.logo" : "envelope.badge.fill", color: AppTheme.accent)
-                                }
-                            }
-                        }
-
-                        if profile.permissions.isEmpty {
-                            StatusBadge(title: "Standard Access", iconName: "checkmark.circle.fill", color: AppTheme.success)
-                        } else {
-                            HStack(spacing: 8) {
-                                ForEach(profile.permissions) { permission in
-                                    StatusBadge(title: permission.title, iconName: "checkmark.shield.fill", color: AppTheme.statusColor(.pending))
-                                }
-                            }
+                        if profile.hasPermission(.instructorGougeModerator) {
+                            StatusBadge(title: "Moderator Access", iconName: "checkmark.shield.fill", color: AppTheme.statusColor(.pending))
                         }
                     }
 
@@ -257,6 +225,17 @@ struct MoreProfileView: View {
         }
     }
 
+    private var profileSummaryLine: String {
+        let squadronTitle = AccountProfile.squadronTitle(for: accountStore.profile?.squadronID)
+        let syllabusTitle = accountStore.profile?.selectedSyllabus.title
+        let details: [String] = [squadronTitle, syllabusTitle]
+            .compactMap { value in
+                guard let value, !value.isEmpty, value != "Not Sure Yet", value != "Not Set" else { return nil }
+                return value
+            }
+        return details.isEmpty ? snapshot.currentFocusLine : details.joined(separator: " • ")
+    }
+
     private var appleDeletionButton: some View {
         SignInWithAppleButton(.continue) { request in
             request.requestedScopes = []
@@ -286,7 +265,7 @@ struct MoreProfileView: View {
         didLoadAccountDraft = true
         let profile = accountStore.profile
         draftDisplayName = profile?.displayName ?? ""
-        draftSquadronID = profile?.squadronID ?? AccountProfile.notSureSquadronID
+        draftSquadronID = AccountProfile.normalizedProfileSquadronID(profile?.squadronID)
         draftSyllabus = profile?.syllabusID ?? .delta
     }
 
@@ -296,7 +275,7 @@ struct MoreProfileView: View {
             do {
                 try await accountStore.updateProfile(
                     displayName: draftDisplayName.nilIfEmpty,
-                    squadronID: draftSquadronID,
+                    squadronID: AccountProfile.normalizedProfileSquadronID(draftSquadronID),
                     syllabusID: draftSyllabus
                 )
                 accountStatusMessage = "Profile saved."
@@ -349,11 +328,6 @@ struct MoreSettingsView: View {
 
                     SectionContainer(style: .standard, accent: MoreSectionColor.account, contentPadding: 18) {
                         VStack(alignment: .leading, spacing: 14) {
-                            Text("Your pinned focus topics drive what Home keeps front and center.")
-                                .font(.footnote)
-                                .foregroundStyle(AppTheme.textSecondary)
-                                .fixedSize(horizontal: false, vertical: true)
-
                             if pinnedTopics.isEmpty {
                                 Text("No pinned focus topics yet.")
                                     .font(.subheadline.weight(.semibold))
@@ -383,20 +357,6 @@ struct MoreSettingsView: View {
                             .buttonStyle(.plain)
                         }
                     }
-                }
-
-                VStack(alignment: .leading, spacing: 12) {
-                    SectionHeader(
-                        eyebrow: "Behavior",
-                        title: "Settings direction",
-                        subtitle: nil
-                    )
-
-                    EmptyStateCard(
-                        icon: "gearshape.2.fill",
-                        title: "Focused for MVP",
-                        message: "This first settings pass is centered on study priorities. Notification timing lives in the Notifications row, and additional app-level controls can grow here later."
-                    )
                 }
             }
         }
@@ -456,7 +416,7 @@ struct MoreNotificationsView: View {
                                 .font(.headline.weight(.semibold))
                                 .foregroundStyle(AppTheme.textPrimary)
 
-                            Text("Use one local reminder to nudge a quick study check-in each day.")
+                            Text("Get one daily nudge to check in on studying.")
                                 .font(.footnote)
                                 .foregroundStyle(AppTheme.textSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -482,11 +442,11 @@ struct MoreNotificationsView: View {
                 if notificationService.authorizationStatus == .denied {
                     SectionContainer {
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Notifications are blocked in iOS Settings.")
+                            Text("Notifications are turned off in iPhone Settings.")
                                 .font(.headline.weight(.semibold))
                                 .foregroundStyle(AppTheme.textPrimary)
 
-                            Text("Open system settings to allow notifications for Primary Gouge, then come back here and your saved reminder preference will be ready to schedule.")
+                            Text("Allow notifications for Primary Gouge, then come back here to turn your daily reminder back on.")
                                 .font(.footnote)
                                 .foregroundStyle(AppTheme.textSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -505,19 +465,6 @@ struct MoreNotificationsView: View {
                             }
                             .buttonStyle(.plain)
                         }
-                    }
-                }
-
-                SectionContainer {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("How it works")
-                            .font(.headline.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
-
-                        Text("This MVP supports one local daily study reminder. There are no push notifications, multiple reminder types, or cloud-backed schedules yet.")
-                            .font(.footnote)
-                            .foregroundStyle(AppTheme.textSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
@@ -552,22 +499,22 @@ struct MoreNotificationsView: View {
 
     private var statusDescription: String {
         if reminderEnabled && notificationService.hasScheduledDailyReminder {
-            return "A local reminder is scheduled for \(reminderTime.formatted(date: .omitted, time: .shortened))."
+            return "Your reminder is set for \(reminderTime.formatted(date: .omitted, time: .shortened))."
         }
 
         switch notificationService.authorizationStatus {
         case .authorized, .provisional, .ephemeral:
             return reminderEnabled
-                ? "Reminder is enabled in the app and ready to schedule."
-                : "Notifications are available whenever you want to turn on a daily reminder."
+                ? "Your reminder is ready to send each day."
+                : "Turn this on whenever you want a daily reminder."
         case .denied:
             return reminderEnabled
-                ? "Daily reminders are turned on in the app, but iOS is blocking delivery."
-                : "iOS is currently blocking notifications for Primary Gouge."
+                ? "Your reminder is on, but iPhone Settings are blocking notifications."
+                : "Notifications are currently blocked for Primary Gouge."
         case .notDetermined:
-            return "Enable the reminder to request notification permission."
+            return "Turn this on to ask for notification permission."
         @unknown default:
-            return "Notification availability could not be determined."
+            return "Notification status is unavailable right now."
         }
     }
 
@@ -638,6 +585,12 @@ struct MoreNotificationsView: View {
 
 struct MorePremiumView: View {
     let snapshot: MoreHubSnapshot
+    @EnvironmentObject private var appModel: StudyAppModel
+    @State private var showingSubscribeAlert = false
+
+    private var isSubscribed: Bool {
+        appModel.homePreferences.premiumSubscribedPlaceholder
+    }
 
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
@@ -646,36 +599,64 @@ struct MorePremiumView: View {
                     HStack(alignment: .center, spacing: 14) {
                         MoreHeaderTextBlock(
                             eyebrow: "Premium",
-                            title: "Standard access",
-                            subtitle: "Everything in Primary Gouge is currently available without a paid tier.",
+                            title: isSubscribed ? "Premium marked active" : "Upgrade to Premium",
+                            subtitle: isSubscribed ? "Your account is marked as subscribed." : "Get more out of Primary Gouge with the premium tier.",
                             accent: AppTheme.warning
                         )
 
                         Spacer(minLength: 12)
 
-                        StatusBadge(title: "Included", iconName: "checkmark.circle.fill", color: AppTheme.success)
+                        StatusBadge(
+                            title: isSubscribed ? "Subscribed" : "Not Subscribed",
+                            iconName: isSubscribed ? "checkmark.circle.fill" : "star.fill",
+                            color: isSubscribed ? AppTheme.success : AppTheme.warning
+                        )
+                    }
+                } supportingContent: {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Button {
+                            showingSubscribeAlert = true
+                        } label: {
+                            StudyActionButton(
+                                title: isSubscribed ? "Manage Subscription" : "Join Premium",
+                                icon: "star.fill",
+                                tint: AppTheme.warning,
+                                isProminent: true
+                            )
+                        }
+                        .buttonStyle(.plain)
+
+                        Toggle(isOn: Binding(
+                            get: { isSubscribed },
+                            set: { appModel.setPremiumSubscribedPlaceholder($0) }
+                        )) {
+                            Text("I'm already subscribed")
+                                .font(.headline.weight(.semibold))
+                                .foregroundStyle(AppTheme.textPrimary)
+                        }
+                        .tint(AppTheme.warning)
                     }
                 }
 
                 SectionContainer {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Potential future premium direction")
+                        Text("Why join Premium")
                             .font(.headline.weight(.semibold))
                             .foregroundStyle(AppTheme.textPrimary)
 
-                        InsetListRow(title: "Advanced planner tools", subtitle: "Expanded utility flows like TOLD, fuel planning, or jet-log support.") {
+                        InsetListRow(title: "Move faster", subtitle: "Keep your best study tools and shortcuts close at hand.") {
                             Image(systemName: "function")
                                 .foregroundStyle(AppTheme.warning)
                                 .frame(width: 20, height: 20)
                         }
 
-                        InsetListRow(title: "Heavier personalization", subtitle: "Deeper preference and study setup controls across devices.") {
+                        InsetListRow(title: "Stay dialed in", subtitle: "Get a more focused, more personalized study setup.") {
                             Image(systemName: "slider.horizontal.3")
                                 .foregroundStyle(AppTheme.warning)
                                 .frame(width: 20, height: 20)
                         }
 
-                        InsetListRow(title: "Enhanced reminder workflows", subtitle: "More reminder types and schedule flexibility beyond the MVP daily reminder.") {
+                        InsetListRow(title: "Keep momentum", subtitle: "Hold onto the premium path as new subscriber tools roll out.") {
                             Image(systemName: "bell.badge.fill")
                                 .foregroundStyle(AppTheme.warning)
                                 .frame(width: 20, height: 20)
@@ -685,5 +666,250 @@ struct MorePremiumView: View {
             }
         }
         .detailNavigationChrome(title: "Premium")
+        .alert("Subscription link coming soon", isPresented: $showingSubscribeAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("You’ll be able to start or manage your subscription here soon.")
+        }
+    }
+}
+
+struct MoreMyInstructorReviewsView: View {
+    @EnvironmentObject private var reviewStore: InstructorReviewStore
+    @State private var reviews: [OwnedInstructorReview] = []
+    @State private var isLoading = true
+    @State private var errorMessage: String?
+    @State private var reviewToEdit: OwnedInstructorReview?
+    @State private var reviewToDelete: OwnedInstructorReview?
+    @State private var isProcessingDelete = false
+
+    var body: some View {
+        AppScrollScreen(topPadding: 20, bottomPadding: 32) {
+            VStack(alignment: .leading, spacing: 18) {
+                MoreHeaderCard(accent: MoreSectionColor.saved) {
+                    HStack(alignment: .center, spacing: 14) {
+                        MoreHeaderTextBlock(
+                            eyebrow: "Library",
+                            title: "My Instructor Reviews",
+                            subtitle: "View, update, or remove the reviews tied to your account.",
+                            accent: MoreSectionColor.saved
+                        )
+
+                        Spacer(minLength: 12)
+
+                        StatusBadge(
+                            title: reviews.isEmpty ? "No Reviews" : "\(reviews.count)",
+                            iconName: "person.2.crop.square.stack.fill",
+                            color: MoreSectionColor.saved
+                        )
+                    }
+                }
+
+                if let errorMessage {
+                    SectionContainer(style: .standard, accent: AppTheme.warning, contentPadding: 16) {
+                        Text(errorMessage)
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(AppTheme.textPrimary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+
+                if isLoading {
+                    SectionContainer {
+                        HStack(spacing: 12) {
+                            ProgressView()
+                                .tint(MoreSectionColor.saved)
+                            Text("Loading your reviews...")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(AppTheme.textPrimary)
+                        }
+                        .padding(18)
+                    }
+                } else if reviews.isEmpty {
+                    EmptyStateCard(
+                        icon: "square.and.pencil",
+                        title: "No instructor reviews yet",
+                        message: "Once you submit a review, it will show up here so you can track it, edit it, or remove it later."
+                    )
+                } else {
+                    VStack(alignment: .leading, spacing: 14) {
+                        ForEach(reviews) { review in
+                            ownedReviewCard(review)
+                        }
+                    }
+                }
+            }
+        }
+        .detailNavigationChrome(title: "My Instructor Reviews")
+        .task {
+            await loadReviews()
+        }
+        .refreshable {
+            await loadReviews()
+        }
+        .sheet(item: $reviewToEdit) { review in
+            ReviewSubmissionView(editingReview: review) {
+                Task { await loadReviews() }
+            }
+        }
+        .alert("Delete review?", isPresented: Binding(
+            get: { reviewToDelete != nil },
+            set: { if !$0 { reviewToDelete = nil } }
+        )) {
+            Button("Cancel", role: .cancel) {
+                reviewToDelete = nil
+            }
+            Button(isProcessingDelete ? "Removing..." : "Delete", role: .destructive) {
+                guard let review = reviewToDelete else { return }
+                Task { await deleteReview(review) }
+            }
+            .disabled(isProcessingDelete)
+        } message: {
+            Text("This removes the review from the public list right away and sends the delete request through moderation.")
+        }
+    }
+
+    @ViewBuilder
+    private func ownedReviewCard(_ review: OwnedInstructorReview) -> some View {
+        SectionContainer {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(review.instructorName)
+                            .font(.headline.weight(.semibold))
+                            .foregroundStyle(AppTheme.textPrimary)
+
+                        Text(review.squadron.displayName)
+                            .font(.subheadline)
+                            .foregroundStyle(AppTheme.textSecondary)
+
+                        if let eventName = review.eventName {
+                            Text(eventName)
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(AppTheme.prominentText(review.eventKind.domainColor))
+                        }
+                    }
+
+                    Spacer(minLength: 12)
+
+                    VStack(alignment: .trailing, spacing: 8) {
+                        StatusBadge(
+                            title: review.status.title,
+                            iconName: reviewStatusIconName(review.status),
+                            color: review.status.color
+                        )
+
+                        Text(review.updatedAt.formatted(date: .abbreviated, time: .omitted))
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(AppTheme.textSecondary)
+                    }
+                }
+
+                HStack(spacing: 12) {
+                    InstructorRatingBadge(
+                        title: "Chill Factor",
+                        label: InstructorRatingScale.label(for: review.chillScore, category: .chillFactor),
+                        subtitle: InstructorRatingScale.formatOutOfTen(score: review.chillScore),
+                        score: review.chillScore,
+                        style: .individual
+                    )
+
+                    InstructorRatingBadge(
+                        title: "Grading Style",
+                        label: InstructorRatingScale.label(for: review.gradingScore, category: .gradingStyle),
+                        subtitle: InstructorRatingScale.formatOutOfTen(score: review.gradingScore),
+                        score: review.gradingScore,
+                        style: .individual
+                    )
+                }
+
+                Text(review.reviewText)
+                    .font(.body)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text(review.status.helperText)
+                    .font(.footnote)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                if review.status.allowsEdit || review.status.allowsDelete {
+                    HStack(spacing: 12) {
+                        if review.status.allowsEdit {
+                            Button {
+                                reviewToEdit = review
+                            } label: {
+                                StudyActionButton(
+                                    title: "Edit",
+                                    icon: "square.and.pencil",
+                                    tint: MoreSectionColor.saved,
+                                    isProminent: false
+                                )
+                            }
+                            .buttonStyle(.plain)
+                        }
+
+                        if review.status.allowsDelete {
+                            Button(role: .destructive) {
+                                reviewToDelete = review
+                            } label: {
+                                StudyActionButton(
+                                    title: "Delete",
+                                    icon: "trash.fill",
+                                    tint: AppTheme.danger,
+                                    isProminent: false
+                                )
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+            }
+            .padding(18)
+        }
+    }
+
+    private func loadReviews() async {
+        isLoading = true
+        errorMessage = nil
+
+        do {
+            reviews = try await reviewStore.fetchOwnedReviews()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+
+        isLoading = false
+    }
+
+    private func deleteReview(_ review: OwnedInstructorReview) async {
+        guard let reviewID = review.publicReviewID else { return }
+        isProcessingDelete = true
+        errorMessage = nil
+
+        defer {
+            isProcessingDelete = false
+            reviewToDelete = nil
+        }
+
+        do {
+            try await reviewStore.requestOwnedReviewDeletion(reviewID: reviewID)
+            await loadReviews()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    private func reviewStatusIconName(_ status: OwnedInstructorReviewStatus) -> String {
+        switch status {
+        case .approved:
+            return "checkmark.circle.fill"
+        case .pendingCreate, .pendingEdit, .pendingDelete:
+            return "clock.badge.fill"
+        case .rejectedCreate, .rejectedEdit, .rejectedDelete:
+            return "xmark.circle.fill"
+        case .removed:
+            return "trash.fill"
+        }
     }
 }

@@ -73,13 +73,13 @@ enum CommunitySubmissionCategory: String, Codable, CaseIterable, Hashable, Ident
     var formSubtitle: String {
         switch self {
         case .feedback:
-            return "Tell us what is helping and where the app can feel sharper."
+            return "Tell us what is working and what would make the app better."
         case .featureRequest:
-            return "Describe the workflow gap and how the feature would help you study faster."
+            return "Share the tool or shortcut you wish you had."
         case .support:
-            return "Send a bug, issue, or help request and we will review it through the shared support inbox."
+            return "Describe the issue and what you were trying to do."
         case .incorrectGouge:
-            return "Flag something that looks outdated, incorrect, incomplete, or misleading."
+            return "Flag anything that looks wrong, outdated, or incomplete."
         }
     }
 
@@ -151,13 +151,13 @@ enum CommunitySubmissionCategory: String, Codable, CaseIterable, Hashable, Ident
     var successMessage: String {
         switch self {
         case .feedback:
-            return "Feedback saved and queued for review."
+            return "Feedback sent."
         case .featureRequest:
-            return "Feature request saved and queued for review."
+            return "Feature request sent."
         case .support:
-            return "Support request saved and queued for review."
+            return "Support request sent."
         case .incorrectGouge:
-            return "Gouge report saved and queued for review."
+            return "Report sent."
         }
     }
 }
@@ -267,11 +267,6 @@ struct CommunitySubmissionDraft: Codable, Hashable {
     var trimmedMessage: String {
         message.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-
-    var trimmedContactEmail: String {
-        contactEmail.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
     var normalizedTargetID: String? {
         let value = targetID.trimmingCharacters(in: .whitespacesAndNewlines)
         return value.isEmpty ? nil : value
@@ -368,13 +363,13 @@ struct CommunitySubmissionRecord: Identifiable, Codable, Hashable {
     var statusDetail: String {
         switch syncState {
         case .queuedUpload:
-            return "Saved locally and waiting to upload."
+            return "Waiting to send."
         case .uploadedOpen:
-            return "Sent to the Cloudflare inbox."
+            return "Sent."
         case .synced:
-            return status == .resolved ? "Reviewed and resolved." : "Reviewed and closed."
+            return status == .resolved ? "Resolved." : "Closed."
         case .failed:
-            return "Upload failed. The app will retry automatically."
+            return "Trying again."
         }
     }
 }

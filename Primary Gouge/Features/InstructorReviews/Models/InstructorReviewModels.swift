@@ -206,6 +206,113 @@ enum ReviewStatus: String, Codable, CaseIterable, Hashable {
     }
 }
 
+enum InstructorReviewActionType: String, Codable, CaseIterable, Hashable {
+    case create
+    case edit
+    case delete
+
+    var title: String {
+        switch self {
+        case .create:
+            return "New Review"
+        case .edit:
+            return "Edit Request"
+        case .delete:
+            return "Delete Request"
+        }
+    }
+}
+
+enum InstructorReviewVisibilityState: String, Codable, CaseIterable, Hashable {
+    case `public`
+    case hiddenPendingDelete = "hidden_pending_delete"
+    case deleted
+}
+
+enum OwnedInstructorReviewStatus: String, Codable, CaseIterable, Hashable {
+    case pendingCreate = "pending_create"
+    case approved
+    case pendingEdit = "pending_edit"
+    case pendingDelete = "pending_delete"
+    case rejectedCreate = "rejected_create"
+    case rejectedEdit = "rejected_edit"
+    case rejectedDelete = "rejected_delete"
+    case removed
+
+    var title: String {
+        switch self {
+        case .pendingCreate:
+            return "Pending"
+        case .approved:
+            return "Live"
+        case .pendingEdit:
+            return "Edit Pending"
+        case .pendingDelete:
+            return "Delete Pending"
+        case .rejectedCreate:
+            return "Not Approved"
+        case .rejectedEdit:
+            return "Edit Rejected"
+        case .rejectedDelete:
+            return "Delete Rejected"
+        case .removed:
+            return "Removed"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .approved:
+            return AppTheme.success
+        case .removed:
+            return AppTheme.textMuted
+        case .rejectedCreate, .rejectedEdit, .rejectedDelete:
+            return AppTheme.danger
+        case .pendingCreate, .pendingEdit, .pendingDelete:
+            return AppTheme.warning
+        }
+    }
+
+    var allowsEdit: Bool {
+        switch self {
+        case .approved, .rejectedCreate, .rejectedEdit, .rejectedDelete:
+            return true
+        case .pendingCreate, .pendingEdit, .pendingDelete, .removed:
+            return false
+        }
+    }
+
+    var allowsDelete: Bool {
+        switch self {
+        case .approved, .rejectedCreate, .rejectedEdit, .rejectedDelete:
+            return true
+        case .pendingCreate, .pendingEdit, .pendingDelete, .removed:
+            return false
+        }
+    }
+
+    var helperText: String {
+        switch self {
+        case .pendingCreate:
+            return "Waiting for moderation before it goes live."
+        case .approved:
+            return "Visible to students now."
+        case .pendingEdit:
+            return "Your live review stays up until the edit is approved."
+        case .pendingDelete:
+            return "Removed from the public list while deletion is reviewed."
+        case .rejectedCreate:
+            return "This review was not approved."
+        case .rejectedEdit:
+            return "Your last edit was not approved."
+        case .rejectedDelete:
+            return "Your delete request was not approved."
+        case .removed:
+            return "This review has been removed from the public list."
+        }
+    }
+}
+
 enum InstructorReviewOrigin: String, Codable, CaseIterable, Hashable {
     case seed
     case localSubmission
@@ -317,11 +424,27 @@ struct Squadron: Identifiable, Hashable, Codable {
     let id: String
     let displayName: String
 
+    var trainingWingID: TrainingWingID? {
+        TrainingWingID(rawValue: id)
+    }
+
+    var parentTrainingWingID: TrainingWingID? {
+        TrainingWingID.parentWingID(forSquadronID: id)
+    }
+
+    var isTrainingWing: Bool {
+        trainingWingID != nil
+    }
+
+    var isTrainingSquadron: Bool {
+        parentTrainingWingID != nil
+    }
+
     var reviewEventKind: InstructorReviewEventKind? {
-        if id.hasPrefix("tw-") {
+        if isTrainingWing {
             return .sim
         }
-        if id.hasPrefix("vt-") {
+        if isTrainingSquadron {
             return .flight
         }
         return nil
@@ -355,6 +478,47 @@ struct Squadron: Identifiable, Hashable, Codable {
 
         return (laneRank, numericPortion, displayName)
     }
+
+    var profileSelectionSortRank: (Int, Int, String) {
+        let wingRank: Int
+        switch parentTrainingWingID {
+        case .tw4:
+            wingRank = 0
+        case .tw5:
+            wingRank = 1
+        case nil:
+            wingRank = 2
+        }
+
+        return (wingRank, numericPortion, displayName)
+    }
+}
+
+enum TrainingWingID: String, CaseIterable, Codable, Hashable, Identifiable {
+    case tw4 = "tw-4"
+    case tw5 = "tw-5"
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .tw4:
+            return "TW-4"
+        case .tw5:
+            return "TW-5"
+        }
+    }
+
+    static func parentWingID(forSquadronID squadronID: String) -> TrainingWingID? {
+        switch squadronID {
+        case "vt-27", "vt-28":
+            return .tw4
+        case "vt-2", "vt-3", "vt-6":
+            return .tw5
+        default:
+            return nil
+        }
+    }
 }
 
 extension Sequence where Element == Squadron {
@@ -362,6 +526,13 @@ extension Sequence where Element == Squadron {
         sorted { lhs, rhs in
             lhs.submissionSortRank < rhs.submissionSortRank
         }
+    }
+
+    func profileSelectableSorted() -> [Squadron] {
+        filter(\.isTrainingSquadron)
+            .sorted { lhs, rhs in
+                lhs.profileSelectionSortRank < rhs.profileSelectionSortRank
+            }
     }
 }
 
@@ -424,6 +595,8 @@ struct InstructorReview: Identifiable, Hashable {
     let origin: InstructorReviewOrigin
     let syncState: InstructorReviewSyncState
     let submitterClientID: String?
+    let actionType: InstructorReviewActionType
+    let targetReviewID: String?
 
     var overallScore: Double {
         Double(chillScore + gradingScore) / 2.0
@@ -431,6 +604,26 @@ struct InstructorReview: Identifiable, Hashable {
 
     var hasEventName: Bool {
         eventName?.isEmpty == false
+    }
+}
+
+struct OwnedInstructorReview: Identifiable, Hashable {
+    let id: String
+    let publicReviewID: String?
+    let submissionID: String?
+    let instructorName: String
+    let squadron: Squadron
+    let eventName: String?
+    let eventKind: InstructorReviewEventKind
+    let chillScore: Int
+    let gradingScore: Int
+    let reviewText: String
+    let submittedAt: Date
+    let updatedAt: Date
+    let status: OwnedInstructorReviewStatus
+
+    var title: String {
+        instructorName
     }
 }
 
@@ -568,6 +761,9 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         case lastModifiedAt
         case lastSyncedAt
         case submitterClientID
+        case actionType
+        case targetReviewID
+        case visibilityState
     }
 
     let id: String
@@ -586,6 +782,9 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
     var lastModifiedAt: Date
     var lastSyncedAt: Date?
     var submitterClientID: String?
+    var actionType: InstructorReviewActionType
+    var targetReviewID: String?
+    var visibilityState: InstructorReviewVisibilityState
 
     init(
         id: String = UUID().uuidString,
@@ -603,7 +802,10 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         syncState: InstructorReviewSyncState = .localOnly,
         lastModifiedAt: Date = .now,
         lastSyncedAt: Date? = nil,
-        submitterClientID: String? = nil
+        submitterClientID: String? = nil,
+        actionType: InstructorReviewActionType = .create,
+        targetReviewID: String? = nil,
+        visibilityState: InstructorReviewVisibilityState = .public
     ) {
         self.id = id
         self.remoteID = remoteID
@@ -621,6 +823,9 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         self.lastModifiedAt = lastModifiedAt
         self.lastSyncedAt = lastSyncedAt
         self.submitterClientID = submitterClientID
+        self.actionType = actionType
+        self.targetReviewID = targetReviewID
+        self.visibilityState = visibilityState
     }
 
     init(from decoder: Decoder) throws {
@@ -639,6 +844,9 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         lastModifiedAt = try container.decodeIfPresent(Date.self, forKey: .lastModifiedAt) ?? submittedAt
         lastSyncedAt = try container.decodeIfPresent(Date.self, forKey: .lastSyncedAt)
         submitterClientID = try container.decodeIfPresent(String.self, forKey: .submitterClientID)
+        actionType = try container.decodeIfPresent(InstructorReviewActionType.self, forKey: .actionType) ?? .create
+        targetReviewID = try container.decodeIfPresent(String.self, forKey: .targetReviewID)
+        visibilityState = try container.decodeIfPresent(InstructorReviewVisibilityState.self, forKey: .visibilityState) ?? .public
 
         if let eventKind = try container.decodeIfPresent(InstructorReviewEventKind.self, forKey: .eventKind) {
             self.eventName = try container.decodeIfPresent(String.self, forKey: .eventName)
@@ -671,6 +879,9 @@ struct InstructorReviewRecord: Identifiable, Codable, Hashable {
         try container.encode(lastModifiedAt, forKey: .lastModifiedAt)
         try container.encodeIfPresent(lastSyncedAt, forKey: .lastSyncedAt)
         try container.encodeIfPresent(submitterClientID, forKey: .submitterClientID)
+        try container.encode(actionType, forKey: .actionType)
+        try container.encodeIfPresent(targetReviewID, forKey: .targetReviewID)
+        try container.encode(visibilityState, forKey: .visibilityState)
     }
 }
 

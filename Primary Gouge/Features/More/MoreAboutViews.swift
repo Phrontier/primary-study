@@ -139,8 +139,6 @@ private struct MoreArticleViewSection: View {
 struct MoreVersionView: View {
     let snapshot: MoreHubSnapshot
 
-    @EnvironmentObject private var reviewStore: InstructorReviewStore
-    @EnvironmentObject private var communityStore: CommunitySubmissionStore
     @EnvironmentObject private var notificationService: NotificationService
     @EnvironmentObject private var appModel: StudyAppModel
 
@@ -188,10 +186,10 @@ struct MoreVersionView: View {
                                 .foregroundStyle(AppTheme.iconTint(MoreSectionColor.about))
                         }
 
-                        MoreHeaderTextBlock(
+                    MoreHeaderTextBlock(
                             eyebrow: "About",
                             title: snapshot.versionSubtitle,
-                            subtitle: "Build \(buildNumber) • iOS",
+                            subtitle: "Build \(buildNumber)",
                             accent: MoreSectionColor.about
                         )
                     }
@@ -216,38 +214,8 @@ struct MoreVersionView: View {
 
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
-                        eyebrow: "Backend",
-                        title: "Cloudflare status",
-                        subtitle: nil,
-                        accent: MoreSectionColor.support
-                    )
-
-                    SectionContainer {
-                        VStack(alignment: .leading, spacing: 14) {
-                            StatusBadge(
-                                title: reviewStore.isRemoteConfigured ? "Configured" : "Not Configured",
-                                iconName: reviewStore.isRemoteConfigured ? "checkmark.circle.fill" : "xmark.circle.fill",
-                                color: reviewStore.isRemoteConfigured ? AppTheme.success : AppTheme.warning
-                            )
-
-                            Text(communityStore.syncStatus.configurationDetail ?? reviewStore.syncStatus.configurationDetail ?? "No backend detail available.")
-                                .font(.subheadline)
-                                .foregroundStyle(AppTheme.textSecondary)
-                                .fixedSize(horizontal: false, vertical: true)
-
-                            if let lastSyncedAt = communityStore.syncStatus.lastSyncedAt ?? reviewStore.syncStatus.lastSyncedAt {
-                                Text("Last sync: \(lastSyncedAt.formatted(date: .abbreviated, time: .shortened))")
-                                    .font(.footnote.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
-                            }
-                        }
-                    }
-                }
-
-                VStack(alignment: .leading, spacing: 12) {
-                    SectionHeader(
-                        eyebrow: "Local services",
-                        title: "Notifications",
+                        eyebrow: "Reminder",
+                        title: "Daily study reminder",
                         subtitle: nil,
                         accent: MoreSectionColor.account
                     )
@@ -264,10 +232,6 @@ struct MoreVersionView: View {
                                 .font(.subheadline)
                                 .foregroundStyle(AppTheme.textSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
-
-                            Text("Notification authorization: \(notificationService.authorizationStatus.displayName)")
-                                .font(.footnote.weight(.semibold))
-                                .foregroundStyle(AppTheme.textPrimary)
                         }
                     }
                 }
@@ -316,24 +280,5 @@ private struct MoreInfoRow: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 13)
-    }
-}
-
-private extension UNAuthorizationStatus {
-    var displayName: String {
-        switch self {
-        case .notDetermined:
-            return "Not Determined"
-        case .denied:
-            return "Denied"
-        case .authorized:
-            return "Authorized"
-        case .provisional:
-            return "Provisional"
-        case .ephemeral:
-            return "Ephemeral"
-        @unknown default:
-            return "Unknown"
-        }
     }
 }

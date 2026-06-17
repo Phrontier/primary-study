@@ -6,10 +6,6 @@ struct ModerationQueueView: View {
     @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @StateObject private var viewModel = ModerationQueueViewModel()
-    @State private var email = ""
-    @State private var password = ""
-    @State private var authErrorMessage: String?
-    @State private var signingIn = false
 
     var body: some View {
         AppScrollScreen(bottomPadding: 36) {
@@ -125,91 +121,11 @@ struct ModerationQueueView: View {
         if accountStore.hasPermission(.instructorGougeModerator) {
             return "Signed in as \(accountStore.profile?.email ?? accountStore.profile?.id ?? "moderator")."
         }
-        return "Moderator access is assigned to a Primary Gouge account in Cloudflare."
+        return "Moderator access is assigned to a Primary Gouge account in Supabase."
     }
 
     private var activeErrorMessage: String? {
         viewModel.errorMessage
-    }
-
-    private var signInCard: some View {
-        SectionContainer {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Moderator Sign In")
-                    .font(.headline.weight(.semibold))
-                    .foregroundStyle(AppTheme.textPrimary)
-
-                Text("Use your moderator account to review queued instructor gouge and community inbox submissions from every device.")
-                    .font(.subheadline)
-                    .foregroundStyle(AppTheme.textSecondary)
-
-                authField(title: "Email", placeholder: "moderator@example.com", text: $email, secure: false)
-                authField(title: "Password", placeholder: "Password", text: $password, secure: true)
-
-                InstructorPrimaryButton(
-                    title: signingIn ? "Signing In…" : "Sign In to Moderate",
-                    icon: "checkmark.shield.fill",
-                    enabled: !signingIn && !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !password.isEmpty
-                ) {
-                    signIn()
-                }
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func authField(title: String, placeholder: String, text: Binding<String>, secure: Bool) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(title.uppercased())
-                .font(.system(.caption, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.textMuted)
-                .tracking(0.6)
-
-            Group {
-                if secure {
-                    SecureField(placeholder, text: text)
-                        .textContentType(.password)
-                } else {
-                    TextField(placeholder, text: text)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .textContentType(.username)
-                        .keyboardType(.emailAddress)
-                }
-            }
-            .font(.system(.body, design: .rounded, weight: .semibold))
-            .foregroundStyle(AppTheme.textPrimary)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 16)
-            .frame(minHeight: 56)
-            .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(AppTheme.elevatedSurface)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
-                    )
-            )
-        }
-    }
-
-    private func signIn() {
-        authErrorMessage = nil
-        signingIn = true
-
-        Task { @MainActor in
-            defer { signingIn = false }
-            do {
-                try await reviewStore.signInModerator(
-                    email: email.trimmingCharacters(in: .whitespacesAndNewlines),
-                    password: password
-                )
-                password = ""
-                viewModel.load(using: reviewStore)
-            } catch {
-                authErrorMessage = error.localizedDescription
-            }
-        }
     }
 
     private func pendingReviewCard(_ review: InstructorReview) -> some View {
@@ -221,9 +137,25 @@ struct ModerationQueueView: View {
                             .font(.headline.weight(.semibold))
                             .foregroundStyle(AppTheme.textPrimary)
 
-                        Text(review.squadron.displayName)
-                            .font(.subheadline)
-                            .foregroundStyle(AppTheme.textSecondary)
+                        HStack(spacing: 8) {
+                            Text(review.squadron.displayName)
+                                .font(.subheadline)
+                                .foregroundStyle(AppTheme.textSecondary)
+
+                            Text(review.actionType.title.uppercased())
+                                .font(.caption2.weight(.bold))
+                                .foregroundStyle(AppTheme.prominentText(AppTheme.warning))
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 5)
+                                .background(
+                                    Capsule()
+                                        .fill(AppTheme.badgeFill(AppTheme.warning))
+                                        .overlay(
+                                            Capsule()
+                                                .stroke(AppTheme.badgeStroke(AppTheme.warning), lineWidth: 1)
+                                        )
+                                )
+                        }
                     }
 
                     Spacer(minLength: 12)
@@ -271,7 +203,7 @@ struct ModerationQueueView: View {
                     Button {
                         viewModel.reject(reviewID: review.id, using: reviewStore)
                     } label: {
-                        StudyActionButton(title: "Reject", icon: "xmark", tint: AppTheme.danger, isProminent: false)
+                        StudyActionButton(title: rejectButtonTitle(for: review), icon: "xmark", tint: AppTheme.danger, isProminent: false)
                     }
                     .buttonStyle(.plain)
                     .disabled(viewModel.processingIDs.contains(review.id))
@@ -279,7 +211,7 @@ struct ModerationQueueView: View {
                     Button {
                         viewModel.approve(reviewID: review.id, using: reviewStore)
                     } label: {
-                        StudyActionButton(title: "Approve", icon: "checkmark", tint: AppTheme.success, isProminent: false)
+                        StudyActionButton(title: approveButtonTitle(for: review), icon: "checkmark", tint: AppTheme.success, isProminent: false)
                     }
                     .buttonStyle(.plain)
                     .disabled(viewModel.processingIDs.contains(review.id))
@@ -466,6 +398,28 @@ struct ModerationQueueView: View {
                     .disabled(viewModel.processingIDs.contains(submission.id))
                 }
             }
+        }
+    }
+
+    private func approveButtonTitle(for review: InstructorReview) -> String {
+        switch review.actionType {
+        case .create:
+            return "Approve"
+        case .edit:
+            return "Approve Edit"
+        case .delete:
+            return "Approve Delete"
+        }
+    }
+
+    private func rejectButtonTitle(for review: InstructorReview) -> String {
+        switch review.actionType {
+        case .create:
+            return "Reject"
+        case .edit:
+            return "Reject Edit"
+        case .delete:
+            return "Keep Review"
         }
     }
 }

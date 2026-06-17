@@ -4,7 +4,6 @@ import Foundation
 enum CommunitySubmissionStoreError: LocalizedError {
     case invalidSummary
     case invalidMessage
-    case invalidEmail
     case remoteNotConfigured
     case offline
 
@@ -14,10 +13,8 @@ enum CommunitySubmissionStoreError: LocalizedError {
             return "Add a short headline before sending."
         case .invalidMessage:
             return "Add a little more detail before sending."
-        case .invalidEmail:
-            return "That email address does not look valid."
         case .remoteNotConfigured:
-            return "The Cloudflare submission backend is not configured yet."
+            return "Submitting is not available right now."
         case .offline:
             return "This action needs a network connection."
         }
@@ -117,7 +114,6 @@ final class CommunitySubmissionStore: ObservableObject {
             throw CommunitySubmissionStoreError.invalidMessage
         }
 
-        let contactEmail = try normalizedEmail(from: draft.trimmedContactEmail)
         let resolvedTarget = lockedTarget ?? draft
 
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Unknown"
@@ -127,7 +123,7 @@ final class CommunitySubmissionStore: ObservableObject {
             category: category,
             summary: trimmedSummary,
             message: trimmedMessage,
-            contactEmail: contactEmail,
+            contactEmail: nil,
             targetKind: resolvedTarget.targetKind,
             targetID: resolvedTarget.normalizedTargetID,
             targetTitle: resolvedTarget.normalizedTargetTitle,
@@ -196,14 +192,6 @@ final class CommunitySubmissionStore: ObservableObject {
             guard let self else { return }
             await self.syncIfPossible()
         }
-    }
-
-    private func normalizedEmail(from value: String) throws -> String? {
-        guard !value.isEmpty else { return nil }
-        guard value.contains("@"), value.contains(".") else {
-            throw CommunitySubmissionStoreError.invalidEmail
-        }
-        return value
     }
 
     private func makeSyncStatus(

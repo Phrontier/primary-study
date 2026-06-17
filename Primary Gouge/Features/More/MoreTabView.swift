@@ -1,27 +1,18 @@
 import SwiftUI
 
 struct MoreTabView: View {
+    @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var appModel: StudyAppModel
-    @EnvironmentObject private var reviewStore: InstructorReviewStore
-    @EnvironmentObject private var communityStore: CommunitySubmissionStore
     @EnvironmentObject private var searchChrome: SearchChromeModel
 
     private var snapshot: MoreHubSnapshot {
         appModel.moreHubSnapshot
     }
 
-    private var reviewSummary: (instructors: Int, reviews: Int) {
-        let instructors = reviewStore.fetchInstructorSummaries(searchText: "")
-        return (
-            instructors: instructors.count,
-            reviews: instructors.reduce(0) { $0 + $1.publishedReviewCount }
-        )
-    }
-
     private var profileItem: MoreHubItem {
         MoreHubItem(
             title: "Profile",
-            subtitle: "Identity, stage, and study defaults",
+            subtitle: "Your info and training setup",
             iconName: "person.crop.circle.fill",
             accent: MoreSectionColor.account,
             destination: .profile
@@ -31,7 +22,7 @@ struct MoreTabView: View {
     private var settingsItem: MoreHubItem {
         MoreHubItem(
             title: "Settings",
-            subtitle: "Preferences and app behavior",
+            subtitle: "Focus topics and preferences",
             iconName: "gearshape.fill",
             accent: MoreSectionColor.account,
             destination: .settings
@@ -45,18 +36,10 @@ struct MoreTabView: View {
                 color: MoreSectionColor.account,
                 items: [
                     profileItem,
-                    MoreHubItem(
-                        title: "Premium",
-                        subtitle: "Upgrade path for future perks",
-                        iconName: "star.circle.fill",
-                        accent: MoreSectionColor.account,
-                        badge: .premium,
-                        destination: .premium
-                    ),
                     settingsItem,
                     MoreHubItem(
                         title: "Notifications",
-                        subtitle: "Alerts and study reminders",
+                        subtitle: "Daily reminders",
                         iconName: "bell.badge.fill",
                         accent: MoreSectionColor.account,
                         destination: .notifications
@@ -69,7 +52,7 @@ struct MoreTabView: View {
                 items: [
                     MoreHubItem(
                         title: "Quiz Mode",
-                        subtitle: snapshot.quizSubtitle,
+                        subtitle: nil,
                         iconName: "checkmark.circle.fill",
                         accent: MoreSectionColor.studyTools,
                         destination: .quiz
@@ -106,7 +89,7 @@ struct MoreTabView: View {
                     ),
                     MoreHubItem(
                         title: "Flashcard Performance Stats",
-                        subtitle: snapshot.flashcardStatsSubtitle,
+                        subtitle: nil,
                         iconName: "chart.bar.fill",
                         accent: MoreSectionColor.studyTools,
                         destination: .statsDashboard
@@ -119,24 +102,24 @@ struct MoreTabView: View {
                 items: [
                     MoreHubItem(
                         title: "Recent Briefs",
-                        subtitle: snapshot.recentBriefsSubtitle,
+                        subtitle: nil,
                         iconName: "bookmark.fill",
                         accent: MoreSectionColor.saved,
                         destination: .recentBriefs
                     ),
                     MoreHubItem(
                         title: "Recent Flashcard Sets",
-                        subtitle: snapshot.recentFlashcardSetsSubtitle,
+                        subtitle: nil,
                         iconName: "rectangle.stack.fill.badge.plus",
                         accent: MoreSectionColor.saved,
                         destination: .recentFlashcardSets
                     ),
                     MoreHubItem(
-                        title: "Instructor Reviews",
-                        subtitle: instructorReviewsSubtitle,
+                        title: "My Instructor Reviews",
+                        subtitle: nil,
                         iconName: "person.2.crop.square.stack.fill",
                         accent: MoreSectionColor.saved,
-                        destination: .instructorReviews
+                        destination: .myInstructorReviews
                     )
                 ]
             ),
@@ -146,35 +129,35 @@ struct MoreTabView: View {
                 items: [
                     MoreHubItem(
                         title: "Feedback",
-                        subtitle: "Share what is working",
+                        subtitle: nil,
                         iconName: "bubble.left.and.text.bubble.right.fill",
                         accent: MoreSectionColor.support,
                         destination: .community(category: .feedback)
                     ),
                     MoreHubItem(
                         title: "Request a Feature",
-                        subtitle: "Tell us what you need next",
+                        subtitle: nil,
                         iconName: "lightbulb.fill",
                         accent: MoreSectionColor.support,
                         destination: .community(category: .featureRequest)
                     ),
                     MoreHubItem(
                         title: "FAQ",
-                        subtitle: "Common answers and guidance",
+                        subtitle: nil,
                         iconName: "questionmark.circle.fill",
                         accent: MoreSectionColor.support,
                         destination: .article(.faq)
                     ),
                     MoreHubItem(
                         title: "Support",
-                        subtitle: "Get help with the app",
+                        subtitle: nil,
                         iconName: "lifepreserver.fill",
                         accent: MoreSectionColor.support,
                         destination: .community(category: .support)
                     ),
                     MoreHubItem(
                         title: "Report Incorrect Gouge",
-                        subtitle: "Flag outdated or wrong info",
+                        subtitle: nil,
                         iconName: "exclamationmark.bubble.fill",
                         accent: AppTheme.danger,
                         destination: .community(category: .incorrectGouge)
@@ -187,28 +170,28 @@ struct MoreTabView: View {
                 items: [
                     MoreHubItem(
                         title: "Version",
-                        subtitle: snapshot.versionSubtitle,
+                        subtitle: nil,
                         iconName: "number.circle.fill",
                         accent: MoreSectionColor.about,
                         destination: .version
                     ),
                     MoreHubItem(
                         title: "Changelog",
-                        subtitle: "What changed recently",
+                        subtitle: nil,
                         iconName: "clock.arrow.circlepath",
                         accent: MoreSectionColor.about,
                         destination: .article(.changelog)
                     ),
                     MoreHubItem(
                         title: "Privacy",
-                        subtitle: "How data is handled",
+                        subtitle: nil,
                         iconName: "lock.shield.fill",
                         accent: MoreSectionColor.about,
                         destination: .article(.privacy)
                     ),
                     MoreHubItem(
                         title: "Terms",
-                        subtitle: "Usage and access terms",
+                        subtitle: nil,
                         iconName: "doc.text.fill",
                         accent: MoreSectionColor.about,
                         destination: .article(.terms)
@@ -218,21 +201,20 @@ struct MoreTabView: View {
         ]
     }
 
-    private var instructorReviewsSubtitle: String {
-        let instructorCount = reviewSummary.instructors
-        let reviewCount = reviewSummary.reviews
-
-        guard reviewCount > 0 else {
-            return "Browse published instructor gouge"
-        }
-
-        return "\(instructorCount) instructors • \(reviewCount) reviews"
+    private var isPremiumSubscribed: Bool {
+        appModel.homePreferences.premiumSubscribedPlaceholder
     }
 
     var body: some View {
         AppScrollScreen(topPadding: AppTheme.Spacing.screenTop, bottomPadding: 28) {
             VStack(alignment: .leading, spacing: 18) {
-                MoreHeroCard(snapshot: snapshot)
+                MoreHeroCard(snapshot: snapshot, profile: accountStore.profile)
+                NavigationLink {
+                    MorePremiumView(snapshot: snapshot)
+                } label: {
+                    MorePremiumPromoCard(isSubscribed: isPremiumSubscribed)
+                }
+                .buttonStyle(.plain)
 
                 ForEach(sections) { section in
                     VStack(alignment: .leading, spacing: 10) {
@@ -277,8 +259,8 @@ struct MoreTabView: View {
             MorePremiumView(snapshot: snapshot)
         case .quiz:
             QuizHubView()
-        case .instructorReviews:
-            InstructorReviewsRootView()
+        case .myInstructorReviews:
+            MoreMyInstructorReviewsView()
         case .statsDashboard:
             MoreStatsDashboardView(snapshot: snapshot)
         case .recentBriefs:
@@ -313,14 +295,15 @@ struct MoreTabView: View {
 
 private struct MoreHeroCard: View {
     let snapshot: MoreHubSnapshot
+    let profile: AccountProfile?
 
     var body: some View {
         MoreHeaderCard(accent: MoreSectionColor.account) {
             HStack(alignment: .center, spacing: 14) {
                 MoreHeaderTextBlock(
                     eyebrow: "Account",
-                    title: snapshot.identityTitle,
-                    subtitle: snapshot.currentFocusLine,
+                    title: profile?.displayTitle ?? snapshot.identityTitle,
+                    subtitle: accountSummaryLine,
                     accent: MoreSectionColor.account,
                     subtitleFont: .footnote
                 )
@@ -340,6 +323,58 @@ private struct MoreHeroCard: View {
                         .font(.headline.weight(.bold))
                         .foregroundStyle(AppTheme.iconTint(MoreSectionColor.account))
                 }
+            }
+        }
+    }
+
+    private var accountSummaryLine: String {
+        let squadronTitle = AccountProfile.squadronTitle(for: profile?.squadronID)
+        let syllabusTitle = profile?.selectedSyllabus.title
+
+        let accountLine = [profile?.displayName == nil ? nil : squadronTitle, syllabusTitle]
+            .compactMap { value in
+                guard let value, !value.isEmpty, value != "Not Sure Yet", value != "Not Set" else { return nil }
+                return value
+            }
+            .joined(separator: " • ")
+
+        return accountLine.isEmpty ? snapshot.currentFocusLine : accountLine
+    }
+}
+
+private struct MorePremiumPromoCard: View {
+    let isSubscribed: Bool
+
+    var body: some View {
+        MoreHeaderCard(accent: AppTheme.warning, supportingSpacing: 12) {
+            HStack(alignment: .center, spacing: 14) {
+                MoreHeaderTextBlock(
+                    eyebrow: "Premium",
+                    title: isSubscribed ? "Premium marked active" : "Go Premium",
+                    subtitle: isSubscribed ? "See your premium status and manage it here." : "Unlock the premium study experience when subscriptions open.",
+                    accent: AppTheme.warning,
+                    subtitleFont: .footnote
+                )
+
+                Spacer(minLength: 12)
+
+                StatusBadge(
+                    title: isSubscribed ? "Subscribed" : "Upgrade",
+                    iconName: isSubscribed ? "checkmark.circle.fill" : "star.fill",
+                    color: isSubscribed ? AppTheme.success : AppTheme.warning
+                )
+            }
+        } supportingContent: {
+            HStack(spacing: 10) {
+                Text(isSubscribed ? "Manage premium status" : "See premium options")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(AppTheme.prominentText(AppTheme.warning))
+
+                Spacer(minLength: 8)
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundStyle(AppTheme.accessoryTint(AppTheme.warning))
             }
         }
     }
@@ -1047,7 +1082,7 @@ private enum MoreHubDestination {
     case notifications
     case premium
     case quiz
-    case instructorReviews
+    case myInstructorReviews
     case statsDashboard
     case recentBriefs
     case recentFlashcardSets

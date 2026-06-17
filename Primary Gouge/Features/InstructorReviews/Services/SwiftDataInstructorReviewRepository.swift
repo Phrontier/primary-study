@@ -304,6 +304,13 @@ final class LocalInstructorReviewRepository: InstructorReviewRepository {
         try? persist()
     }
 
+    func hideOwnedReview(_ reviewID: String) {
+        guard let index = database.reviews.firstIndex(where: { $0.id == reviewID || $0.remoteID == reviewID }) else { return }
+        database.reviews[index].visibilityState = .hiddenPendingDelete
+        database.reviews[index].lastModifiedAt = .now
+        try? persist()
+    }
+
     func applySubmissionStatuses(_ statuses: [RemoteSubmissionStatusSnapshot], syncedAt: Date) {
         guard !statuses.isEmpty else { return }
 
@@ -479,7 +486,7 @@ final class LocalInstructorReviewRepository: InstructorReviewRepository {
     }
 
     private func approvedRecords() -> [InstructorReviewRecord] {
-        database.reviews.filter { $0.status == .approved }
+        database.reviews.filter { $0.status == .approved && $0.visibilityState == .public }
     }
 
     private func makeInstructor(from records: [InstructorReviewRecord]) -> Instructor? {
@@ -516,7 +523,9 @@ final class LocalInstructorReviewRepository: InstructorReviewRepository {
             status: record.status,
             origin: record.origin,
             syncState: record.syncState,
-            submitterClientID: record.submitterClientID
+            submitterClientID: record.submitterClientID,
+            actionType: record.actionType,
+            targetReviewID: record.targetReviewID
         )
     }
 

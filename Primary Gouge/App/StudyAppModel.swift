@@ -499,6 +499,13 @@ final class StudyAppModel: ObservableObject {
         refreshSnapshot()
     }
 
+    func setPremiumSubscribedPlaceholder(_ isSubscribed: Bool) {
+        progressStore?.updateHomePreferences { preferences in
+            preferences.premiumSubscribedPlaceholder = isSubscribed
+        }
+        refreshSnapshot()
+    }
+
     func answerQuestionOfDay(_ question: HomeQuestionDefinition, choiceID: String) {
         guard progressStore?.dailyQuestionProgress(for: question.id)?.answeredAt == nil else { return }
 

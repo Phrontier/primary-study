@@ -15,6 +15,22 @@ struct Primary_GougeTests {
             .appendingPathComponent("PrimaryGougeTests-\(name)-\(UUID().uuidString).json")
     }
 
+    private func makeInstructor(
+        name: String,
+        squadronID: String,
+        capabilities: Set<InstructorReviewEventKind>
+    ) -> Instructor {
+        Instructor(
+            id: Instructor.makeID(name: name, squadronID: squadronID),
+            name: name,
+            squadron: Squadron(id: squadronID, displayName: squadronID.uppercased()),
+            capabilities: capabilities,
+            publishedReviewCount: 1,
+            averageChillScore: 5.0,
+            averageGradingScore: 5.0
+        )
+    }
+
     @MainActor
     @Test func instructorReviewCountStringsHandleSingularAndPlural() async throws {
         let single = Instructor(
@@ -40,6 +56,64 @@ struct Primary_GougeTests {
         #expect(single.publishedReviewCountText == "1 published review")
         #expect(plural.reviewCountText == "2 reviews")
         #expect(plural.publishedReviewCountText == "2 published reviews")
+    }
+
+    @MainActor
+    @Test func trainingWingHierarchyMapsTrainingSquadronsToParentWings() async throws {
+        #expect(Squadron(id: "vt-27", displayName: "VT-27").parentTrainingWingID == .tw4)
+        #expect(Squadron(id: "vt-28", displayName: "VT-28").parentTrainingWingID == .tw4)
+        #expect(Squadron(id: "vt-2", displayName: "VT-2").parentTrainingWingID == .tw5)
+        #expect(Squadron(id: "vt-3", displayName: "VT-3").parentTrainingWingID == .tw5)
+        #expect(Squadron(id: "vt-6", displayName: "VT-6").parentTrainingWingID == .tw5)
+        #expect(Squadron(id: "tw-4", displayName: "TW-4").parentTrainingWingID == nil)
+        #expect(Squadron(id: "tw-5", displayName: "TW-5").parentTrainingWingID == nil)
+    }
+
+    @MainActor
+    @Test func accountProfileSquadronChoicesExcludeTrainingWings() async throws {
+        let selectableIDs = InstructorReviewSeedData.squadrons.profileSelectableSorted().map(\.id)
+
+        #expect(selectableIDs == ["vt-27", "vt-28", "vt-2", "vt-3", "vt-6"])
+        #expect(!selectableIDs.contains("tw-4"))
+        #expect(!selectableIDs.contains("tw-5"))
+        #expect(AccountProfile.normalizedProfileSquadronID("tw-4") == AccountProfile.notSureSquadronID)
+        #expect(AccountProfile.normalizedProfileSquadronID("vt-27") == "vt-27")
+    }
+
+    @MainActor
+    @Test func instructorGougeProfileFilterIncludesSelectedVTAndParentWingOnly() async throws {
+        let repository = MockInstructorReviewRepository(
+            instructorSummaries: [
+                makeInstructor(name: "VT-27 Flight", squadronID: "vt-27", capabilities: [.flight]),
+                makeInstructor(name: "TW-4 Sim", squadronID: "tw-4", capabilities: [.sim]),
+                makeInstructor(name: "VT-28 Flight", squadronID: "vt-28", capabilities: [.flight]),
+                makeInstructor(name: "TW-5 Sim", squadronID: "tw-5", capabilities: [.sim])
+            ]
+        )
+        let viewModel = InstructorReviewsRootViewModel()
+
+        viewModel.setSquadronFilter("vt-27")
+        viewModel.load(using: repository)
+
+        #expect(Set(viewModel.instructors.map(\.name)) == Set(["VT-27 Flight", "TW-4 Sim"]))
+    }
+
+    @MainActor
+    @Test func instructorGougeProfileFilterTreatsNotSureAndLegacyWingAsUnfiltered() async throws {
+        let instructors = [
+            makeInstructor(name: "VT-27 Flight", squadronID: "vt-27", capabilities: [.flight]),
+            makeInstructor(name: "TW-4 Sim", squadronID: "tw-4", capabilities: [.sim]),
+            makeInstructor(name: "TW-5 Sim", squadronID: "tw-5", capabilities: [.sim])
+        ]
+        let repository = MockInstructorReviewRepository(instructorSummaries: instructors)
+        let viewModel = InstructorReviewsRootViewModel()
+
+        viewModel.setSquadronFilter(AccountProfile.notSureSquadronID)
+        viewModel.load(using: repository)
+        #expect(viewModel.instructors.count == instructors.count)
+
+        viewModel.setSquadronFilter("tw-4")
+        #expect(viewModel.instructors.count == instructors.count)
     }
 
     @MainActor
@@ -2451,10 +2525,14 @@ private final class MockInstructorReviewRemoteService: InstructorReviewRemoteSer
     private(set) var fetchReportStatusesCallCount = 0
     private(set) var submitReviewCallCount = 0
     private(set) var submitReportCallCount = 0
+    private(set) var fetchOwnedReviewsCallCount = 0
+    private(set) var submitReviewEditCallCount = 0
+    private(set) var requestReviewDeletionCallCount = 0
 
     var publishedReviews: [InstructorReviewRecord] = []
     var submissionStatuses: [RemoteSubmissionStatusSnapshot] = []
     var reportStatuses: [RemoteReportStatusSnapshot] = []
+    var ownedReviews: [OwnedInstructorReview] = []
     var moderationSnapshot = RemoteModerationQueueSnapshot(
         pendingReviews: [],
         openReports: [],
@@ -2499,6 +2577,19 @@ private final class MockInstructorReviewRemoteService: InstructorReviewRemoteSer
         return record.id
     }
 
+    func fetchOwnedReviews() async throws -> [OwnedInstructorReview] {
+        fetchOwnedReviewsCallCount += 1
+        return ownedReviews
+    }
+
+    func submitReviewEdit(reviewID _: String, submission _: InstructorReviewSubmission) async throws {
+        submitReviewEditCallCount += 1
+    }
+
+    func requestReviewDeletion(reviewID _: String) async throws {
+        requestReviewDeletionCallCount += 1
+    }
+
     func fetchModerationQueue(session _: ModeratorSession?) async throws -> RemoteModerationQueueSnapshot {
         moderationSnapshot
     }
@@ -2534,11 +2625,25 @@ private final class MockInstructorReviewRepository: InstructorReviewRepository {
         InstructorNameSuggestion(id: "garrecht-alex", name: "Garrecht, Alex", squadron: Squadron(id: "tw-4", displayName: "TW-4"))
     ]
 
+    private let instructorSummaries: [Instructor]
     private(set) var lastSubmittedReview: InstructorReviewSubmission?
     private var openReports: [InstructorGougeReport] = []
 
+    init(instructorSummaries: [Instructor] = []) {
+        self.instructorSummaries = instructorSummaries
+    }
+
     func seedIfNeeded() throws {}
-    func fetchInstructorSummaries(searchText: String) -> [Instructor] { [] }
+    func fetchInstructorSummaries(searchText: String) -> [Instructor] {
+        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedSearchText.isEmpty else { return instructorSummaries }
+
+        let normalizedSearchText = normalized(trimmedSearchText)
+        return instructorSummaries.filter {
+            normalized($0.name).contains(normalizedSearchText) ||
+            normalized($0.squadron.displayName).contains(normalizedSearchText)
+        }
+    }
     func fetchInstructor(id: String) -> Instructor? { nil }
     func fetchPublishedReviews(for instructorID: String) -> [InstructorReview] { [] }
     func fetchPendingReviews() -> [InstructorReview] { [] }

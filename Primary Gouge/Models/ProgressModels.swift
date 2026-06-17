@@ -379,6 +379,7 @@ struct HomePreferencesRecord: Codable, Hashable {
     var dailyReminderEnabled: Bool
     var dailyReminderHour: Int
     var dailyReminderMinute: Int
+    var premiumSubscribedPlaceholder: Bool
 
     private enum CodingKeys: String, CodingKey {
         case pinnedTopicIDs
@@ -387,6 +388,7 @@ struct HomePreferencesRecord: Codable, Hashable {
         case dailyReminderEnabled
         case dailyReminderHour
         case dailyReminderMinute
+        case premiumSubscribedPlaceholder
     }
 
     init(
@@ -395,7 +397,8 @@ struct HomePreferencesRecord: Codable, Hashable {
         lastQuestionOfDayDate: Date? = nil,
         dailyReminderEnabled: Bool = false,
         dailyReminderHour: Int = 19,
-        dailyReminderMinute: Int = 0
+        dailyReminderMinute: Int = 0,
+        premiumSubscribedPlaceholder: Bool = false
     ) {
         self.pinnedTopicIDs = pinnedTopicIDs
         self.savedDailyQuestionIDs = savedDailyQuestionIDs
@@ -403,6 +406,7 @@ struct HomePreferencesRecord: Codable, Hashable {
         self.dailyReminderEnabled = dailyReminderEnabled
         self.dailyReminderHour = dailyReminderHour
         self.dailyReminderMinute = dailyReminderMinute
+        self.premiumSubscribedPlaceholder = premiumSubscribedPlaceholder
     }
 
     init(from decoder: Decoder) throws {
@@ -413,6 +417,7 @@ struct HomePreferencesRecord: Codable, Hashable {
         dailyReminderEnabled = try container.decodeIfPresent(Bool.self, forKey: .dailyReminderEnabled) ?? false
         dailyReminderHour = try container.decodeIfPresent(Int.self, forKey: .dailyReminderHour) ?? 19
         dailyReminderMinute = try container.decodeIfPresent(Int.self, forKey: .dailyReminderMinute) ?? 0
+        premiumSubscribedPlaceholder = try container.decodeIfPresent(Bool.self, forKey: .premiumSubscribedPlaceholder) ?? false
     }
 
     func encode(to encoder: Encoder) throws {
@@ -423,6 +428,7 @@ struct HomePreferencesRecord: Codable, Hashable {
         try container.encode(dailyReminderEnabled, forKey: .dailyReminderEnabled)
         try container.encode(dailyReminderHour, forKey: .dailyReminderHour)
         try container.encode(dailyReminderMinute, forKey: .dailyReminderMinute)
+        try container.encode(premiumSubscribedPlaceholder, forKey: .premiumSubscribedPlaceholder)
     }
 }
 

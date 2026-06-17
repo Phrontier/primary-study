@@ -4,6 +4,7 @@ struct MoreCommunitySubmissionView: View {
     let category: CommunitySubmissionCategory
     let lockedTarget: CommunitySubmissionDraft?
 
+    @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var communityStore: CommunitySubmissionStore
     @State private var draft = CommunitySubmissionDraft()
     @State private var didLoadDraft = false
@@ -14,10 +15,6 @@ struct MoreCommunitySubmissionView: View {
     init(category: CommunitySubmissionCategory, lockedTarget: CommunitySubmissionDraft? = nil) {
         self.category = category
         self.lockedTarget = lockedTarget
-    }
-
-    private var submissions: [CommunitySubmissionRecord] {
-        communityStore.submissions(for: category, limit: 6)
     }
 
     private var effectiveDraft: CommunitySubmissionDraft {
@@ -32,52 +29,14 @@ struct MoreCommunitySubmissionView: View {
         return draft
     }
 
-    private var syncMessage: String {
-        switch communityStore.syncStatus.phase {
-        case .idle:
-            return "Submissions sync through the shared Cloudflare inbox when the backend is available."
-        case .syncing:
-            return "Syncing queued submissions with Cloudflare."
-        case .offline:
-            if communityStore.isRemoteConfigured {
-                return "Submissions can still be saved locally and will retry when the device is back online."
-            }
-            return "The backend is not configured right now, so submissions will stay queued locally until that changes."
-        case .failed:
-            return communityStore.syncStatus.errorMessage ?? "The last sync attempt failed. Saved submissions will retry automatically."
-        }
-    }
-
-    private var syncStatusColor: Color {
-        switch communityStore.syncStatus.phase {
-        case .idle:
-            return AppTheme.success
-        case .syncing:
-            return AppTheme.accent
-        case .offline:
-            return AppTheme.warning
-        case .failed:
-            return AppTheme.danger
-        }
-    }
-
-    private var syncStatusTitle: String {
-        switch communityStore.syncStatus.phase {
-        case .idle:
-            return "Ready"
-        case .syncing:
-            return "Syncing"
-        case .offline:
-            return "Queued"
-        case .failed:
-            return "Retrying"
-        }
+    private var canSubmit: Bool {
+        accountStore.isSignedIn && !isSubmitting
     }
 
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
             VStack(alignment: .leading, spacing: 18) {
-                MoreHeaderCard(accent: category.accentColor, supportingSpacing: 14) {
+                MoreHeaderCard(accent: category.accentColor) {
                     HStack(alignment: .center, spacing: 14) {
                         MoreHeaderTextBlock(
                             eyebrow: category.eyebrow,
@@ -85,20 +44,7 @@ struct MoreCommunitySubmissionView: View {
                             subtitle: category.formSubtitle,
                             accent: category.accentColor
                         )
-
-                        Spacer(minLength: 12)
-
-                        StatusBadge(
-                            title: syncStatusTitle,
-                            iconName: category.iconName,
-                            color: syncStatusColor
-                        )
                     }
-                } supportingContent: {
-                    Text(syncMessage)
-                        .font(.subheadline)
-                        .foregroundStyle(AppTheme.textSecondary)
-                        .fixedSize(horizontal: false, vertical: true)
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
@@ -157,47 +103,26 @@ struct MoreCommunitySubmissionView: View {
                     submissionBanner(message: errorMessage, color: AppTheme.warning, iconName: "exclamationmark.triangle.fill")
                 }
 
+                if !accountStore.isSignedIn {
+                    submissionBanner(
+                        message: "Sign in to send this request.",
+                        color: category.accentColor,
+                        iconName: "person.crop.circle.badge.exclamationmark"
+                    )
+                }
+
                 Button {
                     submit()
                 } label: {
                     StudyActionButton(
-                        title: isSubmitting ? "Saving…" : category.submitButtonTitle,
+                        title: isSubmitting ? "Sending…" : (accountStore.isSignedIn ? category.submitButtonTitle : "Sign In To Send"),
                         icon: category.iconName,
                         tint: category.accentColor,
                         isProminent: true
                     )
                 }
                 .buttonStyle(.plain)
-                .disabled(isSubmitting)
-
-                VStack(alignment: .leading, spacing: 12) {
-                    SectionHeader(
-                        eyebrow: category.eyebrow,
-                        title: "Recent submissions",
-                        subtitle: nil,
-                        accent: category.accentColor
-                    )
-
-                    if submissions.isEmpty {
-                        EmptyStateCard(
-                            icon: category.iconName,
-                            title: category.emptyStateTitle,
-                            message: category.emptyStateMessage
-                        )
-                    } else {
-                        MoreSectionContainer {
-                            ForEach(Array(submissions.enumerated()), id: \.element.id) { index, submission in
-                                CommunitySubmissionHistoryRow(submission: submission)
-
-                                if index < submissions.count - 1 {
-                                    Divider()
-                                        .overlay(AppTheme.cardStroke.opacity(0.9))
-                                        .padding(.leading, 62)
-                                }
-                            }
-                        }
-                    }
-                }
+                .disabled(!canSubmit)
             }
         }
         .detailNavigationChrome(title: category.title)
@@ -221,7 +146,7 @@ struct MoreCommunitySubmissionView: View {
 
             SectionContainer(style: .standard, accent: AppTheme.danger, contentPadding: 18) {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Optional. If you know exactly what needs correction, add the content type and where it lives.")
+                    Text("If you know exactly what needs attention, add what it is and where it lives.")
                         .font(.footnote)
                         .foregroundStyle(AppTheme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -299,7 +224,7 @@ struct MoreCommunitySubmissionView: View {
         defer { isSubmitting = false }
 
         do {
-            let record = try communityStore.submit(
+            _ = try communityStore.submit(
                 category: category,
                 draft: effectiveDraft,
                 lockedTarget: lockedTarget
@@ -307,9 +232,6 @@ struct MoreCommunitySubmissionView: View {
             draft = CommunitySubmissionDraft()
             draft = mergedWithLockedTarget(draft)
             feedbackMessage = category.successMessage
-            if record.syncState == .queuedUpload && communityStore.syncStatus.phase != .idle {
-                feedbackMessage = "\(category.successMessage) It will upload when the backend is reachable."
-            }
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -389,67 +311,5 @@ private struct MoreEntryTextEditor: View {
                 .padding(.vertical, 12)
         }
         .frame(minHeight: 140)
-    }
-}
-
-private struct CommunitySubmissionHistoryRow: View {
-    let submission: CommunitySubmissionRecord
-
-    var body: some View {
-        HStack(alignment: .top, spacing: 14) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(AppTheme.semanticTint(submission.category.accentColor, opacity: 0.16))
-                    .frame(width: 36, height: 36)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(submission.category.accentColor.opacity(0.16), lineWidth: 1)
-                    )
-
-                Image(systemName: submission.category.iconName)
-                    .font(.system(size: 15, weight: .semibold))
-                    .foregroundStyle(submission.category.accentColor)
-            }
-
-            VStack(alignment: .leading, spacing: 6) {
-                Text(submission.summary)
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(AppTheme.textPrimary)
-
-                Text(submission.submittedAt.formatted(date: .abbreviated, time: .shortened))
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(AppTheme.textSecondary)
-
-                if let targetSummary = submission.targetSummary {
-                    Text(targetSummary)
-                        .font(.footnote)
-                        .foregroundStyle(AppTheme.textSecondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-
-                Text(submission.statusDetail)
-                    .font(.footnote)
-                    .foregroundStyle(AppTheme.textSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-
-            Spacer(minLength: 8)
-
-            VStack(alignment: .trailing, spacing: 8) {
-                StatusBadge(
-                    title: submission.syncState.title,
-                    iconName: "tray.and.arrow.up.fill",
-                    color: submission.syncState.color
-                )
-
-                StatusBadge(
-                    title: submission.status.title,
-                    iconName: "clock.badge.checkmark.fill",
-                    color: submission.status.color
-                )
-            }
-        }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 13)
     }
 }

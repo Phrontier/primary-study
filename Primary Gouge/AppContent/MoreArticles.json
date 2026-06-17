@@ -24,13 +24,13 @@
         },
         {
           "paragraphs" : [
-            "Instructor reviews, review reports, feedback, feature requests, support requests, and incorrect gouge reports sync through the Cloudflare backend when a backend URL is configured and your device is online. If not, the app queues supported submissions locally until it can retry."
+            "Instructor reviews, review reports, feedback, feature requests, support requests, and incorrect gouge reports are sent when you submit them from the app."
           ],
-          "title" : "When does the app send data to the backend?"
+          "title" : "When does the app send my submissions?"
         },
         {
           "paragraphs" : [
-            "Notifications are local daily reminders only in this MVP. The app schedules them on-device after you grant notification permission."
+            "Notifications are used for the daily study reminder after you allow permission."
           ],
           "title" : "How do notifications work?"
         },
@@ -52,14 +52,14 @@
           "bullets" : [
             "Rebuilt More into a compact utility hub with grouped sections and faster scanning.",
             "Added live Profile, Settings, Notifications, Premium, Flashcard Performance Stats, Recent Briefs, and Recent Flashcard Sets.",
-            "Added Cloudflare-backed Feedback, Request a Feature, Support, and Report Incorrect Gouge flows with local queueing.",
+            "Added Feedback, Request a Feature, Support, and Report Incorrect Gouge flows.",
             "Added real FAQ, Changelog, Privacy, Terms, and Version pages.",
-            "Extended the moderator queue to include community submissions alongside instructor review moderation."
+            "Added a user-owned instructor review management flow in More."
           ],
           "paragraphs" : [
-            "This MVP release focuses on turning More into a practical utility surface instead of a placeholder page."
+            "This release turns More into a practical utility surface instead of a placeholder page."
           ],
-          "title" : "More MVP Utility Release"
+          "title" : "More Utility Release"
         }
       ],
       "summary" : "A local release log for the current app build and future updates.",
@@ -77,25 +77,19 @@
         },
         {
           "paragraphs" : [
-            "A Primary Gouge account is required to use the app. Account profile data, including Account ID, email or Apple sign-in identity, selected squadron, selected syllabus, active sessions, and assigned permissions, is stored on the configured Cloudflare backend."
+            "A Primary Gouge account is required to use the app. Account profile data can include your display name, email, selected squadron, selected syllabus, active sessions, and assigned permissions."
           ],
-          "title" : "Cloud account data"
+          "title" : "Account data"
         },
         {
           "paragraphs" : [
-            "When you submit instructor reviews, instructor review reports, feedback, feature requests, support requests, or incorrect gouge reports, the app sends the submission data to the configured Cloudflare backend when possible. If the device is offline, supported submission flows may queue locally until a later retry. Signed-in submissions are associated with the cloud account."
+            "When you submit instructor reviews, instructor review reports, feedback, feature requests, support requests, or incorrect gouge reports, the app sends that submission data with your signed-in account."
           ],
-          "title" : "What the app sends remotely"
+          "title" : "What the app sends"
         },
         {
           "paragraphs" : [
-            "Community submissions can include an optional email address if you want follow-up. If you leave that field blank, the submission is still stored and reviewed without a contact address."
-          ],
-          "title" : "Optional contact information"
-        },
-        {
-          "paragraphs" : [
-            "Notification permission is used only for the local daily study reminder in this MVP. The app does not use push messaging for that reminder."
+            "Notification permission is used for the daily study reminder."
           ],
           "title" : "Notifications"
         },
@@ -107,12 +101,12 @@
         },
         {
           "paragraphs" : [
-            "This privacy page is an MVP product draft based on the current app behavior. It should be updated if the app’s storage, analytics, or backend integrations change."
+            "This page reflects the current app behavior and should be updated as the product evolves."
           ],
-          "title" : "Draft status"
+          "title" : "Updates"
         }
       ],
-      "summary" : "A straightforward draft summary of the app’s current storage and submission behavior.",
+      "summary" : "A straightforward summary of the app’s current storage and submission behavior.",
       "title" : "Privacy"
     },
     {
@@ -139,24 +133,24 @@
         },
         {
           "paragraphs" : [
-            "Access requires a signed-in account. The app supports Sign in with Apple and verified email sign-in. A cached signed-in session can open offline after the first successful login, but cloud-backed sync, profile edits, sign-out, and deletion need network connectivity."
+            "Access requires a signed-in account. The app supports Sign in with Apple and verified email sign-in."
           ],
           "title" : "Account access"
         },
         {
           "paragraphs" : [
-            "Moderator features are hidden unless the cloud account has the instructor gouge moderator permission. Moderator permissions are assigned server-side and are used only to review queued instructor gouge, reports, and community submissions."
+            "Moderator features are hidden unless the account has instructor gouge moderator permission."
           ],
           "title" : "Moderation access"
         },
         {
           "paragraphs" : [
-            "This terms page is an MVP product draft and should be reviewed again if account systems, billing, or broader distribution are introduced."
+            "These terms should be reviewed again as the product, billing, or distribution changes."
           ],
-          "title" : "Draft status"
+          "title" : "Updates"
         }
       ],
-      "summary" : "A practical MVP draft covering usage, submissions, and disclaimers.",
+      "summary" : "A practical summary covering usage, submissions, and disclaimers.",
       "title" : "Terms"
     }
   ]

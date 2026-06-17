@@ -99,6 +99,19 @@ struct AccountProfile: Codable, Hashable, Identifiable {
         }
         return InstructorReviewSeedData.squadron(for: id).displayName
     }
+
+    static func normalizedProfileSquadronID(_ id: String?) -> String {
+        guard
+            let id,
+            !id.isEmpty,
+            id != notSureSquadronID,
+            TrainingWingID.parentWingID(forSquadronID: id) != nil
+        else {
+            return notSureSquadronID
+        }
+
+        return id
+    }
 }
 
 struct AccountSession: Codable, Hashable {

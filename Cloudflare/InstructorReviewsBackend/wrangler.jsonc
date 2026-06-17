@@ -25,6 +25,8 @@
   "vars": {
     "ACCESS_TOKEN_TTL_SECONDS": "43200",
     "REFRESH_TOKEN_TTL_SECONDS": "2592000",
+    "SUPABASE_URL": "https://nsnezmbmosqtpychvpea.supabase.co",
+    "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_GNMwpLi9rOZpyy8ACZLgsA_gD_WTcGZ",
     "AUTO_MODERATION_MAX_BATCH": "40",
     "ENABLE_AI_MODERATION": "false",
     "AI_MODERATION_MODEL": "@cf/meta/llama-3.1-8b-instruct"

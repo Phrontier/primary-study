@@ -12,32 +12,27 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
     private let localRepository: LocalInstructorReviewRepository
     private let remoteService: InstructorReviewRemoteService
-    private let sessionStore: ModeratorSessionStore
     private let clientIdentityStore: AnonymousInstructorReviewClientIdentityStore
     private let connectivityMonitor: InstructorReviewConnectivityMonitor
     private let syncCoordinator: InstructorReviewSyncCoordinator
     private let configurationDefaults: UserDefaults
 
-    private var moderatorSession: ModeratorSession?
     private var syncTask: Task<Void, Never>?
 
     init(
         localRepository: LocalInstructorReviewRepository? = nil,
         remoteService: InstructorReviewRemoteService? = nil,
-        sessionStore: ModeratorSessionStore? = nil,
         clientIdentityStore: AnonymousInstructorReviewClientIdentityStore? = nil,
         connectivityMonitor: InstructorReviewConnectivityMonitor? = nil,
         configurationDefaults: UserDefaults = .standard
     ) {
         let resolvedLocalRepository = localRepository ?? LocalInstructorReviewRepository()
         let resolvedRemoteService = remoteService ?? CloudflareInstructorReviewRemoteService()
-        let resolvedSessionStore = sessionStore ?? ModeratorSessionStore()
         let resolvedClientIdentityStore = clientIdentityStore ?? AnonymousInstructorReviewClientIdentityStore()
         let resolvedConnectivityMonitor = connectivityMonitor ?? InstructorReviewConnectivityMonitor()
 
         self.localRepository = resolvedLocalRepository
         self.remoteService = resolvedRemoteService
-        self.sessionStore = resolvedSessionStore
         self.clientIdentityStore = resolvedClientIdentityStore
         self.connectivityMonitor = resolvedConnectivityMonitor
         self.configurationDefaults = configurationDefaults
@@ -52,7 +47,7 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         isRemoteConfigured = remoteService.isConfigured
         try? localRepository.seedIfNeeded()
 
-        moderatorSession = sessionStore.load()
+        ModeratorSessionStore().clear()
         refreshModeratorState()
 
         connectivityMonitor.onConnectivityChanged = { [weak self] online in
@@ -124,6 +119,40 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         scheduleSync()
     }
 
+    func fetchOwnedReviews() async throws -> [OwnedInstructorReview] {
+        guard remoteService.isConfigured else {
+            throw InstructorReviewRepositoryError.remoteNotConfigured
+        }
+        return try await remoteService.fetchOwnedReviews()
+    }
+
+    func submitOwnedReviewEdit(reviewID: String, submission: InstructorReviewSubmission) async throws {
+        guard remoteService.isConfigured else {
+            throw InstructorReviewRepositoryError.remoteNotConfigured
+        }
+        do {
+            try await remoteService.submitReviewEdit(reviewID: reviewID, submission: submission)
+            scheduleSync()
+            revision &+= 1
+        } catch {
+            throw mappedBackendError(error)
+        }
+    }
+
+    func requestOwnedReviewDeletion(reviewID: String) async throws {
+        guard remoteService.isConfigured else {
+            throw InstructorReviewRepositoryError.remoteNotConfigured
+        }
+        do {
+            try await remoteService.requestReviewDeletion(reviewID: reviewID)
+            localRepository.hideOwnedReview(reviewID)
+            scheduleSync()
+            revision &+= 1
+        } catch {
+            throw mappedBackendError(error)
+        }
+    }
+
     func dismissReport(id: String) async throws {
         let session = try await requireModerationSession()
 
@@ -189,28 +218,10 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         revision &+= 1
     }
 
-    func signInModerator(email: String, password: String) async throws {
-        moderatorSessionState = .signingIn
-        let session = try await remoteService.signInModerator(email: email, password: password)
-        moderatorSession = session
-        sessionStore.save(session)
-        refreshModeratorState()
-        revision &+= 1
-        scheduleSync()
-    }
-
-    func signOutModerator() {
-        moderatorSession = nil
-        sessionStore.clear()
-        openCommunitySubmissions = []
-        moderatorSessionState = .signedOut
-        revision &+= 1
-    }
-
     func setModeratorPermission(_ isAllowed: Bool) {
         guard hasModeratorPermission != isAllowed else { return }
         hasModeratorPermission = isAllowed
-        if !isAllowed && moderatorSession == nil {
+        if !isAllowed {
             openCommunitySubmissions = []
         }
         refreshModeratorState()
@@ -220,7 +231,9 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
 
     func clearAccountScopedData() {
         localRepository.clearAccountScopedData()
-        signOutModerator()
+        ModeratorSessionStore().clear()
+        openCommunitySubmissions = []
+        moderatorSessionState = .signedOut
         revision &+= 1
     }
 
@@ -236,16 +249,11 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         syncStatus = makeSyncStatus(phase: .syncing, errorMessage: nil)
 
         do {
-            let session = try await currentValidModeratorSession()
             let summary = try await syncCoordinator.sync(
                 clientID: clientIdentityStore.clientID(),
-                moderatorSession: session,
+                moderatorSession: nil,
                 canFetchModerationQueue: hasModeratorPermission
             )
-            moderatorSession = session
-            if let session {
-                sessionStore.save(session)
-            }
             openCommunitySubmissions = summary.openCommunitySubmissions
             refreshModeratorState()
             syncStatus = makeSyncStatus(phase: .idle, lastSyncedAt: summary.syncedAt, errorMessage: nil)
@@ -271,29 +279,12 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         }
     }
 
-    private func currentValidModeratorSession() async throws -> ModeratorSession? {
-        guard let moderatorSession else { return nil }
-        guard moderatorSession.isExpired else { return moderatorSession }
-
-        let refreshed = try await remoteService.refreshModeratorSession(moderatorSession)
-        self.moderatorSession = refreshed
-        sessionStore.save(refreshed)
-        return refreshed
-    }
-
-    private func requireModeratorSession() async throws -> ModeratorSession {
-        guard let session = try await currentValidModeratorSession() else {
+    private func requireModerationSession() async throws -> ModeratorSession? {
+        guard hasModeratorPermission else {
             moderatorSessionState = .signedOut
             throw InstructorReviewRepositoryError.unauthorized
         }
-        return session
-    }
-
-    private func requireModerationSession() async throws -> ModeratorSession? {
-        if hasModeratorPermission {
-            return nil
-        }
-        return try await requireModeratorSession()
+        return nil
     }
 
     private func mappedBackendError(_ error: Error) -> Error {
@@ -303,15 +294,13 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     private func refreshModeratorState() {
         if hasModeratorPermission {
             moderatorSessionState = .signedIn(email: "Account Moderator")
-        } else if let moderatorSession {
-            moderatorSessionState = .signedIn(email: moderatorSession.email)
         } else {
             moderatorSessionState = .signedOut
         }
     }
 
     private var canModerate: Bool {
-        hasModeratorPermission || moderatorSession != nil
+        hasModeratorPermission
     }
 
     private func makeSyncStatus(

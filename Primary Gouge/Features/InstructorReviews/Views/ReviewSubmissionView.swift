@@ -12,21 +12,51 @@ struct ReviewSubmissionView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @FocusState private var focusedField: Field?
-    @StateObject private var viewModel = ReviewSubmissionViewModel()
+    @StateObject private var viewModel: ReviewSubmissionViewModel
     @State private var activeSheet: ActiveSelectionSheet?
+    @State private var isSubmittingEdit = false
+    @State private var editSuccessMessage: String?
+    @State private var editErrorMessage: String?
+
+    private let editingReview: OwnedInstructorReview?
+    private let onCompletion: (() -> Void)?
 
     private enum Field {
         case writtenReview
     }
 
+    init(editingReview: OwnedInstructorReview? = nil, onCompletion: (() -> Void)? = nil) {
+        self.editingReview = editingReview
+        self.onCompletion = onCompletion
+        _viewModel = StateObject(
+            wrappedValue: ReviewSubmissionViewModel(
+                seed: editingReview.map { review in
+                    InstructorReviewFormSeed(
+                        instructorName: review.instructorName,
+                        squadronID: review.squadron.id,
+                        eventName: review.eventName,
+                        eventKind: review.eventKind,
+                        chillScore: review.chillScore,
+                        gradingScore: review.gradingScore,
+                        reviewText: review.reviewText
+                    )
+                }
+            )
+        )
+    }
+
+    private var isEditing: Bool {
+        editingReview != nil
+    }
+
     var body: some View {
         AppScrollScreen(bottomPadding: 36) {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Submit instructor gouge")
+                Text(isEditing ? "Edit your review" : "Submit instructor gouge")
                     .font(.system(size: 28, weight: .bold, design: .rounded))
                     .foregroundStyle(AppTheme.textPrimary)
 
-                Text("Start with the instructor, lock in whether this was a sim or flight review, then the form narrows the squadron and event choices for you.")
+                Text(isEditing ? "Update your review and send the revision back through moderation." : "Start with the instructor, choose the event lane, and fill out the review.")
                     .font(.system(.body, design: .rounded))
                     .foregroundStyle(AppTheme.textSecondary)
             }
@@ -236,7 +266,7 @@ struct ReviewSubmissionView: View {
                         .font(.system(.headline, design: .rounded, weight: .bold))
                         .foregroundStyle(AppTheme.textPrimary)
 
-                    Text("Give enough detail to help the next student understand the brief, vibe, and grading tendency. Low-effort submissions stay blocked.")
+                    Text("Give enough detail to help the next student understand the brief, vibe, and grading tendency.")
                         .font(.system(.footnote, design: .rounded))
                         .foregroundStyle(AppTheme.textSecondary)
 
@@ -294,7 +324,12 @@ struct ReviewSubmissionView: View {
                 }
             }
 
-            if let message = viewModel.errorMessage ?? (viewModel.hasAttemptedSubmit ? viewModel.validationMessage : nil) {
+            if let message = editSuccessMessage {
+                Text(message)
+                    .font(.system(.footnote, design: .rounded, weight: .semibold))
+                    .foregroundStyle(AppTheme.success)
+                    .padding(.horizontal, 6)
+            } else if let message = editErrorMessage ?? viewModel.errorMessage ?? (viewModel.hasAttemptedSubmit ? viewModel.validationMessage : nil) {
                 Text(message)
                     .font(.system(.footnote, design: .rounded, weight: .semibold))
                     .foregroundStyle(AppTheme.warning)
@@ -302,15 +337,19 @@ struct ReviewSubmissionView: View {
             }
 
             InstructorPrimaryButton(
-                title: "Submit For Moderation",
-                icon: "paperplane.fill",
-                enabled: viewModel.isValid
+                title: isEditing ? (isSubmittingEdit ? "Sending Update..." : "Send Update") : "Submit For Moderation",
+                icon: isEditing ? "square.and.pencil" : "paperplane.fill",
+                enabled: viewModel.isValid && !isSubmittingEdit
             ) {
                 focusedField = nil
-                viewModel.submit(using: reviewStore)
+                if isEditing {
+                    submitEdit()
+                } else {
+                    viewModel.submit(using: reviewStore)
+                }
             }
         }
-        .detailNavigationChrome(title: "Submit Review")
+        .detailNavigationChrome(title: isEditing ? "Edit Review" : "Submit Review")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Close") {
@@ -418,7 +457,7 @@ struct ReviewSubmissionView: View {
             }
         }
         .alert(
-            "Review submitted",
+            isEditing ? "Update sent" : "Review submitted",
             isPresented: Binding(
                 get: { viewModel.didSubmit },
                 set: { newValue in
@@ -430,10 +469,36 @@ struct ReviewSubmissionView: View {
         ) {
             Button("Done") {
                 viewModel.acknowledgeSubmission()
+                onCompletion?()
                 dismiss()
             }
         } message: {
-            Text("Your write-up is saved as pending and won't show publicly until moderation approves it.")
+            Text(isEditing ? "Your update is waiting for moderation. Your live review stays up until the update is approved." : "Your write-up is saved as pending and won't show publicly until moderation approves it.")
+        }
+    }
+
+    private func submitEdit() {
+        guard
+            let editingReview,
+            let reviewID = editingReview.publicReviewID,
+            let submission = viewModel.composeSubmission(using: reviewStore)
+        else { return }
+
+        isSubmittingEdit = true
+        editSuccessMessage = nil
+        editErrorMessage = nil
+
+        Task { @MainActor in
+            defer { isSubmittingEdit = false }
+
+            do {
+                try await reviewStore.submitOwnedReviewEdit(reviewID: reviewID, submission: submission)
+                editSuccessMessage = "Update sent for moderation."
+                onCompletion?()
+                dismiss()
+            } catch {
+                editErrorMessage = error.localizedDescription
+            }
         }
     }
 }

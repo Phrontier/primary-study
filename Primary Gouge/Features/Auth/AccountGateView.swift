@@ -117,7 +117,7 @@ struct AccountOnboardingView: View {
         didLoad = true
         let profile = accountStore.profile
         displayName = profile?.displayName ?? ""
-        selectedSquadronID = profile?.squadronID ?? AccountProfile.notSureSquadronID
+        selectedSquadronID = AccountProfile.normalizedProfileSquadronID(profile?.squadronID)
         selectedSyllabus = profile?.syllabusID ?? .delta
     }
 
@@ -127,7 +127,7 @@ struct AccountOnboardingView: View {
             do {
                 try await accountStore.updateProfile(
                     displayName: displayName.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty,
-                    squadronID: selectedSquadronID,
+                    squadronID: AccountProfile.normalizedProfileSquadronID(selectedSquadronID),
                     syllabusID: selectedSyllabus
                 )
             } catch {
@@ -142,7 +142,7 @@ struct AccountSquadronPicker: View {
 
     private var options: [(id: String, title: String)] {
         [(AccountProfile.notSureSquadronID, "Not Sure Yet")] +
-        InstructorReviewSeedData.squadrons.submissionSorted().map { ($0.id, $0.displayName) }
+        InstructorReviewSeedData.squadrons.profileSelectableSorted().map { ($0.id, $0.displayName) }
     }
 
     var body: some View {
@@ -161,6 +161,12 @@ struct AccountSquadronPicker: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 12)
             .background(AccountFieldBackground())
+            .onAppear {
+                selection = AccountProfile.normalizedProfileSquadronID(selection)
+            }
+            .onChange(of: selection) { _, newValue in
+                selection = AccountProfile.normalizedProfileSquadronID(newValue)
+            }
         }
     }
 }

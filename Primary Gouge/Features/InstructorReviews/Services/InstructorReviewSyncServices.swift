@@ -69,17 +69,22 @@ struct RemoteModerationQueueSnapshot: Hashable {
     let openCommunitySubmissions: [CommunitySubmissionModerationItem]
 }
 
+struct RemoteOwnedReviewSnapshot: Hashable {
+    let reviews: [OwnedInstructorReview]
+}
+
 protocol InstructorReviewRemoteService {
     var isConfigured: Bool { get }
     var configurationSource: InstructorReviewBackendSource { get }
     var configurationStatusDetail: String { get }
-    func signInModerator(email: String, password: String) async throws -> ModeratorSession
-    func refreshModeratorSession(_ session: ModeratorSession) async throws -> ModeratorSession
     func fetchPublishedReviews() async throws -> [InstructorReviewRecord]
     func fetchSubmissionStatuses(for clientID: String) async throws -> [RemoteSubmissionStatusSnapshot]
     func fetchReportStatuses(for clientID: String) async throws -> [RemoteReportStatusSnapshot]
     func submitReview(_ record: InstructorReviewRecord, clientID: String) async throws -> String
     func submitReport(_ record: InstructorGougeReportRecord, clientID: String) async throws -> String
+    func fetchOwnedReviews() async throws -> [OwnedInstructorReview]
+    func submitReviewEdit(reviewID: String, submission: InstructorReviewSubmission) async throws
+    func requestReviewDeletion(reviewID: String) async throws
     func fetchModerationQueue(session: ModeratorSession?) async throws -> RemoteModerationQueueSnapshot
     func approveSubmission(id: String, session: ModeratorSession?) async throws
     func rejectSubmission(id: String, session: ModeratorSession?) async throws
@@ -164,29 +169,6 @@ final class InstructorReviewSyncCoordinator {
 }
 
 final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteService {
-    private struct ModeratorCredentialsPayload: Encodable {
-        let email: String
-        let password: String
-    }
-
-    private struct RefreshPayload: Encodable {
-        let refreshToken: String
-    }
-
-    private struct SessionResponse: Decodable {
-        let email: String
-        let accessToken: String
-        let refreshToken: String
-        let expiresAt: Date
-
-        private enum CodingKeys: String, CodingKey {
-            case email
-            case accessToken = "accessToken"
-            case refreshToken = "refreshToken"
-            case expiresAt = "expiresAt"
-        }
-    }
-
     private struct ReviewsResponse: Decodable {
         let reviews: [RemoteReviewRecord]
     }
@@ -203,6 +185,10 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         let pendingReviews: [RemoteReviewRecord]
         let openReports: [RemoteReportRecord]
         let openCommunitySubmissions: [RemoteCommunitySubmissionRecord]
+    }
+
+    private struct OwnedReviewsResponse: Decodable {
+        let reviews: [RemoteOwnedReviewRecord]
     }
 
     private struct CreatedRecordResponse: Decodable {
@@ -222,6 +208,9 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         let status: ReviewStatus
         let submitterClientID: String?
         let updatedAt: Date?
+        let actionType: InstructorReviewActionType?
+        let targetReviewID: String?
+        let visibilityState: InstructorReviewVisibilityState?
 
         private enum CodingKeys: String, CodingKey {
             case id
@@ -236,7 +225,26 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
             case status
             case submitterClientID = "submitterClientID"
             case updatedAt = "updatedAt"
+            case actionType = "actionType"
+            case targetReviewID = "targetReviewID"
+            case visibilityState = "visibilityState"
         }
+    }
+
+    private struct RemoteOwnedReviewRecord: Decodable {
+        let id: String
+        let publicReviewID: String?
+        let submissionID: String?
+        let instructorName: String
+        let squadronID: String
+        let eventName: String?
+        let eventKind: InstructorReviewEventKind
+        let chillScore: Int
+        let gradingScore: Int
+        let reviewText: String
+        let submittedAt: Date
+        let updatedAt: Date
+        let status: OwnedInstructorReviewStatus
     }
 
     private struct RemoteSubmissionStatusRecord: Decodable {
@@ -330,36 +338,6 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         self.session = session
     }
 
-    func signInModerator(email: String, password: String) async throws -> ModeratorSession {
-        let response: SessionResponse = try await send(
-            path: "moderator/sign-in",
-            method: "POST",
-            body: ModeratorCredentialsPayload(email: email, password: password),
-            bearerToken: nil
-        )
-        return ModeratorSession(
-            email: response.email,
-            accessToken: response.accessToken,
-            refreshToken: response.refreshToken,
-            expiresAt: response.expiresAt
-        )
-    }
-
-    func refreshModeratorSession(_ session: ModeratorSession) async throws -> ModeratorSession {
-        let response: SessionResponse = try await send(
-            path: "moderator/refresh",
-            method: "POST",
-            body: RefreshPayload(refreshToken: session.refreshToken),
-            bearerToken: nil
-        )
-        return ModeratorSession(
-            email: response.email,
-            accessToken: response.accessToken,
-            refreshToken: response.refreshToken,
-            expiresAt: response.expiresAt
-        )
-    }
-
     func fetchPublishedReviews() async throws -> [InstructorReviewRecord] {
         let response: ReviewsResponse = try await send(
             path: "reviews/published",
@@ -412,6 +390,67 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
             additionalHeaders: submitterHeaders(clientID: clientID)
         )
         return response.id
+    }
+
+    func fetchOwnedReviews() async throws -> [OwnedInstructorReview] {
+        let response: OwnedReviewsResponse = try await send(
+            path: "me/reviews",
+            method: "GET",
+            body: Optional<Int>.none as Int?,
+            bearerToken: nil
+        )
+        return response.reviews.map {
+            OwnedInstructorReview(
+                id: $0.id,
+                publicReviewID: $0.publicReviewID,
+                submissionID: $0.submissionID,
+                instructorName: $0.instructorName,
+                squadron: InstructorReviewSeedData.squadron(for: $0.squadronID),
+                eventName: $0.eventName,
+                eventKind: $0.eventKind,
+                chillScore: $0.chillScore,
+                gradingScore: $0.gradingScore,
+                reviewText: $0.reviewText,
+                submittedAt: $0.submittedAt,
+                updatedAt: $0.updatedAt,
+                status: $0.status
+            )
+        }
+    }
+
+    func submitReviewEdit(reviewID: String, submission: InstructorReviewSubmission) async throws {
+        let payload = RemoteReviewRecord(
+            id: UUID().uuidString.lowercased(),
+            instructorName: submission.instructorName,
+            squadronID: submission.squadron.id,
+            eventName: submission.event.displayName,
+            eventKind: submission.event.kind,
+            chillScore: submission.chillScore,
+            gradingScore: submission.gradingScore,
+            reviewText: submission.reviewText,
+            submittedAt: .now,
+            status: .pending,
+            submitterClientID: nil,
+            updatedAt: .now,
+            actionType: .edit,
+            targetReviewID: reviewID,
+            visibilityState: nil
+        )
+        try await sendNoContent(
+            path: "me/reviews/\(reviewID)/edit",
+            method: "POST",
+            body: payload,
+            bearerToken: nil
+        )
+    }
+
+    func requestReviewDeletion(reviewID: String) async throws {
+        try await sendNoContent(
+            path: "me/reviews/\(reviewID)/delete",
+            method: "POST",
+            body: Optional<Int>.none as Int?,
+            bearerToken: nil
+        )
     }
 
     func fetchModerationQueue(session: ModeratorSession?) async throws -> RemoteModerationQueueSnapshot {
@@ -490,7 +529,10 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
             syncState: review.status == .pending ? .uploadedPending : .synced,
             lastModifiedAt: review.updatedAt ?? review.submittedAt,
             lastSyncedAt: Date(),
-            submitterClientID: review.submitterClientID
+            submitterClientID: review.submitterClientID,
+            actionType: review.actionType ?? .create,
+            targetReviewID: review.targetReviewID,
+            visibilityState: review.visibilityState ?? .public
         )
     }
 
@@ -552,7 +594,10 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
             submittedAt: record.submittedAt,
             status: .pending,
             submitterClientID: clientID,
-            updatedAt: record.lastModifiedAt
+            updatedAt: record.lastModifiedAt,
+            actionType: record.actionType,
+            targetReviewID: record.targetReviewID,
+            visibilityState: record.visibilityState
         )
     }
 

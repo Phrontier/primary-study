@@ -1,5 +1,10 @@
 DerivedData/
+DerivedData-*/
 Errors/
 .DS_Store
 ReferenceArchive/
 Pubs/
+.env
+.env.*
+*.p8
+AuthKey_*.p8

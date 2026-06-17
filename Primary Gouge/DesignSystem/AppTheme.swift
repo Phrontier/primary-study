@@ -3,7 +3,7 @@ import UIKit
 
 enum AppTheme {
     enum ThemeVariant {
-        case baselineDark
+        case nativeClarity
     }
 
     struct ThemePalette {
@@ -37,15 +37,15 @@ enum AppTheme {
     }
 
     enum Radius {
-        static let card: CGFloat = 20
-        static let largeCard: CGFloat = 24
-        static let control: CGFloat = 16
+        static let card: CGFloat = 18
+        static let largeCard: CGFloat = 22
+        static let control: CGFloat = 14
         static let pill: CGFloat = 999
     }
 
     enum Spacing {
         static let screenHorizontal: CGFloat = 20
-        static let screenTop: CGFloat = 18
+        static let screenTop: CGFloat = 16
         static let rootTabIntroTop: CGFloat = 8
         static let section: CGFloat = 28
         static let group: CGFloat = 16
@@ -89,42 +89,42 @@ enum AppTheme {
         case support
     }
 
-    static let activeVariant: ThemeVariant = .baselineDark
+    static let activeVariant: ThemeVariant = .nativeClarity
 
     static var preferredColorScheme: ColorScheme? {
         switch activeVariant {
-        case .baselineDark:
-            return .dark
+        case .nativeClarity:
+            return nil
         }
     }
 
     static var palette: ThemePalette {
         switch activeVariant {
-        case .baselineDark:
+        case .nativeClarity:
             return ThemePalette(
-                accent: color(0x4A88FF),
-                accentSoft: color(0x7DA8FF),
-                accentMuted: color(0x1A2433),
-                success: color(0x36C276),
-                warning: color(0xFFB454),
-                danger: color(0xFF6B6B),
-                textPrimary: color(0xF4F7FB),
-                textSecondary: color(0xA8B3C7),
-                textMuted: color(0x7E8A9E),
-                pageTop: color(0x07101B),
-                pageBottom: color(0x0B1420),
-                pageGlow: color(0x12243E),
-                surface: color(0x101A27),
-                elevatedSurface: color(0x142131),
-                raisedSurface: color(0x182638),
-                sunkenSurface: color(0x0C131D),
-                groupedBackground: color(0x122030),
-                secondaryGroupedBackground: color(0x1A293B),
-                separator: color(0x273548),
-                cardStroke: color(0x2A3A4D),
-                strongStroke: color(0x39516C),
-                chromeBackground: UIColor(rgb: 0x0A131E).withAlphaComponent(0.90),
-                chromeLine: UIColor(rgb: 0x263447).withAlphaComponent(0.72)
+                accent: adaptiveColor(light: 0x2563EB, dark: 0x6EA4FF),
+                accentSoft: adaptiveColor(light: 0x5E8BFF, dark: 0x9FC1FF),
+                accentMuted: adaptiveColor(light: 0xE7F0FF, dark: 0x17243A),
+                success: adaptiveColor(light: 0x168A51, dark: 0x4ED18A),
+                warning: adaptiveColor(light: 0xB76B00, dark: 0xFFC15A),
+                danger: adaptiveColor(light: 0xD8344E, dark: 0xFF7A8E),
+                textPrimary: adaptiveColor(light: 0x172033, dark: 0xF4F7FB),
+                textSecondary: adaptiveColor(light: 0x5B6472, dark: 0xB4BDCB),
+                textMuted: adaptiveColor(light: 0x8B95A5, dark: 0x848EA0),
+                pageTop: adaptiveColor(light: 0xF8FAFD, dark: 0x111419),
+                pageBottom: adaptiveColor(light: 0xEEF3F8, dark: 0x171B22),
+                pageGlow: adaptiveColor(light: 0xD8E7FF, dark: 0x1B2A42),
+                surface: adaptiveColor(light: 0xFFFFFF, dark: 0x1B2028),
+                elevatedSurface: adaptiveColor(light: 0xFDFEFF, dark: 0x222832),
+                raisedSurface: adaptiveColor(light: 0xFFFFFF, dark: 0x29313D),
+                sunkenSurface: adaptiveColor(light: 0xE8EEF6, dark: 0x12161D),
+                groupedBackground: adaptiveColor(light: 0xF1F5FA, dark: 0x202732),
+                secondaryGroupedBackground: adaptiveColor(light: 0xE6ECF4, dark: 0x2A3340),
+                separator: adaptiveColor(light: 0xD8E0EA, dark: 0x3A4655),
+                cardStroke: adaptiveColor(light: 0xDFE6EF, dark: 0x354150),
+                strongStroke: adaptiveColor(light: 0xC9D6E8, dark: 0x4A5A6D),
+                chromeBackground: adaptiveUIColor(light: 0xFBFCFE, dark: 0x151A22, alpha: 0.82),
+                chromeLine: adaptiveUIColor(light: 0xCBD5E1, dark: 0x303B4A, alpha: 0.72)
             )
         }
     }
@@ -170,31 +170,31 @@ enum AppTheme {
         case .primary:
             return accent
         case .discussionItems:
-            return color(0x5FD3B8)
+            return adaptiveColor(light: 0x0D9488, dark: 0x5FD3B8)
         case .flashcards:
-            return color(0x8B74FF)
+            return adaptiveColor(light: 0x6D5BD0, dark: 0xA494FF)
         case .quizzes:
-            return color(0x45C7FF)
+            return adaptiveColor(light: 0x0B83C9, dark: 0x5AC8FF)
         case .instructors:
-            return color(0x9A86FF)
+            return adaptiveColor(light: 0x7157D9, dark: 0xA997FF)
         case .videos:
-            return color(0xFF6F91)
+            return adaptiveColor(light: 0xD54E70, dark: 0xFF7D9A)
         case .library:
-            return color(0xBE8B52)
+            return adaptiveColor(light: 0x9A6A2E, dark: 0xD9A866)
         case .resources:
-            return color(0x6E9CFF)
+            return adaptiveColor(light: 0x2563EB, dark: 0x7EA8FF)
         case .documents:
-            return color(0xBE8B52)
+            return adaptiveColor(light: 0x9A6A2E, dark: 0xD9A866)
         case .groundSchool:
-            return color(0x4CC56F)
+            return adaptiveColor(light: 0x248A45, dark: 0x5FD985)
         case .sims:
-            return color(0xE3A93B)
+            return adaptiveColor(light: 0xB87400, dark: 0xF4BE53)
         case .flights:
-            return color(0x58AFFF)
+            return adaptiveColor(light: 0x1F75D6, dark: 0x72B8FF)
         case .account:
-            return color(0x7E9BFF)
+            return adaptiveColor(light: 0x4E69D9, dark: 0x91A8FF)
         case .support:
-            return color(0x8C96B4)
+            return adaptiveColor(light: 0x64748B, dark: 0xA4AFC4)
         }
     }
 
@@ -294,11 +294,11 @@ enum AppTheme {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithTransparentBackground()
         tabBarAppearance.backgroundColor = palette.chromeBackground
-        tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         tabBarAppearance.shadowColor = palette.chromeLine
 
         let selectedColor = UIColor(accent)
-        let normalColor = UIColor(rgb: 0x7F8CA2)
+        let normalColor = adaptiveUIColor(light: 0x7C8694, dark: 0xA0A8B5)
 
         let itemAppearances = [
             tabBarAppearance.stackedLayoutAppearance,
@@ -315,6 +315,17 @@ enum AppTheme {
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
 
+        let navigationAppearance = UINavigationBarAppearance()
+        navigationAppearance.configureWithTransparentBackground()
+        navigationAppearance.backgroundColor = palette.chromeBackground
+        navigationAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        navigationAppearance.shadowColor = palette.chromeLine
+        navigationAppearance.titleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
+        navigationAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
+
+        UINavigationBar.appearance().standardAppearance = navigationAppearance
+        UINavigationBar.appearance().compactAppearance = navigationAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationAppearance
         UINavigationBar.appearance().tintColor = selectedColor
         UINavigationBar.appearance().prefersLargeTitles = true
     }
@@ -397,9 +408,9 @@ enum AppTheme {
         case .hero:
             return LinearGradient(
                 colors: [
-                    elevatedSurface.opacity(0.96),
-                    accent.opacity(0.12),
-                    surface.opacity(0.96)
+                    elevatedSurface.opacity(0.98),
+                    accent.opacity(0.08),
+                    surface.opacity(0.99)
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -442,7 +453,7 @@ enum AppTheme {
             )
         case .standard:
             return LinearGradient(
-                colors: [surface.opacity(0.98), elevatedSurface.opacity(0.96)],
+                colors: [surface.opacity(0.99), elevatedSurface.opacity(0.97)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -487,17 +498,17 @@ enum AppTheme {
     private static func shadowOpacity(style: SurfaceStyle) -> Double {
         switch style {
         case .hero:
-            return 0.28
+            return 0.12
         case .primary:
-            return 0.22
+            return 0.10
         case .rootSummary:
-            return 0.20
+            return 0.09
         case .metric:
-            return 0.18
+            return 0.08
         case .grouped:
-            return 0.16
+            return 0.06
         case .standard:
-            return 0.18
+            return 0.08
         }
     }
 
@@ -537,6 +548,17 @@ enum AppTheme {
 
     static func color(_ rgb: UInt32) -> Color {
         Color(uiColor: UIColor(rgb: rgb))
+    }
+
+    private static func adaptiveColor(light: UInt32, dark: UInt32) -> Color {
+        Color(uiColor: adaptiveUIColor(light: light, dark: dark))
+    }
+
+    private static func adaptiveUIColor(light: UInt32, dark: UInt32, alpha: CGFloat = 1) -> UIColor {
+        UIColor { traits in
+            let value = traits.userInterfaceStyle == .dark ? dark : light
+            return UIColor(rgb: value).withAlphaComponent(alpha)
+        }
     }
 
     private static func liftedColor(_ color: Color, amount: CGFloat) -> Color {

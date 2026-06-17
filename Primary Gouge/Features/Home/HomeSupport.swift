@@ -192,9 +192,9 @@ extension StudyAppModel {
     }
 
     func topicIDs(for bank: QuestionBank, event: Event) -> [String] {
-        let questionValues = bank.questions.flatMap { [$0.prompt, $0.answer, $0.explanation ?? ""] }
+        let questionValues = bank.questions.flatMap { [$0.prompt, $0.answer, $0.explanation ?? ""] + ($0.tags ?? []) }
         return HomeTopicMatcher.topicIDs(
-            matching: [bank.title, bank.summary] + event.tags + [event.code, event.title] + questionValues,
+            matching: [bank.title, bank.summary] + (bank.tags ?? []) + event.tags + [event.code, event.title] + questionValues,
             topics: studyTopics
         )
     }
@@ -213,7 +213,10 @@ extension StudyAppModel {
     }
 
     func topicIDs(for video: VideoAsset) -> [String] {
-        HomeTopicMatcher.topicIDs(matching: video.tags + [video.title, video.summary], topics: studyTopics)
+        HomeTopicMatcher.topicIDs(
+            matching: video.tags + video.phaseIDs + video.eventCodes + [video.title, video.summary],
+            topics: studyTopics
+        )
     }
 
     func phase(containingEventID eventID: String) -> Phase? {
@@ -542,6 +545,8 @@ extension StudyAppModel {
         switch activity {
         case let .event(phaseID, eventID):
             return .event(phaseID: phaseID, eventID: eventID)
+        case let .category(phaseID, categoryID):
+            return .category(phaseID: phaseID, categoryID: categoryID)
         case let .eventDeck(phaseID, eventID, deckID):
             return .eventDeck(phaseID: phaseID, eventID: eventID, deckID: deckID)
         case let .libraryDeck(id):

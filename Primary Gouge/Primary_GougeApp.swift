@@ -15,6 +15,7 @@ struct Primary_GougeApp: App {
     @StateObject private var reviewStore = InstructorReviewStore()
     @StateObject private var communityStore = CommunitySubmissionStore()
     @StateObject private var notificationService = NotificationService()
+    @StateObject private var videoDownloadStore = VideoDownloadStore()
     @State private var didConfigureProtectedStores = false
 
     init() {
@@ -32,6 +33,7 @@ struct Primary_GougeApp: App {
                 .environmentObject(reviewStore)
                 .environmentObject(communityStore)
                 .environmentObject(notificationService)
+                .environmentObject(videoDownloadStore)
                 .preferredColorScheme(AppTheme.preferredColorScheme)
                 .task {
                     await bootstrapIfNeeded()

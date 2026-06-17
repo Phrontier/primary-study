@@ -6,16 +6,24 @@ struct EventDetailView: View {
 
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
+    @EnvironmentObject private var videoDownloadStore: VideoDownloadStore
 
     var body: some View {
         AppScrollScreen(bottomPadding: 40) {
             hero
 
-            EventOverviewCard(overview: event.overview)
+            if shouldShowOverview {
+                EventOverviewCard(overview: event.overview)
+            }
 
             briefingGuideSection
 
             toolSection
+
+            let videos = appModel.videos(for: event, placement: nil)
+            if !videos.isEmpty {
+                relatedVideoSection(videos)
+            }
 
             let resources = appModel.sharedResources(for: event, placement: nil)
             if !resources.isEmpty {
@@ -43,6 +51,36 @@ struct EventDetailView: View {
             title: event.displayTitle,
             subtitle: event.summary
         )
+    }
+
+    private var shouldShowOverview: Bool {
+        let normalizedOverview = normalizedDescription(event.overview)
+        let normalizedSummary = normalizedDescription(event.summary)
+
+        guard !normalizedOverview.isEmpty else { return false }
+        guard !normalizedSummary.isEmpty else { return true }
+
+        if normalizedOverview == normalizedSummary {
+            return false
+        }
+
+        if normalizedSummary.hasSuffix("...") {
+            let truncatedSummary = String(normalizedSummary.dropLast(3)).trimmingCharacters(in: .whitespacesAndNewlines)
+            if !truncatedSummary.isEmpty && normalizedOverview.hasPrefix(truncatedSummary) {
+                return false
+            }
+        }
+
+        return true
+    }
+
+    private func normalizedDescription(_ text: String) -> String {
+        text
+            .replacingOccurrences(of: "\n", with: " ")
+            .split(whereSeparator: \.isWhitespace)
+            .joined(separator: " ")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
     }
 
     private var briefingGuideSection: some View {
@@ -132,18 +170,9 @@ struct EventDetailView: View {
                     }
                     .buttonStyle(.plain)
                 }
-
-                ForEach(appModel.videos(for: event, placement: .primary)) { video in
-                    NavigationLink {
-                        VideoDetailView(video: video)
-                    } label: {
-                        ToolCard(title: video.title, subtitle: nil, icon: "play.rectangle.fill", accent: AppTheme.domainColor(.videos))
-                    }
-                    .buttonStyle(.plain)
-                }
             }
 
-            if event.studyNotes == nil && event.systemsBrief == nil && event.flashcardDecks.isEmpty && event.questionBanks.isEmpty && appModel.videos(for: event, placement: .primary).isEmpty {
+            if event.studyNotes == nil && event.systemsBrief == nil && event.flashcardDecks.isEmpty && event.questionBanks.isEmpty {
                 EmptyStateCard(
                     icon: "tray",
                     title: "No event tools yet",
@@ -174,20 +203,46 @@ struct EventDetailView: View {
                 }
                 .buttonStyle(.plain)
             }
+        }
+    }
 
-            ForEach(appModel.videos(for: event, placement: .supplemental)) { video in
+    private func relatedVideoSection(_ videos: [VideoAsset]) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            SectionHeader(
+                eyebrow: "Videos",
+                title: "Related videos",
+                subtitle: nil
+            )
+
+            ForEach(videos) { video in
                 NavigationLink {
                     VideoDetailView(video: video)
                 } label: {
                     ToolCard(
                         title: video.title,
-                        subtitle: nil,
+                        subtitle: videoSubtitle(video),
                         icon: "play.rectangle.fill",
                         accent: AppTheme.domainColor(.videos)
                     )
                 }
                 .buttonStyle(.plain)
             }
+        }
+    }
+
+    private func videoSubtitle(_ video: VideoAsset) -> String? {
+        switch videoDownloadStore.status(for: video) {
+        case .available:
+            return "Available offline"
+        case let .downloading(progress):
+            return "Downloading \(Int(progress * 100))%"
+        case .failed:
+            return "Download failed"
+        case .notDownloaded:
+            if let byteSize = video.byteSize {
+                return ByteCountFormatter.string(fromByteCount: byteSize, countStyle: .file)
+            }
+            return nil
         }
     }
 
@@ -237,7 +292,7 @@ private struct EventOverviewCard: View {
     }
 }
 
-private struct NotesDetailView: View {
+struct NotesDetailView: View {
     let notes: EventStudyNotes
     let eventTitle: String
     let accent: Color

@@ -15,6 +15,28 @@ struct Primary_GougeTests {
             .appendingPathComponent("PrimaryGougeTests-\(name)-\(UUID().uuidString).json")
     }
 
+    private func temporaryDirectory(name: String) throws -> URL {
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("PrimaryGougeTests-\(name)-\(UUID().uuidString)", isDirectory: true)
+        try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        return url
+    }
+
+    private func makeVideoAsset(id: String = "video-test") -> VideoAsset {
+        VideoAsset(
+            id: id,
+            title: "Test Video",
+            remotePath: "Videos/Contacts/test_video.mp4",
+            phaseIDs: ["contacts"],
+            eventCodes: ["FAM2101"],
+            primaryEventCodes: ["FAM2101"],
+            byteSize: 4,
+            durationSeconds: nil,
+            summary: "A test video.",
+            tags: ["test"]
+        )
+    }
+
     private func makeInstructor(
         name: String,
         squadronID: String,
@@ -29,6 +51,159 @@ struct Primary_GougeTests {
             averageChillScore: 5.0,
             averageGradingScore: 5.0
         )
+    }
+
+    private func makeObjectivePracticeBank() -> QuestionBank {
+        QuestionBank(
+            id: "test-bank",
+            title: "Test Bank",
+            summary: "Objective test bank.",
+            tags: ["systems"],
+            questions: [
+                Question(
+                    id: "test-question-1",
+                    prompt: "First prompt?",
+                    answer: "Alpha",
+                    explanation: nil,
+                    format: .multipleChoice,
+                    choices: [
+                        QuizChoice(id: "a", text: "Alpha"),
+                        QuizChoice(id: "b", text: "Bravo"),
+                        QuizChoice(id: "c", text: "Charlie"),
+                        QuizChoice(id: "d", text: "Delta")
+                    ],
+                    correctChoiceID: "a",
+                    tags: ["systems"]
+                ),
+                Question(
+                    id: "test-question-2",
+                    prompt: "Second prompt?",
+                    answer: "True",
+                    explanation: nil,
+                    format: .trueFalse,
+                    choices: [
+                        QuizChoice(id: "true", text: "True"),
+                        QuizChoice(id: "false", text: "False")
+                    ],
+                    correctChoiceID: "true",
+                    tags: ["systems"]
+                )
+            ]
+        )
+    }
+
+    @MainActor
+    @Test func videoAssetDecodingDefaultsOptionalMetadata() throws {
+        let json = """
+        {
+          "id": "video-minimal",
+          "title": "Minimal Video",
+          "remotePath": "Videos/Contacts/minimal.mp4",
+          "phaseIDs": ["contacts"]
+        }
+        """
+        let video = try JSONDecoder().decode(VideoAsset.self, from: try #require(json.data(using: .utf8)))
+
+        #expect(video.id == "video-minimal")
+        #expect(video.remotePath == "Videos/Contacts/minimal.mp4")
+        #expect(video.phaseIDs == ["contacts"])
+        #expect(video.eventCodes.isEmpty)
+        #expect(video.primaryEventCodes.isEmpty)
+        #expect(video.byteSize == nil)
+        #expect(video.durationSeconds == nil)
+        #expect(video.summary.isEmpty)
+        #expect(video.tags.isEmpty)
+    }
+
+    @MainActor
+    @Test func videoDownloadStoreDownloadsToCache() async throws {
+        let downloader = FakeVideoDownloader(result: .success(Data("clip".utf8)))
+        let store = VideoDownloadStore(
+            cacheDirectory: try temporaryDirectory(name: "video-cache-download"),
+            downloader: downloader,
+            baseURLProvider: { URL(string: "https://videos.example.test") }
+        )
+        let video = makeVideoAsset()
+
+        let localURL = try #require(await store.download(video))
+
+        #expect(downloader.calls == 1)
+        #expect(try Data(contentsOf: localURL) == Data("clip".utf8))
+        if case let .available(cachedURL) = store.status(for: video) {
+            #expect(cachedURL == localURL)
+        } else {
+            Issue.record("Expected downloaded video to be available offline.")
+        }
+    }
+
+    @MainActor
+    @Test func videoDownloadStoreReusesCachedFiles() async throws {
+        let downloader = FakeVideoDownloader(result: .success(Data("new".utf8)))
+        let store = VideoDownloadStore(
+            cacheDirectory: try temporaryDirectory(name: "video-cache-reuse"),
+            downloader: downloader,
+            baseURLProvider: { URL(string: "https://videos.example.test") }
+        )
+        let video = makeVideoAsset()
+        let cachedURL = store.cachedFileURL(for: video)
+        try Data("cached".utf8).write(to: cachedURL)
+
+        let resolvedURL = try #require(await store.download(video))
+
+        #expect(resolvedURL == cachedURL)
+        #expect(downloader.calls == 0)
+        #expect(try Data(contentsOf: cachedURL) == Data("cached".utf8))
+    }
+
+    @MainActor
+    @Test func videoDownloadStoreReportsFailures() async throws {
+        let downloader = FakeVideoDownloader(result: .failure(FakeVideoDownloadError.failed))
+        let store = VideoDownloadStore(
+            cacheDirectory: try temporaryDirectory(name: "video-cache-failure"),
+            downloader: downloader,
+            baseURLProvider: { URL(string: "https://videos.example.test") }
+        )
+        let video = makeVideoAsset()
+
+        let localURL = await store.download(video)
+
+        #expect(localURL == nil)
+        #expect(downloader.calls == 1)
+        if case .failed = store.status(for: video) {
+            #expect(true)
+        } else {
+            Issue.record("Expected failed video download status.")
+        }
+    }
+
+    @MainActor
+    @Test func practiceQuestionProgressRecordsStarsAndPerformance() async throws {
+        let store = ProgressStore(persistenceURL: temporaryPersistenceURL(name: "practice-question-progress"))
+
+        store.setPracticeQuestionStarred(questionID: "q1", bankID: "bank", isStarred: true)
+        store.recordPracticeQuestionAnswer(questionID: "q1", bankID: "bank", wasCorrect: false)
+        store.recordPracticeQuestionAnswer(questionID: "q1", bankID: "bank", wasCorrect: true)
+
+        let record = try #require(store.practiceQuestionProgress(for: "q1"))
+        #expect(record.isStarred)
+        #expect(record.attempts == 2)
+        #expect(record.correctAttempts == 1)
+        #expect(record.incorrectAttempts == 1)
+        #expect(record.lastAnswerWasCorrect == true)
+    }
+
+    @MainActor
+    @Test func smartReviewQuestionsSortStarredBeforeWeakQuestions() async throws {
+        let bank = makeObjectivePracticeBank()
+        let store = ProgressStore(persistenceURL: temporaryPersistenceURL(name: "smart-review-questions"))
+        let appModel = StudyAppModel(repository: ContentRepository(), progressStore: store)
+
+        store.recordPracticeQuestionAnswer(questionID: "test-question-1", bankID: bank.id, wasCorrect: false)
+        store.recordPracticeQuestionAnswer(questionID: "test-question-1", bankID: bank.id, wasCorrect: false)
+        appModel.setPracticeQuestionStarred(bank.questions[1], in: bank, isStarred: true)
+
+        let reviewIDs = appModel.smartReviewQuestions(in: bank).map(\.id)
+        #expect(reviewIDs == ["test-question-2", "test-question-1"])
     }
 
     @MainActor
@@ -2492,6 +2667,32 @@ struct Primary_GougeTests {
             .replacingOccurrences(of: "[^a-z0-9]+", with: " ", options: .regularExpression)
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
+    }
+}
+
+private enum FakeVideoDownloadError: Error {
+    case failed
+}
+
+private final class FakeVideoDownloader: VideoDownloader {
+    private let result: Result<Data, Error>
+    private(set) var calls = 0
+
+    init(result: Result<Data, Error>) {
+        self.result = result
+    }
+
+    func download(from remoteURL: URL, to destinationURL: URL, progress: @escaping (Double) async -> Void) async throws {
+        calls += 1
+        await progress(0.5)
+
+        switch result {
+        case let .success(data):
+            try data.write(to: destinationURL)
+            await progress(1.0)
+        case let .failure(error):
+            throw error
+        }
     }
 }
 

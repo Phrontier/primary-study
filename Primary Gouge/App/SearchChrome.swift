@@ -306,7 +306,12 @@ struct SearchDestinationView: View {
             }
         case let .category(phaseID, categoryID):
             if let phase = appModel.phase(id: phaseID), let category = appModel.category(phaseID: phaseID, categoryID: categoryID) {
-                EventListView(phase: phase, category: category)
+                switch category.kind {
+                case .groundSchool:
+                    GroundSchoolCategoryView(phase: phase, category: category)
+                case .sims, .flights:
+                    EventListView(phase: phase, category: category)
+                }
             } else {
                 missingDestination
             }

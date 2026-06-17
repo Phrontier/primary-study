@@ -73,6 +73,55 @@ struct TestAttemptRecord: Identifiable, Codable, Hashable {
     }
 }
 
+struct PracticeQuestionProgressRecord: Identifiable, Codable, Hashable {
+    let id: String
+    var questionID: String
+    var bankID: String
+    var attempts: Int
+    var correctAttempts: Int
+    var incorrectAttempts: Int
+    var lastAnsweredAt: Date?
+    var lastAnswerWasCorrect: Bool?
+    var isStarred: Bool
+
+    init(
+        questionID: String,
+        bankID: String,
+        attempts: Int = 0,
+        correctAttempts: Int = 0,
+        incorrectAttempts: Int = 0,
+        lastAnsweredAt: Date? = nil,
+        lastAnswerWasCorrect: Bool? = nil,
+        isStarred: Bool = false
+    ) {
+        self.id = questionID
+        self.questionID = questionID
+        self.bankID = bankID
+        self.attempts = attempts
+        self.correctAttempts = correctAttempts
+        self.incorrectAttempts = incorrectAttempts
+        self.lastAnsweredAt = lastAnsweredAt
+        self.lastAnswerWasCorrect = lastAnswerWasCorrect
+        self.isStarred = isStarred
+    }
+
+    var accuracy: Double {
+        guard attempts > 0 else { return 1 }
+        return Double(correctAttempts) / Double(attempts)
+    }
+
+    mutating func recordAnswer(wasCorrect: Bool, answeredAt: Date) {
+        attempts += 1
+        if wasCorrect {
+            correctAttempts += 1
+        } else {
+            incorrectAttempts += 1
+        }
+        lastAnsweredAt = answeredAt
+        lastAnswerWasCorrect = wasCorrect
+    }
+}
+
 struct EventProgressRecord: Identifiable, Codable, Hashable {
     let id: String
     var eventID: String
@@ -249,6 +298,7 @@ enum StudyActivityKind: String, Codable, Hashable {
 
 enum StudyActivityDestination: Codable, Hashable {
     case event(phaseID: String, eventID: String)
+    case category(phaseID: String, categoryID: String)
     case eventDeck(phaseID: String, eventID: String, deckID: String)
     case libraryDeck(id: String)
     case sharedResource(id: String)

@@ -272,7 +272,13 @@ struct QuestionBank: Codable {
     let id: String
     let title: String
     let summary: String
+    let tags: [String]?
     let questions: [Question]
+}
+
+struct QuestionChoice: Codable {
+    let id: String
+    let text: String
 }
 
 struct Question: Codable {
@@ -280,14 +286,63 @@ struct Question: Codable {
     let prompt: String
     let answer: String
     let explanation: String?
+    let format: String?
+    let choices: [QuestionChoice]?
+    let correctChoiceID: String?
+    let tags: [String]?
+}
+
+struct GroundSchoolQuestionBankFile: Codable {
+    let questionBanks: [GroundSchoolQuestionBank]
+}
+
+struct GroundSchoolQuestionBank: Codable {
+    let eventCode: String
+    let id: String
+    let title: String
+    let summary: String
+    let tags: [String]
+    let questions: [Question]
 }
 
 struct VideoAsset: Codable {
     let id: String
     let title: String
-    let url: URL
+    let remotePath: String
+    let phaseIDs: [String]
+    let eventCodes: [String]
+    let primaryEventCodes: [String]
+    let byteSize: Int64?
+    let durationSeconds: Double?
     let summary: String
     let tags: [String]
+
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case remotePath
+        case phaseIDs
+        case eventCodes
+        case primaryEventCodes
+        case byteSize
+        case durationSeconds
+        case summary
+        case tags
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        title = try container.decode(String.self, forKey: .title)
+        remotePath = try container.decode(String.self, forKey: .remotePath)
+        phaseIDs = try container.decodeIfPresent([String].self, forKey: .phaseIDs) ?? []
+        eventCodes = try container.decodeIfPresent([String].self, forKey: .eventCodes) ?? []
+        primaryEventCodes = try container.decodeIfPresent([String].self, forKey: .primaryEventCodes) ?? []
+        byteSize = try container.decodeIfPresent(Int64.self, forKey: .byteSize)
+        durationSeconds = try container.decodeIfPresent(Double.self, forKey: .durationSeconds)
+        summary = try container.decodeIfPresent(String.self, forKey: .summary) ?? ""
+        tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
+    }
 }
 
 struct EventOverrideFile: Codable {
@@ -496,6 +551,7 @@ struct ManifestBuilder {
     let eventOverrides: [String: EventOverride]
     let videoLibrary: [VideoAsset]
     let flashcardLibrary: [FlashcardDefinition]
+    let groundSchoolQuestionBanksByEvent: [String: [QuestionBank]]
     let validEventCodes: Set<String>
     let referenceStudyConfig: ReferenceStudyConfigFile
     let discussionAuthoringConfig: DiscussionItemAuthoringConfigFile
@@ -546,6 +602,7 @@ struct ManifestBuilder {
         let eventOverrideDirectoryURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventContentOverrides", isDirectory: true)
         let videosURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/VideoLibrary.json")
         let flashcardLibraryURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/FlashcardLibrary.json")
+        let groundSchoolQuestionBanksURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/GroundSchoolQuestionBanks.json")
         let flashcardImagesURL = currentDirectory.appendingPathComponent("Contents/FlashcardImages", isDirectory: true)
         let referenceConfigURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/ReferenceStudyConfig.json")
         let discussionAuthoringConfigURL = currentDirectory.appendingPathComponent("Primary Gouge/AppContent/EventContentOverrides/FAMDiscussionAuthoringConfig.json")
@@ -631,6 +688,7 @@ struct ManifestBuilder {
             authoredFlashcardBuildResult.deckCardIDsByEvent,
             syllabusFlashcardBuildResult.deckCardIDsByEvent
         )
+        self.groundSchoolQuestionBanksByEvent = try Self.loadGroundSchoolQuestionBanks(at: groundSchoolQuestionBanksURL)
 
         let canonicalReferenceCards = Self.materializeCanonicalReferenceCards(
             from: canonicalEmergencyProcedureReferenceDeck,
@@ -665,6 +723,64 @@ struct ManifestBuilder {
             }
 
         return Dictionary(uniqueKeysWithValues: overrides.map { ($0.code.replacingOccurrences(of: " ", with: ""), $0) })
+    }
+
+    private static func loadGroundSchoolQuestionBanks(at url: URL) throws -> [String: [QuestionBank]] {
+        guard FileManager.default.fileExists(atPath: url.path) else {
+            return [:]
+        }
+
+        let data = try Data(contentsOf: url)
+        let file = try JSONDecoder().decode(GroundSchoolQuestionBankFile.self, from: data)
+
+        var grouped: [String: [QuestionBank]] = [:]
+        for sourceBank in file.questionBanks {
+            let normalizedEventCode = normalizeCode(sourceBank.eventCode)
+            let bank = QuestionBank(
+                id: sourceBank.id,
+                title: sourceBank.title,
+                summary: sourceBank.summary,
+                tags: sourceBank.tags,
+                questions: sourceBank.questions
+            )
+            try validateGroundSchoolQuestionBank(bank, eventCode: normalizedEventCode)
+            grouped[normalizedEventCode, default: []].append(bank)
+        }
+
+        return grouped.mapValues { banks in
+            banks.sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
+        }
+    }
+
+    private static func validateGroundSchoolQuestionBank(_ bank: QuestionBank, eventCode: String) throws {
+        guard !bank.questions.isEmpty else {
+            throw ManifestBuildError(message: "\(bank.id) for \(eventCode) does not contain any questions.")
+        }
+
+        for question in bank.questions {
+            guard let format = question.format else { continue }
+            guard let choices = question.choices, let correctChoiceID = question.correctChoiceID else {
+                throw ManifestBuildError(message: "\(bank.id)/\(question.id) is missing choices or a correct choice.")
+            }
+
+            let expectedCount: Int
+            switch format {
+            case "multipleChoice":
+                expectedCount = 4
+            case "trueFalse":
+                expectedCount = 2
+            default:
+                throw ManifestBuildError(message: "\(bank.id)/\(question.id) has unsupported question format \(format).")
+            }
+
+            guard choices.count == expectedCount else {
+                throw ManifestBuildError(message: "\(bank.id)/\(question.id) has \(choices.count) choices; expected \(expectedCount).")
+            }
+
+            guard choices.contains(where: { $0.id == correctChoiceID }) else {
+                throw ManifestBuildError(message: "\(bank.id)/\(question.id) correct choice \(correctChoiceID) is not present in choices.")
+            }
+        }
     }
 
     private static func mergeEventOverrides(legacy: [String: EventOverride], authored: [String: EventOverride]) -> [String: EventOverride] {
@@ -1144,6 +1260,7 @@ struct ManifestBuilder {
 
     func build() throws -> StudyManifest {
         let phases = try phaseSeeds.map { try buildPhase(from: $0) }
+        try validateVideoLibraryReferences(in: phases)
         let flashcards = flashcardLibrary
         let sharedResources = buildSharedResources()
         let libraryStudyHubs = buildLibraryStudyHubs()
@@ -1229,7 +1346,7 @@ struct ManifestBuilder {
         let override = eventOverrides[normalizedCode]
         let syllabusEvent = syllabusReference[normalizedCode]
 
-        let questionBanks = sortedFiles
+        let fileQuestionBanks = sortedFiles
             .filter { isQuestionFile($0.lastPathComponent) }
             .compactMap { file -> QuestionBank? in
                 guard let text = extractText(from: file) else { return nil }
@@ -1239,9 +1356,11 @@ struct ManifestBuilder {
                     id: sanitizeID("\(code)-\(file.deletingPathExtension().lastPathComponent)-test"),
                     title: "Practice Test",
                     summary: "Converted from the source practice-question document for cleaner event prep.",
+                    tags: nil,
                     questions: questions
                 )
             }
+        let questionBanks = fileQuestionBanks + (groundSchoolQuestionBanksByEvent[normalizedCode] ?? [])
 
         let noteCandidate = sortedFiles.first(where: isStudyNoteFile(_:))
         let noteText = noteCandidate.flatMap(extractText)
@@ -1254,7 +1373,7 @@ struct ManifestBuilder {
         let flashcardDecks = resolvedFlashcardDecks(for: code, override: override)
 
         let resourceLinks = override?.sharedResources ?? defaultResourceLinks(for: phaseID, categoryKind: categoryKind, files: sortedFiles)
-        let videoLinks = override?.videos ?? []
+        let videoLinks = resolvedVideoLinks(for: normalizedCode, override: override)
         let title = syllabusEvent?.shortTitle ?? override?.title ?? inferTitle(for: code, from: sortedFiles)
         let summary = override?.summary ?? summaryText(from: overview)
 
@@ -1275,6 +1394,91 @@ struct ManifestBuilder {
             videoLinks: videoLinks,
             tags: uniqueStrings([phaseID, categoryKind.rawValue, normalizedCode.lowercased()])
         )
+    }
+
+    private func resolvedVideoLinks(for normalizedCode: String, override: EventOverride?) -> [EventVideoLink] {
+        let centralLinks = videoLibrary.compactMap { video -> EventVideoLink? in
+            let linkedEventCodes = Set(video.eventCodes.map(Self.normalizeCode))
+            guard linkedEventCodes.contains(normalizedCode) else { return nil }
+            let primaryCodes = Set(video.primaryEventCodes.map(Self.normalizeCode))
+            let placement: AssetPlacement = primaryCodes.contains(normalizedCode) ? .primary : .supplemental
+            return EventVideoLink(videoID: video.id, placement: placement)
+        }
+
+        return mergedVideoLinks(centralLinks + (override?.videos ?? []))
+    }
+
+    private func mergedVideoLinks(_ links: [EventVideoLink]) -> [EventVideoLink] {
+        var result: [EventVideoLink] = []
+
+        for link in links {
+            if let index = result.firstIndex(where: { $0.videoID == link.videoID }) {
+                if placementRank(link.placement) < placementRank(result[index].placement) {
+                    result[index] = link
+                }
+            } else {
+                result.append(link)
+            }
+        }
+
+        return result
+    }
+
+    private func placementRank(_ placement: AssetPlacement) -> Int {
+        switch placement {
+        case .primary:
+            return 0
+        case .supplemental:
+            return 1
+        case .generalLibrary:
+            return 2
+        }
+    }
+
+    private func validateVideoLibraryReferences(in phases: [Phase]) throws {
+        let allowedPhaseIDs = Set(phaseSeeds.map(\.id))
+        let allowedEventCodes = Set(
+            phases
+                .flatMap(\.categories)
+                .flatMap(\.events)
+                .map { Self.normalizeCode($0.code) }
+        )
+
+        var seenIDs = Set<String>()
+        var issues: [String] = []
+
+        for video in videoLibrary {
+            if !seenIDs.insert(video.id).inserted {
+                issues.append("\(video.id): duplicate video id")
+            }
+
+            if video.remotePath.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                issues.append("\(video.id): missing remotePath")
+            }
+
+            let unknownPhaseIDs = video.phaseIDs.filter { !allowedPhaseIDs.contains($0) }
+            if !unknownPhaseIDs.isEmpty {
+                issues.append("\(video.id): unknown phaseIDs \(unknownPhaseIDs.joined(separator: ", "))")
+            }
+
+            let normalizedEventCodes = video.eventCodes.map(Self.normalizeCode)
+            let unknownEventCodes = normalizedEventCodes.filter { !allowedEventCodes.contains($0) }
+            if !unknownEventCodes.isEmpty {
+                issues.append("\(video.id): unknown eventCodes \(unknownEventCodes.joined(separator: ", "))")
+            }
+
+            let eventCodeSet = Set(normalizedEventCodes)
+            let orphanedPrimaryCodes = video.primaryEventCodes
+                .map(Self.normalizeCode)
+                .filter { !eventCodeSet.contains($0) }
+            if !orphanedPrimaryCodes.isEmpty {
+                issues.append("\(video.id): primaryEventCodes must also appear in eventCodes \(orphanedPrimaryCodes.joined(separator: ", "))")
+            }
+        }
+
+        guard issues.isEmpty else {
+            throw ManifestBuildError(message: "VideoLibrary validation failed:\n- \(issues.joined(separator: "\n- "))")
+        }
     }
 
     private func buildSourceDocument(for file: URL) -> SourceDocument {
@@ -1389,7 +1593,11 @@ struct ManifestBuilder {
                     id: sanitizeID("\(deckID)-\(questions.count)-\(prompt)"),
                     prompt: prompt,
                     answer: answer,
-                    explanation: explanationLines.isEmpty ? nil : explanationLines.joined(separator: "\n")
+                    explanation: explanationLines.isEmpty ? nil : explanationLines.joined(separator: "\n"),
+                    format: nil,
+                    choices: nil,
+                    correctChoiceID: nil,
+                    tags: nil
                 )
             )
 

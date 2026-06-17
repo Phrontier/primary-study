@@ -365,7 +365,16 @@ struct QuestionBank: Codable, Identifiable, Hashable {
     let id: String
     let title: String
     let summary: String
+    let tags: [String]?
     let questions: [Question]
+
+    var objectiveQuestions: [Question] {
+        questions.filter(\.isObjective)
+    }
+
+    var supportsObjectiveTesting: Bool {
+        !objectiveQuestions.isEmpty && objectiveQuestions.count == questions.count
+    }
 }
 
 struct Question: Codable, Identifiable, Hashable {
@@ -373,12 +382,88 @@ struct Question: Codable, Identifiable, Hashable {
     let prompt: String
     let answer: String
     let explanation: String?
+    let format: QuizQuestionFormat?
+    let choices: [QuizChoice]?
+    let correctChoiceID: String?
+    let tags: [String]?
+
+    var isObjective: Bool {
+        guard let format, let choices, let correctChoiceID else { return false }
+        guard choices.contains(where: { $0.id == correctChoiceID }) else { return false }
+
+        switch format {
+        case .multipleChoice:
+            return choices.count == 4
+        case .trueFalse:
+            return choices.count == 2
+        }
+    }
+
+    func isCorrect(choiceID: String?) -> Bool {
+        choiceID == correctChoiceID
+    }
 }
 
 struct VideoAsset: Codable, Identifiable, Hashable {
     let id: String
     let title: String
-    let url: URL
+    let remotePath: String
+    let phaseIDs: [String]
+    let eventCodes: [String]
+    let primaryEventCodes: [String]
+    let byteSize: Int64?
+    let durationSeconds: Double?
     let summary: String
     let tags: [String]
+
+    init(
+        id: String,
+        title: String,
+        remotePath: String,
+        phaseIDs: [String],
+        eventCodes: [String] = [],
+        primaryEventCodes: [String] = [],
+        byteSize: Int64? = nil,
+        durationSeconds: Double? = nil,
+        summary: String,
+        tags: [String] = []
+    ) {
+        self.id = id
+        self.title = title
+        self.remotePath = remotePath
+        self.phaseIDs = phaseIDs
+        self.eventCodes = eventCodes
+        self.primaryEventCodes = primaryEventCodes
+        self.byteSize = byteSize
+        self.durationSeconds = durationSeconds
+        self.summary = summary
+        self.tags = tags
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case remotePath
+        case phaseIDs
+        case eventCodes
+        case primaryEventCodes
+        case byteSize
+        case durationSeconds
+        case summary
+        case tags
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        title = try container.decode(String.self, forKey: .title)
+        remotePath = try container.decode(String.self, forKey: .remotePath)
+        phaseIDs = try container.decodeIfPresent([String].self, forKey: .phaseIDs) ?? []
+        eventCodes = try container.decodeIfPresent([String].self, forKey: .eventCodes) ?? []
+        primaryEventCodes = try container.decodeIfPresent([String].self, forKey: .primaryEventCodes) ?? []
+        byteSize = try container.decodeIfPresent(Int64.self, forKey: .byteSize)
+        durationSeconds = try container.decodeIfPresent(Double.self, forKey: .durationSeconds)
+        summary = try container.decodeIfPresent(String.self, forKey: .summary) ?? ""
+        tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
+    }
 }

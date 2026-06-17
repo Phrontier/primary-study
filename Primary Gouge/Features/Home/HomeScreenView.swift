@@ -16,6 +16,10 @@ struct HomeScreenView: View {
                 route(to: destination)
             }
 
+            EmergencyReferenceShortcutCard {
+                route(to: .libraryDeck(id: "emergency-reference-hub"))
+            }
+
             if let question = snapshot.questionOfDay.question {
                 HomeQuestionOfDayCard(
                     snapshot: snapshot.questionOfDay,
@@ -42,6 +46,46 @@ struct HomeScreenView: View {
     private func route(to destination: SearchDestination?) {
         guard let destination else { return }
         searchChrome.route(to: destination)
+    }
+}
+
+private struct EmergencyReferenceShortcutCard: View {
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            SectionContainer(contentPadding: 16) {
+                HStack(alignment: .center, spacing: 14) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            .fill(AppTheme.accent.opacity(0.14))
+                            .frame(width: 44, height: 44)
+
+                        Image(systemName: "exclamationmark.shield.fill")
+                            .font(.headline.weight(.semibold))
+                            .foregroundStyle(AppTheme.accent)
+                    }
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("EPs / Limits / N/W/C")
+                            .font(.headline.weight(.semibold))
+                            .foregroundStyle(AppTheme.textPrimary)
+
+                        Text("Open the core emergency-reference deck for the highest-value recurring memory items.")
+                            .font(.footnote)
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+
+                    Spacer(minLength: 10)
+
+                    Image(systemName: "chevron.right")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppTheme.accent)
+                }
+            }
+        }
+        .buttonStyle(.plain)
     }
 }
 

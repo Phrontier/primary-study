@@ -120,6 +120,8 @@ struct MoreProfileView: View {
                         }
                     }
                 }
+
+                accountDeletionSection
             }
         }
         .detailNavigationChrome(title: "Profile")
@@ -193,8 +195,26 @@ struct MoreProfileView: View {
                     }
                     .buttonStyle(.plain)
                     .disabled(accountStore.isWorking)
+                }
+            }
+        }
+    }
 
-                    Divider()
+    private var accountDeletionSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            SectionHeader(
+                eyebrow: "Account",
+                title: "Delete account",
+                subtitle: nil,
+                accent: AppTheme.danger
+            )
+
+            SectionContainer(style: .standard, accent: AppTheme.danger, contentPadding: 18) {
+                VStack(alignment: .leading, spacing: 14) {
+                    Text("Permanently remove your Primary Gouge account and account-linked submissions.")
+                        .font(.footnote)
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
 
                     if needsAppleDeleteAuthorization {
                         Text("Confirm with Apple to finish account deletion.")
@@ -205,21 +225,17 @@ struct MoreProfileView: View {
                         appleDeletionButton
                     }
 
-                    HStack(spacing: 12) {
-                        Button {
-                            accountStore.signOut()
-                        } label: {
-                            StudyActionButton(title: "Sign Out", icon: "rectangle.portrait.and.arrow.right", tint: AppTheme.warning, isProminent: false)
-                        }
-                        .buttonStyle(.plain)
-
-                        Button(role: .destructive) {
-                            showingDeleteConfirmation = true
-                        } label: {
-                            StudyActionButton(title: "Delete", icon: "trash.fill", tint: AppTheme.danger, isProminent: false)
-                        }
-                        .buttonStyle(.plain)
+                    Button(role: .destructive) {
+                        showingDeleteConfirmation = true
+                    } label: {
+                        StudyActionButton(
+                            title: "Delete Account",
+                            icon: "trash.fill",
+                            tint: AppTheme.danger,
+                            isProminent: false
+                        )
                     }
+                    .buttonStyle(.plain)
                 }
             }
         }

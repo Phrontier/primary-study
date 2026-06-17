@@ -100,6 +100,7 @@ struct RootView_Previews: PreviewProvider {
             .environmentObject(StudyAppModel.preview)
             .environmentObject(InstructorReviewStore())
             .environmentObject(QuizStore())
+            .environmentObject(VideoDownloadStore())
     }
 }
 

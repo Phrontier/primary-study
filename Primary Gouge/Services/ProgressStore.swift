@@ -6,6 +6,7 @@ final class ProgressStore {
         var cardProgress: [String: CardProgressRecord] = [:]
         var eventProgress: [String: EventProgressRecord] = [:]
         var testAttempts: [TestAttemptRecord] = []
+        var practiceQuestionProgress: [String: PracticeQuestionProgressRecord] = [:]
         var activities: [StudyActivityRecord] = []
         var sessions: [StudySessionRecord] = []
         var dailyQuestionProgress: [String: DailyQuestionProgressRecord] = [:]
@@ -17,6 +18,7 @@ final class ProgressStore {
             case cardProgress
             case eventProgress
             case testAttempts
+            case practiceQuestionProgress
             case activities
             case sessions
             case dailyQuestionProgress
@@ -28,6 +30,7 @@ final class ProgressStore {
             cardProgress = try container.decodeIfPresent([String: CardProgressRecord].self, forKey: .cardProgress) ?? [:]
             eventProgress = try container.decodeIfPresent([String: EventProgressRecord].self, forKey: .eventProgress) ?? [:]
             testAttempts = try container.decodeIfPresent([TestAttemptRecord].self, forKey: .testAttempts) ?? []
+            practiceQuestionProgress = try container.decodeIfPresent([String: PracticeQuestionProgressRecord].self, forKey: .practiceQuestionProgress) ?? [:]
             activities = try container.decodeIfPresent([StudyActivityRecord].self, forKey: .activities) ?? []
             sessions = try container.decodeIfPresent([StudySessionRecord].self, forKey: .sessions) ?? []
             dailyQuestionProgress = try container.decodeIfPresent([String: DailyQuestionProgressRecord].self, forKey: .dailyQuestionProgress) ?? [:]
@@ -137,6 +140,37 @@ final class ProgressStore {
         database.testAttempts
             .filter { $0.bankID == bankID }
             .sorted { $0.takenAt > $1.takenAt }
+    }
+
+    func practiceQuestionProgress(for questionID: String) -> PracticeQuestionProgressRecord? {
+        database.practiceQuestionProgress[questionID]
+    }
+
+    func allPracticeQuestionProgress(for bankID: String) -> [PracticeQuestionProgressRecord] {
+        database.practiceQuestionProgress.values
+            .filter { $0.bankID == bankID }
+            .sorted { lhs, rhs in
+                if lhs.isStarred != rhs.isStarred {
+                    return lhs.isStarred && !rhs.isStarred
+                }
+                return (lhs.lastAnsweredAt ?? .distantPast) > (rhs.lastAnsweredAt ?? .distantPast)
+            }
+    }
+
+    func setPracticeQuestionStarred(questionID: String, bankID: String, isStarred: Bool) {
+        var record = database.practiceQuestionProgress[questionID] ?? PracticeQuestionProgressRecord(questionID: questionID, bankID: bankID)
+        record.bankID = bankID
+        record.isStarred = isStarred
+        database.practiceQuestionProgress[questionID] = record
+        persist()
+    }
+
+    func recordPracticeQuestionAnswer(questionID: String, bankID: String, wasCorrect: Bool, answeredAt: Date = .now) {
+        var record = database.practiceQuestionProgress[questionID] ?? PracticeQuestionProgressRecord(questionID: questionID, bankID: bankID)
+        record.bankID = bankID
+        record.recordAnswer(wasCorrect: wasCorrect, answeredAt: answeredAt)
+        database.practiceQuestionProgress[questionID] = record
+        persist()
     }
 
     func allCardProgressRecords() -> [CardProgressRecord] {

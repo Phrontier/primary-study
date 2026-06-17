@@ -8,3 +8,4 @@ Contents/**/*.docx filter=lfs diff=lfs merge=lfs -text
 Contents/**/*.pptx filter=lfs diff=lfs merge=lfs -text
 Contents/**/*.xlsx filter=lfs diff=lfs merge=lfs -text
 Contents/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+Videos/**/*.mp4 filter=lfs diff=lfs merge=lfs -text

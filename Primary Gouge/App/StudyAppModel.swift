@@ -65,6 +65,59 @@ struct SharedResourceGroupSnapshot: Identifiable, Hashable {
     var id: String { section.rawValue }
 }
 
+struct GroundSchoolCategorySnapshot: Hashable {
+    let coreTools: [GroundSchoolToolSnapshot]
+    let eventSections: [GroundSchoolEventSectionSnapshot]
+
+    var totalToolCount: Int {
+        coreTools.count + eventSections.reduce(into: 0) { $0 += $1.tools.count }
+    }
+
+    var totalPracticeTestCount: Int {
+        coreTools.filter(\.isPracticeTest).count + eventSections.reduce(into: 0) { count, section in
+            count += section.tools.filter(\.isPracticeTest).count
+        }
+    }
+
+    var totalSectionCount: Int {
+        eventSections.count + (coreTools.isEmpty ? 0 : 1)
+    }
+
+    var isEmpty: Bool {
+        coreTools.isEmpty && eventSections.isEmpty
+    }
+}
+
+struct GroundSchoolEventSectionSnapshot: Identifiable, Hashable {
+    let event: Event
+    let tools: [GroundSchoolToolSnapshot]
+
+    var id: String { event.id }
+}
+
+struct GroundSchoolToolSnapshot: Identifiable, Hashable {
+    let id: String
+    let event: Event
+    let content: GroundSchoolToolContent
+
+    var isPracticeTest: Bool {
+        if case .practiceTest = content {
+            return true
+        }
+        return false
+    }
+}
+
+enum GroundSchoolToolContent: Hashable {
+    case document(SourceDocument)
+    case discussionItems(EventStudyNotes)
+    case systemsBrief(EventStudyNotes)
+    case flashcardDeck(FlashcardDeck)
+    case practiceTest(QuestionBank)
+    case sharedResource(SharedResource)
+    case video(VideoAsset)
+}
+
 enum SearchScope: Hashable {
     case home
     case events(title: String, phaseID: String?, categoryID: String?)
@@ -242,6 +295,21 @@ final class StudyAppModel: ObservableObject {
         refreshSnapshot()
     }
 
+    func recordGroundSchoolCategoryOpened(phase: Phase, category: StudyCategory) {
+        guard category.kind == .groundSchool else { return }
+
+        progressStore?.recordActivity(
+            StudyActivityRecord(
+                kind: .event,
+                destination: .category(phaseID: phase.id, categoryID: category.id),
+                title: "\(phase.title) Ground School",
+                subtitle: category.summary,
+                topicIDs: groundSchoolTopicIDs(for: category)
+            )
+        )
+        refreshSnapshot()
+    }
+
     func markEventStudied(_ event: Event) {
         progressStore?.markEventStudied(eventID: event.id)
         if let phase = phase(containingEventID: event.id) {
@@ -335,10 +403,67 @@ final class StudyAppModel: ObservableObject {
         progressStore?.testHistory(for: bankID) ?? []
     }
 
+    func practiceQuestionProgress(for questionID: String) -> PracticeQuestionProgressRecord? {
+        progressStore?.practiceQuestionProgress(for: questionID)
+    }
+
+    func isPracticeQuestionStarred(_ question: Question, in bank: QuestionBank) -> Bool {
+        progressStore?.practiceQuestionProgress(for: question.id)?.isStarred ?? false
+    }
+
+    func setPracticeQuestionStarred(_ question: Question, in bank: QuestionBank, isStarred: Bool) {
+        progressStore?.setPracticeQuestionStarred(questionID: question.id, bankID: bank.id, isStarred: isStarred)
+        refreshSnapshot()
+    }
+
+    func recordPracticeQuestionAnswer(_ question: Question, in bank: QuestionBank, wasCorrect: Bool, answeredAt: Date = .now) {
+        progressStore?.recordPracticeQuestionAnswer(questionID: question.id, bankID: bank.id, wasCorrect: wasCorrect, answeredAt: answeredAt)
+        refreshSnapshot()
+    }
+
+    func starredQuestions(in bank: QuestionBank) -> [Question] {
+        bank.objectiveQuestions.filter { isPracticeQuestionStarred($0, in: bank) }
+    }
+
+    func smartReviewQuestions(in bank: QuestionBank) -> [Question] {
+        let objectiveQuestions = bank.objectiveQuestions
+        let progressByQuestionID = Dictionary(
+            uniqueKeysWithValues: (progressStore?.allPracticeQuestionProgress(for: bank.id) ?? []).map { ($0.questionID, $0) }
+        )
+
+        return objectiveQuestions
+            .filter { question in
+                guard let progress = progressByQuestionID[question.id] else { return false }
+                return progress.isStarred || progress.lastAnswerWasCorrect == false || progress.incorrectAttempts > 0 || progress.accuracy < 0.7
+            }
+            .sorted { lhs, rhs in
+                let lhsProgress = progressByQuestionID[lhs.id]
+                let rhsProgress = progressByQuestionID[rhs.id]
+                let lhsStarred = lhsProgress?.isStarred ?? false
+                let rhsStarred = rhsProgress?.isStarred ?? false
+                if lhsStarred != rhsStarred {
+                    return lhsStarred && !rhsStarred
+                }
+
+                let lhsIncorrect = lhsProgress?.incorrectAttempts ?? 0
+                let rhsIncorrect = rhsProgress?.incorrectAttempts ?? 0
+                if lhsIncorrect != rhsIncorrect {
+                    return lhsIncorrect > rhsIncorrect
+                }
+
+                return lhs.prompt.localizedCaseInsensitiveCompare(rhs.prompt) == .orderedAscending
+            }
+    }
+
     func briefingGuide(for event: Event) -> SourceDocument? {
         event.sourceDocuments.first { document in
             document.kind == .briefingGuide && event.primaryDocumentIDs.contains(document.id)
         }
+    }
+
+    func primaryDocuments(for event: Event) -> [SourceDocument] {
+        let lookup = Dictionary(uniqueKeysWithValues: event.sourceDocuments.map { ($0.id, $0) })
+        return event.primaryDocumentIDs.compactMap { lookup[$0] }
     }
 
     func supplementalDocuments(for event: Event) -> [SourceDocument] {
@@ -364,6 +489,24 @@ final class StudyAppModel: ObservableObject {
             .sorted { lhs, rhs in
                 (ids.firstIndex(of: lhs.id) ?? .max) < (ids.firstIndex(of: rhs.id) ?? .max)
             }
+    }
+
+    func isGroundSchoolContainerEvent(_ event: Event) -> Bool {
+        event.categoryKind == .groundSchool && event.code.uppercased().hasSuffix("-GS")
+    }
+
+    func groundSchoolSnapshot(for category: StudyCategory) -> GroundSchoolCategorySnapshot {
+        let containerEvents = category.events.filter(isGroundSchoolContainerEvent)
+        let visibleEvents = category.events.filter { !isGroundSchoolContainerEvent($0) }
+
+        let coreTools = containerEvents.flatMap(groundSchoolTools(for:))
+        let eventSections = visibleEvents.compactMap { event -> GroundSchoolEventSectionSnapshot? in
+            let tools = groundSchoolTools(for: event)
+            guard !tools.isEmpty else { return nil }
+            return GroundSchoolEventSectionSnapshot(event: event, tools: tools)
+        }
+
+        return GroundSchoolCategorySnapshot(coreTools: coreTools, eventSections: eventSections)
     }
 
     func resources(for hub: LibraryStudyHub) -> [SharedResource] {
@@ -460,15 +603,9 @@ final class StudyAppModel: ObservableObject {
     }
 
     var generalLibraryVideos: [VideoAsset] {
-        let ids = Set(
-            studyManifest.phases
-                .flatMap(\.categories)
-                .flatMap(\.events)
-                .flatMap(\.videoLinks)
-                .filter { $0.placement == .generalLibrary }
-                .map(\.videoID)
-        )
-        return studyManifest.videos.filter { ids.contains($0.id) }
+        studyManifest.videos.sorted {
+            $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending
+        }
     }
 
     var homeTabSnapshot: HomeTabSnapshot {
@@ -641,6 +778,14 @@ final class StudyAppModel: ObservableObject {
             }
     }
 
+    func phaseKnowledgeVideos(for phase: Phase) -> [VideoAsset] {
+        studyManifest.videos
+            .filter { $0.phaseIDs.contains(phase.id) }
+            .sorted {
+                $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending
+            }
+    }
+
     func homeSearchSections(query: String, instructors: [Instructor]) -> [SearchResultSectionSnapshot] {
         let normalizedQuery = normalizedSearchQuery(query)
         guard !normalizedQuery.isEmpty else { return [] }
@@ -738,6 +883,96 @@ final class StudyAppModel: ObservableObject {
         return score
     }
 
+    private func groundSchoolTools(for event: Event) -> [GroundSchoolToolSnapshot] {
+        var tools: [GroundSchoolToolSnapshot] = []
+
+        for document in primaryDocuments(for: event) {
+            tools.append(
+                GroundSchoolToolSnapshot(
+                    id: "\(event.id)-document-\(document.id)",
+                    event: event,
+                    content: .document(document)
+                )
+            )
+        }
+
+        if let notes = event.studyNotes {
+            tools.append(
+                GroundSchoolToolSnapshot(
+                    id: "\(event.id)-discussion-items",
+                    event: event,
+                    content: .discussionItems(notes)
+                )
+            )
+        }
+
+        if let systemsBrief = event.systemsBrief {
+            tools.append(
+                GroundSchoolToolSnapshot(
+                    id: "\(event.id)-systems-brief",
+                    event: event,
+                    content: .systemsBrief(systemsBrief)
+                )
+            )
+        }
+
+        for deck in event.flashcardDecks {
+            tools.append(
+                GroundSchoolToolSnapshot(
+                    id: "\(event.id)-deck-\(deck.id)",
+                    event: event,
+                    content: .flashcardDeck(deck)
+                )
+            )
+        }
+
+        for bank in event.questionBanks {
+            tools.append(
+                GroundSchoolToolSnapshot(
+                    id: "\(event.id)-bank-\(bank.id)",
+                    event: event,
+                    content: .practiceTest(bank)
+                )
+            )
+        }
+
+        for resource in sharedResources(for: event, placement: nil) {
+            tools.append(
+                GroundSchoolToolSnapshot(
+                    id: "\(event.id)-resource-\(resource.id)",
+                    event: event,
+                    content: .sharedResource(resource)
+                )
+            )
+        }
+
+        for video in videos(for: event, placement: nil) {
+            tools.append(
+                GroundSchoolToolSnapshot(
+                    id: "\(event.id)-video-\(video.id)",
+                    event: event,
+                    content: .video(video)
+                )
+            )
+        }
+
+        for document in supplementalDocuments(for: event) {
+            tools.append(
+                GroundSchoolToolSnapshot(
+                    id: "\(event.id)-document-\(document.id)",
+                    event: event,
+                    content: .document(document)
+                )
+            )
+        }
+
+        return tools
+    }
+
+    private func groundSchoolTopicIDs(for category: StudyCategory) -> [String] {
+        Array(Set(category.events.flatMap(topicIDs(for:)))).sorted()
+    }
+
     private func bandRank(_ band: FlashcardPerformanceBand) -> Int {
         switch band {
         case .notStudied: 0
@@ -810,16 +1045,28 @@ final class StudyAppModel: ObservableObject {
                     let score = eventSearchScore(query: query, event: event)
                     guard score > 0 else { continue }
 
+                    let isGroundSchoolContainer = isGroundSchoolContainerEvent(event)
+                    let destination: SearchDestination = isGroundSchoolContainer
+                        ? .category(phaseID: phase.id, categoryID: category.id)
+                        : .event(phaseID: phase.id, eventID: event.id)
+                    let title = isGroundSchoolContainer ? category.displayName : event.code
+                    let subtitle: String
+                    if isGroundSchoolContainer {
+                        subtitle = "\(phase.title) • Core materials"
+                    } else if event.displayTitle == event.code {
+                        subtitle = "\(phase.title) • \(category.displayName)"
+                    } else {
+                        subtitle = "\(event.displayTitle) • \(phase.title) • \(category.displayName)"
+                    }
+
                     results.append(
                         SearchResultItem(
                             id: "event-\(event.id)",
                             section: .events,
-                            title: event.code,
-                            subtitle: event.displayTitle == event.code
-                                ? "\(phase.title) • \(category.displayName)"
-                                : "\(event.displayTitle) • \(phase.title) • \(category.displayName)",
+                            title: title,
+                            subtitle: subtitle,
                             score: score,
-                            destination: .event(phaseID: phase.id, eventID: event.id)
+                            destination: destination
                         )
                     )
                 }
@@ -890,6 +1137,8 @@ final class StudyAppModel: ObservableObject {
                 let score = max(
                     scoreMatch(query: query, text: video.title, exact: 110, prefix: 90, contains: 70),
                     scoreMatch(query: query, text: video.summary, exact: 0, prefix: 0, contains: 45),
+                    bestTagScore(query: query, tags: video.phaseIDs, matchScore: 60),
+                    bestTagScore(query: query, tags: video.eventCodes, matchScore: 64),
                     bestTagScore(query: query, tags: video.tags, matchScore: 58)
                 )
 

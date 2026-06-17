@@ -9,6 +9,10 @@ struct PhaseDetailView: View {
         appModel.phaseKnowledgeResources(for: phase)
     }
 
+    private var generalLibraryVideos: [VideoAsset] {
+        appModel.phaseKnowledgeVideos(for: phase)
+    }
+
     var body: some View {
         AppScrollScreen {
             HeroCard(
@@ -20,13 +24,13 @@ struct PhaseDetailView: View {
                 HeroInlineMetricRow(metrics: [
                     HeroInlineMetric(label: "Categories", value: "\(phase.categories.count)", color: phase.accentColor),
                     HeroInlineMetric(label: "Events", value: "\(phase.categories.flatMap(\.events).count)", color: phase.accentColor),
-                    HeroInlineMetric(label: "References", value: "\(generalLibraryResources.count)", color: phase.accentColor)
+                    HeroInlineMetric(label: "Library", value: "\(generalLibraryResources.count + generalLibraryVideos.count)", color: phase.accentColor)
                 ])
             }
 
-            if !generalLibraryResources.isEmpty {
+            if !generalLibraryResources.isEmpty || !generalLibraryVideos.isEmpty {
                 NavigationLink {
-                    PhaseKnowledgeView(phase: phase, resources: generalLibraryResources)
+                    PhaseKnowledgeView(phase: phase, resources: generalLibraryResources, videos: generalLibraryVideos)
                 } label: {
                     PhaseDestinationCard(
                         title: "General Library",
@@ -47,7 +51,7 @@ struct PhaseDetailView: View {
 
                 ForEach(phase.categories) { category in
                     NavigationLink {
-                        EventListView(phase: phase, category: category)
+                        categoryDestination(for: category)
                     } label: {
                         PhaseDestinationCard(
                             title: category.displayName,
@@ -65,12 +69,24 @@ struct PhaseDetailView: View {
             searchChrome.updateScope(.events(title: phase.title, phaseID: phase.id, categoryID: nil))
         }
     }
+
+    @ViewBuilder
+    private func categoryDestination(for category: StudyCategory) -> some View {
+        switch category.kind {
+        case .groundSchool:
+            GroundSchoolCategoryView(phase: phase, category: category)
+        case .sims, .flights:
+            EventListView(phase: phase, category: category)
+        }
+    }
 }
 
 struct PhaseKnowledgeView: View {
     let phase: Phase
     let resources: [SharedResource]
+    let videos: [VideoAsset]
     @EnvironmentObject private var searchChrome: SearchChromeModel
+    @EnvironmentObject private var videoDownloadStore: VideoDownloadStore
 
     var body: some View {
         AppScrollScreen {
@@ -80,6 +96,30 @@ struct PhaseKnowledgeView: View {
                 subtitle: nil,
                 accent: AppTheme.domainColor(.library)
             )
+
+            if !videos.isEmpty {
+                VStack(alignment: .leading, spacing: 14) {
+                    SectionHeader(
+                        eyebrow: "Videos",
+                        title: "Watch and review",
+                        subtitle: nil
+                    )
+
+                    ForEach(videos) { video in
+                        NavigationLink {
+                            VideoDetailView(video: video)
+                        } label: {
+                            ToolCard(
+                                title: video.title,
+                                subtitle: videoSubtitle(video),
+                                icon: "play.rectangle.fill",
+                                accent: AppTheme.domainColor(.videos)
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
 
             ForEach(resources) { resource in
                 NavigationLink {
@@ -119,6 +159,22 @@ struct PhaseKnowledgeView: View {
     private func resourceAccent(for resource: SharedResource) -> Color {
         resource.librarySection.domainColor
     }
+
+    private func videoSubtitle(_ video: VideoAsset) -> String? {
+        switch videoDownloadStore.status(for: video) {
+        case .available:
+            return "Available offline"
+        case let .downloading(progress):
+            return "Downloading \(Int(progress * 100))%"
+        case .failed:
+            return "Download failed"
+        case .notDownloaded:
+            if let byteSize = video.byteSize {
+                return ByteCountFormatter.string(fromByteCount: byteSize, countStyle: .file)
+            }
+            return nil
+        }
+    }
 }
 
 struct EventListView: View {
@@ -157,6 +213,186 @@ struct EventListView: View {
         .detailNavigationChrome(title: category.displayName)
         .onAppear {
             searchChrome.updateScope(.events(title: category.displayName, phaseID: phase.id, categoryID: category.id))
+        }
+    }
+}
+
+struct GroundSchoolCategoryView: View {
+    let phase: Phase
+    let category: StudyCategory
+
+    @EnvironmentObject private var appModel: StudyAppModel
+    @EnvironmentObject private var searchChrome: SearchChromeModel
+
+    private var snapshot: GroundSchoolCategorySnapshot {
+        appModel.groundSchoolSnapshot(for: category)
+    }
+
+    var body: some View {
+        AppScrollScreen(bottomPadding: 40) {
+            HeroCard(
+                eyebrow: phase.title,
+                title: category.displayName,
+                subtitle: category.summary,
+                accent: category.kind.domainColor
+            ) {
+                HeroInlineMetricRow(metrics: [
+                    HeroInlineMetric(label: "Items", value: "\(snapshot.totalToolCount)", color: category.kind.domainColor),
+                    HeroInlineMetric(label: "Tests", value: "\(snapshot.totalPracticeTestCount)", color: AppTheme.domainColor(.quizzes)),
+                    HeroInlineMetric(label: "Sections", value: "\(snapshot.totalSectionCount)", color: AppTheme.domainColor(.resources))
+                ])
+            }
+
+            if snapshot.isEmpty {
+                EmptyStateCard(
+                    icon: category.iconName,
+                    title: "No ground school tools yet",
+                    message: "This category is ready for materials, notes, and practice tests as they are added."
+                )
+            } else {
+                if !snapshot.coreTools.isEmpty {
+                    groundSchoolSection(
+                        eyebrow: "Ground school",
+                        title: "Core materials",
+                        subtitle: nil,
+                        tools: snapshot.coreTools
+                    )
+                }
+
+                ForEach(snapshot.eventSections) { section in
+                    groundSchoolSection(
+                        eyebrow: section.event.code == section.event.displayTitle ? phase.title : section.event.code,
+                        title: section.event.displayTitle,
+                        subtitle: nil,
+                        tools: section.tools
+                    )
+                }
+            }
+        }
+        .detailNavigationChrome(title: category.displayName)
+        .task {
+            appModel.recordGroundSchoolCategoryOpened(phase: phase, category: category)
+        }
+        .onAppear {
+            searchChrome.updateScope(.events(title: category.displayName, phaseID: phase.id, categoryID: category.id))
+        }
+    }
+
+    @ViewBuilder
+    private func groundSchoolSection(
+        eyebrow: String,
+        title: String,
+        subtitle: String?,
+        tools: [GroundSchoolToolSnapshot]
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            SectionHeader(
+                eyebrow: eyebrow,
+                title: title,
+                subtitle: subtitle
+            )
+
+            ForEach(tools) { tool in
+                NavigationLink {
+                    destination(for: tool)
+                } label: {
+                    ToolCard(
+                        title: toolTitle(for: tool),
+                        subtitle: nil,
+                        icon: iconName(for: tool),
+                        accent: accent(for: tool)
+                    )
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func destination(for tool: GroundSchoolToolSnapshot) -> some View {
+        switch tool.content {
+        case let .document(document):
+            DocumentPreviewScreen(document: document)
+        case let .discussionItems(notes):
+            NotesDetailView(
+                notes: notes,
+                eventTitle: tool.event.code,
+                accent: AppTheme.domainColor(.discussionItems)
+            )
+        case let .systemsBrief(notes):
+            NotesDetailView(
+                notes: notes,
+                eventTitle: tool.event.code,
+                accent: AppTheme.domainColor(.resources)
+            )
+        case let .flashcardDeck(deck):
+            FlashcardDeckView(event: tool.event, deck: deck)
+        case let .practiceTest(bank):
+            PracticeTestView(event: tool.event, bank: bank)
+        case let .sharedResource(resource):
+            SharedResourceDetailView(resource: resource)
+        case let .video(video):
+            VideoDetailView(video: video)
+        }
+    }
+
+    private func toolTitle(for tool: GroundSchoolToolSnapshot) -> String {
+        switch tool.content {
+        case let .document(document):
+            if document.kind == .briefingGuide {
+                return "\(tool.event.code) Briefing Guide"
+            }
+            return document.title
+        case .discussionItems:
+            return "Discussion items"
+        case .systemsBrief:
+            return "Systems brief"
+        case let .flashcardDeck(deck):
+            return deck.title
+        case let .practiceTest(bank):
+            return bank.title
+        case let .sharedResource(resource):
+            return resource.title
+        case let .video(video):
+            return video.title
+        }
+    }
+
+    private func iconName(for tool: GroundSchoolToolSnapshot) -> String {
+        switch tool.content {
+        case let .document(document):
+            return document.kind == .briefingGuide ? "doc.richtext.fill" : "doc.text.fill"
+        case .discussionItems:
+            return "text.alignleft"
+        case .systemsBrief:
+            return "gearshape.2.fill"
+        case .flashcardDeck:
+            return "rectangle.stack.fill"
+        case .practiceTest:
+            return "checklist.checked"
+        case .sharedResource:
+            return "square.grid.2x2.fill"
+        case .video:
+            return "play.rectangle.fill"
+        }
+    }
+
+    private func accent(for tool: GroundSchoolToolSnapshot) -> Color {
+        switch tool.content {
+        case .document:
+            return AppTheme.domainColor(.documents)
+        case .discussionItems:
+            return AppTheme.domainColor(.discussionItems)
+        case .systemsBrief:
+            return AppTheme.domainColor(.resources)
+        case .flashcardDeck:
+            return AppTheme.domainColor(.flashcards)
+        case .practiceTest:
+            return AppTheme.domainColor(.quizzes)
+        case let .sharedResource(resource):
+            return resource.librarySection.domainColor
+        case .video:
+            return AppTheme.domainColor(.videos)
         }
     }
 }

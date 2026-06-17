@@ -254,7 +254,6 @@ enum CommunitySubmissionSyncState: String, Codable, CaseIterable, Hashable {
 struct CommunitySubmissionDraft: Codable, Hashable {
     var summary = ""
     var message = ""
-    var contactEmail = ""
     var targetKind: CommunitySubmissionTargetKind?
     var targetID = ""
     var targetTitle = ""

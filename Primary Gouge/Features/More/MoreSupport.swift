@@ -156,7 +156,7 @@ extension StudyAppModel {
     private func moreRecentStageTitle(from activities: [StudyActivityRecord]) -> String? {
         for activity in activities {
             switch activity.destination {
-            case let .event(phaseID, _), let .eventDeck(phaseID, _, _):
+            case let .event(phaseID, _), let .category(phaseID, _), let .eventDeck(phaseID, _, _):
                 if let phase = phase(id: phaseID) {
                     return phase.title
                 }

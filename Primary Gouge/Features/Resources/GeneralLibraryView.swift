@@ -7,6 +7,7 @@ struct GeneralLibraryView: View {
 
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
+    @EnvironmentObject private var videoDownloadStore: VideoDownloadStore
 
     var body: some View {
         AppScrollScreen(bottomPadding: 40) {
@@ -62,7 +63,7 @@ struct GeneralLibraryView: View {
                         } label: {
                             ToolCard(
                                 title: video.title,
-                                subtitle: nil,
+                                subtitle: videoSubtitle(video),
                                 icon: "play.rectangle.fill",
                                 accent: AppTheme.domainColor(.videos)
                             )
@@ -140,6 +141,22 @@ struct GeneralLibraryView: View {
             return "EP N/W/C"
         default:
             return resource.title
+        }
+    }
+
+    private func videoSubtitle(_ video: VideoAsset) -> String? {
+        switch videoDownloadStore.status(for: video) {
+        case .available:
+            return "Available offline"
+        case let .downloading(progress):
+            return "Downloading \(Int(progress * 100))%"
+        case .failed:
+            return "Download failed"
+        case .notDownloaded:
+            if let byteSize = video.byteSize {
+                return ByteCountFormatter.string(fromByteCount: byteSize, countStyle: .file)
+            }
+            return nil
         }
     }
 }

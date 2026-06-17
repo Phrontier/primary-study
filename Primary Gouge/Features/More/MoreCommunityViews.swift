@@ -72,29 +72,6 @@ struct MoreCommunitySubmissionView: View {
                     targetSection
                 }
 
-                VStack(alignment: .leading, spacing: 12) {
-                    SectionHeader(
-                        eyebrow: "Follow up",
-                        title: "Contact email",
-                        subtitle: nil,
-                        accent: category.accentColor
-                    )
-
-                    SectionContainer(style: .standard, accent: category.accentColor, contentPadding: 18) {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Optional. Add an email if you want follow-up about this submission.")
-                                .font(.footnote)
-                                .foregroundStyle(AppTheme.textSecondary)
-                                .fixedSize(horizontal: false, vertical: true)
-
-                            MoreEntryTextField(text: $draft.contactEmail, prompt: "name@example.com")
-                                .keyboardType(.emailAddress)
-                                .textInputAutocapitalization(.never)
-                                .autocorrectionDisabled()
-                        }
-                    }
-                }
-
                 if let feedbackMessage {
                     submissionBanner(message: feedbackMessage, color: AppTheme.success, iconName: "checkmark.circle.fill")
                 }

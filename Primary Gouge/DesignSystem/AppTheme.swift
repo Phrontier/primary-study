@@ -315,17 +315,29 @@ enum AppTheme {
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
 
+        let navigationTitleAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor(textPrimary)
+        ]
+
         let navigationAppearance = UINavigationBarAppearance()
         navigationAppearance.configureWithTransparentBackground()
         navigationAppearance.backgroundColor = palette.chromeBackground
-        navigationAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        navigationAppearance.backgroundEffect = UIBlurEffect(style: .systemChromeMaterial)
         navigationAppearance.shadowColor = palette.chromeLine
-        navigationAppearance.titleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
-        navigationAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(textPrimary)]
+        navigationAppearance.titleTextAttributes = navigationTitleAttributes
+        navigationAppearance.largeTitleTextAttributes = navigationTitleAttributes
+
+        let scrollEdgeNavigationAppearance = UINavigationBarAppearance()
+        scrollEdgeNavigationAppearance.configureWithTransparentBackground()
+        scrollEdgeNavigationAppearance.backgroundColor = .clear
+        scrollEdgeNavigationAppearance.backgroundEffect = nil
+        scrollEdgeNavigationAppearance.shadowColor = .clear
+        scrollEdgeNavigationAppearance.titleTextAttributes = navigationTitleAttributes
+        scrollEdgeNavigationAppearance.largeTitleTextAttributes = navigationTitleAttributes
 
         UINavigationBar.appearance().standardAppearance = navigationAppearance
         UINavigationBar.appearance().compactAppearance = navigationAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navigationAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = scrollEdgeNavigationAppearance
         UINavigationBar.appearance().tintColor = selectedColor
         UINavigationBar.appearance().prefersLargeTitles = true
     }

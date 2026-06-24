@@ -291,53 +291,13 @@ enum AppTheme {
     }
 
     static func configureSystemChrome() {
-        let tabBarAppearance = UITabBarAppearance()
-        tabBarAppearance.configureWithTransparentBackground()
-        tabBarAppearance.backgroundColor = palette.chromeBackground
-        tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-        tabBarAppearance.shadowColor = palette.chromeLine
-
         let selectedColor = UIColor(accent)
         let normalColor = adaptiveUIColor(light: 0x7C8694, dark: 0xA0A8B5)
 
-        let itemAppearances = [
-            tabBarAppearance.stackedLayoutAppearance,
-            tabBarAppearance.inlineLayoutAppearance,
-            tabBarAppearance.compactInlineLayoutAppearance
-        ]
-        for itemAppearance in itemAppearances {
-            itemAppearance.normal.iconColor = normalColor
-            itemAppearance.normal.titleTextAttributes = [.foregroundColor: normalColor]
-            itemAppearance.selected.iconColor = selectedColor
-            itemAppearance.selected.titleTextAttributes = [.foregroundColor: selectedColor]
-        }
+        UITabBar.appearance().tintColor = selectedColor
+        UITabBar.appearance().unselectedItemTintColor = normalColor
+        UITabBar.appearance().isTranslucent = true
 
-        UITabBar.appearance().standardAppearance = tabBarAppearance
-        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-
-        let navigationTitleAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(textPrimary)
-        ]
-
-        let navigationAppearance = UINavigationBarAppearance()
-        navigationAppearance.configureWithTransparentBackground()
-        navigationAppearance.backgroundColor = palette.chromeBackground
-        navigationAppearance.backgroundEffect = UIBlurEffect(style: .systemChromeMaterial)
-        navigationAppearance.shadowColor = palette.chromeLine
-        navigationAppearance.titleTextAttributes = navigationTitleAttributes
-        navigationAppearance.largeTitleTextAttributes = navigationTitleAttributes
-
-        let scrollEdgeNavigationAppearance = UINavigationBarAppearance()
-        scrollEdgeNavigationAppearance.configureWithTransparentBackground()
-        scrollEdgeNavigationAppearance.backgroundColor = .clear
-        scrollEdgeNavigationAppearance.backgroundEffect = nil
-        scrollEdgeNavigationAppearance.shadowColor = .clear
-        scrollEdgeNavigationAppearance.titleTextAttributes = navigationTitleAttributes
-        scrollEdgeNavigationAppearance.largeTitleTextAttributes = navigationTitleAttributes
-
-        UINavigationBar.appearance().standardAppearance = navigationAppearance
-        UINavigationBar.appearance().compactAppearance = navigationAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = scrollEdgeNavigationAppearance
         UINavigationBar.appearance().tintColor = selectedColor
         UINavigationBar.appearance().prefersLargeTitles = true
     }

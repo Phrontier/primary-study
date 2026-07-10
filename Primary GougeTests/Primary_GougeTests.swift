@@ -174,6 +174,12 @@ struct Primary_GougeTests {
         }
     }
 
+    @Test func videoDeliveryConfigurationProvidesDefaultR2BaseURL() throws {
+        let baseURL = try #require(VideoDeliveryConfiguration.baseURL)
+
+        #expect(baseURL.absoluteString == "https://pub-7ac4ea52c09148848751015b25fdacfd.r2.dev")
+    }
+
     @MainActor
     @Test func videoDownloadStoreReusesCachedFiles() async throws {
         let downloader = FakeVideoDownloader(result: .success(Data("new".utf8)))

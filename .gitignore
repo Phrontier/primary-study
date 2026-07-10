@@ -1,6 +1,7 @@
 DerivedData/
 DerivedData-*/
 Errors/
+.wrangler/
 .DS_Store
 ReferenceArchive/
 Pubs/

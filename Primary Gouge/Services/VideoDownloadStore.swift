@@ -74,12 +74,17 @@ struct URLSessionVideoDownloader: VideoDownloader {
 
 struct VideoDeliveryConfiguration {
     static let baseURLInfoKey = "VideoContentBaseURL"
+    private static let defaultBaseURLString = "https://pub-7ac4ea52c09148848751015b25fdacfd.r2.dev"
 
     static var baseURL: URL? {
-        guard let value = Bundle.main.object(forInfoDictionaryKey: baseURLInfoKey) as? String else { return nil }
-        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return nil }
-        return URL(string: trimmed)
+        if let value = Bundle.main.object(forInfoDictionaryKey: baseURLInfoKey) as? String {
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !trimmed.isEmpty {
+                return URL(string: trimmed)
+            }
+        }
+
+        return URL(string: defaultBaseURLString)
     }
 }
 

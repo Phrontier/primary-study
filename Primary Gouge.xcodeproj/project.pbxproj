@@ -452,7 +452,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_INSTRUCTOR_REVIEW_BACKEND_URL = "https://primary-gouge-instructor-reviews.tz4mz7ry42.workers.dev";
-				INFOPLIST_KEY_VideoContentBaseURL = "";
+				INFOPLIST_KEY_VideoContentBaseURL = "https://pub-7ac4ea52c09148848751015b25fdacfd.r2.dev";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -488,7 +488,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_INSTRUCTOR_REVIEW_BACKEND_URL = "https://primary-gouge-instructor-reviews.tz4mz7ry42.workers.dev";
-				INFOPLIST_KEY_VideoContentBaseURL = "";
+				INFOPLIST_KEY_VideoContentBaseURL = "https://pub-7ac4ea52c09148848751015b25fdacfd.r2.dev";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

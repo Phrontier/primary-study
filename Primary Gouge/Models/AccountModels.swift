@@ -49,10 +49,10 @@ enum SyllabusTrack: String, Codable, CaseIterable, Hashable, Identifiable {
 
     var contentFallback: SyllabusTrack {
         switch self {
-        case .delta, .notSure:
+        case .delta:
             return .delta
-        case .echo:
-            return .delta
+        case .echo, .notSure:
+            return .echo
         }
     }
 }

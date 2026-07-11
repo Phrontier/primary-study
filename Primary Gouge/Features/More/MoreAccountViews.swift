@@ -10,7 +10,7 @@ struct MoreProfileView: View {
     @EnvironmentObject private var appModel: StudyAppModel
     @State private var draftDisplayName = ""
     @State private var draftSquadronID = AccountProfile.notSureSquadronID
-    @State private var draftSyllabus = SyllabusTrack.delta
+    @State private var draftSyllabus = SyllabusTrack.echo
     @State private var accountStatusMessage: String?
     @State private var showingDeleteConfirmation = false
     @State private var needsAppleDeleteAuthorization = false
@@ -127,6 +127,11 @@ struct MoreProfileView: View {
         .detailNavigationChrome(title: "Profile")
         .task {
             loadAccountDraftIfNeeded()
+        }
+        .onChange(of: draftSquadronID) { _, newValue in
+            if newValue == AccountProfile.notSureSquadronID {
+                draftSyllabus = .echo
+            }
         }
         .alert("Delete Account?", isPresented: $showingDeleteConfirmation) {
             Button("Cancel", role: .cancel) {}
@@ -282,7 +287,7 @@ struct MoreProfileView: View {
         let profile = accountStore.profile
         draftDisplayName = profile?.displayName ?? ""
         draftSquadronID = AccountProfile.normalizedProfileSquadronID(profile?.squadronID)
-        draftSyllabus = profile?.syllabusID ?? .delta
+        draftSyllabus = profile?.syllabusID ?? .echo
     }
 
     private func saveAccountProfile() {

@@ -49,6 +49,9 @@ struct Primary_GougeApp: App {
                         accountStore.hasPermission(.instructorGougeModerator)
                     )
                 }
+                .onChange(of: accountStore.profile?.selectedSyllabus ?? .notSure) { _, syllabus in
+                    appModel.selectSyllabus(syllabus)
+                }
         }
     }
 
@@ -61,6 +64,8 @@ struct Primary_GougeApp: App {
     @MainActor
     private func configureProtectedStoresIfNeeded() async {
         guard accountStore.isSignedIn else { return }
+
+        appModel.selectSyllabus(accountStore.profile?.selectedSyllabus ?? .notSure)
 
         reviewStore.setModeratorPermission(
             accountStore.hasPermission(.instructorGougeModerator)

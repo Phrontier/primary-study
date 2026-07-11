@@ -292,6 +292,7 @@ final class StudyAppModel: ObservableObject {
     @Published private(set) var quizBank: QuizBank
     @Published private(set) var dashboardSnapshot: DashboardSnapshot
     @Published private(set) var homeScreenSnapshot: HomeScreenSnapshot
+    @Published private(set) var activeSyllabus: SyllabusTrack = .delta
 
     private let repository: ContentRepository
     var progressStore: ProgressStore?
@@ -320,6 +321,14 @@ final class StudyAppModel: ObservableObject {
         if let quizStore {
             self.quizStore = quizStore
         }
+        refreshSnapshot()
+    }
+
+    func selectSyllabus(_ syllabus: SyllabusTrack) {
+        let resolved = syllabus.contentFallback
+        guard resolved != activeSyllabus else { return }
+        activeSyllabus = resolved
+        studyManifest = repository.loadManifest(for: resolved)
         refreshSnapshot()
     }
 

@@ -38,6 +38,67 @@ struct Primary_GougeTests {
         )
     }
 
+    @MainActor
+    @Test func echoManifestLoadsCanonicalTrackAndPreservesSourceOrder() throws {
+        let repository = ContentRepository(bundle: .main)
+        let reference = repository.loadSyllabusEventReference(for: .echo)
+        let manifest = repository.loadManifest(for: .echo)
+        let echoEvents = manifest.phases
+            .flatMap(\.categories)
+            .flatMap(\.events)
+            .filter { $0.id.hasPrefix("echo-") }
+
+        #expect(reference.track == .echo)
+        #expect(reference.events.count == 87)
+        #expect(reference.events.flatMap(\.discussionItems).count == 462)
+        #expect(reference.events.compactMap(\.sequence) == Array(0..<87))
+        #expect(echoEvents.count == 87)
+        #expect(manifest.phases.map(\.id) == ["contacts", "instruments", "vnav", "formation"])
+        #expect(manifest.phases.contains(where: { $0.id == "capstone" }) == false)
+
+        let contacts = try #require(manifest.phases.first(where: { $0.id == "contacts" }))
+        let groundSchool = try #require(contacts.categories.first(where: { $0.kind == .groundSchool }))
+        #expect(groundSchool.events.contains(where: { $0.code == "FAM1301" }))
+
+        for category in manifest.phases.flatMap(\.categories) {
+            let sequences = category.events.compactMap(\.syllabusSequence)
+            #expect(sequences == sequences.sorted())
+        }
+    }
+
+    @MainActor
+    @Test func notSureSyllabusResolvesToEchoContent() {
+        #expect(SyllabusTrack.notSure.contentFallback == .echo)
+        #expect(SyllabusTrack.echo.contentFallback == .echo)
+        #expect(SyllabusTrack.delta.contentFallback == .delta)
+    }
+
+    @MainActor
+    @Test func syllabusSwitchKeepsCardsSharedAndEventProgressSeparate() throws {
+        let progressURL = temporaryPersistenceURL(name: "syllabus-track-progress")
+        let progressStore = ProgressStore(persistenceURL: progressURL)
+        let appModel = StudyAppModel(repository: ContentRepository(bundle: .main), progressStore: progressStore)
+
+        appModel.selectSyllabus(.echo)
+        let echoEvent = try #require(appModel.studyManifest.phases
+            .flatMap(\.categories).flatMap(\.events)
+            .first(where: { $0.code == "FAM2101" }))
+        let sharedCardID = try #require(echoEvent.flashcardDecks.first?.cardIDs.first)
+        let sharedCard = try #require(appModel.studyManifest.flashcards.first(where: { $0.id == sharedCardID }))
+        appModel.recordCardReview(card: sharedCard, rating: .good)
+        appModel.markEventStudied(echoEvent)
+
+        appModel.selectSyllabus(.delta)
+        let deltaEvent = try #require(appModel.studyManifest.phases
+            .flatMap(\.categories).flatMap(\.events)
+            .first(where: { $0.code == "FAM2101" }))
+
+        #expect(echoEvent.id != deltaEvent.id)
+        #expect(appModel.progress(for: sharedCardID).lastReviewedAt != nil)
+        #expect(appModel.eventProgress(for: deltaEvent.id).completedAt == nil)
+        #expect(appModel.eventProgress(for: echoEvent.id).completedAt != nil)
+    }
+
     private func makeInstructor(
         name: String,
         squadronID: String,

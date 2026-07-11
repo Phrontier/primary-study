@@ -1,5 +1,19 @@
 import Foundation
 
+enum SyllabusEventKind: String, Codable, CaseIterable, Hashable {
+    case groundSchool
+    case sim
+    case flight
+
+    var instructorReviewKind: InstructorReviewEventKind? {
+        switch self {
+        case .groundSchool: nil
+        case .sim: .sim
+        case .flight: .flight
+        }
+    }
+}
+
 enum SyllabusEventCategory: String, Codable, CaseIterable, Hashable {
     case familiarization
     case instruments
@@ -24,6 +38,7 @@ enum SyllabusEventCategory: String, Codable, CaseIterable, Hashable {
 }
 
 struct SyllabusEventReference: Codable, Hashable {
+    let track: SyllabusTrack?
     let sourceDocumentTitle: String
     let sourceDocumentDate: String
     let generatedAt: Date
@@ -31,6 +46,7 @@ struct SyllabusEventReference: Codable, Hashable {
     let events: [SyllabusEventReferenceEvent]
 
     static let empty = SyllabusEventReference(
+        track: nil,
         sourceDocumentTitle: "",
         sourceDocumentDate: "",
         generatedAt: .distantPast,
@@ -67,7 +83,7 @@ struct SyllabusEventReference: Codable, Hashable {
 
         let filteredEvents = events.filter { event in
             guard let kind else { return true }
-            return event.eventKind == kind
+            return event.eventKind.instructorReviewKind == kind
         }
 
         return filteredEvents.first { event in
@@ -100,7 +116,7 @@ struct SyllabusEventReferenceEvent: Codable, Hashable, Identifiable {
     let category: SyllabusEventCategory
     let categoryDisplayName: String
     let media: String
-    let eventKind: InstructorReviewEventKind
+    let eventKind: SyllabusEventKind
     let isCheckride: Bool
     let isSolo: Bool
     let blockCode: String
@@ -109,4 +125,5 @@ struct SyllabusEventReferenceEvent: Codable, Hashable, Identifiable {
     let sourcePages: [Int]
     let mediaNotes: String?
     let legacyReviewAliases: [String]
+    let sequence: Int?
 }

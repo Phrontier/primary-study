@@ -17,6 +17,15 @@ struct StudyManifest: Codable {
     )
 }
 
+struct SyllabusTrackManifest: Codable {
+    let track: SyllabusTrack
+    let sourceDocumentTitle: String
+    let sourceDocumentDate: String
+    let generatedAt: Date
+    let phases: [Phase]
+    let flashcards: [FlashcardDefinition]
+}
+
 struct Phase: Codable, Identifiable, Hashable {
     let id: String
     let title: String
@@ -103,6 +112,7 @@ struct Event: Codable, Identifiable, Hashable {
     let resourceLinks: [EventResourceLink]
     let videoLinks: [EventVideoLink]
     let tags: [String]
+    var syllabusSequence: Int? = nil
 
     var availableToolCount: Int {
         var count = 0

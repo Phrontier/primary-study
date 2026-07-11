@@ -31,6 +31,7 @@ enum SyllabusCategory: String, Codable, CaseIterable {
 }
 
 struct SyllabusEventReferenceFile: Codable {
+    let track: String
     let sourceDocumentTitle: String
     let sourceDocumentDate: String
     let generatedAt: Date
@@ -53,6 +54,7 @@ struct SyllabusEventReferenceRecord: Codable {
     let sourcePages: [Int]
     let mediaNotes: String?
     let legacyReviewAliases: [String]
+    let sequence: Int
 }
 
 struct Block {
@@ -117,14 +119,20 @@ let generatedShortTitleOverrides: [String: String] = [
     "I6301": "EPs and NWCs"
 ]
 
-let arguments = CommandLine.arguments.dropFirst()
+let arguments = Array(CommandLine.arguments.dropFirst())
 guard let rawPDFPath = arguments.first else {
-    throw SyllabusBuildError.message("Usage: swift Tools/BuildSyllabusEventReference.swift <path-to-pdf>")
+    throw SyllabusBuildError.message("Usage: swift Tools/BuildSyllabusEventReference.swift <path-to-pdf> [output-json] [delta|echo]")
+}
+
+let requestedTrack = arguments.count > 2 ? arguments[2].lowercased() : "delta"
+guard ["delta", "echo"].contains(requestedTrack) else {
+    throw SyllabusBuildError.message("Track must be either delta or echo.")
 }
 
 let currentDirectory = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-let outputURL = currentDirectory
-    .appendingPathComponent("Primary Gouge/AppContent/SyllabusEventReference.json")
+let outputURL = arguments.count > 1
+    ? URL(fileURLWithPath: arguments[1], relativeTo: currentDirectory).standardizedFileURL
+    : currentDirectory.appendingPathComponent("Primary Gouge/AppContent/SyllabusEventReference.json")
 let pdfURL = URL(fileURLWithPath: rawPDFPath)
 
 guard let document = PDFDocument(url: pdfURL) else {
@@ -132,7 +140,7 @@ guard let document = PDFDocument(url: pdfURL) else {
 }
 
 let blockHeaderRegex = try NSRegularExpression(
-    pattern: #"^((?:FAM|I|N|F|CS)\d{2})\s+(UTD(?:/MR|/OFT|/ER)?|VTD|OFT|T-6B)\b(.*)$"#,
+    pattern: #"^((?:FAM|I|N|F|CS)\d{2})\s+(CAI/MIL|Lect|UTD(?:/MR|/OFT|/ER)?|VTD|OFT|T-6B)\b(.*)$"#,
     options: []
 )
 let eventCodeRegex = try NSRegularExpression(
@@ -157,8 +165,8 @@ for index in 0..<document.pageCount {
     }
     let nonEmptyLines = trimmedLines.filter { !$0.isEmpty }
     let lines = nonEmptyLines.filter { line in
-        line != "CNATRAINST 1542.166D"
-            && line != "15 Jul 2024"
+        line.range(of: #"^CNATRAINST 1542\.166[A-Z]$"#, options: .regularExpression) == nil
+            && line.range(of: #"^\d{1,2} [A-Z][a-z]{2} \d{4}$"#, options: .regularExpression) == nil
             && line.range(of: #"^[IVXLC]+-\d+$"#, options: .regularExpression) == nil
             && line.range(of: #"^\d+$"#, options: .regularExpression) == nil
     }
@@ -247,11 +255,19 @@ for block in blocks {
             media: canonicalMedia(from: block.rawMedia),
             note: mediaNote(for: block.rawMedia, canonicalMedia: canonicalMedia(from: block.rawMedia))
         )
-        let discussionItems = normalizeDiscussionItems(from: rawDiscussion)
-        guard !discussionItems.isEmpty else { continue }
+        var discussionItems = normalizeDiscussionItems(from: rawDiscussion)
+        if requestedTrack == "echo", code == "FAM4801", discussionItems.count == 1 {
+            discussionItems = discussionItems[0]
+                .components(separatedBy: ".")
+                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                .filter { !$0.isEmpty }
+        }
+        guard !discussionItems.isEmpty,
+              !discussionItems.allSatisfy({ $0.caseInsensitiveCompare("none") == .orderedSame })
+        else { continue }
 
         let isCheckride = code.hasSuffix("90")
-        let isSolo = code == "FAM4501"
+        let isSolo = code == "FAM4501" || (requestedTrack == "echo" && code == "FAM4801")
             records.append(
                 SyllabusEventReferenceRecord(
                     code: code,
@@ -267,17 +283,11 @@ for block in blocks {
                 discussionItems: discussionItems,
                 sourcePages: discussionExtraction.sourcePages,
                 mediaNotes: mediaOverride.note,
-                legacyReviewAliases: legacyAliases(for: code, block: block, isCheckride: isCheckride)
+                    legacyReviewAliases: legacyAliases(for: code, block: block, isCheckride: isCheckride),
+                    sequence: records.count
             )
         )
     }
-}
-
-records.sort { lhs, rhs in
-    if lhs.category == rhs.category {
-        return lhs.code < rhs.code
-    }
-    return lhs.category < rhs.category
 }
 
 let uniqueCodes = Set(records.map(\.code))
@@ -285,7 +295,9 @@ guard uniqueCodes.count == records.count else {
     throw SyllabusBuildError.message("Duplicate event codes detected while building syllabus reference.")
 }
 
-let requiredCodes = ["FAM2101", "FAM2202", "F2101", "N4101", "I4490", "F4290", "CS4290", "FAM4501"]
+let requiredCodes = requestedTrack == "echo"
+    ? ["FAM1301", "FAM2101", "FAM2105", "F1201", "N4102", "I4490", "F4290", "FAM4501"]
+    : ["FAM2101", "FAM2202", "F2101", "N4101", "I4490", "F4290", "CS4290", "FAM4501"]
 for code in requiredCodes {
     guard records.contains(where: { $0.code == code }) else {
         throw SyllabusBuildError.message("Missing required syllabus event \(code).")
@@ -305,8 +317,11 @@ records = applyShortTitles(
 )
 
 let file = SyllabusEventReferenceFile(
-    sourceDocumentTitle: "CNATRAINST 1542.166D T-6B Joint Primary Pilot Training (JPPT) Curriculum",
-    sourceDocumentDate: "2024-07-15",
+    track: requestedTrack,
+    sourceDocumentTitle: requestedTrack == "echo"
+        ? "CNATRAINST 1542.166E T-6B Joint Primary Pilot Training (JPT) Curriculum"
+        : "CNATRAINST 1542.166D T-6B Joint Primary Pilot Training (JPPT) Curriculum",
+    sourceDocumentDate: requestedTrack == "echo" ? "2026-04-24" : "2024-07-15",
     generatedAt: Date(),
     aliases: [
         "familiarization": ["fam", "fams", "familiarization", "contacts"],
@@ -484,6 +499,9 @@ func expandedCodes(from token: String, within blockCode: String) -> [String] {
 
 func canonicalMedia(from rawMedia: String) -> String {
     let normalized = rawMedia.lowercased()
+    if normalized.contains("lect") || normalized.contains("cai/mil") {
+        return "Ground School"
+    }
     if normalized.contains("mixed reality utd") || normalized.contains("utd/mr") {
         return "UTD/MR"
     }
@@ -507,7 +525,8 @@ func mediaNote(for rawMedia: String, canonicalMedia: String) -> String? {
 }
 
 func eventKind(for media: String) -> String {
-    media == "T-6B" ? "flight" : "sim"
+    if media == "Ground School" { return "groundSchool" }
+    return media == "T-6B" ? "flight" : "sim"
 }
 
 func normalizeDiscussionItems(from rawDiscussion: String) -> [String] {
@@ -530,7 +549,7 @@ func normalizeDiscussionItems(from rawDiscussion: String) -> [String] {
             depth -= 1
         }
 
-        if character == "," && depth == 0 {
+        if (character == "," || character == ";") && depth == 0 {
             let item = current.trimmingCharacters(in: .whitespacesAndNewlines)
             if !item.isEmpty {
                 commaSplitItems.append(item)
@@ -547,10 +566,15 @@ func normalizeDiscussionItems(from rawDiscussion: String) -> [String] {
         commaSplitItems.append(finalItem)
     }
 
-    return commaSplitItems.map { item in
-        item
+    return commaSplitItems.enumerated().map { index, item in
+        var cleaned = item
             .replacingOccurrences(of: #"^\."#, with: "", options: .regularExpression)
             .trimmingCharacters(in: CharacterSet(charactersIn: ". "))
+        cleaned = cleaned.replacingOccurrences(of: #"^(?:and|or)\s+"#, with: "", options: [.regularExpression, .caseInsensitive])
+        if index == 0 {
+            cleaned = cleaned.replacingOccurrences(of: #"^Discuss\s+"#, with: "", options: [.regularExpression, .caseInsensitive])
+        }
+        return cleaned
     }
 }
 
@@ -649,7 +673,8 @@ func applyShortTitles(
             discussionItems: record.discussionItems,
             sourcePages: record.sourcePages,
             mediaNotes: record.mediaNotes,
-            legacyReviewAliases: record.legacyReviewAliases
+            legacyReviewAliases: record.legacyReviewAliases,
+            sequence: record.sequence
         )
     }
 }

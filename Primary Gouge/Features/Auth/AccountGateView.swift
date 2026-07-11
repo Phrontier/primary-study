@@ -45,7 +45,7 @@ struct AccountOnboardingView: View {
 
     @State private var displayName = ""
     @State private var selectedSquadronID = AccountProfile.notSureSquadronID
-    @State private var selectedSyllabus = SyllabusTrack.delta
+    @State private var selectedSyllabus = SyllabusTrack.echo
     @State private var didLoad = false
     @State private var errorMessage: String?
 
@@ -110,6 +110,11 @@ struct AccountOnboardingView: View {
         .task {
             loadProfileOnce()
         }
+        .onChange(of: selectedSquadronID) { _, newValue in
+            if newValue == AccountProfile.notSureSquadronID {
+                selectedSyllabus = .echo
+            }
+        }
     }
 
     private func loadProfileOnce() {
@@ -118,7 +123,7 @@ struct AccountOnboardingView: View {
         let profile = accountStore.profile
         displayName = profile?.displayName ?? ""
         selectedSquadronID = AccountProfile.normalizedProfileSquadronID(profile?.squadronID)
-        selectedSyllabus = profile?.syllabusID ?? .delta
+        selectedSyllabus = profile?.syllabusID ?? .echo
     }
 
     private func saveProfile() {

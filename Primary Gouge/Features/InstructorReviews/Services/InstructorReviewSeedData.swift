@@ -60,6 +60,7 @@ enum InstructorReviewSeedData {
     ]
 
     static let syllabusReference: SyllabusEventReference = loadSyllabusReference()
+    static let echoSyllabusReference: SyllabusEventReference = loadSyllabusReference(track: .echo)
     static let events: [InstructorReviewEvent] = loadReferenceEvents()
 
     private static let fallbackEvents: [InstructorReviewEvent] = [
@@ -118,7 +119,8 @@ enum InstructorReviewSeedData {
     }
 
     static func canonicalEvent(named name: String, kind: InstructorReviewEventKind) -> InstructorReviewEvent? {
-        if let referenceEvent = syllabusReference.matchingEvent(named: name, kind: kind) {
+        if let referenceEvent = syllabusReference.matchingEvent(named: name, kind: kind)
+            ?? echoSyllabusReference.matchingEvent(named: name, kind: kind) {
             return makeInstructorReviewEvent(from: referenceEvent)
         }
 
@@ -130,6 +132,9 @@ enum InstructorReviewSeedData {
     static func searchTerms(for event: InstructorReviewEvent) -> [String] {
         if let referenceEvent = syllabusReference.event(code: event.displayName) {
             return syllabusReference.searchTerms(for: referenceEvent)
+        }
+        if let referenceEvent = echoSyllabusReference.event(code: event.displayName) {
+            return echoSyllabusReference.searchTerms(for: referenceEvent)
         }
 
         return [event.displayName]
@@ -224,7 +229,18 @@ enum InstructorReviewSeedData {
     }
 
     private static func loadReferenceEvents() -> [InstructorReviewEvent] {
-        let mappedEvents = syllabusReference.events.map(makeInstructorReviewEvent(from:))
+        var mappedEvents: [InstructorReviewEvent] = []
+        for event in syllabusReference.events + echoSyllabusReference.events {
+            guard let kind = event.eventKind.instructorReviewKind else { continue }
+            mappedEvents.append(
+                InstructorReviewEvent(
+                    id: makeEventID(from: event.code, kind: kind),
+                    displayName: event.code,
+                    kind: kind,
+                    syllabusCategory: event.category
+                )
+            )
+        }
         guard !mappedEvents.isEmpty else {
             let manifestEvents = loadManifestEvents()
             return manifestEvents.isEmpty ? fallbackEvents : manifestEvents
@@ -237,18 +253,21 @@ enum InstructorReviewSeedData {
         }
     }
 
-    private static func loadSyllabusReference() -> SyllabusEventReference {
+    private static func loadSyllabusReference(track: SyllabusTrack = .delta) -> SyllabusEventReference {
         let contentRepository = ContentRepository(bundle: .main)
-        let bundledReference = contentRepository.loadSyllabusEventReference()
+        let bundledReference = contentRepository.loadSyllabusEventReference(for: track)
         if !bundledReference.events.isEmpty {
             return bundledReference
         }
 
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
+        let referenceFileName = track.contentFallback == .echo
+            ? "Syllabi/EchoEventReference"
+            : syllabusReferenceFileName
 
         guard
-            let url = resourceURL(fileName: syllabusReferenceFileName),
+            let url = resourceURL(fileName: referenceFileName),
             let data = try? Data(contentsOf: url),
             let reference = try? decoder.decode(SyllabusEventReference.self, from: data)
         else {
@@ -284,11 +303,12 @@ enum InstructorReviewSeedData {
         }
     }
 
-    private static func makeInstructorReviewEvent(from event: SyllabusEventReferenceEvent) -> InstructorReviewEvent {
-        InstructorReviewEvent(
-            id: makeEventID(from: event.code, kind: event.eventKind),
+    private static func makeInstructorReviewEvent(from event: SyllabusEventReferenceEvent) -> InstructorReviewEvent? {
+        guard let kind = event.eventKind.instructorReviewKind else { return nil }
+        return InstructorReviewEvent(
+            id: makeEventID(from: event.code, kind: kind),
             displayName: event.code,
-            kind: event.eventKind,
+            kind: kind,
             syllabusCategory: event.category
         )
     }

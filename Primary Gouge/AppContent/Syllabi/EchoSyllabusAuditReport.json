@@ -1,0 +1,45 @@
+{
+  "canonicalDiscussionItemCount": 462,
+  "canonicalEventCount": 87,
+  "checkrideEventCodes": [
+    "F4290",
+    "FAM4490",
+    "FAM4790",
+    "I4490"
+  ],
+  "crosswalkDeckIssues": [],
+  "crosswalkSectionIssues": [],
+  "duplicateExtraCardIDs": [],
+  "eventsWithoutDecks": [],
+  "eventsWithoutNotes": [],
+  "exactEventReuseCount": 54,
+  "generatedAt": "2026-07-11T00:10:58.055571Z",
+  "groundSchoolEventCodes": [
+    "F1201",
+    "FAM1301"
+  ],
+  "itemCoverageIssues": [],
+  "manifestCanonicalEventCount": 87,
+  "manifestSequenceIssues": [],
+  "mappedDiscussionItemCount": 462,
+  "missingCanonicalEvents": [],
+  "missingCardIDs": [],
+  "newCardQualityIssues": [],
+  "newDiscussionItemCount": 35,
+  "newFlashcardCount": 35,
+  "noteStructureIssues": [],
+  "requiredProcedureIssues": [],
+  "reusedDiscussionItemCount": 427,
+  "sequenceIssues": [],
+  "shortTitleIssues": [],
+  "soloEventCodes": [
+    "FAM4501",
+    "FAM4801"
+  ],
+  "staleSourceCodeIssues": [],
+  "systemsBriefIssues": [],
+  "titleDescriptionIssues": [],
+  "track": "echo",
+  "unexpectedCanonicalEvents": [],
+  "unexpectedCapstoneEvents": []
+}

@@ -42,7 +42,7 @@ struct VideoDetailView: View {
 
         case let .downloading(progress):
             downloadStateCard(
-                title: "Downloading video",
+                    title: "Downloading Video",
                 message: "\(Int(progress * 100))% complete"
             ) {
                 ProgressView(value: progress)
@@ -51,7 +51,7 @@ struct VideoDetailView: View {
 
         case let .failed(message):
             downloadStateCard(
-                title: "Video unavailable",
+                    title: "Video Unavailable",
                 message: message
             ) {
                 downloadButton(title: "Try Again")
@@ -59,7 +59,7 @@ struct VideoDetailView: View {
 
         case .notDownloaded:
             downloadStateCard(
-                title: "Available to download",
+                    title: "Available to Download",
                 message: downloadMessage
             ) {
                 downloadButton(title: "Download")

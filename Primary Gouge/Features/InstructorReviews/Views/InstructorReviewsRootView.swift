@@ -39,13 +39,13 @@ struct InstructorReviewsRootView: View {
                 if viewModel.hasPublishedReviews {
                     EmptyStateCard(
                         icon: "magnifyingglass",
-                        title: "No matching instructors",
+                        title: "No Matching Instructors",
                         message: "Try a different name, squadron, or filter to widen the roster."
                     )
                 } else {
                     EmptyStateCard(
                         icon: "person.crop.rectangle.stack.fill",
-                        title: "No published reviews yet",
+                        title: "No Published Reviews Yet",
                         message: "Approved reviews will appear here as soon as they clear moderation."
                     )
                 }

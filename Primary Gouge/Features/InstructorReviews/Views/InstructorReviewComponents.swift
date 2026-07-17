@@ -433,21 +433,11 @@ struct InstructorGougeReportSheet: View {
                         }
                         .frame(minHeight: 120)
 
-                        HStack {
-                            Text(
-                                remainingCommentCharacters == 0
-                                    ? "Minimum met"
-                                    : "\(remainingCommentCharacters) characters to go"
-                            )
-                            .font(.system(.footnote, design: .rounded, weight: .semibold))
-                            .foregroundStyle(remainingCommentCharacters == 0 ? AppTheme.success : AppTheme.warning)
-
-                            Spacer()
-
-                            Text("\(trimmedComment.count) chars")
-                                .font(.system(.footnote, design: .rounded, weight: .medium))
-                                .foregroundStyle(AppTheme.textSecondary)
-                        }
+                        CharacterGuidance(
+                            text: note,
+                            minimum: minimumCommentCount,
+                            identifier: "incorrect-gouge-character-guidance"
+                        )
                     }
                 }
             }
@@ -1194,7 +1184,7 @@ struct InstructorSearchableSelectionSheet<Option: Identifiable, RowContent: View
 
                     if filteredOptions.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("No matches")
+                            Text("No Matches")
                                 .font(.system(.headline, design: .rounded, weight: .bold))
                                 .foregroundStyle(AppTheme.textPrimary)
 

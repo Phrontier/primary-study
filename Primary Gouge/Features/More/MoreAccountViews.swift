@@ -1,4 +1,5 @@
 import AuthenticationServices
+import StoreKit
 import SwiftUI
 import UserNotifications
 import UIKit
@@ -8,6 +9,7 @@ struct MoreProfileView: View {
 
     @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var appModel: StudyAppModel
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
     @State private var draftDisplayName = ""
     @State private var draftSquadronID = AccountProfile.notSureSquadronID
     @State private var draftSyllabus = SyllabusTrack.echo
@@ -78,14 +80,14 @@ struct MoreProfileView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Focus",
-                        title: "Pinned priorities",
+                        title: "Pinned Priorities",
                         subtitle: nil
                     )
 
                     if pinnedTopics.isEmpty {
                         EmptyStateCard(
                             icon: "pin.slash.fill",
-                            title: "No pinned focus topics",
+                            title: "No Pinned Focus Topics",
                             message: "Pick a few focus areas in Settings to keep Home centered on what matters most."
                         )
                     } else {
@@ -106,13 +108,17 @@ struct MoreProfileView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "App",
-                        title: "Current access",
+                        title: "Current Access",
                         subtitle: nil
                     )
 
                     SectionContainer {
                         VStack(alignment: .leading, spacing: 12) {
-                            StatusBadge(title: "Standard Access", iconName: "checkmark.circle.fill", color: AppTheme.success)
+                            StatusBadge(
+                                title: subscriptionStore.hasPremiumAccess ? "Premium Access" : "Standard Access",
+                                iconName: "checkmark.circle.fill",
+                                color: AppTheme.success
+                            )
 
                             Text(snapshot.versionSubtitle)
                                 .font(.subheadline.weight(.semibold))
@@ -139,7 +145,7 @@ struct MoreProfileView: View {
                 beginDeleteAccount()
             }
         } message: {
-            Text("This deletes your cloud account, sessions, profile, submitted reviews, reports, and community submissions tied to the account.")
+            Text("This deletes your cloud account and account-linked data. Deleting Primary Gouge does not cancel an active App Store subscription; manage or cancel it through Apple first if needed.")
         }
     }
 
@@ -147,7 +153,7 @@ struct MoreProfileView: View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(
                 eyebrow: "Your info",
-                title: "Account details",
+                title: "Account Details",
                 subtitle: nil
             )
 
@@ -209,14 +215,14 @@ struct MoreProfileView: View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(
                 eyebrow: "Account",
-                title: "Delete account",
+                title: "Delete Account",
                 subtitle: nil,
                 accent: AppTheme.danger
             )
 
             SectionContainer(style: .standard, accent: AppTheme.danger, contentPadding: 18) {
                 VStack(alignment: .leading, spacing: 14) {
-                    Text("Permanently remove your Primary Gouge account and account-linked submissions.")
+                    Text("Permanently remove your Primary Gouge account and account-linked submissions. Any App Store subscription continues until you cancel it with Apple.")
                         .font(.footnote)
                         .foregroundStyle(AppTheme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -343,7 +349,7 @@ struct MoreSettingsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Preferences",
-                        title: "Current focus topics",
+                        title: "Current Focus Topics",
                         subtitle: nil
                     )
 
@@ -410,7 +416,7 @@ struct MoreNotificationsView: View {
                     HStack(alignment: .center, spacing: 14) {
                         MoreHeaderTextBlock(
                             eyebrow: "Notifications",
-                            title: "Daily study reminder",
+                        title: "Daily Study Reminder",
                             subtitle: statusDescription,
                             accent: MoreSectionColor.account
                         )
@@ -422,6 +428,7 @@ struct MoreNotificationsView: View {
                             iconName: statusIconName,
                             color: statusColor
                         )
+                        .accessibilityIdentifier("premium-status")
                     }
                 } supportingContent: {
                     Toggle(isOn: Binding(
@@ -433,7 +440,7 @@ struct MoreNotificationsView: View {
                             }
                     )) {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Enable daily reminder")
+                            Text("Enable Daily Reminder")
                                 .font(.headline.weight(.semibold))
                                 .foregroundStyle(AppTheme.textPrimary)
 
@@ -606,12 +613,9 @@ struct MoreNotificationsView: View {
 
 struct MorePremiumView: View {
     let snapshot: MoreHubSnapshot
-    @EnvironmentObject private var appModel: StudyAppModel
-    @State private var showingSubscribeAlert = false
-
-    private var isSubscribed: Bool {
-        appModel.homePreferences.premiumSubscribedPlaceholder
-    }
+    var lockedFeatureTitle: String? = nil
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
+    @State private var showingManageSubscriptions = false
 
     var body: some View {
         AppScrollScreen(topPadding: 20, bottomPadding: 32) {
@@ -620,78 +624,245 @@ struct MorePremiumView: View {
                     HStack(alignment: .center, spacing: 14) {
                         MoreHeaderTextBlock(
                             eyebrow: "Premium",
-                            title: isSubscribed ? "Premium marked active" : "Upgrade to Premium",
-                            subtitle: isSubscribed ? "Your account is marked as subscribed." : "Get more out of Primary Gouge with the premium tier.",
+                            title: headerTitle,
+                            subtitle: statusDescription,
                             accent: AppTheme.warning
                         )
 
                         Spacer(minLength: 12)
 
                         StatusBadge(
-                            title: isSubscribed ? "Subscribed" : "Not Subscribed",
-                            iconName: isSubscribed ? "checkmark.circle.fill" : "star.fill",
-                            color: isSubscribed ? AppTheme.success : AppTheme.warning
+                            title: statusTitle,
+                            iconName: statusIcon,
+                            color: statusColor
                         )
+                        .accessibilityIdentifier("premium-status")
                     }
                 } supportingContent: {
                     VStack(alignment: .leading, spacing: 12) {
                         Button {
-                            showingSubscribeAlert = true
+                            if subscriptionStore.hasPremiumAccess {
+                                showingManageSubscriptions = true
+                            } else {
+                                Task { await subscriptionStore.purchase() }
+                            }
                         } label: {
                             StudyActionButton(
-                                title: isSubscribed ? "Manage Subscription" : "Join Premium",
-                                icon: "star.fill",
+                                title: primaryButtonTitle,
+                                icon: subscriptionStore.hasPremiumAccess ? "gearshape.fill" : "star.fill",
                                 tint: AppTheme.warning,
                                 isProminent: true
                             )
                         }
                         .buttonStyle(.plain)
+                        .disabled(
+                            subscriptionStore.isWorking ||
+                            subscriptionStore.purchaseIsPending ||
+                            (!subscriptionStore.hasPremiumAccess && !subscriptionStore.isPurchaseLaunchEnabled)
+                        )
+                        .opacity(subscriptionStore.isWorking ? 0.65 : 1)
 
-                        Toggle(isOn: Binding(
-                            get: { isSubscribed },
-                            set: { appModel.setPremiumSubscribedPlaceholder($0) }
-                        )) {
-                            Text("I'm already subscribed")
-                                .font(.headline.weight(.semibold))
-                                .foregroundStyle(AppTheme.textPrimary)
+                        Button {
+                            Task { await subscriptionStore.restorePurchases() }
+                        } label: {
+                            StudyActionButton(
+                                title: "Restore Purchases",
+                                icon: "arrow.clockwise.circle.fill",
+                                tint: AppTheme.accent,
+                                isProminent: false
+                            )
                         }
-                        .tint(AppTheme.warning)
+                        .buttonStyle(.plain)
+                        .disabled(subscriptionStore.isWorking)
+
+                        if subscriptionStore.isWorking {
+                            HStack(spacing: 10) {
+                                ProgressView()
+                                Text("Checking with the App Store…")
+                                    .font(.footnote.weight(.semibold))
+                                    .foregroundStyle(AppTheme.textSecondary)
+                            }
+                        }
+
+                        if let errorMessage = subscriptionStore.errorMessage {
+                            Text(errorMessage)
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(AppTheme.danger)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
+                }
+
+                if let lockedFeatureTitle, !subscriptionStore.hasPremiumAccess {
+                    SectionContainer(style: .primary, accent: AppTheme.warning, contentPadding: 18) {
+                        HStack(alignment: .top, spacing: 14) {
+                            Image(systemName: "lock.fill")
+                                .font(.headline.weight(.semibold))
+                                .foregroundStyle(AppTheme.warning)
+
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text("Unlock \(lockedFeatureTitle)")
+                                    .font(.headline.weight(.semibold))
+                                    .foregroundStyle(AppTheme.textPrimary)
+
+                                Text("Start your 7-day free trial to open this and the complete Premium study library.")
+                                    .font(.footnote)
+                                    .foregroundStyle(AppTheme.textSecondary)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
                     }
                 }
 
                 SectionContainer {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Why join Premium")
+                        Text("Premium Monthly")
                             .font(.headline.weight(.semibold))
                             .foregroundStyle(AppTheme.textPrimary)
 
-                        InsetListRow(title: "Move faster", subtitle: "Keep your best study tools and shortcuts close at hand.") {
-                            Image(systemName: "function")
+                        InsetListRow(
+                            title: "\(subscriptionStore.displayPrice) per month",
+                            subtitle: "Eligible new subscribers receive a 7-day free trial."
+                        ) {
+                            Image(systemName: "calendar.badge.clock")
                                 .foregroundStyle(AppTheme.warning)
                                 .frame(width: 20, height: 20)
                         }
 
-                        InsetListRow(title: "Stay dialed in", subtitle: "Get a more focused, more personalized study setup.") {
-                            Image(systemName: "slider.horizontal.3")
+                        InsetListRow(
+                            title: "Automatic Renewal",
+                            subtitle: "Payment is charged to your Apple Account. The subscription renews unless cancelled at least 24 hours before the current period ends."
+                        ) {
+                            Image(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
                                 .foregroundStyle(AppTheme.warning)
                                 .frame(width: 20, height: 20)
                         }
 
-                        InsetListRow(title: "Keep momentum", subtitle: "Hold onto the premium path as new subscriber tools roll out.") {
-                            Image(systemName: "bell.badge.fill")
+                        InsetListRow(
+                            title: "Full Study Access",
+                            subtitle: "Premium unlocks the complete event pipeline, study library, quizzes, videos, progress tools, and advanced preparation resources. Home, instructor gouge, emergency-reference flashcards, Contacts ground school, FAM2101, and FAM2102 remain free."
+                        ) {
+                            Image(systemName: "lock.open.fill")
                                 .foregroundStyle(AppTheme.warning)
                                 .frame(width: 20, height: 20)
                         }
                     }
                 }
+
+                SectionContainer {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Subscription Details")
+                            .font(.headline.weight(.semibold))
+                            .foregroundStyle(AppTheme.textPrimary)
+
+                        NavigationLink {
+                            MoreArticleView(
+                                page: MoreArticleContentLoader.page(.privacy),
+                                accent: MoreSectionColor.about,
+                                iconName: "lock.shield.fill"
+                            )
+                        } label: {
+                            InsetListRow(title: "Privacy Policy") {
+                                Image(systemName: "lock.shield.fill")
+                                    .foregroundStyle(MoreSectionColor.about)
+                                    .frame(width: 20, height: 20)
+                            }
+                        }
+                        .buttonStyle(.plain)
+
+                        NavigationLink {
+                            MoreArticleView(
+                                page: MoreArticleContentLoader.page(.terms),
+                                accent: MoreSectionColor.about,
+                                iconName: "doc.text.fill"
+                            )
+                        } label: {
+                            InsetListRow(title: "Terms of Use") {
+                                Image(systemName: "doc.text.fill")
+                                    .foregroundStyle(MoreSectionColor.about)
+                                    .frame(width: 20, height: 20)
+                            }
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
             }
         }
         .detailNavigationChrome(title: "Premium")
-        .alert("Subscription link coming soon", isPresented: $showingSubscribeAlert) {
-            Button("OK", role: .cancel) {}
-        } message: {
-            Text("You’ll be able to start or manage your subscription here soon.")
+        .manageSubscriptionsSheet(isPresented: $showingManageSubscriptions)
+        .task {
+            await subscriptionStore.refresh()
         }
+    }
+
+    private var headerTitle: String {
+        switch subscriptionStore.entitlement.phase {
+        case .active, .gracePeriod: "Premium Is Active"
+        case .billingRetry: "Payment Needs Attention"
+        case .expired: "Premium Has Expired"
+        case .loading: "Checking Premium"
+        case .error, .notSubscribed: "Upgrade to Premium"
+        }
+    }
+
+    private var statusDescription: String {
+        switch subscriptionStore.entitlement.phase {
+        case .active:
+            if let date = subscriptionStore.entitlement.expirationDate {
+                return "Your subscription is active through \(date.formatted(date: .abbreviated, time: .omitted))."
+            }
+            return "Your Premium subscription is active."
+        case .gracePeriod:
+            return "Premium remains available during Apple’s billing grace period."
+        case .billingRetry:
+            return "Apple could not renew your subscription. Update your payment method to continue."
+        case .expired:
+            return "Your previous Premium subscription is no longer active."
+        case .loading:
+            return "Checking your App Store and account entitlement."
+        case .error:
+            return subscriptionStore.entitlement.message ?? "Premium status could not be verified."
+        case .notSubscribed:
+            return "Start with a 7-day free trial, then \(subscriptionStore.displayPrice) per month."
+        }
+    }
+
+    private var statusTitle: String {
+        switch subscriptionStore.entitlement.phase {
+        case .active: "Subscribed"
+        case .gracePeriod: "Grace Period"
+        case .billingRetry: "Billing Retry"
+        case .expired: "Expired"
+        case .loading: "Checking"
+        case .error: "Unavailable"
+        case .notSubscribed: "Not Subscribed"
+        }
+    }
+
+    private var statusIcon: String {
+        switch subscriptionStore.entitlement.phase {
+        case .active, .gracePeriod: "checkmark.circle.fill"
+        case .billingRetry, .error: "exclamationmark.triangle.fill"
+        case .expired: "clock.badge.xmark.fill"
+        case .loading: "arrow.clockwise.circle.fill"
+        case .notSubscribed: "star.fill"
+        }
+    }
+
+    private var statusColor: Color {
+        switch subscriptionStore.entitlement.phase {
+        case .active, .gracePeriod: AppTheme.success
+        case .billingRetry, .error: AppTheme.danger
+        case .expired, .notSubscribed, .loading: AppTheme.warning
+        }
+    }
+
+    private var primaryButtonTitle: String {
+        if subscriptionStore.hasPremiumAccess { return "Manage Subscription" }
+        if !subscriptionStore.isPurchaseLaunchEnabled { return "Premium Launch Pending" }
+        if subscriptionStore.purchaseIsPending { return "Awaiting Approval" }
+        if subscriptionStore.isWorking { return "Working…" }
+        return "Start 7-Day Free Trial"
     }
 }
 
@@ -749,7 +920,7 @@ struct MoreMyInstructorReviewsView: View {
                 } else if reviews.isEmpty {
                     EmptyStateCard(
                         icon: "square.and.pencil",
-                        title: "No instructor reviews yet",
+                        title: "No Instructor Reviews Yet",
                         message: "Once you submit a review, it will show up here so you can track it, edit it, or remove it later."
                     )
                 } else {

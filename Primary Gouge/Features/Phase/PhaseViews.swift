@@ -91,6 +91,7 @@ struct PhaseKnowledgeView: View {
     let videoGroups: [VideoLibraryGroupSnapshot]
     @EnvironmentObject private var searchChrome: SearchChromeModel
     @EnvironmentObject private var videoDownloadStore: VideoDownloadStore
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
 
     var body: some View {
         AppScrollScreen {
@@ -105,7 +106,7 @@ struct PhaseKnowledgeView: View {
                 VStack(alignment: .leading, spacing: 14) {
                     SectionHeader(
                         eyebrow: "Videos",
-                        title: "Watch and review",
+                        title: "Watch and Review",
                         subtitle: nil
                     )
 
@@ -120,13 +121,16 @@ struct PhaseKnowledgeView: View {
 
                             ForEach(group.videos) { video in
                                 NavigationLink {
-                                    VideoDetailView(video: video)
+                                    PremiumContentGate(requirement: .premium, title: video.title) {
+                                        VideoDetailView(video: video)
+                                    }
                                 } label: {
                                     ToolCard(
                                         title: video.title,
                                         subtitle: videoSubtitle(video),
                                         icon: group.category.iconName,
-                                        accent: AppTheme.domainColor(.videos)
+                                        accent: AppTheme.domainColor(.videos),
+                                        isPremiumLocked: !subscriptionStore.hasPremiumAccess
                                     )
                                 }
                                 .buttonStyle(.plain)
@@ -138,13 +142,16 @@ struct PhaseKnowledgeView: View {
 
             ForEach(resources) { resource in
                 NavigationLink {
-                    SharedResourceDetailView(resource: resource)
+                    PremiumContentGate(requirement: .premium, title: resource.title) {
+                        SharedResourceDetailView(resource: resource)
+                    }
                 } label: {
                     ToolCard(
                         title: resource.title,
                         subtitle: nil,
                         icon: resourceIconName(for: resource),
-                        accent: resourceAccent(for: resource)
+                        accent: resourceAccent(for: resource),
+                        isPremiumLocked: !subscriptionStore.hasPremiumAccess
                     )
                 }
                 .buttonStyle(.plain)
@@ -198,6 +205,7 @@ struct EventListView: View {
 
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
 
     var body: some View {
         AppScrollScreen {
@@ -219,7 +227,11 @@ struct EventListView: View {
                     EventCard(
                         event: event,
                         progress: appModel.eventProgress(for: event.id),
-                        dueCards: event.flashcardDecks.flatMap(\.cardIDs).filter { appModel.progress(for: $0).isDue }.count
+                        dueCards: event.flashcardDecks.flatMap(\.cardIDs).filter { appModel.progress(for: $0).isDue }.count,
+                        isPremiumLocked: ContentAccessPolicy.isLocked(
+                            ContentAccessPolicy.requirement(for: event),
+                            subscriptionStore: subscriptionStore
+                        )
                     )
                 }
                 .buttonStyle(.plain)
@@ -238,6 +250,7 @@ struct GroundSchoolCategoryView: View {
 
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
 
     private var snapshot: GroundSchoolCategorySnapshot {
         appModel.groundSchoolSnapshot(for: category)
@@ -261,14 +274,14 @@ struct GroundSchoolCategoryView: View {
             if snapshot.isEmpty {
                 EmptyStateCard(
                     icon: category.iconName,
-                    title: "No ground school tools yet",
+                    title: "No Ground School Tools Yet",
                     message: "This category is ready for materials, notes, and practice tests as they are added."
                 )
             } else {
                 if !snapshot.coreTools.isEmpty {
                     groundSchoolSection(
                         eyebrow: "Ground school",
-                        title: "Core materials",
+                        title: "Core Materials",
                         subtitle: nil,
                         tools: snapshot.coreTools
                     )
@@ -309,13 +322,22 @@ struct GroundSchoolCategoryView: View {
 
             ForEach(tools) { tool in
                 NavigationLink {
-                    destination(for: tool)
+                    PremiumContentGate(
+                        requirement: ContentAccessPolicy.requirement(for: tool.event),
+                        title: toolTitle(for: tool)
+                    ) {
+                        destination(for: tool)
+                    }
                 } label: {
                     ToolCard(
                         title: toolTitle(for: tool),
                         subtitle: nil,
                         icon: iconName(for: tool),
-                        accent: accent(for: tool)
+                        accent: accent(for: tool),
+                        isPremiumLocked: ContentAccessPolicy.isLocked(
+                            ContentAccessPolicy.requirement(for: tool.event),
+                            subscriptionStore: subscriptionStore
+                        )
                     )
                 }
                 .buttonStyle(.plain)
@@ -359,9 +381,9 @@ struct GroundSchoolCategoryView: View {
             }
             return document.title
         case .discussionItems:
-            return "Discussion items"
+            return "Discussion Items"
         case .systemsBrief:
-            return "Systems brief"
+            return "Systems Brief"
         case let .flashcardDeck(deck):
             return deck.title
         case let .practiceTest(bank):

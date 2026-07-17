@@ -160,6 +160,19 @@ struct ContentRepository {
             return directURL
         }
 
+        if relativePath.hasPrefix("AppContent/") {
+            let flattenedResourceName = (relativePath as NSString).lastPathComponent as NSString
+            let resourceName = flattenedResourceName.deletingPathExtension
+            let resourceExtension = flattenedResourceName.pathExtension
+
+            if let flattenedURL = bundle.url(
+                forResource: resourceName,
+                withExtension: resourceExtension.isEmpty ? nil : resourceExtension
+            ) {
+                return flattenedURL
+            }
+        }
+
         let candidate = resourceRoot.appendingPathComponent(relativePath)
         return FileManager.default.fileExists(atPath: candidate.path) ? candidate : nil
     }

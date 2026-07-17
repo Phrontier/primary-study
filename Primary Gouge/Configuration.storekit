@@ -1,0 +1,62 @@
+{
+  "identifier" : "84D16DFB-82E7-4CA8-9FBB-2C64C81EA979",
+  "nonRenewingSubscriptions" : [],
+  "products" : [],
+  "settings" : {
+    "_applicationInternalID" : "",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "USA",
+    "_storeKitErrors" : [],
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "D7B52A55-6F9E-4C2B-B06F-D2BB69198636",
+      "localizations" : [
+        {
+          "description" : "Primary Gouge Premium",
+          "displayName" : "Premium",
+          "locale" : "en_US"
+        }
+      ],
+      "name" : "Primary Gouge Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "6.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "41AECE70-93D1-4ECB-A597-24FC33585457",
+          "introductoryOffer" : {
+            "displayPrice" : "0",
+            "internalID" : "AC476C83-D012-4CB1-A4C9-4D47A135A023",
+            "paymentMode" : "free",
+            "period" : "P1W",
+            "periodCount" : 1
+          },
+          "localizations" : [
+            {
+              "description" : "A monthly subscription to the Primary Gouge premium study experience.",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "bolt.primarygouge.premium.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Monthly",
+          "subscriptionGroupID" : "D7B52A55-6F9E-4C2B-B06F-D2BB69198636",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

@@ -20,7 +20,7 @@
   "overview" : "I3201 shifts radio-instrument procedures into FMS/GPS execution. The standard is to load the correct database procedure, understand when GPS is authorized, manage TAA and approach-mode cues, and preserve the missed-approach branch when automatic sequencing stops.",
   "primaryDocumentTitles" : [
     "I3201",
-    "I3201 Briefing guide 1542.166D",
+    "I3201 Briefing Guide 1542.166D",
     "I3201 1542.166D"
   ],
   "studyNotes" : {

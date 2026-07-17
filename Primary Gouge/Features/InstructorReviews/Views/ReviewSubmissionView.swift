@@ -52,7 +52,7 @@ struct ReviewSubmissionView: View {
     var body: some View {
         AppScrollScreen(bottomPadding: 36) {
             VStack(alignment: .leading, spacing: 8) {
-                Text(isEditing ? "Edit your review" : "Submit instructor gouge")
+                Text(isEditing ? "Edit Your Review" : "Submit Instructor Gouge")
                     .font(.system(size: 28, weight: .bold, design: .rounded))
                     .foregroundStyle(AppTheme.textPrimary)
 
@@ -209,7 +209,7 @@ struct ReviewSubmissionView: View {
                                                 .font(.system(.subheadline, design: .rounded, weight: .bold))
                                                 .foregroundStyle(AppTheme.textPrimary)
 
-                                            Text("Custom event")
+                                            Text("Custom Event")
                                                 .font(.system(.caption, design: .rounded, weight: .medium))
                                                 .foregroundStyle(AppTheme.textSecondary)
                                         }
@@ -297,17 +297,11 @@ struct ReviewSubmissionView: View {
                     }
                     .frame(minHeight: 170)
 
-                    HStack {
-                        Text(viewModel.remainingCharacters == 0 ? "Minimum met" : "\(viewModel.remainingCharacters) characters to go")
-                            .font(.system(.footnote, design: .rounded, weight: .semibold))
-                            .foregroundStyle(viewModel.remainingCharacters == 0 ? AppTheme.success : AppTheme.warning)
-
-                        Spacer()
-
-                        Text("\(viewModel.trimmedReviewText.count) chars")
-                            .font(.system(.footnote, design: .rounded, weight: .medium))
-                            .foregroundStyle(AppTheme.textSecondary)
-                    }
+                    CharacterGuidance(
+                        text: viewModel.reviewText,
+                        minimum: viewModel.minimumCharacterCount,
+                        identifier: "instructor-review-character-guidance"
+                    )
 
                     HStack(alignment: .top, spacing: 10) {
                         Image(systemName: "exclamationmark.triangle.fill")
@@ -337,7 +331,7 @@ struct ReviewSubmissionView: View {
             }
 
             InstructorPrimaryButton(
-                title: isEditing ? (isSubmittingEdit ? "Sending Update..." : "Send Update") : "Submit For Moderation",
+                title: isEditing ? (isSubmittingEdit ? "Sending Update..." : "Send Update") : "Submit for Moderation",
                 icon: isEditing ? "square.and.pencil" : "paperplane.fill",
                 enabled: viewModel.isValid && !isSubmittingEdit
             ) {

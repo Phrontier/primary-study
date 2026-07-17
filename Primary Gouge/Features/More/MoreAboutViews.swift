@@ -96,6 +96,7 @@ struct MoreArticleView: View {
             }
         }
         .detailNavigationChrome(title: page.title)
+        .accessibilityIdentifier("more-article-\(page.id)")
     }
 }
 
@@ -198,7 +199,7 @@ struct MoreVersionView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Release",
-                        title: "App details",
+                        title: "App Details",
                         subtitle: nil,
                         accent: MoreSectionColor.about
                     )
@@ -215,7 +216,7 @@ struct MoreVersionView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Reminder",
-                        title: "Daily study reminder",
+                        title: "Daily Study Reminder",
                         subtitle: nil,
                         accent: MoreSectionColor.account
                     )

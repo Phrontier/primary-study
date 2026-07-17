@@ -23,7 +23,7 @@
   "overview": "I2101 is the first basic-instrument event, so the priority is building a disciplined PAT-to-SCAN loop before the simulator adds more procedure work. Be ready to explain which instrument detects each error, what control fixes it, and how the same scan supports airspeed changes, steep turns, timed turns, climbs, descents, and enroute descent.",
   "primaryDocumentTitles": [
     "I2101",
-    "I2101 Briefing guide 1542.166D 2"
+    "I2101 Briefing Guide 1542.166D 2"
   ],
   "studyNotes": {
     "headline": "Discussion Items",

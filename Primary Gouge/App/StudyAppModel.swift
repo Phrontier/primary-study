@@ -277,6 +277,7 @@ struct SearchResultItem: Identifiable, Hashable {
     let subtitle: String
     let score: Int
     let destination: SearchDestination
+    var accessRequirement: ContentAccessRequirement = .free
 }
 
 struct SearchResultSectionSnapshot: Identifiable, Hashable {
@@ -767,13 +768,6 @@ final class StudyAppModel: ObservableObject {
         refreshSnapshot()
     }
 
-    func setPremiumSubscribedPlaceholder(_ isSubscribed: Bool) {
-        progressStore?.updateHomePreferences { preferences in
-            preferences.premiumSubscribedPlaceholder = isSubscribed
-        }
-        refreshSnapshot()
-    }
-
     func answerQuestionOfDay(_ question: HomeQuestionDefinition, choiceID: String) {
         guard progressStore?.dailyQuestionProgress(for: question.id)?.answeredAt == nil else { return }
 
@@ -1236,7 +1230,10 @@ final class StudyAppModel: ObservableObject {
                             title: title,
                             subtitle: subtitle,
                             score: score,
-                            destination: destination
+                            destination: destination,
+                            accessRequirement: isGroundSchoolContainer
+                                ? .free
+                                : ContentAccessPolicy.requirement(for: event)
                         )
                     )
                 }
@@ -1293,7 +1290,8 @@ final class StudyAppModel: ObservableObject {
                     title: resource.title,
                     subtitle: "\(contextLabel) • \(resource.summary)",
                     score: score,
-                    destination: .sharedResource(id: resource.id)
+                    destination: .sharedResource(id: resource.id),
+                    accessRequirement: .premium
                 )
             }
             .sorted(by: searchSort)
@@ -1321,7 +1319,8 @@ final class StudyAppModel: ObservableObject {
                     title: video.title,
                     subtitle: "\(video.libraryCategory.displayName) • \(video.summary)",
                     score: score,
-                    destination: .video(id: video.id)
+                    destination: .video(id: video.id),
+                    accessRequirement: .premium
                 )
             }
             .sorted(by: searchSort)
@@ -1400,7 +1399,8 @@ final class StudyAppModel: ObservableObject {
                                 title: deck.title,
                                 subtitle: "\(event.code) • \(event.displayTitle)",
                                 score: score,
-                                destination: .eventDeck(phaseID: phase.id, eventID: event.id, deckID: deck.id)
+                                destination: .eventDeck(phaseID: phase.id, eventID: event.id, deckID: deck.id),
+                                accessRequirement: ContentAccessPolicy.requirement(for: event)
                             )
                         )
                     }
@@ -1423,7 +1423,8 @@ final class StudyAppModel: ObservableObject {
                     title: hub.deck.title,
                     subtitle: "General Library",
                     score: score,
-                    destination: .libraryDeck(id: hub.id)
+                    destination: .libraryDeck(id: hub.id),
+                    accessRequirement: ContentAccessPolicy.requirement(forLibraryHubID: hub.id)
                 )
             )
         }
@@ -1535,7 +1536,7 @@ struct HomeContinueStudyingSnapshot: Equatable {
     let isFallback: Bool
 
     static let empty = HomeContinueStudyingSnapshot(
-        title: "Start with emergency references",
+        title: "Start with Emergency References",
         subtitle: "EPs, limits, and recurring memory items",
         detail: "Use the General Library to get into the highest-value material without digging through phases.",
         actionTitle: "Open EPs / Limits / N/W/C",
@@ -1713,9 +1714,9 @@ struct HomeTabSnapshot: Equatable {
             progressHeadline: progressHeadline,
             progressDetail: progressDetail,
             reviewPrompts: reviewPrompts,
-            questionTitle: "Question of the day",
+            questionTitle: "Question of the Day",
             questionPrompt: questionPrompt,
-            questionHint: "This area is a polished placeholder for the future QOTD system and will eventually capture quick confidence-building answers inside the app.",
+            questionHint: "Answer it out loud before opening a note or checklist, then use the result to choose your next focused review.",
             dueCards: dashboard.dueCards,
             completedEvents: dashboard.completedEvents,
             totalEvents: dashboard.events

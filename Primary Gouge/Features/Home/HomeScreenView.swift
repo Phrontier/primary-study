@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeScreenView: View {
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
 
     @State private var showingManageFocus = false
 
@@ -12,7 +13,10 @@ struct HomeScreenView: View {
         AppScrollScreen(topPadding: AppTheme.Spacing.rootTabIntroTop, bottomPadding: 28) {
             HomeIntroBlock(snapshot: snapshot)
 
-            ContinueStudyingCard(snapshot: snapshot.continueStudying) { destination in
+            ContinueStudyingCard(
+                snapshot: snapshot.continueStudying,
+                isPremiumLocked: isPremiumLocked(snapshot.continueStudying.destination)
+            ) { destination in
                 route(to: destination)
             }
 
@@ -46,6 +50,14 @@ struct HomeScreenView: View {
     private func route(to destination: SearchDestination?) {
         guard let destination else { return }
         searchChrome.route(to: destination)
+    }
+
+    private func isPremiumLocked(_ destination: SearchDestination?) -> Bool {
+        guard let destination else { return false }
+        return ContentAccessPolicy.isLocked(
+            ContentAccessPolicy.requirement(for: destination, in: appModel),
+            subscriptionStore: subscriptionStore
+        )
     }
 }
 
@@ -101,7 +113,7 @@ private struct HomeIntroBlock: View {
 
             if snapshot.studyStreak > 0 {
                 HomeSignalPill(
-                    title: "\(snapshot.studyStreak)-day streak",
+                    title: "\(snapshot.studyStreak)-Day Streak",
                     iconName: "flame.fill",
                     color: AppTheme.warning
                 )
@@ -113,6 +125,7 @@ private struct HomeIntroBlock: View {
 
 private struct ContinueStudyingCard: View {
     let snapshot: HomeContinueStudyingSnapshot
+    let isPremiumLocked: Bool
     let onSelect: (SearchDestination?) -> Void
 
     var body: some View {
@@ -145,13 +158,14 @@ private struct ContinueStudyingCard: View {
                 } label: {
                     StudyActionButton(
                         title: snapshot.actionTitle,
-                        icon: snapshot.isFallback ? "arrow.right.circle.fill" : "play.fill",
+                        icon: isPremiumLocked ? "lock.fill" : (snapshot.isFallback ? "arrow.right.circle.fill" : "play.fill"),
                         tint: AppTheme.accent
                     )
                 }
                 .buttonStyle(.plain)
             }
         }
+        .accessibilityLabel(isPremiumLocked ? "\(snapshot.title), Premium locked" : snapshot.title)
     }
 }
 
@@ -171,7 +185,7 @@ private struct CurrentFocusSection: View {
         VStack(alignment: .leading, spacing: 12) {
             HomeSectionHeader(
                 eyebrow: "Focus",
-                title: "Current priorities",
+                title: "Current Priorities",
                 subtitle: nil
             ) {
                 Button("Manage", action: onManage)
@@ -410,7 +424,7 @@ private struct HomeQuestionOfDayCard: View {
         VStack(alignment: .leading, spacing: 12) {
             HomeSectionHeader(
                 eyebrow: "Daily rep",
-                title: "Question of the day",
+                title: "Question of the Day",
                 subtitle: nil
             )
 

@@ -60,13 +60,13 @@ enum CommunitySubmissionCategory: String, Codable, CaseIterable, Hashable, Ident
     var formTitle: String {
         switch self {
         case .feedback:
-            return "Share feedback"
+            return "Share Feedback"
         case .featureRequest:
-            return "Request a feature"
+            return "Request a Feature"
         case .support:
-            return "Get support"
+            return "Get Support"
         case .incorrectGouge:
-            return "Report incorrect gouge"
+            return "Report Incorrect Gouge"
         }
     }
 
@@ -94,6 +94,14 @@ enum CommunitySubmissionCategory: String, Codable, CaseIterable, Hashable, Ident
         case .incorrectGouge:
             return "What looks wrong?"
         }
+    }
+
+    var summaryMinimumCharacterCount: Int {
+        CommunitySubmissionValidation.minimumSummaryCharacters
+    }
+
+    var messageMinimumCharacterCount: Int {
+        CommunitySubmissionValidation.minimumMessageCharacters
     }
 
     var messagePrompt: String {
@@ -125,13 +133,13 @@ enum CommunitySubmissionCategory: String, Codable, CaseIterable, Hashable, Ident
     var emptyStateTitle: String {
         switch self {
         case .feedback:
-            return "No feedback sent yet"
+            return "No Feedback Sent Yet"
         case .featureRequest:
-            return "No feature requests yet"
+            return "No Feature Requests Yet"
         case .support:
-            return "No support requests yet"
+            return "No Support Requests Yet"
         case .incorrectGouge:
-            return "No gouge reports yet"
+            return "No Gouge Reports Yet"
         }
     }
 
@@ -162,6 +170,11 @@ enum CommunitySubmissionCategory: String, Codable, CaseIterable, Hashable, Ident
     }
 }
 
+enum CommunitySubmissionValidation {
+    static let minimumSummaryCharacters = 4
+    static let minimumMessageCharacters = 12
+}
+
 enum CommunitySubmissionTargetKind: String, Codable, CaseIterable, Hashable, Identifiable {
     case brief
     case flashcardSet
@@ -175,13 +188,13 @@ enum CommunitySubmissionTargetKind: String, Codable, CaseIterable, Hashable, Ide
     var title: String {
         switch self {
         case .brief:
-            return "Brief or reference"
+            return "Brief or Reference"
         case .flashcardSet:
-            return "Flashcard set"
+            return "Flashcard Set"
         case .event:
             return "Event"
         case .instructorReview:
-            return "Instructor review"
+            return "Instructor Review"
         case .generalLibrary:
             return "General Library"
         case .other:

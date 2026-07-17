@@ -160,14 +160,14 @@ private struct QuizSetupView: View {
             if options.isEmpty {
                 EmptyStateCard(
                     icon: "exclamationmark.bubble.fill",
-                    title: "Quiz bank unavailable",
+                    title: "Quiz Bank Unavailable",
                     message: "The local quiz bank could not be loaded, so the quiz tool cannot start yet."
                 )
             } else {
                 VStack(alignment: .leading, spacing: 16) {
                     SectionHeader(
                         eyebrow: "Category",
-                        title: "Choose your question set",
+                        title: "Choose Your Question Set",
                         subtitle: nil
                     )
 
@@ -256,7 +256,7 @@ private struct QuizSetupView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         SectionHeader(
                             eyebrow: "History",
-                            title: "Recent attempts",
+                            title: "Recent Attempts",
                             subtitle: nil
                         )
 
@@ -547,7 +547,7 @@ private struct QuizResultsView: View {
         AppScrollScreen(bottomPadding: 56) {
             HeroCard(
                 eyebrow: "Results",
-                title: "Quiz results",
+                title: "Quiz Results",
                 subtitle: resultMessage
             ) {
                 VStack(alignment: .leading, spacing: 18) {
@@ -572,7 +572,7 @@ private struct QuizResultsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Misses",
-                        title: "Missed categories",
+                        title: "Missed Categories",
                         subtitle: nil
                     )
 
@@ -595,7 +595,7 @@ private struct QuizResultsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Signals",
-                        title: "Weak topics detected",
+                        title: "Weak Topics Detected",
                         subtitle: nil
                     )
 
@@ -618,7 +618,7 @@ private struct QuizResultsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Trend",
-                        title: "Recent history",
+                        title: "Recent History",
                         subtitle: nil
                     )
 

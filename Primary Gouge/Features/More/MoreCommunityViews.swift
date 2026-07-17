@@ -50,7 +50,7 @@ struct MoreCommunitySubmissionView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: category.eyebrow,
-                        title: "Submission details",
+                        title: "Submission Details",
                         subtitle: nil,
                         accent: category.accentColor
                     )
@@ -58,11 +58,25 @@ struct MoreCommunitySubmissionView: View {
                     SectionContainer(style: .standard, accent: category.accentColor, contentPadding: 18) {
                         VStack(alignment: .leading, spacing: 16) {
                             MoreLabeledField(title: "Summary") {
-                                MoreEntryTextField(text: $draft.summary, prompt: category.summaryPrompt)
+                                VStack(alignment: .leading, spacing: 8) {
+                                    MoreEntryTextField(text: $draft.summary, prompt: category.summaryPrompt)
+                                    CharacterGuidance(
+                                        text: draft.summary,
+                                        minimum: category.summaryMinimumCharacterCount,
+                                        identifier: "community-summary-character-guidance"
+                                    )
+                                }
                             }
 
                             MoreLabeledField(title: "Details") {
-                                MoreEntryTextEditor(text: $draft.message, prompt: category.messagePrompt)
+                                VStack(alignment: .leading, spacing: 8) {
+                                    MoreEntryTextEditor(text: $draft.message, prompt: category.messagePrompt)
+                                    CharacterGuidance(
+                                        text: draft.message,
+                                        minimum: category.messageMinimumCharacterCount,
+                                        identifier: "community-details-character-guidance"
+                                    )
+                                }
                             }
                         }
                     }
@@ -92,7 +106,7 @@ struct MoreCommunitySubmissionView: View {
                     submit()
                 } label: {
                     StudyActionButton(
-                        title: isSubmitting ? "Sending…" : (accountStore.isSignedIn ? category.submitButtonTitle : "Sign In To Send"),
+                        title: isSubmitting ? "Sending…" : (accountStore.isSignedIn ? category.submitButtonTitle : "Sign In to Send"),
                         icon: category.iconName,
                         tint: category.accentColor,
                         isProminent: true
@@ -116,7 +130,7 @@ struct MoreCommunitySubmissionView: View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(
                 eyebrow: "Accuracy",
-                title: "Content target",
+                title: "Content Target",
                 subtitle: nil,
                 accent: AppTheme.danger
             )
@@ -128,9 +142,9 @@ struct MoreCommunitySubmissionView: View {
                         .foregroundStyle(AppTheme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
 
-                    MoreLabeledField(title: "Content type") {
+                    MoreLabeledField(title: "Content Type") {
                         Picker("Content type", selection: $draft.targetKind) {
-                            Text("Not specified").tag(Optional<CommunitySubmissionTargetKind>.none)
+                            Text("Not Specified").tag(Optional<CommunitySubmissionTargetKind>.none)
                             ForEach(CommunitySubmissionTargetKind.allCases) { targetKind in
                                 Text(targetKind.title).tag(Optional(targetKind))
                             }
@@ -140,7 +154,7 @@ struct MoreCommunitySubmissionView: View {
                         .disabled(lockedTarget != nil)
                     }
 
-                    MoreLabeledField(title: "Title or identifier") {
+                    MoreLabeledField(title: "Title or Identifier") {
                         MoreEntryTextField(
                             text: lockedTarget == nil ? $draft.targetTitle : .constant(draft.targetTitle),
                             prompt: "Example: Contact IFG or Form deck"
@@ -148,7 +162,7 @@ struct MoreCommunitySubmissionView: View {
                         .disabled(lockedTarget != nil)
                     }
 
-                    MoreLabeledField(title: "Location or context") {
+                    MoreLabeledField(title: "Location or Context") {
                         MoreEntryTextField(
                             text: lockedTarget == nil ? $draft.targetContext : .constant(draft.targetContext),
                             prompt: "Example: General Library, Formation, or page/section"

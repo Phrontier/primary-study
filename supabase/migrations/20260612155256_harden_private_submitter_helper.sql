@@ -5,4 +5,4 @@ stable
 set search_path = ''
 as $function$
   select nullif(current_setting('request.headers', true)::json ->> 'x-submitter-client-id', '');
-$function$;
+$function$;;

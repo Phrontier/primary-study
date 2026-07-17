@@ -3,6 +3,7 @@ import SwiftUI
 struct MoreTabView: View {
     @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var appModel: StudyAppModel
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
     @EnvironmentObject private var searchChrome: SearchChromeModel
 
     private var snapshot: MoreHubSnapshot {
@@ -55,6 +56,8 @@ struct MoreTabView: View {
                         subtitle: nil,
                         iconName: "checkmark.circle.fill",
                         accent: MoreSectionColor.studyTools,
+                        badge: .premium,
+                        accessRequirement: .premium,
                         destination: .quiz
                     ),
                     MoreHubItem(
@@ -92,6 +95,8 @@ struct MoreTabView: View {
                         subtitle: nil,
                         iconName: "chart.bar.fill",
                         accent: MoreSectionColor.studyTools,
+                        badge: .premium,
+                        accessRequirement: .premium,
                         destination: .statsDashboard
                     )
                 ]
@@ -105,6 +110,8 @@ struct MoreTabView: View {
                         subtitle: nil,
                         iconName: "bookmark.fill",
                         accent: MoreSectionColor.saved,
+                        badge: .premium,
+                        accessRequirement: .premium,
                         destination: .recentBriefs
                     ),
                     MoreHubItem(
@@ -112,6 +119,8 @@ struct MoreTabView: View {
                         subtitle: nil,
                         iconName: "rectangle.stack.fill.badge.plus",
                         accent: MoreSectionColor.saved,
+                        badge: .premium,
+                        accessRequirement: .premium,
                         destination: .recentFlashcardSets
                     ),
                     MoreHubItem(
@@ -202,7 +211,7 @@ struct MoreTabView: View {
     }
 
     private var isPremiumSubscribed: Bool {
-        appModel.homePreferences.premiumSubscribedPlaceholder
+        subscriptionStore.hasPremiumAccess
     }
 
     var body: some View {
@@ -248,6 +257,13 @@ struct MoreTabView: View {
 
     @ViewBuilder
     private func destinationView(for item: MoreHubItem) -> some View {
+        PremiumContentGate(requirement: item.accessRequirement, title: item.title) {
+            rawDestinationView(for: item)
+        }
+    }
+
+    @ViewBuilder
+    private func rawDestinationView(for item: MoreHubItem) -> some View {
         switch item.destination {
         case .profile:
             MoreProfileView(snapshot: snapshot)
@@ -350,8 +366,8 @@ private struct MorePremiumPromoCard: View {
             HStack(alignment: .center, spacing: 14) {
                 MoreHeaderTextBlock(
                     eyebrow: "Premium",
-                    title: isSubscribed ? "Premium marked active" : "Go Premium",
-                    subtitle: isSubscribed ? "See your premium status and manage it here." : "Unlock the premium study experience when subscriptions open.",
+                    title: isSubscribed ? "Premium Marked Active" : "Go Premium",
+                    subtitle: isSubscribed ? "See your Premium status and manage it here." : "Unlock the complete study library with a 7-day free trial.",
                     accent: AppTheme.warning,
                     subtitleFont: .footnote
                 )
@@ -366,7 +382,7 @@ private struct MorePremiumPromoCard: View {
             }
         } supportingContent: {
             HStack(spacing: 10) {
-                Text(isSubscribed ? "Manage premium status" : "See premium options")
+                Text(isSubscribed ? "Manage Premium Status" : "See Premium Options")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(AppTheme.prominentText(AppTheme.warning))
 
@@ -509,8 +525,9 @@ struct MoreSectionContainer<Content: View>: View {
 
 private struct MoreUtilityRow: View {
     let item: MoreHubItem
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
 
-    private let accessoryColumnWidth: CGFloat = 96
+    private let accessoryColumnWidth: CGFloat = 120
 
     var body: some View {
         HStack(spacing: 14) {
@@ -541,6 +558,12 @@ private struct MoreUtilityRow: View {
                     MoreRowBadge(style: badge)
                 }
 
+                if ContentAccessPolicy.isLocked(item.accessRequirement, subscriptionStore: subscriptionStore) {
+                    Image(systemName: "lock.fill")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppTheme.warning)
+                }
+
                 Image(systemName: "chevron.right")
                     .font(.system(size: 12, weight: .bold))
                     .foregroundStyle(AppTheme.accessoryTint(item.accent))
@@ -551,6 +574,11 @@ private struct MoreUtilityRow: View {
         .padding(.vertical, 11)
         .frame(minHeight: 60, alignment: .leading)
         .contentShape(Rectangle())
+        .accessibilityLabel(
+            ContentAccessPolicy.isLocked(item.accessRequirement, subscriptionStore: subscriptionStore)
+                ? "\(item.title), Premium locked"
+                : item.title
+        )
     }
 }
 
@@ -592,7 +620,7 @@ private struct MoreStatsDashboardView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         SectionHeader(
                             eyebrow: "Overview",
-                            title: "Study snapshot",
+                            title: "Study Snapshot",
                             subtitle: nil
                         )
 
@@ -639,7 +667,7 @@ private struct MoreStatsDashboardView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             SectionHeader(
                                 eyebrow: "Quiz trends",
-                                title: "Weak areas to tighten",
+                                title: "Weak Areas to Tighten",
                                 subtitle: nil
                             )
 
@@ -659,7 +687,7 @@ private struct MoreStatsDashboardView: View {
                 } else {
                     EmptyStateCard(
                         icon: "chart.bar.xaxis",
-                        title: "No performance history yet",
+                        title: "No Performance History Yet",
                         message: "Start a quiz or work through a flashcard deck to build your first study snapshot."
                     )
                 }
@@ -717,14 +745,14 @@ private struct MoreRecentBriefsView: View {
                 if snapshot.recentBriefs.isEmpty {
                     MoreRecentEmptyState(
                         icon: "doc.text.magnifyingglass",
-                        title: "No recent briefs yet",
+                        title: "No Recent Briefs Yet",
                         message: "Open a brief or reference from the General Library and it will show up here."
                     )
                 } else {
                     VStack(alignment: .leading, spacing: 12) {
                         SectionHeader(
                             eyebrow: "Library",
-                            title: "Recently opened briefs",
+                            title: "Recently Opened Briefs",
                             subtitle: nil
                         )
 
@@ -765,7 +793,7 @@ private struct MoreRecentBriefsView: View {
         } else {
             EmptyStateCard(
                 icon: "exclamationmark.triangle.fill",
-                title: "Brief unavailable",
+                title: "Brief Unavailable",
                 message: "This recent brief could not be reopened right now."
             )
         }
@@ -801,14 +829,14 @@ private struct MoreRecentFlashcardSetsView: View {
                 if snapshot.recentDecks.isEmpty {
                     MoreRecentEmptyState(
                         icon: "rectangle.stack.badge.play.fill",
-                        title: "No recent flashcard sets yet",
+                        title: "No Recent Flashcard Sets Yet",
                         message: "Open a deck from the General Library or an event card deck and it will show up here."
                     )
                 } else {
                     VStack(alignment: .leading, spacing: 12) {
                         SectionHeader(
                             eyebrow: "Library",
-                            title: "Recently opened flashcard sets",
+                            title: "Recently Opened Flashcard Sets",
                             subtitle: nil
                         )
 
@@ -881,7 +909,7 @@ private struct MoreRecentFlashcardSetsView: View {
     private var missingDeckState: some View {
         EmptyStateCard(
             icon: "exclamationmark.triangle.fill",
-            title: "Deck unavailable",
+            title: "Deck Unavailable",
             message: "This recent deck could not be reopened right now."
         )
     }
@@ -1055,6 +1083,7 @@ private struct MoreHubItem: Identifiable {
     let iconName: String
     let accent: Color
     let badge: MoreRowBadgeStyle?
+    let accessRequirement: ContentAccessRequirement
     let destination: MoreHubDestination
 
     var id: String { title }
@@ -1065,6 +1094,7 @@ private struct MoreHubItem: Identifiable {
         iconName: String,
         accent: Color,
         badge: MoreRowBadgeStyle? = nil,
+        accessRequirement: ContentAccessRequirement = .free,
         destination: MoreHubDestination
     ) {
         self.title = title
@@ -1072,6 +1102,7 @@ private struct MoreHubItem: Identifiable {
         self.iconName = iconName
         self.accent = accent
         self.badge = badge
+        self.accessRequirement = accessRequirement
         self.destination = destination
     }
 }

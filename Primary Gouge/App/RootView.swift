@@ -98,6 +98,7 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
             .environmentObject(StudyAppModel.preview)
+            .environmentObject(SubscriptionStore())
             .environmentObject(InstructorReviewStore())
             .environmentObject(QuizStore())
             .environmentObject(VideoDownloadStore())
@@ -132,7 +133,7 @@ private struct EventsTabView: View {
         TabHeaderIdentity(
             navigationTitle: "Events",
             eyebrow: "Event center",
-            title: "Start your next event",
+            title: "Start Your Next Event",
             subtitle: nil,
             iconName: AppTab.events.iconName,
             accent: AppTheme.domainColor(.flights)
@@ -186,7 +187,7 @@ private struct EventsTabView: View {
             VStack(alignment: .leading, spacing: 14) {
                 SectionHeader(
                     eyebrow: "Training pipeline",
-                    title: "Choose your phase",
+                    title: "Choose Your Phase",
                     subtitle: nil
                 )
 

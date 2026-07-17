@@ -11,7 +11,7 @@ struct ModerationQueueView: View {
         AppScrollScreen(bottomPadding: 36) {
             HeroCard(
                 eyebrow: "Moderation",
-                title: "Review queue",
+                title: "Review Queue",
                 subtitle: heroSubtitle,
                 accessory: {
                     if accountStore.hasPermission(.instructorGougeModerator) {
@@ -44,7 +44,7 @@ struct ModerationQueueView: View {
             } else if viewModel.pendingReviews.isEmpty && viewModel.openReports.isEmpty && viewModel.openCommunitySubmissions.isEmpty {
                 EmptyStateCard(
                     icon: "checkmark.seal.fill",
-                    title: "Queue is clear",
+                    title: "Queue Is Clear",
                     message: "There are no pending reviews, gouge reports, or community submissions waiting on moderation right now."
                 )
             } else {

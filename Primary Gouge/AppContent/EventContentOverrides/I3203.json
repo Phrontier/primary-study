@@ -9,7 +9,7 @@
   "overview" : "I3203 is a degraded-instrument recovery event. The standard is to accept radar turn commands without a reliable heading system, transition to the BFI when primary displays are unreliable, and keep aircraft control ahead of checklist or radio workload.",
   "primaryDocumentTitles" : [
     "I3203",
-    "I3203 Briefing guide 1542.166D",
+    "I3203 Briefing Guide 1542.166D",
     "I3203 1542.166D"
   ],
   "studyNotes" : {

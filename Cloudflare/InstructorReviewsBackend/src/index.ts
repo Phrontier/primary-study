@@ -1211,11 +1211,8 @@ async function updateUserProfile(
 
 async function deleteAccount(env: Env, userID: string, appleAuthorizationCode?: string): Promise<void> {
   const user = await userByID(env, userID);
-  if (!user || user.deletedAt) {
-    return;
-  }
 
-  if (appleAuthorizationCode && user.appleSubject) {
+  if (appleAuthorizationCode && user?.appleSubject) {
     await revokeAppleAuthorizationIfConfigured(env, appleAuthorizationCode);
   }
 

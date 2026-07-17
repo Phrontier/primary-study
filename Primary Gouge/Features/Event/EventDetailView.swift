@@ -9,6 +9,15 @@ struct EventDetailView: View {
     @EnvironmentObject private var videoDownloadStore: VideoDownloadStore
 
     var body: some View {
+        PremiumContentGate(
+            requirement: ContentAccessPolicy.requirement(for: event),
+            title: "\(event.code) \(event.displayTitle)"
+        ) {
+            eventContent
+        }
+    }
+
+    private var eventContent: some View {
         AppScrollScreen(bottomPadding: 40) {
             hero
 
@@ -89,7 +98,7 @@ struct EventDetailView: View {
             if let document = briefingGuide {
                 SectionHeader(
                     eyebrow: "Start here",
-                    title: "Briefing guide",
+                    title: "Briefing Guide",
                     subtitle: nil
                 )
 
@@ -112,7 +121,7 @@ struct EventDetailView: View {
         VStack(alignment: .leading, spacing: 14) {
             SectionHeader(
                 eyebrow: "Prep tools",
-                title: "Study and rehearse",
+                title: "Study and Rehearse",
                 subtitle: nil
             )
 
@@ -125,7 +134,7 @@ struct EventDetailView: View {
                             accent: AppTheme.domainColor(.discussionItems)
                         )
                     } label: {
-                        ToolCard(title: "Discussion items", subtitle: nil, icon: "text.alignleft", accent: AppTheme.domainColor(.discussionItems))
+                        ToolCard(title: "Discussion Items", subtitle: nil, icon: "text.alignleft", accent: AppTheme.domainColor(.discussionItems))
                     }
                     .buttonStyle(.plain)
                 }
@@ -139,7 +148,7 @@ struct EventDetailView: View {
                         )
                     } label: {
                         ToolCard(
-                            title: "Systems brief",
+                            title: "Systems Brief",
                             subtitle: nil,
                             icon: "gearshape.2.fill",
                             accent: AppTheme.domainColor(.resources)
@@ -175,7 +184,7 @@ struct EventDetailView: View {
             if event.studyNotes == nil && event.systemsBrief == nil && event.flashcardDecks.isEmpty && event.questionBanks.isEmpty {
                 EmptyStateCard(
                     icon: "tray",
-                    title: "No event tools yet",
+                    title: "No Event Tools Yet",
                     message: "This event already carries source documents and can be expanded later by editing the generated study manifest."
                 )
             }
@@ -186,7 +195,7 @@ struct EventDetailView: View {
         VStack(alignment: .leading, spacing: 14) {
             SectionHeader(
                 eyebrow: "Shared references",
-                title: "Always-relevant material",
+                title: "Always-Relevant Material",
                 subtitle: nil
             )
 
@@ -210,7 +219,7 @@ struct EventDetailView: View {
         VStack(alignment: .leading, spacing: 14) {
             SectionHeader(
                 eyebrow: "Videos",
-                title: "Related videos",
+                title: "Related Videos",
                 subtitle: nil
             )
 
@@ -250,7 +259,7 @@ struct EventDetailView: View {
         VStack(alignment: .leading, spacing: 14) {
             SectionHeader(
                 eyebrow: "Documents",
-                title: "Additional source material",
+                title: "Additional Source Material",
                 subtitle: nil
             )
 
@@ -278,7 +287,7 @@ private struct EventOverviewCard: View {
         VStack(alignment: .leading, spacing: 14) {
             SectionHeader(
                 eyebrow: "Overview",
-                title: "What this event is about",
+                title: "What This Event Is About",
                 subtitle: nil
             )
 

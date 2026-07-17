@@ -1122,7 +1122,7 @@ struct HomeHeroCard: View {
     let snapshot: DashboardSnapshot
 
     private var statusTitle: String {
-        snapshot.dueCards > 0 ? "Review window open" : "On schedule"
+        snapshot.dueCards > 0 ? "Review Window Open" : "On Schedule"
     }
 
     private var statusIcon: String {
@@ -1223,6 +1223,7 @@ struct EventCard: View {
     let event: Event
     let progress: EventProgressSnapshot
     let dueCards: Int
+    var isPremiumLocked = false
 
     var body: some View {
         SectionContainer {
@@ -1240,7 +1241,9 @@ struct EventCard: View {
 
                     Spacer(minLength: 10)
 
-                    if progress.completedAt != nil {
+                    if isPremiumLocked {
+                        StatusBadge(title: "Premium", iconName: "lock.fill", color: AppTheme.warning)
+                    } else if progress.completedAt != nil {
                         StatusBadge(title: "Ready", iconName: "checkmark.circle.fill", color: AppTheme.success)
                     }
                 }
@@ -1256,6 +1259,7 @@ struct EventCard: View {
                 }
             }
         }
+        .accessibilityLabel(isPremiumLocked ? "\(event.code), Premium locked" : event.code)
     }
 }
 
@@ -1264,6 +1268,7 @@ struct ToolCard: View {
     let subtitle: String?
     let icon: String
     let accent: Color
+    var isPremiumLocked = false
 
     var body: some View {
         InsetListRow(title: title, subtitle: subtitle) {
@@ -1277,11 +1282,20 @@ struct ToolCard: View {
                     .foregroundStyle(AppTheme.iconTint(accent))
             }
         } trailing: {
-            Image(systemName: "chevron.right")
-                .font(.footnote.weight(.bold))
-                .foregroundStyle(AppTheme.accessoryTint(accent))
-                .padding(.top, 3)
+            HStack(spacing: 8) {
+                if isPremiumLocked {
+                    Image(systemName: "lock.fill")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppTheme.warning)
+                }
+
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.bold))
+                    .foregroundStyle(AppTheme.accessoryTint(accent))
+            }
+            .padding(.top, 3)
         }
+        .accessibilityLabel(isPremiumLocked ? "\(title), Premium locked" : title)
     }
 }
 
@@ -1355,7 +1369,7 @@ struct QuestionOfDayCard: View {
 
                     Spacer()
 
-                    StatusBadge(title: "Coming soon", iconName: "sparkles", color: AppTheme.accent)
+                    StatusBadge(title: "Coming Soon", iconName: "sparkles", color: AppTheme.accent)
                 }
 
                 Text(snapshot.questionPrompt)
@@ -1412,7 +1426,7 @@ struct SharedResourceRibbon: View {
         VStack(alignment: .leading, spacing: 14) {
             SectionHeader(
                 eyebrow: "Always relevant",
-                title: "Shared foundations",
+                title: "Shared Foundations",
                 subtitle: "EPs, pattern work, systems, and reusable references stay linked across phases without duplication."
             )
 

@@ -9,7 +9,9 @@ import SwiftUI
 
 @main
 struct Primary_GougeApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var accountStore = AccountStore()
+    @StateObject private var subscriptionStore = SubscriptionStore()
     @StateObject private var appModel = StudyAppModel()
     @StateObject private var quizStore = QuizStore()
     @StateObject private var reviewStore = InstructorReviewStore()
@@ -28,6 +30,7 @@ struct Primary_GougeApp: App {
                 RootView()
             }
                 .environmentObject(accountStore)
+                .environmentObject(subscriptionStore)
                 .environmentObject(appModel)
                 .environmentObject(quizStore)
                 .environmentObject(reviewStore)
@@ -39,9 +42,17 @@ struct Primary_GougeApp: App {
                     await bootstrapIfNeeded()
                 }
                 .onChange(of: accountStore.phase) { _, phase in
-                    guard phase == .signedIn else { return }
+                    guard phase == .signedIn else {
+                        subscriptionStore.clearAccount()
+                        return
+                    }
                     Task {
                         await configureProtectedStoresIfNeeded()
+                    }
+                }
+                .onChange(of: accountStore.session?.accessToken) { _, _ in
+                    Task {
+                        await configureSubscriptionIfPossible()
                     }
                 }
                 .onChange(of: accountStore.profile?.permissions ?? []) { _, _ in
@@ -51,6 +62,12 @@ struct Primary_GougeApp: App {
                 }
                 .onChange(of: accountStore.profile?.selectedSyllabus ?? .notSure) { _, syllabus in
                     appModel.selectSyllabus(syllabus)
+                }
+                .onChange(of: scenePhase) { _, phase in
+                    guard phase == .active, accountStore.isSignedIn else { return }
+                    Task {
+                        await configureSubscriptionIfPossible()
+                    }
                 }
         }
     }
@@ -66,6 +83,7 @@ struct Primary_GougeApp: App {
         guard accountStore.isSignedIn else { return }
 
         appModel.selectSyllabus(accountStore.profile?.selectedSyllabus ?? .notSure)
+        await configureSubscriptionIfPossible()
 
         reviewStore.setModeratorPermission(
             accountStore.hasPermission(.instructorGougeModerator)
@@ -86,5 +104,19 @@ struct Primary_GougeApp: App {
         quizStore.configure()
         appModel.configure(quizStore: quizStore)
         await notificationService.syncDailyStudyReminder(with: appModel.homePreferences)
+    }
+
+    @MainActor
+    private func configureSubscriptionIfPossible() async {
+        guard
+            accountStore.isSignedIn,
+            accountStore.profileComplete,
+            let session = accountStore.session
+        else { return }
+
+        await subscriptionStore.configure(
+            userID: session.profile.id,
+            accessToken: session.accessToken
+        )
     }
 }

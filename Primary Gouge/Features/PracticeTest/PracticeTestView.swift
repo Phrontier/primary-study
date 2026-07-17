@@ -79,7 +79,7 @@ private struct ObjectivePracticeTestView: View {
             }
         }
         .detailNavigationChrome(title: bank.title)
-        .alert("Practice test complete", isPresented: $showingCompletionSheet) {
+        .alert("Practice Test Complete", isPresented: $showingCompletionSheet) {
             Button("Done") {
                 dismiss()
             }
@@ -108,7 +108,7 @@ private struct ObjectivePracticeTestView: View {
             VStack(alignment: .leading, spacing: 12) {
                 SectionHeader(
                     eyebrow: "Mode",
-                    title: "Choose your run",
+                    title: "Choose Your Run",
                     subtitle: nil
                 )
 
@@ -132,7 +132,7 @@ private struct ObjectivePracticeTestView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "History",
-                        title: "Recent attempts",
+                        title: "Recent Attempts",
                         subtitle: nil
                     )
 
@@ -158,7 +158,7 @@ private struct ObjectivePracticeTestView: View {
     private func sessionView(for question: Question) -> some View {
         AppScrollScreen(bottomPadding: 40) {
             HeroCard(
-                eyebrow: "\(event.code) • \(activeMode?.title ?? "Practice test")",
+                eyebrow: "\(event.code) • \(activeMode?.title ?? "Practice Test")",
                 title: bank.title,
                 subtitle: nil
             ) {
@@ -284,7 +284,7 @@ private struct ObjectivePracticeTestView: View {
                 )
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(isStarred ? "Unstar question" : "Star question")
+        .accessibilityLabel(isStarred ? "Unstar Question" : "Star Question")
     }
 
     private var resultSummary: String {
@@ -487,7 +487,7 @@ private struct LegacyPracticeTestView: View {
             }
         }
         .detailNavigationChrome(title: bank.title)
-        .alert("Practice test complete", isPresented: $showingCompletionSheet) {
+        .alert("Practice Test Complete", isPresented: $showingCompletionSheet) {
             Button("Done") {
                 dismiss()
             }
@@ -525,7 +525,7 @@ private struct LegacyPracticeTestView: View {
 
         return AppScrollScreen(bottomPadding: 48) {
             HeroCard(
-                eyebrow: "\(event.code) • Practice test",
+                eyebrow: "\(event.code) • Practice Test",
                 title: bank.title,
                 subtitle: bank.summary
             ) {
@@ -535,7 +535,7 @@ private struct LegacyPracticeTestView: View {
             VStack(alignment: .leading, spacing: 12) {
                 SectionHeader(
                     eyebrow: "Mode",
-                    title: "Choose your run",
+                        title: "Choose Your Run",
                     subtitle: nil
                 )
 
@@ -560,7 +560,7 @@ private struct LegacyPracticeTestView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "History",
-                        title: "Recent attempts",
+                        title: "Recent Attempts",
                         subtitle: "Quick context from your most recent runs."
                     )
 
@@ -627,7 +627,7 @@ private struct LegacyPracticeTestView: View {
                         }
                     } label: {
                         StudyActionButton(
-                            title: revealed ? "Hide answer" : "Reveal answer",
+                            title: revealed ? "Hide Answer" : "Reveal Answer",
                             icon: revealed ? "eye.slash.fill" : "eye.fill",
                             tint: AppTheme.accent,
                             isProminent: !revealed
@@ -641,7 +641,7 @@ private struct LegacyPracticeTestView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Score it",
-                        title: "How did you do?",
+                        title: "How Did You Do?",
                         subtitle: "Mark the result and move to the next question."
                     )
 
@@ -649,14 +649,14 @@ private struct LegacyPracticeTestView: View {
                         Button {
                             submit(false)
                         } label: {
-                            StudyActionButton(title: "Mark missed", icon: "xmark", tint: AppTheme.danger, isProminent: false)
+                            StudyActionButton(title: "Mark Missed", icon: "xmark", tint: AppTheme.danger, isProminent: false)
                         }
                         .buttonStyle(.plain)
 
                         Button {
                             submit(true)
                         } label: {
-                            StudyActionButton(title: "Mark correct", icon: "checkmark", tint: AppTheme.success)
+                            StudyActionButton(title: "Mark Correct", icon: "checkmark", tint: AppTheme.success)
                         }
                         .buttonStyle(.plain)
                     }
@@ -823,14 +823,14 @@ private struct PracticeQuestionLibrarySection: View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(
                 eyebrow: "Library",
-                title: "All questions",
+                    title: "All Questions",
                 subtitle: nil
             )
 
             if items.isEmpty {
                 EmptyStateCard(
                     icon: "tray",
-                    title: "No questions yet",
+                    title: "No Questions Yet",
                     message: "This test bank does not have any questions to review right now."
                 )
             } else {

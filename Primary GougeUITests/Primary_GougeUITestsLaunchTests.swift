@@ -1,17 +1,7 @@
-//
-//  Primary_GougeUITestsLaunchTests.swift
-//  Primary GougeUITests
-//
-//  Created by Conway Bolt on 3/27/26.
-//
-
 import XCTest
 
 final class Primary_GougeUITestsLaunchTests: XCTestCase {
-
-    override class var runsForEachTargetApplicationUIConfiguration: Bool {
-        true
-    }
+    override class var runsForEachTargetApplicationUIConfiguration: Bool { true }
 
     override func setUpWithError() throws {
         continueAfterFailure = false
@@ -20,15 +10,12 @@ final class Primary_GougeUITestsLaunchTests: XCTestCase {
     @MainActor
     func testLaunch() throws {
         let app = XCUIApplication()
+        app.launchArguments = ["--ui-testing", "--ui-testing-signed-in"]
         app.launch()
 
-        // Insert steps here to perform after app launch but before taking a screenshot,
-        // such as logging into a test account or navigating somewhere in the app
-        // XCUIAutomation Documentation
-        // https://developer.apple.com/documentation/xcuiautomation
-
+        XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
         let attachment = XCTAttachment(screenshot: app.screenshot())
-        attachment.name = "Launch Screen"
+        attachment.name = "Signed-in App Review Launch"
         attachment.lifetime = .keepAlways
         add(attachment)
     }

@@ -22,7 +22,7 @@ enum AccountAuthMethod: String, Codable, CaseIterable, Hashable, Identifiable {
     var title: String {
         switch self {
         case .apple:
-            return "Sign in with Apple"
+            return "Sign In with Apple"
         case .emailPassword:
             return "Verified Email"
         }

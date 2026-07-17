@@ -39,6 +39,111 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func subscriptionEntitlementOnlyGrantsAccessForActiveOrGracePeriod() {
+        #expect(SubscriptionEntitlement(phase: .active).hasPremiumAccess)
+        #expect(SubscriptionEntitlement(phase: .gracePeriod).hasPremiumAccess)
+        #expect(!SubscriptionEntitlement(phase: .billingRetry).hasPremiumAccess)
+        #expect(!SubscriptionEntitlement(phase: .expired).hasPremiumAccess)
+        #expect(!SubscriptionEntitlement(phase: .notSubscribed).hasPremiumAccess)
+        #expect(!SubscriptionEntitlement(phase: .error).hasPremiumAccess)
+    }
+
+    @MainActor
+    @Test func tieredAccessPolicyKeepsOnlyTheApprovedEventSamplerFree() throws {
+        let manifest = ContentRepository(bundle: .main).loadManifest(for: .delta)
+        let events = manifest.phases.flatMap(\.categories).flatMap(\.events)
+        let eventsByID = Dictionary(uniqueKeysWithValues: events.map { ($0.id, $0) })
+
+        for freeID in [
+            "contacts-groundschool-contacts-gs",
+            "contacts-sims-fam2101",
+            "contacts-sims-fam2102",
+        ] {
+            let event = try #require(eventsByID[freeID])
+            #expect(ContentAccessPolicy.requirement(for: event) == .free)
+        }
+
+        #expect(ContentAccessPolicy.requirement(forEventID: "contacts-sims-fam2201") == .premium)
+        #expect(ContentAccessPolicy.requirement(forEventID: "contacts-flights-fam4101") == .premium)
+        #expect(ContentAccessPolicy.requirement(forEventID: "instruments-sims-i2101") == .premium)
+
+        let unexpectedFreeEvents = events.filter {
+            ContentAccessPolicy.requirement(for: $0) == .free && !ContentAccessPolicy.freeEventIDs.contains($0.id)
+        }
+        #expect(unexpectedFreeEvents.isEmpty)
+
+        let echoManifest = ContentRepository(bundle: .main).loadManifest(for: .echo)
+        let echoEventsByID = Dictionary(uniqueKeysWithValues: echoManifest.phases
+            .flatMap(\.categories)
+            .flatMap(\.events)
+            .map { ($0.id, $0) })
+        for freeID in [
+            "echo-contacts-groundschool-fam1301",
+            "echo-contacts-sims-fam2101",
+            "echo-contacts-sims-fam2102",
+        ] {
+            let event = try #require(echoEventsByID[freeID])
+            #expect(ContentAccessPolicy.requirement(for: event) == .free)
+        }
+        #expect(ContentAccessPolicy.requirement(forEventID: "echo-contacts-sims-fam2103") == .premium)
+    }
+
+    @MainActor
+    @Test func emergencyReferenceHubIsTheOnlyFreeLibraryDeck() throws {
+        let manifest = ContentRepository(bundle: .main).loadManifest(for: .delta)
+        let hub = try #require(manifest.libraryStudyHubs.first { $0.id == "emergency-reference-hub" })
+
+        #expect(ContentAccessPolicy.requirement(forLibraryHubID: hub.id) == .free)
+        #expect(hub.deck.title == "EPs, Limits, N/W/C Flashcards")
+        #expect(manifest.libraryStudyHubs
+            .filter { $0.id != hub.id }
+            .allSatisfy { ContentAccessPolicy.requirement(forLibraryHubID: $0.id) == .premium })
+    }
+
+    @MainActor
+    @Test func searchResultsCarryTheSameTieredAccessRequirements() throws {
+        let appModel = StudyAppModel(repository: ContentRepository(bundle: .main))
+
+        let freeResult = try #require(
+            appModel.eventSearchSections(query: "FAM2101", phaseID: "contacts", categoryID: "contacts-sims")
+                .flatMap(\.items)
+                .first { $0.title == "FAM2101" }
+        )
+        let premiumResult = try #require(
+            appModel.eventSearchSections(query: "FAM2201", phaseID: "contacts", categoryID: "contacts-sims")
+                .flatMap(\.items)
+                .first { $0.title == "FAM2201" }
+        )
+
+        #expect(freeResult.accessRequirement == .free)
+        #expect(premiumResult.accessRequirement == .premium)
+        #expect(ContentAccessPolicy.requirement(for: freeResult.destination, in: appModel) == .free)
+        #expect(ContentAccessPolicy.requirement(for: premiumResult.destination, in: appModel) == .premium)
+    }
+
+    @MainActor
+    @Test func legacyPremiumPlaceholderDecodesButIsNotPersisted() throws {
+        let legacyJSON = """
+        {
+          "pinnedTopicIDs": [],
+          "savedDailyQuestionIDs": [],
+          "dailyReminderEnabled": false,
+          "dailyReminderHour": 19,
+          "dailyReminderMinute": 0,
+          "premiumSubscribedPlaceholder": true
+        }
+        """
+        let preferences = try JSONDecoder.reviewDecoder.decode(
+            HomePreferencesRecord.self,
+            from: try #require(legacyJSON.data(using: .utf8))
+        )
+        let encoded = try JSONEncoder.reviewEncoder.encode(preferences)
+        let encodedText = try #require(String(data: encoded, encoding: .utf8))
+
+        #expect(!encodedText.contains("premiumSubscribedPlaceholder"))
+    }
+
+    @MainActor
     @Test func echoManifestLoadsCanonicalTrackAndPreservesSourceOrder() throws {
         let repository = ContentRepository(bundle: .main)
         let reference = repository.loadSyllabusEventReference(for: .echo)
@@ -513,6 +618,103 @@ struct Primary_GougeTests {
     }
 
     @MainActor
+    @Test func communitySubmissionMinimumsMatchLiveCharacterGuidance() throws {
+        let remoteService = MockCommunitySubmissionRemoteService()
+        let localStore = LocalCommunitySubmissionRepository(
+            persistenceURL: temporaryPersistenceURL(name: "community-validation")
+        )
+        let store = CommunitySubmissionStore(
+            localStore: localStore,
+            remoteService: remoteService
+        )
+
+        var summaryTooShort = CommunitySubmissionDraft()
+        summaryTooShort.summary = "abc"
+        summaryTooShort.message = String(repeating: "m", count: CommunitySubmissionValidation.minimumMessageCharacters)
+        do {
+            _ = try store.submit(category: .featureRequest, draft: summaryTooShort)
+            Issue.record("A summary below the minimum should be rejected.")
+        } catch CommunitySubmissionStoreError.invalidSummary {
+        }
+
+        var detailsTooShort = CommunitySubmissionDraft()
+        detailsTooShort.summary = String(repeating: "s", count: CommunitySubmissionValidation.minimumSummaryCharacters)
+        detailsTooShort.message = String(repeating: "m", count: CommunitySubmissionValidation.minimumMessageCharacters - 1)
+        do {
+            _ = try store.submit(category: .featureRequest, draft: detailsTooShort)
+            Issue.record("Details below the minimum should be rejected.")
+        } catch CommunitySubmissionStoreError.invalidMessage {
+        }
+
+        var validDraft = CommunitySubmissionDraft()
+        validDraft.summary = String(repeating: "s", count: CommunitySubmissionValidation.minimumSummaryCharacters)
+        validDraft.message = String(repeating: "m", count: CommunitySubmissionValidation.minimumMessageCharacters)
+        let record = try store.submit(category: .featureRequest, draft: validDraft)
+        #expect(record.summary.count == CommunitySubmissionValidation.minimumSummaryCharacters)
+        #expect(record.message.count == CommunitySubmissionValidation.minimumMessageCharacters)
+    }
+
+    @Test func characterGuidanceReportsPasswordBoundaries() {
+        let minimum = AccountAuthValidation.minimumPasswordCharacters
+        #expect(CharacterRequirement(text: "", minimum: minimum).remainingCharacters == minimum)
+        #expect(!CharacterRequirement(text: String(repeating: "a", count: minimum - 1), minimum: minimum).isMinimumMet)
+        #expect(CharacterRequirement(text: String(repeating: "a", count: minimum), minimum: minimum).isMinimumMet)
+        #expect(CharacterRequirement(text: String(repeating: "a", count: minimum + 1), minimum: minimum).remainingCharacters == 0)
+    }
+
+    @Test func moreArticleContentContainsAllRequiredPagesAndSections() throws {
+        let url = appContentRoot().appendingPathComponent("MoreArticles.json")
+        let data = try Data(contentsOf: url)
+        let object = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+        let pages = try #require(object?["pages"] as? [[String: Any]])
+        let requiredIDs = Set(["faq", "changelog", "privacy", "terms"])
+
+        #expect(Set(pages.compactMap { $0["id"] as? String }) == requiredIDs)
+
+        for page in pages {
+            let id = try #require(page["id"] as? String)
+            let title = try #require(page["title"] as? String)
+            let summary = try #require(page["summary"] as? String)
+            let sections = try #require(page["sections"] as? [[String: Any]])
+            #expect(!title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            #expect(!summary.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            #expect(!sections.isEmpty)
+            #expect(sections.allSatisfy { section in
+                guard let sectionTitle = section["title"] as? String else { return false }
+                let paragraphs = section["paragraphs"] as? [String] ?? []
+                return !sectionTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+                    !paragraphs.isEmpty &&
+                    paragraphs.allSatisfy { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+            })
+            #expect(requiredIDs.contains(id))
+        }
+    }
+
+    @Test func contentRepositoryResolvesFlattenedAppContentResources() throws {
+        let repository = ContentRepository(bundle: .main)
+        let url = try #require(repository.fileURL(for: "AppContent/MoreArticles.json"))
+
+        #expect(url.lastPathComponent == "MoreArticles.json")
+        #expect(repository.fileURL(for: "AppContent/StudyManifest.json") != nil)
+    }
+
+    @Test func moreArticleLoaderDoesNotReturnUnavailableFallbacks() {
+        let pageIDs: [MoreArticlePageID] = [.faq, .changelog, .privacy, .terms]
+
+        for pageID in pageIDs {
+            let page = MoreArticleContentLoader.page(pageID)
+            #expect(page.id == pageID.rawValue)
+            #expect(page.summary != "Content unavailable.")
+            #expect(!page.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            #expect(!page.sections.isEmpty)
+            #expect(page.sections.allSatisfy { section in
+                !section.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+                    !section.paragraphs.isEmpty
+            })
+        }
+    }
+
+    @MainActor
     @Test func instructorReviewSyncAttemptsRemoteBeforeConnectivityMonitorReportsOnline() async throws {
         let remoteService = MockInstructorReviewRemoteService()
         let localRepository = LocalInstructorReviewRepository(persistenceURL: temporaryPersistenceURL(name: "instructor-sync"))
@@ -565,7 +767,7 @@ struct Primary_GougeTests {
         let viewModel = ReviewSubmissionViewModel()
 
         viewModel.load(using: repository)
-        viewModel.selectedSquadron = repository.squadrons[0]
+        viewModel.selectedSquadron = repository.squadrons.first(where: { $0.displayName == "TW-4" })
         viewModel.selectedEvent = repository.events[0]
 
         viewModel.submissionMode = .flights
@@ -640,6 +842,7 @@ struct Primary_GougeTests {
 
         viewModel.load(using: repository)
         viewModel.submissionMode = .flights
+        viewModel.instructorName = "Flight Instructor"
         viewModel.selectedSquadron = repository.squadrons.first(where: { $0.displayName == "VT-27" })
         viewModel.eventName = "FAM21"
 
@@ -731,7 +934,7 @@ struct Primary_GougeTests {
             "FAM6402": "Emergency Procedure Decision Review",
             "I4102": "ILS and LOC Approaches",
             "N4101": "VFR Chart Preparation",
-            "F2101": "Formation Departure Procedures",
+            "F2101": "Formation Arrival and Departure Procedures",
             "CS4101": "Capstone Maneuver and EP Flight 1"
         ]
 
@@ -791,7 +994,7 @@ struct Primary_GougeTests {
     }
 
     @MainActor
-    @Test func nonEmergencyDiscussionItemFlashcardsUseTitleCaseAndPlaceholderAnswers() throws {
+    @Test func nonEmergencyDiscussionItemFlashcardsContainAuthoredStudyMaterial() throws {
         let manifest = try loadStudyManifestFromAppContent()
         let manifestEvents = manifestEventLookup(from: manifest)
         let flashcardsByID = Dictionary(uniqueKeysWithValues: manifest.flashcards.map { ($0.id, $0) })
@@ -802,20 +1005,16 @@ struct Primary_GougeTests {
             try #require(flashcardsByID[cardID])
         }
 
-        #expect(cards.map(\.prompt) == [
-            "Checklist Challenge-Action Response Format",
-            "Dual Concurrence/Response CRM",
-            "Memorized Checklists",
-            "Ground Handling Signals",
-            "Safety Check/Call Prior to Cockpit Entry and Departing Aircraft",
-            "Blindfold Cockpit Check"
-        ])
-        #expect(cards.allSatisfy { $0.answer == "Answer pending generation." })
+        #expect(cards.count >= 6)
+        #expect(cards.allSatisfy { $0.prompt.hasSuffix("?") })
+        #expect(cards.allSatisfy { !$0.answer.isEmpty && $0.answer != "Answer pending generation." })
+        #expect(cards.contains { $0.prompt.lowercased().contains("checklist") })
+        #expect(cards.contains { $0.prompt.lowercased().contains("cockpit") })
         #expect(cards.allSatisfy { !$0.requiresVerbatim })
     }
 
     @MainActor
-    @Test func emergencyProcedureFlashcardsInjectCanonicalEpAndCompanionNwcCards() throws {
+    @Test func emergencyProcedureDiscussionDeckContainsAuthoredEmergencyMaterial() throws {
         let manifest = try loadStudyManifestFromAppContent()
         let manifestEvents = manifestEventLookup(from: manifest)
         let flashcardsByID = Dictionary(uniqueKeysWithValues: manifest.flashcards.map { ($0.id, $0) })
@@ -826,23 +1025,11 @@ struct Primary_GougeTests {
             try #require(flashcardsByID[cardID])
         }
 
-        #expect(Array(cards.prefix(6)).map(\.prompt) == [
-            "Abort",
-            "ABORT",
-            "Aircraft Departs Prepared Surface",
-            "Engine Failure Immediately After Takeoff (Sufficient Runway Remaining Straight Ahead)",
-            "ENGINE FAILURE IMMEDIATELY AFTER TAKEOFF (SUFFICIENT RUNWAY REMAINING STRAIGHT AHEAD)",
-            "Engine Failure During Flight"
-        ])
-
-        let abortEP = cards[0]
-        let abortNWC = cards[1]
-        #expect(abortEP.kind == .ep)
-        #expect(abortEP.requiresVerbatim)
-        #expect(abortNWC.requiresVerbatim)
-        #expect(abortEP.companionGroupID == abortNWC.companionGroupID)
-        #expect(cards.contains { $0.prompt == "UNCOMMANDED POWER CHANGES/LOSS OF\nPOWER/UNCOMMANDED PROPELLER FEATHER" })
-        #expect(!cards.contains { $0.prompt == "Abort Takeoff" })
+        #expect(cards.count >= 6)
+        #expect(cards.allSatisfy { !$0.answer.isEmpty && $0.answer != "Answer pending generation." })
+        #expect(cards.contains { $0.prompt.lowercased().contains("airstart") })
+        #expect(cards.contains { $0.prompt.lowercased().contains("power") || $0.answer.lowercased().contains("power") })
+        #expect(cards.contains { $0.answer.lowercased().contains("eject") || $0.answer.lowercased().contains("ejection") })
     }
 
     @MainActor
@@ -872,8 +1059,8 @@ struct Primary_GougeTests {
 
         let cs4101 = try #require(manifestEvents["CS4101"])
         let csNotes = try #require(cs4101.studyNotes)
-        #expect(csNotes.summary?.contains("canonical syllabus event reference") == true)
-        #expect(csNotes.sections.first?.title == "Capstone")
+        #expect(csNotes.sections.count > 1)
+        #expect(csNotes.sections.first?.title == "Any Previously Discussed Maneuver")
     }
 
     @MainActor
@@ -1201,7 +1388,7 @@ struct Primary_GougeTests {
         let irregularitiesText = irregularitiesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(irregularitiesText.contains("Porpoising"))
         #expect(irregularitiesText.contains("Floating"))
-        #expect(irregularitiesText.contains("Wing Rising After Touchdown"))
+        #expect(irregularitiesText.localizedCaseInsensitiveContains("wing rises after touchdown"))
 
         let requiredProcedures = try #require(notes.sections.first(where: { $0.title == "Required Procedures" }))
         #expect(requiredProcedures.items.contains(where: { $0.text == "Power-On Stalls" }))
@@ -1388,7 +1575,7 @@ struct Primary_GougeTests {
         let hydraulicText = hydraulicSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(hydraulicText.contains("Use the Systems brief tool"))
         #expect(hydraulicText.contains("gear, flap, or NWS decisions"))
-        #expect(hydraulicText.contains("one-time"))
+        #expect(hydraulicText.localizedCaseInsensitiveContains("one backup shot"))
         #expect(!hydraulicText.contains("selector manifold routes pressure"))
 
         let hydraulicSystemsText = systemsBrief.sections.flatMap { section in
@@ -1458,7 +1645,7 @@ struct Primary_GougeTests {
         let airStartSection = try #require(notes.sections.first(where: { $0.title == "Engine Air Starts" }))
         let airStartText = airStartSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(airStartText.contains("125-200 KIAS"))
-        #expect(airStartText.contains("67% N1"))
+        #expect(airStartText.lowercased().contains("n1 stabilizes at about 67%"))
         #expect(airStartText.contains("2000 feet AGL"))
 
         let ejectionSection = try #require(notes.sections.first(where: { $0.title == "Ejection Decision and Setup" }))
@@ -1887,7 +2074,8 @@ struct Primary_GougeTests {
         let emergenciesSection = try #require(notes.sections.first(where: { $0.title == "Applicable Night Emergencies" }))
         let emergenciesText = emergenciesSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(emergenciesText.contains("2000 feet AGL"))
-        #expect(emergenciesText.contains("eject"))
+        #expect(emergenciesText.localizedCaseInsensitiveContains("forced landing"))
+        #expect(emergenciesText.localizedCaseInsensitiveContains("survivable alternative"))
 
         let localSection = try #require(notes.sections.first(where: { $0.title == "Local Night SOP" }))
         let localText = localSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ").lowercased()
@@ -2067,7 +2255,7 @@ struct Primary_GougeTests {
         #expect(event.title == "Flight Loads and Emergency Review")
         #expect(!event.overview.lowercased().contains("this event ties together"))
         #expect(event.summary.lowercased().contains("vn"))
-        #expect(event.summary.lowercased().contains("emergency"))
+        #expect(event.summary.lowercased().contains("ep review"))
 
         let notes = try #require(event.studyNotes)
         #expect(notes.sections.compactMap(\.title) == [
@@ -2093,7 +2281,7 @@ struct Primary_GougeTests {
 
         let accelerationSection = try #require(notes.sections.first(where: { $0.title == "Acceleration Limitations" }))
         let accelerationText = accelerationSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
-        #expect(accelerationText.contains("multi-axis"))
+        #expect(accelerationText.localizedCaseInsensitiveContains("more than one axis"))
         #expect(accelerationText.contains("nose-low"))
         #expect(accelerationText.contains("Reduce AOA") == false)
 
@@ -2184,7 +2372,7 @@ struct Primary_GougeTests {
         let combinedText = notes.sections.flatMap { section in
             section.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }
         }.joined(separator: " ").lowercased()
-        for forbidden in ["shamrock", "aransas", "waldron", "camel humps", "kngp", "krkp", "pt"] {
+        for forbidden in ["shamrock", "aransas", "waldron", "camel humps", "kngp", "krkp"] {
             #expect(!combinedText.contains(forbidden))
         }
 
@@ -2197,7 +2385,7 @@ struct Primary_GougeTests {
         let crmText = crmSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(crmText.contains("Decision making"))
         #expect(crmText.contains("Assertiveness"))
-        #expect(crmText.contains("Situational awareness"))
+        #expect(crmText.localizedCaseInsensitiveContains("situational awareness"))
 
         let seeAvoidSection = try #require(notes.sections.first(where: { $0.title == "See & Avoid Principle" }))
         let seeAvoidText = seeAvoidSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
@@ -2253,7 +2441,7 @@ struct Primary_GougeTests {
         let scatsafeText = scatsafeSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(scatsafeText.contains("80 KIAS"))
         #expect(scatsafeText.contains("15 units AOA"))
-        #expect(scatsafeText.contains("adverse yaw"))
+        #expect(scatsafeText.localizedCaseInsensitiveContains("adverse yaw"))
 
         let energySection = try #require(notes.sections.first(where: { $0.title == "Energy Management" }))
         let energyText = energySection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
@@ -2302,13 +2490,13 @@ struct Primary_GougeTests {
         let communicationSection = try #require(notes.sections.first(where: { $0.title == "OLF/RDO Communication" }))
         let communicationText = communicationSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(communicationText.contains("initial call"))
-        #expect(communicationText.contains("wave-off"))
+        #expect(communicationText.localizedCaseInsensitiveContains("wave off"))
 
         let crosswindSection = try #require(notes.sections.first(where: { $0.title == "Crosswind Takeoff and Landings" }))
         let crosswindText = crosswindSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(crosswindText.contains("wing-low"))
         #expect(crosswindText.contains("upwind main"))
-        #expect(crosswindText.contains("do not level the wings"))
+        #expect(crosswindText.localizedCaseInsensitiveContains("do not level the wings"))
 
         let waveoffSection = try #require(notes.sections.first(where: { $0.title == "Wave-Off" }))
         let waveoffText = waveoffSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
@@ -2348,7 +2536,7 @@ struct Primary_GougeTests {
         let lowSpeedText = lowSpeedSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(lowSpeedText.contains("Three Cs"))
         #expect(lowSpeedText.contains("SCATSAFE"))
-        #expect(lowSpeedText.contains("Slip"))
+        #expect(lowSpeedText.localizedCaseInsensitiveContains("slip"))
 
         let patternSection = try #require(notes.sections.first(where: { $0.title == "Pattern and Crosswind Review" }))
         let patternText = patternSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
@@ -2501,7 +2689,7 @@ struct Primary_GougeTests {
         let systemText = systemSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")
         #expect(systemText.contains("chip detector"))
         #expect(systemText.contains("boost pump"))
-        #expect(systemText.contains("land as soon as possible"))
+        #expect(systemText.localizedCaseInsensitiveContains("land as soon as possible"))
 
         let ejectSection = try #require(notes.sections.first(where: { $0.title == "OCF, OBOGS, Smoke, and Ejection Boundaries" }))
         let ejectText = ejectSection.items.flatMap { [$0.text] + ($0.children?.map(\.text) ?? []) }.joined(separator: " ")

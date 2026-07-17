@@ -50,6 +50,15 @@ struct AccountSignInView: View {
             .animation(.snappy(duration: 0.28), value: route)
             .toolbar(.hidden, for: .navigationBar)
         }
+        .accessibilityIdentifier("account-sign-in-screen")
+        .task {
+            #if DEBUG
+            if AppLaunchEnvironment.usesPasswordResetConfirmUITest {
+                pendingResetEmail = "test@example.com"
+                route = .passwordResetConfirm
+            }
+            #endif
+        }
     }
 
     private var welcomeScreen: some View {
@@ -78,11 +87,11 @@ struct AccountSignInView: View {
                     move(to: .emailCreate)
                     focusedField = .email
                 } label: {
-                    AuthButtonLabel(title: "Sign up with Email", systemImage: "envelope.fill", style: .secondary)
+                    AuthButtonLabel(title: "Sign Up with Email", systemImage: "envelope.fill", style: .secondary)
                 }
                 .buttonStyle(.plain)
 
-                AuthInlineSwitch(prefix: "Already have an account?", actionTitle: "Sign in") {
+                AuthInlineSwitch(prefix: "Already have an account?", actionTitle: "Sign In") {
                     move(to: .emailSignIn)
                     focusedField = .email
                 }
@@ -118,7 +127,7 @@ struct AccountSignInView: View {
 
     private var emailSignInScreen: some View {
         AuthFormScreen(
-            title: "Sign in",
+            title: "Sign In",
             subtitle: "Use the email account you already created.",
             backAction: { move(to: .welcome) }
         ) {
@@ -143,7 +152,7 @@ struct AccountSignInView: View {
                     )
                     .focused($focusedField, equals: .password)
 
-                    Button("Forgot password?") {
+                    Button("Forgot Password?") {
                         pendingResetEmail = email.nilIfEmpty
                         move(to: .passwordResetRequest)
                     }
@@ -162,7 +171,7 @@ struct AccountSignInView: View {
                 .disabled(accountStore.isWorking || email.nilIfEmpty == nil || password.isEmpty)
                 .opacity(accountStore.isWorking || email.nilIfEmpty == nil || password.isEmpty ? 0.62 : 1)
 
-                AuthInlineSwitch(prefix: "Don't have an account?", actionTitle: "Create account") {
+                AuthInlineSwitch(prefix: "Don't have an account?", actionTitle: "Create Account") {
                     move(to: .emailCreate)
                     focusedField = .name
                 }
@@ -172,7 +181,7 @@ struct AccountSignInView: View {
 
     private var emailCreateScreen: some View {
         AuthFormScreen(
-            title: "Create account",
+            title: "Create Account",
             subtitle: "Apple is still the fastest path. Email works too.",
             backAction: { move(to: .emailSignIn) }
         ) {
@@ -201,7 +210,9 @@ struct AccountSignInView: View {
                     text: $password,
                     textContentType: .newPassword,
                     keyboardType: .default,
-                    isSecure: true
+                    isSecure: true,
+                    minimumCharacterCount: AccountAuthValidation.minimumPasswordCharacters,
+                    characterCountIdentifier: "password-create-character-guidance"
                 )
                 .focused($focusedField, equals: .password)
 
@@ -213,10 +224,10 @@ struct AccountSignInView: View {
                     AuthButtonLabel(title: accountStore.isWorking ? "Creating..." : "Create Account", systemImage: "person.badge.plus.fill", style: .primary)
                 }
                 .buttonStyle(.plain)
-                .disabled(accountStore.isWorking || email.nilIfEmpty == nil || password.count < 10)
-                .opacity(accountStore.isWorking || email.nilIfEmpty == nil || password.count < 10 ? 0.62 : 1)
+                .disabled(accountStore.isWorking || email.nilIfEmpty == nil || password.count < AccountAuthValidation.minimumPasswordCharacters)
+                .opacity(accountStore.isWorking || email.nilIfEmpty == nil || password.count < AccountAuthValidation.minimumPasswordCharacters ? 0.62 : 1)
 
-                AuthInlineSwitch(prefix: "Already have an account?", actionTitle: "Sign in") {
+                AuthInlineSwitch(prefix: "Already have an account?", actionTitle: "Sign In") {
                     move(to: .emailSignIn)
                     focusedField = .email
                 }
@@ -226,7 +237,7 @@ struct AccountSignInView: View {
 
     private var emailVerifyScreen: some View {
         AuthFormScreen(
-            title: "Check your email",
+            title: "Check Your Email",
             subtitle: "Enter the 6-digit code sent to \(pendingVerificationEmail ?? email).",
             backAction: { move(to: .emailCreate) }
         ) {
@@ -251,7 +262,7 @@ struct AccountSignInView: View {
                 .disabled(accountStore.isWorking || verificationCode.trimmingCharacters(in: .whitespacesAndNewlines).count < 4)
                 .opacity(accountStore.isWorking || verificationCode.trimmingCharacters(in: .whitespacesAndNewlines).count < 4 ? 0.62 : 1)
 
-                AuthInlineSwitch(prefix: "Wrong email?", actionTitle: "Edit account") {
+                AuthInlineSwitch(prefix: "Wrong email?", actionTitle: "Edit Account") {
                     move(to: .emailCreate)
                     focusedField = .email
                 }
@@ -261,7 +272,7 @@ struct AccountSignInView: View {
 
     private var passwordResetRequestScreen: some View {
         AuthFormScreen(
-            title: "Reset password",
+            title: "Reset Password",
             subtitle: "We'll send a 6-digit reset code if the account exists.",
             backAction: { move(to: .emailSignIn) }
         ) {
@@ -291,7 +302,7 @@ struct AccountSignInView: View {
 
     private var passwordResetConfirmScreen: some View {
         AuthFormScreen(
-            title: "Enter reset code",
+            title: "Enter Reset Code",
             subtitle: "Use the code sent to \(pendingResetEmail ?? email), then choose a new password.",
             backAction: { move(to: .passwordResetRequest) }
         ) {
@@ -311,7 +322,9 @@ struct AccountSignInView: View {
                     text: $newPassword,
                     textContentType: .newPassword,
                     keyboardType: .default,
-                    isSecure: true
+                    isSecure: true,
+                    minimumCharacterCount: AccountAuthValidation.minimumPasswordCharacters,
+                    characterCountIdentifier: "password-reset-character-guidance"
                 )
                 .focused($focusedField, equals: .newPassword)
 
@@ -323,8 +336,8 @@ struct AccountSignInView: View {
                     AuthButtonLabel(title: accountStore.isWorking ? "Resetting..." : "Reset and Sign In", systemImage: "key.fill", style: .primary)
                 }
                 .buttonStyle(.plain)
-                .disabled(accountStore.isWorking || resetCode.isEmpty || newPassword.count < 10)
-                .opacity(accountStore.isWorking || resetCode.isEmpty || newPassword.count < 10 ? 0.62 : 1)
+                .disabled(accountStore.isWorking || resetCode.isEmpty || newPassword.count < AccountAuthValidation.minimumPasswordCharacters)
+                .opacity(accountStore.isWorking || resetCode.isEmpty || newPassword.count < AccountAuthValidation.minimumPasswordCharacters ? 0.62 : 1)
             }
         }
     }
@@ -506,6 +519,10 @@ struct AccountSignInView: View {
         }
         return message
     }
+}
+
+enum AccountAuthValidation {
+    static let minimumPasswordCharacters = 10
 }
 
 struct AuthArtworkBackground: View {

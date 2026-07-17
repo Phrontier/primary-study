@@ -213,7 +213,7 @@ enum AssetPlacement: String, Codable, Hashable, CaseIterable {
         switch self {
         case .primary: "Primary"
         case .supplemental: "Supplemental"
-        case .generalLibrary: "General library"
+        case .generalLibrary: "General Library"
         }
     }
 }
@@ -254,10 +254,10 @@ enum SourceDocumentKind: String, Codable, Hashable {
 
     var displayName: String {
         switch self {
-        case .briefingGuide: "Briefing guide"
+        case .briefingGuide: "Briefing Guide"
         case .gradeSheet: "Gradesheet"
         case .scenario: "Scenario"
-        case .sourceText: "Source text"
+        case .sourceText: "Source Text"
         case .handout: "Handout"
         case .worksheet: "Worksheet"
         case .reference: "Reference"
@@ -305,7 +305,7 @@ enum SharedResourceSection: String, Codable, Hashable, CaseIterable {
         case .eps: "EPs"
         case .limits: "Limits"
         case .nwc: "Notes / Warnings / Cautions"
-        case .supplements: "Other supplements"
+        case .supplements: "Other Supplements"
         }
     }
 

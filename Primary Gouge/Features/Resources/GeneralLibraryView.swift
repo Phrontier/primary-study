@@ -8,6 +8,7 @@ struct GeneralLibraryView: View {
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
     @EnvironmentObject private var videoDownloadStore: VideoDownloadStore
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
 
     var body: some View {
         AppScrollScreen(bottomPadding: 40) {
@@ -15,33 +16,45 @@ struct GeneralLibraryView: View {
                 VStack(alignment: .leading, spacing: 14) {
                     SectionHeader(
                         eyebrow: "Decks",
-                        title: "Focused memory work",
+                        title: "Focused Memory Work",
                         subtitle: nil
                     )
 
                     ForEach(hubs) { hub in
                         VStack(alignment: .leading, spacing: 12) {
                             NavigationLink {
-                                FlashcardDeckView(hub: hub)
+                                PremiumContentGate(
+                                    requirement: ContentAccessPolicy.requirement(forLibraryHubID: hub.id),
+                                    title: hub.deck.title
+                                ) {
+                                    FlashcardDeckView(hub: hub)
+                                }
                             } label: {
                                 ToolCard(
                                     title: hub.deck.title,
                                     subtitle: nil,
                                     icon: "rectangle.stack.fill.badge.person.crop",
-                                    accent: AppTheme.domainColor(.flashcards)
+                                    accent: AppTheme.domainColor(.flashcards),
+                                    isPremiumLocked: ContentAccessPolicy.isLocked(
+                                        ContentAccessPolicy.requirement(forLibraryHubID: hub.id),
+                                        subscriptionStore: subscriptionStore
+                                    )
                                 )
                             }
                             .buttonStyle(.plain)
 
                             ForEach(appModel.resources(for: hub)) { resource in
                                 NavigationLink {
-                                    SharedResourceDetailView(resource: resource)
+                                    PremiumContentGate(requirement: .premium, title: resource.title) {
+                                        SharedResourceDetailView(resource: resource)
+                                    }
                                 } label: {
                                     ToolCard(
                                         title: generalLibraryTitle(for: resource),
                                         subtitle: nil,
                                         icon: "doc.richtext.fill",
-                                        accent: resource.librarySection.domainColor
+                                        accent: resource.librarySection.domainColor,
+                                        isPremiumLocked: !subscriptionStore.hasPremiumAccess
                                     )
                                 }
                                 .buttonStyle(.plain)
@@ -54,7 +67,7 @@ struct GeneralLibraryView: View {
             if !videoGroups.isEmpty {
                 librarySection(
                     eyebrow: "Videos",
-                    title: "Watch and review",
+                        title: "Watch and Review",
                     subtitle: nil
                 ) {
                     ForEach(videoGroups) { group in
@@ -68,13 +81,16 @@ struct GeneralLibraryView: View {
 
                             ForEach(group.videos) { video in
                                 NavigationLink {
-                                    VideoDetailView(video: video)
+                                    PremiumContentGate(requirement: .premium, title: video.title) {
+                                        VideoDetailView(video: video)
+                                    }
                                 } label: {
                                     ToolCard(
                                         title: video.title,
                                         subtitle: videoSubtitle(video),
                                         icon: group.category.iconName,
-                                        accent: AppTheme.domainColor(.videos)
+                                        accent: AppTheme.domainColor(.videos),
+                                        isPremiumLocked: !subscriptionStore.hasPremiumAccess
                                     )
                                 }
                                 .buttonStyle(.plain)
@@ -92,13 +108,16 @@ struct GeneralLibraryView: View {
                 ) {
                     ForEach(group.resources) { resource in
                         NavigationLink {
-                            SharedResourceDetailView(resource: resource)
+                            PremiumContentGate(requirement: .premium, title: resource.title) {
+                                SharedResourceDetailView(resource: resource)
+                            }
                         } label: {
                             ToolCard(
                                 title: resource.title,
                                 subtitle: nil,
                                 icon: iconName(for: group.section),
-                                accent: accent(for: group.section)
+                                accent: accent(for: group.section),
+                                isPremiumLocked: !subscriptionStore.hasPremiumAccess
                             )
                         }
                         .buttonStyle(.plain)

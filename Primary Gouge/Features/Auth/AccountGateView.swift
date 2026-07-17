@@ -24,6 +24,8 @@ struct AccountGateView<Content: View>: View {
 }
 
 private struct AccountLoadingView: View {
+    var title = "Loading Account"
+
     var body: some View {
         ZStack {
             AppTheme.groupedBackground.ignoresSafeArea()
@@ -32,7 +34,7 @@ private struct AccountLoadingView: View {
                 ProgressView()
                     .tint(AppTheme.accent)
 
-                Text("Loading Account")
+                Text(title)
                     .font(.headline.weight(.semibold))
                     .foregroundStyle(AppTheme.textPrimary)
             }
@@ -57,7 +59,7 @@ struct AccountOnboardingView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 22) {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Set up your profile")
+                            Text("Set Up Your Profile")
                                 .font(.system(size: 34, weight: .bold, design: .rounded))
                                 .foregroundStyle(.white)
 
@@ -202,6 +204,8 @@ struct AccountTextField: View {
     var textContentType: UITextContentType?
     var keyboardType: UIKeyboardType
     var isSecure = false
+    var minimumCharacterCount: Int? = nil
+    var characterCountIdentifier: String? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -227,6 +231,15 @@ struct AccountTextField: View {
             .padding(.vertical, 15)
             .frame(minHeight: 54)
             .background(AccountFieldBackground())
+            .accessibilityIdentifier("account-field-\(title.lowercased().replacingOccurrences(of: " ", with: "-"))")
+
+            if let minimumCharacterCount {
+                CharacterGuidance(
+                    text: text,
+                    minimum: minimumCharacterCount,
+                    identifier: characterCountIdentifier ?? "\(title.lowercased().replacingOccurrences(of: " ", with: "-"))-character-guidance"
+                )
+            }
         }
     }
 }

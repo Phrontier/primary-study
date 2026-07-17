@@ -68,7 +68,7 @@ struct InstructorReviewDetailView: View {
             if viewModel.reviews.isEmpty {
                 EmptyStateCard(
                     icon: "tray.fill",
-                    title: "No approved reviews yet",
+                    title: "No Approved Reviews Yet",
                     message: "Once moderation approves a review, it will appear here automatically."
                 )
             } else {

@@ -6,6 +6,7 @@ struct FlashcardDeckView: View {
     let event: Event?
     let contextLabel: String
     let availableFilters: [FlashcardFilterToken]
+    let accessRequirement: ContentAccessRequirement
 
     @EnvironmentObject private var appModel: StudyAppModel
     @State private var selectedFilters: Set<FlashcardFilterToken>
@@ -15,6 +16,7 @@ struct FlashcardDeckView: View {
         self.event = event
         self.contextLabel = event.code
         self.availableFilters = []
+        self.accessRequirement = ContentAccessPolicy.requirement(for: event)
         self._selectedFilters = State(initialValue: [])
     }
 
@@ -23,6 +25,7 @@ struct FlashcardDeckView: View {
         self.event = nil
         self.contextLabel = "General Library"
         self.availableFilters = hub.availableFilters
+        self.accessRequirement = ContentAccessPolicy.requirement(forLibraryHubID: hub.id)
         self._selectedFilters = State(initialValue: Set(hub.availableFilters))
     }
 
@@ -31,10 +34,16 @@ struct FlashcardDeckView: View {
     }
 
     var body: some View {
+        PremiumContentGate(requirement: accessRequirement, title: deck.title) {
+            deckContent
+        }
+    }
+
+    private var deckContent: some View {
         let performance = appModel.deckPerformance(for: deck, filters: activeFilters)
         let snapshots = appModel.cardSnapshots(in: deck, filters: activeFilters)
 
-        AppScrollScreen {
+        return AppScrollScreen {
             HeroCard(
                 eyebrow: contextLabel,
                 title: deck.title,
@@ -49,7 +58,7 @@ struct FlashcardDeckView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Filter",
-                        title: "Study focus",
+                        title: "Study Focus",
                         subtitle: nil
                     )
 
@@ -69,7 +78,7 @@ struct FlashcardDeckView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(
                         eyebrow: "Deck",
-                        title: "All cards",
+                        title: "All Cards",
                         subtitle: nil
                     )
 
@@ -122,7 +131,7 @@ struct FlashcardDeckView: View {
             )
         } label: {
             CompactReviewAction(
-                title: "Smart review",
+                title: "Smart Review",
                 icon: "bolt.fill",
                 accent: AppTheme.statusColor(.warning)
             )
@@ -140,7 +149,7 @@ struct FlashcardDeckView: View {
             )
         } label: {
             CompactReviewAction(
-                title: "Study full deck",
+                title: "Study Full Deck",
                 icon: "rectangle.stack.fill",
                 accent: AppTheme.domainColor(.flashcards)
             )
@@ -187,7 +196,7 @@ struct FlashcardDetailView: View {
                     }
 
                     if item.isPriority {
-                        Badge(text: "Smart review", color: AppTheme.warning)
+                        Badge(text: "Smart Review", color: AppTheme.warning)
                     }
                 }
             }
@@ -217,11 +226,11 @@ struct FlashcardDetailView: View {
                     cards: appModel.focusedReviewCards(in: deck, startingWith: item.card.id, filters: filters)
                 )
             } label: {
-                StudyActionButton(title: "Review this card", icon: "play.fill", tint: AppTheme.accent)
+                StudyActionButton(title: "Review This Card", icon: "play.fill", tint: AppTheme.accent)
             }
             .buttonStyle(.plain)
         }
-        .detailNavigationChrome(title: "Card detail")
+        .detailNavigationChrome(title: "Card Detail")
     }
 }
 
@@ -245,7 +254,7 @@ struct FlashcardStudyView: View {
                 AppScrollScreen {
                     EmptyStateCard(
                         icon: "checkmark.circle",
-                        title: "No cards in this study view",
+                        title: "No Cards in This Study View",
                         message: "Try a different study mode or turn on more filters to broaden the deck."
                     )
                 }
@@ -309,7 +318,7 @@ struct FlashcardStudyView: View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(
                 eyebrow: "Rate it",
-                title: "How well did you know it?",
+                title: "How Well Did You Know It?",
                 subtitle: nil
             )
 
@@ -689,7 +698,7 @@ private struct FlashcardPreviewCard: View {
                     }
 
                     if item.isPriority {
-                        Badge(text: "Smart review", color: AppTheme.warning)
+                        Badge(text: "Smart Review", color: AppTheme.warning)
                     }
                 }
 

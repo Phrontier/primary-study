@@ -14,7 +14,7 @@ struct DocumentPreviewScreen: View {
                 AppScrollScreen {
                     EmptyStateCard(
                         icon: "exclamationmark.triangle.fill",
-                        title: "Document unavailable",
+                    title: "Document Unavailable",
                         message: "The source file could not be found in the app bundle. Re-run the import pipeline or verify the bundle resource path."
                     )
                 }

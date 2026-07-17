@@ -106,11 +106,11 @@ final class CommunitySubmissionStore: ObservableObject {
         let trimmedSummary = draft.trimmedSummary
         let trimmedMessage = draft.trimmedMessage
 
-        guard trimmedSummary.count >= 4 else {
+        guard trimmedSummary.count >= CommunitySubmissionValidation.minimumSummaryCharacters else {
             throw CommunitySubmissionStoreError.invalidSummary
         }
 
-        guard trimmedMessage.count >= 12 else {
+        guard trimmedMessage.count >= CommunitySubmissionValidation.minimumMessageCharacters else {
             throw CommunitySubmissionStoreError.invalidMessage
         }
 

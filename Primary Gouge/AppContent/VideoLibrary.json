@@ -351,7 +351,7 @@
         "useful",
         "power"
       ],
-      "title" : "Loss Of Useful Power"
+      "title" : "Loss of Useful Power"
     },
     {
       "byteSize" : 8355131,
@@ -401,7 +401,7 @@
         "battery",
         "pwr"
       ],
-      "title" : "Normal Start Sequence With Battery Pwr"
+      "title" : "Normal Start Sequence with Battery Pwr"
     },
     {
       "byteSize" : 16145796,
@@ -427,7 +427,7 @@
         "external",
         "pwr"
       ],
-      "title" : "Normal Start Sequence With External Pwr"
+      "title" : "Normal Start Sequence with External Pwr"
     },
     {
       "byteSize" : 8967234,
@@ -528,7 +528,7 @@
         "in",
         "flt"
       ],
-      "title" : "T-6B Engine Malfunction In Flight"
+      "title" : "T-6B Engine Malfunction in Flight"
     },
     {
       "byteSize" : 55412187,
@@ -725,7 +725,7 @@
         "and",
         "pitch"
       ],
-      "title" : "T-6B Turns And Pitch"
+      "title" : "T-6B Turns and Pitch"
     },
     {
       "byteSize" : 4473229,

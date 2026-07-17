@@ -1503,7 +1503,7 @@ struct ManifestBuilder {
         let filename = file.lastPathComponent
         return SourceDocument(
             id: sanitizeID(relativePath),
-            title: file.deletingPathExtension().lastPathComponent,
+            title: file.deletingPathExtension().lastPathComponent.replacingOccurrences(of: "Briefing guide", with: "Briefing Guide"),
             relativePath: relativePath,
             kind: sourceDocumentKind(for: filename),
             summary: documentSummary(for: filename)

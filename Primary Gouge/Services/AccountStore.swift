@@ -59,19 +59,32 @@ final class AccountStore: ObservableObject {
 
     private let keychainStore: AccountKeychainSessionStore
     private let remoteClient: SupabaseAccountRemoteClient
+    private let accountLinkedDataClient: AccountLinkedDataDeleting
     private var didConfigure = false
 
     init(
         keychainStore: AccountKeychainSessionStore? = nil,
-        remoteClient: SupabaseAccountRemoteClient? = nil
+        remoteClient: SupabaseAccountRemoteClient? = nil,
+        accountLinkedDataClient: AccountLinkedDataDeleting? = nil
     ) {
         self.keychainStore = keychainStore ?? AccountKeychainSessionStore()
         self.remoteClient = remoteClient ?? SupabaseAccountRemoteClient()
+        self.accountLinkedDataClient = accountLinkedDataClient ?? CloudflareAccountDataClient()
     }
 
     func configure() async {
         guard !didConfigure else { return }
         didConfigure = true
+
+        if AppLaunchEnvironment.usesSignedOutUITestAccount {
+            clearLocalSession()
+            return
+        }
+
+        if AppLaunchEnvironment.usesSignedInUITestAccount || AppLaunchEnvironment.usesFreeUITestAccount {
+            applySession(Self.uiTestSession)
+            return
+        }
 
         if let storedSession = keychainStore.load() {
             applySession(storedSession)
@@ -184,6 +197,10 @@ final class AccountStore: ObservableObject {
     func deleteAccount(appleAuthorizationCode: String? = nil) async throws {
         try await perform {
             let accessToken = try requireAccessToken()
+            // Delete account-linked user-generated content first. If this step
+            // fails, the Supabase account remains available so the operation
+            // can be retried instead of orphaning reviews or submissions.
+            try await accountLinkedDataClient.deleteAccountData(accessToken: accessToken)
             try await remoteClient.deleteAccount(accessToken: accessToken, appleAuthorizationCode: appleAuthorizationCode)
             localDataResetHandler?()
             clearLocalSession()
@@ -252,6 +269,25 @@ final class AccountStore: ObservableObject {
             throw AccountStoreError.missingSession
         }
         return accessToken
+    }
+
+    private static var uiTestSession: AccountSession {
+        AccountSession(
+            accessToken: "ui-test-access-token",
+            refreshToken: "ui-test-refresh-token",
+            expiresAt: .distantFuture,
+            profile: AccountProfile(
+                id: "00000000-0000-4000-8000-000000000001",
+                displayName: "App Review Demo",
+                email: "reviewer@example.test",
+                emailVerified: true,
+                authMethods: [.emailPassword],
+                squadronID: "vt-27",
+                syllabusID: .echo,
+                permissions: [],
+                profileComplete: true
+            )
+        )
     }
 }
 

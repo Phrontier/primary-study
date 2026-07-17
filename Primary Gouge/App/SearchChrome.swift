@@ -123,7 +123,7 @@ struct SearchTabView: View {
         TabHeaderIdentity(
             navigationTitle: "Search",
             eyebrow: chrome.searchScope.emptyStateTitle,
-            title: "Search the study stack",
+            title: "Search the Study Stack",
             subtitle: nil,
             iconName: AppTab.search.iconName,
             accent: AppTheme.domainColor(.resources)
@@ -182,13 +182,13 @@ struct SearchTabView: View {
         if trimmedQuery.isEmpty {
             EmptyStateCard(
                 icon: "magnifyingglass",
-                title: "Start with a keyword",
+                title: "Start with a Keyword",
                 message: "Use the field above to jump into events, instructor gouge, flashcard decks, videos, and shared references without digging through tabs."
             )
         } else if sections.isEmpty {
             EmptyStateCard(
                 icon: "tray",
-                title: "No matches found",
+                title: "No Matches Found",
                 message: "Try a broader term or switch back into Events or Instructors if you want a narrower search context."
             )
         } else {
@@ -229,6 +229,11 @@ struct SearchTabView: View {
 
 struct SearchResultRow: View {
     let item: SearchResultItem
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
+
+    private var isPremiumLocked: Bool {
+        ContentAccessPolicy.isLocked(item.accessRequirement, subscriptionStore: subscriptionStore)
+    }
 
     var body: some View {
         HStack(alignment: .top, spacing: 14) {
@@ -255,14 +260,23 @@ struct SearchResultRow: View {
 
             Spacer(minLength: 10)
 
-            Image(systemName: "chevron.right")
-                .font(.footnote.weight(.bold))
-                .foregroundStyle(AppTheme.accessoryTint(item.section.accentColor))
-                .padding(.top, 4)
+            HStack(spacing: 8) {
+                if isPremiumLocked {
+                    Image(systemName: "lock.fill")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppTheme.warning)
+                }
+
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.bold))
+                    .foregroundStyle(AppTheme.accessoryTint(item.section.accentColor))
+            }
+            .padding(.top, 4)
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 14)
         .contentShape(Rectangle())
+        .accessibilityLabel(isPremiumLocked ? "\(item.title), Premium locked" : item.title)
     }
 }
 
@@ -273,6 +287,16 @@ struct SearchDestinationView: View {
     @EnvironmentObject private var reviewStore: InstructorReviewStore
 
     var body: some View {
+        PremiumContentGate(
+            requirement: ContentAccessPolicy.requirement(for: destination, in: appModel),
+            title: destinationTitle
+        ) {
+            resolvedDestination
+        }
+    }
+
+    @ViewBuilder
+    private var resolvedDestination: some View {
         switch destination {
         case let .event(phaseID, eventID):
             if let phase = appModel.phase(id: phaseID), let event = appModel.event(phaseID: phaseID, eventID: eventID) {
@@ -334,10 +358,31 @@ struct SearchDestinationView: View {
         }
     }
 
+    private var destinationTitle: String {
+        switch destination {
+        case let .event(phaseID, eventID):
+            return appModel.event(phaseID: phaseID, eventID: eventID)?.displayTitle ?? "this event"
+        case let .instructor(id):
+            return reviewStore.fetchInstructor(id: id)?.name ?? "Instructor Gouge"
+        case let .sharedResource(id):
+            return appModel.sharedResource(id: id)?.title ?? "this resource"
+        case let .video(id):
+            return appModel.video(id: id)?.title ?? "this video"
+        case let .phase(id):
+            return appModel.phase(id: id)?.title ?? "this phase"
+        case let .category(phaseID, categoryID):
+            return appModel.category(phaseID: phaseID, categoryID: categoryID)?.displayName ?? "this category"
+        case let .eventDeck(phaseID, eventID, deckID):
+            return appModel.eventDeckContext(phaseID: phaseID, eventID: eventID, deckID: deckID)?.1.title ?? "this deck"
+        case let .libraryDeck(id):
+            return appModel.libraryHub(id: id)?.deck.title ?? "this deck"
+        }
+    }
+
     private var missingDestination: some View {
         EmptyStateCard(
             icon: "exclamationmark.triangle.fill",
-            title: "Result unavailable",
+            title: "Result Unavailable",
             message: "This item could not be opened from search right now."
         )
         .padding(20)

@@ -19,7 +19,7 @@
     "FAM4204"
   ],
   "studyNotes" : {
-    "headline" : "Discussion items",
+    "headline" : "Discussion Items",
     "sections" : [
       {
         "items" : [
@@ -206,7 +206,7 @@
   },
   "summary" : "Electrical-system big picture, avionics-failure triage, and generalized lost-comms recovery planning.",
   "systemsBrief" : {
-    "headline" : "Systems brief",
+    "headline" : "Systems Brief",
     "sections" : [
       {
         "items" : [

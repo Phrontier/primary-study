@@ -2,6 +2,7 @@ DerivedData/
 DerivedData-*/
 Errors/
 .wrangler/
+supabase/.temp/
 .DS_Store
 ReferenceArchive/
 Pubs/

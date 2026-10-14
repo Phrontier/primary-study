@@ -1,67 +1,46 @@
-import { Buffer } from "node:buffer";
-import {
-  Environment,
-  SignedDataVerifier,
-  type JWSRenewalInfoDecodedPayload,
-  type JWSTransactionDecodedPayload,
-  type ResponseBodyV2DecodedPayload,
-} from "npm:@apple/app-store-server-library@3.1.0";
+import type { JWSRenewalInfoDecodedPayload, JWSTransactionDecodedPayload, ResponseBodyV2DecodedPayload } from "npm:@apple/app-store-server-library@3.1.0";
 
 export const bundleID = Deno.env.get("APP_BUNDLE_ID") ?? "bolt.Primary-Gouge";
 export const premiumProductID = "bolt.primarygouge.premium.monthly";
-
-const appleRootCAG2 = "MIIFkjCCA3qgAwIBAgIIAeDltYNno+AwDQYJKoZIhvcNAQEMBQAwZzEbMBkGA1UEAwwSQXBwbGUgUm9vdCBDQSAtIEcyMSYwJAYDVQQLDB1BcHBsZSBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwHhcNMTQwNDMwMTgxMDA5WhcNMzkwNDMwMTgxMDA5WjBnMRswGQYDVQQDDBJBcHBsZSBSb290IENBIC0gRzIxJjAkBgNVBAsMHUFwcGxlIENlcnRpZmljYXRpb24gQXV0aG9yaXR5MRMwEQYDVQQKDApBcHBsZSBJbmMuMQswCQYDVQQGEwJVUzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBANgREkhI2imKScUcx+xuM23+TfvgHN6sXuI2pyT5f1BrTM65MFQn5bPW7SXmMLYFN14UIhHF6Kob0vuy0gmVOKTvKkmMXT5xZgM4+xb1hYjkWpIMBDLyyED7Ul+f9sDx47pFoFDVEovy3d6RhiPw9bZyLgHaC/YuOQhfGaFjQQscp5TBhsRTL3b2CtcM0YM/GlMZ81fVJ3/8E7j4ko380yhDPLVoACVdJ2LT3VXdRCCQgzWTxb+4Gftr49wIQuavbfqeQMpOhYV4SbHXw8EwOTKrfl+q04tvny0aIWhwZ7Oj8ZhBbZF8+NfbqOdfIRqMM78xdLe40fTgIvS/cjTf94FNcX1RoeKz8NMoFnNvzcytN31O661A4T+B/fc9Cj6i8b0xlilZ3MIZgIxbdMYs0xBTJh0UT8TUgWY8h2czJxQI6bR3hDRSj4n4aJgXv8O7qhOTH11UL6jHfPsNFL4VPSQ08prcdUFmIrQB1guvkJ4M6mL4m1k8COKWNORj3rw31OsMiANDC1CvoDTdUE0V+1ok2Az6DGOeHwOx4e7hqkP0ZmUoNwIx7wHHHtHMn23KVDpA287PT0aLSmWaasZobNfMmRtHsHLDd4/E92GcdB/O/WuhwpyUgquUoue9G7q5cDmVF8Up8zlYNPXEpMZ7YLlmQ1A/bmH8DvmGqmAMQ0uVAgMBAAGjQjBAMB0GA1UdDgQWBBTEmRNsGAPCe8CjoA1/coB6HHcmjTAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBBjANBgkqhkiG9w0BAQwFAAOCAgEAUabz4vS4PZO/Lc4Pu1vhVRROTtHlznldgX/+tvCHM/jvlOV+3Gp5pxy+8JS3ptEwnMgNCnWefZKVfhidfsJxaXwU6s+DDuQUQp50DhDNqxq6EWGBeNjxtUVAeKuowM77fWM3aPbn+6/Gw0vsHzYmE1SGlHKy6gLti23kDKaQwFd1z4xCfVzmMX3zybKSaUYOiPjjLUKyOKimGY3xn83uamW8GrAlvacp/fQ+onVJv57byfenHmOZ4VxG/5IFjPoeIPmGlFYl5bRXOJ3riGQUIUkhOb9iZqmxospvPyFgxYnURTbImHy99v6ZSYA7LNKmp4gDBDEZt7Y6YUX6yfIjyGNzv1aJMbDZfGKnexWoiIqrOEDCzBL/FePwN983csvMmOa/orz6JopxVtfnJBtIRD6e/J/JzBrsQzwBvDR4yGn1xuZW7AYJNpDrFEobXsmII9oDMJELuDY++ee1KG++P+w8j2Ud5cAeh6Squpj9kuNsJnfdBrRkBof0Tta6SqoWqPQFZ2aWuuJVecMsXUmPgEkrihLHdoBR37q9ZV0+N0djMenl9MU/S60EinpxLK8JQzcPqOMyT/RFtm2XNuyE9QoB6he7hY1Ck3DDUOUUi78/w0EP3SIEIwiKum1xRKtzCTrJ+VKACd+66eYWyi4uTLLT3OUEVLLUNIAytbwPF+E=";
-const appleRootCAG3 = "MIICQzCCAcmgAwIBAgIILcX8iNLFS5UwCgYIKoZIzj0EAwMwZzEbMBkGA1UEAwwSQXBwbGUgUm9vdCBDQSAtIEczMSYwJAYDVQQLDB1BcHBsZSBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwHhcNMTQwNDMwMTgxOTA2WhcNMzkwNDMwMTgxOTA2WjBnMRswGQYDVQQDDBJBcHBsZSBSb290IENBIC0gRzMxJjAkBgNVBAsMHUFwcGxlIENlcnRpZmljYXRpb24gQXV0aG9yaXR5MRMwEQYDVQQKDApBcHBsZSBJbmMuMQswCQYDVQQGEwJVUzB2MBAGByqGSM49AgEGBSuBBAAiA2IABJjpLz1AcqTtkyJygRMc3RCV8cWjTnHcFBbZDuWmBSp3ZHtfTjjTuxxEtX/1H7YyYl3J6YRbTzBPEVoA/VhYDKX1DyxNB0cTddqXl5dvMVztK517IDvYuVTZXpmkOlEKMaNCMEAwHQYDVR0OBBYEFLuw3qFYM4iapIqZ3r6966/ayySrMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgEGMAoGCCqGSM49BAMDA2gAMGUCMQCD6cHEFl4aXTQY2e3v9GwOAEZLuN+yRhHFD/3meoyhpmvOwgPUnPWTxnS4at+qIxUCMG1mihDK1A3UT82NQz60imOlM27jbdoXt2QfyFMm+YhidDkLF1vLUagM6BgD56KyKA==";
-
-const rootCertificates = [
-  Buffer.from(appleRootCAG2, "base64"),
-  Buffer.from(appleRootCAG3, "base64"),
-];
-
-function verifier(environment: Environment): SignedDataVerifier {
-  const configuredAppleID = Deno.env.get("APP_APPLE_ID");
-  const appAppleID = environment === Environment.PRODUCTION && configuredAppleID
-    ? Number(configuredAppleID)
-    : undefined;
-
-  if (environment === Environment.PRODUCTION && (!appAppleID || !Number.isSafeInteger(appAppleID))) {
-    throw new Error("APP_APPLE_ID must be configured before production verification.");
-  }
-
-  return new SignedDataVerifier(
-    rootCertificates,
-    true,
-    environment,
-    bundleID,
-    appAppleID,
-  );
+export type VerificationKind = "transaction" | "renewal" | "notification";
+export class AppleVerificationError extends Error {
+  constructor(public category: "configuration" | "transport" | "invalid_signed_data" | "invalid_response") { super(`Apple verification failed: ${category}`); }
 }
 
-async function tryBothEnvironments<T>(operation: (candidate: SignedDataVerifier) => Promise<T>): Promise<T> {
-  let productionError: unknown;
+export async function verifyRemote(kind: VerificationKind, signedPayload: string, options = {
+  url: Deno.env.get("APPLE_VERIFIER_URL"), token: Deno.env.get("APPLE_VERIFIER_TOKEN"), fetch: globalThis.fetch,
+}): Promise<Record<string, unknown>> {
+  const expectedURL = "https://primary-gouge-apple-verifier.tz4mz7ry42.workers.dev/verify";
+  if (options.url !== expectedURL || !options.token || options.token.length < 32) throw new AppleVerificationError("configuration");
+  let response: Response;
   try {
-    return await operation(verifier(Environment.PRODUCTION));
-  } catch (error) {
-    productionError = error;
-  }
-
-  try {
-    return await operation(verifier(Environment.SANDBOX));
-  } catch {
-    throw productionError;
-  }
+    response = await options.fetch(expectedURL, { method: "POST", redirect: "error", signal: AbortSignal.timeout(40_000),
+      headers: { "user-agent": "PrimaryGougeBackend/1.0", "authorization": `Bearer ${options.token}`, "content-type": "application/json" },
+      body: JSON.stringify({ kind, signedPayload }) });
+  } catch { throw new AppleVerificationError("transport"); }
+  if (response.status === 422) throw new AppleVerificationError("invalid_signed_data");
+  if (response.status !== 200) throw new AppleVerificationError("transport");
+  let body;
+  try { body = await response.json(); } catch { throw new AppleVerificationError("invalid_response"); }
+  const p = body?.payload;
+  const environment = kind === "notification" ? p?.data?.environment ?? p?.summary?.environment ?? p?.appData?.environment : p?.environment;
+  const valid = body?.version === 1 && body?.kind === kind && p && typeof p === "object" && !Array.isArray(p)
+    && (environment === "Sandbox" || environment === "Production")
+    && typeof p.signedDate === "number" && Number.isFinite(p.signedDate) && p.signedDate > 0;
+  const validKind = kind === "transaction" ? typeof p?.transactionId === "string" && typeof p?.originalTransactionId === "string" && p?.bundleId === bundleID && p?.productId === premiumProductID
+    : kind === "renewal" ? typeof p?.originalTransactionId === "string" && p?.productId === premiumProductID
+    : typeof p?.notificationUUID === "string" && typeof p?.notificationType === "string";
+  if (!valid || !validKind) throw new AppleVerificationError("invalid_response");
+  return p;
 }
-
 export async function verifyTransaction(payload: string): Promise<JWSTransactionDecodedPayload> {
-  return await tryBothEnvironments((candidate) => candidate.verifyAndDecodeTransaction(payload));
+  return await verifyRemote("transaction", payload) as JWSTransactionDecodedPayload;
 }
-
 export async function verifyRenewalInfo(payload: string): Promise<JWSRenewalInfoDecodedPayload> {
-  return await tryBothEnvironments((candidate) => candidate.verifyAndDecodeRenewalInfo(payload));
+  return await verifyRemote("renewal", payload) as JWSRenewalInfoDecodedPayload;
 }
-
 export async function verifyNotification(payload: string): Promise<ResponseBodyV2DecodedPayload> {
-  return await tryBothEnvironments((candidate) => candidate.verifyAndDecodeNotification(payload));
+  return await verifyRemote("notification", payload) as ResponseBodyV2DecodedPayload;
 }
 
 export function isoDate(milliseconds: number | undefined): string | null {

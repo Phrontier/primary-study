@@ -1,0 +1,28 @@
+running 8 tests from ./supabase/tests/subscription_handlers_test.ts
+expired and malformed deadlines cannot grant backend access ... ok (11ms)
+Apple verifier rejects unsigned and malformed transactions ... ok (1ms)
+entitlement endpoint requires an authenticated user ...
+------- output -------
+{"operation":"subscription-entitlement","category":"authentication","code":"missing_user"}
+----- output end -----
+entitlement endpoint requires an authenticated user ... ok (4ms)
+invalid signature never reaches the database ...
+------- output -------
+{"operation":"subscription-entitlement","category":"persistence_or_ownership"}
+----- output end -----
+invalid signature never reaches the database ... ok (827µs)
+ownership conflicts return a distinct 409 without granting access ... ok (208µs)
+notification validation fails closed and transient persistence failure is not acknowledged ...
+------- output -------
+{"operation":"apple-subscription-notifications","category":"persistence_or_ownership"}
+----- output end -----
+notification validation fails closed and transient persistence failure is not acknowledged ... ok (517µs)
+transaction persistence rejects foreign products and bundles ... ok (84µs)
+session validation sends exactly one bearer token ... ok (1ms)
+running 3 tests from ./supabase/tests/apple_verifier_client_test.ts
+trusted versioned response accepted, with timeout and no redirects ... ok (7ms)
+untrusted URL rejected before credential transmission ... ok (338µs)
+invalid responses, failures and network errors never grant access ... ok (517µs)
+
+ok | 11 passed | 0 failed (43ms)
+

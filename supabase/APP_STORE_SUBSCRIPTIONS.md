@@ -8,7 +8,7 @@ The app and backend are configured for product ID
 1. Create the iOS app record with bundle ID `bolt.Primary-Gouge` and a stable SKU such as `primary-gouge-ios`.
 2. Accept the Paid Apps Agreement and complete banking and tax setup.
 3. Create subscription group `Primary Gouge Premium`.
-4. Create `Premium Monthly` with product ID `bolt.primarygouge.premium.monthly`, a one-month duration, and the U.S. $6.99 price point.
+4. Create `Premium Monthly` with product ID `bolt.primarygouge.premium.monthly`, a one-month duration, and the U.S. $5.99 price point.
 5. Add a seven-day free introductory offer and English localization.
 6. Copy the app's numeric Apple ID for the backend secret below.
 

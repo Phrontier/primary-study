@@ -42,6 +42,13 @@ final class CommunitySubmissionStore: ObservableObject {
     private let connectivityMonitor: CloudflareConnectivityMonitor
     private let configurationDefaults: UserDefaults
 
+    private var accountGeneration = UUID()
+
+    private func checkAccount(_ generation: UUID) throws {
+        try Task.checkCancellation()
+        guard accountGeneration == generation else { throw CancellationError() }
+    }
+
     private var syncTask: Task<Void, Never>?
 
     init(
@@ -151,6 +158,7 @@ final class CommunitySubmissionStore: ObservableObject {
 
         syncStatus = makeSyncStatus(phase: .syncing, errorMessage: nil)
 
+        let context = accountGeneration
         let syncedAt = Date()
         let clientID = clientIdentityStore.clientID()
 
@@ -159,13 +167,16 @@ final class CommunitySubmissionStore: ObservableObject {
             for record in queuedUploads {
                 do {
                     let remoteID = try await remoteService.submit(record, clientID: clientID)
+                    try checkAccount(context)
                     localStore.markUploaded(localID: record.id, remoteID: remoteID, syncedAt: syncedAt)
                 } catch {
+                    try checkAccount(context)
                     localStore.markUploadFailed(localID: record.id, message: error.localizedDescription)
                 }
             }
 
             let statuses = try await remoteService.fetchStatuses(for: clientID)
+            try checkAccount(context)
             localStore.applyStatuses(statuses, syncedAt: syncedAt)
             localStore.setLastSuccessfulSync(at: syncedAt)
 
@@ -181,6 +192,8 @@ final class CommunitySubmissionStore: ObservableObject {
     }
 
     func clearLocalAccountData() {
+        accountGeneration = UUID()
+        syncTask?.cancel()
         localStore.clearAll()
         revision &+= 1
     }
@@ -479,7 +492,7 @@ final class CloudflareCommunitySubmissionRemoteService: CommunitySubmissionRemot
             request.httpBody = try JSONEncoder.reviewEncoder.encode(body)
         }
 
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await CloudflareAuthenticationContext.shared.data(for: request, session: session)
         try validate(response: response, data: data)
         return try JSONDecoder.reviewDecoder.decode(T.self, from: data)
     }

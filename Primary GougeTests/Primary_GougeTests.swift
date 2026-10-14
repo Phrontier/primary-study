@@ -10,6 +10,22 @@ import Testing
 @testable import Primary_Gouge
 
 struct Primary_GougeTests {
+    @MainActor
+    @Test func accountResetBeforeConfigurationClearsPersistedProgress() {
+        let url = temporaryPersistenceURL(name: "cold-account-reset")
+        defer { try? FileManager.default.removeItem(at: url) }
+        let previousAccount = ProgressStore(persistenceURL: url)
+        previousAccount.recordReview(for: "private-card", rating: .good)
+        previousAccount.updateHomePreferences { $0.dailyReminderEnabled = true }
+        let model = StudyAppModel(repository: ContentRepository(), makeProgressStore: { ProgressStore(persistenceURL: url) })
+        #expect(model.progressStore == nil)
+        model.resetLocalAccountData()
+        model.configure()
+        let reloaded = ProgressStore(persistenceURL: url)
+        #expect(reloaded.allCardProgressRecords().isEmpty)
+        #expect(!reloaded.homePreferences().dailyReminderEnabled)
+    }
+
     private func temporaryPersistenceURL(name: String) -> URL {
         FileManager.default.temporaryDirectory
             .appendingPathComponent("PrimaryGougeTests-\(name)-\(UUID().uuidString).json")
@@ -40,8 +56,8 @@ struct Primary_GougeTests {
 
     @MainActor
     @Test func subscriptionEntitlementOnlyGrantsAccessForActiveOrGracePeriod() {
-        #expect(SubscriptionEntitlement(phase: .active).hasPremiumAccess)
-        #expect(SubscriptionEntitlement(phase: .gracePeriod).hasPremiumAccess)
+        #expect(SubscriptionEntitlement(phase: .active, expirationDate: .distantFuture).hasPremiumAccess)
+        #expect(SubscriptionEntitlement(phase: .gracePeriod, gracePeriodExpirationDate: .distantFuture).hasPremiumAccess)
         #expect(!SubscriptionEntitlement(phase: .billingRetry).hasPremiumAccess)
         #expect(!SubscriptionEntitlement(phase: .expired).hasPremiumAccess)
         #expect(!SubscriptionEntitlement(phase: .notSubscribed).hasPremiumAccess)
@@ -711,6 +727,38 @@ struct Primary_GougeTests {
                 !section.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
                     !section.paragraphs.isEmpty
             })
+        }
+    }
+
+    @Test func instructorReviewSeedDecodesAndDoesNotContainKnownSourceCorruption() throws {
+        let url = appContentRoot().appendingPathComponent("InstructorReviewSeedBase.json")
+        let data = try Data(contentsOf: url)
+        let object = try #require(try JSONSerialization.jsonObject(with: data) as? [String: Any])
+        let reviews = try #require(object["reviews"] as? [[String: Any]])
+        let ids = reviews.compactMap { $0["id"] as? String }
+        let texts = reviews.compactMap { $0["reviewText"] as? String }
+        let joinedText = texts.joined(separator: " ")
+
+        #expect(reviews.count == 712)
+        #expect(ids.count == reviews.count)
+        #expect(Set(ids).count == ids.count)
+        #expect(texts.count == reviews.count)
+        #expect(texts.allSatisfy { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty })
+
+        for corruptedPattern in [
+            #"\binructor\w*\b"#,
+            #"\binrument\w*\b"#,
+            #"\bmiake\w*\b"#,
+            #"\bqueion\w*\b"#,
+            #"\bsyem\w*\b"#,
+            #"\bstching\w*\b"#,
+            #"(?<![A-Za-z'])re(?![A-Za-z'])"#
+        ] {
+            #expect(joinedText.range(of: corruptedPattern, options: .regularExpression) == nil)
+        }
+
+        for expectedToken in ["instructor", "instrument", "mistake", "questions", "system", "switching", "with", "will"] {
+            #expect(joinedText.localizedCaseInsensitiveContains(expectedToken))
         }
     }
 
@@ -1497,7 +1545,7 @@ struct Primary_GougeTests {
         ])
 
         let systemsBrief = try #require(event.systemsBrief)
-        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.headline == "Systems Brief")
         #expect(systemsBrief.sections.compactMap(\.title) == [
             "How to Brief the System",
             "Engine System",
@@ -1562,7 +1610,7 @@ struct Primary_GougeTests {
         ])
 
         let systemsBrief = try #require(event.systemsBrief)
-        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.headline == "Systems Brief")
         #expect(systemsBrief.sections.compactMap(\.title) == [
             "How to Brief the System",
             "Hydraulic Power Package",
@@ -1628,7 +1676,7 @@ struct Primary_GougeTests {
         ])
 
         let systemsBrief = try #require(event.systemsBrief)
-        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.headline == "Systems Brief")
         #expect(systemsBrief.sections.compactMap(\.title) == [
             "How to Brief the System",
             "Oil System",
@@ -1680,7 +1728,7 @@ struct Primary_GougeTests {
         ])
 
         let systemsBrief = try #require(event.systemsBrief)
-        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.headline == "Systems Brief")
         #expect(systemsBrief.sections.compactMap(\.title) == [
             "How to Brief the System",
             "Power Sources",
@@ -1736,7 +1784,7 @@ struct Primary_GougeTests {
         ])
 
         let systemsBrief = try #require(event.systemsBrief)
-        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.headline == "Systems Brief")
         #expect(systemsBrief.sections.compactMap(\.title) == [
             "How to Brief the System",
             "OBOGS",
@@ -1794,7 +1842,7 @@ struct Primary_GougeTests {
         ])
 
         let systemsBrief = try #require(event.systemsBrief)
-        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.headline == "Systems Brief")
         #expect(systemsBrief.sections.compactMap(\.title) == [
             "How to Brief the System",
             "Fuel Supply and Tanks",
@@ -2091,7 +2139,7 @@ struct Primary_GougeTests {
         #expect(electricalText.contains("battery-endurance"))
 
         let systemsBrief = try #require(event.systemsBrief)
-        #expect(systemsBrief.headline == "Systems brief")
+        #expect(systemsBrief.headline == "Systems Brief")
         #expect(systemsBrief.sections.compactMap(\.title) == [
             "How to Brief the System",
             "Power Sources and Backup Paths",

@@ -6,6 +6,12 @@ final class Primary_GougeUITests: XCTestCase {
     }
 
     @MainActor
+    private func tabButton(_ app: XCUIApplication, _ title: String) -> XCUIElement {
+        let compactTab = app.tabBars.buttons[title]
+        return compactTab.exists ? compactTab : app.buttons[title].firstMatch
+    }
+
+    @MainActor
     func testSignedOutLaunchRequiresAccount() throws {
         let app = XCUIApplication()
         app.launchArguments = ["--ui-testing", "--ui-testing-signed-out"]
@@ -13,7 +19,7 @@ final class Primary_GougeUITests: XCTestCase {
 
         XCTAssertTrue(app.descendants(matching: .any)["account-sign-in-screen"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["Primary Gouge"].exists)
-        XCTAssertTrue(app.buttons["Sign up with Email"].exists)
+        XCTAssertTrue(app.buttons["Sign Up with Email"].exists)
         XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'Apple'")).firstMatch.exists)
     }
 
@@ -23,17 +29,17 @@ final class Primary_GougeUITests: XCTestCase {
         app.launchArguments = ["--ui-testing", "--ui-testing-signed-in"]
         app.launch()
 
-        XCTAssertTrue(app.tabBars.buttons["Events"].waitForExistence(timeout: 15))
-        app.tabBars.buttons["Events"].tap()
-        XCTAssertTrue(app.staticTexts["Start your next event"].waitForExistence(timeout: 10))
+        XCTAssertTrue(tabButton(app, "Events").waitForExistence(timeout: 15))
+        tabButton(app, "Events").tap()
+        XCTAssertTrue(app.staticTexts["Start Your Next Event"].waitForExistence(timeout: 10))
 
-        app.tabBars.buttons["More"].tap()
+        tabButton(app, "More").tap()
         let premiumCard = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'Premium' AND label CONTAINS[c] 'active'")).firstMatch
         XCTAssertTrue(premiumCard.waitForExistence(timeout: 10))
         premiumCard.tap()
 
         XCTAssertTrue(app.descendants(matching: .any)["premium-status"].waitForExistence(timeout: 10))
-        XCTAssertTrue(app.staticTexts["Premium is active"].exists)
+        XCTAssertTrue(app.staticTexts["Premium Is Active"].exists)
     }
 
     @MainActor
@@ -42,9 +48,9 @@ final class Primary_GougeUITests: XCTestCase {
         app.launchArguments = ["--ui-testing", "--ui-testing-free-account"]
         app.launch()
 
-        XCTAssertTrue(app.tabBars.buttons["Home"].waitForExistence(timeout: 15))
+        XCTAssertTrue(tabButton(app, "Home").waitForExistence(timeout: 15))
         XCTAssertTrue(app.staticTexts["EPs / Limits / N/W/C"].exists)
-        XCTAssertTrue(app.staticTexts["Question of the day"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["Question of the Day"].waitForExistence(timeout: 10))
 
         let emergencyReference = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'EPs / Limits / N/W/C'")).firstMatch
         XCTAssertTrue(emergencyReference.exists)
@@ -52,8 +58,8 @@ final class Primary_GougeUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["EPs, Limits, N/W/C Flashcards"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.descendants(matching: .any)["premium-content-gate"].exists)
 
-        app.tabBars.buttons["Events"].tap()
-        XCTAssertTrue(app.staticTexts["Start your next event"].waitForExistence(timeout: 10))
+        tabButton(app, "Events").tap()
+        XCTAssertTrue(app.staticTexts["Start Your Next Event"].waitForExistence(timeout: 10))
         app.buttons["Contacts"].tap()
         app.buttons["Sims"].tap()
 
@@ -84,7 +90,7 @@ final class Primary_GougeUITests: XCTestCase {
         XCTAssertTrue(app.descendants(matching: .any)["premium-content-gate"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] 'Unlock FAM2103'")).firstMatch.exists)
 
-        app.tabBars.buttons["Instructors"].tap()
+        tabButton(app, "Instructors").tap()
         XCTAssertFalse(app.descendants(matching: .any)["premium-content-gate"].exists)
     }
 
@@ -94,8 +100,8 @@ final class Primary_GougeUITests: XCTestCase {
         app.launchArguments = ["--ui-testing", "--ui-testing-free-account"]
         app.launch()
 
-        XCTAssertTrue(app.tabBars.buttons["Search"].waitForExistence(timeout: 15))
-        app.tabBars.buttons["Search"].tap()
+        XCTAssertTrue(tabButton(app, "Search").waitForExistence(timeout: 15))
+        tabButton(app, "Search").tap()
         let searchField = app.textFields.firstMatch
         XCTAssertTrue(searchField.waitForExistence(timeout: 10))
         searchField.tap()
@@ -108,7 +114,8 @@ final class Primary_GougeUITests: XCTestCase {
         lockedSearchResult.tap()
         XCTAssertTrue(app.descendants(matching: .any)["premium-content-gate"].waitForExistence(timeout: 10))
 
-        app.tabBars.buttons["More"].tap()
+        tabButton(app, "More").tap()
+        XCTAssertFalse(app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'Moderation'")).firstMatch.exists)
         XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'Profile'")).firstMatch.waitForExistence(timeout: 10))
         let quizMode = app.buttons.matching(
             NSPredicate(format: "label CONTAINS[c] 'Quiz Mode' AND label CONTAINS[c] 'Premium locked'")
@@ -124,28 +131,28 @@ final class Primary_GougeUITests: XCTestCase {
         app.launchArguments = ["--ui-testing", "--ui-testing-signed-in"]
         app.launch()
 
-        XCTAssertTrue(app.tabBars.buttons["More"].waitForExistence(timeout: 15))
-        app.tabBars.buttons["More"].tap()
+        XCTAssertTrue(tabButton(app, "More").waitForExistence(timeout: 15))
+        tabButton(app, "More").tap()
 
         let faq = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'FAQ'")).firstMatch
         XCTAssertTrue(faq.waitForExistence(timeout: 10))
         faq.tap()
         XCTAssertTrue(app.descendants(matching: .any)["more-article-faq"].waitForExistence(timeout: 10))
-        XCTAssertTrue(app.staticTexts["How does Quiz Mode work?"].exists)
+        XCTAssertTrue(app.staticTexts["How Does Quiz Mode Work?"].exists)
         app.navigationBars.buttons.firstMatch.tap()
 
         let privacy = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'Privacy'")).firstMatch
         XCTAssertTrue(privacy.waitForExistence(timeout: 10))
         privacy.tap()
         XCTAssertTrue(app.descendants(matching: .any)["more-article-privacy"].waitForExistence(timeout: 10))
-        XCTAssertTrue(app.staticTexts["What the app stores locally"].exists)
+        XCTAssertTrue(app.staticTexts["What the App Stores Locally"].exists)
         app.navigationBars.buttons.firstMatch.tap()
 
         let terms = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'Terms'")).firstMatch
         XCTAssertTrue(terms.waitForExistence(timeout: 10))
         terms.tap()
         XCTAssertTrue(app.descendants(matching: .any)["more-article-terms"].waitForExistence(timeout: 10))
-        XCTAssertTrue(app.staticTexts["Use of the app"].exists)
+        XCTAssertTrue(app.staticTexts["Use of the App"].exists)
         app.navigationBars.buttons.firstMatch.tap()
 
         let changelog = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'Changelog'")).firstMatch
@@ -163,13 +170,35 @@ final class Primary_GougeUITests: XCTestCase {
         let detailsGuidance = app.descendants(matching: .any)["community-details-character-guidance"]
         XCTAssertTrue(summaryGuidance.waitForExistence(timeout: 10))
         XCTAssertTrue(detailsGuidance.exists)
-        XCTAssertTrue((summaryGuidance.value as? String)?.contains("4 characters to go") == true)
-
         let summaryField = app.textFields.firstMatch
         XCTAssertTrue(summaryField.exists)
         summaryField.tap()
+        // Drafts intentionally survive launches. Clear this fixture through the UI.
+        if let saved = summaryField.value as? String, saved != "Short summary" {
+            summaryField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: saved.count))
+        }
+        XCTAssertTrue((summaryGuidance.value as? String)?.contains("4 characters to go") == true)
         summaryField.typeText("abcd")
         XCTAssertTrue((summaryGuidance.value as? String)?.contains("Minimum met") == true)
+    }
+
+    @MainActor
+    func testModeratorCanReachModerationFromMore() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["--ui-testing", "--ui-testing-moderator"]
+        app.launch()
+
+        XCTAssertTrue(tabButton(app, "More").waitForExistence(timeout: 15))
+        tabButton(app, "More").tap()
+
+        let moderation = app.buttons.matching(
+            NSPredicate(format: "label CONTAINS[c] 'Moderation'")
+        ).firstMatch
+        XCTAssertTrue(moderation.waitForExistence(timeout: 10))
+        moderation.tap()
+
+        XCTAssertTrue(app.staticTexts["Review Queue"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["Role Active"].exists)
     }
 
     @MainActor
@@ -178,8 +207,8 @@ final class Primary_GougeUITests: XCTestCase {
         app.launchArguments = ["--ui-testing", "--ui-testing-signed-out"]
         app.launch()
 
-        XCTAssertTrue(app.buttons["Sign up with Email"].waitForExistence(timeout: 10))
-        app.buttons["Sign up with Email"].tap()
+        XCTAssertTrue(app.buttons["Sign Up with Email"].waitForExistence(timeout: 10))
+        app.buttons["Sign Up with Email"].tap()
 
         let passwordField = app.secureTextFields["account-field-password"]
         XCTAssertTrue(passwordField.waitForExistence(timeout: 10))
@@ -191,7 +220,8 @@ final class Primary_GougeUITests: XCTestCase {
         XCTAssertTrue((guidance.value as? String)?.contains("characters to go") == true)
 
         passwordField.typeText("a")
-        XCTAssertTrue((guidance.value as? String)?.contains("Minimum met") == true)
+        XCTAssertTrue(guidance.waitForExistence(timeout: 3))
+        XCTAssertTrue(NSPredicate(format: "value CONTAINS %@", "Minimum met").evaluate(with: guidance))
     }
 
     @MainActor
@@ -210,6 +240,7 @@ final class Primary_GougeUITests: XCTestCase {
         XCTAssertTrue((guidance.value as? String)?.contains("characters to go") == true)
 
         passwordField.typeText("a")
-        XCTAssertTrue((guidance.value as? String)?.contains("Minimum met") == true)
+        XCTAssertTrue(guidance.waitForExistence(timeout: 3))
+        XCTAssertTrue(NSPredicate(format: "value CONTAINS %@", "Minimum met").evaluate(with: guidance))
     }
 }

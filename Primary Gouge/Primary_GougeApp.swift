@@ -74,6 +74,19 @@ struct Primary_GougeApp: App {
 
     @MainActor
     private func bootstrapIfNeeded() async {
+        accountStore.localDataResetHandler = {
+            appModel.resetLocalAccountData()
+            notificationService.clearAccountReminders()
+            quizStore.resetLocalData()
+            reviewStore.clearAccountScopedData()
+            communityStore.clearLocalAccountData()
+        }
+        accountStore.accountDeletedHandler = { userID in
+            subscriptionStore.removePendingTransactions(for: userID)
+        }
+        subscriptionStore.tokenProvider = { id, force in
+            try await accountStore.validAccessToken(for: id, forceRefresh: force)
+        }
         await accountStore.configure()
         await configureProtectedStoresIfNeeded()
     }
@@ -88,13 +101,6 @@ struct Primary_GougeApp: App {
         reviewStore.setModeratorPermission(
             accountStore.hasPermission(.instructorGougeModerator)
         )
-
-        accountStore.localDataResetHandler = {
-            appModel.resetLocalAccountData()
-            quizStore.resetLocalData()
-            reviewStore.clearAccountScopedData()
-            communityStore.clearLocalAccountData()
-        }
 
         guard !didConfigureProtectedStores else { return }
         didConfigureProtectedStores = true

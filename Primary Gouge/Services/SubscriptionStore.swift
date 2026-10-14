@@ -1,339 +1,275 @@
 import Combine
 import Foundation
-import StoreKit
 
 @MainActor
 final class SubscriptionStore: ObservableObject {
     static let premiumMonthlyProductID = "bolt.primarygouge.premium.monthly"
-
     @Published private(set) var entitlement: SubscriptionEntitlement = .loading
-    @Published private(set) var product: Product?
+    @Published private(set) var product: SubscriptionProductInfo?
     @Published private(set) var isWorking = false
     @Published private(set) var purchaseIsPending = false
     @Published var errorMessage: String?
 
-    var hasPremiumAccess: Bool { entitlement.hasPremiumAccess }
-    var displayPrice: String { product?.displayPrice ?? "$6.99" }
+    var hasPremiumAccess: Bool { entitlement.grantsAccess(at: now()) }
+    var displayPrice: String { product?.displayPrice ?? "Price unavailable" }
+    var trialDescription: String? { product?.trialDescription }
+    var offerDescription: String {
+        if let trialDescription { return "Start with a \(trialDescription), then \(displayPrice) per month." }
+        return product == nil ? "Premium pricing is currently unavailable." : "\(displayPrice) per month."
+    }
     var isPurchaseLaunchEnabled: Bool { product != nil }
 
-    var trialDescription: String? {
-        guard let offer = product?.subscription?.introductoryOffer else { return nil }
-        let period = offer.period
-        guard offer.paymentMode == .freeTrial else { return nil }
-        return "\(period.value)-\(period.unit.displayName) free trial"
-    }
-
+    // The provider refreshes authentication without retaining credentials here.
+    var tokenProvider: ((UUID, Bool) async throws -> String)?
     private let backend: SubscriptionBackendServing
+    private let storeKit: StoreKitServing
+    private let now: () -> Date
+    private let queueURL: URL
+    private struct Pending: Codable { let userID: UUID; let transaction: VerifiedSubscriptionTransaction }
+    private var pending: [Pending] = []
     private var userID: UUID?
     private var accessToken: String?
-    private var transactionListener: Task<Void, Never>?
-    private var didStart = false
+    private var generation = UUID()
+    private var listener: Task<Void, Never>?
+    private var expiryTask: Task<Void, Never>?
 
-    init(backend: SubscriptionBackendServing? = nil) {
+    init(backend: SubscriptionBackendServing? = nil, storeKit: StoreKitServing? = nil,
+         queueURL: URL? = nil, now: @escaping () -> Date = { .now }) {
         self.backend = backend ?? SubscriptionBackendClient()
+        self.storeKit = storeKit ?? StoreKitClient()
+        self.now = now
+        self.queueURL = queueURL ?? URL.applicationSupportDirectory.appending(path: "PendingPremiumTransactions.json")
+        if let data = try? Data(contentsOf: self.queueURL), let saved = try? JSONDecoder().decode([Pending].self, from: data) {
+            pending = saved
+        }
     }
 
-    deinit {
-        transactionListener?.cancel()
-    }
+    deinit { listener?.cancel(); expiryTask?.cancel() }
 
     func configure(userID: String, accessToken: String) async {
-        guard let accountToken = UUID(uuidString: userID) else {
-            entitlement = SubscriptionEntitlement(
-                phase: .error,
-                message: SubscriptionStoreError.invalidAccountIdentifier.localizedDescription
-            )
+        guard let id = UUID(uuidString: userID) else {
+            clearAccount()
+            entitlement = SubscriptionEntitlement(phase: .error, message: SubscriptionStoreError.invalidAccountIdentifier.localizedDescription)
             return
         }
-
-        let accountChanged = self.userID != accountToken
-        self.userID = accountToken
+        if self.userID != id {
+            generation = UUID()
+            if self.userID != id {
+                entitlement = .loading
+                purchaseIsPending = false
+                isWorking = false
+                errorMessage = nil
+            }
+        }
+        self.userID = id
         self.accessToken = accessToken
-
         if AppLaunchEnvironment.usesSignedInUITestAccount {
-            entitlement = SubscriptionEntitlement(
-                phase: .active,
-                productID: Self.premiumMonthlyProductID,
-                expirationDate: .distantFuture,
-                willAutoRenew: false,
-                environment: "AppReview",
-                message: nil
-            )
-            product = nil
-            errorMessage = nil
+            entitlement = SubscriptionEntitlement(phase: .active, expirationDate: .distantFuture, environment: "AppReview")
             return
         }
-        if AppLaunchEnvironment.usesFreeUITestAccount {
+        if AppLaunchEnvironment.usesFreeUITestAccount || AppLaunchEnvironment.usesModeratorUITestAccount {
             entitlement = .notSubscribed
-            product = nil
-            errorMessage = nil
             return
         }
-        if accountChanged {
-            entitlement = .loading
-            purchaseIsPending = false
-            errorMessage = nil
-        }
-
-        startTransactionListenerIfNeeded()
-        await loadProductsIfNeeded()
+        startListener()
         await refresh()
     }
 
     func refresh() async {
-        if AppLaunchEnvironment.usesSignedInUITestAccount || AppLaunchEnvironment.usesFreeUITestAccount { return }
-        guard userID != nil, accessToken != nil else { return }
-        await refreshLocalEntitlement()
-        await refreshBackendEntitlement()
+        guard !AppLaunchEnvironment.isUITesting, let id = userID else { return }
+        let context = generation
+        do {
+            let loaded = try await storeKit.loadProduct()
+            guard generation == context else { return }
+            product = loaded
+            if loaded == nil { errorMessage = SubscriptionStoreError.productUnavailable.localizedDescription }
+        } catch { if generation == context { errorMessage = error.localizedDescription } }
+        guard generation == context else { return }
+        do {
+            let transactions = try await storeKit.currentTransactions()
+            guard generation == context else { return }
+            for value in transactions.sorted(by: { ($0.entitlement.verifiedAt ?? .distantPast) < ($1.entitlement.verifiedAt ?? .distantPast) }) {
+                await consume(value, user: id, context: context, allowRestore: false)
+            }
+        } catch { if generation == context { errorMessage = error.localizedDescription } }
+        guard generation == context else { return }
+        for item in pending.filter({ $0.userID == id }) {
+            await reconcile(item.transaction, user: id, context: context)
+        }
+        await fetchRemote(user: id, context: context)
+        if generation == context {
+            entitlement = entitlement.evaluated(at: now())
+            if entitlement.phase == .loading { entitlement = .notSubscribed }
+            scheduleExpiry()
+        }
     }
 
     func purchase() async -> SubscriptionPurchaseOutcome? {
-        guard isPurchaseLaunchEnabled else {
-            set(error: SubscriptionStoreError.productUnavailable, updateEntitlement: false)
-            return nil
-        }
-        guard let product else {
-            set(error: SubscriptionStoreError.productUnavailable)
-            return nil
-        }
-        guard let userID else {
-            set(error: SubscriptionStoreError.accountUnavailable)
-            return nil
-        }
-
-        isWorking = true
-        errorMessage = nil
-        defer { isWorking = false }
-
+        guard !isWorking, !purchaseIsPending else { return nil }
+        guard let id = userID else { fail(SubscriptionStoreError.accountUnavailable); return nil }
+        guard product != nil else { fail(SubscriptionStoreError.productUnavailable); return nil }
+        let context = generation
+        isWorking = true; errorMessage = nil
+        defer { if generation == context { isWorking = false } }
         do {
-            let result = try await product.purchase(options: [.appAccountToken(userID)])
-            switch result {
-            case .success(let verification):
-                let transaction = try verified(verification)
-                apply(transaction: transaction, phase: .active)
-                await reconcile(transaction, signedTransaction: verification.jwsRepresentation)
-                await transaction.finish()
+            switch try await storeKit.purchase(accountToken: id) {
+            case .purchased(let value):
+                // Persist for the purchasing account even if it signed out while Apple's sheet was open.
+                guard value.accountToken == id else { throw SubscriptionStoreError.accountMismatch }
+                try enqueue(value, user: id)
+                await storeKit.finish(transactionID: value.id)
+                guard generation == context else { return nil }
+                await consume(value, user: id, context: context, allowRestore: false)
                 purchaseIsPending = false
-                await refresh()
                 return .purchased
             case .pending:
-                purchaseIsPending = true
-                return .pending
-            case .userCancelled:
-                return .cancelled
-            @unknown default:
-                return .cancelled
+                guard generation == context else { return nil }
+                purchaseIsPending = true; return .pending
+            case .cancelled: return generation == context ? .cancelled : nil
             }
-        } catch {
-            set(error: error)
-            return nil
-        }
+        } catch { if generation == context { fail(error) }; return nil }
     }
 
     func restorePurchases() async {
-        guard userID != nil else {
-            set(error: SubscriptionStoreError.accountUnavailable)
-            return
-        }
-
-        isWorking = true
-        errorMessage = nil
-        defer { isWorking = false }
-
+        guard !isWorking, let id = userID else { return }
+        let context = generation
+        isWorking = true; errorMessage = nil
+        defer { if generation == context { isWorking = false } }
         do {
-            try await AppStore.sync()
-            await refreshLocalEntitlement(reconcileTransactions: true)
-            await refreshBackendEntitlement()
-        } catch {
-            set(error: error)
-        }
+            try await storeKit.sync()
+            let values = try await storeKit.currentTransactions()
+            guard generation == context else { return }
+            for value in values { await consume(value, user: id, context: context, allowRestore: true) }
+            await fetchRemote(user: id, context: context)
+        } catch { if generation == context { fail(error) } }
     }
 
     func clearAccount() {
-        userID = nil
-        accessToken = nil
-        entitlement = .notSubscribed
-        purchaseIsPending = false
-        errorMessage = nil
+        generation = UUID(); userID = nil; accessToken = nil
+        entitlement = .notSubscribed; purchaseIsPending = false; isWorking = false; errorMessage = nil
+        expiryTask?.cancel()
     }
 
-    private func loadProductsIfNeeded() async {
-        guard product == nil else { return }
-        do {
-            product = try await Product.products(for: [Self.premiumMonthlyProductID]).first
-            if product == nil {
-                set(error: SubscriptionStoreError.productUnavailable, updateEntitlement: false)
-            }
-        } catch {
-            set(error: error, updateEntitlement: false)
-        }
+    func removePendingTransactions(for userID: String) {
+        pending.removeAll { $0.userID.uuidString.lowercased() == userID.lowercased() }
+        try? persistQueue()
     }
 
-    private func startTransactionListenerIfNeeded() {
-        guard !didStart else { return }
-        didStart = true
-        transactionListener = Task { [weak self] in
-            for await result in Transaction.updates {
-                guard !Task.isCancelled, let self else { return }
-                do {
-                    let transaction = try self.verified(result)
-                    guard transaction.productID == Self.premiumMonthlyProductID else {
-                        continue
-                    }
-                    await self.handle(transaction, signedTransaction: result.jwsRepresentation)
-                } catch {
-                    self.set(error: error)
+    private func startListener() {
+        guard listener == nil else { return }
+        listener = Task { [weak self, storeKit] in
+            for await result in storeKit.updates() {
+                guard let self, !Task.isCancelled else { return }
+                switch result {
+                case .success(let value):
+                    guard let id = self.userID else { continue }
+                    await self.consume(value, user: id, context: self.generation, allowRestore: false)
+                case .failure(let error): self.fail(error)
                 }
             }
         }
     }
 
-    private func handle(_ transaction: Transaction, signedTransaction: String) async {
-        guard transaction.appAccountToken == userID else {
-            set(error: SubscriptionStoreError.accountMismatch)
-            return
+    private func consume(_ value: VerifiedSubscriptionTransaction, user: UUID, context: UUID, allowRestore: Bool) async {
+        guard generation == context, value.productID == Self.premiumMonthlyProductID else { return }
+        if value.accountToken == user {
+            accept(value.entitlement)
+        } else if !allowRestore {
+            return // Never grant local access for another app account.
         }
-
-        apply(transaction: transaction, phase: localPhase(for: transaction))
-        await reconcile(transaction, signedTransaction: signedTransaction)
-        await transaction.finish()
-        purchaseIsPending = false
-        await refreshBackendEntitlement()
+        do { try enqueue(value, user: user) }
+        catch { fail(error); return } // Leave unfinished transactions for StoreKit redelivery.
+        await reconcile(value, user: user, context: context)
+        await storeKit.finish(transactionID: value.id)
+        if generation == context { purchaseIsPending = false }
     }
 
-    private func refreshLocalEntitlement(reconcileTransactions: Bool = true) async {
-        guard let userID else { return }
-        var matchedTransaction: Transaction?
-
-        for await result in Transaction.currentEntitlements {
-            guard let transaction = try? verified(result),
-                  transaction.productID == Self.premiumMonthlyProductID else { continue }
-
-            guard transaction.appAccountToken == userID else {
-                set(error: SubscriptionStoreError.accountMismatch)
-                continue
-            }
-            matchedTransaction = transaction
-            apply(transaction: transaction, phase: localPhase(for: transaction))
-            if reconcileTransactions {
-                await reconcile(transaction, signedTransaction: result.jwsRepresentation)
-            }
+    private func authenticated<T>(user: UUID, operation: (String) async throws -> T) async throws -> T {
+        let token = try await tokenProvider?(user, false) ?? accessToken
+        guard let token, userID == user else { throw SubscriptionStoreError.accountUnavailable }
+        do { return try await operation(token) }
+        catch SubscriptionStoreError.authenticationRequired {
+            guard let provider = tokenProvider else { throw SubscriptionStoreError.authenticationRequired }
+            let fresh = try await provider(user, true)
+            guard userID == user else { throw SubscriptionStoreError.accountUnavailable }
+            return try await operation(fresh)
         }
-
-        if matchedTransaction == nil, entitlement.phase == .loading {
-            entitlement = .notSubscribed
-        }
-
-        await applySubscriptionStatusIfAvailable()
     }
 
-    private func applySubscriptionStatusIfAvailable() async {
-        guard let product, let statuses = try? await product.subscription?.status else { return }
-        guard let status = statuses.first else { return }
-
-        let renewalInfo = try? verified(status.renewalInfo)
-        let transaction = try? verified(status.transaction)
-        guard transaction?.appAccountToken == userID else { return }
-
-        let phase: SubscriptionEntitlementPhase
-        switch status.state {
-        case .subscribed:
-            phase = .active
-        case .inGracePeriod:
-            phase = .gracePeriod
-        case .inBillingRetryPeriod:
-            phase = .billingRetry
-        case .expired, .revoked:
-            phase = .expired
-        default:
-            phase = .notSubscribed
-        }
-
-        entitlement = SubscriptionEntitlement(
-            phase: phase,
-            productID: transaction?.productID ?? Self.premiumMonthlyProductID,
-            expirationDate: transaction?.expirationDate,
-            willAutoRenew: renewalInfo?.willAutoRenew,
-            environment: transaction.map { String(describing: $0.environment).lowercased() },
-            message: nil
-        )
-    }
-
-    private func refreshBackendEntitlement() async {
-        guard let accessToken else { return }
+    private func fetchRemote(user: UUID, context: UUID) async {
+        guard generation == context else { return }
         do {
-            let remote = try await backend.fetchEntitlement(accessToken: accessToken)
-            if !entitlement.hasPremiumAccess || remote.hasPremiumAccess || remote.phase == .expired {
-                entitlement = remote
-            }
+            let remote = try await authenticated(user: user) { try await backend.fetchEntitlement(accessToken: $0) }
+            guard generation == context else { return }
+            accept(remote)
         } catch {
-            // A verified StoreKit entitlement remains usable offline. Surface sync
-            // errors without replacing valid local access.
-            errorMessage = "Premium status could not sync with your account. It will retry automatically."
-            if entitlement.phase == .loading {
-                entitlement = .notSubscribed
-            }
+            guard generation == context else { return }
+            entitlement = entitlement.evaluated(at: now())
+            if errorMessage == nil { errorMessage = "Premium status could not sync. It will retry when you reopen the app or Premium." }
         }
     }
 
-    private func reconcile(_ transaction: Transaction, signedTransaction: String) async {
-        guard let accessToken else { return }
+    private func reconcile(_ value: VerifiedSubscriptionTransaction, user: UUID, context: UUID) async {
+        guard generation == context else { return }
         do {
-            let remote = try await backend.reconcile(
-                signedTransaction: signedTransaction,
-                accessToken: accessToken
-            )
-            entitlement = remote
-            errorMessage = nil
+            let remote = try await authenticated(user: user) { try await backend.reconcile(signedTransaction: value.signedTransaction, accessToken: $0) }
+            guard generation == context else { return }
+            pending.removeAll { $0.userID == user && $0.transaction.id == value.id && $0.transaction.signedTransaction == value.signedTransaction }
+            try persistQueue()
+            accept(remote); errorMessage = nil
         } catch SubscriptionStoreError.accountMismatch {
-            set(error: SubscriptionStoreError.accountMismatch)
+            guard generation == context else { return }
+            pending.removeAll { $0.userID == user && $0.transaction.id == value.id }
+            try? persistQueue()
+            entitlement = .notSubscribed
+            fail(SubscriptionStoreError.accountMismatch)
         } catch {
-            errorMessage = "Your purchase is active on this device and will sync to your account when the connection returns."
+            guard generation == context else { return }
+            entitlement = entitlement.evaluated(at: now())
+            errorMessage = hasPremiumAccess ? "Your purchase is active here. Account synchronization will retry." : "Premium could not sync. Please try Restore Purchases again when connected."
         }
     }
 
-    private func apply(transaction: Transaction, phase: SubscriptionEntitlementPhase) {
-        entitlement = SubscriptionEntitlement(
-            phase: phase,
-            productID: transaction.productID,
-            expirationDate: transaction.expirationDate,
-            willAutoRenew: entitlement.willAutoRenew,
-            environment: String(describing: transaction.environment).lowercased(),
-            message: nil
-        )
+    private func accept(_ candidate: SubscriptionEntitlement) {
+        let evaluated = candidate.evaluated(at: now())
+        let isOverride = candidate.environment == "AppReview" || candidate.environment == "SupportOverride"
+        if !isOverride, let localDate = entitlement.verifiedAt,
+           (candidate.verifiedAt ?? .distantPast) < localDate { return }
+        if candidate.phase == .notSubscribed && entitlement.grantsAccess(at: now()),
+           entitlement.environment != "AppReview", entitlement.environment != "SupportOverride" { return }
+        entitlement = evaluated
+        scheduleExpiry()
     }
 
-    private func localPhase(for transaction: Transaction) -> SubscriptionEntitlementPhase {
-        if transaction.revocationDate != nil { return .expired }
-        if let expirationDate = transaction.expirationDate, expirationDate <= .now { return .expired }
-        return .active
+    private func enqueue(_ value: VerifiedSubscriptionTransaction, user: UUID) throws {
+        if let existing = pending.first(where: { $0.userID == user && $0.transaction.id == value.id }),
+           (existing.transaction.entitlement.verifiedAt ?? .distantPast) > (value.entitlement.verifiedAt ?? .distantPast) { return }
+        pending.removeAll { $0.userID == user && $0.transaction.id == value.id }
+        pending.append(Pending(userID: user, transaction: value))
+        try persistQueue()
     }
 
-    private func verified<T>(_ result: VerificationResult<T>) throws -> T {
-        switch result {
-        case .verified(let value):
-            return value
-        case .unverified:
-            throw SubscriptionStoreError.transactionUnverified
+    private func persistQueue() throws {
+        try FileManager.default.createDirectory(at: queueURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try JSONEncoder().encode(pending).write(to: queueURL, options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication])
+    }
+
+    private func scheduleExpiry() {
+        expiryTask?.cancel()
+        let deadline = entitlement.phase == .gracePeriod ? entitlement.gracePeriodExpirationDate : entitlement.expirationDate
+        guard let deadline, deadline > now() else { return }
+        let context = generation
+        let seconds = min(deadline.timeIntervalSince(now()), 86400)
+        expiryTask = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(seconds)) } catch { return }
+            guard let self, self.generation == context else { return }
+            self.entitlement = self.entitlement.evaluated(at: self.now())
+            self.scheduleExpiry()
         }
     }
 
-    private func set(error: Error, updateEntitlement: Bool = true) {
+    private func fail(_ error: Error) {
         errorMessage = error.localizedDescription
-        if updateEntitlement && !entitlement.hasPremiumAccess {
-            entitlement = SubscriptionEntitlement(phase: .error, message: error.localizedDescription)
-        }
-    }
-}
-
-private extension Product.SubscriptionPeriod.Unit {
-    var displayName: String {
-        switch self {
-        case .day: "day"
-        case .week: "week"
-        case .month: "month"
-        case .year: "year"
-        @unknown default: "period"
-        }
+        if !hasPremiumAccess { entitlement = SubscriptionEntitlement(phase: .error, message: error.localizedDescription) }
     }
 }

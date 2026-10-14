@@ -1,0 +1,9 @@
+# Privacy audit — October 4, 2026
+
+Public contact: admin@primarygouge.com (provided by owner). App-specific privacy, support, and terms pages are published on Shopify and publicly verified October 5, 2026; URLs are in Website/README.md. The store’s general policy is unchanged. The app manifest now declares all twelve types, with linked identity and no tracking. App Store Connect policy URL and version Support URL were saved and verified October 5, 2026. Public privacy and terms URLs were appended to the app description. Other Diagnostic Data was already configured. Other Data’s detailed linkage answer was corrected from No to Yes; refreshed preview now has only Data Linked to You. All twelve types use App Functionality; Other Data additionally uses Product Personalization. No tracking. Owner published the privacy disclosures October 5, 2026; App Store Connect confirms “Published ... by CJ Bolt”. Evidence: Evidence/app-privacy-published.png. Evidence: Evidence/app-privacy-current.png and Evidence/app-store-urls.png.
+
+Read-only production log checks confirmed retained edge records contain IP, city/country and timings. Last 24-hour aggregate: 175 edge logs and 6 function-edge logs contain each of these fields; 244 auth logs, 180 with timings. No raw personal field values were retrieved. The database auth.audit_log_entries table currently has zero rows; this does not negate retained platform logs.
+
+Disclose Coarse Location, Product Interaction, Performance Data and Other Diagnostic Data, in addition to the eight previously selected types. Purposes: App Functionality. Linked: Yes where IP/account/session metadata remain linkable. Tracking: No. Other Data Types also uses Product Personalization for syllabus selection.
+
+Earlier guidance to leave Coarse Location unchecked was incomplete: the native app requests no location permission, but its providers retain IP-derived location. Final public policy and privacy manifest must reflect this.

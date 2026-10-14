@@ -31,7 +31,7 @@ struct MoreTabView: View {
     }
 
     private var sections: [MoreHubSection] {
-        [
+        var sections = [
             MoreHubSection(
                 title: "Account",
                 color: MoreSectionColor.account,
@@ -59,36 +59,6 @@ struct MoreTabView: View {
                         badge: .premium,
                         accessRequirement: .premium,
                         destination: .quiz
-                    ),
-                    MoreHubItem(
-                        title: "TOLD Calculator",
-                        subtitle: "Field performance inputs and outputs",
-                        iconName: "function",
-                        accent: MoreSectionColor.studyTools,
-                        badge: .planned,
-                        destination: .placeholder(
-                            message: "The TOLD calculator is reserved for a future utility pass."
-                        )
-                    ),
-                    MoreHubItem(
-                        title: "Fuel Planning",
-                        subtitle: "Bingo, burn, and reserve helpers",
-                        iconName: "fuelpump.fill",
-                        accent: MoreSectionColor.studyTools,
-                        badge: .planned,
-                        destination: .placeholder(
-                            message: "Fuel planning tools will consolidate reserve math, route planning, and quick checks."
-                        )
-                    ),
-                    MoreHubItem(
-                        title: "Jet Log Helpers",
-                        subtitle: "Timing, legs, and planning aids",
-                        iconName: "checklist.checked",
-                        accent: MoreSectionColor.studyTools,
-                        badge: .planned,
-                        destination: .placeholder(
-                            message: "Jet log helpers will gather reusable planning shortcuts and reference calculators."
-                        )
                     ),
                     MoreHubItem(
                         title: "Flashcard Performance Stats",
@@ -208,6 +178,27 @@ struct MoreTabView: View {
                 ]
             )
         ]
+
+        if accountStore.hasPermission(.instructorGougeModerator) {
+            sections.insert(
+                MoreHubSection(
+                    title: "Moderation",
+                    color: AppTheme.statusColor(.pending),
+                    items: [
+                        MoreHubItem(
+                            title: "Moderation",
+                            subtitle: "Approve or deny submissions",
+                            iconName: "checkmark.shield.fill",
+                            accent: AppTheme.statusColor(.pending),
+                            destination: .moderation
+                        )
+                    ]
+                ),
+                at: sections.count - 1
+            )
+        }
+
+        return sections
     }
 
     private var isPremiumSubscribed: Bool {
@@ -277,6 +268,8 @@ struct MoreTabView: View {
             QuizHubView()
         case .myInstructorReviews:
             MoreMyInstructorReviewsView()
+        case .moderation:
+            ModerationQueueView()
         case .statsDashboard:
             MoreStatsDashboardView(snapshot: snapshot)
         case .recentBriefs:
@@ -359,6 +352,7 @@ private struct MoreHeroCard: View {
 }
 
 private struct MorePremiumPromoCard: View {
+    @EnvironmentObject private var subscriptionStore: SubscriptionStore
     let isSubscribed: Bool
 
     var body: some View {
@@ -367,7 +361,7 @@ private struct MorePremiumPromoCard: View {
                 MoreHeaderTextBlock(
                     eyebrow: "Premium",
                     title: isSubscribed ? "Premium Marked Active" : "Go Premium",
-                    subtitle: isSubscribed ? "See your Premium status and manage it here." : "Unlock the complete study library with a 7-day free trial.",
+                    subtitle: isSubscribed ? "See your Premium status and manage it here." : subscriptionStore.offerDescription,
                     accent: AppTheme.warning,
                     subtitleFont: .footnote
                 )
@@ -549,6 +543,13 @@ private struct MoreUtilityRow: View {
                 Text(item.title)
                     .font(.body.weight(.semibold))
                     .foregroundStyle(AppTheme.textPrimary)
+
+                if case .moderation = item.destination, let subtitle = item.subtitle {
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
 
             Spacer(minLength: 8)
@@ -1114,6 +1115,7 @@ private enum MoreHubDestination {
     case premium
     case quiz
     case myInstructorReviews
+    case moderation
     case statsDashboard
     case recentBriefs
     case recentFlashcardSets

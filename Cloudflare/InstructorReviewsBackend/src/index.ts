@@ -306,27 +306,28 @@ export default {
       }
 
       if (request.method === "GET" && path === "/v1/submissions/statuses") {
-        const user = await optionalAuthenticatedUser(env, request);
+        const user = await requireAuthenticatedUser(env, request);
         const clientID = user ? optionalSubmitterClientID(request) : requireSubmitterClientID(request);
         return json({ statuses: await fetchSubmissionStatuses(env, clientID, user?.id ?? null) });
       }
 
       if (request.method === "GET" && path === "/v1/reports/statuses") {
-        const user = await optionalAuthenticatedUser(env, request);
+        const user = await requireAuthenticatedUser(env, request);
         const clientID = user ? optionalSubmitterClientID(request) : requireSubmitterClientID(request);
         return json({ statuses: await fetchReportStatuses(env, clientID, user?.id ?? null) });
       }
 
       if (request.method === "GET" && path === "/v1/community/submissions/statuses") {
-        const user = await optionalAuthenticatedUser(env, request);
+        const user = await requireAuthenticatedUser(env, request);
         const clientID = user ? optionalSubmitterClientID(request) : requireSubmitterClientID(request);
         return json({ statuses: await fetchCommunitySubmissionStatuses(env, clientID, user?.id ?? null) });
       }
 
       if (request.method === "POST" && path === "/v1/submissions") {
-        const user = await optionalAuthenticatedUser(env, request);
+        const user = await requireAuthenticatedUser(env, request);
         const clientID = user ? optionalSubmitterClientID(request) : requireSubmitterClientID(request);
         const payload = (await request.json()) as ReviewRecord;
+        await requireCanSubmit(env, user.id);
         const created = await createSubmission(env, payload, clientID, user?.id ?? null);
         return json({ id: created.id }, 201);
       }
@@ -335,6 +336,7 @@ export default {
       if (request.method === "POST" && editOwnedReviewMatch) {
         const user = await requireAuthenticatedUser(env, request);
         const payload = (await request.json()) as ReviewRecord;
+        await requireCanSubmit(env, user.id);
         await submitReviewEdit(env, user.id, decodeURIComponent(editOwnedReviewMatch[1]), payload);
         return new Response(null, { status: 204 });
       }
@@ -347,17 +349,19 @@ export default {
       }
 
       if (request.method === "POST" && path === "/v1/reports") {
-        const user = await optionalAuthenticatedUser(env, request);
+        const user = await requireAuthenticatedUser(env, request);
         const clientID = user ? optionalSubmitterClientID(request) : requireSubmitterClientID(request);
         const payload = (await request.json()) as ReportRecord;
+        await requireCanSubmit(env, user.id);
         const created = await createReport(env, payload, clientID, user?.id ?? null);
         return json({ id: created.id }, 201);
       }
 
       if (request.method === "POST" && path === "/v1/community/submissions") {
-        const user = await optionalAuthenticatedUser(env, request);
+        const user = await requireAuthenticatedUser(env, request);
         const clientID = user ? optionalSubmitterClientID(request) : requireSubmitterClientID(request);
         const payload = (await request.json()) as CommunitySubmissionRecord;
+        if (payload.category !== "support") await requireCanSubmit(env, user.id);
         const created = await createCommunitySubmission(env, payload, clientID, user?.id ?? null);
         return json({ id: created.id }, 201);
       }
@@ -414,6 +418,28 @@ export default {
         return new Response(null, { status: 204 });
       }
 
+      const banReviewMatch = path.match(/^\/v1\/moderation\/(submissions|reviews)\/([^/]+)\/ban$/);
+      if (request.method === "POST" && banReviewMatch) {
+        await requireModeratorOrPermission(env, request);
+        const table = banReviewMatch[1] === "submissions" ? "review_submissions" : "instructor_reviews";
+        const row = await env.DB.prepare(`SELECT submitter_user_id AS userID FROM ${table} WHERE id = ?`)
+          .bind(decodeURIComponent(banReviewMatch[2])).first<{ userID: string | null }>();
+        if (!row?.userID) return errorResponse("This review has no account-linked contributor.", 400);
+        await setContributorBan(env, row.userID, true);
+        return new Response(null, { status: 204 });
+      }
+      if (request.method === "GET" && path === "/v1/moderation/bans") {
+        await requireModeratorOrPermission(env, request);
+        const rows = await env.DB.prepare("SELECT user_id AS id, reason, updated_at AS updatedAt FROM contributor_bans WHERE is_active = 1 ORDER BY updated_at DESC").all();
+        return json({ bans: rows.results ?? [] });
+      }
+      const unbanMatch = path.match(/^\/v1\/moderation\/bans\/([^/]+)$/);
+      if (request.method === "DELETE" && unbanMatch) {
+        await requireModeratorOrPermission(env, request);
+        await setContributorBan(env, decodeURIComponent(unbanMatch[1]), false);
+        return new Response(null, { status: 204 });
+      }
+
       return errorResponse("Not found.", 404);
     } catch (error) {
       console.error("worker_error", error);
@@ -448,6 +474,7 @@ async function fetchPublishedReviews(env: Env): Promise<ReviewRecord[]> {
       'public' AS visibilityState
     FROM instructor_reviews
     WHERE status = 'approved'
+      AND NOT EXISTS (SELECT 1 FROM contributor_bans b WHERE b.user_id = instructor_reviews.submitter_user_id AND b.is_active = 1)
     ORDER BY submitted_at DESC
   `).all<ReviewRecord>();
 
@@ -995,7 +1022,7 @@ async function refreshAppSession(env: Env, request: Request, refreshToken: strin
 }
 
 async function signOutAppSession(env: Env, request: Request): Promise<void> {
-  const user = await optionalAuthenticatedUser(env, request);
+  const user = await requireAuthenticatedUser(env, request);
   if (!user || user.source !== "cloudflare" || !user.sessionID) return;
   const now = nowISO();
   await env.DB.prepare(`
@@ -1222,6 +1249,7 @@ async function deleteAccount(env: Env, userID: string, appleAuthorizationCode?: 
     env.DB.prepare("DELETE FROM review_submissions WHERE submitter_user_id = ?").bind(userID),
     env.DB.prepare("DELETE FROM gouge_reports WHERE submitter_user_id = ?").bind(userID),
     env.DB.prepare("DELETE FROM community_submissions WHERE submitter_user_id = ?").bind(userID),
+    env.DB.prepare("DELETE FROM contributor_bans WHERE user_id = ?").bind(userID),
     env.DB.prepare("DELETE FROM user_roles WHERE user_id = ?").bind(userID),
     env.DB.prepare("DELETE FROM user_sessions WHERE user_id = ?").bind(userID),
     env.DB.prepare("DELETE FROM auth_email_codes WHERE user_id = ?").bind(userID),
@@ -1348,6 +1376,8 @@ async function approveSubmission(env: Env, id: string): Promise<void> {
   if (!submission) {
     throw httpError("The selected review could not be found.", 404);
   }
+  if (submission.submitterUserID) await requireCanSubmit(env, submission.submitterUserID);
+
 
   const now = nowISO();
   const metadata = reviewActionMetadata(submission.id);
@@ -2744,4 +2774,17 @@ function decodeBase64UrlToBytes(value: string): Uint8Array {
 function decodeBase64ToBytes(value: string): Uint8Array {
   const binary = atob(value.padEnd(Math.ceil(value.length / 4) * 4, "="));
   return Uint8Array.from(binary, (char) => char.charCodeAt(0));
+}
+
+async function requireCanSubmit(env: Env, userID: string): Promise<void> {
+  const ban = await env.DB.prepare("SELECT is_active AS active FROM contributor_bans WHERE user_id = ?")
+    .bind(userID).first<{ active: number }>();
+  if (ban?.active === 1) throw httpError("Your contribution access is suspended. Contact Support to appeal.", 403);
+}
+
+async function setContributorBan(env: Env, userID: string, active: boolean): Promise<void> {
+  await env.DB.prepare(`INSERT INTO contributor_bans (user_id, is_active, reason, updated_at)
+    VALUES (?, ?, 'Abusive content', ?) ON CONFLICT(user_id) DO UPDATE SET
+    is_active = excluded.is_active, reason = excluded.reason, updated_at = excluded.updated_at`)
+    .bind(userID, active ? 1 : 0, new Date().toISOString()).run();
 }

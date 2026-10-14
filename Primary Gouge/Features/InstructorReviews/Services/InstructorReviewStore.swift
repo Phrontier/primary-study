@@ -218,6 +218,23 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
         revision &+= 1
     }
 
+    func banContributor(reviewID: String, isSubmission: Bool) async throws {
+        _ = try await requireModerationSession()
+        try await remoteService.banContributor(reviewID: reviewID, isSubmission: isSubmission)
+        await syncIfPossible()
+    }
+
+    func fetchBannedContributors() async throws -> [BannedContributor] {
+        _ = try await requireModerationSession()
+        return try await remoteService.fetchBannedContributors()
+    }
+
+    func unbanContributor(id: String) async throws {
+        _ = try await requireModerationSession()
+        try await remoteService.unbanContributor(id: id)
+        await syncIfPossible()
+    }
+
     func setModeratorPermission(_ isAllowed: Bool) {
         guard hasModeratorPermission != isAllowed else { return }
         hasModeratorPermission = isAllowed
@@ -230,6 +247,9 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
     }
 
     func clearAccountScopedData() {
+        syncTask?.cancel()
+        syncCoordinator.invalidateAccount()
+        hasModeratorPermission = false
         localRepository.clearAccountScopedData()
         ModeratorSessionStore().clear()
         openCommunitySubmissions = []
@@ -254,11 +274,13 @@ final class InstructorReviewStore: ObservableObject, InstructorReviewRepository 
                 moderatorSession: nil,
                 canFetchModerationQueue: hasModeratorPermission
             )
+            try Task.checkCancellation()
             openCommunitySubmissions = summary.openCommunitySubmissions
             refreshModeratorState()
             syncStatus = makeSyncStatus(phase: .idle, lastSyncedAt: summary.syncedAt, errorMessage: nil)
             revision &+= 1
         } catch {
+            guard !Task.isCancelled else { return }
             if case InstructorReviewRepositoryError.remoteNotConfigured = error {
                 syncStatus = makeSyncStatus(phase: .offline, errorMessage: error.localizedDescription)
             } else if CloudflareBackendErrorClassifier.isConnectivityFailure(error) {

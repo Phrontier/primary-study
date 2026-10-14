@@ -296,11 +296,13 @@ final class StudyAppModel: ObservableObject {
     @Published private(set) var activeSyllabus: SyllabusTrack = .delta
 
     private let repository: ContentRepository
+    private let makeProgressStore: @MainActor () -> ProgressStore
     var progressStore: ProgressStore?
     var quizStore: QuizStore?
 
-    init(repository: ContentRepository, progressStore: ProgressStore? = nil) {
+    init(repository: ContentRepository, progressStore: ProgressStore? = nil, makeProgressStore: @escaping @MainActor () -> ProgressStore = { ProgressStore() }) {
         self.repository = repository
+        self.makeProgressStore = makeProgressStore
         self.progressStore = progressStore
         self.studyManifest = repository.loadManifest()
         self.quizBank = repository.loadQuizBank()
@@ -317,7 +319,7 @@ final class StudyAppModel: ObservableObject {
 
     func configure(quizStore: QuizStore? = nil) {
         if progressStore == nil {
-            progressStore = ProgressStore()
+            progressStore = makeProgressStore()
         }
         if let quizStore {
             self.quizStore = quizStore
@@ -334,6 +336,9 @@ final class StudyAppModel: ObservableObject {
     }
 
     func resetLocalAccountData() {
+        if progressStore == nil {
+            progressStore = makeProgressStore()
+        }
         progressStore?.resetLocalData()
         refreshSnapshot()
     }

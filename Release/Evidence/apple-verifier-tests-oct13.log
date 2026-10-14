@@ -1,0 +1,72 @@
+
+> test
+> node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# (node:36770) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# Subtest: Apple fixture chain and signed transaction validate
+ok 1 - Apple fixture chain and signed transaction validate
+  ---
+  duration_ms: 2.344667
+  type: 'test'
+  ...
+# {"request_id":"819f9f97-2420-49f7-b89d-15461d8bf551","kind":"transaction","category":"invalid_signed_data","verification_status":6}
+# {"request_id":"b185023b-318a-498e-a5fd-620c1a0d3bf2","kind":"transaction","category":"verification_unavailable","verification_status":2}
+# Subtest: tampering, foreign app, environment and untrusted roots fail closed
+ok 2 - tampering, foreign app, environment and untrusted roots fail closed
+  ---
+  duration_ms: 3.413
+  type: 'test'
+  ...
+# Subtest: expired fixture certificates are rejected
+ok 3 - expired fixture certificates are rejected
+  ---
+  duration_ms: 0.346834
+  type: 'test'
+  ...
+# Subtest: Xcode, malformed, missing chain and unsigned payloads rejected
+ok 4 - Xcode, malformed, missing chain and unsigned payloads rejected
+  ---
+  duration_ms: 0.153583
+  type: 'test'
+  ...
+# Subtest: service auth fails before verification
+ok 5 - service auth fails before verification
+  ---
+  duration_ms: 5.731792
+  type: 'test'
+  ...
+# Subtest: body and payload bounds; versioned successful response
+ok 6 - body and payload bounds; versioned successful response
+  ---
+  duration_ms: 2.991167
+  type: 'test'
+  ...
+# Subtest: invalid signature and transient verification errors are distinct
+ok 7 - invalid signature and transient verification errors are distinct
+  ---
+  duration_ms: 0.415125
+  type: 'test'
+  ...
+# Subtest: all certificate APIs required by Apple work in Node
+ok 8 - all certificate APIs required by Apple work in Node
+  ---
+  duration_ms: 0.391292
+  type: 'test'
+  ...
+# Subtest: Apple certificate cache reuses valid results and rechecks expired entries
+ok 9 - Apple certificate cache reuses valid results and rechecks expired entries
+  ---
+  duration_ms: 0.641458
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 204.366083

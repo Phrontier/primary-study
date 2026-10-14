@@ -1,6 +1,7 @@
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import "jsr:@supabase/functions-js@2.117.2/edge-runtime.d.ts";
 import {
   verifyNotification,
+  AppleVerificationError,
   verifyRenewalInfo,
   verifyTransaction,
 } from "../_shared/apple-store.ts";
@@ -15,7 +16,7 @@ function response(status = 200): Response {
   return new Response(null, { status, headers });
 }
 
-Deno.serve(async (request: Request) => {
+export async function handleNotificationRequest(request: Request, dependencies = { verifyNotification, verifyTransaction, verifyRenewalInfo, createAdminClient, persistTransaction }): Promise<Response> {
   if (request.method !== "POST") return response(405);
 
   try {
@@ -24,47 +25,44 @@ Deno.serve(async (request: Request) => {
       return response(400);
     }
 
-    const notification = await verifyNotification(body.signedPayload);
+    const notification = await dependencies.verifyNotification(body.signedPayload);
     if (!notification.notificationUUID || !notification.notificationType || !notification.signedDate) {
       return response(400);
     }
 
-    const admin = createAdminClient();
+    const admin = dependencies.createAdminClient();
     let transaction = null;
     let renewal = null;
     if (notification.data?.signedTransactionInfo) {
-      transaction = await verifyTransaction(notification.data.signedTransactionInfo);
+      transaction = await dependencies.verifyTransaction(notification.data.signedTransactionInfo);
     }
     if (notification.data?.signedRenewalInfo) {
-      renewal = await verifyRenewalInfo(notification.data.signedRenewalInfo);
+      renewal = await dependencies.verifyRenewalInfo(notification.data.signedRenewalInfo);
     }
 
-    if (transaction) {
-      await persistTransaction(admin, transaction, {
-        serverStatus: notification.data?.status,
-        willAutoRenew: renewal?.autoRenewStatus === 1,
-      });
+    if (renewal && transaction && renewal.originalTransactionId !== transaction.originalTransactionId) {
+      return response(400);
     }
-
-    // Record idempotency only after the entitlement update succeeds. If a
-    // database write fails, Apple receives a non-2xx response and can retry the
-    // complete operation instead of finding a prematurely recorded UUID.
-    const { error: notificationError } = await admin.from("app_store_notifications").insert({
-      notification_uuid: notification.notificationUUID,
-      notification_type: notification.notificationType,
-      subtype: notification.subtype ?? null,
-      original_transaction_id: transaction?.originalTransactionId ?? null,
-      environment: notification.data?.environment ?? transaction?.environment ?? null,
-      signed_at: new Date(notification.signedDate).toISOString(),
+    await dependencies.persistTransaction(admin, transaction, {
+      serverStatus: notification.data?.status,
+      willAutoRenew: renewal ? renewal.autoRenewStatus === 1 : undefined,
+      graceExpiresAt: renewal?.gracePeriodExpiresDate,
+      notification: {
+        notification_uuid: notification.notificationUUID,
+        notification_type: notification.notificationType,
+        subtype: notification.subtype ?? null,
+        environment: notification.data?.environment ?? transaction?.environment ?? null,
+        signed_at: new Date(notification.signedDate).toISOString(),
+      },
     });
-    if (notificationError?.code === "23505") return response(200);
-    if (notificationError) throw notificationError;
 
     return response(200);
   } catch (error) {
     // A non-2xx response tells Apple to retry. Never acknowledge an unverified
     // or partially persisted notification as successfully processed.
-    console.error("apple-subscription-notifications", error);
+    console.error(JSON.stringify({ operation: "apple-subscription-notifications", category: error instanceof AppleVerificationError ? error.category : "persistence_or_ownership" }));
     return response(400);
   }
-});
+}
+
+if (import.meta.main) Deno.serve((request) => handleNotificationRequest(request));

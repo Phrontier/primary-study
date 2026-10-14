@@ -316,4 +316,12 @@ Use:
 
 - `Tools/ImportInstructorGougeWorkbook.py`
 
+The importer also repairs the known legacy omissions in the source gouge files
+(including missing `st`, `wi`, and `mo` sequences). Run the importer regression
+test after changing the repair list:
+
+```bash
+python3 -m unittest Tools/test_import_instructor_gouge_workbook.py
+```
+
 `InstructorReviewSeedOverrides.json` is intended to survive reimports, so put your long-term manual cleanup there.

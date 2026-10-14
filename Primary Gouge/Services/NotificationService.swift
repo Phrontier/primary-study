@@ -10,6 +10,7 @@ final class NotificationService: ObservableObject {
     @Published private(set) var hasScheduledDailyReminder = false
 
     private let center: UNUserNotificationCenter
+    private var accountGeneration = 0
 
     init(center: UNUserNotificationCenter = .current()) {
         self.center = center
@@ -34,7 +35,9 @@ final class NotificationService: ObservableObject {
     }
 
     func syncDailyStudyReminder(with preferences: HomePreferencesRecord) async {
+        let generation = accountGeneration
         await refreshStatus()
+        guard generation == accountGeneration else { return }
 
         guard preferences.dailyReminderEnabled else {
             await removeDailyStudyReminder()
@@ -63,17 +66,29 @@ final class NotificationService: ObservableObject {
         )
 
         await removePendingRequests(for: [Self.dailyReminderIdentifier])
+        guard generation == accountGeneration else { return }
         await withCheckedContinuation { continuation in
             center.add(request) { _ in
                 continuation.resume()
             }
         }
+        guard generation == accountGeneration else {
+            center.removePendingNotificationRequests(withIdentifiers: [Self.dailyReminderIdentifier])
+            return
+        }
         await refreshStatus()
     }
 
     func removeDailyStudyReminder() async {
-        await removePendingRequests(for: [Self.dailyReminderIdentifier])
+        clearAccountReminders()
         await refreshStatus()
+    }
+
+    func clearAccountReminders() {
+        accountGeneration += 1
+        center.removePendingNotificationRequests(withIdentifiers: [Self.dailyReminderIdentifier])
+        center.removeDeliveredNotifications(withIdentifiers: [Self.dailyReminderIdentifier])
+        hasScheduledDailyReminder = false
     }
 
     private func removePendingRequests(for identifiers: [String]) async {

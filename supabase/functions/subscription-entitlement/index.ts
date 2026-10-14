@@ -1,5 +1,5 @@
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { verifyTransaction } from "../_shared/apple-store.ts";
+import "jsr:@supabase/functions-js@2.117.2/edge-runtime.d.ts";
+import { verifyTransaction, AppleVerificationError } from "../_shared/apple-store.ts";
 import {
   createAdminClient,
   createUserClient,
@@ -13,7 +13,7 @@ function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), { status, headers });
 }
 
-Deno.serve(async (request: Request) => {
+export async function handleSubscriptionRequest(request: Request, dependencies = { verifyTransaction, createAdminClient, createUserClient, entitlementForUser, persistTransaction }): Promise<Response> {
   if (request.method === "OPTIONS") return new Response(null, { status: 204 });
   if (request.method !== "GET" && request.method !== "POST") {
     return json({ error: "Method not allowed." }, 405);
@@ -25,13 +25,16 @@ Deno.serve(async (request: Request) => {
   }
 
   try {
-    const userClient = createUserClient(authorization);
-    const { data, error } = await userClient.auth.getUser();
-    if (error || !data.user) return json({ error: "Sign-in is required." }, 401);
+    const userClient = dependencies.createUserClient(authorization);
+    const { data, error } = await userClient.auth.getUser(authorization.slice(7));
+    if (error || !data.user) {
+      console.warn(JSON.stringify({ operation: "subscription-entitlement", category: "authentication", code: error?.code ?? "missing_user", status: error?.status }));
+      return json({ error: "Sign-in is required." }, 401);
+    }
 
-    const admin = createAdminClient();
+    const admin = dependencies.createAdminClient();
     if (request.method === "GET") {
-      return json(await entitlementForUser(admin, data.user.id));
+      return json(await dependencies.entitlementForUser(admin, data.user.id));
     }
 
     const body = await request.json().catch(() => null) as { signed_transaction?: unknown } | null;
@@ -39,51 +42,20 @@ Deno.serve(async (request: Request) => {
       return json({ error: "A signed App Store transaction is required." }, 400);
     }
 
-    const transaction = await verifyTransaction(body.signed_transaction);
+    const transaction = await dependencies.verifyTransaction(body.signed_transaction);
     if (!transaction.originalTransactionId) {
       return json({ error: "The App Store transaction is incomplete." }, 400);
     }
 
-    const { data: existing, error: existingError } = await admin
-      .from("app_store_transactions")
-      .select("user_id,app_account_token")
-      .eq("original_transaction_id", transaction.originalTransactionId)
-      .maybeSingle();
-    if (existingError) throw existingError;
-
-    if (existing?.user_id && existing.user_id !== data.user.id) {
-      return json({
-        code: "account_mismatch",
-        message: "This subscription is linked to another Primary Gouge account.",
-      }, 409);
-    }
-
-    // New purchases must carry this account's token. If an account was deleted,
-    // its retained transaction has no owner and a verified restore may claim it.
-    if (!existing && transaction.appAccountToken?.toLowerCase() !== data.user.id.toLowerCase()) {
-      return json({
-        code: "account_mismatch",
-        message: "This purchase was not created for the signed-in Primary Gouge account.",
-      }, 409);
-    }
-
-    if (existing && !existing.user_id && existing.app_account_token?.toLowerCase() !== data.user.id.toLowerCase()) {
-      const { data: originalOwner, error: ownerLookupError } = await admin.auth.admin.getUserById(existing.app_account_token);
-      if (ownerLookupError && ownerLookupError.status !== 404) throw ownerLookupError;
-      if (originalOwner.user) {
-        return json({
-          code: "account_mismatch",
-          message: "This subscription belongs to another active Primary Gouge account.",
-        }, 409);
-      }
-      // The original app account was deleted. Possession of the Apple-signed
-      // restored transaction allows the unowned purchase to be claimed again.
-    }
-
-    await persistTransaction(admin, transaction, { userID: data.user.id });
-    return json(await entitlementForUser(admin, data.user.id));
+    await dependencies.persistTransaction(admin, transaction, { userID: data.user.id });
+    return json(await dependencies.entitlementForUser(admin, data.user.id));
   } catch (error) {
-    console.error("subscription-entitlement", error);
+    if (error && typeof error === "object" && "message" in error && String(error.message).includes("account_mismatch")) {
+      return json({ code: "account_mismatch", message: "This subscription belongs to another Primary Gouge account." }, 409);
+    }
+    console.error(JSON.stringify({ operation: "subscription-entitlement", category: error instanceof AppleVerificationError ? error.category : "persistence_or_ownership", code: error && typeof error === "object" && "code" in error && /^[A-Z0-9_]{1,20}$/.test(String(error.code)) ? String(error.code) : undefined }));
     return json({ error: "Premium could not be verified with the App Store." }, 400);
   }
-});
+}
+
+if (import.meta.main) Deno.serve((request) => handleSubscriptionRequest(request));

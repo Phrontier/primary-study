@@ -1,0 +1,14 @@
+{
+  "name": "primary-gouge-apple-verifier",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-05-28",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "alias": {
+    "node-fetch": "./src/node-fetch.ts"
+  }
+}

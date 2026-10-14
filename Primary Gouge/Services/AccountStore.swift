@@ -33,8 +33,35 @@ actor CloudflareAuthenticationContext {
     static let shared = CloudflareAuthenticationContext()
 
     private var accessToken: String?
+    private var tokenProvider: ((String?, Bool) async throws -> String)?
+    private var revision = UUID()
+    private var accountID: String?
 
-    func update(accessToken: String?) {
+    func configureTokenProvider(_ provider: @escaping (String?, Bool) async throws -> String) { tokenProvider = provider }
+
+    func data(for request: URLRequest, session: URLSession) async throws -> (Data, URLResponse) {
+        guard let header = request.value(forHTTPHeaderField: "Authorization"),
+              header == accessToken.map({ "Bearer \($0)" }), let provider = tokenProvider else {
+            return try await session.data(for: request)
+        }
+        let context = revision
+        var authorized = request
+        authorized.setValue("Bearer \(try await provider(accountID, false))", forHTTPHeaderField: "Authorization")
+        guard context == revision else { throw AccountStoreError.missingSession }
+        var result = try await session.data(for: authorized)
+        guard context == revision else { throw AccountStoreError.missingSession }
+        if (result.1 as? HTTPURLResponse)?.statusCode == 401 {
+            authorized.setValue("Bearer \(try await provider(accountID, true))", forHTTPHeaderField: "Authorization")
+            guard context == revision else { throw AccountStoreError.missingSession }
+            result = try await session.data(for: authorized)
+            guard context == revision else { throw AccountStoreError.missingSession }
+        }
+        return result
+    }
+
+    func update(accessToken: String?, userID: String? = nil) {
+        if accessToken == nil || accountID != userID { revision = UUID() }
+        accountID = userID
         self.accessToken = accessToken
     }
 
@@ -56,11 +83,14 @@ final class AccountStore: ObservableObject {
     var profileComplete: Bool { profile?.profileComplete == true }
 
     var localDataResetHandler: (() -> Void)?
+    var accountDeletedHandler: ((String) -> Void)?
 
     private let keychainStore: AccountKeychainSessionStore
     private let remoteClient: SupabaseAccountRemoteClient
     private let accountLinkedDataClient: AccountLinkedDataDeleting
     private var didConfigure = false
+    private var sessionGeneration = UUID()
+    private var refreshTask: Task<AccountSession, Error>?
 
     init(
         keychainStore: AccountKeychainSessionStore? = nil,
@@ -75,19 +105,25 @@ final class AccountStore: ObservableObject {
     func configure() async {
         guard !didConfigure else { return }
         didConfigure = true
+        await CloudflareAuthenticationContext.shared.configureTokenProvider { [weak self] id, force in
+            guard let self else { throw AccountStoreError.missingSession }
+            return try await self.validAccessToken(for: id.flatMap(UUID.init(uuidString:)), forceRefresh: force)
+        }
 
         if AppLaunchEnvironment.usesSignedOutUITestAccount {
             clearLocalSession()
             return
         }
 
-        if AppLaunchEnvironment.usesSignedInUITestAccount || AppLaunchEnvironment.usesFreeUITestAccount {
+        if AppLaunchEnvironment.usesSignedInUITestAccount ||
+            AppLaunchEnvironment.usesFreeUITestAccount ||
+            AppLaunchEnvironment.usesModeratorUITestAccount {
             applySession(Self.uiTestSession)
             return
         }
 
         if let storedSession = keychainStore.load() {
-            applySession(storedSession)
+            applySession(storedSession, restoringCachedSession: true)
             await refreshCachedSessionIfPossible()
         } else {
             phase = .signedOut
@@ -152,9 +188,11 @@ final class AccountStore: ObservableObject {
     }
 
     func refreshProfile() async {
-        guard let accessToken = session?.accessToken else { return }
+        guard let id = session?.profile.id else { return }
         do {
+            let accessToken = try await validAccessToken()
             let profile = try await remoteClient.fetchProfile(accessToken: accessToken)
+            guard session?.profile.id == id else { return }
             updateCachedProfile(profile)
         } catch {
             errorMessage = error.localizedDescription
@@ -163,23 +201,40 @@ final class AccountStore: ObservableObject {
 
     func updateProfile(displayName: String?, squadronID: String, syllabusID: SyllabusTrack) async throws {
         try await perform {
-            let accessToken = try requireAccessToken()
+            let context = sessionGeneration
+            let accessToken = try await validAccessToken()
             let profile = try await remoteClient.updateProfile(
                 accessToken: accessToken,
                 displayName: displayName,
                 squadronID: squadronID,
                 syllabusID: syllabusID
             )
+            guard sessionGeneration == context else { throw AccountStoreError.missingSession }
             updateCachedProfile(profile)
         }
     }
 
-    func refreshSession() async throws {
-        guard let refreshToken = session?.refreshToken else {
+    func validAccessToken(for expectedUserID: UUID? = nil, forceRefresh: Bool = false) async throws -> String {
+        guard let session, expectedUserID == nil || UUID(uuidString: session.profile.id) == expectedUserID else {
             throw AccountStoreError.missingSession
         }
+        if forceRefresh || session.expiresAt <= Date.now.addingTimeInterval(60) {
+            try await refreshSession()
+        }
+        guard let current = self.session, current.profile.id == session.profile.id else { throw AccountStoreError.missingSession }
+        return current.accessToken
+    }
 
-        let refreshed = try await remoteClient.refresh(refreshToken: refreshToken)
+    func refreshSession() async throws {
+        guard let current = session else { throw AccountStoreError.missingSession }
+        let context = sessionGeneration
+        if refreshTask == nil {
+            refreshTask = Task { [remoteClient] in try await remoteClient.refresh(refreshToken: current.refreshToken) }
+        }
+        guard let task = refreshTask else { throw AccountStoreError.missingSession }
+        defer { if sessionGeneration == context { refreshTask = nil } }
+        let refreshed = try await task.value
+        guard sessionGeneration == context, session?.profile.id == current.profile.id else { throw AccountStoreError.missingSession }
         applySession(refreshed)
     }
 
@@ -196,12 +251,16 @@ final class AccountStore: ObservableObject {
 
     func deleteAccount(appleAuthorizationCode: String? = nil) async throws {
         try await perform {
-            let accessToken = try requireAccessToken()
+            let context = sessionGeneration
+            let accessToken = try await validAccessToken()
+            let deletingUserID = session?.profile.id
             // Delete account-linked user-generated content first. If this step
             // fails, the Supabase account remains available so the operation
             // can be retried instead of orphaning reviews or submissions.
             try await accountLinkedDataClient.deleteAccountData(accessToken: accessToken)
             try await remoteClient.deleteAccount(accessToken: accessToken, appleAuthorizationCode: appleAuthorizationCode)
+            if let deletingUserID { accountDeletedHandler?(deletingUserID) }
+            guard sessionGeneration == context else { return }
             localDataResetHandler?()
             clearLocalSession()
         }
@@ -240,12 +299,16 @@ final class AccountStore: ObservableObject {
         }
     }
 
-    private func applySession(_ session: AccountSession) {
+    private func applySession(_ session: AccountSession, restoringCachedSession: Bool = false) {
+        if self.session?.profile.id != session.profile.id {
+            sessionGeneration = UUID()
+            if !restoringCachedSession { localDataResetHandler?() }
+        }
         self.session = session
         self.phase = .signedIn
         keychainStore.save(session)
         Task {
-            await CloudflareAuthenticationContext.shared.update(accessToken: session.accessToken)
+            await CloudflareAuthenticationContext.shared.update(accessToken: session.accessToken, userID: session.profile.id)
         }
     }
 
@@ -256,6 +319,9 @@ final class AccountStore: ObservableObject {
     }
 
     private func clearLocalSession() {
+        sessionGeneration = UUID()
+        refreshTask?.cancel(); refreshTask = nil
+        localDataResetHandler?()
         session = nil
         phase = .signedOut
         keychainStore.clear()
@@ -284,7 +350,9 @@ final class AccountStore: ObservableObject {
                 authMethods: [.emailPassword],
                 squadronID: "vt-27",
                 syllabusID: .echo,
-                permissions: [],
+                permissions: AppLaunchEnvironment.usesModeratorUITestAccount
+                    ? [.instructorGougeModerator]
+                    : [],
                 profileComplete: true
             )
         )

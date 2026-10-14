@@ -6,6 +6,12 @@ struct ModerationQueueView: View {
     @EnvironmentObject private var accountStore: AccountStore
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @StateObject private var viewModel = ModerationQueueViewModel()
+    @State private var showingBanConfirmation = false
+    @State private var banTargetID = ""
+    @State private var banTargetIsSubmission = true
+    @State private var bans: [BannedContributor] = []
+    @State private var banError: String?
+
 
     var body: some View {
         AppScrollScreen(bottomPadding: 36) {
@@ -28,6 +34,26 @@ struct ModerationQueueView: View {
                 }
             }
 
+            if canModerate, !bans.isEmpty {
+                SectionContainer {
+                    Text("Blocked Contributors").font(.headline)
+                    ForEach(bans) { ban in
+                        HStack {
+                            Text("Contributor • \(ban.updatedAt.formatted(date: .abbreviated, time: .omitted))")
+                            Spacer()
+                            Button("Unblock") {
+                                Task {
+                                    do {
+                                        try await reviewStore.unbanContributor(id: ban.id)
+                                        bans = try await reviewStore.fetchBannedContributors()
+                                    } catch { banError = error.localizedDescription }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if let banError { Text(banError).foregroundStyle(AppTheme.danger) }
             if let message = activeErrorMessage {
                 Text(message)
                     .font(.footnote.weight(.semibold))
@@ -95,6 +121,22 @@ struct ModerationQueueView: View {
                     }
                 }
             }
+        }
+        .confirmationDialog("Block this contributor from submitting content?", isPresented: $showingBanConfirmation) {
+            Button("Block Contributor", role: .destructive) {
+                Task {
+                    do {
+                        try await reviewStore.banContributor(reviewID: banTargetID, isSubmission: banTargetIsSubmission)
+                        bans = try await reviewStore.fetchBannedContributors()
+                        viewModel.load(using: reviewStore)
+                    } catch { banError = error.localizedDescription }
+                }
+            }
+        }
+        .task {
+            guard canModerate, !AppLaunchEnvironment.isUITesting else { return }
+            do { bans = try await reviewStore.fetchBannedContributors() }
+            catch { banError = error.localizedDescription }
         }
         .detailNavigationChrome(title: "Moderation")
         .toolbar {
@@ -199,6 +241,9 @@ struct ModerationQueueView: View {
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
 
+                Button("Block Contributor", role: .destructive) {
+                    banTargetID = review.id; banTargetIsSubmission = true; showingBanConfirmation = true
+                }
                 HStack(spacing: 12) {
                     Button {
                         viewModel.reject(reviewID: review.id, using: reviewStore)
@@ -301,6 +346,9 @@ struct ModerationQueueView: View {
                     .disabled(viewModel.processingIDs.contains(report.id))
 
                     if let reviewID = report.reviewID {
+                        Button("Block Contributor", role: .destructive) {
+                            banTargetID = reviewID; banTargetIsSubmission = false; showingBanConfirmation = true
+                        }
                         Button {
                             viewModel.reject(reviewID: reviewID, using: reviewStore)
                         } label: {

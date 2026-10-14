@@ -12,6 +12,10 @@ enum AppLaunchEnvironment {
         isUITesting && arguments.contains("--ui-testing-signed-in")
     }
 
+    static var usesModeratorUITestAccount: Bool {
+        isUITesting && arguments.contains("--ui-testing-moderator")
+    }
+
     static var usesFreeUITestAccount: Bool {
         isUITesting && arguments.contains("--ui-testing-free-account")
     }
@@ -26,6 +30,7 @@ enum AppLaunchEnvironment {
 #else
     static let isUITesting = false
     static let usesSignedInUITestAccount = false
+    static let usesModeratorUITestAccount = false
     static let usesFreeUITestAccount = false
     static let usesSignedOutUITestAccount = false
     static let usesPasswordResetConfirmUITest = false

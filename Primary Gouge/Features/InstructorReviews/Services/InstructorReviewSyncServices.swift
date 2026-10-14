@@ -69,6 +69,12 @@ struct RemoteModerationQueueSnapshot: Hashable {
     let openCommunitySubmissions: [CommunitySubmissionModerationItem]
 }
 
+struct BannedContributor: Decodable, Identifiable {
+    let id: String
+    let reason: String
+    let updatedAt: Date
+}
+
 struct RemoteOwnedReviewSnapshot: Hashable {
     let reviews: [OwnedInstructorReview]
 }
@@ -91,6 +97,15 @@ protocol InstructorReviewRemoteService {
     func dismissReport(id: String, session: ModeratorSession?) async throws
     func resolveCommunitySubmission(id: String, session: ModeratorSession?) async throws
     func dismissCommunitySubmission(id: String, session: ModeratorSession?) async throws
+    func banContributor(reviewID: String, isSubmission: Bool) async throws
+    func fetchBannedContributors() async throws -> [BannedContributor]
+    func unbanContributor(id: String) async throws
+}
+
+extension InstructorReviewRemoteService {
+    func banContributor(reviewID: String, isSubmission: Bool) async throws { throw InstructorReviewRepositoryError.remoteNotConfigured }
+    func fetchBannedContributors() async throws -> [BannedContributor] { [] }
+    func unbanContributor(id: String) async throws { throw InstructorReviewRepositoryError.remoteNotConfigured }
 }
 
 struct InstructorReviewSyncSummary {
@@ -104,6 +119,14 @@ struct InstructorReviewSyncSummary {
 final class InstructorReviewSyncCoordinator {
     private let localRepository: LocalInstructorReviewRepository
     private let remoteService: InstructorReviewRemoteService
+    private var generation = UUID()
+
+    func invalidateAccount() { generation = UUID() }
+
+    private func checkContext(_ context: UUID) throws {
+        try Task.checkCancellation()
+        guard generation == context else { throw CancellationError() }
+    }
 
     init(localRepository: LocalInstructorReviewRepository, remoteService: InstructorReviewRemoteService) {
         self.localRepository = localRepository
@@ -111,9 +134,11 @@ final class InstructorReviewSyncCoordinator {
     }
 
     func sync(clientID: String, moderatorSession: ModeratorSession?, canFetchModerationQueue: Bool) async throws -> InstructorReviewSyncSummary {
+        let context = generation
         let syncedAt = Date()
 
         let published = try await remoteService.fetchPublishedReviews()
+        try checkContext(context)
         localRepository.upsertPublishedReviews(published, syncedAt: syncedAt)
 
         let queuedReviews = localRepository.fetchQueuedReviewUploads()
@@ -121,9 +146,11 @@ final class InstructorReviewSyncCoordinator {
         for review in queuedReviews {
             do {
                 let remoteID = try await remoteService.submitReview(review, clientID: clientID)
+                try checkContext(context)
                 localRepository.markReviewUploaded(localID: review.id, remoteID: remoteID, syncedAt: syncedAt)
                 uploadedReviewIDs.append(review.id)
             } catch {
+                try checkContext(context)
                 localRepository.markReviewUploadFailed(localID: review.id)
             }
         }
@@ -133,21 +160,26 @@ final class InstructorReviewSyncCoordinator {
         for report in queuedReports {
             do {
                 let remoteID = try await remoteService.submitReport(report, clientID: clientID)
+                try checkContext(context)
                 localRepository.markReportUploaded(localID: report.id, remoteID: remoteID, syncedAt: syncedAt)
                 uploadedReportIDs.append(report.id)
             } catch {
+                try checkContext(context)
                 localRepository.markReportUploadFailed(localID: report.id)
             }
         }
 
         let submissionStatuses = try await remoteService.fetchSubmissionStatuses(for: clientID)
+        try checkContext(context)
         localRepository.applySubmissionStatuses(submissionStatuses, syncedAt: syncedAt)
 
         let reportStatuses = try await remoteService.fetchReportStatuses(for: clientID)
+        try checkContext(context)
         localRepository.applyReportStatuses(reportStatuses, syncedAt: syncedAt)
 
         if moderatorSession != nil || canFetchModerationQueue {
             let queue = try await remoteService.fetchModerationQueue(session: moderatorSession)
+            try checkContext(context)
             localRepository.mergeModerationSnapshot(queue.pendingReviews, reports: queue.openReports, syncedAt: syncedAt)
             localRepository.setLastSuccessfulSync(at: syncedAt)
             return InstructorReviewSyncSummary(
@@ -632,6 +664,21 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
         try requireConfiguration().apiBaseURL.appending(path: path)
     }
 
+    func banContributor(reviewID: String, isSubmission: Bool) async throws {
+        let group = isSubmission ? "submissions" : "reviews"
+        try await sendNoContent(path: "moderation/\(group)/\(reviewID)/ban", method: "POST", body: Optional<Int>.none, bearerToken: nil)
+    }
+
+    func fetchBannedContributors() async throws -> [BannedContributor] {
+        struct Response: Decodable { let bans: [BannedContributor] }
+        let response: Response = try await send(path: "moderation/bans", method: "GET", body: Optional<Int>.none, bearerToken: nil)
+        return response.bans
+    }
+
+    func unbanContributor(id: String) async throws {
+        try await sendNoContent(path: "moderation/bans/\(id)", method: "DELETE", body: Optional<Int>.none, bearerToken: nil)
+    }
+
     private func send<T: Decodable, Body: Encodable>(
         path: String,
         method: String,
@@ -651,7 +698,7 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
             request.httpBody = try JSONEncoder.reviewEncoder.encode(body)
         }
 
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await CloudflareAuthenticationContext.shared.data(for: request, session: session)
         try validate(response: response, data: data)
         return try JSONDecoder.reviewDecoder.decode(T.self, from: data)
     }
@@ -675,7 +722,7 @@ final class CloudflareInstructorReviewRemoteService: InstructorReviewRemoteServi
             request.httpBody = try JSONEncoder.reviewEncoder.encode(body)
         }
 
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await CloudflareAuthenticationContext.shared.data(for: request, session: session)
         try validate(response: response, data: data)
     }
 

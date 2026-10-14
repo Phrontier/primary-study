@@ -1,0 +1,1 @@
+Public synthetic fixtures from Apple app-store-server-library-node v3.1.0, tests/unit-tests/jws_verification.test.ts and tests/resources/mock_signed_data/transactionInfo and certs/testCA.der. These are public synthetic certificates and a signed test transaction. Production trusts only src/apple-roots.ts.

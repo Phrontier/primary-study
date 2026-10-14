@@ -26,7 +26,7 @@ final class CloudflareAccountDataClient: AccountLinkedDataDeleting {
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
 
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await CloudflareAuthenticationContext.shared.data(for: request, session: session)
         guard let httpResponse = response as? HTTPURLResponse else {
             throw URLError(.badServerResponse)
         }

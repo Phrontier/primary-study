@@ -20,6 +20,8 @@ final class SubscriptionBackendClient: SubscriptionBackendServing {
         let expiresAt: Date?
         let willAutoRenew: Bool?
         let environment: String?
+        let graceExpiresAt: Date?
+        let verifiedAt: Date?
 
         enum CodingKeys: String, CodingKey {
             case status
@@ -27,6 +29,8 @@ final class SubscriptionBackendClient: SubscriptionBackendServing {
             case expiresAt = "expires_at"
             case willAutoRenew = "will_auto_renew"
             case environment
+            case graceExpiresAt = "grace_expires_at"
+            case verifiedAt = "last_verified_at"
         }
 
         var entitlement: SubscriptionEntitlement {
@@ -36,7 +40,9 @@ final class SubscriptionBackendClient: SubscriptionBackendServing {
                 expirationDate: expiresAt,
                 willAutoRenew: willAutoRenew,
                 environment: environment,
-                message: nil
+                message: nil,
+                gracePeriodExpirationDate: graceExpiresAt,
+                verifiedAt: verifiedAt
             )
         }
     }
@@ -92,6 +98,7 @@ final class SubscriptionBackendClient: SubscriptionBackendServing {
         }
 
         guard (200..<300).contains(httpResponse.statusCode) else {
+            if httpResponse.statusCode == 401 { throw SubscriptionStoreError.authenticationRequired }
             let error = try? JSONDecoder.reviewDecoder.decode(ErrorResponse.self, from: data)
             if error?.code == "account_mismatch" {
                 throw SubscriptionStoreError.accountMismatch

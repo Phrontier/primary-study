@@ -525,7 +525,7 @@ final class SupabaseAccountRemoteClient {
             request.httpBody = try JSONEncoder.reviewEncoder.encode(body)
         }
 
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await CloudflareAuthenticationContext.shared.data(for: request, session: session)
         try validate(response: response, data: data)
     }
 
@@ -563,12 +563,12 @@ final class SupabaseAccountRemoteClient {
             request.httpBody = try JSONEncoder.reviewEncoder.encode(body)
         }
 
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await CloudflareAuthenticationContext.shared.data(for: request, session: session)
         try validate(response: response, data: data)
     }
 
     private func send<T: Decodable>(_ request: URLRequest) async throws -> T {
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await CloudflareAuthenticationContext.shared.data(for: request, session: session)
         try validate(response: response, data: data)
         if data.isEmpty, T.self == EmptyResponse.self {
             return EmptyResponse() as! T

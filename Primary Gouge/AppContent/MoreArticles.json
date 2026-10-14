@@ -1,209 +1,231 @@
 {
-  "pages" : [
+  "pages": [
     {
-      "eyebrow" : "About",
-      "id" : "faq",
-      "sections" : [
+      "eyebrow": "About",
+      "id": "faq",
+      "sections": [
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Quiz Mode uses the local quiz bank that ships with the app. Your recent quiz history is stored on-device so the More tab can show recent sessions and weak areas."
           ],
-          "title" : "How Does Quiz Mode Work?"
+          "title": "How Does Quiz Mode Work?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "A signed-in Primary Gouge account is required. Sign in with Apple and verified email sign-in are supported, and profile setup lets you choose the squadron and syllabus defaults used by the app."
           ],
-          "title" : "Do I Need an Account?"
+          "title": "Do I Need an Account?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Every signed-in user can use Home, the NATOPS Question of the Day, the combined EPs / Limits / N/W/C flashcards, instructor gouge, Contacts ground school, FAM2101, and FAM2102. Premium and its 7-day introductory trial unlock the remaining events, libraries, videos, quizzes, progress statistics, and advanced study tools. Locked material stays visible so you can see what Premium includes."
           ],
-          "title" : "What Is Free and What Requires Premium?"
+          "title": "What Is Free and What Requires Premium?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Flashcard progress, review timing, pinned focus topics, reminders, recent briefs, and recent decks are stored locally on your device. The app uses that local history to power the More tab, Home, and deck review flow."
           ],
-          "title" : "What Is Stored on My Device?"
+          "title": "What Is Stored on My Device?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Recent Briefs and Recent Flashcard Sets are activity history, not permanent bookmarks. They update when you open resources and decks through the app."
           ],
-          "title" : "Are Recent Briefs and Recent Flashcard Sets Saved Collections?"
+          "title": "Are Recent Briefs and Recent Flashcard Sets Saved Collections?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Instructor reviews, review reports, feedback, feature requests, support requests, and incorrect gouge reports are sent when you submit them from the app."
           ],
-          "title" : "When Does the App Send My Submissions?"
+          "title": "When Does the App Send My Submissions?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Notifications are used for the daily study reminder after you allow permission."
           ],
-          "title" : "How Do Notifications Work?"
+          "title": "How Do Notifications Work?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Open More > Premium to see the current entitlement status, purchase Premium when available, restore purchases, or open Apple's subscription management. App Store billing and introductory-offer eligibility are controlled by Apple."
           ],
-          "title" : "How Do I Manage Premium?"
+          "title": "How Do I Manage Premium?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Use Support for app issues or help requests. Use Feedback for general thoughts, Request a Feature for product ideas, and Report Incorrect Gouge for content that looks wrong, outdated, or incomplete."
           ],
-          "title" : "Which Support Option Should I Use?"
+          "title": "Which Support Option Should I Use?"
         }
       ],
-      "summary" : "Quick answers about the current app behavior and More-tab tools.",
-      "title" : "FAQ"
+      "summary": "Quick answers about the current app behavior and More-tab tools.",
+      "title": "FAQ"
     },
     {
-      "eyebrow" : "Release Notes",
-      "id" : "changelog",
-      "sections" : [
+      "eyebrow": "Release Notes",
+      "id": "changelog",
+      "sections": [
         {
-          "bullets" : [
+          "bullets": [
             "Rebuilt More into a compact utility hub with grouped sections and faster scanning.",
             "Added live Profile, Settings, Notifications, Premium, Flashcard Performance Stats, Recent Briefs, and Recent Flashcard Sets.",
             "Added Feedback, Request a Feature, Support, and Report Incorrect Gouge flows.",
             "Added real FAQ, Changelog, Privacy, Terms, and Version pages.",
             "Added a user-owned instructor review management flow in More."
           ],
-          "paragraphs" : [
+          "paragraphs": [
             "This release turns More into a practical utility surface instead of a placeholder page."
           ],
-          "title" : "More Utility Release"
+          "title": "More Utility Release"
         }
       ],
-      "summary" : "A local release log for the current app build and future updates.",
-      "title" : "Changelog"
+      "summary": "A local release log for the current app build and future updates.",
+      "title": "Changelog"
     },
     {
-      "eyebrow" : "Privacy",
-      "id" : "privacy",
-      "sections" : [
+      "eyebrow": "Privacy",
+      "id": "privacy",
+      "sections": [
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Primary Gouge stores most study activity locally on your device. That includes flashcard progress, quiz history, recent study activity, pinned focus topics, and reminder preferences."
           ],
-          "title" : "What the App Stores Locally"
+          "title": "What the App Stores Locally"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "A Primary Gouge account is required to use the app. Account profile data can include your display name, email, selected squadron, selected syllabus, active sessions, and assigned permissions."
           ],
-          "title" : "Account Data"
+          "title": "Account Data"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "When you submit instructor reviews, instructor review reports, feedback, feature requests, support requests, or incorrect gouge reports, the app sends that submission data with your signed-in account."
           ],
-          "title" : "What the App Sends"
+          "title": "What the App Sends"
         },
         {
-          "paragraphs" : [
-            "Primary Gouge uses Supabase for account authentication and Premium entitlement records, Cloudflare for instructor reviews and community submissions, and Cloudflare R2 for video delivery.",
+          "paragraphs": [
+            "Primary Gouge uses Supabase for account authentication and Premium entitlement records, Cloudflare for instructor reviews, community submissions, and Apple purchase verification, and Cloudflare R2 for video delivery.",
             "When you purchase Premium, Apple processes the payment. Primary Gouge receives Apple-signed transaction identifiers, product and subscription status, expiration information, and an account-linking token. Primary Gouge does not receive your full payment-card details."
           ],
-          "title" : "Services and Subscriptions"
+          "title": "Services and Subscriptions"
         },
         {
-          "paragraphs" : [
-            "Local study data is used on the device until you clear it through the app's account or device lifecycle. Submitted reviews, reports, and community requests are retained in the app's local submission history while they are queued or available for status tracking, and account deletion requests removal of account-associated cloud records."
+          "title": "Technical Data and Preferences",
+          "paragraphs": [
+            "The app uses a persistent installation identifier to associate community submissions and status updates with this installation. Account, squadron, and syllabus preferences support account features and select the appropriate study content.",
+            "Our hosting and authentication providers retain technical logs, including request events, IP addresses, approximate city/country derived from IP addresses, request timings, and errors. These records support security, troubleshooting, and reliable service delivery. The app does not request GPS location access or use these records for advertising tracking."
+          ]
+        },
+        {
+          "paragraphs": [
+            "Local study data is used on the device until you clear it through the app's account or device lifecycle. Submitted reviews, reports, and community requests are retained in the app's local submission history while they are queued or available for status tracking, and account deletion requests removal of account-associated cloud records.",
+            "After account deletion, limited Apple transaction and notification records, including purchase identifiers and account-linking tokens, are retained to prevent duplicate ownership claims and support purchase restoration. The live account/profile association is removed; these retained purchase records are not all fully anonymized."
           ],
-          "title" : "How Long Is Data Kept?"
+          "title": "How Long Is Data Kept?"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Notification permission is used for the daily study reminder."
           ],
-          "title" : "Notifications"
+          "title": "Notifications"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "You can sign out or delete your account from More > Profile. Account deletion removes the cloud account, sessions, profile, account roles, Premium entitlement link, and account-associated submitted reviews, reports, and community submissions. The app also clears the local account session and local study progress caches after deletion.",
             "Deleting your Primary Gouge account does not cancel an App Store subscription. Cancel or manage the subscription through your Apple Account before deleting the app account if you do not want it to renew."
           ],
-          "title" : "Account Deletion"
+          "title": "Account Deletion"
         },
         {
-          "paragraphs" : [
+          "title": "Privacy Requests and Contact",
+          "paragraphs": [
+            "For privacy questions, support, or moderation appeals, email admin@primarygouge.com. You can delete your account in More > Profile.",
+            "Public privacy policy: https://primarygouge.com/pages/primary-gouge-app-privacy-policy"
+          ]
+        },
+        {
+          "paragraphs": [
             "This page reflects the current app behavior and should be updated as the product evolves."
           ],
-          "title" : "Updates"
+          "title": "Updates"
         }
       ],
-      "summary" : "A straightforward summary of the app’s current storage and submission behavior.",
-      "title" : "Privacy"
+      "summary": "A straightforward summary of the app’s current storage and submission behavior.",
+      "title": "Privacy"
     },
     {
-      "eyebrow" : "Terms",
-      "id" : "terms",
-      "sections" : [
+      "eyebrow": "Terms",
+      "id": "terms",
+      "sections": [
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Primary Gouge is a study utility. It is not an official training publication, not a substitute for governing source material, and not a guarantee that any gouge or user submission is complete or current."
           ],
-          "title" : "Use of the App"
+          "title": "Use of the App"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "You are responsible for checking official pubs, squadron guidance, and instructor direction before relying on study content or community-submitted gouge."
           ],
-          "title" : "Accuracy and Responsibility"
+          "title": "Accuracy and Responsibility"
         },
         {
-          "paragraphs" : [
-            "If you submit instructor reviews, reports, feedback, feature requests, support requests, or incorrect gouge reports, you are responsible for providing truthful, non-abusive, non-sensitive content. Submissions may be moderated and may be rejected or dismissed."
+          "paragraphs": [
+            "If you submit instructor reviews, reports, feedback, feature requests, support requests, or incorrect gouge reports, you are responsible for providing truthful, non-abusive, non-sensitive content. Submissions may be moderated and may be rejected or dismissed.",
+            "Moderators can remove abusive content and suspend contribution access. Suspended accounts can still contact Support to appeal and delete their account."
           ],
-          "title" : "Submission Standards"
+          "title": "Submission Standards"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Do not submit passwords, payment information, classified information, personal data about another person, or anything you are not authorized to share. Report incorrect study content with enough context for a moderator to identify the event, reference, or section."
           ],
-          "title" : "Information You Submit"
+          "title": "Information You Submit"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Access requires a signed-in account. The app supports Sign in with Apple and verified email sign-in."
           ],
-          "title" : "Account Access"
+          "title": "Account Access"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Premium Monthly is an automatically renewing subscription purchased through Apple. The displayed App Store price and introductory-offer eligibility control what you are charged. Payment is charged to your Apple Account, and the subscription renews unless cancelled at least 24 hours before the end of the current period.",
             "You can restore purchases or open Apple subscription management from the Premium screen. Premium access may continue during an Apple billing grace period and ends after expiration, revocation, or an unsuccessful billing-retry period.",
             "Home, the NATOPS Question of the Day, the combined EPs / Limits / N/W/C flashcards, instructor gouge, Contacts ground school, FAM2101, and FAM2102 remain available without Premium. Premium unlocks the rest of the event pipeline and advanced study library."
           ],
-          "title" : "Premium Subscription"
+          "title": "Premium Subscription"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Moderator features are hidden unless the account has instructor gouge moderator permission."
           ],
-          "title" : "Moderation Access"
+          "title": "Moderation Access"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "Features, content, network services, and Premium availability may change or be temporarily unavailable. The app may display locked, placeholder, or unavailable states while a feature or backend service is being updated."
           ],
-          "title" : "Availability and Changes"
+          "title": "Availability and Changes"
         },
         {
-          "paragraphs" : [
+          "paragraphs": [
             "These terms may be updated as the product, subscription benefits, billing, or distribution changes."
           ],
-          "title" : "Updates"
+          "title": "Updates"
+        },
+        {
+          "title": "License",
+          "paragraphs": [
+            "App downloads are licensed under Apple’s Standard End User License Agreement: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/."
+          ]
         }
       ],
-      "summary" : "A practical summary covering usage, submissions, and disclaimers.",
-      "title" : "Terms"
+      "summary": "A practical summary covering usage, submissions, and disclaimers.",
+      "title": "Terms"
     }
   ]
 }

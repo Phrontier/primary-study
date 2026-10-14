@@ -8,7 +8,8 @@
     "deploy": "wrangler deploy",
     "db:migrate:local": "wrangler d1 migrations apply DB --local",
     "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
-    "moderator:hash": "node ./scripts/hash-password.mjs"
+    "moderator:hash": "node ./scripts/hash-password.mjs",
+    "test": "node --test tests/*.test.mjs"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260524.0",

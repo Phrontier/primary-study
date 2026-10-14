@@ -1,0 +1,101 @@
+2026-10-13 20:07:32.711 xcodebuild[51666:33796108] [MT] IDEDistribution: -[IDEDistributionLogging _createLoggingBundleAtPath:]: Created bundle at path "/var/folders/0n/qkkxfzhs7c54r0fjm555kv5r0000gn/T/Primary Gouge_2026-10-13_20-07-32.710.xcdistributionlogs".
+2026-10-13 20:07:53.188 xcodebuild[51666:33796108] Starting upload
+2026-10-13 20:07:55.347 xcodebuild[51666:33796150] Progress 0%: Making copy of ‘Primary Gouge.ipa’…
+2026-10-13 20:07:55.347 xcodebuild[51666:33796150] Progress 0%: Making copy of ‘Primary Gouge.ipa’…
+2026-10-13 20:07:55.348 xcodebuild[51666:33796150] Progress 0%: Preparing to upload ‘Primary Gouge.ipa’…
+2026-10-13 20:07:56.353 xcodebuild[51666:33796150] Progress 0%: Requesting upload instructions from App Store Connect…
+2026-10-13 20:07:57.996 xcodebuild[51666:33796151] Progress 0%: Preparing file for upload to App Store Connect…
+2026-10-13 20:07:58.004 xcodebuild[51666:33796151] Progress 0%: Preparing file for upload to App Store Connect…
+2026-10-13 20:07:58.569 xcodebuild[51666:33796151] Progress 0%: Uploading to App Store Connect…
+2026-10-13 20:07:58.570 xcodebuild[51666:33796151] Progress 0%: Uploading to App Store Connect…
+2026-10-13 20:07:58.570 xcodebuild[51666:33796151] Progress 0%: Uploading to App Store Connect…
+2026-10-13 20:07:58.570 xcodebuild[51666:33796151] Progress 0%: 
+2026-10-13 20:07:58.958 xcodebuild[51666:33796151] Progress 81%: 
+2026-10-13 20:07:58.958 xcodebuild[51666:33796151] Progress 81%: 
+2026-10-13 20:07:59.558 xcodebuild[51666:33796151] Progress 83%: 
+2026-10-13 20:07:59.558 xcodebuild[51666:33796151] Progress 83%: 
+2026-10-13 20:08:00.899 xcodebuild[51666:33796151] Progress 83%: 
+2026-10-13 20:08:00.899 xcodebuild[51666:33796151] Progress 83%: 
+2026-10-13 20:08:02.448 xcodebuild[51666:33796151] Progress 84%: 
+2026-10-13 20:08:02.448 xcodebuild[51666:33796151] Progress 84%: 
+2026-10-13 20:08:03.314 xcodebuild[51666:33797107] Progress 85%: 
+2026-10-13 20:08:03.314 xcodebuild[51666:33797107] Progress 85%: 
+2026-10-13 20:08:03.949 xcodebuild[51666:33797107] Progress 85%: 
+2026-10-13 20:08:03.950 xcodebuild[51666:33797107] Progress 85%: 
+2026-10-13 20:08:04.532 xcodebuild[51666:33797107] Progress 86%: 
+2026-10-13 20:08:04.532 xcodebuild[51666:33797107] Progress 86%: 
+2026-10-13 20:08:05.504 xcodebuild[51666:33797107] Progress 86%: 
+2026-10-13 20:08:05.504 xcodebuild[51666:33797107] Progress 86%: 
+2026-10-13 20:08:06.230 xcodebuild[51666:33797107] Progress 87%: 
+2026-10-13 20:08:06.231 xcodebuild[51666:33797107] Progress 87%: 
+2026-10-13 20:08:06.916 xcodebuild[51666:33797107] Progress 87%: 
+2026-10-13 20:08:06.916 xcodebuild[51666:33797107] Progress 87%: 
+2026-10-13 20:08:07.623 xcodebuild[51666:33797107] Progress 88%: 
+2026-10-13 20:08:07.623 xcodebuild[51666:33797107] Progress 88%: 
+2026-10-13 20:08:08.346 xcodebuild[51666:33797107] Progress 88%: 
+2026-10-13 20:08:08.347 xcodebuild[51666:33797107] Progress 88%: 
+2026-10-13 20:08:09.048 xcodebuild[51666:33796151] Progress 89%: 
+2026-10-13 20:08:09.049 xcodebuild[51666:33796151] Progress 89%: 
+2026-10-13 20:08:09.770 xcodebuild[51666:33796151] Progress 89%: 
+2026-10-13 20:08:09.770 xcodebuild[51666:33796151] Progress 89%: 
+2026-10-13 20:08:10.270 xcodebuild[51666:33796151] Progress 90%: 
+2026-10-13 20:08:10.270 xcodebuild[51666:33796151] Progress 90%: 
+2026-10-13 20:08:10.822 xcodebuild[51666:33796151] Progress 90%: 
+2026-10-13 20:08:10.822 xcodebuild[51666:33796151] Progress 90%: 
+2026-10-13 20:08:11.527 xcodebuild[51666:33796151] Progress 91%: 
+2026-10-13 20:08:11.527 xcodebuild[51666:33796151] Progress 91%: 
+2026-10-13 20:08:12.236 xcodebuild[51666:33796151] Progress 91%: 
+2026-10-13 20:08:12.236 xcodebuild[51666:33796151] Progress 91%: 
+2026-10-13 20:08:13.419 xcodebuild[51666:33796151] Progress 92%: 
+2026-10-13 20:08:13.419 xcodebuild[51666:33796151] Progress 92%: 
+2026-10-13 20:08:14.089 xcodebuild[51666:33796151] Progress 92%: 
+2026-10-13 20:08:14.090 xcodebuild[51666:33796151] Progress 92%: 
+2026-10-13 20:08:14.620 xcodebuild[51666:33796151] Progress 93%: 
+2026-10-13 20:08:14.621 xcodebuild[51666:33796151] Progress 93%: 
+2026-10-13 20:08:15.144 xcodebuild[51666:33796151] Progress 93%: 
+2026-10-13 20:08:15.144 xcodebuild[51666:33796151] Progress 93%: 
+2026-10-13 20:08:15.820 xcodebuild[51666:33797297] Progress 93%: 
+2026-10-13 20:08:15.820 xcodebuild[51666:33797297] Progress 93%: 
+2026-10-13 20:08:16.389 xcodebuild[51666:33797297] Progress 94%: 
+2026-10-13 20:08:16.389 xcodebuild[51666:33797297] Progress 94%: 
+2026-10-13 20:08:16.928 xcodebuild[51666:33797297] Progress 94%: 
+2026-10-13 20:08:16.928 xcodebuild[51666:33797297] Progress 94%: 
+2026-10-13 20:08:17.524 xcodebuild[51666:33797297] Progress 95%: 
+2026-10-13 20:08:17.525 xcodebuild[51666:33797297] Progress 95%: 
+2026-10-13 20:08:18.109 xcodebuild[51666:33797297] Progress 95%: 
+2026-10-13 20:08:18.109 xcodebuild[51666:33797297] Progress 95%: 
+2026-10-13 20:08:18.815 xcodebuild[51666:33797297] Progress 96%: 
+2026-10-13 20:08:18.815 xcodebuild[51666:33797297] Progress 96%: 
+2026-10-13 20:08:19.863 xcodebuild[51666:33797297] Progress 96%: 
+2026-10-13 20:08:19.864 xcodebuild[51666:33797297] Progress 96%: 
+2026-10-13 20:08:20.387 xcodebuild[51666:33797297] Progress 96%: 
+2026-10-13 20:08:20.387 xcodebuild[51666:33797297] Progress 96%: 
+2026-10-13 20:08:20.911 xcodebuild[51666:33797297] Progress 97%: 
+2026-10-13 20:08:20.911 xcodebuild[51666:33797297] Progress 97%: 
+2026-10-13 20:08:21.463 xcodebuild[51666:33797297] Progress 97%: 
+2026-10-13 20:08:21.463 xcodebuild[51666:33797297] Progress 97%: 
+2026-10-13 20:08:22.379 xcodebuild[51666:33797297] Progress 98%: 
+2026-10-13 20:08:22.379 xcodebuild[51666:33797297] Progress 98%: 
+2026-10-13 20:08:23.352 xcodebuild[51666:33797297] Progress 98%: 
+2026-10-13 20:08:23.352 xcodebuild[51666:33797297] Progress 98%: 
+2026-10-13 20:08:24.116 xcodebuild[51666:33797297] Progress 99%: 
+2026-10-13 20:08:24.116 xcodebuild[51666:33797297] Progress 99%: 
+2026-10-13 20:08:24.719 xcodebuild[51666:33797297] Progress 99%: 
+2026-10-13 20:08:24.719 xcodebuild[51666:33797297] Progress 99%: 
+2026-10-13 20:08:25.425 xcodebuild[51666:33797297] Progress 100%: 
+2026-10-13 20:08:25.425 xcodebuild[51666:33797297] Progress 100%: 
+2026-10-13 20:08:25.883 xcodebuild[51666:33797297] Progress 100%: 
+2026-10-13 20:08:25.883 xcodebuild[51666:33797297] Progress 100%: 
+2026-10-13 20:08:27.129 xcodebuild[51666:33797297] Progress 0%: 
+2026-10-13 20:08:27.129 xcodebuild[51666:33797297] Progress 0%: Getting upload status…
+2026-10-13 20:08:27.672 xcodebuild[51666:33797297] Progress 0%: Completing upload…
+2026-10-13 20:08:29.191 xcodebuild[51666:33797297] Progress 0%: Uploading “Primary Gouge.ipa” is complete.
+2026-10-13 20:08:29.191 xcodebuild[51666:33797297] Progress 0%: Uploading “Primary Gouge.ipa” is complete.
+2026-10-13 20:08:29.191 xcodebuild[51666:33797297] Progress 100%: Uploading “Primary Gouge.ipa” is complete.
+2026-10-13 20:08:29.192 xcodebuild[51666:33797297] Progress 100%: Uploading “Primary Gouge.ipa” is complete.
+2026-10-13 20:08:29.193 xcodebuild[51666:33797297] Progress 100%: Waiting for package to begin processing…
+2026-10-13 20:08:29.469 xcodebuild[51666:33797297] Progress 100%: Uploaded package is processing.
+2026-10-13 20:08:29.493 xcodebuild[51666:33797297] Progress 100%: Upload succeeded.
+Uploaded Primary Gouge
+** EXPORT SUCCEEDED **
+

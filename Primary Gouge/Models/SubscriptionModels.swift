@@ -17,12 +17,35 @@ struct SubscriptionEntitlement: Codable, Hashable {
     var willAutoRenew: Bool? = nil
     var environment: String? = nil
     var message: String? = nil
+    var gracePeriodExpirationDate: Date? = nil
+    var verifiedAt: Date? = nil
 
     static let loading = SubscriptionEntitlement(phase: .loading)
     static let notSubscribed = SubscriptionEntitlement(phase: .notSubscribed)
 
     var hasPremiumAccess: Bool {
-        phase == .active || phase == .gracePeriod
+        grantsAccess(at: .now)
+    }
+
+    func grantsAccess(at date: Date) -> Bool {
+        switch phase {
+        case .active:
+            if environment == "AppReview" || environment == "SupportOverride" {
+                return expirationDate.map { $0 > date } ?? true
+            }
+            return expirationDate.map { $0 > date } ?? false
+        case .gracePeriod:
+            return gracePeriodExpirationDate.map { $0 > date } ?? false
+        default:
+            return false
+        }
+    }
+
+    func evaluated(at date: Date) -> Self {
+        guard (phase == .active || phase == .gracePeriod), !grantsAccess(at: date) else { return self }
+        var result = self
+        result.phase = .expired
+        return result
     }
 }
 
@@ -38,6 +61,7 @@ enum SubscriptionStoreError: LocalizedError, Equatable {
     case productUnavailable
     case transactionUnverified
     case accountMismatch
+    case authenticationRequired
     case backendRejected(String)
 
     var errorDescription: String? {
@@ -52,6 +76,8 @@ enum SubscriptionStoreError: LocalizedError, Equatable {
             return "The App Store could not verify this transaction."
         case .accountMismatch:
             return "This subscription is linked to another Primary Gouge account. Sign in with the account that originally purchased Premium."
+        case .authenticationRequired:
+            return "Sign in again to synchronize Premium."
         case .backendRejected(let message):
             return message
         }

@@ -13,7 +13,7 @@ final class Primary_GougeUITestsLaunchTests: XCTestCase {
         app.launchArguments = ["--ui-testing", "--ui-testing-signed-in"]
         app.launch()
 
-        XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
+        XCTAssertTrue(app.buttons["Events"].firstMatch.waitForExistence(timeout: 15))
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = "Signed-in App Review Launch"
         attachment.lifetime = .keepAlways

@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-13",
+  "worker": "primary-gouge-apple-verifier",
+  "url": "https://primary-gouge-apple-verifier.tz4mz7ry42.workers.dev/verify",
+  "worker_code_version_before_secret_install": "cfd2a770-8655-4cf0-971a-b059f00cc7a5",
+  "subscription_function_version": 9,
+  "notification_function_version": 6,
+  "apple_library": "3.1.0",
+  "live_missing_credentials": 401,
+  "live_real_apple_chain_and_online_ocsp": "passed; reached invalid_signature rejection",
+  "live_intentionally_invalid_signature": 422,
+  "worker_tests_passed": 9,
+  "supabase_tests_passed": 11,
+  "typescript_checks": "passed",
+  "real_purchase_persistence": "pending owner restore retry after duplicated Authorization header correction",
+  "notes": "No user tokens, shared credentials or signed app transactions retained in this evidence. Tests use Apple's public fixtures. No entitlement fabricated."
+}

@@ -81,6 +81,8 @@ struct AccountSignInView: View {
             Spacer(minLength: 42)
 
             VStack(spacing: 12) {
+                authErrorText
+
                 appleButton
 
                 Button {
@@ -507,6 +509,16 @@ struct AccountSignInView: View {
     }
 
     private func friendlyAuthMessage(_ error: Error) -> String {
+        if let networkError = error as? URLError {
+            switch networkError.code {
+            case .cannotFindHost, .dnsLookupFailed, .cannotConnectToHost, .timedOut, .networkConnectionLost:
+                return "We couldn’t reach the sign-in service. Please try again shortly."
+            case .notConnectedToInternet:
+                return "You’re offline. Connect to the internet and try again."
+            default:
+                break
+            }
+        }
         if case AccountStoreError.requestFailed(let statusCode, let message) = error {
             return friendlyAuthMessage(statusCode: statusCode, message: message)
         }

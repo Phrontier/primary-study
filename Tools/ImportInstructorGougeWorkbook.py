@@ -209,6 +209,196 @@ def normalize_whitespace(value: str) -> str:
     return value.strip(" /")
 
 
+# The source gouge files contain a recurring legacy corruption where short
+# character sequences were dropped from otherwise ordinary words. Keep these
+# repairs explicit and limited to imported seed text; user submissions are not
+# passed through this function.
+INSTRUCTOR_REVIEW_WORD_REPAIRS = {
+    "alling": "stalling",
+    "almo": "almost",
+    "alst": "almost",
+    "andards": "standards",
+    "andard": "standard",
+    "arted": "started",
+    "arting": "starting",
+    "ating": "stating",
+    "augu": "august",
+    "ays": "stays",
+    "bigge": "biggest",
+    "cauic": "caustic",
+    "checkli": "checklist",
+    "conantly": "constantly",
+    "conructive": "constructive",
+    "comnly": "commonly",
+    "consient": "consistent",
+    "consiently": "consistently",
+    "demonrate": "demonstrate",
+    "denstrate": "demonstrate",
+    "digeible": "digestible",
+    "diract": "distract",
+    "diracted": "distracted",
+    "downnd": "downwind",
+    "ern": "stern",
+    "exi": "exist",
+    "fa": "fast",
+    "faer": "faster",
+    "fantaic": "fantastic",
+    "follong": "following",
+    "foremo": "foremost",
+    "hur": "humor",
+    "inead": "instead",
+    "ingy": "stingy",
+    "inruct": "instruct",
+    "inructed": "instructed",
+    "inruction": "instruction",
+    "inructional": "instructional",
+    "inructive": "instructive",
+    "inructor": "instructor",
+    "inrument": "instrument",
+    "intere": "interest",
+    "intereed": "interested",
+    "knong": "knowing",
+    "laing": "lasting",
+    "la": "last",
+    "lien": "listen",
+    "liens": "listens",
+    "liening": "listening",
+    "ll": "will",
+    "lling": "willing",
+    "moly": "mostly",
+    "mery": "memory",
+    "miake": "mistake",
+    "mo": "most",
+    "neare": "nearest",
+    "ngman": "wingman",
+    "nonandard": "nonstandard",
+    "offng": "off-wing",
+    "onng": "on-wing",
+    "otherse": "otherwise",
+    "reved": "removed",
+    "reservi": "reservist",
+    "rning": "morning",
+    "queion": "question",
+    "raight": "straight",
+    "raightforward": "straightforward",
+    "reque": "request",
+    "reraint": "restraint",
+    "ress": "stress",
+    "ressful": "stressful",
+    "rict": "strict",
+    "rictly": "strictly",
+    "rike": "strike",
+    "ruggling": "struggling",
+    "sarcaic": "sarcastic",
+    "screng": "screwing",
+    "shong": "showing",
+    "southwe": "southwest",
+    "stch": "switch",
+    "stching": "switching",
+    "suggeing": "suggesting",
+    "suggeion": "suggestion",
+    "sugges": "suggests",
+    "syem": "system",
+    "syematic": "systematic",
+    "tce": "twice",
+    "toring": "motoring",
+    "torrow": "tomorrow",
+    "thdrawn": "withdrawn",
+    "thout": "without",
+    "tru": "trust",
+    "ttch": "twitch",
+    "udent": "student",
+    "udents": "students",
+    "udy": "study",
+    "uff": "stuff",
+    "underand": "understand",
+    "underanding": "understanding",
+    "upid": "stupid",
+    "upnd": "upwind",
+    "ving": "moving",
+    "wor": "worst",
+    "yle": "style",
+    "zard": "wizard",
+}
+
+
+def _preserve_word_case(original: str, replacement: str) -> str:
+    if original.isupper():
+        return replacement.upper()
+    if original[:1].isupper():
+        return replacement.capitalize()
+    return replacement
+
+
+def _preserve_fragment_case(original: str, replacement: str) -> str:
+    if original.isupper():
+        return replacement.upper()
+    if original[:1].isupper():
+        return replacement.capitalize()
+    return replacement
+
+
+def repair_instructor_review_text(value: str) -> str:
+    """Repair known legacy omissions in imported instructor-review text."""
+    value = normalize_whitespace(value)
+
+    for corrupted, repaired in {
+        "inructor": "instructor",
+        "inrument": "instrument",
+        "inruct": "instruct",
+        "inruction": "instruction",
+        "miake": "mistake",
+        "queion": "question",
+        "syem": "system",
+    }.items():
+        value = re.sub(
+            re.escape(corrupted),
+            lambda match: _preserve_fragment_case(match.group(0), repaired),
+            value,
+            flags=re.IGNORECASE,
+        )
+
+    value = re.sub(r"(?<![A-Za-z])udents\b", "students", value, flags=re.IGNORECASE)
+    value = re.sub(r"(?<![A-Za-z'])uds\b", "students", value, flags=re.IGNORECASE)
+    value = re.sub(r"(?<![A-Za-z])inn(?=\s+the\s+way)", "in", value, flags=re.IGNORECASE)
+    value = re.sub(r"\bhuh\s+mu\s+have\b", "huh must have", value, flags=re.IGNORECASE)
+    value = re.sub(r"\.\s+sh\s+I\s+would\b", ". Wish I would", value)
+    value = re.sub(r"(?<![A-Za-z'])\bre\s+teaches\b", "reteaches", value, flags=re.IGNORECASE)
+    value = re.sub(r"(?<![A-Za-z'])\bre\b(?!')", lambda match: _preserve_word_case(match.group(0), "more"), value, flags=re.IGNORECASE)
+
+    # These standalone fragments are unambiguous in the source corpus.
+    value = re.sub(r"(?<![A-Za-z'])\bth\b(?!')", lambda match: _preserve_word_case(match.group(0), "with"), value, flags=re.IGNORECASE)
+    value = re.sub(r"(?<![A-Za-z'])\bill\b(?!')", lambda match: _preserve_word_case(match.group(0), "still"), value, flags=re.IGNORECASE)
+    value = re.sub(r"(?<![A-Za-z'])\bfir\b(?!')", lambda match: _preserve_word_case(match.group(0), "first"), value, flags=re.IGNORECASE)
+    value = re.sub(r"(?<![A-Za-z'])\bju\b(?!')", lambda match: _preserve_word_case(match.group(0), "just"), value, flags=re.IGNORECASE)
+    value = re.sub(r"(?<![A-Za-z'])\bart\b(?!')", lambda match: _preserve_word_case(match.group(0), "start"), value, flags=re.IGNORECASE)
+
+    def repair_st(match: re.Match[str]) -> str:
+        prefix = value[:match.start()]
+        if re.search(r"\b(?:very|pretty|story)\s*$", prefix, re.IGNORECASE):
+            return _preserve_word_case(match.group(0), "short")
+        return _preserve_word_case(match.group(0), "most")
+
+    value = re.sub(r"(?<![A-Za-z'])\bst\b(?!')", repair_st, value, flags=re.IGNORECASE)
+    value = re.sub(r"\bthe\s+be\b", "the best", value, flags=re.IGNORECASE)
+
+    def repair_word(match: re.Match[str]) -> str:
+        original = match.group(0)
+        if (
+            original.lower() == "ll"
+            and ((match.start() > 0 and value[match.start() - 1] == "'") or (match.end() < len(value) and value[match.end()] == "'"))
+        ):
+            return original
+        replacement = INSTRUCTOR_REVIEW_WORD_REPAIRS.get(original.lower())
+        if replacement is None:
+            return original
+        return _preserve_word_case(original, replacement)
+
+    value = re.sub(r"[A-Za-z]+", repair_word, value)
+    value = value.replace("art-up", "start-up")
+    return value
+
+
 def sheet_rows(workbook_path: Path, sheet_name: str) -> list[tuple[int, dict[str, str]]]:
     with zipfile.ZipFile(workbook_path) as archive:
         strings = []
@@ -590,11 +780,12 @@ def parse_ip_reviews(workbook_path: Path) -> list[dict]:
         if not current:
             continue
 
-        review_text = normalize_whitespace(values.get("I", ""))
+        raw_review_text = normalize_whitespace(values.get("I", ""))
+        review_text = repair_instructor_review_text(raw_review_text)
         if len(review_text) < 60:
             continue
 
-        event_name = extract_event_name(values.get("H", "") or current["event"], review_text)
+        event_name = extract_event_name(values.get("H", "") or current["event"], raw_review_text)
         chill_label = normalize_whitespace(values.get("G", "") or current["chill"])
         reviews.append(
             {
@@ -603,8 +794,8 @@ def parse_ip_reviews(workbook_path: Path) -> list[dict]:
                 "instructorName": current["name"],
                 "eventName": event_name,
                 "eventKind": "flight",
-                "chillScore": chill_score_from_label(chill_label, review_text),
-                "gradingScore": grading_score_from_text(review_text),
+                "chillScore": chill_score_from_label(chill_label, raw_review_text),
+                "gradingScore": grading_score_from_text(raw_review_text),
                 "reviewText": review_text,
                 "sourceRow": row_number,
             }
@@ -653,11 +844,12 @@ def parse_sim_reviews(workbook_path: Path) -> list[dict]:
         if not current:
             continue
 
-        review_text = normalize_whitespace(values.get("E", ""))
+        raw_review_text = normalize_whitespace(values.get("E", ""))
+        review_text = repair_instructor_review_text(raw_review_text)
         if len(review_text) < 60:
             continue
 
-        event_name = extract_event_name("", review_text)
+        event_name = extract_event_name("", raw_review_text)
         chill_label = normalize_whitespace(values.get("D", "") or current["chill"])
         reviews.append(
             {
@@ -666,8 +858,8 @@ def parse_sim_reviews(workbook_path: Path) -> list[dict]:
                 "instructorName": current["name"],
                 "eventName": event_name,
                 "eventKind": "sim",
-                "chillScore": chill_score_from_label(chill_label, review_text),
-                "gradingScore": grading_score_from_text(review_text),
+                "chillScore": chill_score_from_label(chill_label, raw_review_text),
+                "gradingScore": grading_score_from_text(raw_review_text),
                 "reviewText": review_text,
                 "sourceRow": row_number,
             }
@@ -705,7 +897,8 @@ def parse_vt28_csv_reviews(
             event_name = extract_vt28_event_name(raw_event, " ".join(comments))
 
             for comment_index, comment in enumerate(comments, start=1):
-                review_text = normalize_whitespace(comment)
+                raw_review_text = normalize_whitespace(comment)
+                review_text = repair_instructor_review_text(raw_review_text)
                 if not review_text:
                     continue
 
@@ -719,8 +912,8 @@ def parse_vt28_csv_reviews(
                         "instructorName": normalized_name,
                         "eventName": event_name,
                         "eventKind": "flight",
-                        "chillScore": chill_score_from_label(chill_label, review_text),
-                        "gradingScore": grading_score_from_text(review_text),
+                        "chillScore": chill_score_from_label(chill_label, raw_review_text),
+                        "gradingScore": grading_score_from_text(raw_review_text),
                         "reviewText": review_text,
                     }
                 )
@@ -772,7 +965,7 @@ def parse_tw5_docx_reviews(
                 "eventKind": "sim",
                 "chillScore": chill_score_from_label(None, paragraph),
                 "gradingScore": grading_score_from_text(paragraph),
-                "reviewText": paragraph,
+                "reviewText": repair_instructor_review_text(paragraph),
             }
         )
 

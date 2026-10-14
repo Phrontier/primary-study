@@ -18,33 +18,24 @@ export function createAdminClient(): AdminClient {
   });
 }
 
-export function createUserClient(authorization: string): SupabaseClient {
+export function createUserClient(authorization: string, fetcher: typeof fetch = globalThis.fetch): SupabaseClient {
   const url = Deno.env.get("SUPABASE_URL");
   const publishableKey = Deno.env.get("SUPABASE_ANON_KEY");
   if (!url || !publishableKey) throw new Error("Supabase user environment is not configured.");
   return createClient(url, publishableKey, {
-    global: { headers: { authorization } },
+    global: { headers: { Authorization: authorization }, fetch: fetcher },
     auth: { persistSession: false, autoRefreshToken: false },
   });
 }
 
-export function publicEntitlement(row: Record<string, unknown> | null) {
-  if (!row) {
-    return {
-      status: "not_subscribed",
-      product_id: null,
-      expires_at: null,
-      will_auto_renew: null,
-      environment: null,
-    };
-  }
-  return {
-    status: row.status,
-    product_id: row.product_id,
-    expires_at: row.expires_at,
-    will_auto_renew: row.will_auto_renew,
-    environment: row.environment,
-  };
+export function publicEntitlement(row: Record<string, unknown> | null, now = Date.now()) {
+  if (!row) return { status: "not_subscribed", product_id: null, expires_at: null, grace_expires_at: null, last_verified_at: null, will_auto_renew: null, environment: null };
+  const deadline = row.status === "grace_period" ? row.grace_expires_at : row.expires_at;
+  const validDeadline = typeof deadline === "string" && Date.parse(deadline) > now;
+  const status = (row.status === "active" || row.status === "grace_period") && !validDeadline ? "expired" : row.status;
+  return { status, product_id: row.product_id, expires_at: row.expires_at,
+    grace_expires_at: row.grace_expires_at, last_verified_at: row.last_verified_at,
+    will_auto_renew: row.will_auto_renew, environment: row.environment };
 }
 
 export async function entitlementForUser(admin: AdminClient, userID: string) {
@@ -70,82 +61,44 @@ export async function entitlementForUser(admin: AdminClient, userID: string) {
 
   const { data, error } = await admin
     .from("subscription_entitlements")
-    .select("status,product_id,expires_at,will_auto_renew,environment")
+    .select("status,product_id,expires_at,grace_expires_at,last_verified_at,will_auto_renew,environment")
     .eq("user_id", userID)
     .maybeSingle();
   if (error) throw error;
   return publicEntitlement(data);
 }
 
-export async function persistTransaction(
-  admin: AdminClient,
-  transaction: JWSTransactionDecodedPayload,
-  options: { userID?: string | null; serverStatus?: number; willAutoRenew?: boolean | null },
-) {
-  const originalID = transaction.originalTransactionId;
-  const transactionID = transaction.transactionId;
-  if (!originalID || !transactionID || !transaction.purchaseDate || !transaction.signedDate) {
+export type SubscriptionNotification = {
+  notification_uuid: string; notification_type: string; subtype: string | null;
+  environment: string | null; signed_at: string;
+};
+
+export function transactionRecord(transaction: JWSTransactionDecodedPayload,
+  options: { serverStatus?: number; willAutoRenew?: boolean | null; graceExpiresAt?: number } = {}) {
+  if (!transaction.originalTransactionId || !transaction.transactionId || !transaction.purchaseDate || !transaction.signedDate) {
     throw new Error("Apple transaction is missing required identifiers or dates.");
   }
-  if (transaction.bundleId !== (Deno.env.get("APP_BUNDLE_ID") ?? "bolt.Primary-Gouge")) {
-    throw new Error("Apple transaction bundle ID does not match this app.");
+  if (transaction.bundleId !== (Deno.env.get("APP_BUNDLE_ID") ?? "bolt.Primary-Gouge") || transaction.productId !== premiumProductID) {
+    throw new Error("Unsupported Apple transaction.");
   }
-  if (transaction.productId !== premiumProductID) {
-    throw new Error("Apple transaction product is not supported.");
-  }
+  return { original_transaction_id: transaction.originalTransactionId,
+    latest_transaction_id: transaction.transactionId, app_account_token: transaction.appAccountToken ?? null,
+    product_id: transaction.productId, environment: normalizedEnvironment(transaction.environment as string | undefined),
+    status: entitlementStatus(transaction, options.serverStatus), purchased_at: isoDate(transaction.purchaseDate),
+    expires_at: isoDate(transaction.expiresDate), revoked_at: isoDate(transaction.revocationDate),
+    will_auto_renew: options.willAutoRenew ?? null, last_signed_at: isoDate(transaction.signedDate),
+    grace_expires_at: isoDate(options.graceExpiresAt) };
+}
 
-  const { data: existing, error: existingError } = await admin
-    .from("app_store_transactions")
-    .select("user_id,last_signed_at,will_auto_renew")
-    .eq("original_transaction_id", originalID)
-    .maybeSingle();
-  if (existingError) throw existingError;
-
-  const signedAt = isoDate(transaction.signedDate)!;
-  if (existing?.last_signed_at && new Date(existing.last_signed_at).getTime() > transaction.signedDate) {
-    return { originalID, userID: existing.user_id as string | null, ignoredAsStale: true };
-  }
-
-  const resolvedUserID = options.userID === undefined
-    ? (existing?.user_id as string | null ?? null)
-    : options.userID;
-  const status = entitlementStatus(transaction, options.serverStatus);
-  const willAutoRenew = options.willAutoRenew === undefined
-    ? (existing?.will_auto_renew as boolean | null ?? null)
-    : options.willAutoRenew;
-  const environment = normalizedEnvironment(transaction.environment as string | undefined);
-
-  const { error: transactionError } = await admin.from("app_store_transactions").upsert({
-    original_transaction_id: originalID,
-    latest_transaction_id: transactionID,
-    user_id: resolvedUserID,
-    app_account_token: transaction.appAccountToken ?? null,
-    product_id: transaction.productId,
-    environment,
-    status,
-    purchased_at: isoDate(transaction.purchaseDate),
-    expires_at: isoDate(transaction.expiresDate),
-    revoked_at: isoDate(transaction.revocationDate),
-    will_auto_renew: willAutoRenew,
-    last_signed_at: signedAt,
-  }, { onConflict: "original_transaction_id" });
-  if (transactionError) throw transactionError;
-
-  if (resolvedUserID) {
-    const { error: entitlementError } = await admin.from("subscription_entitlements").upsert({
-      user_id: resolvedUserID,
-      original_transaction_id: originalID,
-      product_id: transaction.productId,
-      status,
-      environment,
-      expires_at: isoDate(transaction.expiresDate),
-      will_auto_renew: willAutoRenew,
-      last_verified_at: signedAt,
-    }, { onConflict: "user_id" });
-    if (entitlementError) throw entitlementError;
-  }
-
-  return { originalID, userID: resolvedUserID, ignoredAsStale: false };
+export async function persistTransaction(admin: AdminClient, transaction: JWSTransactionDecodedPayload | null,
+  options: { userID?: string; serverStatus?: number; willAutoRenew?: boolean | null;
+    graceExpiresAt?: number; notification?: SubscriptionNotification } = {}) {
+  const { data, error } = await admin.rpc("persist_verified_subscription", {
+    p_transaction: transaction ? transactionRecord(transaction, options) : {},
+    p_user_id: options.userID ?? null, p_notification: options.notification ?? null,
+  });
+  if (error) throw error;
+  return data;
 }
 
 export type { JWSTransactionDecodedPayload } from "npm:@apple/app-store-server-library@3.1.0";

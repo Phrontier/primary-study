@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import AVFoundation
 
 enum VideoDownloadStatus: Equatable {
     case notDownloaded
@@ -20,6 +21,10 @@ protocol VideoDownloader {
 }
 
 struct URLSessionVideoDownloader: VideoDownloader {
+    let session: URLSession
+
+    init(session: URLSession = .shared) { self.session = session }
+
     func download(from remoteURL: URL, to destinationURL: URL, progress: @escaping (Double) async -> Void) async throws {
         let temporaryURL = destinationURL
             .deletingLastPathComponent()
@@ -33,7 +38,10 @@ struct URLSessionVideoDownloader: VideoDownloader {
         let fileHandle = try FileHandle(forWritingTo: temporaryURL)
 
         do {
-            let (bytes, response) = try await URLSession.shared.bytes(from: remoteURL)
+            let (bytes, response) = try await session.bytes(from: remoteURL)
+            guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
+                throw URLError(.badServerResponse)
+            }
             let expectedLength = response.expectedContentLength
             var receivedLength: Int64 = 0
             var buffer = Data()
@@ -57,7 +65,15 @@ struct URLSessionVideoDownloader: VideoDownloader {
                 try fileHandle.write(contentsOf: buffer)
             }
 
+            guard receivedLength > 0,
+                  expectedLength <= 0 || receivedLength == expectedLength else {
+                throw URLError(.cannotDecodeContentData)
+            }
             try fileHandle.close()
+            let asset = AVURLAsset(url: temporaryURL)
+            guard try await asset.load(.isPlayable) else {
+                throw URLError(.cannotDecodeContentData)
+            }
 
             if FileManager.default.fileExists(atPath: destinationURL.path) {
                 try FileManager.default.removeItem(at: destinationURL)

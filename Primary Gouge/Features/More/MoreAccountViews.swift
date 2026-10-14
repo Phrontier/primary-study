@@ -206,6 +206,20 @@ struct MoreProfileView: View {
                     }
                     .buttonStyle(.plain)
                     .disabled(accountStore.isWorking)
+
+                    Button {
+                        accountStore.signOut()
+                    } label: {
+                        StudyActionButton(
+                            title: "Sign Out",
+                            icon: "rectangle.portrait.and.arrow.right",
+                            tint: AppTheme.accent,
+                            isProminent: false
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(accountStore.isWorking)
+                    .accessibilityIdentifier("account.signOut")
                 }
             }
         }
@@ -705,7 +719,7 @@ struct MorePremiumView: View {
                                     .font(.headline.weight(.semibold))
                                     .foregroundStyle(AppTheme.textPrimary)
 
-                                Text("Start your 7-day free trial to open this and the complete Premium study library.")
+                                Text(subscriptionStore.offerDescription)
                                     .font(.footnote)
                                     .foregroundStyle(AppTheme.textSecondary)
                                     .fixedSize(horizontal: false, vertical: true)
@@ -722,7 +736,7 @@ struct MorePremiumView: View {
 
                         InsetListRow(
                             title: "\(subscriptionStore.displayPrice) per month",
-                            subtitle: "Eligible new subscribers receive a 7-day free trial."
+                            subtitle: subscriptionStore.trialDescription ?? "Billed monthly through your Apple Account."
                         ) {
                             Image(systemName: "calendar.badge.clock")
                                 .foregroundStyle(AppTheme.warning)
@@ -823,7 +837,7 @@ struct MorePremiumView: View {
         case .error:
             return subscriptionStore.entitlement.message ?? "Premium status could not be verified."
         case .notSubscribed:
-            return "Start with a 7-day free trial, then \(subscriptionStore.displayPrice) per month."
+            return subscriptionStore.offerDescription
         }
     }
 
@@ -859,10 +873,10 @@ struct MorePremiumView: View {
 
     private var primaryButtonTitle: String {
         if subscriptionStore.hasPremiumAccess { return "Manage Subscription" }
-        if !subscriptionStore.isPurchaseLaunchEnabled { return "Premium Launch Pending" }
+        if !subscriptionStore.isPurchaseLaunchEnabled { return "Premium Unavailable" }
         if subscriptionStore.purchaseIsPending { return "Awaiting Approval" }
         if subscriptionStore.isWorking { return "Working…" }
-        return "Start 7-Day Free Trial"
+        return subscriptionStore.trialDescription.map { "Start \($0)" } ?? "Subscribe to Premium"
     }
 }
 

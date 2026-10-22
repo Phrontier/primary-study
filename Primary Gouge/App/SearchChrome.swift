@@ -132,9 +132,8 @@ struct SearchTabView: View {
 
     var body: some View {
         AppScrollScreen(topPadding: AppTheme.Spacing.rootTabIntroTop, bottomPadding: 36) {
-            RootSummaryCard(identity: headerIdentity) {
-                searchField
-            }
+            StudyHeading(title: "Search", subtitle: "Find events, instructors, and study material.")
+            searchField
 
             resultsBody
         }
@@ -144,7 +143,7 @@ struct SearchTabView: View {
                 isQueryFocused = true
             }
         }
-        .rootNavigationChrome(title: headerIdentity.navigationTitle)
+        .pilotNavigation()
     }
 
     private var searchField: some View {
@@ -154,11 +153,13 @@ struct SearchTabView: View {
                 .foregroundStyle(AppTheme.textMuted)
 
             TextField(chrome.searchScope.prompt, text: $chrome.query)
-                .font(.system(.body, design: .rounded, weight: .medium))
+                .pilotText(.body)
                 .foregroundStyle(AppTheme.textPrimary)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .focused($isQueryFocused)
+                .submitLabel(.search)
+                .onSubmit { isQueryFocused = false }
 
             if !chrome.query.isEmpty {
                 Button {
@@ -193,10 +194,10 @@ struct SearchTabView: View {
             )
         } else {
             ForEach(sections) { section in
-                SectionContainer(style: .grouped, accent: AppTheme.accent, contentPadding: 0) {
+                Group {
                     VStack(alignment: .leading, spacing: 0) {
                         Text(section.section.title)
-                            .font(.headline.weight(.bold))
+                            .pilotText(.section)
                             .foregroundStyle(AppTheme.textPrimary)
                             .padding(.horizontal, 18)
                             .padding(.top, 16)
@@ -249,11 +250,11 @@ struct SearchResultRow: View {
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(item.title)
-                    .font(.body.weight(.semibold))
+                    .pilotText(.tool)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(item.subtitle)
-                    .font(.footnote)
+                    .pilotText(.metadata)
                     .foregroundStyle(AppTheme.textSecondary)
                     .lineLimit(2)
             }

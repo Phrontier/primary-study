@@ -53,15 +53,15 @@ struct ReviewSubmissionView: View {
         AppScrollScreen(bottomPadding: 36) {
             VStack(alignment: .leading, spacing: 8) {
                 Text(isEditing ? "Edit Your Review" : "Submit Instructor Gouge")
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .pilotText(.title)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(isEditing ? "Update your review and send the revision back through moderation." : "Start with the instructor, choose the event lane, and fill out the review.")
-                    .font(.system(.body, design: .rounded))
+                    .pilotText(.body)
                     .foregroundStyle(AppTheme.textSecondary)
             }
 
-            GlassCard {
+            VStack(alignment: .leading, spacing: 18) {
                 VStack(alignment: .leading, spacing: 18) {
                     InstructorTextFieldCard(
                         title: "Instructor Name",
@@ -72,7 +72,7 @@ struct ReviewSubmissionView: View {
                     if !viewModel.instructorName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !viewModel.suggestions.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Suggestions")
-                                .font(.system(.footnote, design: .rounded, weight: .semibold))
+                                .pilotText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
 
                             ForEach(viewModel.suggestions) { suggestion in
@@ -83,11 +83,11 @@ struct ReviewSubmissionView: View {
                                     HStack {
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(suggestion.name)
-                                                .font(.system(.subheadline, design: .rounded, weight: .bold))
+                                                .pilotText(.subtitle)
                                                 .foregroundStyle(AppTheme.textPrimary)
 
                                             Text(suggestion.squadron.displayName)
-                                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                                .pilotText(.metadata)
                                                 .foregroundStyle(AppTheme.textSecondary)
                                         }
 
@@ -115,7 +115,7 @@ struct ReviewSubmissionView: View {
 
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Review Type")
-                            .font(.system(.caption, design: .rounded, weight: .bold))
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.textMuted)
                             .tracking(0.6)
 
@@ -150,7 +150,7 @@ struct ReviewSubmissionView: View {
                     if viewModel.selectedSquadron != nil, !viewModel.trimmedEventName.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Event Suggestions")
-                                .font(.system(.footnote, design: .rounded, weight: .semibold))
+                                .pilotText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
 
                             ForEach(viewModel.eventSuggestions) { event in
@@ -165,11 +165,11 @@ struct ReviewSubmissionView: View {
 
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(event.displayName)
-                                                .font(.system(.subheadline, design: .rounded, weight: .bold))
+                                                .pilotText(.subtitle)
                                                 .foregroundStyle(AppTheme.textPrimary)
 
                                             Text(event.kind.displayName)
-                                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                                .pilotText(.metadata)
                                                 .foregroundStyle(AppTheme.prominentText(event.kind.domainColor))
                                         }
 
@@ -206,11 +206,11 @@ struct ReviewSubmissionView: View {
 
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text("Use \"\(viewModel.trimmedEventName)\"")
-                                                .font(.system(.subheadline, design: .rounded, weight: .bold))
+                                                .pilotText(.subtitle)
                                                 .foregroundStyle(AppTheme.textPrimary)
 
                                             Text("Custom Event")
-                                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                                .pilotText(.metadata)
                                                 .foregroundStyle(AppTheme.textSecondary)
                                         }
 
@@ -260,14 +260,14 @@ struct ReviewSubmissionView: View {
                 }
             }
 
-            GlassCard {
+            VStack(alignment: .leading, spacing: 18) {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Written Review")
-                        .font(.system(.headline, design: .rounded, weight: .bold))
+                        .pilotText(.tool)
                         .foregroundStyle(AppTheme.textPrimary)
 
                     Text("Give enough detail to help the next student understand the brief, vibe, and grading tendency.")
-                        .font(.system(.footnote, design: .rounded))
+                        .pilotText(.metadata)
                         .foregroundStyle(AppTheme.textSecondary)
 
                     ZStack(alignment: .topLeading) {
@@ -280,7 +280,7 @@ struct ReviewSubmissionView: View {
 
                         if viewModel.reviewText.isEmpty {
                             Text("How did the instructor brief, teach, and grade? What should another student know before the event?")
-                                .font(.system(.body, design: .rounded))
+                                .pilotText(.body)
                                 .foregroundStyle(AppTheme.textSecondary.opacity(0.75))
                                 .padding(.horizontal, 18)
                                 .padding(.vertical, 16)
@@ -289,7 +289,7 @@ struct ReviewSubmissionView: View {
                         TextEditor(text: $viewModel.reviewText)
                             .scrollContentBackground(.hidden)
                             .frame(minHeight: 170)
-                            .font(.system(.body, design: .rounded))
+                            .pilotText(.body)
                             .foregroundStyle(AppTheme.textPrimary)
                             .padding(.horizontal, 14)
                             .padding(.vertical, 12)
@@ -310,7 +310,7 @@ struct ReviewSubmissionView: View {
                             .padding(.top, 1)
 
                         Text("Profanity, slurs, threats, and abusive content will not be posted. Submissions that cross the line stay blocked in moderation.")
-                            .font(.system(.footnote, design: .rounded, weight: .semibold))
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.danger)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -320,12 +320,12 @@ struct ReviewSubmissionView: View {
 
             if let message = editSuccessMessage {
                 Text(message)
-                    .font(.system(.footnote, design: .rounded, weight: .semibold))
+                    .pilotText(.metadata)
                     .foregroundStyle(AppTheme.success)
                     .padding(.horizontal, 6)
             } else if let message = editErrorMessage ?? viewModel.errorMessage ?? (viewModel.hasAttemptedSubmit ? viewModel.validationMessage : nil) {
                 Text(message)
-                    .font(.system(.footnote, design: .rounded, weight: .semibold))
+                    .pilotText(.metadata)
                     .foregroundStyle(AppTheme.warning)
                     .padding(.horizontal, 6)
             }
@@ -384,10 +384,10 @@ struct ReviewSubmissionView: View {
 
                         VStack(alignment: .leading, spacing: 4) {
                             Text(squadron.displayName)
-                                .font(.system(.body, design: .rounded, weight: .bold))
+                                .pilotText(.body)
                                 .foregroundStyle(AppTheme.textPrimary)
                             Text(squadron.reviewEventKind?.displayName ?? "Squadron")
-                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .pilotText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
                         }
                     }
@@ -412,10 +412,10 @@ struct ReviewSubmissionView: View {
 
                         VStack(alignment: .leading, spacing: 4) {
                             Text(option.title)
-                                .font(.system(.body, design: .rounded, weight: .bold))
+                                .pilotText(.body)
                                 .foregroundStyle(AppTheme.textPrimary)
                             Text(option.subtitle)
-                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .pilotText(.metadata)
                                 .foregroundStyle(AppTheme.prominentText(option.accent))
                         }
                     }
@@ -440,10 +440,10 @@ struct ReviewSubmissionView: View {
 
                         VStack(alignment: .leading, spacing: 4) {
                             Text(option.title)
-                                .font(.system(.body, design: .rounded, weight: .bold))
+                                .pilotText(.body)
                                 .foregroundStyle(AppTheme.textPrimary)
                             Text(option.subtitle)
-                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .pilotText(.metadata)
                                 .foregroundStyle(AppTheme.prominentText(option.accent))
                         }
                     }

@@ -43,16 +43,23 @@ struct FlashcardDeckView: View {
         let performance = appModel.deckPerformance(for: deck, filters: activeFilters)
         let snapshots = appModel.cardSnapshots(in: deck, filters: activeFilters)
 
-        return AppScrollScreen {
-            HeroCard(
-                eyebrow: contextLabel,
-                title: deck.title,
-                subtitle: nil
-            ) {
-                FlashcardPerformanceBar(snapshot: performance)
-
+        return PilotPage {
+            PilotBackHeader(title: contextLabel)
+            StudyHeading(eyebrow: contextLabel, title: displayDeckTitle, subtitle: "Flashcard deck", pill: true)
+                .padding(.bottom, 28)
+            VStack(alignment: .leading, spacing: 0) {
+                HStack(alignment: .center, spacing: 10) {
+                    Text("\(performance.totalCount)").pilotText(.stat)
+                    Text("cards in this deck").pilotText(.subtitle).foregroundStyle(StudyDesign.secondary)
+                    Spacer(minLength: 0)
+                    Text("\(performance.segments.first(where: { $0.band == .notStudied })?.count ?? 0) new")
+                        .pilotText(.metadata).foregroundStyle(StudyDesign.secondary)
+                }.padding(.bottom, 20)
                 reviewActionRow
             }
+            .padding(.leading, 18)
+            .overlay(alignment: .leading) { Rectangle().fill(StudyDesign.blue).frame(width: 3) }
+            .padding(.bottom, 30)
 
             if !availableFilters.isEmpty {
                 VStack(alignment: .leading, spacing: 12) {
@@ -75,12 +82,8 @@ struct FlashcardDeckView: View {
             }
 
             if !snapshots.isEmpty {
-                VStack(alignment: .leading, spacing: 12) {
-                    SectionHeader(
-                        eyebrow: "Deck",
-                        title: "All Cards",
-                        subtitle: nil
-                    )
+                VStack(alignment: .leading, spacing: 14) {
+                    Text("All cards").pilotText(.section).accessibilityAddTraits(.isHeader)
 
                     LazyVStack(spacing: 12) {
                         ForEach(snapshots, id: \.card.id) { item in
@@ -101,23 +104,20 @@ struct FlashcardDeckView: View {
                 }
             }
         }
-        .detailNavigationChrome(title: deck.title)
+        .pilotNavigation()
         .task {
             appModel.recordDeckOpened(event: event, deck: deck, contextLabel: contextLabel)
         }
     }
 
-    private var reviewActionRow: some View {
-        ViewThatFits(in: .horizontal) {
-            HStack(spacing: 12) {
-                smartReviewLink
-                fullDeckLink
-            }
+    private var displayDeckTitle: String {
+        deck.title.hasPrefix(contextLabel + " ") ? String(deck.title.dropFirst(contextLabel.count + 1)) : deck.title
+    }
 
-            VStack(spacing: 10) {
-                smartReviewLink
-                fullDeckLink
-            }
+    private var reviewActionRow: some View {
+        VStack(spacing: 10) {
+            smartReviewLink
+            fullDeckLink
         }
     }
 
@@ -133,7 +133,8 @@ struct FlashcardDeckView: View {
             CompactReviewAction(
                 title: "Smart Review",
                 icon: "bolt.fill",
-                accent: AppTheme.statusColor(.warning)
+                accent: StudyDesign.action,
+                prominent: true
             )
         }
         .buttonStyle(.plain)
@@ -182,7 +183,7 @@ struct FlashcardDetailView: View {
     @EnvironmentObject private var appModel: StudyAppModel
 
     var body: some View {
-        AppScrollScreen {
+        StudyScreen {
             HeroCard(
                 eyebrow: contextLabel,
                 title: item.card.prompt,
@@ -205,7 +206,7 @@ struct FlashcardDetailView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Answer")
                         .font(.headline.weight(.semibold))
-                        .foregroundStyle(AppTheme.textPrimary)
+                        .foregroundStyle(StudyDesign.ink)
 
                     if let imageRelativePath = item.card.imageRelativePath {
                         FlashcardAssetImage(relativePath: imageRelativePath)
@@ -213,7 +214,7 @@ struct FlashcardDetailView: View {
 
                     Text(item.card.answer)
                         .font(.body)
-                        .foregroundStyle(AppTheme.textSecondary)
+                        .foregroundStyle(StudyDesign.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
@@ -242,6 +243,7 @@ struct FlashcardStudyView: View {
 
     @EnvironmentObject private var appModel: StudyAppModel
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     @State private var currentIndex = 0
     @State private var showingAnswer = false
@@ -251,7 +253,7 @@ struct FlashcardStudyView: View {
     var body: some View {
         Group {
             if cards.isEmpty {
-                AppScrollScreen {
+                StudyScreen {
                     EmptyStateCard(
                         icon: "checkmark.circle",
                         title: "No Cards in This Study View",
@@ -259,17 +261,15 @@ struct FlashcardStudyView: View {
                     )
                 }
             } else {
-                AppScrollScreen(bottomPadding: 28) {
+                PilotPage {
+                    PilotBackHeader(title: contextLabel)
                     header
                     flashcardBody
-
-                    if showingAnswer {
-                        ratingBar
-                    }
+                    if showingAnswer { ratingBar.padding(.top, 35) }
                 }
             }
         }
-        .detailNavigationChrome(title: deck.title)
+        .pilotNavigation()
         .onAppear {
             startedAt = .now
         }
@@ -315,29 +315,27 @@ struct FlashcardStudyView: View {
     }
 
     private var ratingBar: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            SectionHeader(
-                eyebrow: "Rate it",
-                title: "How Well Did You Know It?",
-                subtitle: nil
-            )
+        VStack(alignment: .leading, spacing: 14) {
+            Text("How well did you know it?")
+                .pilotText(.section).accessibilityAddTraits(.isHeader)
 
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 140), spacing: 10)], spacing: 10) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 4),
+                                     count: dynamicTypeSize >= .xxxLarge ? 2 : 4), spacing: 4) {
                 ForEach(FlashcardRating.allCases, id: \.self) { rating in
                     Button {
                         submit(rating)
                     } label: {
                         Text(rating.label)
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(AppTheme.prominentText(buttonColor(for: rating)))
+                            .pilotText(.grade)
+                            .foregroundStyle(ratingStyle(rating).text)
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 14)
+                            .padding(.horizontal, 2).padding(.vertical, 13).frame(minHeight: 44)
                             .background(
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .fill(AppTheme.badgeFill(buttonColor(for: rating)))
+                                RoundedRectangle(cornerRadius: 11, style: .continuous)
+                                    .fill(ratingStyle(rating).fill)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                            .stroke(AppTheme.badgeStroke(buttonColor(for: rating)), lineWidth: 1)
+                                        RoundedRectangle(cornerRadius: 11, style: .continuous)
+                                            .stroke(ratingStyle(rating).border, lineWidth: 1)
                                     )
                             )
                     }
@@ -381,12 +379,12 @@ struct FlashcardStudyView: View {
         showingAnswer = false
     }
 
-    private func buttonColor(for rating: FlashcardRating) -> Color {
+    private func ratingStyle(_ rating: FlashcardRating) -> (text: Color, fill: Color, border: Color) {
         switch rating {
-        case .missed: AppTheme.statusColor(.rejected)
-        case .hard: AppTheme.statusColor(.warning)
-        case .good: AppTheme.accent
-        case .easy: AppTheme.statusColor(.approved)
+        case .missed: (StudyDesign.color(0xAE304B, 0xFF968E), StudyDesign.color(0xF9E3E9, 0x49303B), StudyDesign.color(0xE9BDC9, 0x875866))
+        case .hard: (StudyDesign.color(0x916014, 0xF1CA79), StudyDesign.color(0xF7ECD7, 0x443B2B), StudyDesign.color(0xE7D2AB, 0x85714D))
+        case .good: (StudyDesign.blue, StudyDesign.color(0xE2EBFC, 0x263955), StudyDesign.color(0xBFD0F1, 0x4C6992))
+        case .easy: (StudyDesign.answerGreen, StudyDesign.greenFill, StudyDesign.color(0xBFDDCD, 0x447A62))
         }
     }
 
@@ -435,7 +433,7 @@ private struct FlashcardPerformanceBar: View {
 
                         Text("\(segment.band.label) \(segment.count)")
                             .font(.caption.weight(.semibold))
-                            .foregroundStyle(AppTheme.textSecondary)
+                            .foregroundStyle(StudyDesign.secondary)
                             .lineLimit(1)
                             .minimumScaleFactor(0.85)
                     }
@@ -455,9 +453,18 @@ private struct CompactReviewAction: View {
     let title: String
     let icon: String
     let accent: Color
-
+    var prominent = false
     var body: some View {
-        StudyActionButton(title: title, icon: icon, tint: accent, isProminent: false)
+        HStack(spacing: 10) {
+            if !prominent { Image(systemName: "book").font(.system(size: 18)).frame(width: 18, height: 18).accessibilityHidden(true) }
+            Text(title).pilotText(.action)
+            if prominent { Spacer(); Image(systemName: "arrow.right").font(.system(size: 17)).frame(width: 18, height: 18).accessibilityHidden(true) }
+        }
+        .foregroundStyle(prominent ? .white : StudyDesign.purple)
+        .padding(.horizontal, 15).padding(.vertical, 13)
+        .frame(maxWidth: .infinity, minHeight: 46)
+        .background(prominent ? StudyDesign.action : StudyDesign.surface, in: RoundedRectangle(cornerRadius: 13))
+        .overlay { if !prominent { RoundedRectangle(cornerRadius: 13).strokeBorder(StudyDesign.color(0xDCD8ED, 0x53486F), lineWidth: 1) } }
     }
 }
 
@@ -467,47 +474,34 @@ private struct FlashcardStudyHeader: View {
     let currentIndex: Int
     let totalCount: Int
 
+    private var sessionTitle: String {
+        deckTitle.hasPrefix(contextLabel + " ") ? String(deckTitle.dropFirst(contextLabel.count + 1)) : deckTitle
+    }
+
     private var progressText: String {
         "Card \(currentIndex + 1) of \(totalCount)"
     }
 
     var body: some View {
-        SectionContainer(style: .metric, accent: AppTheme.domainColor(.flashcards), contentPadding: 18) {
-            VStack(alignment: .leading, spacing: 14) {
-                HStack(alignment: .top, spacing: 12) {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(contextLabel.uppercased())
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(AppTheme.domainColor(.flashcards))
-                            .tracking(0.6)
-
-                        Text(deckTitle)
-                            .font(.title3.weight(.bold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-
+        VStack(alignment: .leading, spacing: 15) {
+            ViewThatFits(in: .horizontal) {
+                HStack(alignment: .center, spacing: 12) {
+                    StudyHeading(eyebrow: contextLabel, title: sessionTitle, pill: true, compact: true)
                     Spacer(minLength: 0)
-
-                    Text(progressText)
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(AppTheme.prominentText(AppTheme.domainColor(.flashcards)))
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                        .background(AppTheme.badgeFill(AppTheme.domainColor(.flashcards)), in: Capsule())
-                        .overlay(
-                            Capsule()
-                                .stroke(AppTheme.badgeStroke(AppTheme.domainColor(.flashcards)), lineWidth: 1)
-                        )
+                    Text(progressText).pilotText(.metadata).foregroundStyle(StudyDesign.secondary).fixedSize()
                 }
-
-                ProgressStrip(
-                    value: Double(currentIndex + 1),
-                    total: Double(totalCount),
-                    tint: AppTheme.domainColor(.flashcards)
-                )
+                VStack(alignment: .leading, spacing: 10) {
+                    StudyHeading(eyebrow: contextLabel, title: sessionTitle, pill: true, compact: true)
+                    Text(progressText).pilotText(.metadata).foregroundStyle(StudyDesign.secondary)
+                }
             }
-        }
+            GeometryReader { geometry in
+                Capsule().fill(StudyDesign.cardLine)
+                    .overlay(alignment: .leading) {
+                        Capsule().fill(StudyDesign.purple).frame(width: geometry.size.width * Double(currentIndex + 1) / Double(max(1, totalCount)))
+                    }
+            }.frame(height: 5).accessibilityLabel("Study progress").accessibilityValue(progressText)
+        }.padding(.bottom, 28)
     }
 }
 
@@ -515,90 +509,62 @@ private struct FlashcardStudyCard: View {
     let card: FlashcardDefinition
     let showingAnswer: Bool
     let onTap: () -> Void
-
-    private var stateAccent: Color {
-        showingAnswer ? AppTheme.success : AppTheme.domainColor(.flashcards)
-    }
-
-    private var instructionText: String {
-        showingAnswer ? "Tap the card again to hide the answer." : "Tap anywhere on the card to reveal the answer."
-    }
+    private var stateAccent: Color { showingAnswer ? StudyDesign.answerGreen : StudyDesign.purple }
 
     var body: some View {
-        ZStack {
-            FlashcardDeckStackBackground(accent: stateAccent, showingAnswer: showingAnswer)
-
-            Button(action: onTap) {
-                VStack(alignment: .leading, spacing: 20) {
-                    HStack(alignment: .center, spacing: 8) {
-                        Text(showingAnswer ? "Answer" : "Prompt")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(stateAccent)
-
-                        ForEach(referenceBadges(for: card), id: \.text) { badge in
-                            Badge(text: badge.text, color: badge.color)
+        Button(action: onTap) {
+            VStack(alignment: .leading, spacing: 0) {
+                faceHeader
+                if showingAnswer {
+                    VStack(alignment: .leading, spacing: 9) {
+                        if let imageRelativePath = card.imageRelativePath { FlashcardAssetImage(relativePath: imageRelativePath) }
+                        ForEach(Array(card.answer.components(separatedBy: "\n").enumerated()), id: \.offset) { _, line in
+                            Text(line).pilotText(.answer).foregroundStyle(StudyDesign.reading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
-
-                        Spacer(minLength: 0)
-
-                        Image(systemName: showingAnswer ? "arrow.uturn.backward.circle.fill" : "hand.tap.fill")
-                            .font(.system(size: 18, weight: .semibold))
-                            .foregroundStyle(stateAccent.opacity(0.92))
-                    }
-
+                    }.padding(.top, 22)
+                    Spacer(minLength: 22)
+                } else {
+                    Color.clear.frame(height: 22)
                     Spacer(minLength: 0)
-
-                    if showingAnswer, let imageRelativePath = card.imageRelativePath {
-                        FlashcardAssetImage(relativePath: imageRelativePath)
-                    }
-
-                    Text(showingAnswer ? card.answer : card.prompt)
-                        .font(showingAnswer ? .body : .system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundStyle(showingAnswer ? AppTheme.textSecondary : AppTheme.textPrimary)
+                    Text(card.prompt).pilotText(.prompt).foregroundStyle(StudyDesign.ink)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .fixedSize(horizontal: false, vertical: true)
-
+                    Color.clear.frame(height: 22)
                     Spacer(minLength: 0)
-
-                    HStack(alignment: .bottom, spacing: 12) {
-                        Text(instructionText)
-                            .font(.footnote)
-                            .foregroundStyle(AppTheme.textSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
-
-                        Spacer(minLength: 0)
-
-                        Text(showingAnswer ? "Back" : "Front")
-                            .font(.caption2.weight(.bold))
-                            .foregroundStyle(AppTheme.prominentText(stateAccent))
-                            .tracking(0.5)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 6)
-                            .background(AppTheme.badgeFill(stateAccent), in: Capsule())
-                            .overlay(
-                                Capsule()
-                                    .stroke(AppTheme.badgeStroke(stateAccent), lineWidth: 1)
-                            )
-                    }
+                    Spacer(minLength: 0)
                 }
-                .padding(24)
-                .frame(maxWidth: .infinity, minHeight: 340, alignment: .leading)
-                .background(
-                    AppTheme.cardBackground(
-                        style: showingAnswer ? .hero : .primary,
-                        accent: stateAccent
-                    )
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: AppTheme.Radius.largeCard, style: .continuous)
-                        .strokeBorder(stateAccent.opacity(showingAnswer ? 0.28 : 0.18), lineWidth: 1)
-                )
+                HStack(alignment: .bottom, spacing: 14) {
+                    Text(showingAnswer ? "Tap the card to hide the answer." : "Tap the card to reveal the answer.")
+                        .pilotText(.footer).foregroundStyle(StudyDesign.secondary)
+                    Spacer(minLength: 0)
+                    Text(showingAnswer ? "Back" : "Front").pilotText(.footer).fontWeight(.semibold).foregroundStyle(stateAccent)
+                }
             }
-            .buttonStyle(.plain)
+            .padding(.horizontal, 24).padding(.top, 28).padding(.bottom, 24)
+            .frame(maxWidth: .infinity, minHeight: 386, alignment: .leading)
+            .background(StudyDesign.surface)
+            .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(StudyDesign.cardLine, lineWidth: 1))
+            .overlay {
+                RoundedRectangle(cornerRadius: 24).strokeBorder(stateAccent, lineWidth: 5)
+                    .mask(alignment: .top) { Rectangle().frame(height: 26) }
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .shadow(color: StudyDesign.color(0x25365B, 0x000000).opacity(0.032), radius: 10, y: 8)
+            .background { FlashcardDeckStackBackground(accent: stateAccent, showingAnswer: showingAnswer) }
         }
-        .padding(.horizontal, 4)
-        .padding(.vertical, 8)
+        .buttonStyle(.plain)
+        .accessibilityLabel(showingAnswer ? "Answer: \(card.answer)" : "Question: \(card.prompt)")
+        .accessibilityHint(showingAnswer ? "Show question" : "Reveal answer")
         .animation(.easeInOut(duration: 0.18), value: showingAnswer)
+    }
+
+    private var faceHeader: some View {
+        HStack(alignment: .top, spacing: 8) {
+            Text(showingAnswer ? "Answer" : "Prompt").pilotText(.metadata).fontWeight(.semibold)
+            ForEach(referenceBadges(for: card), id: \.text) { badge in Badge(text: badge.text, color: badge.color) }
+            Spacer(minLength: 0)
+            Image(systemName: "book").font(.system(size: 18)).accessibilityHidden(true)
+        }.foregroundStyle(stateAccent).frame(minHeight: 20)
     }
 }
 
@@ -628,92 +594,37 @@ private struct FlashcardAssetImage: View {
 private struct FlashcardDeckStackBackground: View {
     let accent: Color
     let showingAnswer: Bool
-
     var body: some View {
-        ZStack {
-            stackLayer(
-                opacity: 0.28,
-                scale: 0.97,
-                yOffset: 24,
-                extraAccentOpacity: 0.03
-            )
-
-            stackLayer(
-                opacity: 0.42,
-                scale: 0.985,
-                yOffset: 12,
-                extraAccentOpacity: 0.05
-            )
-        }
-        .padding(.horizontal, 10)
-    }
-
-    private func stackLayer(opacity: Double, scale: CGFloat, yOffset: CGFloat, extraAccentOpacity: Double) -> some View {
-        RoundedRectangle(cornerRadius: AppTheme.Radius.largeCard, style: .continuous)
-            .fill(
-                LinearGradient(
-                    colors: [
-                        AppTheme.groupedBackground.opacity(0.98),
-                        accent.opacity(extraAccentOpacity),
-                        AppTheme.sunkenSurface.opacity(0.98)
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: AppTheme.Radius.largeCard, style: .continuous)
-                    .stroke(AppTheme.cardStroke.opacity(opacity), lineWidth: 1)
-            )
-            .scaleEffect(scale)
-            .offset(y: yOffset)
-            .shadow(
-                color: Color.black.opacity(showingAnswer ? 0.2 : 0.14),
-                radius: 18,
-                x: 0,
-                y: 12
-            )
+        GeometryReader { proxy in
+            RoundedRectangle(cornerRadius: 24)
+                .fill(StudyDesign.color(0xEDF0F6, 0x263448))
+                .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(StudyDesign.color(0xDCE2EE, 0x34465D), lineWidth: 1))
+                .frame(width: max(0, proxy.size.width - 28), height: max(0, proxy.size.height - 2))
+                .offset(x: 14, y: 18)
+            RoundedRectangle(cornerRadius: 24)
+                .fill(StudyDesign.color(0xE4E8F0, 0x243246))
+                .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(StudyDesign.color(0xDCE2EE, 0x34465D), lineWidth: 1))
+                .frame(width: max(0, proxy.size.width - 14), height: max(0, proxy.size.height - 1))
+                .offset(x: 7, y: 10)
+        }.allowsHitTesting(false).accessibilityHidden(true)
     }
 }
 
 private struct FlashcardPreviewCard: View {
     let item: FlashcardListItemSnapshot
-
     var body: some View {
-        SectionContainer {
-            VStack(alignment: .leading, spacing: 12) {
-                HStack(alignment: .center, spacing: 10) {
-                    Circle()
-                        .fill(item.band.displayColor)
-                        .frame(width: 10, height: 10)
-
-                    Text(item.band.label)
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(item.band.displayColor)
-
-                    Spacer(minLength: 0)
-
-                    ForEach(referenceBadges(for: item.card), id: \.text) { badge in
-                        Badge(text: badge.text, color: badge.color)
-                    }
-
-                    if item.isPriority {
-                        Badge(text: "Smart Review", color: AppTheme.warning)
-                    }
-                }
-
-                Text(item.card.prompt)
-                    .font(.headline.weight(.semibold))
-                    .foregroundStyle(AppTheme.textPrimary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(item.answerPreview)
-                    .font(.subheadline)
-                    .foregroundStyle(AppTheme.textSecondary)
-                    .lineLimit(3)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(spacing: 8) {
+                Text(item.band.label).pilotText(.state).foregroundStyle(item.band.displayColor)
+                ForEach(referenceBadges(for: item.card), id: \.text) { badge in Badge(text: badge.text, color: badge.color) }
             }
+            Text(item.card.prompt).pilotText(.preview).foregroundStyle(StudyDesign.ink).padding(.vertical, 8)
+            Text(item.card.answer.components(separatedBy: "\n").first ?? item.answerPreview)
+                .pilotText(.excerpt).foregroundStyle(StudyDesign.secondary)
         }
+        .padding(21).frame(maxWidth: .infinity, alignment: .leading)
+        .background(StudyDesign.surface, in: RoundedRectangle(cornerRadius: 24))
+        .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(StudyDesign.cardLine, lineWidth: 1))
     }
 }
 

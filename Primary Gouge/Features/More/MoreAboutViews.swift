@@ -105,11 +105,11 @@ private struct MoreArticleViewSection: View {
     let accent: Color
 
     var body: some View {
-        SectionContainer {
+        Group {
             VStack(alignment: .leading, spacing: 14) {
                 ForEach(section.paragraphs.indices, id: \.self) { index in
                     Text(section.paragraphs[index])
-                        .font(.body)
+                        .pilotText(.body)
                         .foregroundStyle(AppTheme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -124,7 +124,7 @@ private struct MoreArticleViewSection: View {
                                     .padding(.top, 7)
 
                                 Text(bullets[index])
-                                    .font(.body)
+                                    .pilotText(.body)
                                     .foregroundStyle(AppTheme.textSecondary)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
@@ -132,7 +132,8 @@ private struct MoreArticleViewSection: View {
                     }
                 }
             }
-            .padding(18)
+            .padding(.leading, 12)
+            .overlay(alignment: .leading) { accent.frame(width: 2) }
         }
     }
 }
@@ -230,7 +231,7 @@ struct MoreVersionView: View {
                             )
 
                             Text(reminderStatus)
-                                .font(.subheadline)
+                                .pilotText(.subtitle)
                                 .foregroundStyle(AppTheme.textSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
@@ -269,11 +270,11 @@ private struct MoreInfoRow: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.body.weight(.semibold))
+                    .pilotText(.body)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(value)
-                    .font(.subheadline)
+                    .pilotText(.subtitle)
                     .foregroundStyle(AppTheme.textSecondary)
             }
 

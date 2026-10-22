@@ -1,0 +1,14 @@
+{
+  "comparison": "Approved native Home vs rollout, app content only",
+  "source_size": [
+    1178,
+    2556
+  ],
+  "crop": [
+    0,
+    270,
+    1178,
+    2220
+  ],
+  "identical": true
+}

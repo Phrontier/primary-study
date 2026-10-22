@@ -6,63 +6,43 @@ struct InstructorReviewsRootView: View {
     @EnvironmentObject private var reviewStore: InstructorReviewStore
     @EnvironmentObject private var searchChrome: SearchChromeModel
     @StateObject private var viewModel = InstructorReviewsRootViewModel()
+    @Environment(\.dynamicTypeSize) private var typeSize
     @State private var showingSubmission = false
     @State private var showingModeration = false
 
     var body: some View {
-        AppScrollScreen(topPadding: AppTheme.Spacing.rootTabIntroTop, bottomPadding: 36) {
-            heroCard
-
-            SectionContainer {
-                VStack(alignment: .leading, spacing: 16) {
-                    InstructorPillSelector(
-                        options: InstructorCapabilityFilter.allCases,
-                        selected: viewModel.selectedFilter,
-                        title: { $0.title },
-                        accent: { $0.color }
-                    ) { filter in
-                        viewModel.selectedFilter = filter
+        PilotPage {
+            StudyHeading(title: "Instructors", subtitle: "Know who you’re flying with.").padding(.top, 7).padding(.bottom, 28)
+            HStack(spacing: 10) {
+                Image(systemName: "magnifyingglass").font(.system(size: 17)).accessibilityHidden(true).foregroundStyle(StudyDesign.secondary)
+                TextField("Search instructors or squadrons", text: $viewModel.searchText, prompt: Text(typeSize.isAccessibilitySize ? "Search" : "Search instructors or squadrons").foregroundStyle(StudyDesign.secondary)).accessibilityLabel("Search instructors or squadrons")
+                    .selectedText(13).textInputAutocapitalization(.never).autocorrectionDisabled()
+            }.padding(14).frame(minHeight: 49).background(StudyDesign.surface, in: RoundedRectangle(cornerRadius: 13))
+                .overlay(RoundedRectangle(cornerRadius: 13).strokeBorder(StudyDesign.cardLine, lineWidth: 1))
+            Picker("Instructor type", selection: $viewModel.selectedFilter) {
+                ForEach(InstructorCapabilityFilter.allCases) { filter in Text(filter.title).tag(filter) }
+            }.pickerStyle(.segmented).frame(minHeight: 38).padding(.top, 14).padding(.bottom, 28)
+            Text("Instructor reviews").pilotText(.section).padding(.bottom, 14)
+            Button { showingSubmission = true } label: {
+                HStack { Text("Submit review"); Spacer(); Image(systemName: "arrow.right") }
+                    .selectedText(14, weight: .semibold).foregroundStyle(.white).padding(14)
+                    .frame(maxWidth: .infinity, minHeight: 46).background(StudyDesign.action, in: RoundedRectangle(cornerRadius: 13))
+            }.buttonStyle(.plain).accessibilityLabel("Submit Instructor Review")
+            if accountStore.hasPermission(.instructorGougeModerator) { moderationBubble.padding(.top, 12) }
+            if viewModel.instructors.isEmpty {
+                EmptyStateCard(icon: "person.2", title: viewModel.hasPublishedReviews ? "No Matching Instructors" : "No Published Reviews Yet", message: viewModel.hasPublishedReviews ? "Try a different name, squadron, or filter." : "Approved reviews appear after moderation.").padding(.top, 24)
+            } else {
+                LazyVStack(spacing: 0) {
+                    ForEach(viewModel.instructors) { instructor in
+                        NavigationLink { InstructorReviewDetailView(instructor: instructor) } label: { SelectedInstructorRow(instructor: instructor) }.buttonStyle(.plain).accessibilityIdentifier("selected-instructor-\(instructor.id)")
                     }
-
-                    InstructorSearchField(
-                        placeholder: "Search instructors or squadrons",
-                        text: $viewModel.searchText
-                    )
-
-                    Text("\(viewModel.instructors.count) instructors")
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(AppTheme.textSecondary)
                 }
             }
-
-            if viewModel.instructors.isEmpty {
-                if viewModel.hasPublishedReviews {
-                    EmptyStateCard(
-                        icon: "magnifyingglass",
-                        title: "No Matching Instructors",
-                        message: "Try a different name, squadron, or filter to widen the roster."
-                    )
-                } else {
-                    EmptyStateCard(
-                        icon: "person.crop.rectangle.stack.fill",
-                        title: "No Published Reviews Yet",
-                        message: "Approved reviews will appear here as soon as they clear moderation."
-                    )
-                }
-            } else {
-                LazyVStack(spacing: 14) {
-                    ForEach(viewModel.instructors) { instructor in
-                        NavigationLink {
-                            InstructorReviewDetailView(instructor: instructor)
-                        } label: {
-                            InstructorSummaryCard(instructor: instructor)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
+            if reviewStore.syncStatus.phase == .failed || reviewStore.syncStatus.phase == .offline {
+                syncStatusLine.padding(.top, 20)
             }
         }
-        .rootNavigationChrome(title: "Instructor Reviews")
+        .pilotNavigation()
         .sheet(isPresented: $showingSubmission) {
             NavigationStack {
                 ReviewSubmissionView()
@@ -89,51 +69,6 @@ struct InstructorReviewsRootView: View {
         }
         .onAppear {
             searchChrome.updateScope(.instructors)
-        }
-    }
-
-    private var heroCard: some View {
-        RootSummaryCard(
-            identity: TabHeaderIdentity(
-                navigationTitle: "Instructor Reviews",
-                eyebrow: "Instructor gouge",
-                title: "Know who you're flying with",
-                subtitle: nil,
-                iconName: AppTab.instructors.iconName,
-                accent: AppTheme.domainColor(.instructors)
-            ),
-            metrics: [
-                TabHeaderMetric(label: "Reviews", value: "\(viewModel.totalPublishedReviews)", color: AppTheme.domainColor(.instructors), iconName: "text.bubble.fill"),
-                TabHeaderMetric(label: "Instructors", value: "\(viewModel.instructors.count)", color: AppTheme.accent, iconName: "person.2.fill"),
-                TabHeaderMetric(label: "Moderated", value: "Screened", color: AppTheme.statusColor(.pending), iconName: "checkmark.shield.fill")
-            ],
-            metricLayout: .compactRow
-        ) {
-            VStack(alignment: .leading, spacing: 12) {
-                ViewThatFits(in: .horizontal) {
-                    HStack(spacing: 10) {
-                        InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
-                            showingSubmission = true
-                        }
-
-                        if accountStore.hasPermission(.instructorGougeModerator) {
-                            moderationBubble
-                        }
-                    }
-
-                    VStack(spacing: 10) {
-                        InstructorPrimaryButton(title: "Submit Instructor Review", icon: "square.and.pencil", enabled: true) {
-                            showingSubmission = true
-                        }
-
-                        if accountStore.hasPermission(.instructorGougeModerator) {
-                            moderationBubble
-                        }
-                    }
-                }
-
-                syncStatusLine
-            }
         }
     }
 

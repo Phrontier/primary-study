@@ -133,6 +133,7 @@ struct QuizHubView: View {
 }
 
 private struct QuizSetupView: View {
+    @Environment(\.dynamicTypeSize) private var textSize
     let options: [QuizCategoryOption]
     @Binding var selectedCategoryOptionID: String
     @Binding var selectedQuestionCount: Int
@@ -171,8 +172,8 @@ private struct QuizSetupView: View {
                         subtitle: nil
                     )
 
-                    SectionContainer {
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 12)], spacing: 12) {
+                    Group {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: textSize.isAccessibilitySize ? 300 : 160), spacing: 12)], spacing: 12) {
                             ForEach(options) { option in
                                 QuizCategoryOptionCard(
                                     option: option,
@@ -191,7 +192,7 @@ private struct QuizSetupView: View {
                             HStack(alignment: .top, spacing: 14) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                        .fill(AppTheme.accentGradient)
+                                        .fill(StudyDesign.action)
                                         .frame(width: 54, height: 54)
 
                                     Image(systemName: selectedOption.iconName)
@@ -201,11 +202,11 @@ private struct QuizSetupView: View {
 
                                 VStack(alignment: .leading, spacing: 6) {
                                     Text(selectedOption.title)
-                                        .font(.system(.title3, design: .rounded, weight: .bold))
+                                        .pilotText(.section)
                                         .foregroundStyle(AppTheme.textPrimary)
 
                                     Text(selectedOption.summary)
-                                        .font(.system(.subheadline, design: .rounded))
+                                        .pilotText(.subtitle)
                                         .foregroundStyle(AppTheme.textSecondary)
                                 }
                             }
@@ -213,13 +214,13 @@ private struct QuizSetupView: View {
                             VStack(alignment: .leading, spacing: 12) {
                                 HStack {
                                     Text("Question Count")
-                                        .font(.system(.headline, design: .rounded, weight: .bold))
+                                        .pilotText(.tool)
                                         .foregroundStyle(AppTheme.textPrimary)
 
                                     Spacer()
 
                                     Text("\(selectedOption.availableCount) available")
-                                        .font(.system(.caption, design: .rounded, weight: .semibold))
+                                        .pilotText(.metadata)
                                         .foregroundStyle(AppTheme.textMuted)
                                 }
 
@@ -237,7 +238,7 @@ private struct QuizSetupView: View {
 
                                 if availableCounts.isEmpty {
                                     Text("This category needs at least 10 seeded questions before quizzes can start.")
-                                        .font(.system(.footnote, design: .rounded))
+                                        .pilotText(.metadata)
                                         .foregroundStyle(AppTheme.warning)
                                 }
                             }
@@ -295,54 +296,22 @@ private struct QuizSessionView: View {
     let onBack: () -> Void
     let onComplete: (QuizSessionRecord) -> Void
 
-    private let horizontalPadding: CGFloat = 16
-    private let topPadding: CGFloat = 0
-    private let bottomPadding: CGFloat = 4
-    private let continueLaneHeight: CGFloat = 60
     private let headerSideSlotWidth: CGFloat = 112
 
     var body: some View {
-        ZStack {
-            AppTheme.screenBackground
-                .ignoresSafeArea()
-
-            GeometryReader { proxy in
-                let availableHeight = proxy.size.height
-                let questionHeight = min(max(236, availableHeight * 0.37), 340)
-                let bottomSafeArea = proxy.safeAreaInsets.bottom
-
-                VStack(alignment: .leading, spacing: 8) {
-                    compactHeader(topInset: proxy.safeAreaInsets.top)
-                    progressSection
-
-                    VStack {
-                        QuizAdaptivePromptView(
-                            prompt: viewModel.currentQuestion.prompt,
-                            footer: viewModel.currentQuestion.format == .trueFalse ? "True or False" : "Select the best answer"
-                        )
-                    }
-                    .padding(16)
-                    .frame(height: max(220, questionHeight))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(AppTheme.cardBackground(highlighted: true))
-
-                    QuizAnswerPanel(
-                        question: viewModel.currentQuestion,
-                        submittedResult: viewModel.submittedResult,
-                        onSelectChoice: { choiceID in
-                            _ = viewModel.selectChoice(choiceID)
-                        }
-                    )
-                    .frame(maxHeight: .infinity, alignment: .top)
-
-                    continueLane(bottomSafeArea: bottomSafeArea)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                .padding(.horizontal, horizontalPadding)
-                .padding(.top, topPadding)
-                .padding(.bottom, 0)
-                .animation(.easeInOut(duration: 0.2), value: viewModel.canAdvance)
+        AppScrollScreen(bottomPadding: 32) {
+            ViewThatFits(in: .horizontal) {
+                compactHeader(topInset: 0)
+                VStack(alignment: .leading, spacing: 10) { headerBackButton; Text(headerTitle).designText(.section); headerCategoryBadge }
             }
+            progressSection
+            SelectedSurface {
+                QuizAdaptivePromptView(prompt: viewModel.currentQuestion.prompt,
+                    footer: viewModel.currentQuestion.format == .trueFalse ? "True or False" : "Select the best answer")
+            }
+            QuizAnswerPanel(question: viewModel.currentQuestion, submittedResult: viewModel.submittedResult,
+                onSelectChoice: { _ = viewModel.selectChoice($0) })
+            if viewModel.canAdvance { continueButton }
         }
         .toolbar(.hidden, for: .tabBar)
         .toolbar(.hidden, for: .navigationBar)
@@ -356,30 +325,17 @@ private struct QuizSessionView: View {
             }
         } label: {
             Text(viewModel.primaryActionTitle)
-                .font(.system(.headline, design: .rounded, weight: .bold))
+                .pilotText(.tool)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(LinearGradient(colors: [AppTheme.accentSoft, AppTheme.accent], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .fill(StudyDesign.action)
                 )
         }
         .buttonStyle(.plain)
-        .frame(height: continueLaneHeight)
-    }
 
-    private func continueLane(bottomSafeArea: CGFloat) -> some View {
-        continueButton
-            .opacity(viewModel.canAdvance ? 1 : 0)
-            .disabled(!viewModel.canAdvance)
-            .allowsHitTesting(viewModel.canAdvance)
-            .padding(.top, 2)
-            .padding(.bottom, max(bottomPadding, bottomSafeArea))
-            .frame(
-                height: continueLaneHeight + max(bottomPadding, bottomSafeArea),
-                alignment: .top
-            )
     }
 
     private func compactHeader(topInset: CGFloat) -> some View {
@@ -388,7 +344,7 @@ private struct QuizSessionView: View {
                 .frame(width: headerSideSlotWidth, alignment: .leading)
 
             Text(headerTitle)
-                .font(.system(.title3, design: .rounded, weight: .bold))
+                .pilotText(.section)
                 .foregroundStyle(AppTheme.textPrimary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.85)
@@ -418,11 +374,12 @@ private struct QuizSessionView: View {
                 )
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("Back to quiz setup")
     }
 
     private var headerCategoryBadge: some View {
         Text(viewModel.categoryTitle)
-            .font(.system(.caption, design: .rounded, weight: .bold))
+            .pilotText(.metadata)
             .foregroundStyle(AppTheme.accentSoft)
             .lineLimit(1)
             .truncationMode(.tail)
@@ -437,7 +394,7 @@ private struct QuizSessionView: View {
     private var progressSection: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(viewModel.progressText)
-                .font(.system(.footnote, design: .rounded, weight: .semibold))
+                .pilotText(.metadata)
                 .foregroundStyle(AppTheme.textSecondary)
 
             GeometryReader { geometry in
@@ -446,7 +403,7 @@ private struct QuizSessionView: View {
                         .fill(AppTheme.raisedSurface)
 
                     Capsule()
-                        .fill(AppTheme.accentGradient)
+                        .fill(StudyDesign.action)
                         .frame(width: geometry.size.width * viewModel.progressValue)
                 }
             }
@@ -469,33 +426,7 @@ private struct QuizAnswerPanel: View {
     let submittedResult: QuizQuestionResult?
     let onSelectChoice: (String) -> Void
 
-    private let fixedRowHeight: CGFloat = 60
-
-    var body: some View {
-        ViewThatFits(in: .vertical) {
-            fixedAnswers
-
-            ScrollView(showsIndicators: false) {
-                flexibleAnswers
-            }
-        }
-    }
-
-    private var fixedAnswers: some View {
-        VStack(spacing: 6) {
-            ForEach(question.choices) { choice in
-                QuizAnswerButton(
-                    label: choice.text,
-                    badge: QuizChoicePresentation.badgeText(for: choice, format: question.format),
-                    state: answerState(for: choice.id),
-                    isInteractive: submittedResult == nil,
-                    fixedHeight: fixedRowHeight
-                ) {
-                    onSelectChoice(choice.id)
-                }
-            }
-        }
-    }
+    var body: some View { flexibleAnswers }
 
     private var flexibleAnswers: some View {
         VStack(spacing: 6) {
@@ -557,7 +488,7 @@ private struct QuizResultsView: View {
                             .foregroundStyle(AppTheme.textPrimary)
 
                         Text("\(session.finalScore) / \(session.questionCount) correct")
-                            .font(.system(.headline, design: .rounded, weight: .semibold))
+                            .pilotText(.tool)
                             .foregroundStyle(AppTheme.textSecondary)
                     }
 
@@ -686,16 +617,16 @@ private struct QuizCategoryOptionCard: View {
                     Spacer()
 
                     Text("\(option.availableCount)")
-                        .font(.system(.caption, design: .rounded, weight: .bold))
+                        .pilotText(.metadata)
                         .foregroundStyle(isSelected ? AppTheme.accentSoft : AppTheme.textMuted)
                 }
 
                 Text(option.title)
-                    .font(.system(.headline, design: .rounded, weight: .bold))
+                    .pilotText(.tool)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(option.summary)
-                    .font(.system(.footnote, design: .rounded))
+                    .pilotText(.metadata)
                     .foregroundStyle(AppTheme.textSecondary)
                     .lineLimit(3)
             }
@@ -723,7 +654,7 @@ private struct QuizCountButton: View {
     var body: some View {
         Button(action: action) {
             Text("\(count)")
-                .font(.system(.headline, design: .rounded, weight: .bold))
+                .pilotText(.tool)
                 .foregroundStyle(foregroundColor)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
@@ -746,13 +677,7 @@ private struct QuizCountButton: View {
 
     private var backgroundColor: AnyShapeStyle {
         if isSelected {
-            return AnyShapeStyle(
-                LinearGradient(
-                    colors: [AppTheme.accentSoft, AppTheme.accent],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
+            return AnyShapeStyle(StudyDesign.action)
         }
         return AnyShapeStyle(AppTheme.raisedSurface.opacity(0.92))
     }
@@ -766,12 +691,12 @@ private struct ResultMetricPill: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title.uppercased())
-                .font(.system(.caption2, design: .rounded, weight: .bold))
+                .pilotText(.footer)
                 .foregroundStyle(AppTheme.textMuted)
                 .tracking(0.7)
 
             Text(value)
-                .font(.system(.subheadline, design: .rounded, weight: .bold))
+                .pilotText(.subtitle)
                 .foregroundStyle(color)
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)

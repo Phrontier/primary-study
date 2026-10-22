@@ -15,7 +15,7 @@ struct DocumentPreviewScreen: View {
                     EmptyStateCard(
                         icon: "exclamationmark.triangle.fill",
                     title: "Document Unavailable",
-                        message: "The source file could not be found in the app bundle. Re-run the import pipeline or verify the bundle resource path."
+                        message: "This document is unavailable. Return to the library to choose another reference, or report the missing material through Support."
                     )
                 }
             }
@@ -45,7 +45,7 @@ struct SharedResourceDetailView: View {
                         subtitle: "Reference ready in text form"
                     ) {
                         Text(resource.summary)
-                            .font(.body)
+                            .pilotText(.body)
                             .foregroundStyle(AppTheme.textSecondary)
                     }
                 }

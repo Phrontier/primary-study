@@ -34,6 +34,18 @@ struct RootView: View {
     @StateObject private var searchChrome = SearchChromeModel()
 
     var body: some View {
+        #if DEBUG
+        if AppLaunchEnvironment.isUITesting && ProcessInfo.processInfo.arguments.contains("--design-pattern-gallery") {
+            DesignPatternGallery()
+        } else {
+            appTabs
+        }
+        #else
+        appTabs
+        #endif
+    }
+
+    private var appTabs: some View {
         TabView(selection: tabSelection) {
             TabNavigationHost(path: pathBinding(for: .home)) {
                 HomeTabView()
@@ -129,43 +141,23 @@ private struct EventsTabView: View {
     @EnvironmentObject private var appModel: StudyAppModel
     @EnvironmentObject private var searchChrome: SearchChromeModel
 
-    private var headerIdentity: TabHeaderIdentity {
-        TabHeaderIdentity(
-            navigationTitle: "Events",
-            eyebrow: "Event center",
-            title: "Start Your Next Event",
-            subtitle: nil,
-            iconName: AppTab.events.iconName,
-            accent: AppTheme.domainColor(.flights)
-        )
-    }
-
     var body: some View {
-        AppScrollScreen(topPadding: AppTheme.Spacing.rootTabIntroTop) {
-            RootSummaryCard(
-                identity: headerIdentity,
-                metrics: [
-                    TabHeaderMetric(
-                        label: "Phases",
-                        value: "\(appModel.studyManifest.phases.count)",
-                        color: AppTheme.domainColor(.groundSchool),
-                        iconName: "square.grid.2x2.fill"
-                    ),
-                    TabHeaderMetric(
-                        label: "Library",
-                        value: "\(appModel.generalLibraryStudyHubs.count)",
-                        color: AppTheme.domainColor(.library),
-                        iconName: "books.vertical.fill"
-                    ),
-                    TabHeaderMetric(
-                        label: "Videos",
-                        value: "\(appModel.generalLibraryVideos.count)",
-                        color: AppTheme.domainColor(.videos),
-                        iconName: "play.rectangle.fill"
-                    )
-                ]
-            )
+        PilotPage {
+            StudyHeading(title: "Events", subtitle: "Find your event. Prepare for what’s next.")
+                .padding(.top, 7).padding(.bottom, 28)
 
+            VStack(alignment: .leading, spacing: 0) {
+                Text("Choose your phase").pilotText(.section).padding(.bottom, 8).accessibilityAddTraits(.isHeader)
+
+                ForEach(appModel.studyManifest.phases) { phase in
+                    NavigationLink {
+                        PhaseDetailView(phase: phase)
+                    } label: {
+                        StudyDestinationRow(title: phase.title, iconName: StudyDesign.phaseIcon(phase.id), accent: StudyDesign.phaseAccent(phase.id), iconFill: StudyDesign.phaseFill(phase.id), layout: .root)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
             if !appModel.generalLibraryStudyHubs.isEmpty || !appModel.generalLibraryResources.isEmpty || !appModel.generalLibraryVideos.isEmpty {
                 NavigationLink {
                     GeneralLibraryView(
@@ -174,34 +166,19 @@ private struct EventsTabView: View {
                         videoGroups: appModel.generalLibraryVideoGroups
                     )
                 } label: {
-                    PhaseDestinationCard(
+                    StudyDestinationRow(
                         title: "General Library",
-                        subtitle: nil,
-                        iconName: "books.vertical.fill",
-                        accent: AppTheme.domainColor(.library)
+                        subtitle: "Reference material across your training.",
+                        iconName: "book",
+                        accent: StudyDesign.amberInk,
+                        highlight: StudyDesign.color(0xF8EEDC, 0x403018),
+                        layout: .library
                     )
                 }
-                .buttonStyle(.plain)
-            }
-
-            VStack(alignment: .leading, spacing: 14) {
-                SectionHeader(
-                    eyebrow: "Training pipeline",
-                    title: "Choose Your Phase",
-                    subtitle: nil
-                )
-
-                ForEach(appModel.studyManifest.phases) { phase in
-                    NavigationLink {
-                        PhaseDetailView(phase: phase)
-                    } label: {
-                        PhaseCard(phase: phase)
-                    }
-                    .buttonStyle(.plain)
-                }
+                .buttonStyle(.plain).padding(.top, 26)
             }
         }
-        .rootNavigationChrome(title: headerIdentity.navigationTitle)
+        .pilotNavigation()
         .onAppear {
             searchChrome.updateScope(.events(title: "Events", phaseID: nil, categoryID: nil))
         }

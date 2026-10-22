@@ -142,8 +142,26 @@ extension StudyAppModel {
             reviewDue: reviewDue,
             weakAreas: weakAreas,
             questionOfDay: questionOfDay,
-            studyStreak: streak
+            studyStreak: streak,
+            flashcardsReviewedToday: Set(studyManifest.flashcards.map(\.id)).filter { id in
+                guard let date = progressStore?.progress(for: id).lastReviewedAt else { return false }
+                return Calendar.current.isDate(date, inSameDayAs: now)
+            }.count,
+            recentDestinations: recentHomeDestinations()
         )
+    }
+
+    private func recentHomeDestinations() -> [HomeFocusTopicSnapshot] {
+        var seen = Set<SearchDestination>()
+        var destinations: [HomeFocusTopicSnapshot] = []
+        for activity in progressStore?.recentActivities() ?? [] {
+            guard let destination = destination(for: activity.destination), seen.insert(destination).inserted else { continue }
+            // The first destination is already the featured Continue Studying item.
+            destinations.append(HomeFocusTopicSnapshot(subtitle: activity.subtitle, id: activity.id, title: activity.title,
+                iconName: activity.kind == .video ? "play.rectangle.fill" : "book.closed.fill", destination: destination))
+            if destinations.count == 3 { break }
+        }
+        return Array(destinations.dropFirst())
     }
 
     private func personalizedIntroLine(
@@ -278,7 +296,7 @@ extension StudyAppModel {
 
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
-        let relative = formatter.localizedString(for: activity.lastInteractedAt, relativeTo: now)
+        let relative = abs(activity.lastInteractedAt.timeIntervalSince(now)) < 60 ? "just now" : formatter.localizedString(for: activity.lastInteractedAt, relativeTo: now)
 
         let title: String
         switch activity.kind {
@@ -302,7 +320,9 @@ extension StudyAppModel {
             detail: "Last active \(relative).",
             actionTitle: "Resume",
             destination: destination,
-            isFallback: false
+            isFallback: false,
+            displayTitle: activity.kind == .event ? activity.subtitle : activity.title.replacingOccurrences(of: "\(activity.subtitle) ", with: ""),
+            contextLabel: activity.kind == .event ? activity.title : activity.subtitle
         )
     }
 

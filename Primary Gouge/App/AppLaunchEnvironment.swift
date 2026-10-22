@@ -24,6 +24,8 @@ enum AppLaunchEnvironment {
         isUITesting && arguments.contains("--ui-testing-signed-out")
     }
 
+    static var usesTrainingSetupUITest: Bool { isUITesting && arguments.contains("--ui-testing-training-setup") }
+
     static var usesPasswordResetConfirmUITest: Bool {
         isUITesting && arguments.contains("--ui-testing-reset-confirm")
     }
@@ -34,5 +36,6 @@ enum AppLaunchEnvironment {
     static let usesFreeUITestAccount = false
     static let usesSignedOutUITestAccount = false
     static let usesPasswordResetConfirmUITest = false
+    static let usesTrainingSetupUITest = false
 #endif
 }

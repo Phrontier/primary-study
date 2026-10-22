@@ -112,7 +112,7 @@ private struct ObjectivePracticeTestView: View {
                     subtitle: nil
                 )
 
-                SectionContainer {
+                Group {
                     VStack(spacing: 12) {
                         ForEach(ObjectivePracticeMode.allCases) { mode in
                             Button {
@@ -165,7 +165,7 @@ private struct ObjectivePracticeTestView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
                         Text("Question \(currentIndex + 1) of \(activeQuestions.count)")
-                            .font(.subheadline.weight(.semibold))
+                            .pilotText(.subtitle)
                             .foregroundStyle(AppTheme.accent)
 
                         Spacer()
@@ -199,16 +199,16 @@ private struct ObjectivePracticeTestView: View {
                 SectionContainer {
                     VStack(alignment: .leading, spacing: 10) {
                         Text(question.isCorrect(choiceID: submittedChoiceID) ? "Correct" : "Incorrect")
-                            .font(.headline.weight(.bold))
+                            .pilotText(.tool)
                             .foregroundStyle(question.isCorrect(choiceID: submittedChoiceID) ? AppTheme.success : AppTheme.danger)
 
                         Text("Answer: \(question.answer)")
-                            .font(.body)
+                            .pilotText(.body)
                             .foregroundStyle(AppTheme.textPrimary)
 
                         if let explanation = question.explanation, !explanation.isEmpty {
                             Text(explanation)
-                                .font(.footnote)
+                                .pilotText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
                         }
                     }
@@ -248,11 +248,11 @@ private struct ObjectivePracticeTestView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(mode.title)
-                    .font(.headline.weight(.bold))
+                    .pilotText(.tool)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(mode.summary)
-                    .font(.footnote)
+                    .pilotText(.metadata)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -260,7 +260,7 @@ private struct ObjectivePracticeTestView: View {
             Spacer()
 
             Text("\(questionCount(for: mode))")
-                .font(.caption.weight(.bold))
+                .pilotText(.metadata)
                 .foregroundStyle(AppTheme.textMuted)
         }
         .padding(12)
@@ -597,26 +597,26 @@ private struct LegacyPracticeTestView: View {
                 )
 
                 Text("Question \(currentIndex + 1) of \(bank.questions.count)")
-                    .font(.subheadline.weight(.semibold))
+                    .pilotText(.subtitle)
                     .foregroundStyle(AppTheme.accent)
             }
 
             SectionContainer(highlighted: true) {
                 VStack(alignment: .leading, spacing: 16) {
                     Text(currentQuestion.prompt)
-                        .font(.title3.weight(.semibold))
+                        .pilotText(.section)
                         .foregroundStyle(AppTheme.textPrimary)
 
                     if revealed {
                         Divider()
 
                         Text(currentQuestion.answer)
-                            .font(.body)
+                            .pilotText(.body)
                             .foregroundStyle(AppTheme.textSecondary)
 
                         if let explanation = currentQuestion.explanation {
                             Text(explanation)
-                                .font(.footnote)
+                                .pilotText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
                         }
                     }
@@ -749,11 +749,11 @@ private struct PracticeTestModeRow: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.headline.weight(.bold))
+                    .pilotText(.tool)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(summary)
-                    .font(.footnote)
+                    .pilotText(.metadata)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -761,7 +761,7 @@ private struct PracticeTestModeRow: View {
             Spacer()
 
             Text("\(count)")
-                .font(.caption.weight(.bold))
+                .pilotText(.metadata)
                 .foregroundStyle(AppTheme.textMuted)
         }
         .padding(12)
@@ -775,7 +775,7 @@ private struct PracticeTestPerformanceBar: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(snapshot.detail)
-                .font(.footnote)
+                .pilotText(.metadata)
                 .foregroundStyle(AppTheme.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -798,7 +798,7 @@ private struct PracticeTestPerformanceBar: View {
                             .frame(width: 8, height: 8)
 
                         Text("\(segment.band.label) \(segment.count)")
-                            .font(.caption.weight(.semibold))
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.textSecondary)
                             .lineLimit(1)
                             .minimumScaleFactor(0.85)
@@ -858,7 +858,7 @@ private struct PracticeQuestionPreviewCard: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack(alignment: .center, spacing: 8) {
                     Text("Q\(ordinal)")
-                        .font(.caption.weight(.bold))
+                        .pilotText(.metadata)
                         .foregroundStyle(AppTheme.textMuted)
 
                     PracticeQuestionStatusBadge(text: item.band.label, color: item.band.displayColor)
@@ -871,18 +871,18 @@ private struct PracticeQuestionPreviewCard: View {
                 }
 
                 Text(item.question.prompt)
-                    .font(.headline.weight(.semibold))
+                    .pilotText(.tool)
                     .foregroundStyle(AppTheme.textPrimary)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 if showsCorrectChoice, let correctChoiceText = item.correctChoiceText {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Correct choice")
-                            .font(.caption.weight(.semibold))
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.textMuted)
 
                         Text(correctChoiceText)
-                            .font(.subheadline.weight(.medium))
+                            .pilotText(.subtitle)
                             .foregroundStyle(AppTheme.textPrimary)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -890,11 +890,11 @@ private struct PracticeQuestionPreviewCard: View {
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Answer")
-                        .font(.caption.weight(.semibold))
+                        .pilotText(.metadata)
                         .foregroundStyle(AppTheme.textMuted)
 
                     Text(item.question.answer)
-                        .font(.subheadline)
+                        .pilotText(.subtitle)
                         .foregroundStyle(AppTheme.textSecondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
@@ -903,11 +903,11 @@ private struct PracticeQuestionPreviewCard: View {
                 if let explanation = item.question.explanation, !explanation.isEmpty {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Explanation")
-                            .font(.caption.weight(.semibold))
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.textMuted)
 
                         Text(explanation)
-                            .font(.footnote)
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.textSecondary)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .fixedSize(horizontal: false, vertical: true)
@@ -924,7 +924,7 @@ private struct PracticeQuestionStatusBadge: View {
 
     var body: some View {
         Text(text)
-            .font(.caption2.weight(.semibold))
+            .pilotText(.footer)
             .padding(.horizontal, 8)
             .padding(.vertical, 5)
             .background(AppTheme.badgeFill(color), in: Capsule())

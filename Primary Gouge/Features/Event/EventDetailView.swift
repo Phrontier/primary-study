@@ -18,16 +18,17 @@ struct EventDetailView: View {
     }
 
     private var eventContent: some View {
-        AppScrollScreen(bottomPadding: 40) {
+        PilotPage {
+            PilotBackHeader(title: event.categoryKind.displayName)
             hero
 
-            if shouldShowOverview {
-                EventOverviewCard(overview: event.overview)
+            if !event.overview.isEmpty || !event.summary.isEmpty {
+                EventOverviewCard(overview: event.overview.isEmpty ? event.summary : event.overview)
             }
 
-            briefingGuideSection
-
             toolSection
+
+            briefingGuideSection
 
             let videos = appModel.videos(for: event, placement: nil)
             if !videos.isEmpty {
@@ -44,7 +45,7 @@ struct EventDetailView: View {
                 additionalDocumentsSection(supplementalDocuments)
             }
         }
-        .detailNavigationChrome(title: event.code)
+        .pilotNavigation()
         .task {
             appModel.markEventViewed(event)
         }
@@ -55,61 +56,27 @@ struct EventDetailView: View {
     }
 
     private var hero: some View {
-        HeroCard(
-            eyebrow: "\(phase.title) • \(event.categoryKind.displayName)",
-            title: event.displayTitle,
-            subtitle: event.summary
-        )
-    }
-
-    private var shouldShowOverview: Bool {
-        let normalizedOverview = normalizedDescription(event.overview)
-        let normalizedSummary = normalizedDescription(event.summary)
-
-        guard !normalizedOverview.isEmpty else { return false }
-        guard !normalizedSummary.isEmpty else { return true }
-
-        if normalizedOverview == normalizedSummary {
-            return false
-        }
-
-        if normalizedSummary.hasSuffix("...") {
-            let truncatedSummary = String(normalizedSummary.dropLast(3)).trimmingCharacters(in: .whitespacesAndNewlines)
-            if !truncatedSummary.isEmpty && normalizedOverview.hasPrefix(truncatedSummary) {
-                return false
-            }
-        }
-
-        return true
-    }
-
-    private func normalizedDescription(_ text: String) -> String {
-        text
-            .replacingOccurrences(of: "\n", with: " ")
-            .split(whereSeparator: \.isWhitespace)
-            .joined(separator: " ")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .lowercased()
+        StudyHeading(eyebrow: event.code, title: event.displayTitle, pill: true)
+            .padding(.bottom, 30)
+            .overlay(alignment: .bottom) { Rectangle().fill(StudyDesign.line).frame(height: 1) }
+            .padding(.bottom, 22)
     }
 
     private var briefingGuideSection: some View {
         let briefingGuide = appModel.briefingGuide(for: event)
-        return VStack(alignment: .leading, spacing: 14) {
+        return VStack(alignment: .leading, spacing: 13) {
             if let document = briefingGuide {
-                SectionHeader(
-                    eyebrow: "Start here",
-                    title: "Briefing Guide",
-                    subtitle: nil
-                )
+                Text("Briefing guide").pilotText(.section).accessibilityAddTraits(.isHeader)
 
                 NavigationLink {
                     DocumentPreviewScreen(document: document)
                 } label: {
-                    ToolCard(
+                    StudyDestinationRow(
                         title: "\(event.code) Briefing Guide",
-                        subtitle: nil,
-                        icon: "doc.richtext.fill",
-                        accent: AppTheme.domainColor(.documents)
+                        subtitle: document.title,
+                        iconName: "book",
+                        accent: StudyDesign.amberInk,
+                        highlight: StudyDesign.color(0xF8EEDC, 0x403018)
                     )
                 }
                 .buttonStyle(.plain)
@@ -118,23 +85,19 @@ struct EventDetailView: View {
     }
 
     private var toolSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            SectionHeader(
-                eyebrow: "Prep tools",
-                title: "Study and Rehearse",
-                subtitle: nil
-            )
+        VStack(alignment: .leading, spacing: 13) {
+            Text("Study and rehearse").pilotText(.section).accessibilityAddTraits(.isHeader)
 
-            VStack(spacing: 12) {
+            VStack(spacing: 0) {
                 if let notes = event.studyNotes {
                     NavigationLink {
                         NotesDetailView(
                             notes: notes,
                             eventTitle: event.code,
-                            accent: AppTheme.domainColor(.discussionItems)
+                            accent: StudyDesign.teal, eventDisplayTitle: event.displayTitle
                         )
                     } label: {
-                        ToolCard(title: "Discussion Items", subtitle: nil, icon: "text.alignleft", accent: AppTheme.domainColor(.discussionItems))
+                        StudyDestinationRow(title: "Discussion Items", subtitle: "Read the key preparation material.", iconName: "book", accent: StudyDesign.teal, iconFill: StudyDesign.phaseFill("vnav"))
                     }
                     .buttonStyle(.plain)
                 }
@@ -147,10 +110,10 @@ struct EventDetailView: View {
                             accent: AppTheme.domainColor(.resources)
                         )
                     } label: {
-                        ToolCard(
+                        StudyDestinationRow(
                             title: "Systems Brief",
                             subtitle: nil,
-                            icon: "gearshape.2.fill",
+                            iconName: "gearshape.2.fill",
                             accent: AppTheme.domainColor(.resources)
                         )
                     }
@@ -161,11 +124,11 @@ struct EventDetailView: View {
                     NavigationLink {
                         FlashcardDeckView(event: event, deck: deck)
                     } label: {
-                        ToolCard(
-                            title: deck.title,
-                            subtitle: nil,
-                            icon: "rectangle.stack.fill",
-                            accent: AppTheme.domainColor(.flashcards)
+                        StudyDestinationRow(
+                            title: event.flashcardDecks.count == 1 ? "Flashcards" : deck.title,
+                            subtitle: "Practice the discussion items.",
+                            iconName: "book",
+                            accent: StudyDesign.purple, iconFill: StudyDesign.phaseFill("instruments"), separator: false
                         )
                     }
                     .buttonStyle(.plain)
@@ -175,7 +138,7 @@ struct EventDetailView: View {
                     NavigationLink {
                         PracticeTestView(event: event, bank: bank)
                     } label: {
-                        ToolCard(title: bank.title, subtitle: nil, icon: "checklist.checked", accent: AppTheme.domainColor(.quizzes))
+                        StudyDestinationRow(title: bank.title, subtitle: nil, iconName: "checklist.checked", accent: AppTheme.domainColor(.quizzes))
                     }
                     .buttonStyle(.plain)
                 }
@@ -188,11 +151,11 @@ struct EventDetailView: View {
                     message: "This event already carries source documents and can be expanded later by editing the generated study manifest."
                 )
             }
-        }
+        }.padding(.bottom, 22)
     }
 
     private func sharedResourceSection(_ resources: [SharedResource]) -> some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 13) {
             SectionHeader(
                 eyebrow: "Shared references",
                 title: "Always-Relevant Material",
@@ -203,10 +166,10 @@ struct EventDetailView: View {
                 NavigationLink {
                     SharedResourceDetailView(resource: resource)
                 } label: {
-                    ToolCard(
+                    StudyDestinationRow(
                         title: resource.title,
                         subtitle: nil,
-                        icon: "square.grid.2x2.fill",
+                        iconName: "square.grid.2x2.fill",
                         accent: resource.librarySection.domainColor
                     )
                 }
@@ -216,7 +179,7 @@ struct EventDetailView: View {
     }
 
     private func relatedVideoSection(_ videos: [VideoAsset]) -> some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 13) {
             SectionHeader(
                 eyebrow: "Videos",
                 title: "Related Videos",
@@ -227,10 +190,10 @@ struct EventDetailView: View {
                 NavigationLink {
                     VideoDetailView(video: video)
                 } label: {
-                    ToolCard(
+                    StudyDestinationRow(
                         title: video.title,
                         subtitle: videoSubtitle(video),
-                        icon: "play.rectangle.fill",
+                        iconName: "play.rectangle.fill",
                         accent: AppTheme.domainColor(.videos)
                     )
                 }
@@ -256,7 +219,7 @@ struct EventDetailView: View {
     }
 
     private func additionalDocumentsSection(_ documents: [SourceDocument]) -> some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 13) {
             SectionHeader(
                 eyebrow: "Documents",
                 title: "Additional Source Material",
@@ -267,11 +230,12 @@ struct EventDetailView: View {
                 NavigationLink {
                     DocumentPreviewScreen(document: document)
                 } label: {
-                    ToolCard(
+                    StudyDestinationRow(
                         title: document.title,
                         subtitle: nil,
-                        icon: "doc.text.fill",
-                        accent: AppTheme.domainColor(.documents)
+                        iconName: "doc.text.fill",
+                        accent: StudyDesign.amberInk,
+                        highlight: StudyDesign.amberFill
                     )
                 }
                 .buttonStyle(.plain)
@@ -282,22 +246,13 @@ struct EventDetailView: View {
 
 private struct EventOverviewCard: View {
     let overview: String
-
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            SectionHeader(
-                eyebrow: "Overview",
-                title: "What This Event Is About",
-                subtitle: nil
-            )
-
-            SectionContainer {
-                Text(overview)
-                    .font(.body)
-                    .foregroundStyle(AppTheme.textSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-        }
+        VStack(alignment: .leading, spacing: 13) {
+            Text("Overview").pilotText(.section).accessibilityAddTraits(.isHeader)
+            Text(overview).pilotText(.overview).foregroundStyle(StudyDesign.reading)
+                .padding(.leading, 18)
+                .overlay(alignment: .leading) { Rectangle().fill(StudyDesign.blue).frame(width: 3) }
+        }.padding(.bottom, 22)
     }
 }
 
@@ -305,47 +260,65 @@ struct NotesDetailView: View {
     let notes: EventStudyNotes
     let eventTitle: String
     let accent: Color
+    var eventDisplayTitle: String? = nil
 
     var body: some View {
-        AppScrollScreen(bottomPadding: 30) {
-            SectionHeader(
-                eyebrow: eventTitle,
-                title: notes.headline,
-                subtitle: nil,
-                accent: accent
-            )
+        PilotPage {
+            PilotBackHeader(title: eventTitle)
+            StudyHeading(title: notes.headline, subtitle: eventDisplayTitle)
+                .padding(.bottom, 20)
+                .overlay(alignment: .bottom) { Rectangle().fill(StudyDesign.line).frame(height: 1) }
+                .padding(.bottom, 22)
 
-            VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 22) {
                 ForEach(Array(notes.sections.enumerated()), id: \.offset) { _, section in
                     NotesDiscussionSectionView(section: section, accent: accent)
                 }
             }
         }
-        .detailNavigationChrome(title: eventTitle)
+        .pilotNavigation()
     }
 }
 
 private struct NotesDiscussionSectionView: View {
     let section: EventStudyNotesSection
     let accent: Color
+    @State private var isExpanded = true
+    private var title: String {
+        guard let title = section.title, !title.isEmpty else { return "Discussion items" }
+        return title
+    }
 
     var body: some View {
-        SectionContainer(accent: accent) {
-            VStack(alignment: .leading, spacing: 16) {
-                if let title = section.title, !title.isEmpty {
+        VStack(alignment: .leading, spacing: 13) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.18)) { isExpanded.toggle() }
+            } label: {
+                HStack(alignment: .firstTextBaseline, spacing: 0) {
                     Text(title)
-                        .font(.headline.weight(.semibold))
-                        .foregroundStyle(AppTheme.textPrimary)
+                        .pilotText(.readingHeading).foregroundStyle(StudyDesign.ink)
                         .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 16)
+                    Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+                        .font(.caption.weight(.semibold)).foregroundStyle(StudyDesign.secondary).frame(width: 13)
                 }
-
-                VStack(alignment: .leading, spacing: 14) {
+                .padding(.leading, 15).frame(minHeight: 44)
+                .overlay(alignment: .leading) { Rectangle().fill(accent).frame(width: 3) }
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityValue(isExpanded ? "Expanded" : "Collapsed")
+            .accessibilityHint(isExpanded ? "Collapse this section" : "Expand this section")
+            if isExpanded {
+                VStack(alignment: .leading, spacing: 10) {
                     ForEach(Array(section.items.enumerated()), id: \.offset) { _, item in
                         NotesDiscussionItemView(item: item, level: 0, accent: accent)
                     }
-                }
+                }.padding(.leading, 8)
             }
         }
+        .padding(.bottom, 20)
+        .overlay(alignment: .bottom) { Rectangle().fill(StudyDesign.line).frame(height: 1) }
     }
 }
 
@@ -362,13 +335,13 @@ private struct NotesDiscussionItemView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .top, spacing: 10) {
                 Circle()
-                    .fill(level == 0 ? accent : AppTheme.cardStroke)
-                    .frame(width: level == 0 ? 7 : 5, height: level == 0 ? 7 : 5)
-                    .padding(.top, 7)
+                    .fill(level == 0 ? accent : StudyDesign.secondary)
+                    .frame(width: 4, height: 4)
+                    .padding(.top, 9)
 
                 Text(item.text)
-                    .font(level == 0 ? .body.weight(.medium) : .subheadline)
-                    .foregroundStyle(level == 0 ? AppTheme.textPrimary : AppTheme.textSecondary)
+                    .pilotText(.body)
+                    .foregroundStyle(StudyDesign.reading)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }

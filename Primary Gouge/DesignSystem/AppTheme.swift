@@ -37,15 +37,15 @@ enum AppTheme {
     }
 
     enum Radius {
-        static let card: CGFloat = 18
+        static let card: CGFloat = 24
         static let largeCard: CGFloat = 22
-        static let control: CGFloat = 14
+        static let control: CGFloat = 13
         static let pill: CGFloat = 999
     }
 
     enum Spacing {
-        static let screenHorizontal: CGFloat = 20
-        static let screenTop: CGFloat = 16
+        static let screenHorizontal: CGFloat = 22
+        static let screenTop: CGFloat = 18
         static let rootTabIntroTop: CGFloat = 8
         static let section: CGFloat = 28
         static let group: CGFloat = 16
@@ -102,26 +102,26 @@ enum AppTheme {
         switch activeVariant {
         case .nativeClarity:
             return ThemePalette(
-                accent: adaptiveColor(light: 0x2563EB, dark: 0x6EA4FF),
+                accent: StudyDesign.blue,
                 accentSoft: adaptiveColor(light: 0x5E8BFF, dark: 0x9FC1FF),
                 accentMuted: adaptiveColor(light: 0xE7F0FF, dark: 0x17243A),
                 success: adaptiveColor(light: 0x168A51, dark: 0x4ED18A),
                 warning: adaptiveColor(light: 0xB76B00, dark: 0xFFC15A),
                 danger: adaptiveColor(light: 0xD8344E, dark: 0xFF7A8E),
-                textPrimary: adaptiveColor(light: 0x172033, dark: 0xF4F7FB),
-                textSecondary: adaptiveColor(light: 0x5B6472, dark: 0xB4BDCB),
-                textMuted: adaptiveColor(light: 0x8B95A5, dark: 0x848EA0),
-                pageTop: adaptiveColor(light: 0xF8FAFD, dark: 0x111419),
-                pageBottom: adaptiveColor(light: 0xEEF3F8, dark: 0x171B22),
-                pageGlow: adaptiveColor(light: 0xD8E7FF, dark: 0x1B2A42),
-                surface: adaptiveColor(light: 0xFFFFFF, dark: 0x1B2028),
+                textPrimary: StudyDesign.ink,
+                textSecondary: StudyDesign.secondary,
+                textMuted: StudyDesign.secondary,
+                pageTop: StudyDesign.page,
+                pageBottom: StudyDesign.page,
+                pageGlow: StudyDesign.page,
+                surface: StudyDesign.surface,
                 elevatedSurface: adaptiveColor(light: 0xFDFEFF, dark: 0x222832),
                 raisedSurface: adaptiveColor(light: 0xFFFFFF, dark: 0x29313D),
                 sunkenSurface: adaptiveColor(light: 0xE8EEF6, dark: 0x12161D),
                 groupedBackground: adaptiveColor(light: 0xF1F5FA, dark: 0x202732),
                 secondaryGroupedBackground: adaptiveColor(light: 0xE6ECF4, dark: 0x2A3340),
-                separator: adaptiveColor(light: 0xD8E0EA, dark: 0x3A4655),
-                cardStroke: adaptiveColor(light: 0xDFE6EF, dark: 0x354150),
+                separator: StudyDesign.line,
+                cardStroke: StudyDesign.cardLine,
                 strongStroke: adaptiveColor(light: 0xC9D6E8, dark: 0x4A5A6D),
                 chromeBackground: adaptiveUIColor(light: 0xFBFCFE, dark: 0x151A22, alpha: 0.82),
                 chromeLine: adaptiveUIColor(light: 0xCBD5E1, dark: 0x303B4A, alpha: 0.72)
@@ -149,6 +149,17 @@ enum AppTheme {
     static var separator: Color { palette.separator }
     static var cardStroke: Color { palette.cardStroke }
     static var strongStroke: Color { palette.strongStroke }
+
+    /// Preserve readable text on semantic action fills in both appearances.
+    static func foreground(on fill: Color, scheme: ColorScheme) -> Color {
+        let traits = UITraitCollection(userInterfaceStyle: scheme == .dark ? .dark : .light)
+        let resolved = UIColor(fill).resolvedColor(with: traits)
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        guard resolved.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return .white }
+        func linear(_ value: CGFloat) -> CGFloat { value <= 0.04045 ? value / 12.92 : pow((value + 0.055) / 1.055, 2.4) }
+        let luminance = 0.2126 * linear(red) + 0.7152 * linear(green) + 0.0722 * linear(blue)
+        return luminance > 0.179 ? .black : .white
+    }
 
     static func statusColor(_ role: StatusColorRole) -> Color {
         switch role {
@@ -251,7 +262,7 @@ enum AppTheme {
     }
 
     static func prominentText(_ color: Color) -> Color {
-        liftedColor(color, amount: 0.18)
+        color
     }
 
     static func prominentText(_ role: StatusColorRole) -> Color {
@@ -302,69 +313,18 @@ enum AppTheme {
         UINavigationBar.appearance().prefersLargeTitles = true
     }
 
+    /// Compatibility entry point. New screens use StudyDesign and screen recipes.
     @ViewBuilder
     static var screenBackground: some View {
-        ZStack {
-            LinearGradient(
-                colors: [palette.pageTop, palette.pageBottom],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-
-            RadialGradient(
-                colors: [palette.pageGlow.opacity(0.72), .clear],
-                center: .top,
-                startRadius: 20,
-                endRadius: 340
-            )
-            .offset(y: -170)
-        }
+        StudyDesign.page
     }
 
     @ViewBuilder
     static func cardBackground(style: SurfaceStyle = .standard, accent: Color = AppTheme.accent) -> some View {
-        let radius = style == .hero ? Radius.largeCard : Radius.card
-        let shape = RoundedRectangle(cornerRadius: radius, style: .continuous)
-
-        shape
-            .fill(surfaceFill(style: style, accent: accent))
-            .overlay {
-                shape.stroke(surfaceStroke(style: style, accent: accent), lineWidth: 1)
-            }
-            .overlay(alignment: .topLeading) {
-                if style == .rootSummary {
-                    shape
-                        .fill(
-                            RadialGradient(
-                                colors: [
-                                    liftedColor(accent, amount: 0.10).opacity(0.18),
-                                    accent.opacity(0.08),
-                                    .clear
-                                ],
-                                center: .topLeading,
-                                startRadius: 8,
-                                endRadius: 220
-                            )
-                        )
-                        .blendMode(.screen)
-                }
-            }
-            .overlay(alignment: .top) {
-                shape
-                    .stroke(
-                        LinearGradient(
-                            colors: [Color.white.opacity(style == .hero ? 0.18 : 0.10), Color.white.opacity(0.02)],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        ),
-                        lineWidth: 1
-                    )
-                    .mask(
-                        Rectangle()
-                            .fill(LinearGradient(colors: [.white, .clear], startPoint: .top, endPoint: .bottom))
-                    )
-            }
-            .shadow(color: Color.black.opacity(shadowOpacity(style: style)), radius: shadowRadius(style: style), x: 0, y: shadowYOffset(style: style))
+        RoundedRectangle(cornerRadius: 24, style: .continuous)
+            .fill(StudyDesign.surface)
+            .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .strokeBorder(StudyDesign.cardLine, lineWidth: 1))
     }
 
     static func cardBackground(highlighted: Bool = false) -> some View {
@@ -373,149 +333,6 @@ enum AppTheme {
 
     static func subtleFill(_ color: Color) -> some ShapeStyle {
         color.opacity(0.14)
-    }
-
-    private static func surfaceFill(style: SurfaceStyle, accent: Color) -> LinearGradient {
-        switch style {
-        case .hero:
-            return LinearGradient(
-                colors: [
-                    elevatedSurface.opacity(0.98),
-                    accent.opacity(0.08),
-                    surface.opacity(0.99)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        case .primary:
-            return LinearGradient(
-                colors: [
-                    raisedSurface.opacity(0.96),
-                    accent.opacity(0.08),
-                    surface.opacity(0.96)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        case .rootSummary:
-            return LinearGradient(
-                colors: [
-                    elevatedSurface.opacity(0.98),
-                    accent.opacity(0.07),
-                    surface.opacity(0.97)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        case .metric:
-            return LinearGradient(
-                colors: [
-                    groupedBackground.opacity(0.98),
-                    accent.opacity(0.06),
-                    surface.opacity(0.98)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        case .grouped:
-            return LinearGradient(
-                colors: [groupedBackground.opacity(0.98), surface.opacity(0.98)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        case .standard:
-            return LinearGradient(
-                colors: [surface.opacity(0.99), elevatedSurface.opacity(0.97)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        }
-    }
-
-    private static func surfaceStroke(style: SurfaceStyle, accent: Color) -> LinearGradient {
-        switch style {
-        case .hero:
-            return LinearGradient(
-                colors: [strongStroke.opacity(0.92), accent.opacity(0.22)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        case .primary:
-            return LinearGradient(
-                colors: [cardStroke.opacity(0.95), accent.opacity(0.18)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        case .rootSummary:
-            return LinearGradient(
-                colors: [strongStroke.opacity(0.88), accent.opacity(0.16)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        case .metric:
-            return LinearGradient(
-                colors: [cardStroke.opacity(0.94), accent.opacity(0.16)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        case .grouped, .standard:
-            return LinearGradient(
-                colors: [cardStroke.opacity(0.96), Color.white.opacity(0.03)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        }
-    }
-
-    private static func shadowOpacity(style: SurfaceStyle) -> Double {
-        switch style {
-        case .hero:
-            return 0.12
-        case .primary:
-            return 0.10
-        case .rootSummary:
-            return 0.09
-        case .metric:
-            return 0.08
-        case .grouped:
-            return 0.06
-        case .standard:
-            return 0.08
-        }
-    }
-
-    private static func shadowRadius(style: SurfaceStyle) -> CGFloat {
-        switch style {
-        case .hero:
-            return 28
-        case .primary:
-            return 22
-        case .rootSummary:
-            return 18
-        case .metric:
-            return 18
-        case .grouped:
-            return 14
-        case .standard:
-            return 16
-        }
-    }
-
-    private static func shadowYOffset(style: SurfaceStyle) -> CGFloat {
-        switch style {
-        case .hero:
-            return 16
-        case .primary:
-            return 12
-        case .rootSummary:
-            return 11
-        case .metric:
-            return 10
-        case .grouped:
-            return 8
-        case .standard:
-            return 10
-        }
     }
 
     static func color(_ rgb: UInt32) -> Color {

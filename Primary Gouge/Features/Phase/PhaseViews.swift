@@ -18,57 +18,47 @@ struct PhaseDetailView: View {
     }
 
     var body: some View {
-        AppScrollScreen {
-            HeroCard(
-                eyebrow: "Training phase",
-                title: phase.title,
-                subtitle: nil,
-                accent: phase.accentColor
-            ) {
-                HeroInlineMetricRow(metrics: [
-                    HeroInlineMetric(label: "Categories", value: "\(phase.categories.count)", color: phase.accentColor),
-                    HeroInlineMetric(label: "Events", value: "\(phase.categories.flatMap(\.events).count)", color: phase.accentColor),
-                    HeroInlineMetric(label: "Library", value: "\(generalLibraryResources.count + generalLibraryVideos.count)", color: phase.accentColor)
-                ])
-            }
+        PilotPage {
+            PilotBackHeader(title: "Events")
+            StudyHeading(title: phase.title).padding(.bottom, 28)
 
-            if !generalLibraryResources.isEmpty || !generalLibraryVideos.isEmpty {
-                NavigationLink {
-                    PhaseKnowledgeView(phase: phase, resources: generalLibraryResources, videoGroups: generalLibraryVideoGroups)
-                } label: {
-                    PhaseDestinationCard(
-                        title: "General Library",
-                        subtitle: nil,
-                        iconName: "books.vertical.fill",
-                        accent: AppTheme.domainColor(.library)
-                    )
-                }
-                .buttonStyle(.plain)
-            }
-
-            VStack(alignment: .leading, spacing: 14) {
-                SectionHeader(
-                    eyebrow: "Training blocks",
-                    title: "Categories",
-                    subtitle: nil
-                )
+            VStack(alignment: .leading, spacing: 0) {
+                Text("Categories").pilotText(.section).padding(.bottom, 8).accessibilityAddTraits(.isHeader)
 
                 ForEach(phase.categories) { category in
                     NavigationLink {
                         categoryDestination(for: category)
                     } label: {
-                        PhaseDestinationCard(
+                        StudyDestinationRow(
                             title: category.displayName,
                             subtitle: nil,
                             iconName: category.iconName,
-                            accent: category.kind.domainColor
+                            accent: category.kind.domainColor,
+                            layout: .root
                         )
                     }
                     .buttonStyle(.plain)
                 }
             }
+            if !generalLibraryResources.isEmpty || !generalLibraryVideos.isEmpty {
+                NavigationLink {
+                    PhaseKnowledgeView(phase: phase, resources: generalLibraryResources, videoGroups: generalLibraryVideoGroups)
+                } label: {
+                    StudyDestinationRow(
+                        title: "General Library",
+                        subtitle: nil,
+                        iconName: "book",
+                        accent: StudyDesign.amberInk,
+                        highlight: StudyDesign.color(0xF8EEDC, 0x403018),
+                        layout: .library
+                    )
+                }
+                .buttonStyle(.plain).padding(.top, 26)
+            }
+
+
         }
-        .detailNavigationChrome(title: phase.title)
+        .pilotNavigation()
         .onAppear {
             searchChrome.updateScope(.events(title: phase.title, phaseID: phase.id, categoryID: nil))
         }
@@ -208,36 +198,30 @@ struct EventListView: View {
     @EnvironmentObject private var subscriptionStore: SubscriptionStore
 
     var body: some View {
-        AppScrollScreen {
-            HeroCard(
-                eyebrow: phase.title,
-                title: category.displayName,
-                subtitle: nil
-            ) {
-                HeroInlineMetricRow(metrics: [
-                    HeroInlineMetric(label: "Events", value: "\(category.events.count)", color: category.kind.domainColor),
-                    HeroInlineMetric(label: "Studied", value: "\(category.events.filter { appModel.eventProgress(for: $0.id).completedAt != nil }.count)", color: AppTheme.statusColor(.success))
-                ])
-            }
+        PilotPage {
+            PilotBackHeader(title: phase.title)
+            StudyHeading(title: category.displayName, subtitle: category.summary).padding(.bottom, 28)
 
+            VStack(spacing: 0) {
             ForEach(category.events) { event in
+                let isPremiumLocked = ContentAccessPolicy.isLocked(
+                    ContentAccessPolicy.requirement(for: event), subscriptionStore: subscriptionStore
+                )
                 NavigationLink {
                     EventDetailView(phase: phase, event: event)
                 } label: {
-                    EventCard(
+                    StudyEventRow(
                         event: event,
-                        progress: appModel.eventProgress(for: event.id),
-                        dueCards: event.flashcardDecks.flatMap(\.cardIDs).filter { appModel.progress(for: $0).isDue }.count,
-                        isPremiumLocked: ContentAccessPolicy.isLocked(
-                            ContentAccessPolicy.requirement(for: event),
-                            subscriptionStore: subscriptionStore
-                        )
+                        isPremiumLocked: isPremiumLocked
                     )
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("\(event.code), \(event.displayTitle)" + (isPremiumLocked ? ", Premium locked" : ""))
+                .accessibilityHint(isPremiumLocked ? "Premium access required" : "Open event")
+            }
             }
         }
-        .detailNavigationChrome(title: category.displayName)
+        .pilotNavigation()
         .onAppear {
             searchChrome.updateScope(.events(title: category.displayName, phaseID: phase.id, categoryID: category.id))
         }
@@ -258,18 +242,8 @@ struct GroundSchoolCategoryView: View {
 
     var body: some View {
         AppScrollScreen(bottomPadding: 40) {
-            HeroCard(
-                eyebrow: phase.title,
-                title: category.displayName,
-                subtitle: category.summary,
-                accent: category.kind.domainColor
-            ) {
-                HeroInlineMetricRow(metrics: [
-                    HeroInlineMetric(label: "Items", value: "\(snapshot.totalToolCount)", color: category.kind.domainColor),
-                    HeroInlineMetric(label: "Tests", value: "\(snapshot.totalPracticeTestCount)", color: AppTheme.domainColor(.quizzes)),
-                    HeroInlineMetric(label: "Sections", value: "\(snapshot.totalSectionCount)", color: AppTheme.domainColor(.resources))
-                ])
-            }
+            HeroCard(eyebrow: phase.title, title: category.displayName,
+                     subtitle: category.summary, accent: category.kind.domainColor)
 
             if snapshot.isEmpty {
                 EmptyStateCard(

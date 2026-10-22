@@ -23,33 +23,11 @@ struct QuizAdaptivePromptView: View {
     let prompt: String
     let footer: String
 
-    private let fontSizes: [CGFloat] = [30, 27, 24, 22, 20, 18]
-
     var body: some View {
-        ViewThatFits(in: .vertical) {
-            ForEach(fontSizes, id: \.self) { size in
-                promptLayout(fontSize: size)
-            }
-
-            ScrollView(showsIndicators: true) {
-                promptLayout(fontSize: 20)
-            }
-        }
-    }
-
-    private func promptLayout(fontSize: CGFloat) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(prompt)
-                .font(.system(size: fontSize, weight: .bold, design: .rounded))
-                .foregroundStyle(AppTheme.textPrimary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
-
-            Text(footer)
-                .font(.system(.footnote, design: .rounded, weight: .semibold))
-                .foregroundStyle(AppTheme.textSecondary)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        VStack(alignment: .leading, spacing: 12) {
+            Text(prompt).designText(.prompt).foregroundStyle(StudyDesign.ink)
+            Text(footer).designText(.metadata).foregroundStyle(StudyDesign.secondary)
+        }.frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
@@ -60,8 +38,6 @@ struct QuizAnswerButton: View {
     let isInteractive: Bool
     let fixedHeight: CGFloat?
     let action: () -> Void
-
-    private let fontSizes: [CGFloat] = [17, 16, 15, 14, 13]
 
     var body: some View {
         Button {
@@ -76,7 +52,7 @@ struct QuizAnswerButton: View {
                             .frame(width: 30, height: 30)
 
                         Text(badge)
-                            .font(.system(.caption2, design: .rounded, weight: .bold))
+                            .pilotText(.footer)
                             .foregroundStyle(badgeForeground)
                     }
                 }
@@ -103,30 +79,9 @@ struct QuizAnswerButton: View {
         .buttonStyle(.plain)
     }
 
-    @ViewBuilder
     private var adaptiveLabel: some View {
-        let height = max(24, (fixedHeight ?? 62) - 6)
-
-        ViewThatFits(in: .vertical) {
-            ForEach(fontSizes, id: \.self) { size in
-                textLabel(fontSize: size)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-
-            ScrollView(showsIndicators: false) {
-                textLabel(fontSize: 14)
-            }
-            .frame(maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .leading)
-        }
-    }
-
-    private func textLabel(fontSize: CGFloat) -> some View {
-        Text(label)
-            .font(.system(size: fontSize, weight: .semibold, design: .rounded))
-            .foregroundStyle(labelColor)
-            .minimumScaleFactor(0.78)
+        Text(label).designText(.body).foregroundStyle(labelColor)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .fixedSize(horizontal: false, vertical: true)
     }
 
     private var backgroundColor: Color {

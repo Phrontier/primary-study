@@ -371,22 +371,22 @@ struct InstructorGougeReportSheet: View {
         AppScrollScreen(bottomPadding: 36) {
             VStack(alignment: .leading, spacing: 8) {
                 Text(target.title)
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .designText(.title)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(target.subtitle)
-                    .font(.system(.body, design: .rounded))
+                    .designText(.body)
                     .foregroundStyle(AppTheme.textSecondary)
             }
 
-            GlassCard {
+            VStack(alignment: .leading, spacing: 18) {
                 VStack(alignment: .leading, spacing: 18) {
                     reportTargetSummary
 
                     if case .instructor = target {
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Reason")
-                                .font(.system(.caption, design: .rounded, weight: .bold))
+                                .designText(.metadata)
                                 .foregroundStyle(AppTheme.textMuted)
                                 .tracking(0.6)
 
@@ -403,7 +403,7 @@ struct InstructorGougeReportSheet: View {
 
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Comment")
-                            .font(.system(.caption, design: .rounded, weight: .bold))
+                            .designText(.metadata)
                             .foregroundStyle(AppTheme.textMuted)
                             .tracking(0.6)
 
@@ -417,7 +417,7 @@ struct InstructorGougeReportSheet: View {
 
                             if note.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                                 Text("Add any detail that would help moderation understand what looks wrong.")
-                                    .font(.system(.body, design: .rounded))
+                                    .designText(.body)
                                     .foregroundStyle(AppTheme.textSecondary.opacity(0.75))
                                     .padding(.horizontal, 18)
                                     .padding(.vertical, 16)
@@ -426,7 +426,7 @@ struct InstructorGougeReportSheet: View {
                             TextEditor(text: $note)
                                 .scrollContentBackground(.hidden)
                                 .frame(minHeight: 120)
-                                .font(.system(.body, design: .rounded))
+                                .designText(.body)
                                 .foregroundStyle(AppTheme.textPrimary)
                                 .padding(.horizontal, 14)
                                 .padding(.vertical, 12)
@@ -444,7 +444,7 @@ struct InstructorGougeReportSheet: View {
 
             if let errorMessage {
                 Text(errorMessage)
-                    .font(.system(.footnote, design: .rounded, weight: .semibold))
+                    .designText(.metadata)
                     .foregroundStyle(AppTheme.warning)
                     .padding(.horizontal, 6)
             }
@@ -472,17 +472,17 @@ struct InstructorGougeReportSheet: View {
     private var reportTargetSummary: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(target.instructorName)
-                .font(.system(.headline, design: .rounded, weight: .bold))
+                .designText(.tool)
                 .foregroundStyle(AppTheme.textPrimary)
 
             HStack(spacing: 8) {
                 Text(target.squadron.displayName)
-                    .font(.system(.footnote, design: .rounded, weight: .semibold))
+                    .designText(.metadata)
                     .foregroundStyle(AppTheme.textSecondary)
 
                 if let eventName = target.eventName, let eventKind = target.eventKind {
                     Text(eventKind.displayName.uppercased())
-                        .font(.system(.caption2, design: .rounded, weight: .bold))
+                        .designText(.footer)
                         .foregroundStyle(AppTheme.prominentText(eventKind.domainColor))
                         .padding(.horizontal, 8)
                         .padding(.vertical, 5)
@@ -496,7 +496,7 @@ struct InstructorGougeReportSheet: View {
                         )
 
                     Text(eventName)
-                        .font(.system(.footnote, design: .rounded, weight: .medium))
+                        .designText(.metadata)
                         .foregroundStyle(AppTheme.textSecondary)
                         .lineLimit(1)
                 }
@@ -512,7 +512,7 @@ struct InstructorGougeReportSheet: View {
                     .frame(width: 10, height: 10)
 
                 Text(title)
-                    .font(.system(.body, design: .rounded, weight: .bold))
+                    .designText(.body)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Spacer(minLength: 8)
@@ -615,13 +615,13 @@ struct InstructorReviewCard: View {
                     VStack(alignment: .leading, spacing: 6) {
                         if let eventName = review.eventName {
                             Text(eventName)
-                                .font(.system(.headline, design: .rounded, weight: .bold))
+                                .designText(.tool)
                                 .foregroundStyle(AppTheme.textPrimary)
                         }
 
                         HStack(spacing: 8) {
                             Text(review.eventKind.displayName.uppercased())
-                                .font(.system(.caption2, design: .rounded, weight: .bold))
+                                .designText(.footer)
                                 .foregroundStyle(AppTheme.prominentText(review.eventKind.domainColor))
                                 .padding(.horizontal, 9)
                                 .padding(.vertical, 6)
@@ -635,7 +635,7 @@ struct InstructorReviewCard: View {
                                 )
 
                             Text(review.submittedAt.formatted(date: .abbreviated, time: .omitted))
-                                .font(.system(.footnote, design: .rounded, weight: .medium))
+                                .designText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
                         }
                     }
@@ -669,7 +669,7 @@ struct InstructorReviewCard: View {
                 }
 
                 Text(review.reviewText)
-                    .font(.system(.body, design: .rounded))
+                    .designText(.body)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -680,7 +680,7 @@ struct InstructorReviewCard: View {
     private var statusPill: some View {
         if review.status != .approved {
             Text(review.status.displayName)
-                .font(.system(.caption, design: .rounded, weight: .bold))
+                .designText(.metadata)
                 .foregroundStyle(AppTheme.prominentText(review.status.statusColor))
                 .padding(.horizontal, 10)
                 .padding(.vertical, 6)
@@ -703,14 +703,14 @@ struct InstructorSummaryCard: View {
             VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .top, spacing: 14) {
                     Text(instructor.name)
-                        .font(.system(.title3, design: .rounded, weight: .bold))
+                        .designText(.section)
                         .foregroundStyle(AppTheme.textPrimary)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                     Spacer(minLength: 12)
 
                     Text(instructor.squadron.displayName)
-                        .font(.system(.subheadline, design: .rounded, weight: .semibold))
+                        .designText(.subtitle)
                         .foregroundStyle(AppTheme.textSecondary.opacity(0.96))
                 }
 
@@ -733,7 +733,7 @@ struct InstructorSummaryCard: View {
 
                 HStack(spacing: 10) {
                     Text(instructor.reviewCountText)
-                        .font(.system(.footnote, design: .rounded, weight: .semibold))
+                        .designText(.metadata)
                         .foregroundStyle(AppTheme.textSecondary)
 
                     Spacer(minLength: 8)
@@ -752,7 +752,7 @@ struct InstructorCapabilityBadge: View {
 
     var body: some View {
         Text(capability.pluralDisplayName.uppercased())
-            .font(.system(.caption2, design: .rounded, weight: .bold))
+            .designText(.footer)
             .foregroundStyle(AppTheme.prominentText(capability.domainColor))
             .padding(.horizontal, 10)
             .padding(.vertical, 7)
@@ -782,7 +782,7 @@ struct InstructorPillSelector<Option: Identifiable & Hashable>: View {
                         action(option)
                     } label: {
                         Text(title(option))
-                            .font(.system(.subheadline, design: .rounded, weight: .bold))
+                            .designText(.subtitle)
                             .foregroundStyle(selected == option ? AppTheme.prominentText(accent(option)) : AppTheme.textSecondary)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 11)
@@ -826,7 +826,7 @@ struct InstructorAdaptiveSelector<Option: Identifiable & Hashable>: View {
                     action(option)
                 } label: {
                     Text(title(option))
-                        .font(.system(.subheadline, design: .rounded, weight: .bold))
+                        .designText(.subtitle)
                         .lineLimit(1)
                         .foregroundStyle(selected == option ? AppTheme.prominentText(accent(option)) : AppTheme.textSecondary)
                         .padding(.horizontal, 14)
@@ -859,12 +859,12 @@ struct InstructorAdaptiveSelector<Option: Identifiable & Hashable>: View {
             HStack(spacing: 12) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(menuTitle.uppercased())
-                        .font(.system(.caption2, design: .rounded, weight: .bold))
+                        .designText(.footer)
                         .foregroundStyle(AppTheme.textMuted)
                         .tracking(0.6)
 
                     Text(title(selected))
-                        .font(.system(.body, design: .rounded, weight: .semibold))
+                        .designText(.body)
                         .foregroundStyle(AppTheme.textPrimary)
                         .lineLimit(1)
                 }
@@ -904,7 +904,7 @@ struct InstructorSearchField: View {
             TextField(placeholder, text: $text)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
-                .font(.system(.body, design: .rounded, weight: .semibold))
+                .designText(.body)
                 .foregroundStyle(AppTheme.textPrimary)
 
             if !text.isEmpty {
@@ -962,24 +962,24 @@ struct InstructorMenuPicker: View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 8) {
                 Text(title.uppercased())
-                    .font(.system(.caption, design: .rounded, weight: .bold))
+                    .designText(.metadata)
                     .foregroundStyle(AppTheme.textMuted)
                     .tracking(0.6)
 
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 3) {
                         Text(selection ?? placeholder)
-                            .font(.system(.body, design: .rounded, weight: .semibold))
+                            .designText(.body)
                             .foregroundStyle(selection == nil ? AppTheme.textSecondary : AppTheme.textPrimary)
                             .multilineTextAlignment(.leading)
 
                         if let detail, selection != nil {
                             Text(detail)
-                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .designText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
                         } else if !enabled {
                             Text(placeholder)
-                                .font(.system(.caption, design: .rounded, weight: .medium))
+                                .designText(.metadata)
                                 .foregroundStyle(AppTheme.textMuted)
                         }
                     }
@@ -1033,32 +1033,25 @@ struct InstructorTextFieldCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title.uppercased())
-                .font(.system(.caption, design: .rounded, weight: .bold))
+                .designText(.metadata)
                 .foregroundStyle(AppTheme.textMuted)
                 .tracking(0.6)
 
             TextField(placeholder, text: $text)
                 .textInputAutocapitalization(.words)
                 .autocorrectionDisabled()
-                .font(.system(.body, design: .rounded, weight: .semibold))
+                .designText(.body)
                 .foregroundStyle(AppTheme.textPrimary)
-                .padding(.horizontal, 16)
+                .padding(.horizontal, 0)
                 .padding(.vertical, 16)
-                .frame(minHeight: 56)
-                .background(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .fill(AppTheme.elevatedSurface)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                .stroke((enabled ? AppTheme.cardStroke.opacity(0.9) : AppTheme.cardStroke.opacity(0.65)), lineWidth: 1)
-                        )
-                )
+                .frame(minHeight: 44)
+                .overlay(alignment: .bottom) { StudyDesign.line.frame(height: 1) }
                 .disabled(!enabled)
                 .opacity(enabled ? 1 : 0.72)
 
             if let detail, !detail.isEmpty {
                 Text(detail)
-                    .font(.system(.caption, design: .rounded, weight: .medium))
+                    .designText(.metadata)
                     .foregroundStyle(AppTheme.textSecondary)
             }
         }
@@ -1085,7 +1078,7 @@ struct InstructorSelectionSheet<Option: Identifiable, RowContent: View>: View wh
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
                         Text(subtitle)
-                            .font(.system(.subheadline, design: .rounded))
+                            .designText(.subtitle)
                             .foregroundStyle(AppTheme.textSecondary)
 
                         ForEach(options) { option in
@@ -1171,7 +1164,7 @@ struct InstructorSearchableSelectionSheet<Option: Identifiable, RowContent: View
 
                 VStack(alignment: .leading, spacing: 16) {
                     Text(subtitle)
-                        .font(.system(.subheadline, design: .rounded))
+                        .designText(.subtitle)
                         .foregroundStyle(AppTheme.textSecondary)
                         .padding(.horizontal, 20)
                         .padding(.top, 16)
@@ -1185,11 +1178,11 @@ struct InstructorSearchableSelectionSheet<Option: Identifiable, RowContent: View
                     if filteredOptions.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("No Matches")
-                                .font(.system(.headline, design: .rounded, weight: .bold))
+                                .designText(.tool)
                                 .foregroundStyle(AppTheme.textPrimary)
 
                             Text(emptyMessage)
-                                .font(.system(.footnote, design: .rounded))
+                                .designText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
                         }
                         .padding(20)
@@ -1256,34 +1249,9 @@ struct InstructorPrimaryButton: View {
     let icon: String
     let enabled: Bool
     let action: () -> Void
-
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 10) {
-                Image(systemName: icon)
-                    .font(.system(.headline, design: .rounded, weight: .bold))
-
-                Text(title)
-                    .font(.system(.headline, design: .rounded, weight: .bold))
-            }
-            .foregroundStyle(Color.white)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
-            .background(
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .fill(
-                        enabled
-                            ? AppTheme.accentGradient
-                            : LinearGradient(
-                                colors: [AppTheme.raisedSurface, AppTheme.elevatedSurface],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                    )
-            )
-        }
-        .buttonStyle(.plain)
-        .disabled(!enabled)
-        .opacity(enabled ? 1 : 0.66)
+            StudyActionButton(title: title, icon: icon, tint: StudyDesign.action)
+        }.buttonStyle(.plain).disabled(!enabled).opacity(enabled ? 1 : 0.66)
     }
 }

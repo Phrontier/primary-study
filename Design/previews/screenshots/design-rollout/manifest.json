@@ -1,0 +1,1433 @@
+[
+  {
+    "name": "pilot-home-with-history",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-home-with-history.png"
+  },
+  {
+    "name": "pilot-answer-controls",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-answer-controls.png"
+  },
+  {
+    "name": "pilot-answer",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-answer.png"
+  },
+  {
+    "name": "pilot-question",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-question.png"
+  },
+  {
+    "name": "pilot-deck",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-deck.png"
+  },
+  {
+    "name": "pilot-discussion-collapsed",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-discussion-collapsed.png"
+  },
+  {
+    "name": "pilot-discussion-expanded",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-discussion-expanded.png"
+  },
+  {
+    "name": "pilot-event-detail",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-event-detail.png"
+  },
+  {
+    "name": "pilot-event-list",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-event-list.png"
+  },
+  {
+    "name": "pilot-events",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-events.png"
+  },
+  {
+    "name": "pilot-home",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testConnectedDesignPilot()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/pilot-home.png"
+  },
+  {
+    "name": "pilot-home-with-history",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-home-with-history.png"
+  },
+  {
+    "name": "pilot-answer-controls",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-answer-controls.png"
+  },
+  {
+    "name": "pilot-answer",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-answer.png"
+  },
+  {
+    "name": "pilot-question",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-question.png"
+  },
+  {
+    "name": "pilot-deck",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-deck.png"
+  },
+  {
+    "name": "pilot-discussion-collapsed",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-discussion-collapsed.png"
+  },
+  {
+    "name": "pilot-discussion-expanded",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-discussion-expanded.png"
+  },
+  {
+    "name": "pilot-event-detail",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-event-detail.png"
+  },
+  {
+    "name": "pilot-event-list",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-event-list.png"
+  },
+  {
+    "name": "pilot-events",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-events.png"
+  },
+  {
+    "name": "pilot-home",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testConnectedDesignPilotWithLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/pilot-home.png"
+  },
+  {
+    "name": "rollout-pattern-states",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignPatternGallery()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-pattern-states.png"
+  },
+  {
+    "name": "rollout-pattern-top",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignPatternGallery()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-pattern-top.png"
+  },
+  {
+    "name": "rollout-quiz-question",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignQuizSetup()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-quiz-question.png"
+  },
+  {
+    "name": "rollout-quiz-setup",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignQuizSetup()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-quiz-setup.png"
+  },
+  {
+    "name": "rollout-version",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-version.png"
+  },
+  {
+    "name": "rollout-recent-flashcard-sets",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-recent-flashcard-sets.png"
+  },
+  {
+    "name": "rollout-recent-briefs",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-recent-briefs.png"
+  },
+  {
+    "name": "rollout-flashcard-performance-stats",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-flashcard-performance-stats.png"
+  },
+  {
+    "name": "rollout-my-instructor-reviews",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-my-instructor-reviews.png"
+  },
+  {
+    "name": "rollout-request-a-feature",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-request-a-feature.png"
+  },
+  {
+    "name": "rollout-faq",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-faq.png"
+  },
+  {
+    "name": "rollout-notifications",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-notifications.png"
+  },
+  {
+    "name": "rollout-profile",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-profile.png"
+  },
+  {
+    "name": "rollout-search",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-search.png"
+  },
+  {
+    "name": "rollout-library",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-library.png"
+  },
+  {
+    "name": "rollout-quiz-question",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignQuizSetupLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-quiz-question.png"
+  },
+  {
+    "name": "rollout-quiz-setup",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignQuizSetupLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-quiz-setup.png"
+  },
+  {
+    "name": "rollout-version",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-version.png"
+  },
+  {
+    "name": "rollout-recent-flashcard-sets",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-recent-flashcard-sets.png"
+  },
+  {
+    "name": "rollout-recent-briefs",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-recent-briefs.png"
+  },
+  {
+    "name": "rollout-flashcard-performance-stats",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-flashcard-performance-stats.png"
+  },
+  {
+    "name": "rollout-my-instructor-reviews",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-my-instructor-reviews.png"
+  },
+  {
+    "name": "rollout-request-a-feature",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-request-a-feature.png"
+  },
+  {
+    "name": "rollout-faq",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-faq.png"
+  },
+  {
+    "name": "rollout-notifications",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-notifications.png"
+  },
+  {
+    "name": "rollout-profile",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-profile.png"
+  },
+  {
+    "name": "rollout-search",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-search.png"
+  },
+  {
+    "name": "rollout-library",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/rollout-library.png"
+  },
+  {
+    "name": "home-a1-bottom",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testHomeA1Fidelity()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/home-a1-bottom.png"
+  },
+  {
+    "name": "home-a1-top",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testHomeA1Fidelity()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/home-a1-top.png"
+  },
+  {
+    "name": "home-a1-bottom",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testHomeA1LargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/home-a1-bottom.png"
+  },
+  {
+    "name": "home-a1-top",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testHomeA1LargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/home-a1-top.png"
+  },
+  {
+    "name": "remaining-settings",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-settings.png"
+  },
+  {
+    "name": "remaining-more-return",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-more-return.png"
+  },
+  {
+    "name": "remaining-premium-active",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-premium-active.png"
+  },
+  {
+    "name": "remaining-more",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-more.png"
+  },
+  {
+    "name": "remaining-instructor-reviews",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-instructor-reviews.png"
+  },
+  {
+    "name": "remaining-instructor-detail",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-instructor-detail.png"
+  },
+  {
+    "name": "remaining-instructors",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-instructors.png"
+  },
+  {
+    "name": "remaining-settings",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-settings.png"
+  },
+  {
+    "name": "remaining-more-return",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-more-return.png"
+  },
+  {
+    "name": "remaining-premium-active",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-premium-active.png"
+  },
+  {
+    "name": "remaining-more",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-more.png"
+  },
+  {
+    "name": "remaining-instructor-reviews",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-instructor-reviews.png"
+  },
+  {
+    "name": "remaining-instructor-detail",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-instructor-detail.png"
+  },
+  {
+    "name": "remaining-instructors",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-instructors.png"
+  },
+  {
+    "name": "remaining-premium-reminder",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremium()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-premium-reminder.png"
+  },
+  {
+    "name": "remaining-premium-offer",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremium()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-premium-offer.png"
+  },
+  {
+    "name": "remaining-premium-trial",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremium()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-premium-trial.png"
+  },
+  {
+    "name": "remaining-more-free",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremium()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-more-free.png"
+  },
+  {
+    "name": "remaining-training-setup-bottom",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremium()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-training-setup-bottom.png"
+  },
+  {
+    "name": "remaining-training-setup",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremium()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-training-setup.png"
+  },
+  {
+    "name": "remaining-create-account",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremium()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-create-account.png"
+  },
+  {
+    "name": "remaining-welcome",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremium()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/remaining-welcome.png"
+  },
+  {
+    "name": "remaining-premium-reminder",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremiumLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-premium-reminder.png"
+  },
+  {
+    "name": "remaining-premium-offer",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremiumLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-premium-offer.png"
+  },
+  {
+    "name": "remaining-premium-trial",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremiumLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-premium-trial.png"
+  },
+  {
+    "name": "remaining-more-free",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremiumLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-more-free.png"
+  },
+  {
+    "name": "remaining-training-setup-bottom",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremiumLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-training-setup-bottom.png"
+  },
+  {
+    "name": "remaining-training-setup",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremiumLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-training-setup.png"
+  },
+  {
+    "name": "remaining-create-account",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremiumLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-create-account.png"
+  },
+  {
+    "name": "remaining-welcome",
+    "scenario": "light-large",
+    "test": "Primary_GougeUITests/testSelectedOnboardingAndPremiumLargerText()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light-large/remaining-welcome.png"
+  },
+  {
+    "name": "rollout-review-score-selector",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignReviewForms()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-review-score-selector.png"
+  },
+  {
+    "name": "rollout-review-form",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignReviewForms()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-review-form.png"
+  },
+  {
+    "name": "rollout-quiz-question",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignQuizSetup()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-quiz-question.png"
+  },
+  {
+    "name": "rollout-quiz-setup",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignQuizSetup()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-quiz-setup.png"
+  },
+  {
+    "name": "rollout-version",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-version.png"
+  },
+  {
+    "name": "rollout-recent-flashcard-sets",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-recent-flashcard-sets.png"
+  },
+  {
+    "name": "rollout-recent-briefs",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-recent-briefs.png"
+  },
+  {
+    "name": "rollout-flashcard-performance-stats",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-flashcard-performance-stats.png"
+  },
+  {
+    "name": "rollout-my-instructor-reviews",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-my-instructor-reviews.png"
+  },
+  {
+    "name": "rollout-request-a-feature",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-request-a-feature.png"
+  },
+  {
+    "name": "rollout-faq",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-faq.png"
+  },
+  {
+    "name": "rollout-notifications",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-notifications.png"
+  },
+  {
+    "name": "rollout-profile",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-profile.png"
+  },
+  {
+    "name": "rollout-search",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-search.png"
+  },
+  {
+    "name": "rollout-library",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/rollout-library.png"
+  },
+  {
+    "name": "rollout-quiz-question",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignQuizSetupLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-quiz-question.png"
+  },
+  {
+    "name": "rollout-quiz-setup",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignQuizSetupLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-quiz-setup.png"
+  },
+  {
+    "name": "rollout-version",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-version.png"
+  },
+  {
+    "name": "rollout-recent-flashcard-sets",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-recent-flashcard-sets.png"
+  },
+  {
+    "name": "rollout-recent-briefs",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-recent-briefs.png"
+  },
+  {
+    "name": "rollout-flashcard-performance-stats",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-flashcard-performance-stats.png"
+  },
+  {
+    "name": "rollout-my-instructor-reviews",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-my-instructor-reviews.png"
+  },
+  {
+    "name": "rollout-request-a-feature",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-request-a-feature.png"
+  },
+  {
+    "name": "rollout-faq",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-faq.png"
+  },
+  {
+    "name": "rollout-notifications",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-notifications.png"
+  },
+  {
+    "name": "rollout-profile",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-profile.png"
+  },
+  {
+    "name": "rollout-search",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-search.png"
+  },
+  {
+    "name": "rollout-library",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testDesignRolloutFlowsLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/rollout-library.png"
+  },
+  {
+    "name": "home-a1-bottom",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testHomeA1Fidelity()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/home-a1-bottom.png"
+  },
+  {
+    "name": "home-a1-top",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testHomeA1Fidelity()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark/home-a1-top.png"
+  },
+  {
+    "name": "remaining-settings",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/remaining-settings.png"
+  },
+  {
+    "name": "remaining-more-return",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/remaining-more-return.png"
+  },
+  {
+    "name": "remaining-premium-active",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/remaining-premium-active.png"
+  },
+  {
+    "name": "remaining-more",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/remaining-more.png"
+  },
+  {
+    "name": "remaining-instructor-reviews",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/remaining-instructor-reviews.png"
+  },
+  {
+    "name": "remaining-instructor-detail",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/remaining-instructor-detail.png"
+  },
+  {
+    "name": "remaining-instructors",
+    "scenario": "dark-large",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreensLargerText()",
+    "device": "iPhone 17",
+    "width": 402,
+    "height": 874,
+    "path": "screenshots/design-rollout/dark-large/remaining-instructors.png"
+  },
+  {
+    "name": "rollout-pattern-states",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignPatternGallery()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-pattern-states.png"
+  },
+  {
+    "name": "rollout-pattern-top",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignPatternGallery()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-pattern-top.png"
+  },
+  {
+    "name": "rollout-quiz-question",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignQuizSetup()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-quiz-question.png"
+  },
+  {
+    "name": "rollout-quiz-setup",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignQuizSetup()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-quiz-setup.png"
+  },
+  {
+    "name": "rollout-version",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-version.png"
+  },
+  {
+    "name": "rollout-recent-flashcard-sets",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-recent-flashcard-sets.png"
+  },
+  {
+    "name": "rollout-recent-briefs",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-recent-briefs.png"
+  },
+  {
+    "name": "rollout-flashcard-performance-stats",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-flashcard-performance-stats.png"
+  },
+  {
+    "name": "rollout-my-instructor-reviews",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-my-instructor-reviews.png"
+  },
+  {
+    "name": "rollout-request-a-feature",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-request-a-feature.png"
+  },
+  {
+    "name": "rollout-faq",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-faq.png"
+  },
+  {
+    "name": "rollout-notifications",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-notifications.png"
+  },
+  {
+    "name": "rollout-profile",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-profile.png"
+  },
+  {
+    "name": "rollout-search",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-search.png"
+  },
+  {
+    "name": "rollout-library",
+    "scenario": "compact",
+    "test": "Primary_GougeUITests/testDesignRolloutFlows()",
+    "device": "Pilot Compact iPhone",
+    "width": 375,
+    "height": 667,
+    "path": "screenshots/design-rollout/compact/rollout-library.png"
+  },
+  {
+    "name": "rollout-pattern-states",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testDesignPatternGallery()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/rollout-pattern-states.png"
+  },
+  {
+    "name": "rollout-pattern-top",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testDesignPatternGallery()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/rollout-pattern-top.png"
+  },
+  {
+    "name": "remaining-settings",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/remaining-settings.png"
+  },
+  {
+    "name": "remaining-more-return",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/remaining-more-return.png"
+  },
+  {
+    "name": "remaining-premium-active",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/remaining-premium-active.png"
+  },
+  {
+    "name": "remaining-more",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/remaining-more.png"
+  },
+  {
+    "name": "remaining-instructor-reviews",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/remaining-instructor-reviews.png"
+  },
+  {
+    "name": "remaining-instructor-detail",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/remaining-instructor-detail.png"
+  },
+  {
+    "name": "remaining-instructors",
+    "scenario": "ipad",
+    "test": "Primary_GougeUITests/testRemainingSelectedScreens()",
+    "device": "iPad mini (A17 Pro)",
+    "width": 744,
+    "height": 1133,
+    "path": "screenshots/design-rollout/ipad/remaining-instructors.png"
+  },
+  {
+    "name": "rollout-video-download",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/dark/rollout-video-download.png"
+  },
+  {
+    "name": "rollout-document-unavailable",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/dark/rollout-document-unavailable.png"
+  },
+  {
+    "name": "rollout-practice-answer",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/dark/rollout-practice-answer.png"
+  },
+  {
+    "name": "rollout-practice-question",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/dark/rollout-practice-question.png"
+  },
+  {
+    "name": "rollout-practice-setup",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/dark/rollout-practice-setup.png"
+  },
+  {
+    "name": "rollout-ground-school",
+    "scenario": "dark",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/dark/rollout-ground-school.png"
+  },
+  {
+    "name": "rollout-video-download",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-video-download.png"
+  },
+  {
+    "name": "rollout-source-document",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-source-document.png"
+  },
+  {
+    "name": "rollout-practice-answer",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-practice-answer.png"
+  },
+  {
+    "name": "rollout-practice-question",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-practice-question.png"
+  },
+  {
+    "name": "rollout-practice-setup",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-practice-setup.png"
+  },
+  {
+    "name": "rollout-ground-school",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignResourceAndPracticeFlows()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-ground-school.png"
+  },
+  {
+    "name": "rollout-review-score-selector",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignReviewForms()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-review-score-selector.png"
+  },
+  {
+    "name": "rollout-review-form",
+    "scenario": "light",
+    "test": "Primary_GougeUITests/testDesignReviewForms()",
+    "device": "Home Fidelity iPhone",
+    "width": 393,
+    "height": 852,
+    "path": "screenshots/design-rollout/light/rollout-review-form.png"
+  }
+]

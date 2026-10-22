@@ -27,19 +27,19 @@ enum InstructorRatingColorToken: String, CaseIterable, Hashable {
     var color: Color {
         switch self {
         case .critical:
-            return AppTheme.color(0xD93A2F)
+            return StudyDesign.color(0xB13748, 0xFF968E)
         case .danger:
-            return AppTheme.color(0xE46B2E)
+            return StudyDesign.color(0xB75925, 0xFFB181)
         case .warning:
-            return AppTheme.color(0xD59A2A)
+            return StudyDesign.color(0x916014, 0xF0CA79)
         case .balanced:
-            return AppTheme.color(0xA69C3D)
+            return StudyDesign.color(0x766526, 0xDDD38B)
         case .encouraging:
-            return AppTheme.color(0x78BF58)
+            return StudyDesign.color(0x4F7939, 0xB9DC8D)
         case .success:
-            return AppTheme.color(0x3FAE4C)
+            return StudyDesign.color(0x2F7E42, 0x8DDD9A)
         case .elite:
-            return AppTheme.color(0x1D8F3E)
+            return StudyDesign.color(0x236744, 0x77D7A5)
         }
     }
 }

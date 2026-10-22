@@ -1518,6 +1518,8 @@ struct HomeScreenSnapshot: Equatable {
     let weakAreas: [HomeTopicActionSnapshot]
     let questionOfDay: HomeQuestionOfDaySnapshot
     let studyStreak: Int
+    var flashcardsReviewedToday: Int = 0
+    var recentDestinations: [HomeFocusTopicSnapshot] = []
 
     static let empty = HomeScreenSnapshot(
         greeting: "Welcome back",
@@ -1539,6 +1541,8 @@ struct HomeContinueStudyingSnapshot: Equatable {
     let actionTitle: String
     let destination: SearchDestination?
     let isFallback: Bool
+    var displayTitle: String? = nil
+    var contextLabel: String? = nil
 
     static let empty = HomeContinueStudyingSnapshot(
         title: "Start with Emergency References",
@@ -1558,6 +1562,7 @@ struct HomeCurrentFocusSnapshot: Equatable {
 }
 
 struct HomeFocusTopicSnapshot: Identifiable, Equatable {
+    var subtitle: String? = nil
     let id: String
     let title: String
     let iconName: String

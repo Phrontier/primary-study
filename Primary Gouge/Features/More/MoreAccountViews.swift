@@ -37,7 +37,7 @@ struct MoreProfileView: View {
                                 )
 
                             Text(snapshot.avatarInitials)
-                                .font(.title3.weight(.bold))
+                                .designText(.section)
                                 .foregroundStyle(AppTheme.iconTint(MoreSectionColor.account))
                         }
 
@@ -121,7 +121,7 @@ struct MoreProfileView: View {
                             )
 
                             Text(snapshot.versionSubtitle)
-                                .font(.subheadline.weight(.semibold))
+                                .designText(.subtitle)
                                 .foregroundStyle(AppTheme.textPrimary)
                         }
                     }
@@ -189,7 +189,7 @@ struct MoreProfileView: View {
 
                     if let accountStatusMessage {
                         Text(accountStatusMessage)
-                            .font(.footnote.weight(.semibold))
+                            .designText(.metadata)
                             .foregroundStyle(AppTheme.textSecondary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -237,13 +237,13 @@ struct MoreProfileView: View {
             SectionContainer(style: .standard, accent: AppTheme.danger, contentPadding: 18) {
                 VStack(alignment: .leading, spacing: 14) {
                     Text("Permanently remove your Primary Gouge account and account-linked submissions. Any App Store subscription continues until you cancel it with Apple.")
-                        .font(.footnote)
+                        .designText(.metadata)
                         .foregroundStyle(AppTheme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
 
                     if needsAppleDeleteAuthorization {
                         Text("Confirm with Apple to finish account deletion.")
-                            .font(.footnote.weight(.semibold))
+                            .designText(.metadata)
                             .foregroundStyle(AppTheme.textSecondary)
                             .fixedSize(horizontal: false, vertical: true)
 
@@ -358,49 +358,20 @@ struct MoreSettingsView: View {
     }
 
     var body: some View {
-        AppScrollScreen(topPadding: 20, bottomPadding: 32) {
-            VStack(alignment: .leading, spacing: 18) {
-                VStack(alignment: .leading, spacing: 12) {
-                    SectionHeader(
-                        eyebrow: "Preferences",
-                        title: "Current Focus Topics",
-                        subtitle: nil
-                    )
-
-                    SectionContainer(style: .standard, accent: MoreSectionColor.account, contentPadding: 18) {
-                        VStack(alignment: .leading, spacing: 14) {
-                            if pinnedTopics.isEmpty {
-                                Text("No pinned focus topics yet.")
-                                    .font(.subheadline.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
-                            } else {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    ForEach(pinnedTopics) { topic in
-                                        InsetListRow(title: topic.title) {
-                                            Image(systemName: topic.iconName)
-                                                .foregroundStyle(AppTheme.accent)
-                                                .frame(width: 20, height: 20)
-                                        }
-                                    }
-                                }
-                            }
-
-                            Button {
-                                showingFocusManager = true
-                            } label: {
-                                StudyActionButton(
-                                    title: pinnedTopics.isEmpty ? "Choose Focus Topics" : "Edit Focus Topics",
-                                    icon: "pin.fill",
-                                    tint: MoreSectionColor.account,
-                                    isProminent: false
-                                )
-                            }
-                            .buttonStyle(.plain)
-                        }
+        PilotPage {
+            PilotBackHeader(title: "More")
+            StudyHeading(title: "Settings", subtitle: "Focus topics and preferences.").padding(.bottom, 28)
+            Text("Current focus topics").pilotText(.section).padding(.bottom, 14)
+            SelectedSurface {
+                VStack(alignment: .leading, spacing: 16) {
+                    if pinnedTopics.isEmpty { Text("No pinned focus topics yet.").selectedText(14).foregroundStyle(StudyDesign.secondary) }
+                    ForEach(pinnedTopics) { topic in
+                        Label(topic.title, systemImage: topic.iconName).selectedText(14).foregroundStyle(StudyDesign.ink)
                     }
+                    Button { showingFocusManager = true } label: { SelectedPrimaryLabel(title: pinnedTopics.isEmpty ? "Choose Focus Topics" : "Edit Focus Topics") }.buttonStyle(.plain)
                 }
             }
-        }
+        }.pilotNavigation()
         .sheet(isPresented: $showingFocusManager) {
             FocusTopicManagerSheet(
                 selectedTopicIDs: appModel.homePreferences.pinnedTopicIDs,
@@ -409,7 +380,7 @@ struct MoreSettingsView: View {
                 appModel.setPinnedTopicIDs(topicIDs)
             }
         }
-        .detailNavigationChrome(title: "Settings")
+
     }
 }
 
@@ -455,11 +426,11 @@ struct MoreNotificationsView: View {
                     )) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Enable Daily Reminder")
-                                .font(.headline.weight(.semibold))
+                                .designText(.tool)
                                 .foregroundStyle(AppTheme.textPrimary)
 
                             Text("Get one daily nudge to check in on studying.")
-                                .font(.footnote)
+                                .designText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
@@ -485,11 +456,11 @@ struct MoreNotificationsView: View {
                     SectionContainer {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Notifications are turned off in iPhone Settings.")
-                                .font(.headline.weight(.semibold))
+                                .designText(.tool)
                                 .foregroundStyle(AppTheme.textPrimary)
 
                             Text("Allow notifications for Primary Gouge, then come back here to turn your daily reminder back on.")
-                                .font(.footnote)
+                                .designText(.metadata)
                                 .foregroundStyle(AppTheme.textSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
 
@@ -628,256 +599,7 @@ struct MoreNotificationsView: View {
 struct MorePremiumView: View {
     let snapshot: MoreHubSnapshot
     var lockedFeatureTitle: String? = nil
-    @EnvironmentObject private var subscriptionStore: SubscriptionStore
-    @State private var showingManageSubscriptions = false
-
-    var body: some View {
-        AppScrollScreen(topPadding: 20, bottomPadding: 32) {
-            VStack(alignment: .leading, spacing: 18) {
-                MoreHeaderCard(accent: AppTheme.warning) {
-                    HStack(alignment: .center, spacing: 14) {
-                        MoreHeaderTextBlock(
-                            eyebrow: "Premium",
-                            title: headerTitle,
-                            subtitle: statusDescription,
-                            accent: AppTheme.warning
-                        )
-
-                        Spacer(minLength: 12)
-
-                        StatusBadge(
-                            title: statusTitle,
-                            iconName: statusIcon,
-                            color: statusColor
-                        )
-                        .accessibilityIdentifier("premium-status")
-                    }
-                } supportingContent: {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Button {
-                            if subscriptionStore.hasPremiumAccess {
-                                showingManageSubscriptions = true
-                            } else {
-                                Task { await subscriptionStore.purchase() }
-                            }
-                        } label: {
-                            StudyActionButton(
-                                title: primaryButtonTitle,
-                                icon: subscriptionStore.hasPremiumAccess ? "gearshape.fill" : "star.fill",
-                                tint: AppTheme.warning,
-                                isProminent: true
-                            )
-                        }
-                        .buttonStyle(.plain)
-                        .disabled(
-                            subscriptionStore.isWorking ||
-                            subscriptionStore.purchaseIsPending ||
-                            (!subscriptionStore.hasPremiumAccess && !subscriptionStore.isPurchaseLaunchEnabled)
-                        )
-                        .opacity(subscriptionStore.isWorking ? 0.65 : 1)
-
-                        Button {
-                            Task { await subscriptionStore.restorePurchases() }
-                        } label: {
-                            StudyActionButton(
-                                title: "Restore Purchases",
-                                icon: "arrow.clockwise.circle.fill",
-                                tint: AppTheme.accent,
-                                isProminent: false
-                            )
-                        }
-                        .buttonStyle(.plain)
-                        .disabled(subscriptionStore.isWorking)
-
-                        if subscriptionStore.isWorking {
-                            HStack(spacing: 10) {
-                                ProgressView()
-                                Text("Checking with the App Store…")
-                                    .font(.footnote.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textSecondary)
-                            }
-                        }
-
-                        if let errorMessage = subscriptionStore.errorMessage {
-                            Text(errorMessage)
-                                .font(.footnote.weight(.semibold))
-                                .foregroundStyle(AppTheme.danger)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                    }
-                }
-
-                if let lockedFeatureTitle, !subscriptionStore.hasPremiumAccess {
-                    SectionContainer(style: .primary, accent: AppTheme.warning, contentPadding: 18) {
-                        HStack(alignment: .top, spacing: 14) {
-                            Image(systemName: "lock.fill")
-                                .font(.headline.weight(.semibold))
-                                .foregroundStyle(AppTheme.warning)
-
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("Unlock \(lockedFeatureTitle)")
-                                    .font(.headline.weight(.semibold))
-                                    .foregroundStyle(AppTheme.textPrimary)
-
-                                Text(subscriptionStore.offerDescription)
-                                    .font(.footnote)
-                                    .foregroundStyle(AppTheme.textSecondary)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-                        }
-                    }
-                }
-
-                SectionContainer {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Premium Monthly")
-                            .font(.headline.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
-
-                        InsetListRow(
-                            title: "\(subscriptionStore.displayPrice) per month",
-                            subtitle: subscriptionStore.trialDescription ?? "Billed monthly through your Apple Account."
-                        ) {
-                            Image(systemName: "calendar.badge.clock")
-                                .foregroundStyle(AppTheme.warning)
-                                .frame(width: 20, height: 20)
-                        }
-
-                        InsetListRow(
-                            title: "Automatic Renewal",
-                            subtitle: "Payment is charged to your Apple Account. The subscription renews unless cancelled at least 24 hours before the current period ends."
-                        ) {
-                            Image(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
-                                .foregroundStyle(AppTheme.warning)
-                                .frame(width: 20, height: 20)
-                        }
-
-                        InsetListRow(
-                            title: "Full Study Access",
-                            subtitle: "Premium unlocks the complete event pipeline, study library, quizzes, videos, progress tools, and advanced preparation resources. Home, instructor gouge, emergency-reference flashcards, Contacts ground school, FAM2101, and FAM2102 remain free."
-                        ) {
-                            Image(systemName: "lock.open.fill")
-                                .foregroundStyle(AppTheme.warning)
-                                .frame(width: 20, height: 20)
-                        }
-                    }
-                }
-
-                SectionContainer {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Subscription Details")
-                            .font(.headline.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
-
-                        NavigationLink {
-                            MoreArticleView(
-                                page: MoreArticleContentLoader.page(.privacy),
-                                accent: MoreSectionColor.about,
-                                iconName: "lock.shield.fill"
-                            )
-                        } label: {
-                            InsetListRow(title: "Privacy Policy") {
-                                Image(systemName: "lock.shield.fill")
-                                    .foregroundStyle(MoreSectionColor.about)
-                                    .frame(width: 20, height: 20)
-                            }
-                        }
-                        .buttonStyle(.plain)
-
-                        NavigationLink {
-                            MoreArticleView(
-                                page: MoreArticleContentLoader.page(.terms),
-                                accent: MoreSectionColor.about,
-                                iconName: "doc.text.fill"
-                            )
-                        } label: {
-                            InsetListRow(title: "Terms of Use") {
-                                Image(systemName: "doc.text.fill")
-                                    .foregroundStyle(MoreSectionColor.about)
-                                    .frame(width: 20, height: 20)
-                            }
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-            }
-        }
-        .detailNavigationChrome(title: "Premium")
-        .manageSubscriptionsSheet(isPresented: $showingManageSubscriptions)
-        .task {
-            await subscriptionStore.refresh()
-        }
-    }
-
-    private var headerTitle: String {
-        switch subscriptionStore.entitlement.phase {
-        case .active, .gracePeriod: "Premium Is Active"
-        case .billingRetry: "Payment Needs Attention"
-        case .expired: "Premium Has Expired"
-        case .loading: "Checking Premium"
-        case .error, .notSubscribed: "Upgrade to Premium"
-        }
-    }
-
-    private var statusDescription: String {
-        switch subscriptionStore.entitlement.phase {
-        case .active:
-            if let date = subscriptionStore.entitlement.expirationDate {
-                return "Your subscription is active through \(date.formatted(date: .abbreviated, time: .omitted))."
-            }
-            return "Your Premium subscription is active."
-        case .gracePeriod:
-            return "Premium remains available during Apple’s billing grace period."
-        case .billingRetry:
-            return "Apple could not renew your subscription. Update your payment method to continue."
-        case .expired:
-            return "Your previous Premium subscription is no longer active."
-        case .loading:
-            return "Checking your App Store and account entitlement."
-        case .error:
-            return subscriptionStore.entitlement.message ?? "Premium status could not be verified."
-        case .notSubscribed:
-            return subscriptionStore.offerDescription
-        }
-    }
-
-    private var statusTitle: String {
-        switch subscriptionStore.entitlement.phase {
-        case .active: "Subscribed"
-        case .gracePeriod: "Grace Period"
-        case .billingRetry: "Billing Retry"
-        case .expired: "Expired"
-        case .loading: "Checking"
-        case .error: "Unavailable"
-        case .notSubscribed: "Not Subscribed"
-        }
-    }
-
-    private var statusIcon: String {
-        switch subscriptionStore.entitlement.phase {
-        case .active, .gracePeriod: "checkmark.circle.fill"
-        case .billingRetry, .error: "exclamationmark.triangle.fill"
-        case .expired: "clock.badge.xmark.fill"
-        case .loading: "arrow.clockwise.circle.fill"
-        case .notSubscribed: "star.fill"
-        }
-    }
-
-    private var statusColor: Color {
-        switch subscriptionStore.entitlement.phase {
-        case .active, .gracePeriod: AppTheme.success
-        case .billingRetry, .error: AppTheme.danger
-        case .expired, .notSubscribed, .loading: AppTheme.warning
-        }
-    }
-
-    private var primaryButtonTitle: String {
-        if subscriptionStore.hasPremiumAccess { return "Manage Subscription" }
-        if !subscriptionStore.isPurchaseLaunchEnabled { return "Premium Unavailable" }
-        if subscriptionStore.purchaseIsPending { return "Awaiting Approval" }
-        if subscriptionStore.isWorking { return "Working…" }
-        return subscriptionStore.trialDescription.map { "Start \($0)" } ?? "Subscribe to Premium"
-    }
+    var body: some View { SelectedPremiumScreen(lockedFeatureTitle: lockedFeatureTitle) }
 }
 
 struct MoreMyInstructorReviewsView: View {
@@ -914,7 +636,7 @@ struct MoreMyInstructorReviewsView: View {
                 if let errorMessage {
                     SectionContainer(style: .standard, accent: AppTheme.warning, contentPadding: 16) {
                         Text(errorMessage)
-                            .font(.subheadline.weight(.semibold))
+                            .designText(.subtitle)
                             .foregroundStyle(AppTheme.textPrimary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -926,7 +648,7 @@ struct MoreMyInstructorReviewsView: View {
                             ProgressView()
                                 .tint(MoreSectionColor.saved)
                             Text("Loading your reviews...")
-                                .font(.subheadline.weight(.semibold))
+                                .designText(.subtitle)
                                 .foregroundStyle(AppTheme.textPrimary)
                         }
                         .padding(18)
@@ -982,16 +704,16 @@ struct MoreMyInstructorReviewsView: View {
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(review.instructorName)
-                            .font(.headline.weight(.semibold))
+                            .designText(.tool)
                             .foregroundStyle(AppTheme.textPrimary)
 
                         Text(review.squadron.displayName)
-                            .font(.subheadline)
+                            .designText(.subtitle)
                             .foregroundStyle(AppTheme.textSecondary)
 
                         if let eventName = review.eventName {
                             Text(eventName)
-                                .font(.footnote.weight(.semibold))
+                                .designText(.metadata)
                                 .foregroundStyle(AppTheme.prominentText(review.eventKind.domainColor))
                         }
                     }
@@ -1006,36 +728,20 @@ struct MoreMyInstructorReviewsView: View {
                         )
 
                         Text(review.updatedAt.formatted(date: .abbreviated, time: .omitted))
-                            .font(.caption.weight(.semibold))
+                            .designText(.metadata)
                             .foregroundStyle(AppTheme.textSecondary)
                     }
                 }
 
-                HStack(spacing: 12) {
-                    InstructorRatingBadge(
-                        title: "Chill Factor",
-                        label: InstructorRatingScale.label(for: review.chillScore, category: .chillFactor),
-                        subtitle: InstructorRatingScale.formatOutOfTen(score: review.chillScore),
-                        score: review.chillScore,
-                        style: .individual
-                    )
-
-                    InstructorRatingBadge(
-                        title: "Grading Style",
-                        label: InstructorRatingScale.label(for: review.gradingScore, category: .gradingStyle),
-                        subtitle: InstructorRatingScale.formatOutOfTen(score: review.gradingScore),
-                        score: review.gradingScore,
-                        style: .individual
-                    )
-                }
+                SelectedInstructorScores(chill: Double(review.chillScore), grading: Double(review.gradingScore), compact: true)
 
                 Text(review.reviewText)
-                    .font(.body)
+                    .designText(.body)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
 
                 Text(review.status.helperText)
-                    .font(.footnote)
+                    .designText(.metadata)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
 

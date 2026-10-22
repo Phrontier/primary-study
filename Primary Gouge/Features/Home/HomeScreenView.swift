@@ -7,32 +7,67 @@ struct HomeScreenView: View {
 
     @State private var showingManageFocus = false
 
+    private var displaySnapshot: HomeScreenSnapshot {
+        #if DEBUG
+        if HomeA1Fixture.isEnabled { return HomeA1Fixture.snapshot(in: appModel) }
+        #endif
+        return appModel.homeScreenSnapshot
+    }
+
     var body: some View {
-        let snapshot = appModel.homeScreenSnapshot
+        let snapshot = displaySnapshot
 
-        AppScrollScreen(topPadding: AppTheme.Spacing.rootTabIntroTop, bottomPadding: 28) {
-            HomeIntroBlock(snapshot: snapshot)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                HomeIntroBlock(snapshot: snapshot)
 
-            ContinueStudyingCard(
-                snapshot: snapshot.continueStudying,
-                isPremiumLocked: isPremiumLocked(snapshot.continueStudying.destination)
-            ) { destination in
-                route(to: destination)
-            }
-
-            EmergencyReferenceShortcutCard {
-                route(to: .libraryDeck(id: "emergency-reference-hub"))
-            }
-
-            if let question = snapshot.questionOfDay.question {
-                HomeQuestionOfDayCard(
-                    snapshot: snapshot.questionOfDay,
-                    onSelectChoice: { choiceID in
-                        appModel.answerQuestionOfDay(question, choiceID: choiceID)
+                VStack(spacing: 0) {
+                    ContinueStudyingCard(
+                        snapshot: snapshot.continueStudying,
+                        isPremiumLocked: isPremiumLocked(snapshot.continueStudying.destination)
+                    ) { destination in
+                        route(to: destination)
                     }
-                )
+
+                    if !snapshot.recentDestinations.isEmpty {
+                        VStack(spacing: 0) {
+                            ForEach(snapshot.recentDestinations) { item in
+                                Button { route(to: item.destination) } label: {
+                                    HomeRecentRow(item: item)
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                    }
+                }
+                .padding(.top, 18)
+
+                if let question = snapshot.questionOfDay.question {
+                    HomeQuestionOfDayCard(
+                        snapshot: snapshot.questionOfDay,
+                        onSelectChoice: { choiceID in
+                            #if DEBUG
+                            if HomeA1Fixture.isEnabled { return }
+                            #endif
+                            appModel.answerQuestionOfDay(question, choiceID: choiceID)
+                        }
+                    )
+                    .padding(.top, 30)
+                }
+
+                EmergencyReferenceShortcutCard {
+                    route(to: .libraryDeck(id: "emergency-reference-hub"))
+                }
+                .padding(.top, 26)
             }
+            .padding(.horizontal, 22)
+            .padding(.top, 18)
+            .padding(.bottom, 20)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .background(StudyDesign.page.ignoresSafeArea())
+        .foregroundStyle(StudyDesign.ink)
+        .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showingManageFocus) {
             FocusTopicManagerSheet(
                 selectedTopicIDs: snapshot.currentFocus.pinnedTopics.map(\.id),
@@ -41,7 +76,6 @@ struct HomeScreenView: View {
                 appModel.setPinnedTopicIDs(topicIDs)
             }
         }
-        .rootNavigationChrome(title: "Home")
         .onAppear {
             searchChrome.updateScope(.home)
         }
@@ -63,63 +97,75 @@ struct HomeScreenView: View {
 
 private struct EmergencyReferenceShortcutCard: View {
     let action: () -> Void
-
     var body: some View {
         Button(action: action) {
-            SectionContainer(contentPadding: 16) {
-                HStack(alignment: .center, spacing: 14) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 14, style: .continuous)
-                            .fill(AppTheme.accent.opacity(0.14))
-                            .frame(width: 44, height: 44)
-
-                        Image(systemName: "exclamationmark.shield.fill")
-                            .font(.headline.weight(.semibold))
-                            .foregroundStyle(AppTheme.accent)
-                    }
-
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("EPs / Limits / N/W/C")
-                            .font(.headline.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
-
-                        Text("Open the core emergency-reference deck for the highest-value recurring memory items.")
-                            .font(.footnote)
-                            .foregroundStyle(AppTheme.textSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-
-                    Spacer(minLength: 10)
-
-                    Image(systemName: "chevron.right")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(AppTheme.accent)
-                }
+            HStack(spacing: 12) {
+                Image(systemName: "exclamationmark.shield")
+                    .font(.system(size: 23)).foregroundStyle(StudyDesign.greenInk)
+                    .frame(width: 42, height: 42)
+                    .background(StudyDesign.color(0xCAE6D7, 0x2D5142), in: RoundedRectangle(cornerRadius: 13))
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("EPs / Limits / N/W/C").homeText(.referenceTitle).foregroundStyle(StudyDesign.greenInk)
+                    Text("Your core memory items, together.").homeText(.referenceCaption)
+                        .foregroundStyle(StudyDesign.color(0x4D7360, 0xBDD5C8))
+                }.frame(maxWidth: .infinity, alignment: .leading)
+                Image(systemName: "arrow.right").font(.system(size: 19)).foregroundStyle(StudyDesign.greenInk)
             }
-        }
-        .buttonStyle(.plain)
+            .padding(.horizontal, 14).padding(.vertical, 19)
+            .background(StudyDesign.greenFill, in: RoundedRectangle(cornerRadius: 20))
+            .overlay(RoundedRectangle(cornerRadius: 20).strokeBorder(StudyDesign.color(0xCFE5DA, 0x344F43), lineWidth: 1))
+        }.buttonStyle(.plain)
     }
 }
 
 private struct HomeIntroBlock: View {
     let snapshot: HomeScreenSnapshot
+    @ScaledMetric(relativeTo: .largeTitle) private var numberSize: CGFloat = 34
+    @ScaledMetric(relativeTo: .largeTitle) private var numberRow: CGFloat = 38
+    @ScaledMetric(relativeTo: .largeTitle) private var flameSize: CGFloat = 42
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(snapshot.greeting)
-                .font(.title2.weight(.bold))
-                .foregroundStyle(AppTheme.textPrimary)
-                .fixedSize(horizontal: false, vertical: true)
-
-            if snapshot.studyStreak > 0 {
-                HomeSignalPill(
-                    title: "\(snapshot.studyStreak)-Day Streak",
-                    iconName: "flame.fill",
-                    color: AppTheme.warning
-                )
-                .fixedSize(horizontal: false, vertical: true)
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Home").homeText(.eyebrow).foregroundStyle(StudyDesign.secondary).padding(.bottom, 9)
+                .accessibilityIdentifier("home-eyebrow")
+            (Text(snapshot.greeting).foregroundStyle(StudyDesign.ink) + Text(".").foregroundStyle(StudyDesign.blue))
+                .homeText(.greeting).padding(.bottom, 12)
+                .accessibilityIdentifier("home-greeting")
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 18) {
+                    streakMetric
+                    metric(value: snapshot.flashcardsReviewedToday, label: "flashcards reviewed today", tint: StudyDesign.secondary, captionWidth: 120)
+                }
+            } else {
+                HStack(alignment: .center, spacing: 16) {
+                    streakMetric.frame(maxWidth: .infinity, alignment: .leading)
+                    metric(value: snapshot.flashcardsReviewedToday, label: "flashcards reviewed today", tint: StudyDesign.secondary, captionWidth: 120)
+                        .padding(.leading, 19)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .overlay(alignment: .leading) { Rectangle().fill(StudyDesign.line).frame(width: 1) }
+                }
+                .frame(minHeight: 92)
             }
         }
+    }
+    private var streakMetric: some View {
+        HStack(alignment: .center, spacing: 10) {
+            Text("🔥").font(.system(size: flameSize)).frame(width: 42)
+                .shadow(color: .orange.opacity(0.12), radius: 9, y: 5).accessibilityHidden(true)
+            metric(value: snapshot.studyStreak, label: "day streak", tint: StudyDesign.amberInk)
+        }
+    }
+    private func metric(value: Int, label: String, tint: Color, captionWidth: CGFloat? = nil) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(value.formatted()).font(.system(size: numberSize, weight: .bold)).tracking(-1)
+                .frame(height: numberRow, alignment: .leading)
+            Text(captionWidth != nil && dynamicTypeSize <= .large ? "flashcards reviewed\ntoday" : label)
+                .homeText(.caption).foregroundStyle(tint).accessibilityLabel(label)
+                .frame(width: dynamicTypeSize.isAccessibilitySize ? nil : captionWidth, alignment: .leading)
+        }
+        .frame(height: dynamicTypeSize <= .large ? 72 : nil, alignment: .top)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -129,43 +175,31 @@ private struct ContinueStudyingCard: View {
     let onSelect: (SearchDestination?) -> Void
 
     var body: some View {
-        SectionContainer(style: .primary, accent: AppTheme.accent, contentPadding: 18) {
-            VStack(alignment: .leading, spacing: 14) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("CONTINUE STUDYING")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(AppTheme.accent)
-                        .tracking(0.7)
-
-                    Text(snapshot.title)
-                        .font(.title3.weight(.semibold))
-                        .foregroundStyle(AppTheme.textPrimary)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    Text(snapshot.subtitle)
-                        .font(.subheadline)
-                        .foregroundStyle(AppTheme.textSecondary)
-                        .fixedSize(horizontal: false, vertical: true)
+        VStack(alignment: .leading, spacing: 13) {
+            Text("Continue studying").homeText(.section).accessibilityAddTraits(.isHeader)
+            VStack(alignment: .leading, spacing: 0) {
+                Text(snapshot.contextLabel ?? "GENERAL LIBRARY").homeText(.code).foregroundStyle(StudyDesign.blue)
+                Text(snapshot.displayTitle ?? "Emergency References").homeText(.featured).padding(.vertical, 6)
+                Text(snapshot.detail).homeText(.metadata).foregroundStyle(StudyDesign.secondary)
+                Button { onSelect(snapshot.destination) } label: {
+                    HStack {
+                        Text(snapshot.actionTitle).homeText(.action)
+                        Spacer(minLength: 0)
+                        Image(systemName: isPremiumLocked ? "lock.fill" : "arrow.right")
+                            .font(.system(size: 17, weight: .regular))
+                    }
+                    .foregroundStyle(.white).padding(.vertical, 13).padding(.horizontal, 15)
+                    .frame(maxWidth: .infinity, minHeight: 46)
+                    .background(StudyDesign.action, in: RoundedRectangle(cornerRadius: 13))
                 }
-
-                Text(snapshot.detail)
-                    .font(.footnote)
-                    .foregroundStyle(AppTheme.textSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
-
-                Button {
-                    onSelect(snapshot.destination)
-                } label: {
-                    StudyActionButton(
-                        title: snapshot.actionTitle,
-                        icon: isPremiumLocked ? "lock.fill" : (snapshot.isFallback ? "arrow.right.circle.fill" : "play.fill"),
-                        tint: AppTheme.accent
-                    )
-                }
-                .buttonStyle(.plain)
+                .buttonStyle(.plain).padding(.top, 20)
             }
+            .padding(23).frame(maxWidth: .infinity, alignment: .leading)
+            .background(LinearGradient(colors: [StudyDesign.blueFill, StudyDesign.blueEnd],
+                startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 24))
+            .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(StudyDesign.color(0xD3E1FC, 0x34465D), lineWidth: 1))
+            .accessibilityIdentifier("home-featured")
         }
-        .accessibilityLabel(isPremiumLocked ? "\(snapshot.title), Premium locked" : snapshot.title)
     }
 }
 
@@ -421,31 +455,29 @@ private struct HomeQuestionOfDayCard: View {
     let onSelectChoice: (String) -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HomeSectionHeader(
-                eyebrow: "Daily rep",
-                title: "Question of the Day",
-                subtitle: nil
-            )
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                Text("Question of the day").homeText(.section).accessibilityAddTraits(.isHeader)
+                Spacer()
+                Circle().fill(StudyDesign.amberInk).frame(width: 8, height: 8).accessibilityHidden(true)
+            }
 
-            SectionContainer(contentPadding: 16) {
-                VStack(alignment: .leading, spacing: 16) {
+            StudySurface {
+                VStack(alignment: .leading, spacing: 18) {
                     if let question = snapshot.question {
                         Text(question.prompt)
-                            .font(.title3.weight(.semibold))
-                            .foregroundStyle(AppTheme.textPrimary)
+                            .homeText(.question)
+                            .foregroundStyle(StudyDesign.ink)
 
-                        VStack(spacing: 10) {
+                        VStack(spacing: 8) {
                             ForEach(question.choices) { choice in
-                                QuizAnswerButton(
+                                HomeQuestionChoice(
                                     label: choice.text,
                                     badge: QuizChoicePresentation.badgeText(for: choice, format: choiceFormat(for: question)),
                                     state: answerState(for: choice.id, question: question),
-                                    isInteractive: !snapshot.isAnswered,
-                                    fixedHeight: 72
-                                ) {
-                                    onSelectChoice(choice.id)
-                                }
+                                    isAnswered: snapshot.isAnswered
+                                ) { onSelectChoice(choice.id) }
+
                             }
                         }
                     }
@@ -470,6 +502,54 @@ private struct HomeQuestionOfDayCard: View {
         }
 
         return .subdued
+    }
+}
+
+private struct HomeQuestionChoice: View {
+    let label: String
+    let badge: String?
+    let state: QuizAnswerVisualState
+    let isAnswered: Bool
+    let action: () -> Void
+
+    private var resultColor: Color {
+        switch state {
+        case .correct, .correctReveal: AppTheme.success
+        case .incorrect: AppTheme.danger
+        default: StudyDesign.blue
+        }
+    }
+    private var resultLabel: String {
+        switch state {
+        case .correct, .correctReveal: "Correct answer"
+        case .incorrect: "Incorrect answer"
+        default: ""
+        }
+    }
+    var body: some View {
+        Button(action: action) {
+            HStack(alignment: .center, spacing: 11) {
+                if let badge {
+                    Text(badge).homeText(.badge).foregroundStyle(StudyDesign.secondary)
+                        .frame(minWidth: 22, minHeight: 22)
+                        .background(StudyDesign.color(0xE9EDF3, 0x2D3B50), in: RoundedRectangle(cornerRadius: 7))
+                }
+                Text(label).homeText(.choice).foregroundStyle(StudyDesign.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+                Spacer(minLength: 0)
+                if !resultLabel.isEmpty {
+                    Image(systemName: state == .incorrect ? "xmark.circle.fill" : "checkmark.circle.fill")
+                        .foregroundStyle(resultColor).accessibilityHidden(true)
+                }
+            }
+            .padding(.horizontal, 12).padding(.vertical, 12)
+            .frame(maxWidth: .infinity, minHeight: 46, alignment: .leading)
+            .background(resultLabel.isEmpty ? StudyDesign.color(0xF5F7FA, 0x253244) : resultColor.opacity(0.12),
+                        in: RoundedRectangle(cornerRadius: 12))
+            .overlay(RoundedRectangle(cornerRadius: 12).strokeBorder(StudyDesign.color(0xE5EAF1, 0x34465D), lineWidth: 1))
+        }
+        .buttonStyle(.plain).disabled(isAnswered)
+        .accessibilityValue(resultLabel)
     }
 }
 

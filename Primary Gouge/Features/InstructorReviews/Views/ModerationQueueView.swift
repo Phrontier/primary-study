@@ -36,7 +36,7 @@ struct ModerationQueueView: View {
 
             if canModerate, !bans.isEmpty {
                 SectionContainer {
-                    Text("Blocked Contributors").font(.headline)
+                    Text("Blocked Contributors").pilotText(.tool)
                     ForEach(bans) { ban in
                         HStack {
                             Text("Contributor • \(ban.updatedAt.formatted(date: .abbreviated, time: .omitted))")
@@ -56,7 +56,7 @@ struct ModerationQueueView: View {
             if let banError { Text(banError).foregroundStyle(AppTheme.danger) }
             if let message = activeErrorMessage {
                 Text(message)
-                    .font(.footnote.weight(.semibold))
+                    .pilotText(.metadata)
                     .foregroundStyle(AppTheme.warning)
                     .padding(.horizontal, 6)
             }
@@ -176,16 +176,16 @@ struct ModerationQueueView: View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(review.instructorName)
-                            .font(.headline.weight(.semibold))
+                            .pilotText(.tool)
                             .foregroundStyle(AppTheme.textPrimary)
 
                         HStack(spacing: 8) {
                             Text(review.squadron.displayName)
-                                .font(.subheadline)
+                                .pilotText(.subtitle)
                                 .foregroundStyle(AppTheme.textSecondary)
 
                             Text(review.actionType.title.uppercased())
-                                .font(.caption2.weight(.bold))
+                                .pilotText(.footer)
                                 .foregroundStyle(AppTheme.prominentText(AppTheme.warning))
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 5)
@@ -205,16 +205,16 @@ struct ModerationQueueView: View {
                     VStack(alignment: .trailing, spacing: 4) {
                         if let eventName = review.eventName {
                             Text(eventName)
-                                .font(.footnote.weight(.semibold))
+                                .pilotText(.metadata)
                                 .foregroundStyle(AppTheme.accent)
                         }
 
                         Text(review.eventKind.displayName)
-                            .font(.caption.weight(.semibold))
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.accentSoft)
 
                         Text(review.submittedAt.formatted(date: .abbreviated, time: .shortened))
-                            .font(.caption)
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.textSecondary)
                     }
                 }
@@ -237,7 +237,7 @@ struct ModerationQueueView: View {
                 }
 
                 Text(review.reviewText)
-                    .font(.body)
+                    .pilotText(.body)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
 
@@ -271,16 +271,16 @@ struct ModerationQueueView: View {
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(report.instructorName)
-                            .font(.headline.weight(.semibold))
+                            .pilotText(.tool)
                             .foregroundStyle(AppTheme.textPrimary)
 
                         HStack(spacing: 8) {
                             Text(report.squadron.displayName)
-                                .font(.subheadline)
+                                .pilotText(.subtitle)
                                 .foregroundStyle(AppTheme.textSecondary)
 
                             Text(report.targetKind.displayName.uppercased())
-                                .font(.caption2.weight(.bold))
+                                .pilotText(.footer)
                                 .foregroundStyle(AppTheme.prominentText(AppTheme.danger))
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 5)
@@ -298,14 +298,14 @@ struct ModerationQueueView: View {
                     Spacer(minLength: 12)
 
                     Text(report.submittedAt.formatted(date: .abbreviated, time: .shortened))
-                        .font(.caption)
+                        .pilotText(.metadata)
                         .foregroundStyle(AppTheme.textSecondary)
                 }
 
                 if let eventName = report.eventName, let eventKind = report.eventKind {
                     HStack(spacing: 8) {
                         Text(eventKind.displayName.uppercased())
-                            .font(.system(.caption2, design: .rounded, weight: .bold))
+                            .pilotText(.footer)
                             .foregroundStyle(AppTheme.prominentText(eventKind.domainColor))
                             .padding(.horizontal, 9)
                             .padding(.vertical, 6)
@@ -319,7 +319,7 @@ struct ModerationQueueView: View {
                             )
 
                         Text(eventName)
-                            .font(.footnote.weight(.semibold))
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.textSecondary)
                     }
                 }
@@ -365,12 +365,12 @@ struct ModerationQueueView: View {
     private func reportRow(title: String, value: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title.uppercased())
-                .font(.caption2.weight(.bold))
+                .pilotText(.footer)
                 .foregroundStyle(AppTheme.textMuted)
                 .tracking(0.6)
 
             Text(value)
-                .font(.body)
+                .pilotText(.body)
                 .foregroundStyle(AppTheme.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -382,16 +382,16 @@ struct ModerationQueueView: View {
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(submission.summary)
-                            .font(.headline.weight(.semibold))
+                            .pilotText(.tool)
                             .foregroundStyle(AppTheme.textPrimary)
 
                         HStack(spacing: 8) {
                             Text(submission.category.title)
-                                .font(.subheadline)
+                                .pilotText(.subtitle)
                                 .foregroundStyle(AppTheme.textSecondary)
 
                             Text(submission.status.title.uppercased())
-                                .font(.caption2.weight(.bold))
+                                .pilotText(.footer)
                                 .foregroundStyle(AppTheme.prominentText(submission.category.accentColor))
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 5)
@@ -409,12 +409,12 @@ struct ModerationQueueView: View {
                     Spacer(minLength: 12)
 
                     Text(submission.submittedAt.formatted(date: .abbreviated, time: .shortened))
-                        .font(.caption)
+                        .pilotText(.metadata)
                         .foregroundStyle(AppTheme.textSecondary)
                 }
 
                 Text(submission.message)
-                    .font(.body)
+                    .pilotText(.body)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
 

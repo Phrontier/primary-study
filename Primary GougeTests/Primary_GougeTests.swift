@@ -7,9 +7,46 @@
 
 import Foundation
 import Testing
+import UserNotifications
+import SwiftUI
+import UIKit
 @testable import Primary_Gouge
 
 struct Primary_GougeTests {
+    @Test @MainActor func semanticActionLabelsMeetContrastInBothAppearances() {
+        func luminance(_ color: Color, _ scheme: ColorScheme) -> Double {
+            let value = UIColor(color).resolvedColor(with: UITraitCollection(userInterfaceStyle: scheme == .dark ? .dark : .light))
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+            value.getRed(&r, green: &g, blue: &b, alpha: &a)
+            func linear(_ v: CGFloat) -> Double { v <= 0.04045 ? Double(v / 12.92) : pow(Double((v + 0.055) / 1.055), 2.4) }
+            return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b)
+        }
+        for scheme in [ColorScheme.light, .dark] {
+            for fill in [StudyDesign.action, AppTheme.accent, AppTheme.success, AppTheme.danger, AppTheme.warning] {
+                let background = luminance(fill, scheme)
+                let foreground = luminance(AppTheme.foreground(on: fill, scheme: scheme), scheme)
+                let contrast = (max(background, foreground) + 0.05) / (min(background, foreground) + 0.05)
+                #expect(contrast >= 4.5)
+            }
+        }
+    }
+
+    @Test func trialReminderRequiresPermissionAndFutureVerifiedExpiration() throws {
+        let now = Date(timeIntervalSince1970: 1_800_000_000)
+        let end = now.addingTimeInterval(7 * 86400)
+        #expect(TrialReminderPlan.request(endsAt: end, now: now, authorization: .denied) == nil)
+        #expect(TrialReminderPlan.request(endsAt: end, now: now, authorization: .notDetermined) == nil)
+        #expect(TrialReminderPlan.request(endsAt: now.addingTimeInterval(86400), now: now, authorization: .authorized) == nil)
+        #expect(TrialReminderPlan.request(endsAt: now.addingTimeInterval(2 * 86400), now: now, authorization: .authorized) == nil)
+        let request = try #require(TrialReminderPlan.request(endsAt: end, now: now, authorization: .authorized))
+        #expect(request.identifier == "primary-gouge-trial-ending-reminder")
+        let trigger = try #require(request.trigger as? UNCalendarNotificationTrigger)
+        #expect(!trigger.repeats)
+        let scheduled = try #require(Calendar.current.date(from: trigger.dateComponents))
+        #expect(abs(scheduled.timeIntervalSince(end.addingTimeInterval(-2 * 86400))) < 60)
+        #expect(TrialReminderPlan.request(endsAt: end, now: now, authorization: .provisional) != nil)
+    }
+
     @MainActor
     @Test func accountResetBeforeConfigurationClearsPersistedProgress() {
         let url = temporaryPersistenceURL(name: "cold-account-reset")
@@ -24,6 +61,33 @@ struct Primary_GougeTests {
         let reloaded = ProgressStore(persistenceURL: url)
         #expect(reloaded.allCardProgressRecords().isEmpty)
         #expect(!reloaded.homePreferences().dailyReminderEnabled)
+    }
+
+    @MainActor
+    @Test func homePilotUsesRealDistinctDailyReviewsAndDeduplicatedHistory() throws {
+        let url = temporaryPersistenceURL(name: "home-pilot")
+        defer { try? FileManager.default.removeItem(at: url) }
+        let store = ProgressStore(persistenceURL: url)
+        let model = StudyAppModel(repository: ContentRepository(), progressStore: store)
+        model.configure()
+        let card = try #require(model.studyManifest.flashcards.first)
+        store.recordReview(for: card.id, rating: .good)
+        store.recordReview(for: card.id, rating: .easy)
+        let phases = model.studyManifest.phases
+        let phase = try #require(phases.first)
+        let events = phase.categories.flatMap(\.events)
+        let first = try #require(events.first)
+        let second = try #require(events.dropFirst().first)
+        let third = try #require(events.dropFirst(2).first)
+        for event in [third, second, second, first] {
+            store.recordActivity(StudyActivityRecord(kind: .event,
+                destination: .event(phaseID: phase.id, eventID: event.id),
+                title: event.code, subtitle: event.title))
+        }
+        let snapshot = model.buildHomeScreenSnapshot()
+        #expect(snapshot.flashcardsReviewedToday == 1)
+        #expect(snapshot.recentDestinations.map(\.title) == [second.code, third.code])
+        #expect(model.buildHomeScreenSnapshot(now: Date().addingTimeInterval(86400)).flashcardsReviewedToday == 0)
     }
 
     private func temporaryPersistenceURL(name: String) -> URL {

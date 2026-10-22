@@ -12,6 +12,7 @@ struct GeneralLibraryView: View {
 
     var body: some View {
         AppScrollScreen(bottomPadding: 40) {
+            StudyHeading(title: "General Library", subtitle: "Reference material across your training.")
             if !hubs.isEmpty {
                 VStack(alignment: .leading, spacing: 14) {
                     SectionHeader(
@@ -21,7 +22,7 @@ struct GeneralLibraryView: View {
                     )
 
                     ForEach(hubs) { hub in
-                        VStack(alignment: .leading, spacing: 12) {
+                        VStack(alignment: .leading, spacing: 0) {
                             NavigationLink {
                                 PremiumContentGate(
                                     requirement: ContentAccessPolicy.requirement(forLibraryHubID: hub.id),

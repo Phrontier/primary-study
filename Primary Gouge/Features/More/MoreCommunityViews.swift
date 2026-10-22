@@ -55,7 +55,7 @@ struct MoreCommunitySubmissionView: View {
                         accent: category.accentColor
                     )
 
-                    SectionContainer(style: .standard, accent: category.accentColor, contentPadding: 18) {
+                    Group {
                         VStack(alignment: .leading, spacing: 16) {
                             MoreLabeledField(title: "Summary") {
                                 VStack(alignment: .leading, spacing: 8) {
@@ -135,10 +135,10 @@ struct MoreCommunitySubmissionView: View {
                 accent: AppTheme.danger
             )
 
-            SectionContainer(style: .standard, accent: AppTheme.danger, contentPadding: 18) {
+            Group {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("If you know exactly what needs attention, add what it is and where it lives.")
-                        .font(.footnote)
+                        .pilotText(.metadata)
                         .foregroundStyle(AppTheme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
 
@@ -200,7 +200,7 @@ struct MoreCommunitySubmissionView: View {
                     .foregroundStyle(color)
 
                 Text(message)
-                    .font(.subheadline.weight(.semibold))
+                    .pilotText(.subtitle)
                     .foregroundStyle(AppTheme.textPrimary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -241,7 +241,7 @@ private struct MoreLabeledField<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title.uppercased())
-                .font(.system(.caption, design: .rounded, weight: .bold))
+                .pilotText(.metadata)
                 .foregroundStyle(AppTheme.textMuted)
                 .tracking(0.6)
 
@@ -256,19 +256,12 @@ private struct MoreEntryTextField: View {
 
     var body: some View {
         TextField(prompt, text: $text)
-            .font(.system(.body, design: .rounded, weight: .semibold))
+            .pilotText(.body)
             .foregroundStyle(AppTheme.textPrimary)
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 0)
             .padding(.vertical, 16)
             .frame(minHeight: 56)
-            .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(AppTheme.elevatedSurface)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
-                    )
-            )
+            .overlay(alignment: .bottom) { StudyDesign.line.frame(height: 1) }
     }
 }
 
@@ -287,7 +280,7 @@ private struct MoreEntryTextEditor: View {
 
             if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 Text(prompt)
-                    .font(.system(.body, design: .rounded))
+                    .pilotText(.body)
                     .foregroundStyle(AppTheme.textSecondary.opacity(0.75))
                     .padding(.horizontal, 18)
                     .padding(.vertical, 16)
@@ -296,7 +289,7 @@ private struct MoreEntryTextEditor: View {
             TextEditor(text: $text)
                 .scrollContentBackground(.hidden)
                 .frame(minHeight: 140)
-                .font(.system(.body, design: .rounded))
+                .pilotText(.body)
                 .foregroundStyle(AppTheme.textPrimary)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 12)

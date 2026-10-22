@@ -206,41 +206,25 @@ struct MoreTabView: View {
     }
 
     var body: some View {
-        AppScrollScreen(topPadding: AppTheme.Spacing.screenTop, bottomPadding: 28) {
-            VStack(alignment: .leading, spacing: 18) {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
                 MoreHeroCard(snapshot: snapshot, profile: accountStore.profile)
-                NavigationLink {
-                    MorePremiumView(snapshot: snapshot)
-                } label: {
-                    MorePremiumPromoCard(isSubscribed: isPremiumSubscribed)
-                }
-                .buttonStyle(.plain)
-
-                ForEach(sections) { section in
-                    VStack(alignment: .leading, spacing: 10) {
-                        MoreSectionHeader(title: section.title, color: section.color)
-
-                        MoreSectionContainer {
-                            ForEach(Array(section.items.enumerated()), id: \.element.id) { index, item in
-                                NavigationLink {
-                                    destinationView(for: item)
-                                } label: {
-                                    MoreUtilityRow(item: item)
-                                }
-                                .buttonStyle(.plain)
-
-                                if index < section.items.count - 1 {
-                                    Divider()
-                                        .overlay(AppTheme.cardStroke.opacity(0.9))
-                                        .padding(.leading, 62)
+                VStack(alignment: .leading, spacing: 0) {
+                    NavigationLink { MorePremiumView(snapshot: snapshot) } label: { MorePremiumPromoCard(isSubscribed: isPremiumSubscribed) }.buttonStyle(.plain).padding(.top, 21).padding(.bottom, 28)
+                    ForEach(sections) { section in
+                        VStack(alignment: .leading, spacing: 10) {
+                            MoreSectionHeader(title: section.title, color: section.color)
+                            MoreSectionContainer {
+                                ForEach(Array(section.items.enumerated()), id: \.element.id) { index, item in
+                                    NavigationLink { destinationView(for: item) } label: { MoreUtilityRow(item: item) }.buttonStyle(.plain)
+                                    if index < section.items.count - 1 { Rectangle().fill(StudyDesign.line).frame(height: 1).padding(.horizontal, 16) }
                                 }
                             }
-                        }
+                        }.padding(.bottom, 26)
                     }
-                }
+                }.padding(.horizontal, 22).padding(.bottom, 20)
             }
-        }
-        .rootNavigationChrome(title: "More")
+        }.background(SelectedHeroPageBackground()).toolbarColorScheme(.dark, for: .navigationBar).pilotNavigation()
         .onAppear {
             searchChrome.updateScope(.home)
         }
@@ -305,35 +289,25 @@ struct MoreTabView: View {
 private struct MoreHeroCard: View {
     let snapshot: MoreHubSnapshot
     let profile: AccountProfile?
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
-        MoreHeaderCard(accent: MoreSectionColor.account) {
-            HStack(alignment: .center, spacing: 14) {
-                MoreHeaderTextBlock(
-                    eyebrow: "Account",
-                    title: profile?.displayTitle ?? snapshot.identityTitle,
-                    subtitle: accountSummaryLine,
-                    accent: MoreSectionColor.account,
-                    subtitleFont: .footnote
-                )
-
-                Spacer(minLength: 12)
-
-                ZStack {
-                    Circle()
-                        .fill(AppTheme.badgeFill(MoreSectionColor.account))
-                        .frame(width: 46, height: 46)
-                        .overlay(
-                            Circle()
-                                .stroke(AppTheme.badgeStroke(MoreSectionColor.account), lineWidth: 1)
-                        )
-
-                    Text(snapshot.avatarInitials)
-                        .font(.headline.weight(.bold))
-                        .foregroundStyle(AppTheme.iconTint(MoreSectionColor.account))
-                }
-            }
-        }
+        VStack(alignment: .leading, spacing: 0) {
+            Text("More").selectedText(30, line: 34.5, weight: .bold, tracking: -1).padding(.top, 8).padding(.bottom, 9)
+            Text("Your training, tools, and account.").selectedText(12, line: 18).foregroundStyle(.white.opacity(0.88))
+            HStack(spacing: 12) {
+                Text(snapshot.avatarInitials).font(.system(size: 17, weight: .semibold)).frame(width: 47, height: 47).accessibilityHidden(true)
+                    .background(.white.opacity(0.14), in: Circle()).overlay(Circle().strokeBorder(.white.opacity(0.22)))
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(profile?.displayTitle ?? snapshot.identityTitle).selectedText(17, weight: .bold, tracking: -0.3)
+                    Text(accountSummaryLine).selectedText(11, line: 15.4).foregroundStyle(.white.opacity(0.88))
+                }.frame(maxWidth: typeSize.isAccessibilitySize ? .infinity : 180, alignment: .leading)
+                Spacer(minLength: 0)
+            }.padding(.top, 28)
+        }.frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 22).padding(.top, 15).padding(.bottom, 27).frame(minHeight: 219, alignment: .topLeading)
+            .background(alignment: .bottomTrailing) { if !typeSize.isAccessibilitySize { Image("StudyAviation").resizable().scaledToFit().frame(width: 204, height: 142).offset(x: 26, y: -9).opacity(0.95).accessibilityHidden(true) } }
+            .background(StudyDesign.action.ignoresSafeArea(edges: .top)).foregroundStyle(.white)
     }
 
     private var accountSummaryLine: String {
@@ -354,39 +328,45 @@ private struct MoreHeroCard: View {
 private struct MorePremiumPromoCard: View {
     @EnvironmentObject private var subscriptionStore: SubscriptionStore
     let isSubscribed: Bool
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
-        MoreHeaderCard(accent: AppTheme.warning, supportingSpacing: 12) {
-            HStack(alignment: .center, spacing: 14) {
-                MoreHeaderTextBlock(
-                    eyebrow: "Premium",
-                    title: isSubscribed ? "Premium Marked Active" : "Go Premium",
-                    subtitle: isSubscribed ? "See your Premium status and manage it here." : subscriptionStore.offerDescription,
-                    accent: AppTheme.warning,
-                    subtitleFont: .footnote
-                )
-
-                Spacer(minLength: 12)
-
-                StatusBadge(
-                    title: isSubscribed ? "Subscribed" : "Upgrade",
-                    iconName: isSubscribed ? "checkmark.circle.fill" : "star.fill",
-                    color: isSubscribed ? AppTheme.success : AppTheme.warning
-                )
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 8) { Image(systemName: "checkmark.shield").font(.system(size: 19)); Text("PRIMARY GOUGE PREMIUM").selectedText(9, line: 13, weight: .bold, tracking: 1) }.frame(minHeight: 19)
+            if typeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 14) { membershipText; manageLabel }
+            } else {
+                HStack(spacing: 9) { membershipText; Spacer(minLength: 0); manageLabel }
             }
-        } supportingContent: {
-            HStack(spacing: 10) {
-                Text(isSubscribed ? "Manage Premium Status" : "See Premium Options")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(AppTheme.prominentText(AppTheme.warning))
-
-                Spacer(minLength: 8)
-
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 12, weight: .bold))
-                    .foregroundStyle(AppTheme.accessoryTint(AppTheme.warning))
-            }
+        }.foregroundStyle(StudyDesign.color(0x5F431A, 0xF5DEAD)).padding(.vertical, 16).padding(.horizontal, 17)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(LinearGradient(colors: [StudyDesign.color(0xFFF6DE, 0x443623), StudyDesign.color(0xF1D99F, 0x59442A)], startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 22))
+            .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(StudyDesign.color(0xE5CC92, 0x8E7349), lineWidth: 1))
+            .accessibilityElement(children: .combine).accessibilityLabel(isSubscribed ? "Premium, active. Manage subscription" : "Premium. See Premium options")
+    }
+    private var membershipCaption: String {
+        switch subscriptionStore.entitlement.phase {
+        case .active: "Premium is active"
+        case .gracePeriod: "Billing grace period"
+        case .billingRetry: "Payment needs attention"
+        case .expired: "Previous subscription expired"
+        case .loading: "Checking membership"
+        case .error: "Membership could not be verified"
+        case .notSubscribed: "Unlock your full study cockpit"
         }
+    }
+    private var membershipText: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Current plan").selectedText(10, line: 14)
+            Text(isSubscribed ? "Premium Monthly" : "Free access").selectedText(18, line: 23.4, weight: .bold, tracking: -0.35)
+            Text(membershipCaption).selectedText(10, line: 16)
+        }
+    }
+    private var manageLabel: some View {
+        HStack(spacing: 6) { Text(isSubscribed ? "Manage" : "Explore"); Image(systemName: "arrow.right") }
+            .selectedText(11, weight: .semibold).foregroundStyle(StudyDesign.color(0x74551F, 0x62451C))
+            .padding(.horizontal, 11).padding(.vertical, 10).frame(minHeight: 38)
+            .background(StudyDesign.color(0xFFF9ED, 0xF3DFAD), in: RoundedRectangle(cornerRadius: 13))
     }
 }
 
@@ -427,7 +407,7 @@ struct MoreHeaderCard<Header: View, SupportingContent: View>: View {
     }
 
     var body: some View {
-        SectionContainer(style: .rootSummary, accent: accent, contentPadding: contentPadding) {
+        Group {
             VStack(alignment: .leading, spacing: showsSupportingContent ? supportingSpacing : 0) {
                 header
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -467,18 +447,18 @@ struct MoreHeaderTextBlock: View {
     var body: some View {
         VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 5) {
             Text(eyebrow.uppercased())
-                .font(.caption.weight(.semibold))
+                .pilotText(.code)
                 .foregroundStyle(accent)
                 .tracking(0.7)
 
             Text(title)
-                .font(titleFont)
+                .pilotText(.title)
                 .foregroundStyle(AppTheme.textPrimary)
                 .fixedSize(horizontal: false, vertical: true)
 
             if let subtitle, !subtitle.isEmpty {
                 Text(subtitle)
-                    .font(subtitleFont)
+                    .pilotText(.subtitle)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -491,10 +471,7 @@ private struct MoreSectionHeader: View {
     let color: Color
 
     var body: some View {
-        Text(title.uppercased())
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(color)
-            .tracking(0.6)
+        Text(title).selectedText(14, weight: .semibold).foregroundStyle(StudyDesign.secondary)
             .padding(.horizontal, 4)
     }
 }
@@ -507,11 +484,11 @@ struct MoreSectionContainer<Content: View>: View {
             content
         }
         .background(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .fill(AppTheme.surface)
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .fill(StudyDesign.surface)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 22, style: .continuous)
-                        .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .stroke(StudyDesign.cardLine, lineWidth: 1)
                 )
         )
     }
@@ -521,65 +498,14 @@ private struct MoreUtilityRow: View {
     let item: MoreHubItem
     @EnvironmentObject private var subscriptionStore: SubscriptionStore
 
-    private let accessoryColumnWidth: CGFloat = 120
-
     var body: some View {
-        HStack(spacing: 14) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(AppTheme.semanticTint(item.accent, opacity: 0.16))
-                    .frame(width: 36, height: 36)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(item.accent.opacity(0.16), lineWidth: 1)
-                    )
-
-                Image(systemName: item.iconName)
-                    .font(.system(size: 15, weight: .semibold))
-                    .foregroundStyle(item.accent)
-            }
-
-            VStack(alignment: .leading, spacing: 0) {
-                Text(item.title)
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(AppTheme.textPrimary)
-
-                if case .moderation = item.destination, let subtitle = item.subtitle {
-                    Text(subtitle)
-                        .font(.caption)
-                        .foregroundStyle(AppTheme.textSecondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-            }
-
-            Spacer(minLength: 8)
-
-            HStack(spacing: 10) {
-                if let badge = item.badge {
-                    MoreRowBadge(style: badge)
-                }
-
-                if ContentAccessPolicy.isLocked(item.accessRequirement, subscriptionStore: subscriptionStore) {
-                    Image(systemName: "lock.fill")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(AppTheme.warning)
-                }
-
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 12, weight: .bold))
-                    .foregroundStyle(AppTheme.accessoryTint(item.accent))
-            }
-            .frame(width: accessoryColumnWidth, alignment: .trailing)
-        }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 11)
-        .frame(minHeight: 60, alignment: .leading)
-        .contentShape(Rectangle())
-        .accessibilityLabel(
-            ContentAccessPolicy.isLocked(item.accessRequirement, subscriptionStore: subscriptionStore)
-                ? "\(item.title), Premium locked"
-                : item.title
-        )
+        HStack(spacing: 12) {
+            Image(systemName: item.iconName.replacingOccurrences(of: ".fill", with: "")).font(.system(size: 18, weight: .regular)).foregroundStyle(StudyDesign.blue).frame(width: 22)
+            Text(item.title).selectedText(14, line: 20, weight: .semibold).foregroundStyle(StudyDesign.ink).frame(maxWidth: .infinity, alignment: .leading)
+            if ContentAccessPolicy.isLocked(item.accessRequirement, subscriptionStore: subscriptionStore) { Image(systemName: "lock").font(.system(size: 11)).foregroundStyle(StudyDesign.amberInk) }
+            Image(systemName: "chevron.right").font(.system(size: 12)).foregroundStyle(StudyDesign.secondary).accessibilityHidden(true)
+        }.padding(.horizontal, 16).padding(.vertical, 18).frame(minHeight: 55).contentShape(Rectangle())
+            .accessibilityLabel(ContentAccessPolicy.isLocked(item.accessRequirement, subscriptionStore: subscriptionStore) ? "\(item.title), Premium locked" : item.title)
     }
 }
 
@@ -719,11 +645,11 @@ private struct MoreWeakAreaRow: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(signal.title)
-                    .font(.body.weight(.semibold))
+                    .designText(.body)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(signal.detail)
-                    .font(.subheadline)
+                    .designText(.subtitle)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -940,11 +866,11 @@ private struct MoreRecentItemRow: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.body.weight(.semibold))
+                    .designText(.body)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(subtitle)
-                    .font(.subheadline)
+                    .designText(.subtitle)
                     .foregroundStyle(AppTheme.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }

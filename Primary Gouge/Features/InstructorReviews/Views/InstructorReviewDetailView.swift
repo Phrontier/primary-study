@@ -13,75 +13,35 @@ struct InstructorReviewDetailView: View {
     }
 
     var body: some View {
-        AppScrollScreen(bottomPadding: 36) {
-            HeroCard(
-                eyebrow: viewModel.instructor.squadron.displayName,
-                title: viewModel.instructor.name,
-                subtitle: viewModel.instructor.publishedReviewCountText,
-                accessory: {
-                    ReportActionButton {
-                        activeReportTarget = .instructor(viewModel.instructor)
-                    }
-                }
-            ) {
-                HStack(spacing: 10) {
-                    ForEach(viewModel.instructor.capabilityBadges, id: \.self) { capability in
-                        InstructorCapabilityBadge(capability: capability)
-                    }
-                }
-            }
-
-            HStack(spacing: 12) {
-                InstructorAggregateCard(
-                    title: "Average Chill Factor",
-                    label: viewModel.instructor.chillLabel,
-                    average: viewModel.instructor.averageChillScore
-                )
-                InstructorAggregateCard(
-                    title: "Average Grading Style",
-                    label: viewModel.instructor.gradingLabel,
-                    average: viewModel.instructor.averageGradingScore
-                )
-            }
-
-            InstructorAdaptiveSelector(
-                options: InstructorReviewSortOption.allCases,
-                selected: viewModel.selectedSort,
-                title: { $0.title },
-                accent: { option in
-                    switch option {
-                    case .mostRecent:
-                        return AppTheme.accent
-                    case .oldest:
-                        return AppTheme.warning
-                    case .best:
-                        return AppTheme.success
-                    case .worst:
-                        return AppTheme.danger
-                    }
-                },
-                menuTitle: "Sort Reviews"
-            ) { option in
-                viewModel.selectedSort = option
-            }
-
+        PilotPage {
+            PilotBackHeader(title: "Instructors")
+            StudyHeading(title: viewModel.instructor.name, subtitle: viewModel.instructor.squadron.displayName + " · " + viewModel.instructor.capabilityBadges.map(\.pluralDisplayName).joined(separator: " · "))
+            HStack {
+                Text(viewModel.instructor.publishedReviewCountText).selectedText(11).foregroundStyle(StudyDesign.secondary)
+                Spacer()
+                Button("Report") { activeReportTarget = .instructor(viewModel.instructor) }.selectedText(11).frame(minHeight: 44)
+            }.padding(.top, 7).padding(.bottom, 25)
+            Text("At a glance").pilotText(.section).padding(.leading, 15)
+                .overlay(alignment: .leading) { Rectangle().fill(StudyDesign.blue).frame(width: 3) }.padding(.bottom, 20)
+            SelectedInstructorScores(chill: viewModel.instructor.averageChillScore, grading: viewModel.instructor.averageGradingScore).padding(.bottom, 30)
+            HStack {
+                Text("Reviews").pilotText(.section)
+                Spacer()
+                Picker("Sort reviews", selection: $viewModel.selectedSort) {
+                    ForEach(InstructorReviewSortOption.allCases) { option in Text(option.title).tag(option) }
+                }.pickerStyle(.menu).selectedText(11)
+            }.padding(.bottom, 12)
             if viewModel.reviews.isEmpty {
-                EmptyStateCard(
-                    icon: "tray.fill",
-                    title: "No Approved Reviews Yet",
-                    message: "Once moderation approves a review, it will appear here automatically."
-                )
+                EmptyStateCard(icon: "tray", title: "No Approved Reviews Yet", message: "Approved reviews will appear here automatically.")
             } else {
-                LazyVStack(spacing: 14) {
+                LazyVStack(spacing: 12) {
                     ForEach(viewModel.reviews) { review in
-                        InstructorReviewCard(review: review) {
-                            activeReportTarget = .review(review)
-                        }
+                        SelectedInstructorReview(review: review) { activeReportTarget = .review(review) }
                     }
                 }
             }
         }
-        .detailNavigationChrome(title: "Instructor")
+        .pilotNavigation()
         .task {
             viewModel.load(using: reviewStore)
         }

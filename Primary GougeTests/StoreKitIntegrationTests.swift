@@ -9,6 +9,8 @@ final class StoreKitIntegrationTests: XCTestCase {
         let session = try SKTestSession(configurationFileNamed: "Configuration")
         session.resetToDefaultState()
         session.disableDialogs = true
+        session.storefront = "USA"
+        session.locale = Locale(identifier: "en_US")
         session.clearTransactions()
         defer { session.clearTransactions(); session.resetToDefaultState() }
         let user = UUID()
@@ -16,6 +18,7 @@ final class StoreKitIntegrationTests: XCTestCase {
         let info = try await client.loadProduct()
         XCTAssertNotNil(info)
         XCTAssertNotNil(info?.trialDescription)
+        XCTAssertEqual(info?.freeTrialDays, 7)
         guard case .purchased(let purchase) = try await client.purchase(accountToken: user) else {
             XCTFail("StoreKit did not complete the local purchase"); return
         }

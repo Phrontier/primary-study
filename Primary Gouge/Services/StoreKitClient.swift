@@ -4,6 +4,7 @@ import StoreKit
 struct SubscriptionProductInfo: Equatable {
     let displayPrice: String
     let trialDescription: String?
+    var freeTrialDays: Int? = nil
 }
 
 struct VerifiedSubscriptionTransaction: Codable, Equatable {
@@ -39,6 +40,7 @@ final class StoreKitClient: StoreKitServing {
         product = try await Product.products(for: [SubscriptionStore.premiumMonthlyProductID]).first
         guard let product else { return nil }
         var trial: String?
+        var trialDays: Int?
         if let subscription = product.subscription,
            await subscription.isEligibleForIntroOffer,
            let offer = subscription.introductoryOffer, offer.paymentMode == .freeTrial {
@@ -50,9 +52,14 @@ final class StoreKitClient: StoreKitServing {
             case .year: unit = "year"
             @unknown default: unit = "period"
             }
+            switch offer.period.unit {
+            case .day: trialDays = offer.period.value
+            case .week: trialDays = offer.period.value * 7
+            default: trialDays = nil
+            }
             trial = "\(offer.period.value)-\(unit) free trial"
         }
-        return SubscriptionProductInfo(displayPrice: product.displayPrice, trialDescription: trial)
+        return SubscriptionProductInfo(displayPrice: product.displayPrice, trialDescription: trial, freeTrialDays: trialDays)
     }
 
     func purchase(accountToken: UUID) async throws -> StoreKitPurchaseResult {

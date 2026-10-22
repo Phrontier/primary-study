@@ -33,7 +33,8 @@ struct ScreenScaffold<Content: View>: View {
                 .padding(.horizontal, horizontalPadding)
                 .padding(.top, topPadding)
                 .padding(.bottom, bottomPadding)
-            }
+            }.scrollDismissesKeyboard(.interactively)
+            .accessibilityIdentifier("design-content-scroll")
         }
     }
 }
@@ -80,22 +81,13 @@ struct SectionHeader: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 8) {
-            Text(eyebrow.uppercased())
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(accent)
-                .tracking(0.6)
-
-            Text(title)
-                .font((subtitle == nil ? Font.title2 : .title3).weight(.semibold))
-                .foregroundStyle(AppTheme.textPrimary)
-
+        VStack(alignment: .leading, spacing: 5) {
+            if !eyebrow.isEmpty {
+                Text(eyebrow.uppercased()).pilotText(.code).foregroundStyle(accent)
+            }
+            Text(title).pilotText(.section).foregroundStyle(StudyDesign.ink).accessibilityAddTraits(.isHeader)
             if let subtitle, !subtitle.isEmpty {
-                Text(subtitle)
-                    .font(.subheadline)
-                    .foregroundStyle(AppTheme.textSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(maxWidth: 520, alignment: .leading)
+                Text(subtitle).pilotText(.subtitle).foregroundStyle(StudyDesign.secondary)
             }
         }
     }
@@ -155,39 +147,25 @@ struct HeroCard<Content: View, Accessory: View>: View {
     }
 
     var body: some View {
-        SectionContainer(style: .hero, accent: accent, contentPadding: 24) {
-            VStack(alignment: .leading, spacing: subtitle == nil ? 14 : 18) {
-                HStack(alignment: .top, spacing: 16) {
-                    VStack(alignment: .leading, spacing: subtitle == nil ? 4 : 8) {
-                        if let eyebrow, !eyebrow.isEmpty {
-                            Text(eyebrow.uppercased())
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(accent)
-                                .tracking(0.6)
-                        }
-
-                        Text(title)
-                            .font(.system(size: subtitle == nil ? 34 : 30, weight: .bold))
-                            .foregroundStyle(AppTheme.textPrimary)
-                            .fixedSize(horizontal: false, vertical: true)
-
-                        if let subtitle, !subtitle.isEmpty {
-                            Text(subtitle)
-                                .font(.subheadline)
-                                .foregroundStyle(AppTheme.textSecondary)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .frame(maxWidth: 540, alignment: .leading)
-                        }
-                    }
-
-                    Spacer(minLength: 0)
-
-                    accessory
-                }
-
-                content
+        VStack(alignment: .leading, spacing: 18) {
+            ViewThatFits(in: .horizontal) {
+                HStack(alignment: .top, spacing: 12) { heading; accessory }
+                VStack(alignment: .leading, spacing: 12) { heading; accessory }
             }
-        }
+            content
+        }.frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var heading: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            if let eyebrow, !eyebrow.isEmpty {
+                Text(eyebrow.uppercased()).pilotText(.code).foregroundStyle(accent)
+            }
+            Text(title).pilotText(.title).foregroundStyle(StudyDesign.ink).accessibilityAddTraits(.isHeader)
+            if let subtitle, !subtitle.isEmpty {
+                Text(subtitle).pilotText(.subtitle).foregroundStyle(StudyDesign.secondary)
+            }
+        }.frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
@@ -252,7 +230,7 @@ struct RootNavigationChrome: ViewModifier {
     func body(content: Content) -> some View {
         content
             .navigationTitle(title)
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -643,11 +621,11 @@ struct MetricChip: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(value)
-                    .font(.title3.weight(.semibold))
+                    .designText(.stat)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text(label.uppercased())
-                    .font(.caption2.weight(.semibold))
+                    .designText(.metadata)
                     .foregroundStyle(AppTheme.prominentText(color))
                     .tracking(0.5)
             }
@@ -655,9 +633,7 @@ struct MetricChip: View {
         .padding(.horizontal, 14)
         .padding(.vertical, 14)
         .frame(maxWidth: .infinity, minHeight: 94, alignment: .leading)
-        .background(
-            AppTheme.cardBackground(style: .metric, accent: color)
-        )
+
     }
 }
 
@@ -680,24 +656,20 @@ struct CompactMetricChip: View {
             }
 
             Text(value)
-                .font(.headline.weight(.semibold))
+                .designText(.stat)
                 .foregroundStyle(AppTheme.textPrimary)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
+                .fixedSize(horizontal: false, vertical: true)
 
             Text(label.uppercased())
-                .font(.caption2.weight(.semibold))
+                .designText(.metadata)
                 .foregroundStyle(color)
                 .tracking(0.4)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 12)
         .frame(maxWidth: .infinity, minHeight: 78, alignment: .leading)
-        .background(
-            AppTheme.cardBackground(style: .metric, accent: color)
-        )
+
     }
 }
 
@@ -729,7 +701,7 @@ struct HorizontalMetricChip: View {
                 .minimumScaleFactor(0.9)
 
             Text(label)
-                .font(.caption.weight(.semibold))
+                .designText(.metadata)
                 .foregroundStyle(AppTheme.prominentText(color).opacity(0.9))
                 .lineLimit(1)
                 .minimumScaleFactor(0.9)
@@ -737,9 +709,7 @@ struct HorizontalMetricChip: View {
         .padding(.horizontal, 12)
         .padding(.vertical, 9)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            AppTheme.cardBackground(style: .metric, accent: color)
-        )
+
     }
 }
 
@@ -785,22 +755,7 @@ struct EmptyState: View {
     let message: String
 
     var body: some View {
-        SectionContainer {
-            VStack(alignment: .leading, spacing: 14) {
-                Image(systemName: icon)
-                    .font(.title2.weight(.semibold))
-                    .foregroundStyle(AppTheme.accent)
-
-                Text(title)
-                    .font(.headline.weight(.semibold))
-                    .foregroundStyle(AppTheme.textPrimary)
-
-                Text(message)
-                    .font(.subheadline)
-                    .foregroundStyle(AppTheme.textSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-        }
+        DesignStateView(icon: icon, title: title, message: message)
     }
 }
 
@@ -815,6 +770,7 @@ struct EmptyStateCard: View {
 }
 
 struct StudyActionButton: View {
+    @Environment(\.colorScheme) private var scheme
     let title: String
     let icon: String?
     let tint: Color
@@ -828,22 +784,17 @@ struct StudyActionButton: View {
     }
 
     var body: some View {
-        HStack(spacing: 10) {
-            if let icon {
-                Image(systemName: icon)
-                    .font(.subheadline.weight(.semibold))
-            }
-
-            Text(title)
-                .font(.headline.weight(.semibold))
+        Label {
+            Text(title).pilotText(.action)
+        } icon: {
+            if let icon { Image(systemName: icon).accessibilityHidden(true) }
         }
-        .foregroundStyle(isProminent ? Color.white : AppTheme.prominentText(tint))
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 14)
-        .padding(.horizontal, 16)
-        .background(background)
-        .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.control, style: .continuous))
-        .shadow(color: isProminent ? Color.black.opacity(0.07) : .clear, radius: 10, x: 0, y: 5)
+        .foregroundStyle(isProminent ? AppTheme.foreground(on: tint, scheme: scheme) : tint)
+        .frame(maxWidth: .infinity, minHeight: 22)
+        .padding(.vertical, 12).padding(.horizontal, 14)
+        .frame(minHeight: 44)
+        .background(isProminent ? tint : StudyDesign.surface, in: RoundedRectangle(cornerRadius: 13))
+        .overlay(RoundedRectangle(cornerRadius: 13).strokeBorder(isProminent ? .clear : StudyDesign.cardLine, lineWidth: 1))
     }
 
     private var background: some View {
@@ -892,7 +843,7 @@ struct InsetListRow<Leading: View, Trailing: View>: View {
             HStack(alignment: .center, spacing: 12) {
                 VStack(alignment: .leading, spacing: subtitle == nil ? 2 : 6) {
                     Text(title)
-                        .font((subtitle == nil ? Font.headline : .body).weight(.semibold))
+                        .pilotText(.tool)
                         .foregroundStyle(AppTheme.textPrimary)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -900,9 +851,9 @@ struct InsetListRow<Leading: View, Trailing: View>: View {
 
                     if let subtitle, !subtitle.isEmpty {
                         Text(subtitle)
-                            .font(.footnote)
+                            .pilotText(.metadata)
                             .foregroundStyle(AppTheme.textSecondary)
-                            .lineLimit(3)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
 
@@ -930,12 +881,11 @@ struct InsetListRow<Leading: View, Trailing: View>: View {
                     .fixedSize()
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 14)
+        .padding(.horizontal, 0)
+        .padding(.vertical, 18)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            AppTheme.cardBackground(style: .grouped)
-        )
+        .overlay(alignment: .bottom) { StudyDesign.line.frame(height: 1) }
+        .contentShape(Rectangle())
     }
 }
 

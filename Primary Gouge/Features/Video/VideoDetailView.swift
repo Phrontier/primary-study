@@ -17,7 +17,7 @@ struct VideoDetailView: View {
             ) {
                 if let byteSize = video.byteSize {
                     Text(ByteCountFormatter.string(fromByteCount: byteSize, countStyle: .file))
-                        .font(.subheadline.weight(.semibold))
+                        .pilotText(.subtitle)
                         .foregroundStyle(AppTheme.textSecondary)
                 }
             }
@@ -82,16 +82,16 @@ struct VideoDetailView: View {
         SectionContainer {
             VStack(alignment: .leading, spacing: 14) {
                 Image(systemName: "play.rectangle.fill")
-                    .font(.title2.weight(.semibold))
+                    .pilotText(.sessionTitle)
                     .foregroundStyle(AppTheme.domainColor(.videos))
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text(title)
-                        .font(.headline)
+                        .pilotText(.tool)
                         .foregroundStyle(AppTheme.textPrimary)
 
                     Text(message)
-                        .font(.subheadline)
+                        .pilotText(.subtitle)
                         .foregroundStyle(AppTheme.textSecondary)
                 }
 

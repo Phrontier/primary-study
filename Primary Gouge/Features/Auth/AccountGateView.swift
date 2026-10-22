@@ -13,7 +13,7 @@ struct AccountGateView<Content: View>: View {
             case .signedOut:
                 AccountSignInView()
             case .signedIn:
-                if accountStore.profileComplete {
+                if accountStore.profileComplete && !AppLaunchEnvironment.usesTrainingSetupUITest {
                     content
                 } else {
                     AccountOnboardingView()
@@ -36,7 +36,7 @@ private struct AccountLoadingView: View {
 
                 Text(title)
                     .font(.headline.weight(.semibold))
-                    .foregroundStyle(AppTheme.textPrimary)
+                    .foregroundStyle(StudyDesign.ink)
             }
         }
     }
@@ -53,61 +53,26 @@ struct AccountOnboardingView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                AuthArtworkBackground()
-
-                ScrollView {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack { Image(systemName: "paperplane").foregroundStyle(StudyDesign.blue); Spacer(); Text("Training setup").selectedText(11).foregroundStyle(StudyDesign.secondary) }.frame(minHeight: 44).padding(.bottom, 45)
+                    Text("Make it your\nstudy cockpit.").selectedText(32, line: 36.8, weight: .bold, tracking: -1)
+                    Text("Choose your training defaults.").selectedText(14, line: 22.4).foregroundStyle(StudyDesign.secondary).padding(.top, 14).padding(.bottom, 25)
                     VStack(alignment: .leading, spacing: 22) {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Set Up Your Profile")
-                                .font(.system(size: 34, weight: .bold, design: .rounded))
-                                .foregroundStyle(.white)
-
-                            Text(accountStore.profile?.email ?? "Choose the training defaults Primary Gouge should use.")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundStyle(.white.opacity(0.76))
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                        .padding(.top, 74)
-
-                        VStack(alignment: .leading, spacing: 14) {
-                            AccountTextField(
-                                title: "Display Name",
-                                placeholder: "Optional",
-                                text: $displayName,
-                                textContentType: .name,
-                                keyboardType: .default
-                            )
-
-                            AccountSquadronPicker(selection: $selectedSquadronID)
-                            AccountSyllabusPicker(selection: $selectedSyllabus)
-
-                            if let errorMessage {
-                                Text(errorMessage)
-                                    .font(.footnote.weight(.semibold))
-                                    .foregroundStyle(Color(red: 1.0, green: 0.74, blue: 0.68))
-                            }
-
-                            Button {
-                                saveProfile()
-                            } label: {
-                                AuthButtonLabel(
-                                    title: accountStore.isWorking ? "Saving..." : "Continue",
-                                    systemImage: "checkmark.circle.fill",
-                                    style: .primary
-                                )
-                            }
-                            .buttonStyle(.plain)
-                            .disabled(accountStore.isWorking)
-                            .opacity(accountStore.isWorking ? 0.62 : 1)
-                        }
+                        AccountTextField(title: "Display Name", placeholder: "Optional", text: $displayName, textContentType: .name, keyboardType: .default)
+                        AccountSquadronPicker(selection: $selectedSquadronID)
+                        AccountSyllabusPicker(selection: $selectedSyllabus)
                     }
-                    .padding(.horizontal, 24)
-                    .padding(.bottom, 44)
-                }
-            }
-            .ignoresSafeArea()
-            .toolbar(.hidden, for: .navigationBar)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Not sure yet? Start with Echo.").selectedText(13, line: 18.2, weight: .semibold).foregroundStyle(StudyDesign.blue)
+                        Text("You can always update it in Profile settings later.").selectedText(12, line: 19.2).foregroundStyle(StudyDesign.secondary)
+                    }.padding(.vertical, 14).padding(.horizontal, 16).frame(maxWidth: .infinity, alignment: .leading)
+                        .background(StudyDesign.blueFill, in: RoundedRectangle(cornerRadius: 16)).padding(.vertical, 25)
+                    if let errorMessage { Text(errorMessage).foregroundStyle(AppTheme.danger).selectedText(12).padding(.bottom, 12) }
+                    Button { saveProfile() } label: { SelectedPrimaryLabel(title: accountStore.isWorking ? "Saving…" : "Continue") }.buttonStyle(.plain).disabled(accountStore.isWorking)
+                }.padding(.horizontal, 24).padding(.top, 15).padding(.bottom, 35)
+            }.background(StudyDesign.color(0xFFFFFF, 0x111923).ignoresSafeArea()).foregroundStyle(StudyDesign.ink).tint(StudyDesign.blue)
+                .toolbar(.hidden, for: .navigationBar)
         }
         .task {
             loadProfileOnce()
@@ -154,9 +119,9 @@ struct AccountSquadronPicker: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("SQUADRON")
-                .font(.system(.caption, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.textMuted)
+            Text("Squadron")
+                .selectedText(12, weight: .semibold)
+                .foregroundStyle(StudyDesign.secondary)
 
             Picker("Squadron", selection: $selection) {
                 ForEach(options, id: \.id) { option in
@@ -165,8 +130,7 @@ struct AccountSquadronPicker: View {
             }
             .pickerStyle(.menu)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 14)
-            .padding(.vertical, 12)
+            .padding(.vertical, 13)
             .background(AccountFieldBackground())
             .onAppear {
                 selection = AccountProfile.normalizedProfileSquadronID(selection)
@@ -183,16 +147,16 @@ struct AccountSyllabusPicker: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("SYLLABUS")
-                .font(.system(.caption, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.textMuted)
+            Text("Syllabus")
+                .selectedText(12, weight: .semibold)
+                .foregroundStyle(StudyDesign.secondary)
 
             Picker("Syllabus", selection: $selection) {
                 ForEach(SyllabusTrack.allCases) { track in
                     Text(track.title).tag(track)
                 }
             }
-            .pickerStyle(.segmented)
+            .pickerStyle(.menu).frame(maxWidth: .infinity, minHeight: 48, alignment: .leading).background(AccountFieldBackground())
         }
     }
 }
@@ -209,27 +173,26 @@ struct AccountTextField: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(title.uppercased())
-                .font(.system(.caption, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.textMuted)
+            Text(title)
+                .selectedText(12, weight: .semibold)
+                .foregroundStyle(StudyDesign.secondary)
 
             Group {
                 if isSecure {
-                    SecureField(placeholder, text: $text)
+                    SecureField(title, text: $text, prompt: Text(placeholder).foregroundStyle(StudyDesign.secondary))
                         .textContentType(textContentType)
                 } else {
-                    TextField(placeholder, text: $text)
+                    TextField(title, text: $text, prompt: Text(placeholder).foregroundStyle(StudyDesign.secondary))
                         .textContentType(textContentType)
                 }
             }
             .keyboardType(keyboardType)
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled()
-            .font(.system(.body, design: .rounded, weight: .semibold))
-            .foregroundStyle(AppTheme.textPrimary)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 15)
-            .frame(minHeight: 54)
+            .selectedText(14, line: 20)
+            .foregroundStyle(StudyDesign.ink)
+            .padding(.vertical, 13)
+            .frame(minHeight: 48)
             .background(AccountFieldBackground())
             .accessibilityIdentifier("account-field-\(title.lowercased().replacingOccurrences(of: " ", with: "-"))")
 
@@ -246,12 +209,8 @@ struct AccountTextField: View {
 
 struct AccountFieldBackground: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(AppTheme.elevatedSurface)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .stroke(AppTheme.cardStroke.opacity(0.9), lineWidth: 1)
-            )
+        Color.clear.overlay(alignment: .bottom) { Rectangle().fill(StudyDesign.color(0xCCD6E4, 0x445B78)).frame(height: 1) }
+
     }
 }
 

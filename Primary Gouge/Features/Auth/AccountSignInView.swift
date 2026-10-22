@@ -46,10 +46,10 @@ struct AccountSignInView: View {
                         .transition(.move(edge: .trailing).combined(with: .opacity))
                 }
             }
-            .ignoresSafeArea()
             .animation(.snappy(duration: 0.28), value: route)
             .toolbar(.hidden, for: .navigationBar)
         }
+        .foregroundStyle(StudyDesign.ink).tint(StudyDesign.blue)
         .accessibilityIdentifier("account-sign-in-screen")
         .task {
             #if DEBUG
@@ -62,69 +62,25 @@ struct AccountSignInView: View {
     }
 
     private var welcomeScreen: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Spacer(minLength: 120)
-
-            VStack(alignment: .leading, spacing: 14) {
-                Text("Primary Gouge")
-                    .font(.system(size: 46, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
-                    .minimumScaleFactor(0.78)
-                    .lineLimit(1)
-
-                Text("Your study cockpit for Primary.")
-                    .font(.title3.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.88))
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-
-            Spacer(minLength: 42)
-
-            VStack(spacing: 12) {
-                authErrorText
-
-                appleButton
-
-                Button {
-                    move(to: .emailCreate)
-                    focusedField = .email
-                } label: {
-                    AuthButtonLabel(title: "Sign Up with Email", systemImage: "envelope.fill", style: .secondary)
-                }
-                .buttonStyle(.plain)
-
-                AuthInlineSwitch(prefix: "Already have an account?", actionTitle: "Sign In") {
-                    move(to: .emailSignIn)
-                    focusedField = .email
-                }
-                .padding(.top, -2)
-
-                VStack(spacing: 5) {
-                    Text("By signing up, you agree to the Privacy and Terms.")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.white.opacity(0.72))
-
-                    HStack(spacing: 10) {
-                        NavigationLink("Privacy") {
-                            MoreArticleView(page: MoreArticleContentLoader.page(.privacy), accent: MoreSectionColor.about, iconName: "lock.shield.fill")
-                        }
-                        Text("•")
-                            .foregroundStyle(.white.opacity(0.48))
-                        NavigationLink("Terms") {
-                            MoreArticleView(page: MoreArticleContentLoader.page(.terms), accent: MoreSectionColor.about, iconName: "doc.text.fill")
-                        }
-                    }
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(.white)
-                }
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity)
-                .padding(.top, 8)
-            }
-        }
-        .padding(.horizontal, 24)
-        .padding(.bottom, 34)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                Text("Prepare for\nwhat’s next.").selectedText(32, line: 36.8, weight: .bold, tracking: -1)
+                    .multilineTextAlignment(.center).frame(maxWidth: .infinity).padding(.top, 29)
+                OnboardingProductArt().padding(.top, 23)
+                Text("Find your event, know your instructor, and reinforce what you learn.")
+                    .selectedText(14, line: 22.4).foregroundStyle(StudyDesign.secondary)
+                    .multilineTextAlignment(.center).frame(maxWidth: .infinity).padding(.top, 17).padding(.bottom, 22)
+                VStack(spacing: 10) {
+                    authErrorText
+                    appleButton
+                    Button { move(to: .emailCreate) } label: {
+                        AuthButtonLabel(title: "Sign Up with Email", systemImage: "", style: .secondary)
+                    }.buttonStyle(.plain)
+                    AuthInlineSwitch(prefix: "Already have an account?", actionTitle: "Sign In") { move(to: .emailSignIn) }
+                    AuthLegalLinks().padding(.top, 5)
+                }.padding(.top, 42)
+            }.padding(.horizontal, 24).padding(.bottom, 30)
+        }.accessibilityLabel("Primary Gouge")
     }
 
     private var emailSignInScreen: some View {
@@ -159,11 +115,11 @@ struct AccountSignInView: View {
                         move(to: .passwordResetRequest)
                     }
                     .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.82))
+                    .foregroundStyle(StudyDesign.blue)
                 }
 
                 authErrorText
-
+                Spacer(minLength: 18)
                 Button {
                     signIn()
                 } label: {
@@ -183,8 +139,8 @@ struct AccountSignInView: View {
 
     private var emailCreateScreen: some View {
         AuthFormScreen(
-            title: "Create Account",
-            subtitle: "Apple is still the fastest path. Email works too.",
+            title: "Create your\naccount.",
+            subtitle: "Keep your preparation connected.",
             backAction: { move(to: .emailSignIn) }
         ) {
             VStack(alignment: .leading, spacing: 14) {
@@ -219,7 +175,7 @@ struct AccountSignInView: View {
                 .focused($focusedField, equals: .password)
 
                 authErrorText
-
+                Spacer(minLength: 18)
                 Button {
                     createAccount()
                 } label: {
@@ -229,6 +185,7 @@ struct AccountSignInView: View {
                 .disabled(accountStore.isWorking || email.nilIfEmpty == nil || password.count < AccountAuthValidation.minimumPasswordCharacters)
                 .opacity(accountStore.isWorking || email.nilIfEmpty == nil || password.count < AccountAuthValidation.minimumPasswordCharacters ? 0.62 : 1)
 
+                AuthLegalLinks().padding(.top, 8)
                 AuthInlineSwitch(prefix: "Already have an account?", actionTitle: "Sign In") {
                     move(to: .emailSignIn)
                     focusedField = .email
@@ -345,7 +302,7 @@ struct AccountSignInView: View {
     }
 
     private var appleButton: some View {
-        SignInWithAppleButton(.signUp) { request in
+        SignInWithAppleButton(.continue) { request in
             let nonce = AccountAppleNonce.randomNonceString()
             let nonceHash = AccountAppleNonce.sha256(nonce)
             appleNonce = nonce
@@ -355,8 +312,8 @@ struct AccountSignInView: View {
             handleAppleCompletion(result)
         }
         .signInWithAppleButtonStyle(.black)
-        .frame(height: 54)
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .frame(height: 49)
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
     @ViewBuilder
@@ -364,7 +321,7 @@ struct AccountSignInView: View {
         if let message = activeErrorMessage {
             Text(message)
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(Color(red: 1.0, green: 0.74, blue: 0.68))
+                .foregroundStyle(StudyDesign.color(0xAE304B, 0xFF968E))
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 2)
         }
@@ -538,56 +495,7 @@ enum AccountAuthValidation {
 }
 
 struct AuthArtworkBackground: View {
-    var body: some View {
-        GeometryReader { proxy in
-            authArtworkImage
-                .resizable()
-                .scaledToFill()
-                .frame(width: proxy.size.width, height: proxy.size.height)
-                .clipped()
-                .overlay(
-                    LinearGradient(
-                        colors: [
-                            Color.black.opacity(0.10),
-                            Color.black.opacity(0.28),
-                            Color.black.opacity(0.78)
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                .overlay(
-                    LinearGradient(
-                        colors: [
-                            Color.clear,
-                            Color(red: 0.02, green: 0.17, blue: 0.17).opacity(0.44)
-                        ],
-                        startPoint: .topTrailing,
-                        endPoint: .bottomLeading
-                    )
-                )
-                .ignoresSafeArea()
-        }
-    }
-
-    private var authArtworkImage: Image {
-        guard
-            let url = Bundle.main.url(forResource: "AuthWelcome", withExtension: "png"),
-            let image = UIImage(contentsOfFile: url.path)
-        else {
-            return Image(uiImage: Self.fallbackImage)
-        }
-
-        return Image(uiImage: image)
-    }
-
-    private static var fallbackImage: UIImage {
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 32, height: 64))
-        return renderer.image { context in
-            UIColor(red: 0.02, green: 0.13, blue: 0.15, alpha: 1).setFill()
-            context.fill(CGRect(x: 0, y: 0, width: 32, height: 64))
-        }
-    }
+    var body: some View { StudyDesign.color(0xFFFFFF, 0x111923).ignoresSafeArea() }
 }
 
 struct AuthFormScreen<Content: View>: View {
@@ -597,41 +505,24 @@ struct AuthFormScreen<Content: View>: View {
     @ViewBuilder let content: Content
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 22) {
-                Button {
-                    backAction()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(.white)
-                        .frame(width: 40, height: 40)
-                        .background(.white.opacity(0.14), in: Circle())
-                        .overlay(Circle().stroke(.white.opacity(0.20), lineWidth: 1))
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Back")
-
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(title)
-                        .font(.system(size: 34, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white)
-
-                    Text(subtitle)
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white.opacity(0.76))
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                .padding(.top, 12)
-
-                content
-            }
-            .padding(.horizontal, 24)
-            .padding(.top, 78)
-            .padding(.bottom, 44)
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Color.clear.frame(width: 35, height: 35).overlay {
+                            Button(action: backAction) { Image(systemName: "arrow.left").font(.system(size: 20)).frame(width: 44, height: 44) }
+                                .buttonStyle(.plain).accessibilityLabel("Back")
+                        }
+                        Spacer()
+                        Text("Account").selectedText(11).foregroundStyle(StudyDesign.secondary)
+                    }.padding(.bottom, 45)
+                    Text(title).selectedText(32, line: 36.8, weight: .bold, tracking: -1)
+                    Text(subtitle).selectedText(14, line: 22.4).foregroundStyle(StudyDesign.secondary).padding(.top, 14).padding(.bottom, 25)
+                    content
+                }.frame(minHeight: max(0, geometry.size.height - 37), alignment: .topLeading)
+                    .padding(.horizontal, 24).padding(.top, 15).padding(.bottom, 22)
+            }.scrollDismissesKeyboard(.interactively).foregroundStyle(StudyDesign.ink)
         }
-        .scrollDismissesKeyboard(.interactively)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
@@ -646,69 +537,36 @@ struct AuthButtonLabel: View {
     let style: Style
 
     var body: some View {
-        HStack(spacing: 10) {
-            Image(systemName: systemImage)
-                .font(.system(size: 17, weight: .bold))
-
-            Text(title)
-                .font(.system(.body, design: .rounded, weight: .bold))
-        }
-        .foregroundStyle(foreground)
-        .frame(maxWidth: .infinity)
-        .frame(height: 54)
-        .background(background)
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .stroke(stroke, lineWidth: 1)
-        )
-    }
-
-    private var foreground: Color {
-        switch style {
-        case .primary:
-            return Color(red: 0.03, green: 0.16, blue: 0.16)
-        case .secondary:
-            return .white
-        }
-    }
-
-    private var background: Color {
-        switch style {
-        case .primary:
-            return Color(red: 0.55, green: 0.78, blue: 0.70)
-        case .secondary:
-            return Color.white.opacity(0.13)
-        }
-    }
-
-    private var stroke: Color {
-        switch style {
-        case .primary:
-            return Color.white.opacity(0.28)
-        case .secondary:
-            return Color.white.opacity(0.38)
-        }
+        Text(title).selectedText(15, line: 21, weight: .semibold)
+            .foregroundStyle(style == .primary ? .white : StudyDesign.blue)
+            .frame(maxWidth: .infinity).padding(14).frame(minHeight: 49)
+            .background(style == .primary ? StudyDesign.action : StudyDesign.surface, in: RoundedRectangle(cornerRadius: 24))
+            .overlay { if style == .secondary { RoundedRectangle(cornerRadius: 24).strokeBorder(StudyDesign.color(0xCAD7E9, 0x445B78), lineWidth: 1) } }
     }
 }
-
 struct AuthInlineSwitch: View {
     let prefix: String
     let actionTitle: String
     let action: () -> Void
-
     var body: some View {
-        HStack(spacing: 5) {
-            Spacer(minLength: 0)
-            Text(prefix)
-                .foregroundStyle(.white.opacity(0.70))
-            Button(actionTitle, action: action)
-                .fontWeight(.bold)
-                .foregroundStyle(.white)
-            Spacer(minLength: 0)
-        }
-        .font(.footnote)
-        .padding(.top, 4)
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 5) { Text(prefix); Button(actionTitle, action: action).foregroundStyle(StudyDesign.blue) }
+            VStack(spacing: 5) { Text(prefix); Button(actionTitle, action: action).foregroundStyle(StudyDesign.blue).frame(minHeight: 44) }
+        }.selectedText(12).foregroundStyle(StudyDesign.secondary).frame(maxWidth: .infinity).padding(.vertical, 9)
+    }
+}
+
+private struct AuthLegalLinks: View {
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 5) { Text("By signing up, you agree to the"); links }
+            VStack(spacing: 5) { Text("By signing up, you agree to the"); HStack(spacing: 12) { links } }
+        }.selectedText(10, line: 16).foregroundStyle(StudyDesign.secondary).frame(maxWidth: .infinity)
+    }
+    @ViewBuilder private var links: some View {
+        NavigationLink("Terms") { MoreArticleView(page: MoreArticleContentLoader.page(.terms), accent: MoreSectionColor.about, iconName: "doc.text") }
+        Text("and")
+        NavigationLink("Privacy Policy") { MoreArticleView(page: MoreArticleContentLoader.page(.privacy), accent: MoreSectionColor.about, iconName: "lock.shield") }
     }
 }
 

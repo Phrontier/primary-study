@@ -1,0 +1,410 @@
+2026-10-22 18:29:07.508 xcodebuild[30372:104244615] [MT] IDEDistribution: -[IDEDistributionLogging _createLoggingBundleAtPath:]: Created bundle at path "/var/folders/0n/qkkxfzhs7c54r0fjm555kv5r0000gn/T/Primary Gouge_2026-10-22_18-29-07.507.xcdistributionlogs".
+2026-10-22 18:29:33.554 xcodebuild[30372:104244615] Starting upload
+2026-10-22 18:29:35.518 xcodebuild[30372:104255619] Progress 0%: Making copy of ‘Primary Gouge.ipa’…
+2026-10-22 18:29:35.520 xcodebuild[30372:104255619] Progress 0%: Making copy of ‘Primary Gouge.ipa’…
+2026-10-22 18:29:35.520 xcodebuild[30372:104255619] Progress 0%: Preparing to upload ‘Primary Gouge.ipa’…
+2026-10-22 18:29:48.440 xcodebuild[30372:104255619] Progress 0%: Analyzing package…
+2026-10-22 18:29:49.168 xcodebuild[30372:104255619] Progress 0%: Sending analysis to App Store Connect…
+2026-10-22 18:29:49.565 xcodebuild[30372:104255619] Progress 0%: Sending analysis to App Store Connect…
+2026-10-22 18:29:50.554 xcodebuild[30372:104255619] Progress 0%: Getting upload status…
+2026-10-22 18:29:51.421 xcodebuild[30372:104255619] Progress 0%: Completing upload…
+2026-10-22 18:29:53.168 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml”…
+2026-10-22 18:29:53.351 xcodebuild[30372:104255619] Progress 0%: “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml” is not yet complete; will check status in 5 seconds…
+2026-10-22 18:29:58.356 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml”…
+2026-10-22 18:29:58.586 xcodebuild[30372:104255619] Progress 0%: “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml” is not yet complete; will check status in 5 seconds…
+2026-10-22 18:30:03.591 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml”…
+2026-10-22 18:30:03.824 xcodebuild[30372:104255619] Progress 0%: “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml” is not yet complete; will check status in 5 seconds…
+2026-10-22 18:30:08.829 xcodebuild[30372:104426067] Progress 0%: Checking completion status for “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml”…
+2026-10-22 18:30:09.074 xcodebuild[30372:104426067] Progress 0%: “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml” is not yet complete; will check status in 5 seconds…
+2026-10-22 18:30:14.078 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “asset-description-FCC8A4C1-09A3-44B4-84A0-9BED1EE1F231.xml”…
+2026-10-22 18:30:14.855 xcodebuild[30372:104255619] Progress 0%: Sending SPI analysis to App Store Connect…
+2026-10-22 18:30:15.176 xcodebuild[30372:104255619] Progress 0%: Sending SPI analysis to App Store Connect…
+2026-10-22 18:30:16.150 xcodebuild[30372:104255619] Progress 0%: Getting upload status…
+2026-10-22 18:30:16.565 xcodebuild[30372:104255619] Progress 0%: Completing upload…
+2026-10-22 18:30:18.282 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip”…
+2026-10-22 18:30:18.505 xcodebuild[30372:104255619] Progress 0%: “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip” is not yet complete; will check status in 5 seconds…
+2026-10-22 18:30:23.507 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip”…
+2026-10-22 18:30:23.757 xcodebuild[30372:104255619] Progress 0%: “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip” is not yet complete; will check status in 5 seconds…
+2026-10-22 18:30:28.761 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip”…
+2026-10-22 18:30:28.996 xcodebuild[30372:104255619] Progress 0%: “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip” is not yet complete; will check status in 5 seconds…
+2026-10-22 18:30:34.000 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip”…
+2026-10-22 18:30:34.232 xcodebuild[30372:104255619] Progress 0%: “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip” is not yet complete; will check status in 5 seconds…
+2026-10-22 18:30:39.233 xcodebuild[30372:104255619] Progress 0%: Checking completion status for “DTAppAnalyzerExtractorOutput-378FFD31-63A2-4379-88AD-5D6A38F73B32.zip”…
+2026-10-22 18:30:39.483 xcodebuild[30372:104255619] Progress 0%: Requesting upload instructions from App Store Connect…
+2026-10-22 18:30:40.537 xcodebuild[30372:104255619] Progress 0%: Preparing file for upload to App Store Connect…
+2026-10-22 18:30:40.544 xcodebuild[30372:104255619] Progress 0%: Preparing file for upload to App Store Connect…
+2026-10-22 18:30:40.942 xcodebuild[30372:104255619] Progress 0%: Uploading to App Store Connect…
+2026-10-22 18:30:40.945 xcodebuild[30372:104255619] Progress 0%: Uploading to App Store Connect…
+2026-10-22 18:30:40.945 xcodebuild[30372:104255619] Progress 0%: Uploading to App Store Connect…
+2026-10-22 18:30:40.945 xcodebuild[30372:104255619] Progress 0%: 
+2026-10-22 18:30:41.321 xcodebuild[30372:104255619] Progress 1%: 
+2026-10-22 18:30:41.321 xcodebuild[30372:104255619] Progress 1%: 
+2026-10-22 18:30:42.219 xcodebuild[30372:104255619] Progress 3%: 
+2026-10-22 18:30:42.219 xcodebuild[30372:104255619] Progress 3%: 
+2026-10-22 18:30:42.734 xcodebuild[30372:104255619] Progress 4%: 
+2026-10-22 18:30:42.735 xcodebuild[30372:104255619] Progress 4%: 
+2026-10-22 18:30:43.280 xcodebuild[30372:104255619] Progress 4%: 
+2026-10-22 18:30:43.281 xcodebuild[30372:104255619] Progress 4%: 
+2026-10-22 18:30:43.786 xcodebuild[30372:104255619] Progress 4%: 
+2026-10-22 18:30:43.786 xcodebuild[30372:104255619] Progress 4%: 
+2026-10-22 18:30:44.503 xcodebuild[30372:104255619] Progress 5%: 
+2026-10-22 18:30:44.503 xcodebuild[30372:104255619] Progress 5%: 
+2026-10-22 18:30:45.517 xcodebuild[30372:104255619] Progress 5%: 
+2026-10-22 18:30:45.517 xcodebuild[30372:104255619] Progress 5%: 
+2026-10-22 18:30:46.154 xcodebuild[30372:104255619] Progress 6%: 
+2026-10-22 18:30:46.154 xcodebuild[30372:104255619] Progress 6%: 
+2026-10-22 18:30:47.631 xcodebuild[30372:104255619] Progress 7%: 
+2026-10-22 18:30:47.632 xcodebuild[30372:104255619] Progress 7%: 
+2026-10-22 18:30:48.721 xcodebuild[30372:104255619] Progress 8%: 
+2026-10-22 18:30:48.721 xcodebuild[30372:104255619] Progress 8%: 
+2026-10-22 18:30:49.842 xcodebuild[30372:104255619] Progress 8%: 
+2026-10-22 18:30:49.842 xcodebuild[30372:104255619] Progress 8%: 
+2026-10-22 18:30:50.593 xcodebuild[30372:104255619] Progress 9%: 
+2026-10-22 18:30:50.593 xcodebuild[30372:104255619] Progress 9%: 
+2026-10-22 18:30:51.301 xcodebuild[30372:104255619] Progress 9%: 
+2026-10-22 18:30:51.301 xcodebuild[30372:104255619] Progress 9%: 
+2026-10-22 18:30:51.919 xcodebuild[30372:104255619] Progress 10%: 
+2026-10-22 18:30:51.919 xcodebuild[30372:104255619] Progress 10%: 
+2026-10-22 18:30:52.526 xcodebuild[30372:104255619] Progress 10%: 
+2026-10-22 18:30:52.526 xcodebuild[30372:104255619] Progress 10%: 
+2026-10-22 18:30:53.739 xcodebuild[30372:104255619] Progress 11%: 
+2026-10-22 18:30:53.739 xcodebuild[30372:104255619] Progress 11%: 
+2026-10-22 18:30:54.630 xcodebuild[30372:104255619] Progress 11%: 
+2026-10-22 18:30:54.631 xcodebuild[30372:104255619] Progress 11%: 
+2026-10-22 18:30:55.206 xcodebuild[30372:104255619] Progress 12%: 
+2026-10-22 18:30:55.206 xcodebuild[30372:104255619] Progress 12%: 
+2026-10-22 18:30:55.909 xcodebuild[30372:104255619] Progress 12%: 
+2026-10-22 18:30:55.910 xcodebuild[30372:104255619] Progress 12%: 
+2026-10-22 18:30:57.010 xcodebuild[30372:104255619] Progress 13%: 
+2026-10-22 18:30:57.010 xcodebuild[30372:104255619] Progress 13%: 
+2026-10-22 18:30:57.937 xcodebuild[30372:104255619] Progress 14%: 
+2026-10-22 18:30:57.938 xcodebuild[30372:104255619] Progress 14%: 
+2026-10-22 18:30:58.625 xcodebuild[30372:104255619] Progress 14%: 
+2026-10-22 18:30:58.625 xcodebuild[30372:104255619] Progress 14%: 
+2026-10-22 18:30:59.406 xcodebuild[30372:104255619] Progress 15%: 
+2026-10-22 18:30:59.406 xcodebuild[30372:104255619] Progress 15%: 
+2026-10-22 18:31:00.340 xcodebuild[30372:104255619] Progress 16%: 
+2026-10-22 18:31:00.340 xcodebuild[30372:104255619] Progress 16%: 
+2026-10-22 18:31:01.168 xcodebuild[30372:104255619] Progress 16%: 
+2026-10-22 18:31:01.169 xcodebuild[30372:104255619] Progress 16%: 
+2026-10-22 18:31:02.014 xcodebuild[30372:104255619] Progress 16%: 
+2026-10-22 18:31:02.014 xcodebuild[30372:104255619] Progress 16%: 
+2026-10-22 18:31:02.698 xcodebuild[30372:104255619] Progress 17%: 
+2026-10-22 18:31:02.698 xcodebuild[30372:104255619] Progress 17%: 
+2026-10-22 18:31:03.843 xcodebuild[30372:104255619] Progress 18%: 
+2026-10-22 18:31:03.843 xcodebuild[30372:104255619] Progress 18%: 
+2026-10-22 18:31:04.436 xcodebuild[30372:104255619] Progress 18%: 
+2026-10-22 18:31:04.437 xcodebuild[30372:104255619] Progress 18%: 
+2026-10-22 18:31:04.977 xcodebuild[30372:104255619] Progress 19%: 
+2026-10-22 18:31:04.978 xcodebuild[30372:104255619] Progress 19%: 
+2026-10-22 18:31:05.588 xcodebuild[30372:104772045] Progress 19%: 
+2026-10-22 18:31:05.589 xcodebuild[30372:104772045] Progress 19%: 
+2026-10-22 18:31:07.072 xcodebuild[30372:104772045] Progress 20%: 
+2026-10-22 18:31:07.073 xcodebuild[30372:104772045] Progress 20%: 
+2026-10-22 18:31:08.001 xcodebuild[30372:104772045] Progress 21%: 
+2026-10-22 18:31:08.002 xcodebuild[30372:104772045] Progress 21%: 
+2026-10-22 18:31:08.946 xcodebuild[30372:104772045] Progress 21%: 
+2026-10-22 18:31:08.946 xcodebuild[30372:104772045] Progress 21%: 
+2026-10-22 18:31:09.858 xcodebuild[30372:104772045] Progress 22%: 
+2026-10-22 18:31:09.859 xcodebuild[30372:104772045] Progress 22%: 
+2026-10-22 18:31:11.141 xcodebuild[30372:104255619] Progress 23%: 
+2026-10-22 18:31:11.145 xcodebuild[30372:104255619] Progress 23%: 
+2026-10-22 18:31:12.284 xcodebuild[30372:104255619] Progress 24%: 
+2026-10-22 18:31:12.285 xcodebuild[30372:104255619] Progress 24%: 
+2026-10-22 18:31:12.924 xcodebuild[30372:104255619] Progress 24%: 
+2026-10-22 18:31:12.925 xcodebuild[30372:104255619] Progress 24%: 
+2026-10-22 18:31:13.521 xcodebuild[30372:104255619] Progress 25%: 
+2026-10-22 18:31:13.521 xcodebuild[30372:104255619] Progress 25%: 
+2026-10-22 18:31:14.757 xcodebuild[30372:104255619] Progress 25%: 
+2026-10-22 18:31:14.757 xcodebuild[30372:104255619] Progress 25%: 
+2026-10-22 18:31:16.002 xcodebuild[30372:104255619] Progress 25%: 
+2026-10-22 18:31:16.002 xcodebuild[30372:104255619] Progress 25%: 
+2026-10-22 18:31:16.810 xcodebuild[30372:104255619] Progress 26%: 
+2026-10-22 18:31:16.810 xcodebuild[30372:104255619] Progress 26%: 
+2026-10-22 18:31:17.858 xcodebuild[30372:104255619] Progress 27%: 
+2026-10-22 18:31:17.859 xcodebuild[30372:104255619] Progress 27%: 
+2026-10-22 18:31:19.185 xcodebuild[30372:104255619] Progress 27%: 
+2026-10-22 18:31:19.185 xcodebuild[30372:104255619] Progress 27%: 
+2026-10-22 18:31:19.738 xcodebuild[30372:104255619] Progress 28%: 
+2026-10-22 18:31:19.738 xcodebuild[30372:104255619] Progress 28%: 
+2026-10-22 18:31:20.663 xcodebuild[30372:104255619] Progress 28%: 
+2026-10-22 18:31:20.663 xcodebuild[30372:104255619] Progress 28%: 
+2026-10-22 18:31:21.371 xcodebuild[30372:104255619] Progress 29%: 
+2026-10-22 18:31:21.372 xcodebuild[30372:104255619] Progress 29%: 
+2026-10-22 18:31:22.054 xcodebuild[30372:104255619] Progress 29%: 
+2026-10-22 18:31:22.054 xcodebuild[30372:104255619] Progress 29%: 
+2026-10-22 18:31:22.864 xcodebuild[30372:104255619] Progress 30%: 
+2026-10-22 18:31:22.864 xcodebuild[30372:104255619] Progress 30%: 
+2026-10-22 18:31:23.788 xcodebuild[30372:104255619] Progress 30%: 
+2026-10-22 18:31:23.788 xcodebuild[30372:104255619] Progress 30%: 
+2026-10-22 18:31:24.341 xcodebuild[30372:104255619] Progress 31%: 
+2026-10-22 18:31:24.341 xcodebuild[30372:104255619] Progress 31%: 
+2026-10-22 18:31:24.966 xcodebuild[30372:104255619] Progress 31%: 
+2026-10-22 18:31:24.971 xcodebuild[30372:104255619] Progress 31%: 
+2026-10-22 18:31:25.934 xcodebuild[30372:104255619] Progress 31%: 
+2026-10-22 18:31:25.934 xcodebuild[30372:104255619] Progress 31%: 
+2026-10-22 18:31:26.771 xcodebuild[30372:104255619] Progress 32%: 
+2026-10-22 18:31:26.771 xcodebuild[30372:104255619] Progress 32%: 
+2026-10-22 18:31:27.295 xcodebuild[30372:104255619] Progress 32%: 
+2026-10-22 18:31:27.295 xcodebuild[30372:104255619] Progress 32%: 
+2026-10-22 18:31:27.821 xcodebuild[30372:104255619] Progress 33%: 
+2026-10-22 18:31:27.821 xcodebuild[30372:104255619] Progress 33%: 
+2026-10-22 18:31:28.559 xcodebuild[30372:104255619] Progress 33%: 
+2026-10-22 18:31:28.559 xcodebuild[30372:104255619] Progress 33%: 
+2026-10-22 18:31:29.149 xcodebuild[30372:104255619] Progress 34%: 
+2026-10-22 18:31:29.150 xcodebuild[30372:104255619] Progress 34%: 
+2026-10-22 18:31:29.984 xcodebuild[30372:104255619] Progress 34%: 
+2026-10-22 18:31:29.984 xcodebuild[30372:104255619] Progress 34%: 
+2026-10-22 18:31:30.571 xcodebuild[30372:104255619] Progress 35%: 
+2026-10-22 18:31:30.571 xcodebuild[30372:104255619] Progress 35%: 
+2026-10-22 18:31:31.395 xcodebuild[30372:104255619] Progress 35%: 
+2026-10-22 18:31:31.395 xcodebuild[30372:104255619] Progress 35%: 
+2026-10-22 18:31:32.096 xcodebuild[30372:104255619] Progress 36%: 
+2026-10-22 18:31:32.096 xcodebuild[30372:104255619] Progress 36%: 
+2026-10-22 18:31:32.604 xcodebuild[30372:104255619] Progress 36%: 
+2026-10-22 18:31:32.604 xcodebuild[30372:104255619] Progress 36%: 
+2026-10-22 18:31:33.885 xcodebuild[30372:104255619] Progress 37%: 
+2026-10-22 18:31:33.885 xcodebuild[30372:104255619] Progress 37%: 
+2026-10-22 18:31:34.401 xcodebuild[30372:104255619] Progress 37%: 
+2026-10-22 18:31:34.401 xcodebuild[30372:104255619] Progress 37%: 
+2026-10-22 18:31:36.004 xcodebuild[30372:104255619] Progress 38%: 
+2026-10-22 18:31:36.004 xcodebuild[30372:104255619] Progress 38%: 
+2026-10-22 18:31:36.638 xcodebuild[30372:104255619] Progress 39%: 
+2026-10-22 18:31:36.638 xcodebuild[30372:104255619] Progress 39%: 
+2026-10-22 18:31:38.004 xcodebuild[30372:104255619] Progress 39%: 
+2026-10-22 18:31:38.004 xcodebuild[30372:104255619] Progress 39%: 
+2026-10-22 18:31:38.533 xcodebuild[30372:104255619] Progress 40%: 
+2026-10-22 18:31:38.533 xcodebuild[30372:104255619] Progress 40%: 
+2026-10-22 18:31:39.353 xcodebuild[30372:104255619] Progress 40%: 
+2026-10-22 18:31:39.353 xcodebuild[30372:104255619] Progress 40%: 
+2026-10-22 18:31:40.683 xcodebuild[30372:104255619] Progress 41%: 
+2026-10-22 18:31:40.683 xcodebuild[30372:104255619] Progress 41%: 
+2026-10-22 18:31:41.448 xcodebuild[30372:104255619] Progress 42%: 
+2026-10-22 18:31:41.449 xcodebuild[30372:104255619] Progress 42%: 
+2026-10-22 18:31:42.496 xcodebuild[30372:104255619] Progress 42%: 
+2026-10-22 18:31:42.496 xcodebuild[30372:104255619] Progress 42%: 
+2026-10-22 18:31:43.246 xcodebuild[30372:104255619] Progress 43%: 
+2026-10-22 18:31:43.246 xcodebuild[30372:104255619] Progress 43%: 
+2026-10-22 18:31:44.733 xcodebuild[30372:104255619] Progress 44%: 
+2026-10-22 18:31:44.733 xcodebuild[30372:104255619] Progress 44%: 
+2026-10-22 18:31:45.389 xcodebuild[30372:104255619] Progress 44%: 
+2026-10-22 18:31:45.389 xcodebuild[30372:104255619] Progress 44%: 
+2026-10-22 18:31:46.404 xcodebuild[30372:104255619] Progress 45%: 
+2026-10-22 18:31:46.404 xcodebuild[30372:104255619] Progress 45%: 
+2026-10-22 18:31:47.217 xcodebuild[30372:104255619] Progress 45%: 
+2026-10-22 18:31:47.217 xcodebuild[30372:104255619] Progress 45%: 
+2026-10-22 18:31:47.871 xcodebuild[30372:104255619] Progress 45%: 
+2026-10-22 18:31:47.871 xcodebuild[30372:104255619] Progress 45%: 
+2026-10-22 18:31:48.787 xcodebuild[30372:104255619] Progress 46%: 
+2026-10-22 18:31:48.788 xcodebuild[30372:104255619] Progress 46%: 
+2026-10-22 18:31:49.654 xcodebuild[30372:104255619] Progress 46%: 
+2026-10-22 18:31:49.654 xcodebuild[30372:104255619] Progress 46%: 
+2026-10-22 18:31:50.245 xcodebuild[30372:104255619] Progress 47%: 
+2026-10-22 18:31:50.246 xcodebuild[30372:104255619] Progress 47%: 
+2026-10-22 18:31:51.013 xcodebuild[30372:104255619] Progress 47%: 
+2026-10-22 18:31:51.014 xcodebuild[30372:104255619] Progress 47%: 
+2026-10-22 18:31:52.363 xcodebuild[30372:104255619] Progress 48%: 
+2026-10-22 18:31:52.363 xcodebuild[30372:104255619] Progress 48%: 
+2026-10-22 18:31:53.235 xcodebuild[30372:104255619] Progress 49%: 
+2026-10-22 18:31:53.235 xcodebuild[30372:104255619] Progress 49%: 
+2026-10-22 18:31:54.099 xcodebuild[30372:104255619] Progress 49%: 
+2026-10-22 18:31:54.099 xcodebuild[30372:104255619] Progress 49%: 
+2026-10-22 18:31:55.275 xcodebuild[30372:104255619] Progress 50%: 
+2026-10-22 18:31:55.276 xcodebuild[30372:104255619] Progress 50%: 
+2026-10-22 18:31:56.182 xcodebuild[30372:104255619] Progress 51%: 
+2026-10-22 18:31:56.183 xcodebuild[30372:104255619] Progress 51%: 
+2026-10-22 18:31:56.816 xcodebuild[30372:104255619] Progress 51%: 
+2026-10-22 18:31:56.816 xcodebuild[30372:104255619] Progress 51%: 
+2026-10-22 18:31:57.380 xcodebuild[30372:104255619] Progress 52%: 
+2026-10-22 18:31:57.381 xcodebuild[30372:104255619] Progress 52%: 
+2026-10-22 18:31:58.492 xcodebuild[30372:104255619] Progress 53%: 
+2026-10-22 18:31:58.492 xcodebuild[30372:104255619] Progress 53%: 
+2026-10-22 18:31:59.337 xcodebuild[30372:104255619] Progress 53%: 
+2026-10-22 18:31:59.338 xcodebuild[30372:104255619] Progress 53%: 
+2026-10-22 18:32:00.222 xcodebuild[30372:104255619] Progress 54%: 
+2026-10-22 18:32:00.222 xcodebuild[30372:104255619] Progress 54%: 
+2026-10-22 18:32:00.851 xcodebuild[30372:104255619] Progress 54%: 
+2026-10-22 18:32:00.851 xcodebuild[30372:104255619] Progress 54%: 
+2026-10-22 18:32:01.758 xcodebuild[30372:104255619] Progress 55%: 
+2026-10-22 18:32:01.758 xcodebuild[30372:104255619] Progress 55%: 
+2026-10-22 18:32:02.418 xcodebuild[30372:104255619] Progress 55%: 
+2026-10-22 18:32:02.419 xcodebuild[30372:104255619] Progress 55%: 
+2026-10-22 18:32:03.155 xcodebuild[30372:104255619] Progress 56%: 
+2026-10-22 18:32:03.155 xcodebuild[30372:104255619] Progress 56%: 
+2026-10-22 18:32:04.287 xcodebuild[30372:104255619] Progress 56%: 
+2026-10-22 18:32:04.287 xcodebuild[30372:104255619] Progress 56%: 
+2026-10-22 18:32:06.149 xcodebuild[30372:104255619] Progress 57%: 
+2026-10-22 18:32:06.150 xcodebuild[30372:104255619] Progress 57%: 
+2026-10-22 18:32:07.662 xcodebuild[30372:104255619] Progress 58%: 
+2026-10-22 18:32:07.662 xcodebuild[30372:104255619] Progress 58%: 
+2026-10-22 18:32:08.187 xcodebuild[30372:104255619] Progress 58%: 
+2026-10-22 18:32:08.188 xcodebuild[30372:104255619] Progress 58%: 
+2026-10-22 18:32:09.019 xcodebuild[30372:104255619] Progress 59%: 
+2026-10-22 18:32:09.019 xcodebuild[30372:104255619] Progress 59%: 
+2026-10-22 18:32:09.916 xcodebuild[30372:104255619] Progress 59%: 
+2026-10-22 18:32:09.916 xcodebuild[30372:104255619] Progress 59%: 
+2026-10-22 18:32:11.146 xcodebuild[30372:104255619] Progress 60%: 
+2026-10-22 18:32:11.146 xcodebuild[30372:104255619] Progress 60%: 
+2026-10-22 18:32:11.865 xcodebuild[30372:104255619] Progress 61%: 
+2026-10-22 18:32:11.865 xcodebuild[30372:104255619] Progress 61%: 
+2026-10-22 18:32:13.550 xcodebuild[30372:104255619] Progress 62%: 
+2026-10-22 18:32:13.550 xcodebuild[30372:104255619] Progress 62%: 
+2026-10-22 18:32:14.246 xcodebuild[30372:104255619] Progress 62%: 
+2026-10-22 18:32:14.246 xcodebuild[30372:104255619] Progress 62%: 
+2026-10-22 18:32:15.159 xcodebuild[30372:104255619] Progress 63%: 
+2026-10-22 18:32:15.160 xcodebuild[30372:104255619] Progress 63%: 
+2026-10-22 18:32:16.191 xcodebuild[30372:104255619] Progress 63%: 
+2026-10-22 18:32:16.191 xcodebuild[30372:104255619] Progress 63%: 
+2026-10-22 18:32:17.791 xcodebuild[30372:104255619] Progress 65%: 
+2026-10-22 18:32:17.791 xcodebuild[30372:104255619] Progress 65%: 
+2026-10-22 18:32:18.531 xcodebuild[30372:104255619] Progress 65%: 
+2026-10-22 18:32:18.532 xcodebuild[30372:104255619] Progress 65%: 
+2026-10-22 18:32:19.207 xcodebuild[30372:104255619] Progress 66%: 
+2026-10-22 18:32:19.207 xcodebuild[30372:104255619] Progress 66%: 
+2026-10-22 18:32:20.129 xcodebuild[30372:104255619] Progress 66%: 
+2026-10-22 18:32:20.129 xcodebuild[30372:104255619] Progress 66%: 
+2026-10-22 18:32:20.970 xcodebuild[30372:104255619] Progress 67%: 
+2026-10-22 18:32:20.970 xcodebuild[30372:104255619] Progress 67%: 
+2026-10-22 18:32:22.133 xcodebuild[30372:104255619] Progress 67%: 
+2026-10-22 18:32:22.133 xcodebuild[30372:104255619] Progress 67%: 
+2026-10-22 18:32:22.866 xcodebuild[30372:104255619] Progress 68%: 
+2026-10-22 18:32:22.866 xcodebuild[30372:104255619] Progress 68%: 
+2026-10-22 18:32:23.596 xcodebuild[30372:104255619] Progress 69%: 
+2026-10-22 18:32:23.596 xcodebuild[30372:104255619] Progress 69%: 
+2026-10-22 18:32:24.561 xcodebuild[30372:104255619] Progress 69%: 
+2026-10-22 18:32:24.562 xcodebuild[30372:104255619] Progress 69%: 
+2026-10-22 18:32:25.063 xcodebuild[30372:104255619] Progress 69%: 
+2026-10-22 18:32:25.063 xcodebuild[30372:104255619] Progress 69%: 
+2026-10-22 18:32:25.824 xcodebuild[30372:104255619] Progress 70%: 
+2026-10-22 18:32:25.825 xcodebuild[30372:104255619] Progress 70%: 
+2026-10-22 18:32:26.624 xcodebuild[30372:104255619] Progress 70%: 
+2026-10-22 18:32:26.625 xcodebuild[30372:104255619] Progress 70%: 
+2026-10-22 18:32:27.261 xcodebuild[30372:104255619] Progress 71%: 
+2026-10-22 18:32:27.262 xcodebuild[30372:104255619] Progress 71%: 
+2026-10-22 18:32:27.939 xcodebuild[30372:104255619] Progress 71%: 
+2026-10-22 18:32:27.939 xcodebuild[30372:104255619] Progress 71%: 
+2026-10-22 18:32:29.329 xcodebuild[30372:104255619] Progress 72%: 
+2026-10-22 18:32:29.329 xcodebuild[30372:104255619] Progress 72%: 
+2026-10-22 18:32:29.867 xcodebuild[30372:104255619] Progress 73%: 
+2026-10-22 18:32:29.867 xcodebuild[30372:104255619] Progress 73%: 
+2026-10-22 18:32:30.442 xcodebuild[30372:104255619] Progress 73%: 
+2026-10-22 18:32:30.442 xcodebuild[30372:104255619] Progress 73%: 
+2026-10-22 18:32:31.535 xcodebuild[30372:104255619] Progress 74%: 
+2026-10-22 18:32:31.535 xcodebuild[30372:104255619] Progress 74%: 
+2026-10-22 18:32:32.039 xcodebuild[30372:104255619] Progress 74%: 
+2026-10-22 18:32:32.040 xcodebuild[30372:104255619] Progress 74%: 
+2026-10-22 18:32:32.715 xcodebuild[30372:104255619] Progress 75%: 
+2026-10-22 18:32:32.716 xcodebuild[30372:104255619] Progress 75%: 
+2026-10-22 18:32:33.574 xcodebuild[30372:104255619] Progress 75%: 
+2026-10-22 18:32:33.575 xcodebuild[30372:104255619] Progress 75%: 
+2026-10-22 18:32:34.992 xcodebuild[30372:104255619] Progress 76%: 
+2026-10-22 18:32:34.992 xcodebuild[30372:104255619] Progress 76%: 
+2026-10-22 18:32:35.504 xcodebuild[30372:104255619] Progress 77%: 
+2026-10-22 18:32:35.504 xcodebuild[30372:104255619] Progress 77%: 
+2026-10-22 18:32:36.192 xcodebuild[30372:104255619] Progress 77%: 
+2026-10-22 18:32:36.192 xcodebuild[30372:104255619] Progress 77%: 
+2026-10-22 18:32:36.770 xcodebuild[30372:104255619] Progress 77%: 
+2026-10-22 18:32:36.770 xcodebuild[30372:104255619] Progress 77%: 
+2026-10-22 18:32:37.404 xcodebuild[30372:104255619] Progress 78%: 
+2026-10-22 18:32:37.404 xcodebuild[30372:104255619] Progress 78%: 
+2026-10-22 18:32:38.908 xcodebuild[30372:104255619] Progress 79%: 
+2026-10-22 18:32:38.908 xcodebuild[30372:104255619] Progress 79%: 
+2026-10-22 18:32:40.171 xcodebuild[30372:104255619] Progress 80%: 
+2026-10-22 18:32:40.172 xcodebuild[30372:104255619] Progress 80%: 
+2026-10-22 18:32:41.079 xcodebuild[30372:104255619] Progress 80%: 
+2026-10-22 18:32:41.079 xcodebuild[30372:104255619] Progress 80%: 
+2026-10-22 18:32:42.954 xcodebuild[30372:104255619] Progress 81%: 
+2026-10-22 18:32:42.954 xcodebuild[30372:104255619] Progress 81%: 
+2026-10-22 18:32:43.509 xcodebuild[30372:104255619] Progress 82%: 
+2026-10-22 18:32:43.509 xcodebuild[30372:104255619] Progress 82%: 
+2026-10-22 18:32:44.518 xcodebuild[30372:104255619] Progress 82%: 
+2026-10-22 18:32:44.518 xcodebuild[30372:104255619] Progress 82%: 
+2026-10-22 18:32:45.245 xcodebuild[30372:104255619] Progress 83%: 
+2026-10-22 18:32:45.245 xcodebuild[30372:104255619] Progress 83%: 
+2026-10-22 18:32:46.078 xcodebuild[30372:104255619] Progress 83%: 
+2026-10-22 18:32:46.078 xcodebuild[30372:104255619] Progress 83%: 
+2026-10-22 18:32:46.670 xcodebuild[30372:104255619] Progress 84%: 
+2026-10-22 18:32:46.670 xcodebuild[30372:104255619] Progress 84%: 
+2026-10-22 18:32:47.709 xcodebuild[30372:104255619] Progress 84%: 
+2026-10-22 18:32:47.709 xcodebuild[30372:104255619] Progress 84%: 
+2026-10-22 18:32:48.952 xcodebuild[30372:104255619] Progress 85%: 
+2026-10-22 18:32:48.952 xcodebuild[30372:104255619] Progress 85%: 
+2026-10-22 18:32:49.604 xcodebuild[30372:104255619] Progress 85%: 
+2026-10-22 18:32:49.604 xcodebuild[30372:104255619] Progress 85%: 
+2026-10-22 18:32:50.275 xcodebuild[30372:104255619] Progress 86%: 
+2026-10-22 18:32:50.275 xcodebuild[30372:104255619] Progress 86%: 
+2026-10-22 18:32:51.011 xcodebuild[30372:104255619] Progress 86%: 
+2026-10-22 18:32:51.012 xcodebuild[30372:104255619] Progress 86%: 
+2026-10-22 18:32:51.597 xcodebuild[30372:104255619] Progress 87%: 
+2026-10-22 18:32:51.597 xcodebuild[30372:104255619] Progress 87%: 
+2026-10-22 18:32:52.229 xcodebuild[30372:104255619] Progress 87%: 
+2026-10-22 18:32:52.229 xcodebuild[30372:104255619] Progress 87%: 
+2026-10-22 18:32:52.840 xcodebuild[30372:104255619] Progress 88%: 
+2026-10-22 18:32:52.841 xcodebuild[30372:104255619] Progress 88%: 
+2026-10-22 18:32:53.525 xcodebuild[30372:104255619] Progress 88%: 
+2026-10-22 18:32:53.525 xcodebuild[30372:104255619] Progress 88%: 
+2026-10-22 18:32:55.461 xcodebuild[30372:104255619] Progress 89%: 
+2026-10-22 18:32:55.461 xcodebuild[30372:104255619] Progress 89%: 
+2026-10-22 18:32:55.963 xcodebuild[30372:104255619] Progress 89%: 
+2026-10-22 18:32:55.963 xcodebuild[30372:104255619] Progress 89%: 
+2026-10-22 18:32:57.020 xcodebuild[30372:104255619] Progress 90%: 
+2026-10-22 18:32:57.020 xcodebuild[30372:104255619] Progress 90%: 
+2026-10-22 18:32:57.826 xcodebuild[30372:104255619] Progress 91%: 
+2026-10-22 18:32:57.826 xcodebuild[30372:104255619] Progress 91%: 
+2026-10-22 18:32:58.633 xcodebuild[30372:104255619] Progress 91%: 
+2026-10-22 18:32:58.633 xcodebuild[30372:104255619] Progress 91%: 
+2026-10-22 18:32:59.709 xcodebuild[30372:104255619] Progress 92%: 
+2026-10-22 18:32:59.710 xcodebuild[30372:104255619] Progress 92%: 
+2026-10-22 18:33:00.401 xcodebuild[30372:104255619] Progress 92%: 
+2026-10-22 18:33:00.402 xcodebuild[30372:104255619] Progress 92%: 
+2026-10-22 18:33:01.470 xcodebuild[30372:104255619] Progress 93%: 
+2026-10-22 18:33:01.471 xcodebuild[30372:104255619] Progress 93%: 
+2026-10-22 18:33:02.190 xcodebuild[30372:104255619] Progress 94%: 
+2026-10-22 18:33:02.191 xcodebuild[30372:104255619] Progress 94%: 
+2026-10-22 18:33:02.713 xcodebuild[30372:104255619] Progress 94%: 
+2026-10-22 18:33:02.713 xcodebuild[30372:104255619] Progress 94%: 
+2026-10-22 18:33:04.070 xcodebuild[30372:104255619] Progress 94%: 
+2026-10-22 18:33:04.071 xcodebuild[30372:104255619] Progress 94%: 
+2026-10-22 18:33:05.341 xcodebuild[30372:104255619] Progress 95%: 
+2026-10-22 18:33:05.341 xcodebuild[30372:104255619] Progress 95%: 
+2026-10-22 18:33:05.858 xcodebuild[30372:104255619] Progress 95%: 
+2026-10-22 18:33:05.858 xcodebuild[30372:104255619] Progress 95%: 
+2026-10-22 18:33:06.574 xcodebuild[30372:104255619] Progress 96%: 
+2026-10-22 18:33:06.574 xcodebuild[30372:104255619] Progress 96%: 
+2026-10-22 18:33:07.153 xcodebuild[30372:104255619] Progress 96%: 
+2026-10-22 18:33:07.153 xcodebuild[30372:104255619] Progress 96%: 
+2026-10-22 18:33:07.678 xcodebuild[30372:104255619] Progress 96%: 
+2026-10-22 18:33:07.678 xcodebuild[30372:104255619] Progress 96%: 
+2026-10-22 18:33:08.482 xcodebuild[30372:104255619] Progress 97%: 
+2026-10-22 18:33:08.483 xcodebuild[30372:104255619] Progress 97%: 
+2026-10-22 18:33:09.007 xcodebuild[30372:104255619] Progress 97%: 
+2026-10-22 18:33:09.007 xcodebuild[30372:104255619] Progress 97%: 
+2026-10-22 18:33:09.670 xcodebuild[30372:104255619] Progress 97%: 
+2026-10-22 18:33:09.670 xcodebuild[30372:104255619] Progress 97%: 
+2026-10-22 18:33:10.357 xcodebuild[30372:104255619] Progress 98%: 
+2026-10-22 18:33:10.357 xcodebuild[30372:104255619] Progress 98%: 
+2026-10-22 18:33:11.103 xcodebuild[30372:104255619] Progress 98%: 
+2026-10-22 18:33:11.104 xcodebuild[30372:104255619] Progress 98%: 
+2026-10-22 18:33:12.150 xcodebuild[30372:104255619] Progress 99%: 
+2026-10-22 18:33:12.151 xcodebuild[30372:104255619] Progress 99%: 
+2026-10-22 18:33:12.970 xcodebuild[30372:104255619] Progress 99%: 
+2026-10-22 18:33:12.971 xcodebuild[30372:104255619] Progress 99%: 
+2026-10-22 18:33:13.982 xcodebuild[30372:104255619] Progress 99%: 
+2026-10-22 18:33:13.982 xcodebuild[30372:104255619] Progress 99%: 
+2026-10-22 18:33:14.771 xcodebuild[30372:104255619] Progress 100%: 
+2026-10-22 18:33:14.771 xcodebuild[30372:104255619] Progress 100%: 
+2026-10-22 18:33:15.540 xcodebuild[30372:104255619] Progress 100%: 
+2026-10-22 18:33:15.540 xcodebuild[30372:104255619] Progress 100%: 
+2026-10-22 18:33:16.167 xcodebuild[30372:104255619] Progress 100%: 
+2026-10-22 18:33:16.168 xcodebuild[30372:104255619] Progress 100%: 
+2026-10-22 18:33:17.287 xcodebuild[30372:104255619] Progress 0%: 
+2026-10-22 18:33:17.287 xcodebuild[30372:104255619] Progress 0%: Getting upload status…
+2026-10-22 18:33:17.569 xcodebuild[30372:104255619] Progress 0%: Getting upload status…
+2026-10-22 18:33:17.569 xcodebuild[30372:104255619] Progress 100%: Getting upload status…
+2026-10-22 18:33:17.570 xcodebuild[30372:104255619] Progress 100%: Getting upload status…
+2026-10-22 18:33:17.575 xcodebuild[30372:104255619] Progress 100%: Upload failed.
+Account credentials have expired.
+error: exportArchive Account credentials have expired. Open Xcode's Accounts settings, sign in to your account, and try again.
+
+** EXPORT FAILED **
+

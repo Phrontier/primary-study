@@ -42,7 +42,7 @@ Screenshots prove rendered states, not every alternate branch. Source inspection
 
 Native navigation bars remain on utility screens; approved compact headers remain on the core families. Lists preserve native reordering, pickers and keyboard editing. Quick Look, AVKit, Apple sign-in, purchase/management/permission sheets and destructive alerts remain native. Actual data and enlarged layouts can differ from fictional static samples.
 
-Home and the connected event/study native pass remain approved. The other selected native families and this app-wide extension await user visual review. No App Store upload/submission or production configuration change was made.
+The user approved all native families and this app-wide extension on October 22, 2026. The original validation pass made no upload or production configuration changes. The subsequent authorized main-branch promotion and TestFlight release are recorded in [release evidence](../Release/DESIGN_TESTFLIGHT_2026-10-22.md).
 
 ## Reproduce gallery generation
 

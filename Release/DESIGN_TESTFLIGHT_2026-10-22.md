@@ -17,6 +17,6 @@ October 22, 2026. The user approved the complete native gallery and authorized p
 - Swift source fingerprint matches the approved gallery build exactly: `645b395e8e9b63e0390d51557f28b19884874d78802e796c7fc4e488183d54ed` (70 files).
 - Signed Release archive succeeded. Debug gallery symbols/launch flag absent. All 114 manifest resource paths present.
 - Archive: `/tmp/PrimaryGouge-Design-Build3.xcarchive`.
-- Initial upload reached completion but Apple rejected the expired Xcode account session. See `Evidence/design-build3-upload-expired-oct22.log`. Refreshing the existing account and retrying the same signed archive; acceptance/testing availability is not yet confirmed.
+- Initial upload reached completion but Apple rejected the expired Xcode account session. See `Evidence/design-build3-upload-expired-oct22.log`. After the owner refreshed Xcode sign-in, the same archive uploaded successfully. Apple accepted the package for processing at 18:38:39 in the Mac upload log. See `Evidence/design-build3-upload-success-oct22.log`. Tester availability is being verified.
 
 Physical-phone testing and external-service checks remain separate from simulator tests. This is a TestFlight release, not an App Store submission.
